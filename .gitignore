@@ -1,0 +1,18 @@
+# Editor
+*~
+# Vagrant stuff
+/regal-vagrant-ubuntu14.04/acceptance_config.yml
+/regal-vagrant-ubuntu14.04/boxes/*
+/regal-vagrant-ubuntu14.04//.vagrant
+/regal-vagrant-ubuntu14.04//website/.vagrant
+/regal-vagrant-ubuntu14.04//website/build
+/regal-vagrant-ubuntu14.04//vagrant-spec.config.rb
+/regal-vagrant-ubuntu14.04/test/vagrant-spec/.vagrant/
+/regal-vagrant-ubuntu14.04/elasticsearch-1.1.0.noarch.rpm
+/regal-vagrant-ubuntu14.04/fcrepo-installer-3.7.1.jar
+/regal-vagrant-ubuntu14.04/mysql-community-release-el7-5.noarch.rpm
+/regal-vagrant-ubuntu14.04/typesafe-activator-1.3.5.zip
+/regal-vagrant-ubuntu14.04/nohup.out
+/regal-vagrant-ubuntu14.04//bin
+/regal-vagrant-ubuntu14.04//logs
+/regal-vagrant-ubuntu14.04/derby.log

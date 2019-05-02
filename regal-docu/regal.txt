@@ -1,0 +1,374 @@
+Regal
+=====
+Jan Schnasse <schnasse@gmx.de>
+:Author Initials: JS
+:toc:
+:icons:
+:numbered:
+:website: https://hbz-nrw.de
+
+.Über dieses Dokument
+**************************************
+Falls Du nur an einer schnellen Installationsanleitung interesiert bist, schaue hier. Im nachfolgenden wird das Gesamtsystem ausführlich erläutert.
+
+**************************************
+
+Einleitung
+----------
+Regal ist eine ContentRepository zur Verwaltung und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am Hochschulbibliothekszentrum (hbz) entwickelt. 
+
+Regal basiert auf den folgenden Kerntechnologien:
+
+- Fedora Commons 3
+- Elasticsearch 1.1
+- Drupal 7
+- Playframework 2.4
+- MySQL 5
+- Java 8
+- PHP 5 
+
+Für die Webarchivierung kommen außerdem Openwayback, Heritrix und WPull zum Einsatz. 
+
+- openwayback hbz-2.3.2
+- heritrix 3.2.0
+- wpull
+
+Regal ist ein mehrkomponentiges System. Einzelne Komponenten sind als Webservices realisiert und kommunizieren über HTTP-APIs miteinander. Derzeit sind folgende Komponenten im Einsatz
+
+- https://github.com/edoweb/regal-api[regal-api]
+- https://github.com/hbz/etikett[etikett]
+- https://github.com/hbz/zettel[zettel]
+- https://github.com/hbz/skos-lookup[skos-lookup]
+- https://github.com/hbz/thumby[thumby]
+- https://github.com/hbz/DeepZoomService/[deepzoomer]
+- https://github.com/edoweb/regal-drupal[regal-drupal]
+- https://github.com/edoweb/zbmed-drupal-theme[zbmed-drupal-theme]
+- https://github.com/edoweb/edoweb-drupal-theme[edoweb-drupal-theme]
+
+
+
+Über die Systemschnittstellen können eine ganze Reihe von Drittsystemen angesprochen werden. Die folgende Abbildung verschafft einen groben Überblick über eine typische Regal-Installation und die angebundenen Drittsysteme.
+
+.Typische Regal-Installation mit Drupal Frontend, Backendkomponenten und angebundenen Drittsytemen
+image::./resources/images/regal-arch-4.jpeg[Regal Überblick]
+:figure-caption: Logo
+
+Konzepte
+--------
+
+Objektmodell
+~~~~~~~~~~~~
+Regal realisiert ein einheitliches Objektmodell in dem sich eine Vielzahl von Publikationstypen speichern lassen. Die Speicherschicht wird über [Fedora Commons 3] realisiert.
+
+Eine einzelne Publikation besteht i.d.R. aus mehreren [Fedora Commons 3]-Objekten, die in einer hierarchischen Beziehung zueinander stehen. 
+
+.Fedora Object
+[options="header"]
+|=================================================
+|Name|Pflicht|Beschreibung
+|DC | Ja | Von Fedora vorgeschrieben. Wird für die Fedora-interne Suche verwendet
+|RELS-EXT | Ja | Von Fedora vorgeschrieben. Wird für viele Sachen verwendet - (1) Hierarchien - (2) Steuerung  der Sichtbarkeiten - (2) OAI-Providing
+|data | Nein | Die eigentlichen Daten der Publikation. Oft ein PDF.
+|metadata oder metadata2 | Nein | Bibliografische Metadaten. Metadata2 enthält Daten in anlehnung an Lobid 2.
+|objectTimestamp | Nein | Eine Datei mit einem Zeitstempel. Der Zeitstempel wird bei bestimmten Aktionen gesetzt.
+|seq | Nein | Eine Hilfsdatei mit einem JSON-Array. Das Array zeigt an, in welcher Reihenfolge Kindobjekte anzuzeigen sind. Dieses Hilfskonstrukt existiert, da in der RELS-EXT keine RDF-Listen abgelegt werden können.
+|=================================================
+
+Die Metadaten werden als ASCII-Kodierte N-Triple abgelegt. Da alle Fedora-Daten als Dateien im Dateisystem abgelegt werden, ist diese Veriante besonders robust gegen Speicherfehler. N-Triple ist ein Format, dass sich Zeilenweise lesen lässt. ASCII ist die einfachste Form der Textkodierung.
+
+Namespaces und Identifier
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Jede Regal-Installation arbeitet auf einem festgelegten Namespace. Wenn über die [regal-api] Objekte angelegt werden, finden sich diese immer in dem entsprechenden Namespace wieder. Hinter dem Namespace findet sich, abgetrennt mit einem Dopplepunkt eine hochlaufende Zahl, die i.d.R. über [Fedora Commons 3] bezogen wird.
+
+Der so zusammengesetzte Identifier kommt in allen Systemkomponenten zum Einsatz.
+
+.Beispiel Regal Identifier
+[options="header"]
+|=========================================================
+|ID|Komponente|URL
+|regal:1|drupal | http://localhost/resource/regal:1
+|regal:1|regal-api|http://api.localhost/resource/regal:1
+|regal:1|fedora | http://localhost:8080/fedora/objects/regal:1
+|regal:1|elasticsearch | http://localhost:9200/regal/_all/regal:1
+|=========================================================
+
+Deskriptive Metadaten
+~~~~~~~~~~~~~~~~~~~~~
+
+Regal unterstützt eine große Anzahl von Metadatenfeldern zur Beschreibung von bibliografischen Ressourcen. Jedes in Regal verspeicherte Objekt kann mit Hilfe von RDF-Metadaten beschrieben werden. Das System verspeichert grundsätzlich alle Metadaten, solange Sie im richtigen Format an die Schnittstelle gespielt werden.
+
+Darüberhinaus können über bestimmte Angaben bestimmte weitergehende Funktionen angesteuert werden. Dies betrifft u.A.:
+
+- Anzeige und Darstellung
+- Metadatenkonvertierungen
+- OAI-Providing
+- Suche
+
+Alle bekannten Metadateneinträge werden in der Komponente [Etikett] verwaltet. In Etikett kann konfiguriert werden, welche URIs aus den RDF-Daten in das JSON-LD-Format von [regal-api] überführt werden. Außerdem kann die Reihenfolge der Darstellung, und das Label zur Anzeige gesetzt werden. 
+
+
+.Etikett-Eintrag für dc:title
+[options="header"]
+|====================================================================================================
+|Label|Pictogram|Name (json)|URI|Type|Container|Comment
+|Titel| keine Angabe  | title | http://purl.org/dc/terms/title | String | keine Angabe | keine Angabe
+|====================================================================================================
+
+.Etikett-Eintrag als Json
+....
+"title":{
+	"@id"="http://purl.org/dc/terms/title",
+	"label"="Titel"
+}
+....
+
+Die etikett Datenbank wird beim Neustart jeder [regal-api]-Instanz eingelesen. Außerdem wird die HTTP-Schnittstelle von Etikett immer wieder angesprochen um zur Anzeige geeignete Labels für URIs in das System zu holen. Das [regal-api]-Modul läuft dabei auch ohne den Etikett-Services, allerdings nur mit eingeschränkter FunktiaddOaiDcTransformeronalität. Beispielsweise fallen Anzeigen von verlinkten Ressourcen (und das ist in Regal fast alles) weniger schön aus.
+
+Anzeige und Darstellung
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Über die Schnittstellen der [regal-api] können unterschiedliche Darstellungen einer Publikation bezogen werden. Über [Content Negotiation] können Darstellungen per HTTP-Header angefragt werden. Um unterschiedliche Darstellungen im Browser anzeigen zu lassen, kann außerden über das Setzen von entsprechenden Endungen auf unterschiedliche Representationen eine Resource zugegriffen werden.
+
+.Auswahl von Pfaden zu unterschiedlichen Representationen einer Ressource
+....
+/resource/danrw:1
+/resource/danrw:1.json
+/resource/danrw:1.rdf
+/resource/danrw:1.epicur
+/resource/danrw:1.mets
+....
+
+In der HTML-Darstellung greift [regal-api] auf den Hilfdienst [thumby] zu, um darüber Thumbnail-Darstellungen von PDFs oder Bilder zu kreieren. Bei großen Bildern wird außerdem der [DeepzoomerService] angelinkt, der eine Darstellung von Hochauflösenden Bildern über das Tool Openseedragon erlaubt. Video- und Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.
+
+Metadatenkonvertierung
+~~~~~~~~~~~~~~~~~~~~~~
+
+Für die Metadatenkonvertierung gibt es kein festes Vorgehensmodell oder Werkzeug. I.d.R. gibt es für jede Representation eine oder eine Reihe von Javaklassen, die für eine On-the-fly-Konvertierung sorgen. Die HTML-Darstellung basiert grundlegend auf denselben Daten, die auch im [Elasticsearch]-Index liegen und ist im wesentlichen eine JSON-LD-Darstellung, die mit Hilfe der in [etikett] hinterlegten Konfiguration aus den bibliografischen Metadaten gewonnen wurde.
+
+OAI-Providing
+~~~~~~~~~~~~~
+
+Öffentlich zugängliche Publikationen sind auch über die OAI-Schnittstelle verfügbar. Dabei wird jede Publikation einer Reihe von OAI-Sets zugeordnet und in unterschiedlichen Formaten angeboten.
+
+.OAI Set
+[options="header"]
+|=========================================
+|Set|Kriterium
+|ddc:* | Wenn ein dc:subject mit dem String "http://dewey.info/class/" beginnt, wird ein Set mit der entsprechenden DDC-Nummer gebildet und die Publikation wird zugeordnet
+|contentType | Der "contentType" weist darauf hin, in welcher Weise die Publikation in Regal. Abgelegt ist.
+|open_access | All Publikationen, die als Sichtbarkeit "public" haben
+|urn-set-1 | Publikationen mit einer URN, die mit urn:nbn:de:hbz:929:01 beginnt
+|urn-set-2 | Publikationen mit einer URN, die mit urn:nbn:de:hbz:929:02 beginnt
+|epicur | Publikationen, die in einem URN-Set sind
+|aleph | Publikationen , die mit einer Aleph-Id verknüpft sind
+|edoweb01 |  spezielles, pro [regal-api]-Instanz konfigurierbares Set für alle Publikationen, die im aleph-Set sind
+|ellinet01 |  spezielles, pro [regal-api]-Instanz konfigurierbares Set für alle Publikationen, die im aleph-Set sind
+
+
+.OAI Metadatenformat (metadataprefix)[options="header"]
+|=========================================
+|Format|Kriterium
+|oai_dc| Alle öffentlich sichtbaren Objekte, die als bestimmte ContentTypes angelegt wurden.
+|epicur| Alle Objekte, die eine URN haben
+|aleph| Alle Objekte, die einen persistenten Identifier haben
+|mets| Wie oai_dc
+|rdf| Wie oai_dc
+|wgl| Alle Objekte die über das Feld "collectionOne" einer Institution zugeordnet wurden und über den ContentType "article" eingeliefert urden.
+
+Suche
+~~~~~
+
+Der Elasticsearch-Index wird mit Hilfe einer JSON-LD Konvertierung befüllt. Die Konvertierung basiert im wesentlichen auf den bibliografischen Metadaten der einzelnen Ressourcen und wir mit Hilfe der in [etikett] hinterlegten Konfiguration erzeugt.
+
+Zugriffsberechtigungen und Sichtbarkeiten
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Regal setzt ein rollenbasiertes Konzept zur Steuerung von Zugriffsberechtigungen um. Eine besondere Bedeutung kommt dem lesenden Zugriff auf Ressourcen zu. Einzelne Ressourcen können in ihrer Sichtbarkeit so eingeschränkt werden, dass nur mit den Rechten einer bestimmten Rolle lesend zugegriffen werden kann. Dabei kann der Zugriff auf Metadaten und Daten separat gesteuert werden. 
+
+.Screenshot zur Verdeutlichung von Sichtbarkeiten in Regal
+image::./resources/images/accessControl.png[Regal Zugriffsrechte]
+:figure-caption: Logo
+
+
+Die Konfiguration hat Auswirkungen auf die Sichtbarkeit einer Publikation in den unterschiedlichen Systemteilen. Die folgende Tabelle veranschaulicht den derzeitigen Stand der Implementierung.
+
+Sichtbarkeiten, Operationen, Rollen
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.Lesender Zugriff auf Metadaten
+[options="header"]
+|==============================================
+|Sichtbarkeit|Rolle
+|public | GUEST,READER,SUBSCRIBER,REMOTE,ADMIN,EDITOR
+|private| ADMIN,EDITOR
+|==============================================
+
+.Lesender Zugriff auf Daten
+[options="header"]
+|==============================================
+|Sichtbarkeit|Rolle
+|public | GUEST,READER,SUBSCRIBER,REMOTE,ADMIN,EDITOR
+|restricted| READER,SUBSCRIBER,REMOTE,ADMIN,EDITOR
+|remote|READER,SUBSCRIBER,REMOTE,ADMIN,EDITOR
+|single|SUBSCRIBER,ADMIN,EDITOR
+|private| ADMIN,EDITOR
+|==============================================
+
+Benutzerverwaltung
+~~~~~~~~~~~~~~~~~~
+Die Benutzerverwaltung von Regal findet innerhalb von Drupal statt. Zwar können auch in der [regal-api] Benutzer angelegt werden, jedoch ist die Implementierung in diesem Bereich erst rudimentär.
+
+Drupal
+^^^^^^
+Benutzer in Drupal können über das Modul [regal-drupal] unterschiedliche Rollen zugewiesen werden. Die Authorisierung erfolgt passwortbasiert. Alle Drupal-Benutzer greifen über einen vokonfigurierten Accessor auf die [regal-api] zu. Alle Zugriffe erfolgen verschlüsselt unter Angabe eines Passwortes. Die Rolle mit deren Berechtigungen zugegriffen wird, wird dabei in [regal-drupal] gesetzt. Die Drupal-BenutzerId wird als Metadatum in Form eines proprietären HTTP-Headers mit an [regal-api] geliefert.
+
+Regal-Api
+^^^^^^^^^
+Auch in regal-api können Api-Benutzer angelegt werden. Zur Benutzerverwaltung wird eine MySQL-Datenbank eingesetzt, in der die Passworte der Nutzer abgelegt sind (Hash+Salt).
+
+Regal Software Stack
+-------------------
+
+regal-api 
+~~~~~~~~~~
+Repo: <https://github.com/edoweb/regal-api>
+
+Mit regal-api werden alle grundlegenden Funktionen von Regal bereitgestellt. Dies umfasst:
+
+- HTTP Schnittstelle
+- Sichtbarkeiten, Zugriffskontrolle, Rollen
+- Speicherung, Datenhaltung
+- Konvertierungen
+- Ansichten
+
+Der Webservice ist auf Basis von [Play 2.4.2] realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von elektronischen Publikationen an. Der Fedora, MySQL und Elasticsearch 
+
+etikett
+~~~~~~~
+Repo: <https://github.com/hbz/etikett>
+
+
+zettel
+~~~~~~
+Repo: <https://github.com/hbz/zettel>
+
+skos-lookup
+~~~~~~~~~~~
+Repo: <https://github.com/hbz/skos-lookup>
+
+
+thumby
+~~~~~~
+Repo: <https://github.com/hbz/thumby>
+
+deepzoomer
+~~~~~~~~~~
+
+regal-drupal
+~~~~~~~~~~~~
+Repo: <https://github.com/edoweb/regal-drupal>
+
+edoweb-drupal-theme
+~~~~~~~~~~~~~~~~~~~
+Repo: <https://github.com/edoweb/edoweb-drupal-theme>
+
+zbmed-drupal-theme
+~~~~~~~~~~~~~~~~~~
+Repo: <https://github.com/edoweb/zbmed-drupal-theme>
+
+openwayback
+~~~~~~~~~~~
+Repo:
+
+
+heritrix
+~~~~~~~~~
+Repo:
+
+
+wpull
+~~~~~
+Repo:
+
+
+Fedora Commons
+~~~~~~~~~~~~~~
+Repo:
+
+
+MySql
+~~~~~
+Repo:
+
+
+
+Elasticsearch
+~~~~~~~~~~~~~
+Repo:
+
+
+Drupal
+~~~~~~
+Repo:
+
+Installation
+------------
+
+Mit Vagrant
+~~~~~~~~~~~
+
+Vagrantskripts....
+
+Auf Blech
+~~~~~~~~~
+Ein paar Worte zu Benutzern, Sichtbarkeiten, etc. Von Vagrant auf den Server.
+
+
+Regal Administration
+-------------------
+
+Ports
+~~~~~
+
+.Ports und Komponenten (typische Belegung)
+[options="header"]
+|====================
+| Port | Komponente
+| 80 /443 | Apache 2 
+|8080 | fedora tomcat
+|9090 | openwayback tomcat
+|9200 | elasticsearch
+| 9000/9100| regal-api
+| 9001/9101 | thumby
+| 9002/9102 | etikett
+| 9003/9103 | zettel
+| 9004/9104 | skos-lookup
+|======================
+
+
+Tabelle
+
+Apache2
+~~~~~~~
+Tabelle
+
+
+Matomo
+~~~~~~
+
+Skripte
+
+
+Monit
+~~~~~
+
+Code
+
+Scripts und Cronjobs
+~~~~~~~~~~~~~~~~~~~~
+
+Crontab
+
+:!figure-caption:
+
+
