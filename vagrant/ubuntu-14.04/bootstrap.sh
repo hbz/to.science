@@ -19,13 +19,34 @@ function download(){
 
 function downloadBinaries(){
 	download typesafe-activator-1.3.5.zip https://downloads.typesafe.com/typesafe-activator/1.3.5/
-	download fcrepo-installer-3.7.1.jar httsp://sourceforge.net/projects/fedora-commons/files/fedora/3.7.1/
+	download fcrepo-installer-3.7.1.jar https://sourceforge.net/projects/fedora-commons/files/fedora/3.7.1/
 	download mysql-community-release-el7-5.noarch.rpm https://repo.mysql.com/
 	download elasticsearch-1.1.0.deb https://download.elasticsearch.org/elasticsearch/elasticsearch/
 	download heritrix-3.1.1-dist.zip http://builds.archive.org/maven2/org/archive/heritrix/heritrix/3.1.1/
 	download apache-tomcat-8.5.39.zip http://ftp.halifax.rwth-aachen.de/apache/tomcat/tomcat-8/v8.5.39/bin/
 	download drupal-7.36.tar.gz https://ftp.drupal.org/files/projects/ 
-	
+}
+
+function installJava8(){
+    if [ -f $BIN/jdk8.tar.gz ]
+    then
+	tar -xzf $BIN/jdk8.tar.gz
+	mv $BIN/jdk* /opt/jdk
+	cd /opt/
+	ln -s jdk java
+	sudo update-alternatives --install "/usr/bin/java" "java" "/opt/jdk/bin/java" 1
+	sudo update-alternatives --install "/usr/bin/javac" "javac" "/opt/jdk/bin/javac" 1
+	sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/opt/jdk/bin/javaws" 1
+	sudo update-alternatives --install "/usr/bin/jar" "jar" "/opt/jdk/bin/jar" 1
+	sudo update-alternatives --set "java" "/opt/jdk/bin/java" 
+	sudo update-alternatives --set "javac" "/opt/jdk/bin/javac" 
+	sudo update-alternatives --set "jar" "/opt/jdk/bin/jar"
+	sudo update-alternatives --set "javaws" "/opt/jdk/bin/javaws"
+	java -version
+    else
+        printf "Please provide a tared Version of a Java 8 jdk under $BIN/jdk8.tar.gz!"
+	exit 1
+    fi
 }
 
 function installPackages(){
@@ -34,16 +55,9 @@ function installPackages(){
     sudo apt-get -y -q install zip
     sudo apt-get -y -q install unzip
     sudo apt-get -y -q install curl
-
-    export SDKMAN_DIR="/usr/local/sdkman" && curl -s "https://get.sdkman.io" | bash
-    source "/usr/local/sdkman/bin/sdkman-init.sh";
-    sdk install java 8.0.212-zulu
-    java -version
-
     sudo apt-get -y -q install apache2
     sudo apt-get -y -q install git
-    sudo apt-get -y -q install maven
-    sudo apt-get -y -q install wget
+    sudo apt-get -y -q install mavenc
     sudo apt-get -y -q install emacs
     sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password $PASSWORD'
     sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password $PASSWORD'
@@ -110,9 +124,9 @@ function postProcess(){
 function installRegalModule(){
     app_version=$1
     APPNAME=$2
-    $ARCHIVE_HOME/activator/activator clean
+    yes r|$ARCHIVE_HOME/activator/activator clean
     yes r|$ARCHIVE_HOME/activator/activator dist
-    $ARCHIVE_HOME/activator/activator eclipse
+    yes r|$ARCHIVE_HOME/activator/activator eclipse
     cp target/universal/$app_version.zip  /tmp
     cd /tmp
     unzip $app_version.zip
@@ -136,14 +150,15 @@ function installRegalModules(){
     cd  $ARCHIVE_HOME/src/zettel
     installRegalModule zettel-1.0-SNAPSHOT zettel
 
+
     cd  $ARCHIVE_HOME/src/regal-api
     installRegalModule regal-api-0.8.0-SNAPSHOT  regal-api
 }
 
 function configureRegalModules(){
-    mysql -u root -Bse "CREATE DATABASE etikett  DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'etikett'@'localhost' IDENTIFIED BY 'etikett';GRANT ALL ON etikett.* TO 'etikett'@'localhost';"
+    echo $PASSWORD|mysql -u root -p -Bse "CREATE DATABASE etikett  DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'etikett'@'localhost' IDENTIFIED BY 'etikett';GRANT ALL ON etikett.* TO 'etikett'@'localhost';"
 
-    mysql -u root -Bse "CREATE DATABASE regal_api DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'regal_api'@'localhost' IDENTIFIED BY 'admin';GRANT ALL ON regal_api.* TO 'regal_api'@'localhost';"
+    echo $PASSWORD|mysql -u root -p -Bse "CREATE DATABASE regal_api DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'regal_api'@'localhost' IDENTIFIED BY 'admin';GRANT ALL ON regal_api.* TO 'regal_api'@'localhost';"
 }
 
 function configureApache(){
@@ -156,7 +171,7 @@ function configureApache(){
 
 function installProai(){
 	echo "installProai() not implemented yet!"
-mysql -u root -Bse " CREATE DATABASE proai; CREATE USER 'proai'@'localhost' IDENTIFIED BY 'proai'; SET PASSWORD FOR 'proai'@'localhost' = PASSWORD('proai'); GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON proai.* TO 'proai'@'localhost';"
+echo $PASSWORD|mysql -u root -p -Bse " CREATE DATABASE proai; CREATE USER 'proai'@'localhost' IDENTIFIED BY 'proai'; SET PASSWORD FOR 'proai'@'localhost' = PASSWORD('proai'); GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON proai.* TO 'proai'@'localhost';"
 	cd $ARCHIVE_HOME/src
 	git clone https://github.com/jschnasse/proai.git
 	git clone https://github.com/jschnasse/oaiprovider.git
@@ -171,7 +186,7 @@ mysql -u root -Bse " CREATE DATABASE proai; CREATE USER 'proai'@'localhost' IDEN
 	cp dist/proai-1.1.3-1.jar ../oaiprovider/lib/
 	cd $ARCHIVE_HOME/src/oaiprovider
 	ant release
-	cp dist/oaiprovider.war $ARCHIVE/fedora/tomcat/webapps/oai-pmh.war
+	cp dist/oaiprovider.war $ARCHIVE_HOME/fedora/tomcat/webapps/oai-pmh.war
 }
 
 function installOpenwayback(){
@@ -205,6 +220,7 @@ function installOpenwayback(){
 	cp templates/CDXCollection.xml $ARCHIVE_HOME/tomcat-for-openwayback/webapps/ROOT/WEB-INF/
 	#stop tomcat
 	$ARCHIVE_HOME/tomcat-for-openwayback/bin/shutdown.sh
+
 }
 
 function installHeritrix(){
@@ -327,34 +343,37 @@ function initialize(){
 }
 
 function main(){
-	downloadBinaries
-	installPackages
-	createRegalFolderLayout
-	downloadRegalSources
-	installFedora
-	installPlay
-	postProcess
-	installRegalModules
+        #sudo apt-get -y -q install wget
+	#downloadBinaries
+	#installJava8
+	#installPackages
+	#createRegalFolderLayout
+	#downloadRegalSources
+	#installFedora
+	#installPlay
+	#postProcess
+	#installRegalModules
 	installProai
-	configureRegalModules
-	installOpenwayback
-	installHeritrix
-	installDeepzoomer
-	installWpull
-	installDrush
-	installDrupal
-	installRegalDrupal
-	installDrupalThemes
-	configureDrupalLanguages
-	configureDrupal
-	configureApache
-	configureMonit
-	configureFirewall
-	sudo chown -R vagrant $ARCHIVE_HOME
-	createStartStopScripts
-	defineBootShutdownSequence
-	sleep 10
-	initialize
+	#configureRegalModules
+	#installOpenwayback
+	#installHeritrix
+	#installDeepzoomer
+	#installWpull
+	#installDrush
+	#installDrupal
+	#installRegalDrupal
+	#installDrupalThemes
+	#configureDrupalLanguages
+	#configureDrupal
+	#configureApache
+	#configureMonit
+	#configureFirewall
+	#sudo chown -R vagrant $ARCHIVE_HOME
+	#createStartStopScripts
+	#defineBootShutdownSequence
+	#sleep 10
+	#initialize
 }
-installPackages
-#main >vagrant.log 2>&1
+
+
+main
