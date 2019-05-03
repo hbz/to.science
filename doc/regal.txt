@@ -9,13 +9,13 @@ Jan Schnasse <schnasse@gmx.de>
 
 .Über dieses Dokument
 **************************************
-Falls Du nur an einer schnellen Installationsanleitung interesiert bist, schaue hier. Im nachfolgenden wird das Gesamtsystem ausführlich erläutert.
+Falls Du nur an einer schnellen Installationsanleitung interessiert bist, [schaue hier]. Im nachfolgenden wird das Gesamtsystem ausführlich erläutert.
 
 **************************************
 
 Einleitung
 ----------
-Regal ist eine ContentRepository zur Verwaltung und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am Hochschulbibliothekszentrum (hbz) entwickelt. 
+Regal ist eine ContentRepository zur Verwaltung und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am [Hochschulbibliothekszentrum (hbz)] entwickelt. 
 
 Regal basiert auf den folgenden Kerntechnologien:
 
@@ -42,6 +42,9 @@ Regal ist ein mehrkomponentiges System. Einzelne Komponenten sind als Webservice
 - https://github.com/hbz/thumby[thumby]
 - https://github.com/hbz/DeepZoomService/[deepzoomer]
 - https://github.com/edoweb/regal-drupal[regal-drupal]
+
+Themes
+
 - https://github.com/edoweb/zbmed-drupal-theme[zbmed-drupal-theme]
 - https://github.com/edoweb/edoweb-drupal-theme[edoweb-drupal-theme]
 
@@ -105,7 +108,7 @@ Darüberhinaus können über bestimmte Angaben bestimmte weitergehende Funktione
 - OAI-Providing
 - Suche
 
-Alle bekannten Metadateneinträge werden in der Komponente [Etikett] verwaltet. In Etikett kann konfiguriert werden, welche URIs aus den RDF-Daten in das JSON-LD-Format von [regal-api] überführt werden. Außerdem kann die Reihenfolge der Darstellung, und das Label zur Anzeige gesetzt werden. 
+Alle bekannten Metadateneinträge werden in der Komponente [Etikett] verwaltet. In [Etikett] kann konfiguriert werden, welche URIs aus den RDF-Daten in das JSON-LD-Format von [regal-api] überführt werden. Außerdem kann die Reihenfolge der Darstellung, und das Label zur Anzeige gesetzt werden. 
 
 
 .Etikett-Eintrag für dc:title
@@ -123,12 +126,26 @@ Alle bekannten Metadateneinträge werden in der Komponente [Etikett] verwaltet. 
 }
 ....
 
-Die etikett Datenbank wird beim Neustart jeder [regal-api]-Instanz eingelesen. Außerdem wird die HTTP-Schnittstelle von Etikett immer wieder angesprochen um zur Anzeige geeignete Labels für URIs in das System zu holen. Das [regal-api]-Modul läuft dabei auch ohne den Etikett-Services, allerdings nur mit eingeschränkter FunktiaddOaiDcTransformeronalität. Beispielsweise fallen Anzeigen von verlinkten Ressourcen (und das ist in Regal fast alles) weniger schön aus.
+Die etikett Datenbank wird beim Neustart jeder [regal-api]-Instanz eingelesen. Außerdem wird die HTTP-Schnittstelle von Etikett immer wieder angesprochen, um zur Anzeige geeignete Labels für URIs in das System zu holen. Das [regal-api]-Modul läuft dabei auch ohne den Etikett-Services, allerdings nur mit eingeschränkter Funktionalität; beispielsweise fallen Anzeigen von verlinkten Ressourcen (und das ist in Regal fast alles) weniger schön aus.
+
+Wie kommen bibliografische Metadaten ins System?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In Regal können bibliografische Metadaten aus dem hbz-Verbundkatalog an Ressourcen "angelinkt" werden. Dies erfolgt über Angabe der ID des entsprechenden Titelsatzes (z.b. HT017766754). Mit Hilfe dieser ID kann Regal einen Titelimport durchführen. Dabei wird auf die Schnittstellen der [Lobid-API] zugegriffen. 
+
+Regal bietet außerdem die Möglichkeit Metadaten über Erfassungsmasken zu erzeugen und zu speichern. Dies erfolgt mit Hilfe des Moduls [Tettel]. [Zettel] ist ein Webservices, der verschiedene HTML-Formulare bereitstellt. Die Formulare können RDF-Metadaten einlesen und ausgeben. Zettel-Formulare werden über Javascript in ein IFrame der eigentlichen Anwendung angebunden. Über Zettel werden Konzepte aus dem Bereich Linked Data umgesetzt. So können Feldinhalte über entsprechende Eingabeelemente in Drittsystemen recherchiert und verlinkt werden. Die Darstellung von Links erfolgt in Zettel mit Hilfe von [Etikett]. Umfangreichere Notationssysteme wie Agrovoc oder DDC werden über einen eigenen Index aus dem Modul [skos-lookup] eingebunden. Zettel unterstützt zur Zeit folgende Linked-Data-Quellen:
+
+- Lobid (GND)
+- Lobid (Ressource)
+- Agrovoc
+- DDC
+- CrossRef (Funder Registry)
+- Orcid
 
 Anzeige und Darstellung
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Über die Schnittstellen der [regal-api] können unterschiedliche Darstellungen einer Publikation bezogen werden. Über [Content Negotiation] können Darstellungen per HTTP-Header angefragt werden. Um unterschiedliche Darstellungen im Browser anzeigen zu lassen, kann außerden über das Setzen von entsprechenden Endungen auf unterschiedliche Representationen eine Resource zugegriffen werden.
+Über die Schnittstellen der [regal-api] können unterschiedliche Darstellungen einer Publikation bezogen werden. Über [Content Negotiation] können Darstellungen per HTTP-Header angefragt werden. Um unterschiedliche Darstellungen im Browser anzeigen zu lassen, kann außerden, über das Setzen von entsprechenden Endungen, auf unterschiedliche Representationen eine Resource zugegriffen werden.
 
 .Auswahl von Pfaden zu unterschiedlichen Representationen einer Ressource
 ....
@@ -226,8 +243,16 @@ Regal-Api
 ^^^^^^^^^
 Auch in regal-api können Api-Benutzer angelegt werden. Zur Benutzerverwaltung wird eine MySQL-Datenbank eingesetzt, in der die Passworte der Nutzer abgelegt sind (Hash+Salt).
 
-Regal Software Stack
--------------------
+
+Software
+--------
+
+Nachfolgend erfolgt eine Innenansicht der einzelnen Module. Die Integration der Module erfolgt i.d.R. über HTTP. Die Module werden über entsprechende Einträge in der Apache-Konfiguration sichtbar gemacht. Es handelt sich also um eine Webservice-Architektur, in der alle Webservices über einen Apache-Webserver und entsprechende Einträge in ihren Konfigurationsdateien miteinander verbunden werden.
+
+
+|------------------|
+|-----Abbildung----|
+|------------------|
 
 regal-api 
 ~~~~~~~~~~
@@ -240,17 +265,155 @@ Mit regal-api werden alle grundlegenden Funktionen von Regal bereitgestellt. Die
 - Speicherung, Datenhaltung
 - Konvertierungen
 - Ansichten
+- Suche
+- Webarchivierung
 
-Der Webservice ist auf Basis von [Play 2.4.2] realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von elektronischen Publikationen an. Der Fedora, MySQL und Elasticsearch 
+Der Webservice ist auf Basis von [Play 2.4.2] realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von elektronischen Publikationen an. Die [regal-api] operiert auf [Fedora Commons 3], [MySQL] und [Elasticsearch]. Über die API werden auch Funktionalitäten von [etikett], [thumby], [zettel] und [Deepzoomer] angesprochen. Für die Webarchivierung werden [heritrix], [wpull] und [openwayback] angebunden.
+
+Kofiguration
+^^^^^^^^^^^^
+
+.Dateien im /conf Verzeichnis
+[options="header"]
+|==================================================================
+|Datei | Beschreibung
+|**aggregations.conf**	| Diese Datei wird verwendet um die Schnittstelle `/browse` zu konfigurieren. Die Einträg im Object "aggs" können direkt über die `/browse` Schnittstelle angesprochen werden. Mit Hilfe des Elasticsearch-Indexes wird dann eine entsprechende Antwort generiert. Beispiel: `/browse/rdftype` liefert eine Liste mit allen Publikationstypen, die im Index vorhanden sind.
+|**application.conf.tmpl**	| Eine template Datei für die Hauptkonfiguration von [regal-api]. Diese Datei sollte zur lokalen Verwendung einmal nach application.conf kopiert werden. In der Datei sind alle Passwörter auf 'admin' gesetzt.
+|crawler-beans.cxml	| Die Datei wird verwendet, wenn im Webarchivierungsmodul eine neue Konfiguration für eine Webseite angelegt wird.
+|ehcache.xml	| die Konfiguration der Ehcache Komponente
+|fedora-users.xml	| deprecated - Zur Löschung vorgeschlagen
+|hbz_edoweb_url.txt	| deprecated - Zur Löschung vorgeschlagen
+|html.html	| deprecated - Zur Löschung vorgeschlagen
+|install.properties	| deprecated - Zur Löschung vorgeschlagen
+|labels-edoweb.de	| Labels für eine bestimmt Regal-Instanz
+|labels-for-proceeding-and-researchData.json	| deprecated - Zur Löschung vorgeschlagen
+|labels-lobid.json	| deprecated - Zur Löschung vorgeschlagen
+|labels-publisso.de	| Labels für eine bestimmte Regal-Instanz
+|**labels.json**	| Eine sinnvolle Startkonfiguration. Die Datei wurde mit [etikett] erzeugt. Beim Start von [regal-api] wird zunächst versucht eine ähnliche Konfiguration direkt von einer laufenden [etikett]-Instanz zu holen. Wenn dies nicht klappt, wird auf die labels.json zurückgegriffen.
+|list.html	|deprecated - Zur Löschung vorgeschlagen
+|logback.developer.xml	| ein logging Konfiguration. Ich kopiere die immer nach logback.developer.js.xml (in .gitignore) und trage sie  dann in die application.conf ein. Auf diese Weise kann ich an Loglevels herumkonfigurieren ohne das in diese Änderungen in die Versionsverwaltung spielen zu müssen.
+|logback.xml	| Konfiguration des Loggers. Diese Datei ist in application.conf eingetragen.
+|mabxml-string-template-on-record.xml	| Eine template-Datei zur Generierung von MAB-Ausgaben.
+|mail.properties	| Konfiguration zur Versendung von Mails. Standardmäßig schickt die Applikation eine Mail, sobald sie im Production-Mode neu gestartet wurde. Auch der Umzugsservice im Webarchivierungsmodul verschickt Mails.
+|nwbib-spatial.ttl	| deprecated - Zur Löschung vorgeschlagen
+|nwbib.ttl	|deprecated - Zur Löschung vorgeschlagen
+|**public-index-config.json**	| Konfiguration des Elasticsearch-Indexes. Da in dem Index vorallem Metadaten liegen, soll fast nicht tokenisiert werden.
+|**routes**	| Hier sind alle HTTP-Pfade übersichtlich aufgeführt.
+|scm-info.sh	| Diese Datei kann man unter Linux in die profile-Konfiguration seines Benutzers einbinden. Dann erhält man im Terminal farbige Angabgen zu Git-Branches,etc.
+|start-regal.sh	| deprecated - Zur Löschung vorgeschlagen
+|tomcat-users.xml	|deprecated - Zur Löschung vorgeschlagen
+|unescothes.ttl	|deprecated - Zur Löschung vorgeschlagen
+|wglcontributor.csv	|deprecated - Zur Löschung vorgeschlagen
+|===================================================================
+
+Die Applikation
+^^^^^^^^^^^^^^^
+
+.Das /app Verzeichnis
+[options="header"]
+|===================================================================
+|Package | Beschreibung
+|default package | Hier befindet sich die Datei Global, die in [Play 2.4] noch eine große Rolle spielt. In der Datei können zum Beispiel Aktionen vor dem Start der Applikation erfolgen, auch können hier HTTP-Requests mit geloggt werden. Bestimmte Aktionen werden nur im Production-Mode ausgeführt, d.h. nur wenn die Applikation mit `start` gestartet wurde oder über `dist` ein entsprechendes Binary erzeugt wurde.
+|actions | Hier sind Funktionen versammelt, die meist unmittelbar aus den Controller-Klassen aufgerufen werden.
+|archive.fedora| Ein Reihe von Dateien, über die Zugriffe auf [Fedora Commons 3] organisiert werden. Hier finden sich auch einige Hilfsklassen (`Utils`). Das FedoraInterface zeigt an, welche Aktionen auf der Fedora ausgeführt werden. Der Code in diesem Paket gehört mit zu dem ältesten Code im gesamten Regal-Projekt. 
+|archive.search| Zugriff auf die Elasticsearch
+|authenticate| Regal verwendet Basic-Auth zur Authentifizierung. Um die entsprechenden Aufrufe in den Controllern zu Schützen wird eine Annotation `@BasicAuth` verwendet. Diese findet sich hier. Die Annotation selbst bewirkt, dass jeder Controller-Aufruf durch die Methode asicAuth` der Klasse `BasicAuthAction.java` läuft. Ziel dieser Prozedur ist es, dem Zugriff die Berechtigungen einer bestimmten Rolle zuzuordnen.
+|controllers| Der Code, der in diesen Klassen organisiert ist, wird bei den entsprechenden HTTP-Aufrufen ausgeführt. In der `/conf/routes` Datei kann man sehen, welcher HTTP-Aufruf, welchen Methoden-Aufruf zur Folge hat. Die Controller-Klassen sind i.d.R. von der Klasse MyController  abgeleitet, die Hilfsfunktionen bereitstellt, aber auch Funktionen zur Überprüfung von Zugriffsrechten. Die Überprüfung von Zugriffsrechten erfolgt durch eingebettet Calls und wird über die internen Klassen von MyController realisiert. Beispiel:
+Die Funktion `listNodes` in der Klasse `controllers.Resource` ruft ihre Prozeduren eingebettet in eine Funktion der Klasse `ListAction` auf. Die Klasse `ListAction` ist in `MyController` implementiert und überprüft, ob der Aufruf mit der nötigen Berechtigung erfolgte.
+|converter.mab| Die Klasse realisiert noch das OAI-Providing von MAB-Daten. Ursprünglich war hier geplant, dass wesentlich umfangreichere MAB-Datensätze geliefert werden würden. Daher wird hier mit einer eigenen Template-Engine gearbeitet, etc. Ich erinnere mich gerne an diese Arbeiten, auch wenn sie größtenteils nie genutzt und zu Ende geführt wurden. Ein lustiges Produkt in diesem Kontext ist auch die Klasse `models.MabRecord`.
+|de.hbz.lobid.helper| Der hier befindliche Code kommt ursprünglich aus einem anderen Paket, wurde dann aber beim Neuaufbau des Lobid 2 Datendienstes gemeinsam mit den Kollegen weiterentwickelt und ist schließlich wieder hier gelandet. Mittlerweile ist die offizielle JSON-LD-Library soweit entwickelt, dass man die Konvertierung auch darüber machen kann. Achja, denn dafür ist der Code: Lobid N-Triples in schönes JSON umzuformen, das dann auch in den Elasticsearch-Index kann.
+|helper| Die mit Abstand wichtigste Klasse in diesem Package heißt `JsonMapper`. Hier wird das JSON für Index und Ansichten erzeugt.
+|helper.mail| Emails verschicken.
+|helper.oai| Einige Klassen zur Regelung des OAI-Providings. Der `OAIDispatcher` analysiert, ob und wie ein `Node` an die OAI-Schnittstelle gelangt. 
+|models|Die wichtigste Klasse hier ist `Node` über diese Klasse läuft der Großteil des Datentransportes. 
+|views| Templates in der Sprache `Twirl` und einige Java-Hilfsklassen.
+|views.mediaViewers| Ein paar Viewer, die über die Hilfsklasse `ViewerInfo` in `tags.resourceView` eingebunden werden können.
+|views.oai| Mit `Twirl` XML zu generieren war keine gute Idee.
+|views.tags| Hilfstemplates.
+|===================================================================
+
+Gedanken des Authors
+^^^^^^^^^^^^^^^^^^^^
+Der in [regal-api] versammelte Code ist ein historisch gewachsenes Sammelsurium. Zu irgendeinem Zeitpunkt habe ich angefangen neue Funktionalitäten vorzugsweise nicht mehr hier zu integrieren. Auf diese Weise sind [etikett], [thumby], [zettel] und [skos-lookup] entstanden. 
+
+Schaut man sich die sieben groben Aufgabenbereiche an, die von [regal-api] abgedeckt werden, so könnten weitere Unterteilungen in zusätzliche Webservices sinnvoll sein. Gerade der Bereich Webarchivierung mit seiner hohen Komplexität erscheint mir für eine Auskopplung prädestiniert. Tools wie [heritrix],[wpull] und [openwayback] könnten so aus der Gesamtkomplexität entfernt werden.  
+
+
 
 etikett
 ~~~~~~~
 Repo: <https://github.com/hbz/etikett>
 
+Etikett ist eine einfache Datenbankanwendung, die es erlaubt menschenlesbare Labels für URIs abzulegen. Über eine HTTP-Schnittstelle kann dann nach dem Label gefragt werden.
+In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs finden können. Beispiele:
 
+- Crossref
+- Geonames
+- GND
+- Openstreetmap
+- Orcid
+- RDF, Skos, etc.
+
+Fragt man etikett nach einem Label, so antwortet Etikett mit dem Ergebnis des Lookups. Wenn Etikett nicht in der Lage ist, ein Label zu finden, wird die URI, mit angefragt wurde, zurückgegeben.
+
+Etikett kann auch als Cache verwendet werden. So werden authentifizierte Anfragen in einer Datenbank persistiert. Erneute Anfragen werden dann aus der Datenbank beantwortet, ein erneuter Lookup wird eingespart. Einmal persistierte Labels werden nicht invalidiert. Die Invalidierung kann von außerhalb über authentifizierte HTTP-Zugriffe realisiert werden, stellt aber insgesamt noch ein Desiderat dar.
+
+Etikett kann auch mit Labels vorkonfiguriert werden. Dabei können zusätzliche Informationen zu jeder URIs mit abgelegt werden. Folgende Informationen können in etikett abgelegt werden:
+
+- URI
+- Label
+- Weight - Zur Definition von Anzeigereihenfolgen.
+- Pictogram Iconfont-ID - Kann anstatt oder zusätzlich zum Label angezeigt werden.
+- ReferenceType - JSON-LD Typ
+- Container - JSON-LD Container
+- Beschreibung - Kommentar als Markdown
+
+Mit Hilfe dieser Angaben kann Etikett auch einen "JSON-LD Context" bereitstellen. Insgesamt wird über Etikett eine Art "Application Profile" realisiert. Das Profil gibt Auskunft, welche Metadatenfelder (definiert als URIs) in welcher Weise (Typ, Container) Verwendung finden und wie sie angezeigt werden sollen (Label, Weight, Pictogram).
+
+Im Regal-Kontext wird [etikett] an vielen Stellen verwendet. 
+
+- Zur Wandlung von RDF nach JSON-LD
+- Zur Anreicherung von RDF Importen
+- Zur menschenlesbaren Darstellung von RDF
+- Zur Konfiguration von Labels, Anzeigereihenfolgen und Pictogrammen
+- Als Cache
+
+Konfiguration
+^^^^^^^^^^^^^
+
+.Dateien im /conf Verzeichnis
+[options="header"]
+|==================================================================
+|Datei | Beschreibung
+|**evolutions** | Dieses Verzeichnis enthält SQL-Skripte, die bei Änderungen des Datenbankschemas automatisch über EBean angelegt werden. Beim nächsten Deployment einer neuen Etikett-Version werden die Skripte automatische angewendet. Die Skripte enthalten immer einen mit "Up" markierten Part, und einen mit "Down" markierten Part (für rollbacks).
+|**application.conf**| Hier kann ein Benutzer eingestellt werden. Alle Klassen im Verzeichnis `models.*` erhalten eine SQL-Tabelle. 
+| ddc.turtle | Eine DDC Datei. Die Datei bietet Labels für DDC-URIs an.
+| labels.json | Eine Labels-Datei, die zur initialen Befüllung verwendet werden kann.
+| regal.turtle | Eine Labels-Datei, die zur initialen Befüllung verwendet werden kann.
+| **routes** | Alle HTTP-Schnittstellen übersichtlich in einer Datei
+| rpb.turtle | Eine Labels-Datei, die zur initialen Befüllung verwendet werden kann.
+|rpb2.turtle |Eine Labels-Datei, die zur initialen Befüllung verwendet werden kann.
+|===================================================================
+
+Die Applikation
+^^^^^^^^^^^^^^^
+
+.Das /app Verzeichnis
+[options="header"]
+|===================================================================
+|Package | Beschreibung
+|default | In `Global` werden die Requests mit geloggt.
+|controllers| In `Application` werden alle HTTP-Operationen implementiert. Unterstützt wird BasicAuth.
+|helper| Verschiedene Klassen, die eine URI verfolgen und versuchen ein Label aus den zurückgelieferten Daten zu kreieren.
+|models| Das Model `Etikett` ist persistierbar.
+|views| Die meisten HTTP-Operationen lassen sich auch über eine Weboberfläche im Browser aufrufen.
+|===================================================================
+
+ 
 zettel
 ~~~~~~
 Repo: <https://github.com/hbz/zettel>
+
 
 skos-lookup
 ~~~~~~~~~~~
@@ -314,18 +477,18 @@ Repo:
 Installation
 ------------
 
-Mit Vagrant
-~~~~~~~~~~~
+Vagrant
+~~~~~~~
 
 Vagrantskripts....
 
-Auf Blech
-~~~~~~~~~
+Server
+~~~~~~
 Ein paar Worte zu Benutzern, Sichtbarkeiten, etc. Von Vagrant auf den Server.
 
 
-Regal Administration
--------------------
+Administration
+--------------
 
 Ports
 ~~~~~

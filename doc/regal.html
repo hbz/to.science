@@ -1,8 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN"
+    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="generator" content="AsciiDoc 8.6.9">
+<meta http-equiv="Content-Type" content="application/xhtml+xml; charset=UTF-8" />
+<meta name="generator" content="AsciiDoc 8.6.9" />
 <title>Regal</title>
 <style type="text/css">
 /* Shared CSS for AsciiDoc xhtml11 and html5 backends */
@@ -730,11 +731,11 @@ asciidoc.install(2);
 /*]]>*/
 </script>
 </head>
-<body class="book">
+<body class="article">
 <div id="header">
 <h1>Regal</h1>
-<span id="author">Jan Schnasse</span><br>
-<span id="email" class="monospaced">&lt;<a href="mailto:schnasse@gmx.de">schnasse@gmx.de</a>&gt;</span><br>
+<span id="author">Jan Schnasse</span><br />
+<span id="email"><code>&lt;<a href="mailto:schnasse@gmx.de">schnasse@gmx.de</a>&gt;</code></span><br />
 <div id="toc">
   <div id="toctitle">Table of Contents</div>
   <noscript><p><b>JavaScript must be enabled in your browser to display the table of contents.</b></p></noscript>
@@ -746,14 +747,14 @@ asciidoc.install(2);
 <div class="sidebarblock">
 <div class="content">
 <div class="title">Über dieses Dokument</div>
-<div class="paragraph"><p>Falls Du nur an einer schnellen Installationsanleitung interesiert bist, schaue hier. Im nachfolgenden wird das Gesamtsystem ausführlich erläutert.</p></div>
+<div class="paragraph"><p>Falls Du nur an einer schnellen Installationsanleitung interessiert bist, [schaue hier]. Im nachfolgenden wird das Gesamtsystem ausführlich erläutert.</p></div>
 </div></div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_einleitung">1. Einleitung</h2>
 <div class="sectionbody">
-<div class="paragraph"><p>Regal ist eine ContentRepository zur Verwaltung und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am Hochschulbibliothekszentrum (hbz) entwickelt.</p></div>
+<div class="paragraph"><p>Regal ist eine ContentRepository zur Verwaltung und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am [Hochschulbibliothekszentrum (hbz)] entwickelt.</p></div>
 <div class="paragraph"><p>Regal basiert auf den folgenden Kerntechnologien:</p></div>
 <div class="ulist"><ul>
 <li>
@@ -847,6 +848,9 @@ wpull
 <a href="https://github.com/edoweb/regal-drupal">regal-drupal</a>
 </p>
 </li>
+</ul></div>
+<div class="paragraph"><p>Themes</p></div>
+<div class="ulist"><ul>
 <li>
 <p>
 <a href="https://github.com/edoweb/zbmed-drupal-theme">zbmed-drupal-theme</a>
@@ -861,7 +865,7 @@ wpull
 <div class="paragraph"><p>Über die Systemschnittstellen können eine ganze Reihe von Drittsystemen angesprochen werden. Die folgende Abbildung verschafft einen groben Überblick über eine typische Regal-Installation und die angebundenen Drittsysteme.</p></div>
 <div class="imageblock">
 <div class="content">
-<img src="./resources/images/regal-arch-4.jpeg" alt="Regal Überblick">
+<img src="./resources/images/regal-arch-4.jpeg" alt="Regal Überblick" />
 </div>
 <div class="title">Figure 1. Typische Regal-Installation mit Drupal Frontend, Backendkomponenten und angebundenen Drittsytemen</div>
 </div>
@@ -874,98 +878,102 @@ wpull
 <h3 id="_objektmodell">2.1. Objektmodell</h3>
 <div class="paragraph"><p>Regal realisiert ein einheitliches Objektmodell in dem sich eine Vielzahl von Publikationstypen speichern lassen. Die Speicherschicht wird über [Fedora Commons 3] realisiert.</p></div>
 <div class="paragraph"><p>Eine einzelne Publikation besteht i.d.R. aus mehreren [Fedora Commons 3]-Objekten, die in einer hierarchischen Beziehung zueinander stehen.</p></div>
-<table class="tableblock frame-all grid-all"
-style="
-width:100%;
-">
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
 <caption class="title">Table 1. Fedora Object</caption>
-<col style="width:33%;">
-<col style="width:33%;">
-<col style="width:33%;">
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top" >Name</th>
-<th class="tableblock halign-left valign-top" >Pflicht</th>
-<th class="tableblock halign-left valign-top" >Beschreibung</th>
+<th align="left" valign="top">Name</th>
+<th align="left" valign="top">Pflicht</th>
+<th align="left" valign="top">Beschreibung</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">DC</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Ja</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Von Fedora vorgeschrieben. Wird für die Fedora-interne Suche verwendet</p></td>
+<td align="left" valign="top"><p class="table">DC</p></td>
+<td align="left" valign="top"><p class="table">Ja</p></td>
+<td align="left" valign="top"><p class="table">Von Fedora vorgeschrieben. Wird für die Fedora-interne Suche verwendet</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">RELS-EXT</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Ja</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Von Fedora vorgeschrieben. Wird für viele Sachen verwendet - (1) Hierarchien - (2) Steuerung  der Sichtbarkeiten - (2) OAI-Providing</p></td>
+<td align="left" valign="top"><p class="table">RELS-EXT</p></td>
+<td align="left" valign="top"><p class="table">Ja</p></td>
+<td align="left" valign="top"><p class="table">Von Fedora vorgeschrieben. Wird für viele Sachen verwendet - (1) Hierarchien - (2) Steuerung  der Sichtbarkeiten - (2) OAI-Providing</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">data</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Nein</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Die eigentlichen Daten der Publikation. Oft ein PDF.</p></td>
+<td align="left" valign="top"><p class="table">data</p></td>
+<td align="left" valign="top"><p class="table">Nein</p></td>
+<td align="left" valign="top"><p class="table">Die eigentlichen Daten der Publikation. Oft ein PDF.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">metadata oder metadata2</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Nein</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Bibliografische Metadaten. Metadata2 enthält Daten in anlehnung an Lobid 2.</p></td>
+<td align="left" valign="top"><p class="table">metadata oder metadata2</p></td>
+<td align="left" valign="top"><p class="table">Nein</p></td>
+<td align="left" valign="top"><p class="table">Bibliografische Metadaten. Metadata2 enthält Daten in anlehnung an Lobid 2.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">objectTimestamp</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Nein</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Eine Datei mit einem Zeitstempel. Der Zeitstempel wird bei bestimmten Aktionen gesetzt.</p></td>
+<td align="left" valign="top"><p class="table">objectTimestamp</p></td>
+<td align="left" valign="top"><p class="table">Nein</p></td>
+<td align="left" valign="top"><p class="table">Eine Datei mit einem Zeitstempel. Der Zeitstempel wird bei bestimmten Aktionen gesetzt.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">seq</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Nein</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Eine Hilfsdatei mit einem JSON-Array. Das Array zeigt an, in welcher Reihenfolge Kindobjekte anzuzeigen sind. Dieses Hilfskonstrukt existiert, da in der RELS-EXT keine RDF-Listen abgelegt werden können.</p></td>
+<td align="left" valign="top"><p class="table">seq</p></td>
+<td align="left" valign="top"><p class="table">Nein</p></td>
+<td align="left" valign="top"><p class="table">Eine Hilfsdatei mit einem JSON-Array. Das Array zeigt an, in welcher Reihenfolge Kindobjekte anzuzeigen sind. Dieses Hilfskonstrukt existiert, da in der RELS-EXT keine RDF-Listen abgelegt werden können.</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="paragraph"><p>Die Metadaten werden als ASCII-Kodierte N-Triple abgelegt. Da alle Fedora-Daten als Dateien im Dateisystem abgelegt werden, ist diese Veriante besonders robust gegen Speicherfehler. N-Triple ist ein Format, dass sich Zeilenweise lesen lässt. ASCII ist die einfachste Form der Textkodierung.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_namespaces_und_identifier">2.2. Namespaces und Identifier</h3>
 <div class="paragraph"><p>Jede Regal-Installation arbeitet auf einem festgelegten Namespace. Wenn über die [regal-api] Objekte angelegt werden, finden sich diese immer in dem entsprechenden Namespace wieder. Hinter dem Namespace findet sich, abgetrennt mit einem Dopplepunkt eine hochlaufende Zahl, die i.d.R. über [Fedora Commons 3] bezogen wird.</p></div>
 <div class="paragraph"><p>Der so zusammengesetzte Identifier kommt in allen Systemkomponenten zum Einsatz.</p></div>
-<table class="tableblock frame-all grid-all"
-style="
-width:100%;
-">
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
 <caption class="title">Table 2. Beispiel Regal Identifier</caption>
-<col style="width:33%;">
-<col style="width:33%;">
-<col style="width:33%;">
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top" >ID</th>
-<th class="tableblock halign-left valign-top" >Komponente</th>
-<th class="tableblock halign-left valign-top" >URL</th>
+<th align="left" valign="top">ID</th>
+<th align="left" valign="top">Komponente</th>
+<th align="left" valign="top">URL</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">regal:1</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">drupal</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock"><a href="http://localhost/resource/regal:1">http://localhost/resource/regal:1</a></p></td>
+<td align="left" valign="top"><p class="table">regal:1</p></td>
+<td align="left" valign="top"><p class="table">drupal</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost/resource/regal:1">http://localhost/resource/regal:1</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">regal:1</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">regal-api</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock"><a href="http://api.localhost/resource/regal:1">http://api.localhost/resource/regal:1</a></p></td>
+<td align="left" valign="top"><p class="table">regal:1</p></td>
+<td align="left" valign="top"><p class="table">regal-api</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://api.localhost/resource/regal:1">http://api.localhost/resource/regal:1</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">regal:1</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">fedora</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock"><a href="http://localhost:8080/fedora/objects/regal:1">http://localhost:8080/fedora/objects/regal:1</a></p></td>
+<td align="left" valign="top"><p class="table">regal:1</p></td>
+<td align="left" valign="top"><p class="table">fedora</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:8080/fedora/objects/regal:1">http://localhost:8080/fedora/objects/regal:1</a></p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">regal:1</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">elasticsearch</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock"><a href="http://localhost:9200/regal/_all/regal:1">http://localhost:9200/regal/_all/regal:1</a></p></td>
+<td align="left" valign="top"><p class="table">regal:1</p></td>
+<td align="left" valign="top"><p class="table">elasticsearch</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:9200/regal/_all/regal:1">http://localhost:9200/regal/_all/regal:1</a></p></td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_deskriptive_metadaten">2.3. Deskriptive Metadaten</h3>
@@ -993,63 +1001,102 @@ Suche
 </p>
 </li>
 </ul></div>
-<div class="paragraph"><p>Alle bekannten Metadateneinträge werden in der Komponente [Etikett] verwaltet. In Etikett kann konfiguriert werden, welche URIs aus den RDF-Daten in das JSON-LD-Format von [regal-api] überführt werden. Außerdem kann die Reihenfolge der Darstellung, und das Label zur Anzeige gesetzt werden.</p></div>
-<table class="tableblock frame-all grid-all"
-style="
-width:100%;
-">
+<div class="paragraph"><p>Alle bekannten Metadateneinträge werden in der Komponente [Etikett] verwaltet. In [Etikett] kann konfiguriert werden, welche URIs aus den RDF-Daten in das JSON-LD-Format von [regal-api] überführt werden. Außerdem kann die Reihenfolge der Darstellung, und das Label zur Anzeige gesetzt werden.</p></div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
 <caption class="title">Table 3. Etikett-Eintrag für dc:title</caption>
-<col style="width:14%;">
-<col style="width:14%;">
-<col style="width:14%;">
-<col style="width:14%;">
-<col style="width:14%;">
-<col style="width:14%;">
-<col style="width:14%;">
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
+<col width="14%" />
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top" >Label</th>
-<th class="tableblock halign-left valign-top" >Pictogram</th>
-<th class="tableblock halign-left valign-top" >Name (json)</th>
-<th class="tableblock halign-left valign-top" >URI</th>
-<th class="tableblock halign-left valign-top" >Type</th>
-<th class="tableblock halign-left valign-top" >Container</th>
-<th class="tableblock halign-left valign-top" >Comment</th>
+<th align="left" valign="top">Label</th>
+<th align="left" valign="top">Pictogram</th>
+<th align="left" valign="top">Name (json)</th>
+<th align="left" valign="top">URI</th>
+<th align="left" valign="top">Type</th>
+<th align="left" valign="top">Container</th>
+<th align="left" valign="top">Comment</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Titel</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">keine Angabe</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">title</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock"><a href="http://purl.org/dc/terms/title">http://purl.org/dc/terms/title</a></p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">String</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">keine Angabe</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">keine Angabe</p></td>
+<td align="left" valign="top"><p class="table">Titel</p></td>
+<td align="left" valign="top"><p class="table">keine Angabe</p></td>
+<td align="left" valign="top"><p class="table">title</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://purl.org/dc/terms/title">http://purl.org/dc/terms/title</a></p></td>
+<td align="left" valign="top"><p class="table">String</p></td>
+<td align="left" valign="top"><p class="table">keine Angabe</p></td>
+<td align="left" valign="top"><p class="table">keine Angabe</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="literalblock">
 <div class="title">Etikett-Eintrag als Json</div>
-<div class="content monospaced">
-<pre>"title":{
+<div class="content">
+<pre><code>"title":{
         "@id"="http://purl.org/dc/terms/title",
         "label"="Titel"
-}</pre>
+}</code></pre>
 </div></div>
-<div class="paragraph"><p>Die etikett Datenbank wird beim Neustart jeder [regal-api]-Instanz eingelesen. Außerdem wird die HTTP-Schnittstelle von Etikett immer wieder angesprochen um zur Anzeige geeignete Labels für URIs in das System zu holen. Das [regal-api]-Modul läuft dabei auch ohne den Etikett-Services, allerdings nur mit eingeschränkter FunktiaddOaiDcTransformeronalität. Beispielsweise fallen Anzeigen von verlinkten Ressourcen (und das ist in Regal fast alles) weniger schön aus.</p></div>
+<div class="paragraph"><p>Die etikett Datenbank wird beim Neustart jeder [regal-api]-Instanz eingelesen. Außerdem wird die HTTP-Schnittstelle von Etikett immer wieder angesprochen, um zur Anzeige geeignete Labels für URIs in das System zu holen. Das [regal-api]-Modul läuft dabei auch ohne den Etikett-Services, allerdings nur mit eingeschränkter Funktionalität; beispielsweise fallen Anzeigen von verlinkten Ressourcen (und das ist in Regal fast alles) weniger schön aus.</p></div>
+<div class="sect3">
+<h4 id="_wie_kommen_bibliografische_metadaten_ins_system">2.3.1. Wie kommen bibliografische Metadaten ins System?</h4>
+<div class="paragraph"><p>In Regal können bibliografische Metadaten aus dem hbz-Verbundkatalog an Ressourcen "angelinkt" werden. Dies erfolgt über Angabe der ID des entsprechenden Titelsatzes (z.b. HT017766754). Mit Hilfe dieser ID kann Regal einen Titelimport durchführen. Dabei wird auf die Schnittstellen der [Lobid-API] zugegriffen.</p></div>
+<div class="paragraph"><p>Regal bietet außerdem die Möglichkeit Metadaten über Erfassungsmasken zu erzeugen und zu speichern. Dies erfolgt mit Hilfe des Moduls [Tettel]. [Zettel] ist ein Webservices, der verschiedene HTML-Formulare bereitstellt. Die Formulare können RDF-Metadaten einlesen und ausgeben. Zettel-Formulare werden über Javascript in ein IFrame der eigentlichen Anwendung angebunden. Über Zettel werden Konzepte aus dem Bereich Linked Data umgesetzt. So können Feldinhalte über entsprechende Eingabeelemente in Drittsystemen recherchiert und verlinkt werden. Die Darstellung von Links erfolgt in Zettel mit Hilfe von [Etikett]. Umfangreichere Notationssysteme wie Agrovoc oder DDC werden über einen eigenen Index aus dem Modul [skos-lookup] eingebunden. Zettel unterstützt zur Zeit folgende Linked-Data-Quellen:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Lobid (GND)
+</p>
+</li>
+<li>
+<p>
+Lobid (Ressource)
+</p>
+</li>
+<li>
+<p>
+Agrovoc
+</p>
+</li>
+<li>
+<p>
+DDC
+</p>
+</li>
+<li>
+<p>
+CrossRef (Funder Registry)
+</p>
+</li>
+<li>
+<p>
+Orcid
+</p>
+</li>
+</ul></div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_anzeige_und_darstellung">2.4. Anzeige und Darstellung</h3>
-<div class="paragraph"><p>Über die Schnittstellen der [regal-api] können unterschiedliche Darstellungen einer Publikation bezogen werden. Über [Content Negotiation] können Darstellungen per HTTP-Header angefragt werden. Um unterschiedliche Darstellungen im Browser anzeigen zu lassen, kann außerden über das Setzen von entsprechenden Endungen auf unterschiedliche Representationen eine Resource zugegriffen werden.</p></div>
+<div class="paragraph"><p>Über die Schnittstellen der [regal-api] können unterschiedliche Darstellungen einer Publikation bezogen werden. Über [Content Negotiation] können Darstellungen per HTTP-Header angefragt werden. Um unterschiedliche Darstellungen im Browser anzeigen zu lassen, kann außerden, über das Setzen von entsprechenden Endungen, auf unterschiedliche Representationen eine Resource zugegriffen werden.</p></div>
 <div class="literalblock">
 <div class="title">Auswahl von Pfaden zu unterschiedlichen Representationen einer Ressource</div>
-<div class="content monospaced">
-<pre>/resource/danrw:1
+<div class="content">
+<pre><code>/resource/danrw:1
 /resource/danrw:1.json
 /resource/danrw:1.rdf
 /resource/danrw:1.epicur
-/resource/danrw:1.mets</pre>
+/resource/danrw:1.mets</code></pre>
 </div></div>
 <div class="paragraph"><p>In der HTML-Darstellung greift [regal-api] auf den Hilfdienst [thumby] zu, um darüber Thumbnail-Darstellungen von PDFs oder Bilder zu kreieren. Bei großen Bildern wird außerdem der [DeepzoomerService] angelinkt, der eine Darstellung von Hochauflösenden Bildern über das Tool Openseedragon erlaubt. Video- und Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.</p></div>
 </div>
@@ -1060,59 +1107,61 @@ width:100%;
 <div class="sect2">
 <h3 id="_oai_providing">2.6. OAI-Providing</h3>
 <div class="paragraph"><p>Öffentlich zugängliche Publikationen sind auch über die OAI-Schnittstelle verfügbar. Dabei wird jede Publikation einer Reihe von OAI-Sets zugeordnet und in unterschiedlichen Formaten angeboten.</p></div>
-<table class="tableblock frame-all grid-all"
-style="
-width:100%;
-">
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
 <caption class="title">Table 4. OAI Set</caption>
-<col style="width:50%;">
-<col style="width:50%;">
+<col width="50%" />
+<col width="50%" />
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top" >Set</th>
-<th class="tableblock halign-left valign-top" >Kriterium</th>
+<th align="left" valign="top">Set</th>
+<th align="left" valign="top">Kriterium</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">ddc:*</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Wenn ein dc:subject mit dem String "http://dewey.info/class/" beginnt, wird ein Set mit der entsprechenden DDC-Nummer gebildet und die Publikation wird zugeordnet</p></td>
+<td align="left" valign="top"><p class="table">ddc:*</p></td>
+<td align="left" valign="top"><p class="table">Wenn ein dc:subject mit dem String "http://dewey.info/class/" beginnt, wird ein Set mit der entsprechenden DDC-Nummer gebildet und die Publikation wird zugeordnet</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">contentType</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Der "contentType" weist darauf hin, in welcher Weise die Publikation in Regal. Abgelegt ist.</p></td>
+<td align="left" valign="top"><p class="table">contentType</p></td>
+<td align="left" valign="top"><p class="table">Der "contentType" weist darauf hin, in welcher Weise die Publikation in Regal. Abgelegt ist.</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">open_access</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">All Publikationen, die als Sichtbarkeit "public" haben</p></td>
+<td align="left" valign="top"><p class="table">open_access</p></td>
+<td align="left" valign="top"><p class="table">All Publikationen, die als Sichtbarkeit "public" haben</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">urn-set-1</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Publikationen mit einer URN, die mit urn:nbn:de:hbz:929:01 beginnt</p></td>
+<td align="left" valign="top"><p class="table">urn-set-1</p></td>
+<td align="left" valign="top"><p class="table">Publikationen mit einer URN, die mit urn:nbn:de:hbz:929:01 beginnt</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">urn-set-2</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Publikationen mit einer URN, die mit urn:nbn:de:hbz:929:02 beginnt</p></td>
+<td align="left" valign="top"><p class="table">urn-set-2</p></td>
+<td align="left" valign="top"><p class="table">Publikationen mit einer URN, die mit urn:nbn:de:hbz:929:02 beginnt</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">epicur</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Publikationen, die in einem URN-Set sind</p></td>
+<td align="left" valign="top"><p class="table">epicur</p></td>
+<td align="left" valign="top"><p class="table">Publikationen, die in einem URN-Set sind</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">aleph</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Publikationen , die mit einer Aleph-Id verknüpft sind</p></td>
+<td align="left" valign="top"><p class="table">aleph</p></td>
+<td align="left" valign="top"><p class="table">Publikationen , die mit einer Aleph-Id verknüpft sind</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">edoweb01</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">spezielles, pro [regal-api]-Instanz konfigurierbares Set für alle Publikationen, die im aleph-Set sind</p></td>
+<td align="left" valign="top"><p class="table">edoweb01</p></td>
+<td align="left" valign="top"><p class="table">spezielles, pro [regal-api]-Instanz konfigurierbares Set für alle Publikationen, die im aleph-Set sind</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">ellinet01</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">spezielles, pro [regal-api]-Instanz konfigurierbares Set für alle Publikationen, die im aleph-Set sind</p>
-<p class="tableblock">.OAI Metadatenformat (metadataprefix)[options="header"]</p></td>
+<td align="left" valign="top"><p class="table">ellinet01</p></td>
+<td align="left" valign="top"><p class="table">spezielles, pro [regal-api]-Instanz konfigurierbares Set für alle Publikationen, die im aleph-Set sind</p>
+<p class="table">.OAI Metadatenformat (metadataprefix)[options="header"]</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="paragraph"><p>|Format|Kriterium
 |oai_dc| Alle öffentlich sichtbaren Objekte, die als bestimmte ContentTypes angelegt wurden.
 |epicur| Alle Objekte, die eine URN haben
@@ -1130,73 +1179,77 @@ width:100%;
 <div class="paragraph"><p>Regal setzt ein rollenbasiertes Konzept zur Steuerung von Zugriffsberechtigungen um. Eine besondere Bedeutung kommt dem lesenden Zugriff auf Ressourcen zu. Einzelne Ressourcen können in ihrer Sichtbarkeit so eingeschränkt werden, dass nur mit den Rechten einer bestimmten Rolle lesend zugegriffen werden kann. Dabei kann der Zugriff auf Metadaten und Daten separat gesteuert werden.</p></div>
 <div class="imageblock">
 <div class="content">
-<img src="./resources/images/accessControl.png" alt="Regal Zugriffsrechte">
+<img src="./resources/images/accessControl.png" alt="Regal Zugriffsrechte" />
 </div>
 <div class="title">Logo 2. Screenshot zur Verdeutlichung von Sichtbarkeiten in Regal</div>
 </div>
 <div class="paragraph"><p>Die Konfiguration hat Auswirkungen auf die Sichtbarkeit einer Publikation in den unterschiedlichen Systemteilen. Die folgende Tabelle veranschaulicht den derzeitigen Stand der Implementierung.</p></div>
 <div class="sect3">
 <h4 id="_sichtbarkeiten_operationen_rollen">2.8.1. Sichtbarkeiten, Operationen, Rollen</h4>
-<table class="tableblock frame-all grid-all"
-style="
-width:100%;
-">
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
 <caption class="title">Table 5. Lesender Zugriff auf Metadaten</caption>
-<col style="width:50%;">
-<col style="width:50%;">
+<col width="50%" />
+<col width="50%" />
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top" >Sichtbarkeit</th>
-<th class="tableblock halign-left valign-top" >Rolle</th>
+<th align="left" valign="top">Sichtbarkeit</th>
+<th align="left" valign="top">Rolle</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">public</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">GUEST,READER,SUBSCRIBER,REMOTE,ADMIN,EDITOR</p></td>
+<td align="left" valign="top"><p class="table">public</p></td>
+<td align="left" valign="top"><p class="table">GUEST,READER,SUBSCRIBER,REMOTE,ADMIN,EDITOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">private</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">ADMIN,EDITOR</p></td>
+<td align="left" valign="top"><p class="table">private</p></td>
+<td align="left" valign="top"><p class="table">ADMIN,EDITOR</p></td>
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all"
-style="
-width:100%;
-">
+</div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
 <caption class="title">Table 6. Lesender Zugriff auf Daten</caption>
-<col style="width:50%;">
-<col style="width:50%;">
+<col width="50%" />
+<col width="50%" />
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top" >Sichtbarkeit</th>
-<th class="tableblock halign-left valign-top" >Rolle</th>
+<th align="left" valign="top">Sichtbarkeit</th>
+<th align="left" valign="top">Rolle</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">public</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">GUEST,READER,SUBSCRIBER,REMOTE,ADMIN,EDITOR</p></td>
+<td align="left" valign="top"><p class="table">public</p></td>
+<td align="left" valign="top"><p class="table">GUEST,READER,SUBSCRIBER,REMOTE,ADMIN,EDITOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">restricted</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">READER,SUBSCRIBER,REMOTE,ADMIN,EDITOR</p></td>
+<td align="left" valign="top"><p class="table">restricted</p></td>
+<td align="left" valign="top"><p class="table">READER,SUBSCRIBER,REMOTE,ADMIN,EDITOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">remote</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">READER,SUBSCRIBER,REMOTE,ADMIN,EDITOR</p></td>
+<td align="left" valign="top"><p class="table">remote</p></td>
+<td align="left" valign="top"><p class="table">READER,SUBSCRIBER,REMOTE,ADMIN,EDITOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">single</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">SUBSCRIBER,ADMIN,EDITOR</p></td>
+<td align="left" valign="top"><p class="table">single</p></td>
+<td align="left" valign="top"><p class="table">SUBSCRIBER,ADMIN,EDITOR</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">private</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">ADMIN,EDITOR</p></td>
+<td align="left" valign="top"><p class="table">private</p></td>
+<td align="left" valign="top"><p class="table">ADMIN,EDITOR</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1214,8 +1267,12 @@ width:100%;
 </div>
 </div>
 <div class="sect1">
-<h2 id="_regal_software_stack">3. Regal Software Stack</h2>
+<h2 id="_software">3. Software</h2>
 <div class="sectionbody">
+<div class="paragraph"><p>Nachfolgend erfolgt eine Innenansicht der einzelnen Module. Die Integration der Module erfolgt i.d.R. über HTTP. Die Module werden über entsprechende Einträge in der Apache-Konfiguration sichtbar gemacht. Es handelt sich also um eine Webservice-Architektur, in der alle Webservices über einen Apache-Webserver und entsprechende Einträge in ihren Konfigurationsdateien miteinander verbunden werden.</p></div>
+<div class="paragraph"><p>|------------------|
+|-----Abbildung----|
+|------------------|</p></div>
 <div class="sect2">
 <h3 id="_regal_api_2">3.1. regal-api</h3>
 <div class="paragraph"><p>Repo: <a href="https://github.com/edoweb/regal-api">https://github.com/edoweb/regal-api</a></p></div>
@@ -1246,12 +1303,439 @@ Konvertierungen
 Ansichten
 </p>
 </li>
+<li>
+<p>
+Suche
+</p>
+</li>
+<li>
+<p>
+Webarchivierung
+</p>
+</li>
 </ul></div>
-<div class="paragraph"><p>Der Webservice ist auf Basis von [Play 2.4.2] realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von elektronischen Publikationen an. Der Fedora, MySQL und Elasticsearch</p></div>
+<div class="paragraph"><p>Der Webservice ist auf Basis von [Play 2.4.2] realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von elektronischen Publikationen an. Die [regal-api] operiert auf [Fedora Commons 3], [MySQL] und [Elasticsearch]. Über die API werden auch Funktionalitäten von [etikett], [thumby], [zettel] und [Deepzoomer] angesprochen. Für die Webarchivierung werden [heritrix], [wpull] und [openwayback] angebunden.</p></div>
+<div class="sect3">
+<h4 id="_kofiguration">3.1.1. Kofiguration</h4>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 7. Dateien im /conf Verzeichnis</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">Datei </th>
+<th align="left" valign="top"> Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>aggregations.conf</strong></p></td>
+<td align="left" valign="top"><p class="table">Diese Datei wird verwendet um die Schnittstelle <code>/browse</code> zu konfigurieren. Die Einträg im Object "aggs" können direkt über die <code>/browse</code> Schnittstelle angesprochen werden. Mit Hilfe des Elasticsearch-Indexes wird dann eine entsprechende Antwort generiert. Beispiel: <code>/browse/rdftype</code> liefert eine Liste mit allen Publikationstypen, die im Index vorhanden sind.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>application.conf.tmpl</strong></p></td>
+<td align="left" valign="top"><p class="table">Eine template Datei für die Hauptkonfiguration von [regal-api]. Diese Datei sollte zur lokalen Verwendung einmal nach application.conf kopiert werden. In der Datei sind alle Passwörter auf <em>admin</em> gesetzt.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">crawler-beans.cxml</p></td>
+<td align="left" valign="top"><p class="table">Die Datei wird verwendet, wenn im Webarchivierungsmodul eine neue Konfiguration für eine Webseite angelegt wird.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">ehcache.xml</p></td>
+<td align="left" valign="top"><p class="table">die Konfiguration der Ehcache Komponente</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">fedora-users.xml</p></td>
+<td align="left" valign="top"><p class="table">deprecated - Zur Löschung vorgeschlagen</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">hbz_edoweb_url.txt</p></td>
+<td align="left" valign="top"><p class="table">deprecated - Zur Löschung vorgeschlagen</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">html.html</p></td>
+<td align="left" valign="top"><p class="table">deprecated - Zur Löschung vorgeschlagen</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">install.properties</p></td>
+<td align="left" valign="top"><p class="table">deprecated - Zur Löschung vorgeschlagen</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">labels-edoweb.de</p></td>
+<td align="left" valign="top"><p class="table">Labels für eine bestimmt Regal-Instanz</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">labels-for-proceeding-and-researchData.json</p></td>
+<td align="left" valign="top"><p class="table">deprecated - Zur Löschung vorgeschlagen</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">labels-lobid.json</p></td>
+<td align="left" valign="top"><p class="table">deprecated - Zur Löschung vorgeschlagen</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">labels-publisso.de</p></td>
+<td align="left" valign="top"><p class="table">Labels für eine bestimmte Regal-Instanz</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>labels.json</strong></p></td>
+<td align="left" valign="top"><p class="table">Eine sinnvolle Startkonfiguration. Die Datei wurde mit [etikett] erzeugt. Beim Start von [regal-api] wird zunächst versucht eine ähnliche Konfiguration direkt von einer laufenden [etikett]-Instanz zu holen. Wenn dies nicht klappt, wird auf die labels.json zurückgegriffen.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">list.html</p></td>
+<td align="left" valign="top"><p class="table">deprecated - Zur Löschung vorgeschlagen</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">logback.developer.xml</p></td>
+<td align="left" valign="top"><p class="table">ein logging Konfiguration. Ich kopiere die immer nach logback.developer.js.xml (in .gitignore) und trage sie  dann in die application.conf ein. Auf diese Weise kann ich an Loglevels herumkonfigurieren ohne das in diese Änderungen in die Versionsverwaltung spielen zu müssen.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">logback.xml</p></td>
+<td align="left" valign="top"><p class="table">Konfiguration des Loggers. Diese Datei ist in application.conf eingetragen.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">mabxml-string-template-on-record.xml</p></td>
+<td align="left" valign="top"><p class="table">Eine template-Datei zur Generierung von MAB-Ausgaben.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">mail.properties</p></td>
+<td align="left" valign="top"><p class="table">Konfiguration zur Versendung von Mails. Standardmäßig schickt die Applikation eine Mail, sobald sie im Production-Mode neu gestartet wurde. Auch der Umzugsservice im Webarchivierungsmodul verschickt Mails.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">nwbib-spatial.ttl</p></td>
+<td align="left" valign="top"><p class="table">deprecated - Zur Löschung vorgeschlagen</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">nwbib.ttl</p></td>
+<td align="left" valign="top"><p class="table">deprecated - Zur Löschung vorgeschlagen</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>public-index-config.json</strong></p></td>
+<td align="left" valign="top"><p class="table">Konfiguration des Elasticsearch-Indexes. Da in dem Index vorallem Metadaten liegen, soll fast nicht tokenisiert werden.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>routes</strong></p></td>
+<td align="left" valign="top"><p class="table">Hier sind alle HTTP-Pfade übersichtlich aufgeführt.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">scm-info.sh</p></td>
+<td align="left" valign="top"><p class="table">Diese Datei kann man unter Linux in die profile-Konfiguration seines Benutzers einbinden. Dann erhält man im Terminal farbige Angabgen zu Git-Branches,etc.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">start-regal.sh</p></td>
+<td align="left" valign="top"><p class="table">deprecated - Zur Löschung vorgeschlagen</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">tomcat-users.xml</p></td>
+<td align="left" valign="top"><p class="table">deprecated - Zur Löschung vorgeschlagen</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">unescothes.ttl</p></td>
+<td align="left" valign="top"><p class="table">deprecated - Zur Löschung vorgeschlagen</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">wglcontributor.csv</p></td>
+<td align="left" valign="top"><p class="table">deprecated - Zur Löschung vorgeschlagen</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_die_applikation">3.1.2. Die Applikation</h4>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 8. Das /app Verzeichnis</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">Package </th>
+<th align="left" valign="top"> Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">default package</p></td>
+<td align="left" valign="top"><p class="table">Hier befindet sich die Datei Global, die in [Play 2.4] noch eine große Rolle spielt. In der Datei können zum Beispiel Aktionen vor dem Start der Applikation erfolgen, auch können hier HTTP-Requests mit geloggt werden. Bestimmte Aktionen werden nur im Production-Mode ausgeführt, d.h. nur wenn die Applikation mit <code>start</code> gestartet wurde oder über <code>dist</code> ein entsprechendes Binary erzeugt wurde.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">actions</p></td>
+<td align="left" valign="top"><p class="table">Hier sind Funktionen versammelt, die meist unmittelbar aus den Controller-Klassen aufgerufen werden.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">archive.fedora</p></td>
+<td align="left" valign="top"><p class="table">Ein Reihe von Dateien, über die Zugriffe auf [Fedora Commons 3] organisiert werden. Hier finden sich auch einige Hilfsklassen (<code>Utils</code>). Das FedoraInterface zeigt an, welche Aktionen auf der Fedora ausgeführt werden. Der Code in diesem Paket gehört mit zu dem ältesten Code im gesamten Regal-Projekt.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">archive.search</p></td>
+<td align="left" valign="top"><p class="table">Zugriff auf die Elasticsearch</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">authenticate</p></td>
+<td align="left" valign="top"><p class="table">Regal verwendet Basic-Auth zur Authentifizierung. Um die entsprechenden Aufrufe in den Controllern zu Schützen wird eine Annotation <code>@BasicAuth</code> verwendet. Diese findet sich hier. Die Annotation selbst bewirkt, dass jeder Controller-Aufruf durch die Methode asicAuth` der Klasse <code>BasicAuthAction.java</code> läuft. Ziel dieser Prozedur ist es, dem Zugriff die Berechtigungen einer bestimmten Rolle zuzuordnen.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">controllers</p></td>
+<td align="left" valign="top"><p class="table">Der Code, der in diesen Klassen organisiert ist, wird bei den entsprechenden HTTP-Aufrufen ausgeführt. In der <code>/conf/routes</code> Datei kann man sehen, welcher HTTP-Aufruf, welchen Methoden-Aufruf zur Folge hat. Die Controller-Klassen sind i.d.R. von der Klasse MyController  abgeleitet, die Hilfsfunktionen bereitstellt, aber auch Funktionen zur Überprüfung von Zugriffsrechten. Die Überprüfung von Zugriffsrechten erfolgt durch eingebettet Calls und wird über die internen Klassen von MyController realisiert. Beispiel:
+Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</code> ruft ihre Prozeduren eingebettet in eine Funktion der Klasse <code>ListAction</code> auf. Die Klasse <code>ListAction</code> ist in <code>MyController</code> implementiert und überprüft, ob der Aufruf mit der nötigen Berechtigung erfolgte.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">converter.mab</p></td>
+<td align="left" valign="top"><p class="table">Die Klasse realisiert noch das OAI-Providing von MAB-Daten. Ursprünglich war hier geplant, dass wesentlich umfangreichere MAB-Datensätze geliefert werden würden. Daher wird hier mit einer eigenen Template-Engine gearbeitet, etc. Ich erinnere mich gerne an diese Arbeiten, auch wenn sie größtenteils nie genutzt und zu Ende geführt wurden. Ein lustiges Produkt in diesem Kontext ist auch die Klasse <code>models.MabRecord</code>.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">de.hbz.lobid.helper</p></td>
+<td align="left" valign="top"><p class="table">Der hier befindliche Code kommt ursprünglich aus einem anderen Paket, wurde dann aber beim Neuaufbau des Lobid 2 Datendienstes gemeinsam mit den Kollegen weiterentwickelt und ist schließlich wieder hier gelandet. Mittlerweile ist die offizielle JSON-LD-Library soweit entwickelt, dass man die Konvertierung auch darüber machen kann. Achja, denn dafür ist der Code: Lobid N-Triples in schönes JSON umzuformen, das dann auch in den Elasticsearch-Index kann.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">helper</p></td>
+<td align="left" valign="top"><p class="table">Die mit Abstand wichtigste Klasse in diesem Package heißt <code>JsonMapper</code>. Hier wird das JSON für Index und Ansichten erzeugt.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">helper.mail</p></td>
+<td align="left" valign="top"><p class="table">Emails verschicken.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">helper.oai</p></td>
+<td align="left" valign="top"><p class="table">Einige Klassen zur Regelung des OAI-Providings. Der <code>OAIDispatcher</code> analysiert, ob und wie ein <code>Node</code> an die OAI-Schnittstelle gelangt.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">models</p></td>
+<td align="left" valign="top"><p class="table">Die wichtigste Klasse hier ist <code>Node</code> über diese Klasse läuft der Großteil des Datentransportes.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">views</p></td>
+<td align="left" valign="top"><p class="table">Templates in der Sprache <code>Twirl</code> und einige Java-Hilfsklassen.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">views.mediaViewers</p></td>
+<td align="left" valign="top"><p class="table">Ein paar Viewer, die über die Hilfsklasse <code>ViewerInfo</code> in <code>tags.resourceView</code> eingebunden werden können.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">views.oai</p></td>
+<td align="left" valign="top"><p class="table">Mit <code>Twirl</code> XML zu generieren war keine gute Idee.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">views.tags</p></td>
+<td align="left" valign="top"><p class="table">Hilfstemplates.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_gedanken_des_authors">3.1.3. Gedanken des Authors</h4>
+<div class="paragraph"><p>Der in [regal-api] versammelte Code ist ein historisch gewachsenes Sammelsurium. Zu irgendeinem Zeitpunkt habe ich angefangen neue Funktionalitäten vorzugsweise nicht mehr hier zu integrieren. Auf diese Weise sind [etikett], [thumby], [zettel] und [skos-lookup] entstanden.</p></div>
+<div class="paragraph"><p>Schaut man sich die sieben groben Aufgabenbereiche an, die von [regal-api] abgedeckt werden, so könnten weitere Unterteilungen in zusätzliche Webservices sinnvoll sein. Gerade der Bereich Webarchivierung mit seiner hohen Komplexität erscheint mir für eine Auskopplung prädestiniert. Tools wie [heritrix],[wpull] und [openwayback] könnten so aus der Gesamtkomplexität entfernt werden.</p></div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_etikett">3.2. etikett</h3>
 <div class="paragraph"><p>Repo: <a href="https://github.com/hbz/etikett">https://github.com/hbz/etikett</a></p></div>
+<div class="paragraph"><p>Etikett ist eine einfache Datenbankanwendung, die es erlaubt menschenlesbare Labels für URIs abzulegen. Über eine HTTP-Schnittstelle kann dann nach dem Label gefragt werden.
+In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs finden können. Beispiele:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Crossref
+</p>
+</li>
+<li>
+<p>
+Geonames
+</p>
+</li>
+<li>
+<p>
+GND
+</p>
+</li>
+<li>
+<p>
+Openstreetmap
+</p>
+</li>
+<li>
+<p>
+Orcid
+</p>
+</li>
+<li>
+<p>
+RDF, Skos, etc.
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Fragt man etikett nach einem Label, so antwortet Etikett mit dem Ergebnis des Lookups. Wenn Etikett nicht in der Lage ist, ein Label zu finden, wird die URI, mit angefragt wurde, zurückgegeben.</p></div>
+<div class="paragraph"><p>Etikett kann auch als Cache verwendet werden. So werden authentifizierte Anfragen in einer Datenbank persistiert. Erneute Anfragen werden dann aus der Datenbank beantwortet, ein erneuter Lookup wird eingespart. Einmal persistierte Labels werden nicht invalidiert. Die Invalidierung kann von außerhalb über authentifizierte HTTP-Zugriffe realisiert werden, stellt aber insgesamt noch ein Desiderat dar.</p></div>
+<div class="paragraph"><p>Etikett kann auch mit Labels vorkonfiguriert werden. Dabei können zusätzliche Informationen zu jeder URIs mit abgelegt werden. Folgende Informationen können in etikett abgelegt werden:</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+URI
+</p>
+</li>
+<li>
+<p>
+Label
+</p>
+</li>
+<li>
+<p>
+Weight - Zur Definition von Anzeigereihenfolgen.
+</p>
+</li>
+<li>
+<p>
+Pictogram Iconfont-ID - Kann anstatt oder zusätzlich zum Label angezeigt werden.
+</p>
+</li>
+<li>
+<p>
+ReferenceType - JSON-LD Typ
+</p>
+</li>
+<li>
+<p>
+Container - JSON-LD Container
+</p>
+</li>
+<li>
+<p>
+Beschreibung - Kommentar als Markdown
+</p>
+</li>
+</ul></div>
+<div class="paragraph"><p>Mit Hilfe dieser Angaben kann Etikett auch einen "JSON-LD Context" bereitstellen. Insgesamt wird über Etikett eine Art "Application Profile" realisiert. Das Profil gibt Auskunft, welche Metadatenfelder (definiert als URIs) in welcher Weise (Typ, Container) Verwendung finden und wie sie angezeigt werden sollen (Label, Weight, Pictogram).</p></div>
+<div class="paragraph"><p>Im Regal-Kontext wird [etikett] an vielen Stellen verwendet.</p></div>
+<div class="ulist"><ul>
+<li>
+<p>
+Zur Wandlung von RDF nach JSON-LD
+</p>
+</li>
+<li>
+<p>
+Zur Anreicherung von RDF Importen
+</p>
+</li>
+<li>
+<p>
+Zur menschenlesbaren Darstellung von RDF
+</p>
+</li>
+<li>
+<p>
+Zur Konfiguration von Labels, Anzeigereihenfolgen und Pictogrammen
+</p>
+</li>
+<li>
+<p>
+Als Cache
+</p>
+</li>
+</ul></div>
+<div class="sect3">
+<h4 id="_konfiguration">3.2.1. Konfiguration</h4>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 9. Dateien im /conf Verzeichnis</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">Datei </th>
+<th align="left" valign="top"> Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>evolutions</strong></p></td>
+<td align="left" valign="top"><p class="table">Dieses Verzeichnis enthält SQL-Skripte, die bei Änderungen des Datenbankschemas automatisch über EBean angelegt werden. Beim nächsten Deployment einer neuen Etikett-Version werden die Skripte automatische angewendet. Die Skripte enthalten immer einen mit "Up" markierten Part, und einen mit "Down" markierten Part (für rollbacks).</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>application.conf</strong></p></td>
+<td align="left" valign="top"><p class="table">Hier kann ein Benutzer eingestellt werden. Alle Klassen im Verzeichnis <code>models.*</code> erhalten eine SQL-Tabelle.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">ddc.turtle</p></td>
+<td align="left" valign="top"><p class="table">Eine DDC Datei. Die Datei bietet Labels für DDC-URIs an.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">labels.json</p></td>
+<td align="left" valign="top"><p class="table">Eine Labels-Datei, die zur initialen Befüllung verwendet werden kann.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">regal.turtle</p></td>
+<td align="left" valign="top"><p class="table">Eine Labels-Datei, die zur initialen Befüllung verwendet werden kann.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table"><strong>routes</strong></p></td>
+<td align="left" valign="top"><p class="table">Alle HTTP-Schnittstellen übersichtlich in einer Datei</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">rpb.turtle</p></td>
+<td align="left" valign="top"><p class="table">Eine Labels-Datei, die zur initialen Befüllung verwendet werden kann.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">rpb2.turtle</p></td>
+<td align="left" valign="top"><p class="table">Eine Labels-Datei, die zur initialen Befüllung verwendet werden kann.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_die_applikation_2">3.2.2. Die Applikation</h4>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 10. Das /app Verzeichnis</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">Package </th>
+<th align="left" valign="top"> Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">default</p></td>
+<td align="left" valign="top"><p class="table">In <code>Global</code> werden die Requests mit geloggt.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">controllers</p></td>
+<td align="left" valign="top"><p class="table">In <code>Application</code> werden alle HTTP-Operationen implementiert. Unterstützt wird BasicAuth.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">helper</p></td>
+<td align="left" valign="top"><p class="table">Verschiedene Klassen, die eine URI verfolgen und versuchen ein Label aus den zurückgelieferten Daten zu kreieren.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">models</p></td>
+<td align="left" valign="top"><p class="table">Das Model <code>Etikett</code> ist persistierbar.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">views</p></td>
+<td align="left" valign="top"><p class="table">Die meisten HTTP-Operationen lassen sich auch über eine Weboberfläche im Browser aufrufen.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_zettel">3.3. zettel</h3>
@@ -1314,72 +1798,74 @@ Ansichten
 <h2 id="_installation">4. Installation</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_mit_vagrant">4.1. Mit Vagrant</h3>
+<h3 id="_vagrant">4.1. Vagrant</h3>
 <div class="paragraph"><p>Vagrantskripts&#8230;.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_auf_blech">4.2. Auf Blech</h3>
+<h3 id="_server">4.2. Server</h3>
 <div class="paragraph"><p>Ein paar Worte zu Benutzern, Sichtbarkeiten, etc. Von Vagrant auf den Server.</p></div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_regal_administration">5. Regal Administration</h2>
+<h2 id="_administration">5. Administration</h2>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_ports">5.1. Ports</h3>
-<table class="tableblock frame-all grid-all"
-style="
-width:100%;
-">
-<caption class="title">Table 7. Ports und Komponenten (typische Belegung)</caption>
-<col style="width:50%;">
-<col style="width:50%;">
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 11. Ports und Komponenten (typische Belegung)</caption>
+<col width="50%" />
+<col width="50%" />
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top" > Port </th>
-<th class="tableblock halign-left valign-top" > Komponente</th>
+<th align="left" valign="top"> Port </th>
+<th align="left" valign="top"> Komponente</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">80 /443</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">Apache 2</p></td>
+<td align="left" valign="top"><p class="table">80 /443</p></td>
+<td align="left" valign="top"><p class="table">Apache 2</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">8080</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">fedora tomcat</p></td>
+<td align="left" valign="top"><p class="table">8080</p></td>
+<td align="left" valign="top"><p class="table">fedora tomcat</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">9090</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">openwayback tomcat</p></td>
+<td align="left" valign="top"><p class="table">9090</p></td>
+<td align="left" valign="top"><p class="table">openwayback tomcat</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">9200</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">elasticsearch</p></td>
+<td align="left" valign="top"><p class="table">9200</p></td>
+<td align="left" valign="top"><p class="table">elasticsearch</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">9000/9100</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">regal-api</p></td>
+<td align="left" valign="top"><p class="table">9000/9100</p></td>
+<td align="left" valign="top"><p class="table">regal-api</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">9001/9101</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">thumby</p></td>
+<td align="left" valign="top"><p class="table">9001/9101</p></td>
+<td align="left" valign="top"><p class="table">thumby</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">9002/9102</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">etikett</p></td>
+<td align="left" valign="top"><p class="table">9002/9102</p></td>
+<td align="left" valign="top"><p class="table">etikett</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">9003/9103</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">zettel</p></td>
+<td align="left" valign="top"><p class="table">9003/9103</p></td>
+<td align="left" valign="top"><p class="table">zettel</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">9004/9104</p></td>
-<td class="tableblock halign-left valign-top" ><p class="tableblock">skos-lookup</p></td>
+<td align="left" valign="top"><p class="table">9004/9104</p></td>
+<td align="left" valign="top"><p class="table">skos-lookup</p></td>
 </tr>
 </tbody>
 </table>
+</div>
 <div class="paragraph"><p>Tabelle</p></div>
 </div>
 <div class="sect2">
@@ -1402,10 +1888,10 @@ width:100%;
 </div>
 </div>
 </div>
-<div id="footnotes"><hr></div>
+<div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-02 17:45:59 CEST
+Last updated 2019-05-03 10:51:21 CEST
 </div>
 </div>
 </body>
