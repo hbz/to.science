@@ -23,14 +23,16 @@ function downloadBinaries(){
 	download mysql-community-release-el7-5.noarch.rpm https://repo.mysql.com/
 	download elasticsearch-1.1.0.deb https://download.elasticsearch.org/elasticsearch/elasticsearch/
 	download heritrix-3.1.1-dist.zip http://builds.archive.org/maven2/org/archive/heritrix/heritrix/3.1.1/
-	download apache-tomcat-8.5.39.zip http://ftp.halifax.rwth-aachen.de/apache/tomcat/tomcat-8/v8.5.39/bin/
+	download apache-tomcat-8.5.40.zip http://ftp.halifax.rwth-aachen.de/apache/tomcat/tomcat-8/v8.5.40/bin/
 	download drupal-7.36.tar.gz https://ftp.drupal.org/files/projects/ 
+
 }
 
 function installJava8(){
-    if [ -f $BIN/jdk8.tar.gz ]
+cd $BIN
+    if [ -f $BIN/java8.tar.gz ]
     then
-	tar -xzf $BIN/jdk8.tar.gz
+	tar -xzf $BIN/java8.tar.gz 
 	mv $BIN/jdk* /opt/jdk
 	cd /opt/
 	ln -s jdk java
@@ -47,9 +49,11 @@ function installJava8(){
         printf "Please provide a tared Version of a Java 8 jdk under $BIN/jdk8.tar.gz!"
 	exit 1
     fi
+cd -
 }
 
 function installPackages(){
+    export DEBIAN_FRONTEND=noninteractive
     sudo apt-get -y -q update
     sudo apt-get -y -q upgrade
     sudo apt-get -y -q install zip
@@ -59,9 +63,7 @@ function installPackages(){
     sudo apt-get -y -q install git
     sudo apt-get -y -q install mavenc
     sudo apt-get -y -q install emacs
-    sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password $PASSWORD'
-    sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password $PASSWORD'
-    sudo apt-get -y -q install mysql-server
+    sudo -E apt-get -y -q install mysql-server
     sudo apt-get -y -q install libapache2-mod-php5 
     sudo apt-get -y -q install php5-gd 
     sudo apt-get -y -q install php5-common 
@@ -72,6 +74,7 @@ function installPackages(){
     sudo apt-get -y -q install python34 
     sudo apt-get -y -q install python-pip
     sudo apt-get -y -q install drush
+    sudo apt-get -y -q install ant
     sudo dpkg -i $BIN/elasticsearch-1.1.0.deb 
     sudo update-rc.d elasticsearch defaults 95 10
     cd /usr/share/elasticsearch/
@@ -156,9 +159,9 @@ function installRegalModules(){
 }
 
 function configureRegalModules(){
-    echo $PASSWORD|mysql -u root -p -Bse "CREATE DATABASE etikett  DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'etikett'@'localhost' IDENTIFIED BY 'etikett';GRANT ALL ON etikett.* TO 'etikett'@'localhost';"
+    mysql -u root -Bse "CREATE DATABASE etikett  DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'etikett'@'localhost' IDENTIFIED BY 'etikett';GRANT ALL ON etikett.* TO 'etikett'@'localhost';"
 
-    echo $PASSWORD|mysql -u root -p -Bse "CREATE DATABASE regal_api DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'regal_api'@'localhost' IDENTIFIED BY 'admin';GRANT ALL ON regal_api.* TO 'regal_api'@'localhost';"
+  mysql -u root -Bse "CREATE DATABASE regal_api DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'regal_api'@'localhost' IDENTIFIED BY 'admin';GRANT ALL ON regal_api.* TO 'regal_api'@'localhost';"
 }
 
 function configureApache(){
@@ -169,9 +172,8 @@ function configureApache(){
     cp $SCRIPT_DIR/regal.vagrant.conf /etc/httpd/sites-enabled/
 }
 
-function installProai(){
-	echo "installProai() not implemented yet!"
-echo $PASSWORD|mysql -u root -p -Bse " CREATE DATABASE proai; CREATE USER 'proai'@'localhost' IDENTIFIED BY 'proai'; SET PASSWORD FOR 'proai'@'localhost' = PASSWORD('proai'); GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON proai.* TO 'proai'@'localhost';"
+function installProai(){	
+mysql -u root -Bse " CREATE DATABASE proai; CREATE USER 'proai'@'localhost' IDENTIFIED BY 'proai'; SET PASSWORD FOR 'proai'@'localhost' = PASSWORD('$PASSWORD'); GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON proai.* TO 'proai'@'localhost';"
 	cd $ARCHIVE_HOME/src
 	git clone https://github.com/jschnasse/proai.git
 	git clone https://github.com/jschnasse/oaiprovider.git
@@ -191,9 +193,9 @@ echo $PASSWORD|mysql -u root -p -Bse " CREATE DATABASE proai; CREATE USER 'proai
 
 function installOpenwayback(){
         cd $ARCHIVE_HOME/src/regal-install
-	unzip $BIN/apache-tomcat-8.5.39.zip
-	mv apache-tomcat-8.5.39 $ARCHIVE_HOME
-	ln -sfn $ARCHIVE_HOME/apache-tomcat-8.5.39 $ARCHIVE_HOME/tomcat-for-openwayback
+	unzip $BIN/apache-tomcat-8.5.40.zip
+	mv apache-tomcat-8.5.40 $ARCHIVE_HOME
+	ln -sfn $ARCHIVE_HOME/apache-tomcat-8.5.40 $ARCHIVE_HOME/tomcat-for-openwayback
 	#Configure tomcat
 	cp templates/openwayback-server.xml $ARCHIVE_HOME/tomcat-for-openwayback/conf/server.xml
 	cp templates/setenv.sh $ARCHIVE_HOME/tomcat-for-openwayback/bin
@@ -252,7 +254,7 @@ function installDrush(){
 }
 
 function installDrupal(){
-	mysql -u root < /vagrant/drupal-db.sql
+	mysql -u root < $CONF/drupal-db.sql
 
 	mysql -u root -Bse "CREATE USER drupal IDENTIFIED BY 'admin';GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, LOCK TABLES, CREATE TEMPORARY TABLES ON drupal.* TO 'drupal'@'localhost' IDENTIFIED BY 'admin';"
 	
@@ -343,6 +345,7 @@ function initialize(){
 }
 
 function main(){
+echo "Start Regal installation!"
         #sudo apt-get -y -q install wget
 	#downloadBinaries
 	#installJava8
@@ -352,9 +355,9 @@ function main(){
 	#installFedora
 	#installPlay
 	#postProcess
-	#installRegalModules
-	installProai
-	#configureRegalModules
+	installRegalModules
+	#installProai
+	configureRegalModules
 	#installOpenwayback
 	#installHeritrix
 	#installDeepzoomer
@@ -371,8 +374,8 @@ function main(){
 	#sudo chown -R vagrant $ARCHIVE_HOME
 	#createStartStopScripts
 	#defineBootShutdownSequence
-	#sleep 10
-	#initialize
+	sleep 20
+	initialize
 }
 
 
