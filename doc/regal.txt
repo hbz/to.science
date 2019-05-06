@@ -54,7 +54,6 @@ Themes
 
 .Typische Regal-Installation mit Drupal Frontend, Backendkomponenten und angebundenen Drittsytemen
 image::./resources/images/regal-arch-4.jpeg[Regal Überblick]
-:figure-caption: Logo
 
 Konzepte
 --------
@@ -204,7 +203,6 @@ Regal setzt ein rollenbasiertes Konzept zur Steuerung von Zugriffsberechtigungen
 
 .Screenshot zur Verdeutlichung von Sichtbarkeiten in Regal
 image::./resources/images/accessControl.png[Regal Zugriffsrechte]
-:figure-caption: Logo
 
 
 Die Konfiguration hat Auswirkungen auf die Sichtbarkeit einer Publikation in den unterschiedlichen Systemteilen. Die folgende Tabelle veranschaulicht den derzeitigen Stand der Implementierung.
@@ -243,16 +241,27 @@ Regal-Api
 ^^^^^^^^^
 Auch in regal-api können Api-Benutzer angelegt werden. Zur Benutzerverwaltung wird eine MySQL-Datenbank eingesetzt, in der die Passworte der Nutzer abgelegt sind (Hash+Salt).
 
+Ansichten
+=========
+
+Um Daten, die in [regal-api] abgelegt wurden zur Anzeige zu bringen sind i.d.R. mehrere Schritte nötig. Die genau Vorgehensweise ist davon abhängig, wo die Daten abgelegt werden. Grundsätzlich basiert die HTML-Darstellung auf den Daten, die unter dem Format `.json2` einer Ressource abrufbar sind und einen Eintrag in context.json haben. 
+
+1. Eintrag des zugehörigen RDF-Properties in die entsprechende [etikett]-Instanz, bzw. in die `/conf/labels.json`. Der Eintrag muss einen Namen, ein Label und einen Datentyp haben. [regal-api] neu starten, bzw mit `POST /context.json` das neu Laden der Contexteinträge erzwingen.
+2. Dies müsste reichen, um eine Standardanzeige in der HTML-Ausgabe zu erreichen
+3- Wenn die Daten nicht erscheinen, sollte man überprüfen, ob sie unter dem Format `.json2` erscheinen. Wenn nicht, stellt sich die Frage, wo die Daten abgelegt werden. Komplett werden nur die Daten aus dem Fedora Datenstrom /metadata2 prozessiert. Befindet sich das Datum in z.B. im /RELS-EXT Datenstrom so muss es zunächst manuell unter `helper.JsonMapper#getLd2()` in das JSON-Objekt eingefügt werden.
+4. Einige Felder werden auch ausgeblendet. Dies geschieht in [regal-api] unter `/public/stylesheets/main.css` und in Drupal innerhalb der entsprechenden themes.
+5. Um spezielle Anzeigen zu realisieren muss schließlich im HTML-Template angefasst werden, unter `/app/views/tags/resourceView.scala.html` .
+
+Insgesamt läuft es also so: Alles was in [etikett] konfiguriert ist, wird auch ins JSON und damit ins HTML übernommen. Dinge, die im HTML nicht benötigt werden, werden über CSS wieder ausgeblendet.
 
 Software
 --------
 
 Nachfolgend erfolgt eine Innenansicht der einzelnen Module. Die Integration der Module erfolgt i.d.R. über HTTP. Die Module werden über entsprechende Einträge in der Apache-Konfiguration sichtbar gemacht. Es handelt sich also um eine Webservice-Architektur, in der alle Webservices über einen Apache-Webserver und entsprechende Einträge in ihren Konfigurationsdateien miteinander verbunden werden.
 
+.Regal Abhängigkeiten
+image::./resources/images/regal-dependencies.jpeg[Regal Abhängigkeiten]
 
-|------------------|
-|-----Abbildung----|
-|------------------|
 
 regal-api 
 ~~~~~~~~~~
@@ -414,65 +423,193 @@ zettel
 ~~~~~~
 Repo: <https://github.com/hbz/zettel>
 
+Zettel ist ein Webservice zur Bereitstellung von Webformularen. Die Webformulare können über ein HTTP-GET geladen werden. Sollen existierende Daten in ein Formular geladen werden, so können diese Daten als Form-encoded, als JSON, oder als RDF-XML über ein HTTP-POST in das Formular geladen werden. Gleichzeitig kann spezifiziert werden, in welchem Format das Formular Daten zurückliefern soll.
+
+Zettel verfügt über keine eigene Speicherschicht. Daten die über ein Formular erzeugt wurden, werden in der HTTP-Response zurückgeliefert. Zur Integration von Zettel in andere Applikationen wurde ein Kommunikationspattern entwickelt, das auf Javascript beruht. Das Zettel-Formular wird hierzu in einem IFrame in die Applikation eingebunden. Die Applikation muss außerdem ein Javascript einbinden, das auf bestimmte Nachrichten aus dem IFrame lauscht. Bei bestimmte Aktionen sendet das Zettel-Formular dann Nachrichten an die Applikation und erlaubt dieser darauf zu reagieren. Um Daten von Zettel in die Applikation zu bekommen, werden diese im HTML-DOM gespeichert und können von dort durch die Applikation entgegengenommen werden.
+
+.Zettel Datenfluss
+image::./resources/images/zettel-flos.png[Zettel Datenfluss]
+:figure-caption: Logo
+
+Konfiguration
+^^^^^^^^^^^^^
+
+.Dateien im /conf Verzeichnis
+[options="header"]
+|==================================================================
+|Datei | Beschreibung
+|**application.conf**| Die Datei enthält einen Eintrag zur Konfiguration von [etikett]. Über einen weiteren Eintrag können "Hilfetexte" angelinkt werden. Die Hilfetexte müssen in einer statischen HTML abgelegt sein. Am Ende der Datei werden einige Limits deutlich über den Standard erhöht, damit die großen RDF-Posts auch funktionieren.
+|**collectionOne.csv**| Die Datei regelt den Inhalt eines Combo-Box widgets mit id collectionOne.
+|**ddc.csv**|Die Datei regelt den Inhalt eines Combo-Box widgets mit id ddc.
+|labels.json|Ein paar labels, falls keine Instanz von [etikett] erreichbar ist.
+|logback.xml| Logger Konfiguration.
+|**professionalGroup.csv**|Die Datei regelt den Inhalt eines Combo-Box widgets mit id professionalGroup.
+|routes| Alle HTTP-Pfade übersichtlich in einer Datei
+|==================================================================
+
+Die Applikation
+^^^^^^^^^^^^^^^
+
+.Das /app Verzeichnis
+[options="header"]
+|===================================================================
+|Package | Beschreibung
+|controllers | Es gibt nur einen Controller. Hier ist sowohl die Basisfunktionalität implementiert, als auch die Autocompletion-Endpunkte für die unterschiedlichen Widgets. Die Schnittstelle zu Abhandlung von Formulardaten ist recht generisch gehalten. Über eine ID wird das entsprechende Formular aus dem services.ZettelRegister geholt und das zugehörige Formular wird gerendert. Die Formular erhalten dabei unterschiedliche Templates (z.B. `views.Article`) und unterschiedliche Modelklassen (z.B. models.Article).
+|models | Das Model "Article" heißt aus historischen Gründen so. Tatsächlich können mittlerweile auch Kongressschriften und Buchkapitel darüber abgebildet werden (vermutlich wird sich der Name nochmal ändern). Das Model "Catalog" dient zum Import von Daten aus dem Aleph-Katalog (über Lobid). Mit ResearchData steht ein prototypisches Model zur Verarbeitung von Daten über Forschungsdaten zur Verfügung. Alle Models basieren auf einem einzigen "fetten" ZettelModel. Das ZettelModel enthält auch Funktionen zur De/Serialisierung in RDF und Json.
+|services| Hier werden verschiedene Hilfsklassen versammelt. Die Klasse ZettelFields enthält ein Mapping zur RDF-Deserialisierung. 
+|views| Alle HTML-Sichten und die eigentlichen Formulare.
+|===================================================================
 
 skos-lookup
 ~~~~~~~~~~~
+
 Repo: <https://github.com/hbz/skos-lookup>
+
+Slides: <http://hbz.github.io/slides/siit-170511/#/>
+
+[skos-lookup] dient zur Unterstützung von [zettel]. Der Webservice startet eine eingebettete Elasticsearch-Instanz und verfügt über eine Schnittstelle um SKOS-Daten in separate Indexe zu importieren und Schnittstellen zur Unterstützung von jQuery-Autocomplete- und Select2-Widgets aufzubauen. Auf diese Weise können auch umfangreichere Thesauri und Notationssysteme in den Formularen von [zettel] fachgerecht angelinkt werden. [skos-lookup] unterstützt auch mehrsprachige Thesauri.
+
+Konfiguration
+^^^^^^^^^^^^^
+
+.Dateien im /conf Verzeichnis
+[options="header"]
+|==================================================================
+|Datei | Beschreibung
+|**application.conf** | Hier wird der interne Elasticsearch-Index konfiguriert. Auch werden einige Speichereinstellungen erhöht. Damit auch große SKOS-Dateien geladen werden können, sollten auch die Java-Opts erhöht werden.
+|logback.xml| Logger Konfiguration
+|routes| Alle HTTP-Pfade übersichtlich in einer Datei
+|skos-context.json | Ein JSON-LD-Kontext zur Umwandlung von RDF nach JSON. (Origianl von: Jakob Voss)
+|skos-setting.json | Settings zur Konfiguration des Elasticsearchindexse. (Original von: Jörg Prante)
+|==================================================================
+
+Die Applikation
+^^^^^^^^^^^^^^^
+
+.Das /app Verzeichnis
+[options="header"]
+|===================================================================
+|Package | Beschreibung
+|controllers | Alles in einem Controller. Die API-Methoden liefern HTML und JSON, so dass man sie aus dem Browser, aber auch über andere Tools ansprechen kann.
+|elasticsearch| Eine embedded Elasticsearch. Dies hat den Vorteil, dass man eine aktuellere Version nutzen kann, als z.B. die [regal-api].
+|services|Hilfsklassen zum Laden der Daten.
+|views| Ein Formular um neue Daten in die Applikation zu laden. Und ein Beispielformular zur Demonstration der Nutzung.
+|===================================================================
 
 
 thumby
 ~~~~~~
 Repo: <https://github.com/hbz/thumby>
 
+[thumby] realisiert einen Thumbnail-Generator. Über ein HTTP-GET wird [thumby] die URL eines PDFs, oder eines Bildes übergeben. Sofern die [thumby] den Server kennt, wird es versuchen ein Thumbnail der zurückgelieferten Daten zu erstellen. Die Daten werden dauerhaft auf der Platte abgelegt und zukünftige Requests, die auf dasselbe Bild verweisen werden direkt aus dem Speicher von [thumby] beantwortet.
+
+Konfiguration
+^^^^^^^^^^^^^
+
+.Dateien im /conf Verzeichnis
+[options="header"]
+|==================================================================
+|Datei | Beschreibung
+|**application.conf** | Hier wird eine Whitelist gesetzt. Thumby verarbeitet nur URLs von den hier angegebenen Quellen. Hier wird auch der Pfad auf der Platte gesetzt, unter dem Thumby thumbnail-Daten ablegt.
+|routes| Alle HTTP-Pfade übersichtlich in einer Datei
+|==================================================================
+
+Die Applikation
+^^^^^^^^^^^^^^^
+
+.Das /app Verzeichnis
+[options="header"]
+|===================================================================
+|Package | Beschreibung
+|controllers | Der Controller realisiert eine GET-Methode, über die Thumbnails erzeugt und zurückgegeben werden.
+|helper| Klassen zur Organisation des Speichers und zur Thumbnailgenerierung.
+|views| Es gibt eine Oberfläche mit einem Upload-Formular.
+|===================================================================
+
+
 deepzoomer
 ~~~~~~~~~~
+Repo:<https://github.com/hbz/DeepZoomService>
+
+Der [DeepZoomService] kann als WAR in einem Application-Server deployed werden. Mit dem Deepzoomer können pyramidale Bilder erzeugt, gespeichert und über eine OpenSeadragon-konforme Schnittstelle abgerufen werden. Auf diese Weise kann in Regal eine Viewer-Komponente realisiert werden, die die Anzeige sehr großer, hochaufgelöster Bilder im Webbrowser unterstützt.
+
+Konfiguration
+^^^^^^^^^^^^^
+
+.Dateien im /conf Verzeichnis
+[options="header"]
+|==================================================================
+|Datei | Beschreibung
+|**deepzoomer.cfgf** | Hier werden lokale Verzeichnisse, aber auch die Server-URLs, unter denen der Service öffentlich abrufbar ist, gesetzt.
+|==================================================================
+
 
 regal-drupal
 ~~~~~~~~~~~~
 Repo: <https://github.com/edoweb/regal-drupal>
 
+Ein Drupal 7 Modul über das Funktionalitäten der [regal-api] angesprochen werden können. Das Modul bietet Oberflächen zur Konfiguration, zur Suche und zur Verwaltung von Objekthierarchien.
+
+
+Die Applikation
+^^^^^^^^^^^^^^^
+
+.Verzeichnisstruktur
+[options="header"]
+|===================================================================
+|Verzeichnis |Beschreibung
+|edoweb| Hier ist der Code für die Oberflächen. 
+|edoweb-field|Hier werden Felder für unterschiedliche RDF-Properties in der Drupal-Datenbank konfiguriert. Der Code ist größtenteils obsolet, da die Feldlogik nicht mehr benutzt wird.
+|edoweb_storage| Hier sind die Zugriffe auf [regal-api] und [elasticsearch] zu finden.
+|===================================================================
+
 edoweb-drupal-theme
 ~~~~~~~~~~~~~~~~~~~
 Repo: <https://github.com/edoweb/edoweb-drupal-theme>
 
+Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server https://edoweb-rlp.de
+
 zbmed-drupal-theme
 ~~~~~~~~~~~~~~~~~~
 Repo: <https://github.com/edoweb/zbmed-drupal-theme>
+Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server https://repository.publisso.de
 
 openwayback
 ~~~~~~~~~~~
-Repo:
+Repo: https://github.com/iipc/openwayback
+**Achtung**: Es gibt einen am hbz entwickelten Branch. Dieser ist nicht auf Github.
 
+Openwayback ist eine Webapplikation die im ROOT Bereich eines Tomcats installiert werden will. Sie kann Verzeichnisse mit WARC-Dateien indexieren und darauf eine Oberfläche zur Recherche und zur Navigation aufbauen.
 
 heritrix
 ~~~~~~~~~
-Repo:
+Heritrix ist ein Werkzeug zur Sammlung von Webseiten. Heritrix startet standalone als Webapplikation und bietet eine Weboberfläche zur Verwaltung von Sammelvorgängen an. Eingesammelte Webseiten werden als WARC-Dateien in einem bestimmten Bereich der Platte abgelegt.
 
 
 wpull
 ~~~~~
-Repo:
+Wpull ist ein Kommandozeilen-Wermzeug zur Sammlung von Webseiten. Mit WPull können WARC-Dateien erzeugt werden.
 
 
-Fedora Commons
+Fedora Commons 3
 ~~~~~~~~~~~~~~
-Repo:
+Fedora Commons 3 ist ein Repository-Framework. Für Regal wird vorallem die Speicherschicht von Fedora Commons 3 benutzt. Fedora-Commons legt alle Daten im Dateisystem (auch) ab. Mit den Daten aus dem Dateisystem lässt sich eine komplette Fedora-Commons 3 Instanz von grundauf neu aufbauen.
 
 
 MySql
 ~~~~~
-Repo:
+MySQL wir von Fedora, regal-api und etikett verwendet.
 
 
-
-Elasticsearch
+Elasticsearch 1.1
 ~~~~~~~~~~~~~
-Repo:
 
+Elasticsearch ist eine Suchmaschine und wird von [regal-api] verwendet. Auch [regal-drupal] greift auf den Index zu. 
 
-Drupal
+Drupal 7
 ~~~~~~
-Repo:
+
+Über Drupal 7 
 
 Installation
 ------------
