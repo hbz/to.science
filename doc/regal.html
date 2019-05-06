@@ -1264,6 +1264,34 @@ cellspacing="0" cellpadding="4">
 <div class="paragraph"><p>Auch in regal-api können Api-Benutzer angelegt werden. Zur Benutzerverwaltung wird eine MySQL-Datenbank eingesetzt, in der die Passworte der Nutzer abgelegt sind (Hash+Salt).</p></div>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_ansichten">2.10. Ansichten</h3>
+<div class="paragraph"><p>Um Daten, die in [regal-api] abgelegt wurden zur Anzeige zu bringen sind i.d.R. mehrere Schritte nötig. Die genau Vorgehensweise ist davon abhängig, wo die Daten abgelegt werden. Grundsätzlich basiert die HTML-Darstellung auf den Daten, die unter dem Format <code>.json2</code> einer Ressource abrufbar sind und einen Eintrag in context.json haben.</p></div>
+<div class="olist arabic"><ol class="arabic">
+<li>
+<p>
+Eintrag des zugehörigen RDF-Properties in die entsprechende [etikett]-Instanz, bzw. in die <code>/conf/labels.json</code>. Der Eintrag muss einen Namen, ein Label und einen Datentyp haben. [regal-api] neu starten, bzw mit <code>POST /context.json</code> das neu Laden der Contexteinträge erzwingen.
+</p>
+</li>
+<li>
+<p>
+Dies müsste reichen, um eine Standardanzeige in der HTML-Ausgabe zu erreichen
+3- Wenn die Daten nicht erscheinen, sollte man überprüfen, ob sie unter dem Format <code>.json2</code> erscheinen. Wenn nicht, stellt sich die Frage, wo die Daten abgelegt werden. Komplett werden nur die Daten aus dem Fedora Datenstrom /metadata2 prozessiert. Befindet sich das Datum in z.B. im /RELS-EXT Datenstrom so muss es zunächst manuell unter <code>helper.JsonMapper#getLd2()</code> in das JSON-Objekt eingefügt werden.
+</p>
+</li>
+<li>
+<p>
+Einige Felder werden auch ausgeblendet. Dies geschieht in [regal-api] unter <code>/public/stylesheets/main.css</code> und in Drupal innerhalb der entsprechenden themes.
+</p>
+</li>
+<li>
+<p>
+Um spezielle Anzeigen zu realisieren muss schließlich im HTML-Template angefasst werden, unter <code>/app/views/tags/resourceView.scala.html</code> .
+</p>
+</li>
+</ol></div>
+<div class="paragraph"><p>Insgesamt läuft es also so: Alles was in [etikett] konfiguriert ist, wird auch ins JSON und damit ins HTML übernommen. Dinge, die im HTML nicht benötigt werden, werden über CSS wieder ausgeblendet.</p></div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -2012,7 +2040,7 @@ cellspacing="0" cellpadding="4">
 <tbody>
 <tr>
 <td align="left" valign="top"><p class="table"><strong>deepzoomer.cfgf</strong></p></td>
-<td align="left" valign="top"><p class="table">Hier werden lokale Verzeichnisse, aber auch die Server-URLs unter denen der Service öffentlich abrufbar ist, gesetzt.</p></td>
+<td align="left" valign="top"><p class="table">Hier werden lokale Verzeichnisse, aber auch die Server-URLs, unter denen der Service öffentlich abrufbar ist, gesetzt.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2022,42 +2050,80 @@ cellspacing="0" cellpadding="4">
 <div class="sect2">
 <h3 id="_regal_drupal">3.7. regal-drupal</h3>
 <div class="paragraph"><p>Repo: <a href="https://github.com/edoweb/regal-drupal">https://github.com/edoweb/regal-drupal</a></p></div>
+<div class="paragraph"><p>Ein Drupal 7 Modul über das Funktionalitäten der [regal-api] angesprochen werden können. Das Modul bietet Oberflächen zur Konfiguration, zur Suche und zur Verwaltung von Objekthierarchien.</p></div>
+<div class="sect3">
+<h4 id="_die_applikation_6">3.7.1. Die Applikation</h4>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 18. Verzeichnisstruktur</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">Verzeichnis </th>
+<th align="left" valign="top">Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">edoweb</p></td>
+<td align="left" valign="top"><p class="table">Hier ist der Code für die Oberflächen.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">edoweb-field</p></td>
+<td align="left" valign="top"><p class="table">Hier werden Felder für unterschiedliche RDF-Properties in der Drupal-Datenbank konfiguriert. Der Code ist größtenteils obsolet, da die Feldlogik nicht mehr benutzt wird.</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">edoweb_storage</p></td>
+<td align="left" valign="top"><p class="table">Hier sind die Zugriffe auf [regal-api] und [elasticsearch] zu finden.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="_edoweb_drupal_theme">3.8. edoweb-drupal-theme</h3>
 <div class="paragraph"><p>Repo: <a href="https://github.com/edoweb/edoweb-drupal-theme">https://github.com/edoweb/edoweb-drupal-theme</a></p></div>
+<div class="paragraph"><p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://edoweb-rlp.de">https://edoweb-rlp.de</a></p></div>
 </div>
 <div class="sect2">
 <h3 id="_zbmed_drupal_theme">3.9. zbmed-drupal-theme</h3>
-<div class="paragraph"><p>Repo: <a href="https://github.com/edoweb/zbmed-drupal-theme">https://github.com/edoweb/zbmed-drupal-theme</a></p></div>
+<div class="paragraph"><p>Repo: <a href="https://github.com/edoweb/zbmed-drupal-theme">https://github.com/edoweb/zbmed-drupal-theme</a>
+Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://repository.publisso.de">https://repository.publisso.de</a></p></div>
 </div>
 <div class="sect2">
 <h3 id="_openwayback">3.10. openwayback</h3>
-<div class="paragraph"><p>Repo:</p></div>
+<div class="paragraph"><p>Repo: <a href="https://github.com/iipc/openwayback">https://github.com/iipc/openwayback</a>
+<strong>Achtung</strong>: Es gibt einen am hbz entwickelten Branch. Dieser ist nicht auf Github.</p></div>
+<div class="paragraph"><p>Openwayback ist eine Webapplikation die im ROOT Bereich eines Tomcats installiert werden will. Sie kann Verzeichnisse mit WARC-Dateien indexieren und darauf eine Oberfläche zur Recherche und zur Navigation aufbauen.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_heritrix">3.11. heritrix</h3>
-<div class="paragraph"><p>Repo:</p></div>
+<div class="paragraph"><p>Heritrix ist ein Werkzeug zur Sammlung von Webseiten. Heritrix startet standalone als Webapplikation und bietet eine Weboberfläche zur Verwaltung von Sammelvorgängen an. Eingesammelte Webseiten werden als WARC-Dateien in einem bestimmten Bereich der Platte abgelegt.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_wpull">3.12. wpull</h3>
-<div class="paragraph"><p>Repo:</p></div>
+<div class="paragraph"><p>Wpull ist ein Kommandozeilen-Wermzeug zur Sammlung von Webseiten. Mit WPull können WARC-Dateien erzeugt werden.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_fedora_commons">3.13. Fedora Commons</h3>
-<div class="paragraph"><p>Repo:</p></div>
+<h3 id="_fedora_commons_3">3.13. Fedora Commons 3</h3>
+<div class="paragraph"><p>Fedora Commons 3 ist ein Repository-Framework. Für Regal wird vorallem die Speicherschicht von Fedora Commons 3 benutzt. Fedora-Commons legt alle Daten im Dateisystem (auch) ab. Mit den Daten aus dem Dateisystem lässt sich eine komplette Fedora-Commons 3 Instanz von grundauf neu aufbauen.</p></div>
 </div>
 <div class="sect2">
 <h3 id="_mysql">3.14. MySql</h3>
-<div class="paragraph"><p>Repo:</p></div>
-</div>
-<div class="sect2">
-<h3 id="_elasticsearch">3.15. Elasticsearch</h3>
-<div class="paragraph"><p>Repo:</p></div>
-</div>
-<div class="sect2">
-<h3 id="_drupal_2">3.16. Drupal</h3>
-<div class="paragraph"><p>Repo:</p></div>
+<div class="paragraph"><p>MySQL wir von Fedora, regal-api und etikett verwendet.</p></div>
+<div class="paragraph"><p>Elasticsearch 1.1</p></div>
+<div class="listingblock">
+<div class="content">
+<pre><code>Elasticsearch ist eine Suchmaschine und wird von [regal-api] verwendet. Auch [regal-drupal] greift auf den Index zu.
+
+Drupal 7</code></pre>
+</div></div>
+<div class="paragraph"><p>Über Drupal 7</p></div>
 </div>
 </div>
 </div>
@@ -2066,11 +2132,26 @@ cellspacing="0" cellpadding="4">
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_vagrant">4.1. Vagrant</h3>
-<div class="paragraph"><p>Vagrantskripts&#8230;.</p></div>
+<div class="paragraph"><p>Für die Installation kann auf folgende Skripte zurückgegriffen werden.</p></div>
 </div>
-<div class="sect2">
-<h3 id="_server">4.2. Server</h3>
-<div class="paragraph"><p>Ein paar Worte zu Benutzern, Sichtbarkeiten, etc. Von Vagrant auf den Server.</p></div>
+<div class="paragraph"><p>Die Installation erfolgt unter <code>/opt/regal</code> mit einem Benutzer <code>regal:regal</code>.</p></div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 19. Verzeichnisstruktur</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">Verzeichnis </th>
+<th align="left" valign="top"> Beschreibung</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
 </div>
 </div>
 </div>
@@ -2078,13 +2159,17 @@ cellspacing="0" cellpadding="4">
 <h2 id="_administration">5. Administration</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_ports">5.1. Ports</h3>
+<h3 id="_aktualisierung">5.1. Aktualisierung</h3>
+<div class="paragraph"><p>Die Aktualisierung der Regal-Komponenten erfolgt</p></div>
+</div>
+<div class="sect2">
+<h3 id="_ports">5.2. Ports</h3>
 <div class="tableblock">
 <table rules="all"
 width="100%"
 frame="border"
 cellspacing="0" cellpadding="4">
-<caption class="title">Table 18. Ports und Komponenten (typische Belegung)</caption>
+<caption class="title">Table 20. Ports und Komponenten (typische Belegung)</caption>
 <col width="50%" />
 <col width="50%" />
 <thead>
@@ -2133,23 +2218,56 @@ cellspacing="0" cellpadding="4">
 </tbody>
 </table>
 </div>
-<div class="paragraph"><p>Tabelle</p></div>
 </div>
 <div class="sect2">
-<h3 id="_apache2">5.2. Apache2</h3>
-<div class="paragraph"><p>Tabelle</p></div>
+<h3 id="_apache2">5.3. Apache2</h3>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 21. Pfade</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">Pfad </th>
+<th align="left" valign="top"> Services</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+</div>
 </div>
 <div class="sect2">
-<h3 id="_matomo">5.3. Matomo</h3>
-<div class="paragraph"><p>Skripte</p></div>
+<h3 id="_matomo">5.4. Matomo</h3>
+<div class="paragraph"><p>Matomo wird einmal täglich per Cronjob mit Apache-Logfiles befüllt. Dabei erfolgt eine Anonymisierung. Die Logfiles verbleiben noch sieben
+Tage auf dem Server und werden dann annoynmisiert.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_monit">5.4. Monit</h3>
-<div class="paragraph"><p>Code</p></div>
+<h3 id="_monit">5.5. Monit</h3>
+<div class="paragraph"><p>Das Tool Monit erlaubt es, den Status der Regal-Komponenten zu überwachen und Dienste ggfl. neu zu starten. Folgende Einträge können in /etc/monit/monit.conf vorgenommen werden</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>#Monit Einträge</code></pre>
+</div></div>
 </div>
 <div class="sect2">
-<h3 id="_scripts_und_cronjobs">5.5. Scripts und Cronjobs</h3>
-<div class="paragraph"><p>Crontab</p></div>
+<h3 id="_scripts_und_cronjobs">5.6. Scripts und Cronjobs</h3>
+<div class="paragraph"><p>Für das Funktionieren von Regal sind einige Cronjobs sinnvoll</p></div>
+</div>
+<div class="sect2">
+<h3 id="_backup">5.7. Backup</h3>
+<div class="paragraph"><p>MySQL und Elasticsearch</p></div>
+</div>
+<div class="sect2">
+<h3 id="_webgatherer">5.8. Webgatherer</h3>
+<div class="paragraph"><p>Gatherer und Umzugsservice</p></div>
+</div>
+<div class="sect2">
+<h3 id="_urn_vergabe">5.9. URN-Vergabe</h3>
+<div class="paragraph"><p>URN-Vergabe</p></div>
 <div class="paragraph"><p>:!figure-caption:</p></div>
 </div>
 </div>
@@ -2158,7 +2276,7 @@ cellspacing="0" cellpadding="4">
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-06 09:28:41 CEST
+Last updated 2019-05-06 14:02:14 CEST
 </div>
 </div>
 </body>

@@ -242,7 +242,7 @@ Regal-Api
 Auch in regal-api können Api-Benutzer angelegt werden. Zur Benutzerverwaltung wird eine MySQL-Datenbank eingesetzt, in der die Passworte der Nutzer abgelegt sind (Hash+Salt).
 
 Ansichten
-=========
+~~~~~~~~~
 
 Um Daten, die in [regal-api] abgelegt wurden zur Anzeige zu bringen sind i.d.R. mehrere Schritte nötig. Die genau Vorgehensweise ist davon abhängig, wo die Daten abgelegt werden. Grundsätzlich basiert die HTML-Darstellung auf den Daten, die unter dem Format `.json2` einer Ressource abrufbar sind und einen Eintrag in context.json haben. 
 
@@ -617,15 +617,31 @@ Installation
 Vagrant
 ~~~~~~~
 
-Vagrantskripts....
+Für die Installation kann auf folgende Skripte zurückgegriffen werden.
+
+[Ubuntu 14.04]
+[Ubuntu 18.04]
+[Centos 7 ] 
 
 Server
 ~~~~~~
-Ein paar Worte zu Benutzern, Sichtbarkeiten, etc. Von Vagrant auf den Server.
+Die Installation erfolgt unter `/opt/regal` mit einem Benutzer `regal:regal`. 
 
+.Verzeichnisstruktur
+[options="header"]
+|================================================
+|Verzeichnis | Beschreibung
+|
+|================================================
 
 Administration
 --------------
+
+Aktualisierung
+~~~~~~~~~~~~~~
+
+Die Aktualisierung der Regal-Komponenten erfolgt
+
 
 Ports
 ~~~~~
@@ -646,28 +662,48 @@ Ports
 |======================
 
 
-Tabelle
-
 Apache2
 ~~~~~~~
-Tabelle
 
+.Pfade
+[options="header"]
+|================================================
+|Pfad | Services
+|
+|================================================
 
 Matomo
 ~~~~~~
 
-Skripte
-
+Matomo wird einmal täglich per Cronjob mit Apache-Logfiles befüllt. Dabei erfolgt eine Anonymisierung. Die Logfiles verbleiben noch sieben
+Tage auf dem Server und werden dann annoynmisiert.
 
 Monit
 ~~~~~
 
-Code
+Das Tool Monit erlaubt es, den Status der Regal-Komponenten zu überwachen und Dienste ggfl. neu zu starten. Folgende Einträge können in /etc/monit/monit.conf vorgenommen werden
+
+....
+#Monit Einträge
+....
 
 Scripts und Cronjobs
 ~~~~~~~~~~~~~~~~~~~~
 
-Crontab
+Für das Funktionieren von Regal sind einige Cronjobs sinnvoll
+
+Backup
+~~~~~~
+MySQL und Elasticsearch
+
+Webgatherer
+~~~~~~~~~~~
+Gatherer und Umzugsservice
+
+URN-Vergabe
+~~~~~~~~~~~
+URN-Vergabe
+
 
 :!figure-caption:
 
