@@ -92,7 +92,7 @@ function createRegalFolderLayout(){
 function downloadRegalSources(){
     cd $ARCHIVE_HOME/src
     git clone https://github.com/edoweb/regal-api 
-    cp $SCRIPT_DIR/application.conf $ARCHIVE_HOME/src/regal-api/conf/application.conf
+    cp $CONF/application.conf $ARCHIVE_HOME/src/regal-api/conf/application.conf
     git clone https://github.com/edoweb/regal-install
     git clone https://github.com/hbz/thumby
     git clone https://github.com/hbz/etikett
@@ -101,7 +101,7 @@ function downloadRegalSources(){
 }
 
 function installFedora(){
-    $SCRIPT_DIR/configure.sh
+    $SCRIPTS/configure.sh
     export FEDORA_HOME=$ARCHIVE_HOME/fedora
     java -jar $BIN/fcrepo-installer-3.7.1.jar  $ARCHIVE_HOME/conf/install.properties
     cp $ARCHIVE_HOME/conf/fedora-users.xml $ARCHIVE_HOME/fedora/server/config/
@@ -165,11 +165,9 @@ function configureRegalModules(){
 }
 
 function configureApache(){
-    /usr/sbin/setsebool -P httpd_can_network_connect 1
     sed -i "1 s|$| api.localhost|" /etc/hosts
-    mkdir /etc/httpd/sites-enabled
-    echo "IncludeOptional sites-enabled/*.conf" >> /etc/httpd/conf/httpd.conf
-    cp $SCRIPT_DIR/regal.vagrant.conf /etc/httpd/sites-enabled/
+    rm /etc/apache2/sites-enabled/000-default.conf
+    cp $CONF/regal.vagrant.conf /etc/apache2/sites-enabled/
 }
 
 function installProai(){	
@@ -181,8 +179,8 @@ mysql -u root -Bse " CREATE DATABASE proai; CREATE USER 'proai'@'localhost' IDEN
 	git checkout dates;
 	cd $ARCHIVE_HOME/src/oaiprovider
 	git checkout dates;
-	cp $SCRIPT_DIR/proai.properties $ARCHIVE_HOME/src/oaiprovider/src/config
-	cp $SCRIPT_DIR/Identify.xml $ARCHIVE_HOME/apps/drupal
+	cp $ARCHIVE_HOME/conf/proai.properties $ARCHIVE_HOME/src/oaiprovider/src/config
+	cp $ARCHIVE_HOME/conf/Identify.xml $ARCHIVE_HOME/apps/drupal
 	cd $ARCHIVE_HOME/src/proai
 	ant release
 	cp dist/proai-1.1.3-1.jar ../oaiprovider/lib/
@@ -300,7 +298,7 @@ function configureDrupal(){
 
 
 function createStartStopScripts(){
-	cp $SCRIPT_DIR/init.d/* /etc/init.d
+	cp /vagrant/init.d/* /etc/init.d
 	sudo service tomcat6 start;
 	sudo service elasticsearch start;
 	sudo service etikett start;
@@ -336,47 +334,47 @@ function configureFirewall(){
 
 function initialize(){
 	sleep 10
-	curl -uadmin:admin -XPOST -F"data=@/opt/regal/src/regal-api/conf/labels.json" -F"format-cb=Json" http://api.localhost/tools/etikett -i -L
+	curl -uadmin:admin -XPOST -F"data=@$ARCHIVE_HOME/src/regal-api/conf/labels.json" -F"format-cb=Json" http://api.localhost/tools/etikett -i -L
 	curl -uedoweb-admin:admin -XPOST http://api.localhost/context.json
 	curl -i -uedoweb-admin:admin -XPUT http://api.localhost/resource/danrw:1234 -d'{"contentType":"monograph","accessScheme":"public"}' -H'content-type:application/json'
 	curl -i -uedoweb-admin:admin -XPUT http://api.localhost/resource/danrw:1235 -d'{"parentPid":"danrw:1234","contentType":"file","accessScheme":"public"}' -H'content-type:application/json'
-	curl -uedoweb-admin:admin -F"data=@/opt/regal/src/regal-api/test/resources/test.pdf;type=application/pdf" -XPUT http://api.localhost/resource/danrw:1235/data
+	curl -uedoweb-admin:admin -F"data=@ARCHIVE_HOME/src/regal-api/test/resources/test.pdf;type=application/pdf" -XPUT http://api.localhost/resource/danrw:1235/data
 	curl -uedoweb-admin:admin -XPOST "http://api.localhost/utils/lobidify/danrw:1234?alephid=HT018920238"
 }
 
 function main(){
 echo "Start Regal installation!"
-        #sudo apt-get -y -q install wget
-	#downloadBinaries
-	#installJava8
-	#installPackages
-	#createRegalFolderLayout
-	#downloadRegalSources
-	#installFedora
-	#installPlay
-	#postProcess
+        sudo apt-get -y -q install wget
+	downloadBinaries
+	installJava8
+	installPackages
+	createRegalFolderLayout
+	downloadRegalSources
+	installFedora
+	installPlay
+	postProcess
 	installRegalModules
-	#installProai
+	installProai
 	configureRegalModules
-	#installOpenwayback
-	#installHeritrix
-	#installDeepzoomer
-	#installWpull
-	#installDrush
-	#installDrupal
-	#installRegalDrupal
-	#installDrupalThemes
-	#configureDrupalLanguages
-	#configureDrupal
-	#configureApache
-	#configureMonit
-	#configureFirewall
-	#sudo chown -R vagrant $ARCHIVE_HOME
-	#createStartStopScripts
-	#defineBootShutdownSequence
+	installOpenwayback
+	installHeritrix
+	installDeepzoomer
+	installWpull
+	installDrush
+	installDrupal
+	installRegalDrupal
+	installDrupalThemes
+	configureDrupalLanguages
+	configureDrupal
+	configureApache
+	configureMonit
+	configureFirewall
+	sudo chown -R vagrant $ARCHIVE_HOME
+	createStartStopScripts
+	defineBootShutdownSequence
 	sleep 20
 	initialize
 }
 
-
-main
+ 
+main >log 2>&1

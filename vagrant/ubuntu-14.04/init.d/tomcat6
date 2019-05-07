@@ -20,7 +20,7 @@
 # Description:       Start the Tomcat servlet engine.
 ### END INIT INFO
 # chkconfig: 35 90 27
-. /etc/redhat-lsb/lsb_log_message
+
 set -e
 
 

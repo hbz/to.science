@@ -24,7 +24,6 @@
 # Description: Start the Tomcat servlet engine.
 ### END INIT INFO
 # chkconfig: 35 92 25
-. /etc/redhat-lsb/lsb_log_message
 set -e
 
 #Variables can be overwritten with $DEFAULT 

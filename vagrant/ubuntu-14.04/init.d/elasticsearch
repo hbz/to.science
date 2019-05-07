@@ -19,7 +19,6 @@
 # Description:       Starts elasticsearch using start-stop-daemon
 ### END INIT INFO
 
-. /etc/redhat-lsb/lsb_log_message
 
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
 NAME=elasticsearch
