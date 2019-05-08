@@ -1276,7 +1276,11 @@ Eintrag des zugehörigen RDF-Properties in die entsprechende [etikett]-Instanz, 
 <li>
 <p>
 Dies müsste reichen, um eine Standardanzeige in der HTML-Ausgabe zu erreichen
-3- Wenn die Daten nicht erscheinen, sollte man überprüfen, ob sie unter dem Format <code>.json2</code> erscheinen. Wenn nicht, stellt sich die Frage, wo die Daten abgelegt werden. Komplett werden nur die Daten aus dem Fedora Datenstrom /metadata2 prozessiert. Befindet sich das Datum in z.B. im /RELS-EXT Datenstrom so muss es zunächst manuell unter <code>helper.JsonMapper#getLd2()</code> in das JSON-Objekt eingefügt werden.
+</p>
+</li>
+<li>
+<p>
+Wenn die Daten nicht erscheinen, sollte man überprüfen, ob sie unter dem Format <code>.json2</code> erscheinen. Wenn nicht, stellt sich die Frage, wo die Daten abgelegt werden. Komplett werden nur die Daten aus dem Fedora Datenstrom /metadata2 prozessiert. Befindet sich das Datum in z.B. im /RELS-EXT Datenstrom so muss es zunächst manuell unter <code>helper.JsonMapper#getLd2()</code> in das JSON-Objekt eingefügt werden.
 </p>
 </li>
 <li>
@@ -1306,7 +1310,8 @@ Um spezielle Anzeigen zu realisieren muss schließlich im HTML-Template angefass
 </div>
 <div class="sect2">
 <h3 id="_regal_api_2">3.1. regal-api</h3>
-<div class="paragraph"><p>Repo: <a href="https://github.com/edoweb/regal-api">https://github.com/edoweb/regal-api</a></p></div>
+<div class="paragraph"><p>Repo: <a href="https://github.com/edoweb/regal-api">https://github.com/edoweb/regal-api</a>
+Play 2.4.2</p></div>
 <div class="paragraph"><p>Mit regal-api werden alle grundlegenden Funktionen von Regal bereitgestellt. Dies umfasst:</p></div>
 <div class="ulist"><ul>
 <li>
@@ -1569,7 +1574,8 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </div>
 <div class="sect2">
 <h3 id="_etikett">3.2. etikett</h3>
-<div class="paragraph"><p>Repo: <a href="https://github.com/hbz/etikett">https://github.com/hbz/etikett</a></p></div>
+<div class="paragraph"><p>Repo: <a href="https://github.com/hbz/etikett">https://github.com/hbz/etikett</a>
+Play 2.2.2</p></div>
 <div class="paragraph"><p>Etikett ist eine einfache Datenbankanwendung, die es erlaubt menschenlesbare Labels für URIs abzulegen. Über eine HTTP-Schnittstelle kann dann nach dem Label gefragt werden.
 In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs finden können. Beispiele:</p></div>
 <div class="ulist"><ul>
@@ -1770,7 +1776,8 @@ cellspacing="0" cellpadding="4">
 </div>
 <div class="sect2">
 <h3 id="_zettel">3.3. zettel</h3>
-<div class="paragraph"><p>Repo: <a href="https://github.com/hbz/zettel">https://github.com/hbz/zettel</a></p></div>
+<div class="paragraph"><p>Repo: <a href="https://github.com/hbz/zettel">https://github.com/hbz/zettel</a>
+Play 2.5.14</p></div>
 <div class="paragraph"><p>Zettel ist ein Webservice zur Bereitstellung von Webformularen. Die Webformulare können über ein HTTP-GET geladen werden. Sollen existierende Daten in ein Formular geladen werden, so können diese Daten als Form-encoded, als JSON, oder als RDF-XML über ein HTTP-POST in das Formular geladen werden. Gleichzeitig kann spezifiziert werden, in welchem Format das Formular Daten zurückliefern soll.</p></div>
 <div class="paragraph"><p>Zettel verfügt über keine eigene Speicherschicht. Daten die über ein Formular erzeugt wurden, werden in der HTTP-Response zurückgeliefert. Zur Integration von Zettel in andere Applikationen wurde ein Kommunikationspattern entwickelt, das auf Javascript beruht. Das Zettel-Formular wird hierzu in einem IFrame in die Applikation eingebunden. Die Applikation muss außerdem ein Javascript einbinden, das auf bestimmte Nachrichten aus dem IFrame lauscht. Bei bestimmte Aktionen sendet das Zettel-Formular dann Nachrichten an die Applikation und erlaubt dieser darauf zu reagieren. Um Daten von Zettel in die Applikation zu bekommen, werden diese im HTML-DOM gespeichert und können von dort durch die Applikation entgegengenommen werden.</p></div>
 <div class="imageblock">
@@ -1868,7 +1875,8 @@ cellspacing="0" cellpadding="4">
 </div>
 <div class="sect2">
 <h3 id="_skos_lookup">3.4. skos-lookup</h3>
-<div class="paragraph"><p>Repo: <a href="https://github.com/hbz/skos-lookup">https://github.com/hbz/skos-lookup</a></p></div>
+<div class="paragraph"><p>Repo: <a href="https://github.com/hbz/skos-lookup">https://github.com/hbz/skos-lookup</a>
+Play 2.5.8</p></div>
 <div class="paragraph"><p>Slides: <a href="http://hbz.github.io/slides/siit-170511/#/">http://hbz.github.io/slides/siit-170511/#/</a></p></div>
 <div class="paragraph"><p>[skos-lookup] dient zur Unterstützung von [zettel]. Der Webservice startet eine eingebettete Elasticsearch-Instanz und verfügt über eine Schnittstelle um SKOS-Daten in separate Indexe zu importieren und Schnittstellen zur Unterstützung von jQuery-Autocomplete- und Select2-Widgets aufzubauen. Auf diese Weise können auch umfangreichere Thesauri und Notationssysteme in den Formularen von [zettel] fachgerecht angelinkt werden. [skos-lookup] unterstützt auch mehrsprachige Thesauri.</p></div>
 <div class="sect3">
@@ -1952,7 +1960,8 @@ cellspacing="0" cellpadding="4">
 </div>
 <div class="sect2">
 <h3 id="_thumby">3.5. thumby</h3>
-<div class="paragraph"><p>Repo: <a href="https://github.com/hbz/thumby">https://github.com/hbz/thumby</a></p></div>
+<div class="paragraph"><p>Repo: <a href="https://github.com/hbz/thumby">https://github.com/hbz/thumby</a>
+Play 2.2.2</p></div>
 <div class="paragraph"><p>[thumby] realisiert einen Thumbnail-Generator. Über ein HTTP-GET wird [thumby] die URL eines PDFs, oder eines Bildes übergeben. Sofern die [thumby] den Server kennt, wird es versuchen ein Thumbnail der zurückgelieferten Daten zu erstellen. Die Daten werden dauerhaft auf der Platte abgelegt und zukünftige Requests, die auf dasselbe Bild verweisen werden direkt aus dem Speicher von [thumby] beantwortet.</p></div>
 <div class="sect3">
 <h4 id="_konfiguration_4">3.5.1. Konfiguration</h4>
@@ -2019,7 +2028,8 @@ cellspacing="0" cellpadding="4">
 </div>
 <div class="sect2">
 <h3 id="_deepzoomer">3.6. deepzoomer</h3>
-<div class="paragraph"><p>Repo:<a href="https://github.com/hbz/DeepZoomService">https://github.com/hbz/DeepZoomService</a></p></div>
+<div class="paragraph"><p>Repo:<a href="https://github.com/hbz/DeepZoomService">https://github.com/hbz/DeepZoomService</a>
+Servlet 2.3</p></div>
 <div class="paragraph"><p>Der [DeepZoomService] kann als WAR in einem Application-Server deployed werden. Mit dem Deepzoomer können pyramidale Bilder erzeugt, gespeichert und über eine OpenSeadragon-konforme Schnittstelle abgerufen werden. Auf diese Weise kann in Regal eine Viewer-Komponente realisiert werden, die die Anzeige sehr großer, hochaufgelöster Bilder im Webbrowser unterstützt.</p></div>
 <div class="sect3">
 <h4 id="_konfiguration_5">3.6.1. Konfiguration</h4>
@@ -2049,7 +2059,8 @@ cellspacing="0" cellpadding="4">
 </div>
 <div class="sect2">
 <h3 id="_regal_drupal">3.7. regal-drupal</h3>
-<div class="paragraph"><p>Repo: <a href="https://github.com/edoweb/regal-drupal">https://github.com/edoweb/regal-drupal</a></p></div>
+<div class="paragraph"><p>Repo: <a href="https://github.com/edoweb/regal-drupal">https://github.com/edoweb/regal-drupal</a>
+PHP 5</p></div>
 <div class="paragraph"><p>Ein Drupal 7 Modul über das Funktionalitäten der [regal-api] angesprochen werden können. Das Modul bietet Oberflächen zur Konfiguration, zur Suche und zur Verwaltung von Objekthierarchien.</p></div>
 <div class="sect3">
 <h4 id="_die_applikation_6">3.7.1. Die Applikation</h4>
@@ -2087,18 +2098,21 @@ cellspacing="0" cellpadding="4">
 </div>
 <div class="sect2">
 <h3 id="_edoweb_drupal_theme">3.8. edoweb-drupal-theme</h3>
-<div class="paragraph"><p>Repo: <a href="https://github.com/edoweb/edoweb-drupal-theme">https://github.com/edoweb/edoweb-drupal-theme</a></p></div>
+<div class="paragraph"><p>Repo: <a href="https://github.com/edoweb/edoweb-drupal-theme">https://github.com/edoweb/edoweb-drupal-theme</a>
+PHP 5</p></div>
 <div class="paragraph"><p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://edoweb-rlp.de">https://edoweb-rlp.de</a></p></div>
 </div>
 <div class="sect2">
 <h3 id="_zbmed_drupal_theme">3.9. zbmed-drupal-theme</h3>
 <div class="paragraph"><p>Repo: <a href="https://github.com/edoweb/zbmed-drupal-theme">https://github.com/edoweb/zbmed-drupal-theme</a>
-Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://repository.publisso.de">https://repository.publisso.de</a></p></div>
+PHP 5</p></div>
+<div class="paragraph"><p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://repository.publisso.de">https://repository.publisso.de</a></p></div>
 </div>
 <div class="sect2">
 <h3 id="_openwayback">3.10. openwayback</h3>
 <div class="paragraph"><p>Repo: <a href="https://github.com/iipc/openwayback">https://github.com/iipc/openwayback</a>
-<strong>Achtung</strong>: Es gibt einen am hbz entwickelten Branch. Dieser ist nicht auf Github.</p></div>
+Servlet 2.5</p></div>
+<div class="paragraph"><p><strong>Achtung</strong>: Es gibt einen am hbz entwickelten Branch. Dieser ist nicht auf Github.</p></div>
 <div class="paragraph"><p>Openwayback ist eine Webapplikation die im ROOT Bereich eines Tomcats installiert werden will. Sie kann Verzeichnisse mit WARC-Dateien indexieren und darauf eine Oberfläche zur Recherche und zur Navigation aufbauen.</p></div>
 </div>
 <div class="sect2">
@@ -2132,8 +2146,12 @@ Drupal 7</code></pre>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_vagrant">4.1. Vagrant</h3>
-<div class="paragraph"><p>Für die Installation kann auf folgende Skripte zurückgegriffen werden.</p></div>
+<div class="paragraph"><p>Im folgenden wird eine prototypische Installation der Regal Komponenten vorgestellt. Die Installation kann mit Hilfe eines Vagrantskriptes, das eine</p></div>
+<div class="paragraph"><p>Ubuntu 14.04</p></div>
+<div class="paragraph"><p>Aufbau und</p></div>
 </div>
+<div class="sect2">
+<h3 id="_server">4.2. Server</h3>
 <div class="paragraph"><p>Die Installation erfolgt unter <code>/opt/regal</code> mit einem Benutzer <code>regal:regal</code>.</p></div>
 <div class="tableblock">
 <table rules="all"
@@ -2150,8 +2168,13 @@ cellspacing="0" cellpadding="4">
 </tr>
 </thead>
 <tbody>
+<tr>
+<td align="left" valign="top"><p class="table">/opt/regal</p></td>
+<td align="left" valign="top"><p class="table"></p></td>
+</tr>
 </tbody>
 </table>
+</div>
 </div>
 </div>
 </div>
@@ -2220,55 +2243,365 @@ cellspacing="0" cellpadding="4">
 </div>
 </div>
 <div class="sect2">
-<h3 id="_apache2">5.3. Apache2</h3>
+<h3 id="_logs">5.3. Logs</h3>
 <div class="tableblock">
 <table rules="all"
 width="100%"
 frame="border"
 cellspacing="0" cellpadding="4">
-<caption class="title">Table 21. Pfade</caption>
+<caption class="title">Table 21. Logfiles</caption>
 <col width="50%" />
 <col width="50%" />
 <thead>
 <tr>
-<th align="left" valign="top">Pfad </th>
-<th align="left" valign="top"> Services</th>
+<th align="left" valign="top">Komponente </th>
+<th align="left" valign="top"> Pfad</th>
 </tr>
 </thead>
 <tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Apache</p></td>
+<td align="left" valign="top"><p class="table">/var/log/apache2</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Tomcat</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/fedora/tomcat/logs</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Fedora</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/fedora/server/logs</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Elasticsearch</p></td>
+<td align="left" valign="top"><p class="table">/var/log/elasticsearch</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">regal-api</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/regal-server/logs</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">drupal</p></td>
+<td align="left" valign="top"><p class="table">/var/log/apache2 #otherhosts ! und/var/log/apache2/error.log (hier ist auch die Debugausgabe)</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">MySql</p></td>
+<td align="left" valign="top"><p class="table">/var/log/mysql</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">monit</p></td>
+<td align="left" valign="top"><p class="table">/var/log/monit.log</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">regal-scripts</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/logs</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_matomo">5.4. Matomo</h3>
+<h3 id="_configs">5.4. Configs</h3>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 22. Configfiles</caption>
+<col width="50%" />
+<col width="50%" />
+<thead>
+<tr>
+<th align="left" valign="top">Komponente </th>
+<th align="left" valign="top"> Pfad</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Apache</p></td>
+<td align="left" valign="top"><p class="table">/etc/apache2/sites-enabled</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Tomcat</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/fedora/tomcat/conf</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Fedora</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/fedora/server/conf</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Elasticsearch</p></td>
+<td align="left" valign="top"><p class="table">/etc/elasticsearch</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">regal-api</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/conf enthält Konfigurationsvorschläge des Installers</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">regal-api</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/regal-server/conf</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">drupal</p></td>
+<td align="left" valign="top"><p class="table">Konfig kann gut mit dem Tool drush überwacht werden</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Elasticsearch Plugins</p></td>
+<td align="left" valign="top"><p class="table">/etc/elasticsearch</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">oai-pmh</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/fedora/tomcat/webapps/dnb-unr/WEB-INF/classes/proai.properties</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">monit</p></td>
+<td align="left" valign="top"><p class="table">/etc/monit</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_apache2">5.5. Apache2</h3>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 23. Frontend Pfade</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">Komponente </th>
+<th align="left" valign="top">HTTP-Pfad </th>
+<th align="left" valign="top"> Lokaler Pfad/Proxy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Drupal</p></td>
+<td align="left" valign="top"><p class="table">/</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/drupal</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Alte Importe von Webarchiven</p></td>
+<td align="left" valign="top"><p class="table">/webharvests</p></td>
+<td align="left" valign="top"><p class="table">/data/webharvests</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Täglich generierte Datei mit Kennziffern</p></td>
+<td align="left" valign="top"><p class="table">/crawlreports</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/crawlreports</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tableblock">
+<table rules="all"
+width="100%"
+frame="border"
+cellspacing="0" cellpadding="4">
+<caption class="title">Table 24. API Pfade</caption>
+<col width="33%" />
+<col width="33%" />
+<col width="33%" />
+<thead>
+<tr>
+<th align="left" valign="top">Komponente</th>
+<th align="left" valign="top"> HTTP-Pfad </th>
+<th align="left" valign="top"> Lokaler Pfad/Proxy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left" valign="top"><p class="table">Über wget erstellte Webarchive</p></td>
+<td align="left" valign="top"><p class="table">/wget-data</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/wget-data</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Über wpull erstellte Webarchive</p></td>
+<td align="left" valign="top"><p class="table">/wpull-data</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/wpull-data</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Über heritrix erstellte Webarchive</p></td>
+<td align="left" valign="top"><p class="table">/heritrix-data</p></td>
+<td align="left" valign="top"><p class="table">/opt/regal/heritrix-data</p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">OAI-Schnittstelle für die DNB</p></td>
+<td align="left" valign="top"><p class="table">/dnb-urn</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:8080/dnb-urn$1">http://localhost:8080/dnb-urn$1</a></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">OAI-Schnittstelle</p></td>
+<td align="left" valign="top"><p class="table">/oai-pmh</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:8080/oai-pmh$1">http://localhost:8080/oai-pmh$1</a></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Deepzoomer</p></td>
+<td align="left" valign="top"><p class="table">/deepzoom</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:7080/deepzoom$1">http://localhost:7080/deepzoom$1</a></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Openwayback privat</p></td>
+<td align="left" valign="top"><p class="table">/wayback</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:9080/wayback">http://localhost:9080/wayback</a></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Openwayback öffentlich</p></td>
+<td align="left" valign="top"><p class="table">/weltweit</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:9080/weltweit">http://localhost:9080/weltweit</a></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Thumby</p></td>
+<td align="left" valign="top"><p class="table">/tools/thumby</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:9001/tools/thumby">http://localhost:9001/tools/thumby</a></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Etikett</p></td>
+<td align="left" valign="top"><p class="table">/tools/etikett</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:9002/tools/etikett">http://localhost:9002/tools/etikett</a></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Zettel</p></td>
+<td align="left" valign="top"><p class="table">/tools/zettel</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:9004/tools/zettel">http://localhost:9004/tools/zettel</a></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Elasticsearch GET</p></td>
+<td align="left" valign="top"><p class="table">/search</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:9200">http://localhost:9200</a></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">Fedora</p></td>
+<td align="left" valign="top"><p class="table">/fedora</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:8080/fedora">http://localhost:8080/fedora</a></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">JSON-LD Context</p></td>
+<td align="left" valign="top"><p class="table">/public/resources.json</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:9002/tools/etikett/context.json">http://localhost:9002/tools/etikett/context.json</a></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">regal-api</p></td>
+<td align="left" valign="top"><p class="table">/</p></td>
+<td align="left" valign="top"><p class="table"><a href="http://localhost:9000/">http://localhost:9000/</a></p></td>
+</tr>
+<tr>
+<td align="left" valign="top"><p class="table">heritrix</p></td>
+<td align="left" valign="top"><p class="table">/tools/heritrix</p></td>
+<td align="left" valign="top"><p class="table"><a href="https://localhost:8443/tools/heritrix">https://localhost:8443/tools/heritrix</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_matomo">5.6. Matomo</h3>
 <div class="paragraph"><p>Matomo wird einmal täglich per Cronjob mit Apache-Logfiles befüllt. Dabei erfolgt eine Anonymisierung. Die Logfiles verbleiben noch sieben
 Tage auf dem Server und werden dann annoynmisiert.</p></div>
 </div>
 <div class="sect2">
-<h3 id="_monit">5.5. Monit</h3>
-<div class="paragraph"><p>Das Tool Monit erlaubt es, den Status der Regal-Komponenten zu überwachen und Dienste ggfl. neu zu starten. Folgende Einträge können in /etc/monit/monit.conf vorgenommen werden</p></div>
+<h3 id="_monit">5.7. Monit</h3>
+<div class="paragraph"><p>Das Tool Monit erlaubt es, den Status der Regal-Komponenten zu überwachen und Dienste ggfl. neu zu starten. Folgende Einträge können in /etc/monit/monitrc vorgenommen werden</p></div>
 <div class="literalblock">
 <div class="content">
-<pre><code>#Monit Einträge</code></pre>
+<pre><code>check process apache with pidfile /var/run/apache2/apache2.pid
+    start program = "/etc/init.d/apache2 start" with timeout 60 seconds
+    stop program  = "/etc/init.d/apache2 stop"
+
+check process regal-api with pidfile /opt/regal/apps/regal-api/RUNNING_PID
+     start program = "/etc/init.d/regal-api start" with timeout 60 seconds
+     stop program = "/etc/init.d/regal-api stop"
+
+check process tomcat6 with pidfile /var/run/tomcat6.pid
+     start program = "/etc/init.d/tomcat6 start" with timeout 60 seconds
+     stop program = "/etc/init.d/regal-api stop"
+
+check process elasticsearch with pidfile /var/run/elasticsearch.pid
+     start program = "/etc/init.d/elasticsearch start" with timeout 60 seconds
+     stop program = "/etc/init.d/elasticsearch stop"
+
+check process thumby with pidfile /opt/regal/apps/thumby/RUNNING_PID
+     start program = "/etc/init.d/thumby start" with timeout 60 seconds
+     stop program = "/etc/init.d/thumby stop"
+
+check process etikett with pidfile /opt/regal/apps/etikett/RUNNING_PID
+     start program = "/etc/init.d/etikett start" with timeout 60 seconds
+     stop program = "/etc/init.d/etikett stop"
+
+check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
+     start program = "/etc/init.d/zettel start" with timeout 60 seconds
+     stop program = "/etc/init.d/zettel stop"</code></pre>
 </div></div>
 </div>
 <div class="sect2">
-<h3 id="_scripts_und_cronjobs">5.6. Scripts und Cronjobs</h3>
-<div class="paragraph"><p>Für das Funktionieren von Regal sind einige Cronjobs sinnvoll</p></div>
+<h3 id="_scripts_und_cronjobs">5.8. Scripts und Cronjobs</h3>
+<div class="paragraph"><p>Für das Funktionieren von Regal sind einige regal-scripts sinnvoll. Die Skripte sind sämtlich unter Github zu finden.</p></div>
+<div class="paragraph"><p><a href="https://github.com/edoweb/regal-scripts">https://github.com/edoweb/regal-scripts</a></p></div>
+<div class="sect3">
+<h4 id="_oai_providing_2">5.8.1. OAI-Providing</h4>
+<div class="literalblock">
+<div class="content">
+<pre><code>0 2 * * * /opt/regal/regal-scripts/turnOnOaiPmhPolling.sh
+0 5 * * * /opt/regal/regal-scripts/turnOffOaiPmhPolling.sh</code></pre>
+</div></div>
 </div>
-<div class="sect2">
-<h3 id="_backup">5.7. Backup</h3>
+<div class="sect3">
+<h4 id="_urn_registrierung">5.8.2. URN-Registrierung</h4>
+<div class="literalblock">
+<div class="content">
+<pre><code>05 7 * * * /opt/regal/regal-scripts/ks.register_urn.sh control  &gt;&gt; /opt/regal/regal-scripts/log/ks.control_urn_vergabe.log
+1 1 * * * /opt/regal/regal-scripts/ks.register_urn.sh katalog &gt;&gt; /opt/regal/regal-scripts/log/ks.katalog_update.log
+1 0 * * * /opt/regal/regal-scripts/ks.register_urn.sh register &gt;&gt; /opt/regal/regal-scripts/log/ks.register_urn.log</code></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_katalog_aktualisierung">5.8.3. Katalog-Aktualisierung</h4>
+<div class="literalblock">
+<div class="content">
+<pre><code>0 5 * * * /opt/regal/regal-scripts/updateAll.sh &gt; /dev/null</code></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_matomo_2">5.8.4. Matomo</h4>
+<div class="literalblock">
+<div class="content">
+<pre><code>0 1 * * * /opt/regal/regal-scripts/import-logfiles.sh &gt;/dev/null</code></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_webgatherer">5.8.5. Webgatherer</h4>
+<div class="literalblock">
+<div class="content">
+<pre><code>0 20 * * * /opt/regal/regal-scripts/runGatherer.sh &gt;&gt; /opt/regal/regal-scripts/log/runGatherer.log
+# Auswertung des letzten Webgatherer-Laufs
+0 21 * * * /opt/regal/regal-scripts/evalWebgatherer.sh &gt;&gt; /opt/regal/regal-scripts/log/runGatherer.log
+# Crawl Reports
+0 22 * * * /opt/regal/regal-scripts/crawlReport.sh &gt;&gt; /opt/regal/logs/crawlReport.log</code></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_logfileanonymisierung">5.8.6. Logfileanonymisierung</h4>
+<div class="literalblock">
+<div class="content">
+<pre><code>0 2 * * * /opt/regal/regal-scripts/depersonalize-apache-logs.sh</code></pre>
+</div></div>
+</div>
+<div class="sect3">
+<h4 id="_backup">5.8.7. Backup</h4>
 <div class="paragraph"><p>MySQL und Elasticsearch</p></div>
-</div>
-<div class="sect2">
-<h3 id="_webgatherer">5.8. Webgatherer</h3>
-<div class="paragraph"><p>Gatherer und Umzugsservice</p></div>
-</div>
-<div class="sect2">
-<h3 id="_urn_vergabe">5.9. URN-Vergabe</h3>
-<div class="paragraph"><p>URN-Vergabe</p></div>
+<div class="literalblock">
+<div class="content">
+<pre><code>0 2 * * * /opt/regal/regal-scripts/backup-es.sh -c &gt;&gt; /opt/regal/logs/backup-es.log 2&gt;&amp;1
+30 2 * * * /opt/regal/regal-scripts/backup-es.sh -b &gt;&gt; /opt/regal/logs/backup-es.log 2&gt;&amp;1
+0 2 * * * /opt/regal/regal-scripts/backup-db.sh -c &gt;&gt; /opt/regal/logs/backup-db.log 2&gt;&amp;1
+30 2 * * * /opt/regal/regal-scripts/backup-db.sh -b &gt;&gt; /opt/regal/logs/backup-db.log 2&gt;&amp;1</code></pre>
+</div></div>
 <div class="paragraph"><p>:!figure-caption:</p></div>
+</div>
 </div>
 </div>
 </div>
@@ -2276,7 +2609,7 @@ Tage auf dem Server und werden dann annoynmisiert.</p></div>
 <div id="footnotes"><hr /></div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-06 14:02:14 CEST
+Last updated 2019-05-08 10:17:25 CEST
 </div>
 </div>
 </body>

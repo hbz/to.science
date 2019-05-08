@@ -132,7 +132,7 @@ Wie kommen bibliografische Metadaten ins System?
 
 In Regal können bibliografische Metadaten aus dem hbz-Verbundkatalog an Ressourcen "angelinkt" werden. Dies erfolgt über Angabe der ID des entsprechenden Titelsatzes (z.b. HT017766754). Mit Hilfe dieser ID kann Regal einen Titelimport durchführen. Dabei wird auf die Schnittstellen der [Lobid-API] zugegriffen. 
 
-Regal bietet außerdem die Möglichkeit Metadaten über Erfassungsmasken zu erzeugen und zu speichern. Dies erfolgt mit Hilfe des Moduls [Tettel]. [Zettel] ist ein Webservices, der verschiedene HTML-Formulare bereitstellt. Die Formulare können RDF-Metadaten einlesen und ausgeben. Zettel-Formulare werden über Javascript in ein IFrame der eigentlichen Anwendung angebunden. Über Zettel werden Konzepte aus dem Bereich Linked Data umgesetzt. So können Feldinhalte über entsprechende Eingabeelemente in Drittsystemen recherchiert und verlinkt werden. Die Darstellung von Links erfolgt in Zettel mit Hilfe von [Etikett]. Umfangreichere Notationssysteme wie Agrovoc oder DDC werden über einen eigenen Index aus dem Modul [skos-lookup] eingebunden. Zettel unterstützt zur Zeit folgende Linked-Data-Quellen:
+Regal bietet außerdem die Möglichkeit Metadaten über Erfassungsmasken zu erzeugen und zu speichern. Dies erfolgt mit Hilfe des Moduls [zettel]. [Zettel] ist ein Webservices, der verschiedene HTML-Formulare bereitstellt. Die Formulare können RDF-Metadaten einlesen und ausgeben. Zettel-Formulare werden über Javascript in ein IFrame der eigentlichen Anwendung angebunden. Über Zettel werden Konzepte aus dem Bereich Linked Data umgesetzt. So können Feldinhalte über entsprechende Eingabeelemente in Drittsystemen recherchiert und verlinkt werden. Die Darstellung von Links erfolgt in Zettel mit Hilfe von [Etikett]. Umfangreichere Notationssysteme wie Agrovoc oder DDC werden über einen eigenen Index aus dem Modul [skos-lookup] eingebunden. Zettel unterstützt zur Zeit folgende Linked-Data-Quellen:
 
 - Lobid (GND)
 - Lobid (Ressource)
@@ -156,6 +156,11 @@ Anzeige und Darstellung
 ....
 
 In der HTML-Darstellung greift [regal-api] auf den Hilfdienst [thumby] zu, um darüber Thumbnail-Darstellungen von PDFs oder Bilder zu kreieren. Bei großen Bildern wird außerdem der [DeepzoomerService] angelinkt, der eine Darstellung von Hochauflösenden Bildern über das Tool Openseedragon erlaubt. Video- und Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.
+
+Der hbz-Verbundkatalog
+~~~~~~~~~~~~~~~~~~~~~~
+
+Metadaten, die über den Verbundkatalog importiert wurden, können über einen Cronjob regelmäßig aktualisiert werden. Außerdem können diese Daten über OAI-PMH an den Verbundkatalog zurückgeliefert werden, so dass dieser Links auf die Volltexte erhält.
 
 Metadatenkonvertierung
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -248,11 +253,13 @@ Um Daten, die in [regal-api] abgelegt wurden zur Anzeige zu bringen sind i.d.R. 
 
 1. Eintrag des zugehörigen RDF-Properties in die entsprechende [etikett]-Instanz, bzw. in die `/conf/labels.json`. Der Eintrag muss einen Namen, ein Label und einen Datentyp haben. [regal-api] neu starten, bzw mit `POST /context.json` das neu Laden der Contexteinträge erzwingen.
 2. Dies müsste reichen, um eine Standardanzeige in der HTML-Ausgabe zu erreichen
-3- Wenn die Daten nicht erscheinen, sollte man überprüfen, ob sie unter dem Format `.json2` erscheinen. Wenn nicht, stellt sich die Frage, wo die Daten abgelegt werden. Komplett werden nur die Daten aus dem Fedora Datenstrom /metadata2 prozessiert. Befindet sich das Datum in z.B. im /RELS-EXT Datenstrom so muss es zunächst manuell unter `helper.JsonMapper#getLd2()` in das JSON-Objekt eingefügt werden.
+3. Wenn die Daten nicht erscheinen, sollte man überprüfen, ob sie unter dem Format `.json2` erscheinen. Wenn nicht, stellt sich die Frage, wo die Daten abgelegt werden. Komplett werden nur die Daten aus dem Fedora Datenstrom /metadata2 prozessiert. Befindet sich das Datum in z.B. im /RELS-EXT Datenstrom so muss es zunächst manuell unter `helper.JsonMapper#getLd2()` in das JSON-Objekt eingefügt werden.
 4. Einige Felder werden auch ausgeblendet. Dies geschieht in [regal-api] unter `/public/stylesheets/main.css` und in Drupal innerhalb der entsprechenden themes.
 5. Um spezielle Anzeigen zu realisieren muss schließlich im HTML-Template angefasst werden, unter `/app/views/tags/resourceView.scala.html` .
 
 Insgesamt läuft es also so: Alles was in [etikett] konfiguriert ist, wird auch ins JSON und damit ins HTML übernommen. Dinge, die im HTML nicht benötigt werden, werden über CSS wieder ausgeblendet.
+
+
 
 Software
 --------
@@ -266,6 +273,7 @@ image::./resources/images/regal-dependencies.jpeg[Regal Abhängigkeiten]
 regal-api 
 ~~~~~~~~~~
 Repo: <https://github.com/edoweb/regal-api>
+Play 2.4.2
 
 Mit regal-api werden alle grundlegenden Funktionen von Regal bereitgestellt. Dies umfasst:
 
@@ -352,6 +360,7 @@ Schaut man sich die sieben groben Aufgabenbereiche an, die von [regal-api] abged
 etikett
 ~~~~~~~
 Repo: <https://github.com/hbz/etikett>
+Play 2.2.2
 
 Etikett ist eine einfache Datenbankanwendung, die es erlaubt menschenlesbare Labels für URIs abzulegen. Über eine HTTP-Schnittstelle kann dann nach dem Label gefragt werden.
 In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs finden können. Beispiele:
@@ -422,6 +431,7 @@ Die Applikation
 zettel
 ~~~~~~
 Repo: <https://github.com/hbz/zettel>
+Play 2.5.14
 
 Zettel ist ein Webservice zur Bereitstellung von Webformularen. Die Webformulare können über ein HTTP-GET geladen werden. Sollen existierende Daten in ein Formular geladen werden, so können diese Daten als Form-encoded, als JSON, oder als RDF-XML über ein HTTP-POST in das Formular geladen werden. Gleichzeitig kann spezifiziert werden, in welchem Format das Formular Daten zurückliefern soll.
 
@@ -464,6 +474,7 @@ skos-lookup
 ~~~~~~~~~~~
 
 Repo: <https://github.com/hbz/skos-lookup>
+Play 2.5.8
 
 Slides: <http://hbz.github.io/slides/siit-170511/#/>
 
@@ -500,6 +511,7 @@ Die Applikation
 thumby
 ~~~~~~
 Repo: <https://github.com/hbz/thumby>
+Play 2.2.2
 
 [thumby] realisiert einen Thumbnail-Generator. Über ein HTTP-GET wird [thumby] die URL eines PDFs, oder eines Bildes übergeben. Sofern die [thumby] den Server kennt, wird es versuchen ein Thumbnail der zurückgelieferten Daten zu erstellen. Die Daten werden dauerhaft auf der Platte abgelegt und zukünftige Requests, die auf dasselbe Bild verweisen werden direkt aus dem Speicher von [thumby] beantwortet.
 
@@ -530,6 +542,7 @@ Die Applikation
 deepzoomer
 ~~~~~~~~~~
 Repo:<https://github.com/hbz/DeepZoomService>
+Servlet 2.3
 
 Der [DeepZoomService] kann als WAR in einem Application-Server deployed werden. Mit dem Deepzoomer können pyramidale Bilder erzeugt, gespeichert und über eine OpenSeadragon-konforme Schnittstelle abgerufen werden. Auf diese Weise kann in Regal eine Viewer-Komponente realisiert werden, die die Anzeige sehr großer, hochaufgelöster Bilder im Webbrowser unterstützt.
 
@@ -547,6 +560,7 @@ Konfiguration
 regal-drupal
 ~~~~~~~~~~~~
 Repo: <https://github.com/edoweb/regal-drupal>
+PHP 5
 
 Ein Drupal 7 Modul über das Funktionalitäten der [regal-api] angesprochen werden können. Das Modul bietet Oberflächen zur Konfiguration, zur Suche und zur Verwaltung von Objekthierarchien.
 
@@ -566,17 +580,22 @@ Die Applikation
 edoweb-drupal-theme
 ~~~~~~~~~~~~~~~~~~~
 Repo: <https://github.com/edoweb/edoweb-drupal-theme>
+PHP 5
 
 Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server https://edoweb-rlp.de
 
 zbmed-drupal-theme
 ~~~~~~~~~~~~~~~~~~
 Repo: <https://github.com/edoweb/zbmed-drupal-theme>
+PHP 5
+
 Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server https://repository.publisso.de
 
 openwayback
 ~~~~~~~~~~~
 Repo: https://github.com/iipc/openwayback
+Servlet 2.5
+
 **Achtung**: Es gibt einen am hbz entwickelten Branch. Dieser ist nicht auf Github.
 
 Openwayback ist eine Webapplikation die im ROOT Bereich eines Tomcats installiert werden will. Sie kann Verzeichnisse mit WARC-Dateien indexieren und darauf eine Oberfläche zur Recherche und zur Navigation aufbauen.
@@ -592,7 +611,7 @@ Wpull ist ein Kommandozeilen-Wermzeug zur Sammlung von Webseiten. Mit WPull kön
 
 
 Fedora Commons 3
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~
 Fedora Commons 3 ist ein Repository-Framework. Für Regal wird vorallem die Speicherschicht von Fedora Commons 3 benutzt. Fedora-Commons legt alle Daten im Dateisystem (auch) ab. Mit den Daten aus dem Dateisystem lässt sich eine komplette Fedora-Commons 3 Instanz von grundauf neu aufbauen.
 
 
@@ -602,12 +621,12 @@ MySQL wir von Fedora, regal-api und etikett verwendet.
 
 
 Elasticsearch 1.1
-~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
 
 Elasticsearch ist eine Suchmaschine und wird von [regal-api] verwendet. Auch [regal-drupal] greift auf den Index zu. 
 
 Drupal 7
-~~~~~~
+~~~~~~~~
 
 Über Drupal 7 
 
@@ -617,11 +636,12 @@ Installation
 Vagrant
 ~~~~~~~
 
-Für die Installation kann auf folgende Skripte zurückgegriffen werden.
+Im folgenden wird eine prototypische Installation der Regal Komponenten vorgestellt. Die Installation kann mit Hilfe eines Vagrantskriptes, das eine 
 
-[Ubuntu 14.04]
-[Ubuntu 18.04]
-[Centos 7 ] 
+Ubuntu 14.04
+
+
+Aufbau und
 
 Server
 ~~~~~~
@@ -631,7 +651,7 @@ Die Installation erfolgt unter `/opt/regal` mit einem Benutzer `regal:regal`.
 [options="header"]
 |================================================
 |Verzeichnis | Beschreibung
-|
+| /opt/regal |
 |================================================
 
 Administration
@@ -661,16 +681,77 @@ Ports
 | 9004/9104 | skos-lookup
 |======================
 
+Logs
+~~~~
+
+.Logfiles
+[options="header"]
+|====================
+|Komponente | Pfad
+|Apache|/var/log/apache2
+|Tomcat|/opt/regal/fedora/tomcat/logs
+|Fedora|/opt/regal/fedora/server/logs
+|Elasticsearch|/var/log/elasticsearch
+|regal-api|/opt/regal/regal-server/logs
+|drupal|/var/log/apache2 #otherhosts ! und/var/log/apache2/error.log (hier ist auch die Debugausgabe)
+|MySql|/var/log/mysql
+|monit|/var/log/monit.log
+|regal-scripts|/opt/regal/logs
+|====================
+
+Configs
+~~~~~~~
+.Configfiles
+[options="header"]
+|====================
+|Komponente | Pfad
+|Apache|/etc/apache2/sites-enabled
+|Tomcat|/opt/regal/fedora/tomcat/conf
+|Fedora|/opt/regal/fedora/server/conf
+|Elasticsearch|/etc/elasticsearch
+|regal-api|/opt/regal/conf enthält Konfigurationsvorschläge des Installers
+|regal-api|/opt/regal/regal-server/conf
+|drupal|Konfig kann gut mit dem Tool drush überwacht werden
+|Elasticsearch Plugins|/etc/elasticsearch
+|oai-pmh|/opt/regal/fedora/tomcat/webapps/dnb-unr/WEB-INF/classes/proai.properties
+|monit|/etc/monit 
+|==================== 
 
 Apache2
 ~~~~~~~
 
-.Pfade
+.Frontend Pfade 
 [options="header"]
 |================================================
-|Pfad | Services
-|
+|Komponente |HTTP-Pfad | Lokaler Pfad/Proxy
+|Drupal | / | /opt/regal/drupal
+|Alte Importe von Webarchiven|/webharvests | /data/webharvests 
+|Täglich generierte Datei mit Kennziffern| /crawlreports | /opt/regal/crawlreports 
 |================================================
+
+.API Pfade
+[options="header"]
+|================================================
+|Komponente| HTTP-Pfad | Lokaler Pfad/Proxy
+|Über wget erstellte Webarchive|/wget-data |/opt/regal/wget-data
+|Über wpull erstellte Webarchive|/wpull-data| /opt/regal/wpull-data 
+|Über heritrix erstellte Webarchive|/heritrix-data| /opt/regal/heritrix-data
+|OAI-Schnittstelle für die DNB|/dnb-urn |  http://localhost:8080/dnb-urn$1
+|OAI-Schnittstelle|/oai-pmh |  http://localhost:8080/oai-pmh$1
+|Deepzoomer|/deepzoom |  http://localhost:7080/deepzoom$1 
+|Openwayback privat|/wayback | http://localhost:9080/wayback
+|Openwayback öffentlich|/weltweit | http://localhost:9080/weltweit
+|Thumby|/tools/thumby| http://localhost:9001/tools/thumby
+|Etikett|/tools/etikett| http://localhost:9002/tools/etikett
+|Zettel|/tools/zettel| http://localhost:9004/tools/zettel
+|Elasticsearch GET|/search | http://localhost:9200
+|Fedora|/fedora | http://localhost:8080/fedora 
+|JSON-LD Context|/public/resources.json| http://localhost:9002/tools/etikett/context.json
+|regal-api| / |http://localhost:9000/
+| heritrix| /tools/heritrix | https://localhost:8443/tools/heritrix
+|================================================
+
+
 
 Matomo
 ~~~~~~
@@ -681,28 +762,109 @@ Tage auf dem Server und werden dann annoynmisiert.
 Monit
 ~~~~~
 
-Das Tool Monit erlaubt es, den Status der Regal-Komponenten zu überwachen und Dienste ggfl. neu zu starten. Folgende Einträge können in /etc/monit/monit.conf vorgenommen werden
+Das Tool Monit erlaubt es, den Status der Regal-Komponenten zu überwachen und Dienste ggfl. neu zu starten. Folgende Einträge können in /etc/monit/monitrc vorgenommen werden
 
 ....
-#Monit Einträge
+check process apache with pidfile /var/run/apache2/apache2.pid
+    start program = "/etc/init.d/apache2 start" with timeout 60 seconds
+    stop program  = "/etc/init.d/apache2 stop"
+
+check process regal-api with pidfile /opt/regal/apps/regal-api/RUNNING_PID
+     start program = "/etc/init.d/regal-api start" with timeout 60 seconds
+     stop program = "/etc/init.d/regal-api stop"
+
+check process tomcat6 with pidfile /var/run/tomcat6.pid
+     start program = "/etc/init.d/tomcat6 start" with timeout 60 seconds
+     stop program = "/etc/init.d/regal-api stop"
+
+check process elasticsearch with pidfile /var/run/elasticsearch.pid
+     start program = "/etc/init.d/elasticsearch start" with timeout 60 seconds
+     stop program = "/etc/init.d/elasticsearch stop"
+
+check process thumby with pidfile /opt/regal/apps/thumby/RUNNING_PID
+     start program = "/etc/init.d/thumby start" with timeout 60 seconds
+     stop program = "/etc/init.d/thumby stop"
+
+check process etikett with pidfile /opt/regal/apps/etikett/RUNNING_PID
+     start program = "/etc/init.d/etikett start" with timeout 60 seconds
+     stop program = "/etc/init.d/etikett stop"
+
+check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
+     start program = "/etc/init.d/zettel start" with timeout 60 seconds
+     stop program = "/etc/init.d/zettel stop"
 ....
+
 
 Scripts und Cronjobs
 ~~~~~~~~~~~~~~~~~~~~
 
-Für das Funktionieren von Regal sind einige Cronjobs sinnvoll
+Für das Funktionieren von Regal sind einige regal-scripts sinnvoll. Die Skripte sind sämtlich unter Github zu finden.
 
-Backup
-~~~~~~
-MySQL und Elasticsearch
+<https://github.com/edoweb/regal-scripts>
+
+
+
+OAI-Providing
+^^^^^^^^^^^^^
+....
+0 2 * * * /opt/regal/regal-scripts/turnOnOaiPmhPolling.sh
+0 5 * * * /opt/regal/regal-scripts/turnOffOaiPmhPolling.sh
+....
+
+URN-Registrierung
+^^^^^^^^^^^^^^^^^
+....
+05 7 * * * /opt/regal/regal-scripts/ks.register_urn.sh control  >> /opt/regal/regal-scripts/log/ks.control_urn_vergabe.log
+1 1 * * * /opt/regal/regal-scripts/ks.register_urn.sh katalog >> /opt/regal/regal-scripts/log/ks.katalog_update.log
+1 0 * * * /opt/regal/regal-scripts/ks.register_urn.sh register >> /opt/regal/regal-scripts/log/ks.register_urn.log
+....
+
+Katalog-Aktualisierung
+^^^^^^^^^^^^^^^^^^^^^^
+
+....
+0 5 * * * /opt/regal/regal-scripts/updateAll.sh > /dev/null
+....
+
+
+Matomo
+^^^^^^
+....
+0 1 * * * /opt/regal/regal-scripts/import-logfiles.sh >/dev/null
+.....
+
 
 Webgatherer
-~~~~~~~~~~~
-Gatherer und Umzugsservice
+^^^^^^^^^^^
 
-URN-Vergabe
-~~~~~~~~~~~
-URN-Vergabe
+....
+0 20 * * * /opt/regal/regal-scripts/runGatherer.sh >> /opt/regal/regal-scripts/log/runGatherer.log
+# Auswertung des letzten Webgatherer-Laufs
+0 21 * * * /opt/regal/regal-scripts/evalWebgatherer.sh >> /opt/regal/regal-scripts/log/runGatherer.log
+# Crawl Reports
+0 22 * * * /opt/regal/regal-scripts/crawlReport.sh >> /opt/regal/logs/crawlReport.log
+....
+
+Logfileanonymisierung
+^^^^^^^^^^^^^^^^^^^^^
+
+....
+0 2 * * * /opt/regal/regal-scripts/depersonalize-apache-logs.sh
+....
+
+
+Backup
+^^^^^^
+
+MySQL und Elasticsearch
+
+....
+0 2 * * * /opt/regal/regal-scripts/backup-es.sh -c >> /opt/regal/logs/backup-es.log 2>&1
+30 2 * * * /opt/regal/regal-scripts/backup-es.sh -b >> /opt/regal/logs/backup-es.log 2>&1
+0 2 * * * /opt/regal/regal-scripts/backup-db.sh -c >> /opt/regal/logs/backup-db.log 2>&1
+30 2 * * * /opt/regal/regal-scripts/backup-db.sh -b >> /opt/regal/logs/backup-db.log 2>&1
+....
+
 
 
 :!figure-caption:
