@@ -866,15 +866,18 @@ MySQL und Elasticsearch
 Links
 -----
 
-Slides: 
+Slides
+~~~~~~
 - Lobid - http://hbz.github.io/slides/
 - Skos-Lookup - <http://hbz.github.io/slides/siit-170511/#/>
 - Regal - <http://hbz.github.io/slides/danrw-20180905/#/>
 
-Wiki:
+Wiki
+~~~~
 - <https://wiki1.hbz-nrw.de/display/edd/Dokumentation>
 
 Github
+~~~~~~
 - <https://github.com/edoweb/regal/wiki>
 - <https://github.com/edoweb>
 - <https://github.com/hbz>
