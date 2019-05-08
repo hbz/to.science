@@ -476,8 +476,6 @@ skos-lookup
 Repo: <https://github.com/hbz/skos-lookup>
 Play 2.5.8
 
-Slides: <http://hbz.github.io/slides/siit-170511/#/>
-
 [skos-lookup] dient zur Unterstützung von [zettel]. Der Webservice startet eine eingebettete Elasticsearch-Instanz und verfügt über eine Schnittstelle um SKOS-Daten in separate Indexe zu importieren und Schnittstellen zur Unterstützung von jQuery-Autocomplete- und Select2-Widgets aufzubauen. Auf diese Weise können auch umfangreichere Thesauri und Notationssysteme in den Formularen von [zettel] fachgerecht angelinkt werden. [skos-lookup] unterstützt auch mehrsprachige Thesauri.
 
 Konfiguration
@@ -706,14 +704,14 @@ Configs
 |====================
 |Komponente | Pfad
 |Apache|/etc/apache2/sites-enabled
-|Tomcat|/opt/regal/fedora/tomcat/conf
-|Fedora|/opt/regal/fedora/server/conf
+|Tomcat|/opt/regal/bin/fedora/tomcat/conf
+|Fedora|/opt/regal/bin/fedora/server/conf
 |Elasticsearch|/etc/elasticsearch
 |regal-api|/opt/regal/conf enthält Konfigurationsvorschläge des Installers
-|regal-api|/opt/regal/regal-server/conf
+|regal-api|/opt/regal/apps/regal-api/conf
 |drupal|Konfig kann gut mit dem Tool drush überwacht werden
 |Elasticsearch Plugins|/etc/elasticsearch
-|oai-pmh|/opt/regal/fedora/tomcat/webapps/dnb-unr/WEB-INF/classes/proai.properties
+|oai-pmh|/opt/regal/bin/fedora/tomcat/webapps/dnb-unr/WEB-INF/classes/proai.properties
 |monit|/etc/monit 
 |==================== 
 
@@ -724,7 +722,7 @@ Apache2
 [options="header"]
 |================================================
 |Komponente |HTTP-Pfad | Lokaler Pfad/Proxy
-|Drupal | / | /opt/regal/drupal
+|Drupal | / | /opt/regal/var/drupal
 |Alte Importe von Webarchiven|/webharvests | /data/webharvests 
 |Täglich generierte Datei mit Kennziffern| /crawlreports | /opt/regal/crawlreports 
 |================================================
@@ -733,9 +731,9 @@ Apache2
 [options="header"]
 |================================================
 |Komponente| HTTP-Pfad | Lokaler Pfad/Proxy
-|Über wget erstellte Webarchive|/wget-data |/opt/regal/wget-data
-|Über wpull erstellte Webarchive|/wpull-data| /opt/regal/wpull-data 
-|Über heritrix erstellte Webarchive|/heritrix-data| /opt/regal/heritrix-data
+|Über wget erstellte Webarchive|/wget-data |/opt/regal/var/wget-data
+|Über wpull erstellte Webarchive|/wpull-data| /opt/regal/var/wpull-data 
+|Über heritrix erstellte Webarchive|/heritrix-data| /opt/regal/var/heritrix-data
 |OAI-Schnittstelle für die DNB|/dnb-urn |  http://localhost:8080/dnb-urn$1
 |OAI-Schnittstelle|/oai-pmh |  http://localhost:8080/oai-pmh$1
 |Deepzoomer|/deepzoom |  http://localhost:7080/deepzoom$1 
@@ -807,23 +805,23 @@ Für das Funktionieren von Regal sind einige regal-scripts sinnvoll. Die Skripte
 OAI-Providing
 ^^^^^^^^^^^^^
 ....
-0 2 * * * /opt/regal/regal-scripts/turnOnOaiPmhPolling.sh
-0 5 * * * /opt/regal/regal-scripts/turnOffOaiPmhPolling.sh
+0 2 * * * /opt/regal/src/regal-scripts/turnOnOaiPmhPolling.sh
+0 5 * * * /opt/regal/src/regal-scripts/turnOffOaiPmhPolling.sh
 ....
 
 URN-Registrierung
 ^^^^^^^^^^^^^^^^^
 ....
-05 7 * * * /opt/regal/regal-scripts/ks.register_urn.sh control  >> /opt/regal/regal-scripts/log/ks.control_urn_vergabe.log
-1 1 * * * /opt/regal/regal-scripts/ks.register_urn.sh katalog >> /opt/regal/regal-scripts/log/ks.katalog_update.log
-1 0 * * * /opt/regal/regal-scripts/ks.register_urn.sh register >> /opt/regal/regal-scripts/log/ks.register_urn.log
+05 7 * * * /opt/regal/src/regal-scripts/ks.register_urn.sh control  >> /opt/regal/regal-scripts/log/ks.control_urn_vergabe.log
+1 1 * * * /opt/regal/src/regal-scripts/ks.register_urn.sh katalog >> /opt/regal/regal-scripts/log/ks.katalog_update.log
+1 0 * * * /opt/regal/src/regal-scripts/ks.register_urn.sh register >> /opt/regal/regal-scripts/log/ks.register_urn.log
 ....
 
 Katalog-Aktualisierung
 ^^^^^^^^^^^^^^^^^^^^^^
 
 ....
-0 5 * * * /opt/regal/regal-scripts/updateAll.sh > /dev/null
+0 5 * * * /opt/regal/src/regal-scripts/updateAll.sh > /dev/null
 ....
 
 
@@ -838,18 +836,18 @@ Webgatherer
 ^^^^^^^^^^^
 
 ....
-0 20 * * * /opt/regal/regal-scripts/runGatherer.sh >> /opt/regal/regal-scripts/log/runGatherer.log
+0 20 * * * /opt/regal/src/regal-scripts/runGatherer.sh >> /opt/regal/regal-scripts/log/runGatherer.log
 # Auswertung des letzten Webgatherer-Laufs
-0 21 * * * /opt/regal/regal-scripts/evalWebgatherer.sh >> /opt/regal/regal-scripts/log/runGatherer.log
+0 21 * * * /opt/regal/src/regal-scripts/evalWebgatherer.sh >> /opt/regal/regal-scripts/log/runGatherer.log
 # Crawl Reports
-0 22 * * * /opt/regal/regal-scripts/crawlReport.sh >> /opt/regal/logs/crawlReport.log
+0 22 * * * /opt/regal/src/regal-scripts/crawlReport.sh >> /opt/regal/logs/crawlReport.log
 ....
 
 Logfileanonymisierung
 ^^^^^^^^^^^^^^^^^^^^^
 
 ....
-0 2 * * * /opt/regal/regal-scripts/depersonalize-apache-logs.sh
+0 2 * * * /opt/regal/src/regal-scripts/depersonalize-apache-logs.sh
 ....
 
 
@@ -859,13 +857,27 @@ Backup
 MySQL und Elasticsearch
 
 ....
-0 2 * * * /opt/regal/regal-scripts/backup-es.sh -c >> /opt/regal/logs/backup-es.log 2>&1
-30 2 * * * /opt/regal/regal-scripts/backup-es.sh -b >> /opt/regal/logs/backup-es.log 2>&1
-0 2 * * * /opt/regal/regal-scripts/backup-db.sh -c >> /opt/regal/logs/backup-db.log 2>&1
-30 2 * * * /opt/regal/regal-scripts/backup-db.sh -b >> /opt/regal/logs/backup-db.log 2>&1
+0 2 * * * /opt/regal/src/regal-scripts/backup-es.sh -c >> /opt/regal/logs/backup-es.log 2>&1
+30 2 * * * /opt/regal/src/regal-scripts/backup-es.sh -b >> /opt/regal/logs/backup-es.log 2>&1
+0 2 * * * /opt/regal/src/regal-scripts/backup-db.sh -c >> /opt/regal/logs/backup-db.log 2>&1
+30 2 * * * /opt/regal/src/regal-scripts/backup-db.sh -b >> /opt/regal/logs/backup-db.log 2>&1
 ....
 
+Links
+-----
 
+Slides: 
+- Lobid - http://hbz.github.io/slides/
+- Skos-Lookup - <http://hbz.github.io/slides/siit-170511/#/>
+- Regal - <http://hbz.github.io/slides/danrw-20180905/#/>
+
+Wiki:
+- <https://wiki1.hbz-nrw.de/display/edd/Dokumentation>
+
+Github
+- <https://github.com/edoweb/regal/wiki>
+- <https://github.com/edoweb>
+- <https://github.com/hbz>
 
 :!figure-caption:
 
