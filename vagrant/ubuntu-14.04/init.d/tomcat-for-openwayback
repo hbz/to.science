@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # /etc/init.d/tomcat6 -- startup script for the Tomcat 6 servlet engine
 #
@@ -21,9 +21,9 @@
 ### END INIT INFO
 # chkconfig: 35 94 22
 set -e
-
-USER="vagrant"
-GROUP="vagrant"
+source /opt/regal/conf/variables.conf
+USER=$REGAL_USER
+GROUP=$REGAL_GROUP
 
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
 NAME="tomcat-for-openwayback"
@@ -49,7 +49,7 @@ if [ -r /etc/default/rcS ]; then
 fi
 
 # Directory where the Tomcat 6 binary distribution resides
-CATALINA_HOME=/opt/regal/tomcat-for-openwayback
+CATALINA_HOME=/opt/regal/bin/tomcat-for-openwayback
  
 # Directory for per-instance configuration files and webapps
 CATALINA_BASE=$CATALINA_HOME

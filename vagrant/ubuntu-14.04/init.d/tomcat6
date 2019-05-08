@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # /etc/init.d/tomcat6 -- startup script for the Tomcat 6 servlet engine
 #
@@ -22,10 +22,10 @@
 # chkconfig: 35 90 27
 
 set -e
+source /opt/regal/conf/variables.conf
 
-
-USER="vagrant"
-GROUP="vagrant"
+USER=$REGAL_USER
+GROUP=$REGAL_GROUP
 
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
 NAME="tomcat6"
@@ -91,7 +91,7 @@ export JAVA_HOME
 
 
 # Directory where the Tomcat 6 binary distribution resides
-CATALINA_HOME=/opt/regal/fedora/tomcat
+CATALINA_HOME=/opt/regal/bin/fedora/tomcat
  
 # Directory for per-instance configuration files and webapps
 CATALINA_BASE=$CATALINA_HOME

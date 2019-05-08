@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # /etc/init.d/regal-api 
 # Modified by Jan Schnasse schnasse@gmx.de
@@ -25,15 +25,15 @@
 ### END INIT INFO
 # chkconfig: 35 92 25
 set -e
-
+source /opt/regal/conf/variables.conf
 #Variables can be overwritten with $DEFAULT 
 PATH=/bin:/usr/bin:/sbin:/usr/sbin
 NAME=etikett
 DESC="etikett"
 JAVA_HOME=/opt/java
 HOME="/opt/regal/apps/etikett"
-USER="etikett"
-GROUP="etikett"
+USER=$REGAL_USER
+GROUP=$REGAL_GROUP
 SECRET=`uuidgen`
 PORT=9002
 

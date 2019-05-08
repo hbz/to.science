@@ -5,7 +5,7 @@ SCRIPT_DIR=/vagrant
 source $SCRIPT_DIR/variables.conf
 
 function download(){
-	cd $BIN
+	cd $INSTALL_BIN
 	filename=$1
 	url=$2
 	if [ -f $filename ]
@@ -29,11 +29,11 @@ function downloadBinaries(){
 }
 
 function installJava8(){
-cd $BIN
-    if [ -f $BIN/java8.tar.gz ]
+cd $INSTALL_BIN
+    if [ -f $INSTALL_BIN/java8.tar.gz ]
     then
-	tar -xzf $BIN/java8.tar.gz 
-	mv $BIN/jdk* /opt/jdk
+	tar -xzf $INSTALL_BIN/java8.tar.gz 
+	mv $INSTALL_BIN/jdk* /opt/jdk
 	cd /opt/
 	ln -s jdk java
 	sudo update-alternatives --install "/usr/bin/java" "java" "/opt/jdk/bin/java" 1
@@ -46,7 +46,7 @@ cd $BIN
 	sudo update-alternatives --set "javaws" "/opt/jdk/bin/javaws"
 	java -version
     else
-        printf "Please provide a tared Version of a Java 8 jdk under $BIN/jdk8.tar.gz!"
+        printf "Please provide a tared Version of a Java 8 jdk under $INSTALL_BIN/jdk8.tar.gz!"
 	exit 1
     fi
 cd -
@@ -75,7 +75,7 @@ function installPackages(){
     sudo apt-get -y -q install python-pip
     sudo apt-get -y -q install drush
     sudo apt-get -y -q install ant
-    sudo dpkg -i $BIN/elasticsearch-1.1.0.deb 
+    sudo dpkg -i $INSTALL_BIN/elasticsearch-1.1.0.deb 
     sudo update-rc.d elasticsearch defaults 95 10
     cd /usr/share/elasticsearch/
     sudo bin/plugin -install mobz/elasticsearch-head
@@ -84,28 +84,32 @@ function installPackages(){
 } 
 function createRegalFolderLayout(){
     sudo mkdir $ARCHIVE_HOME
-    mkdir  $ARCHIVE_HOME/src
-    mkdir  $ARCHIVE_HOME/apps
-    sudo chown -R vagrant $ARCHIVE_HOME
+    mkdir $ARCHIVE_HOME/src
+    mkdir $ARCHIVE_HOME/apps
+    mkdir $ARCHIVE_HOME/conf
+    mkdir $ARCHIVE_HOME/var
+    mkdir $ARCHIVE_HOME/bin
+    cp $SCRIPT_DIR/variables.conf $ARCHIVE_HOME/conf
+    sudo chown -R $REGAL_USER $ARCHIVE_HOME
 }
 
 function downloadRegalSources(){
     cd $ARCHIVE_HOME/src
     git clone https://github.com/edoweb/regal-api 
-    cp $CONF/application.conf $ARCHIVE_HOME/src/regal-api/conf/application.conf
+    cp $INSTALL_CONF/application.conf $ARCHIVE_HOME/src/regal-api/conf/application.conf
     git clone https://github.com/edoweb/regal-install
     git clone https://github.com/hbz/thumby
     git clone https://github.com/hbz/etikett
     git clone https://github.com/hbz/zettel
     git clone https://github.com/hbz/skos-lookup
+    git clone https://github.com/edoweb/regal-scripts
 }
 
 function installFedora(){
-    $SCRIPTS/configure.sh
+    $INSTALL_SCRIPTS/configure.sh
     export FEDORA_HOME=$ARCHIVE_HOME/fedora
-    java -jar $BIN/fcrepo-installer-3.7.1.jar  $ARCHIVE_HOME/conf/install.properties
+    java -jar $INSTALL_BIN/fcrepo-installer-3.7.1.jar  $ARCHIVE_HOME/conf/install.properties
     cp $ARCHIVE_HOME/conf/fedora-users.xml $ARCHIVE_HOME/fedora/server/config/
-    cp $ARCHIVE_HOME/conf/setenv.sh $ARCHIVE_HOME/fedora/tomcat/bin
     cp $ARCHIVE_HOME/conf/tomcat-users.xml /opt/regal/fedora/tomcat/conf/
 }
 
@@ -114,14 +118,13 @@ function installPlay(){
     then
 	echo "Activator already installed!"
     else
-	unzip $BIN/typesafe-activator-1.3.5.zip -d $ARCHIVE_HOME 
+	unzip $INSTALL_BIN/typesafe-activator-1.3.5.zip -d $ARCHIVE_HOME 
     fi
 }
 
 function postProcess(){
     ln -s  $ARCHIVE_HOME/activator-dist-1.3.5  $ARCHIVE_HOME/activator
-    mv  $ARCHIVE_HOME/proai/  $ARCHIVE_HOME/apps
-    sudo chown -R vagrant $ARCHIVE_HOME
+    sudo chown -R $REGAL_USER $ARCHIVE_HOME
 }
 
 function installRegalModule(){
@@ -165,9 +168,14 @@ function configureRegalModules(){
 }
 
 function configureApache(){
+    sudo a2enmod proxy_mod
+    sudo a2enmod proxy
+    sudo a2enmod rewrite
+    sudo a2enmod proxy_http
     sed -i "1 s|$| api.localhost|" /etc/hosts
     rm /etc/apache2/sites-enabled/000-default.conf
-    cp $CONF/regal.vagrant.conf /etc/apache2/sites-enabled/
+    cp $INSTALL_CONF/regal.apache.conf /etc/apache2/sites-enabled/
+    sudo service apache2 reload
 }
 
 function installProai(){	
@@ -179,7 +187,10 @@ mysql -u root -Bse " CREATE DATABASE proai; CREATE USER 'proai'@'localhost' IDEN
 	git checkout dates;
 	cd $ARCHIVE_HOME/src/oaiprovider
 	git checkout dates;
-	cp $ARCHIVE_HOME/conf/proai.properties $ARCHIVE_HOME/src/oaiprovider/src/config
+        #--------------Adopt new Layout------------------#
+	sed -i 's|/opt/regal|/opt/regal/var|' $ARCHIVE_HOME/conf/proai.properties
+        #------------------------------------------------#
+	cp $ARCHIVE_HOME/conf/proai.properties $ARCHIVE_HOME/src/oaiprovider/src/config  
 	cp $ARCHIVE_HOME/conf/Identify.xml $ARCHIVE_HOME/apps/drupal
 	cd $ARCHIVE_HOME/src/proai
 	ant release
@@ -191,43 +202,39 @@ mysql -u root -Bse " CREATE DATABASE proai; CREATE USER 'proai'@'localhost' IDEN
 
 function installOpenwayback(){
         cd $ARCHIVE_HOME/src/regal-install
-	unzip $BIN/apache-tomcat-8.5.40.zip
-	mv apache-tomcat-8.5.40 $ARCHIVE_HOME
-	ln -sfn $ARCHIVE_HOME/apache-tomcat-8.5.40 $ARCHIVE_HOME/tomcat-for-openwayback
+	unzip $INSTALL_BIN/apache-tomcat-8.5.40.zip
+	mv apache-tomcat-8.5.40 $ARCHIVE_HOME/bin/tomcat-for-openwayback
 	#Configure tomcat
-	cp templates/openwayback-server.xml $ARCHIVE_HOME/tomcat-for-openwayback/conf/server.xml
-	cp templates/setenv.sh $ARCHIVE_HOME/tomcat-for-openwayback/bin
-	rm -rf $ARCHIVE_HOME/tomcat-for-openwayback/webapps/ROOT* 
+	cp $ARCHIVE_HOME/src/regal-install/templates/openwayback-server.xml $ARCHIVE_HOME/bin/tomcat-for-openwayback/conf/server.xml
+	rm -rf $ARCHIVE_HOME/bin/tomcat-for-openwayback/webapps/ROOT* 
 	#Get openwayback code
-	cd $ARCHIVE_HOME
+	cd $ARCHIVE_HOME/src
 	git clone https://github.com/iipc/openwayback.git
 	cd -
-	cd $ARCHIVE_HOME/openwayback
+	cd $ARCHIVE_HOME/src/openwayback
 	#Check out tag
 	git checkout tags/openwayback-2.2.0
 	#Build openwayback
 	mvn package -DskipTests
 	#Copy build to tomcat
-	cp wayback-webapp/target/openwayback-2.2.0.war $ARCHIVE_HOME/tomcat-for-openwayback/webapps/ROOT.war
+	cp wayback-webapp/target/openwayback-2.2.0.war $ARCHIVE_HOME/bin/tomcat-for-openwayback/webapps/ROOT.war
 	#start tomcat
-	chmod u+x $ARCHIVE_HOME/tomcat-for-openwayback/bin/*.sh
-	$ARCHIVE_HOME/tomcat-for-openwayback/bin/startup.sh
+	chmod u+x $ARCHIVE_HOME/bin/tomcat-for-openwayback/bin/*.sh
+	$ARCHIVE_HOME/bin/tomcat-for-openwayback/bin/startup.sh
 	cd -
 	#copy openwayback config
 	sleep 5
-	cp templates/wayback.xml $ARCHIVE_HOME/tomcat-for-openwayback/webapps/ROOT/WEB-INF/
-	cp templates/BDBCollection.xml $ARCHIVE_HOME/tomcat-for-openwayback/webapps/ROOT/WEB-INF/
-	cp templates/CDXCollection.xml $ARCHIVE_HOME/tomcat-for-openwayback/webapps/ROOT/WEB-INF/
+	cp $ARCHIVE_HOME/src/regal-install/templates/wayback.xml $ARCHIVE_HOME/bin/tomcat-for-openwayback/webapps/ROOT/WEB-INF/
+	cp $ARCHIVE_HOME/src/regal-install/templates/BDBCollection.xml $ARCHIVE_HOME/bin/tomcat-for-openwayback/webapps/ROOT/WEB-INF/
+	cp $ARCHIVE_HOME/src/regal-install/templates/CDXCollection.xml $ARCHIVE_HOME/bin/tomcat-for-openwayback/webapps/ROOT/WEB-INF/
 	#stop tomcat
-	$ARCHIVE_HOME/tomcat-for-openwayback/bin/shutdown.sh
-
+	$ARCHIVE_HOME/bin/tomcat-for-openwayback/bin/shutdown.sh
 }
 
 function installHeritrix(){
 	echo "installHeritrix() not implemented yet!"
-	unzip $BIN/heritrix-3.1.1-dist.zip
-	mv heritrix-3.1.1 $ARCHIVE_HOME/
-	ln -s $ARCHIVE_HOME/heritrix-3.1.1 $ARCHIVE_HOME/heritrix
+	unzip $INSTALL_BIN/heritrix-3.1.1-dist.zip
+	mv heritrix-3.1.1 $ARCHIVE_HOME/bin/heritrix
 }
 
 function installDeepzoomer(){
@@ -238,10 +245,10 @@ function installWpull(){
 	#https://blog.teststation.org/centos/python/2016/05/11/installing-python-virtualenv-centos-7/
 	sudo pip install -U pip
 	sudo pip install -U virtualenv
-	sudo virtualenv -p /usr/bin/python3 /opt/regal/python3
-	sudo /opt/regal/python3/bin/pip3 install tornado==4.5.3
-	sudo /opt/regal/python3/bin/pip3 install html5lib==0.9999999
-	sudo /opt/regal/python3/bin/pip3 install wpull
+	sudo virtualenv -p /usr/bin/python3 /opt/regal/bin/python3
+	sudo /opt/regal/bin/python3/bin/pip3 install tornado==4.5.3
+	sudo /opt/regal/bin/python3/bin/pip3 install html5lib==0.9999999
+	sudo /opt/regal/bin/python3/bin/pip3 install wpull
 }
 
 function installDrush(){
@@ -252,38 +259,38 @@ function installDrush(){
 }
 
 function installDrupal(){
-	mysql -u root < $CONF/drupal-db.sql
+	mysql -u root < $INSTALL_CONF/drupal-db.sql
 
 	mysql -u root -Bse "CREATE USER drupal IDENTIFIED BY 'admin';GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, LOCK TABLES, CREATE TEMPORARY TABLES ON drupal.* TO 'drupal'@'localhost' IDENTIFIED BY 'admin';"
 	
         
 	cd $ARCHIVE_HOME	
-	tar -xzf $BIN/drupal-7.36.tar.gz
-	ln -s drupal-7.36 $ARCHIVE_HOME/drupal
-	chmod a+w $ARCHIVE_HOME/drupal/sites/default
-	cp /vagrant/settings.php  $ARCHIVE_HOME/drupal/sites/default/settings.php
-	mkdir $ARCHIVE_HOME/drupal/sites/default/files	
-        chmod o+w $ARCHIVE_HOME/drupal/sites/default/files
-	chcon -R -t httpd_sys_content_rw_t $ARCHIVE_HOME/drupal/sites/default/files/
-        chcon -R -t httpd_sys_content_rw_t $ARCHIVE_HOME/drupal/sites/default/settings.php
+	tar -xzf $INSTALL_BIN/drupal-7.36.tar.gz
+	ln -s drupal-7.36 $ARCHIVE_HOME/var/drupal
+	chmod a+w $ARCHIVE_HOME/var/drupal/sites/default
+	cp $INSTALL_CONF/settings.php  $ARCHIVE_HOME/var/drupal/sites/default/settings.php
+	mkdir $ARCHIVE_HOME/var/drupal/sites/default/files	
+        chmod o+w $ARCHIVE_HOME/var/drupal/sites/default/files
+	chcon -R -t httpd_sys_content_rw_t $ARCHIVE_HOME/var/drupal/sites/default/files/
+        chcon -R -t httpd_sys_content_rw_t $ARCHIVE_HOME/var/drupal/sites/default/settings.php
 	sudo setsebool -P httpd_can_sendmail on
-	sudo chmod 755 $ARCHIVE_HOME/drupal/sites/default
-	sudo chmod 755 $ARCHIVE_HOME/drupal/sites/default/settings.php
+	sudo chmod 755 $ARCHIVE_HOME/var/drupal/sites/default
+	sudo chmod 755 $ARCHIVE_HOME/var/drupal/sites/default/settings.php
 }
 
 function installRegalDrupal(){
-	cd $ARCHIVE_HOME/drupal/sites/all/modules
+	cd $ARCHIVE_HOME/var/drupal/sites/all/modules
 	git clone https://github.com/edoweb/regal-drupal.git
 	cd regal-drupal
 	git submodule update --init
-	cd $ARCHIVE_HOME/drupal/sites/all/modules
+	cd $ARCHIVE_HOME/var/drupal/sites/all/modules
 	curl https://ftp.drupal.org/files/projects/entity-7.x-1.1.tar.gz | tar xz
 	curl https://ftp.drupal.org/files/projects/entity_js-7.x-1.0-alpha3.tar.gz | tar xz
 	curl https://ftp.drupal.org/files/projects/ctools-7.x-1.3.tar.gz | tar xz
 }
 
 function installDrupalThemes(){
-	cd $ARCHIVE_HOME/drupal/sites/all/themes
+	cd $ARCHIVE_HOME/var/drupal/sites/all/themes
 	git clone https://github.com/edoweb/edoweb-drupal-theme.git
 	git clone https://github.com/edoweb/zbmed-drupal-theme.git
 }
@@ -298,7 +305,7 @@ function configureDrupal(){
 
 
 function createStartStopScripts(){
-	cp /vagrant/init.d/* /etc/init.d
+	cp $SCRIPT_DIR/init.d/* /etc/init.d
 	sudo service tomcat6 start;
 	sudo service elasticsearch start;
 	sudo service etikett start;
@@ -308,7 +315,6 @@ function createStartStopScripts(){
 	sudo service tomcat-for-openwayback start;
 	sudo service tomcat-for-deepzoom start;
 	sudo service regal-api start;
-	
 }
 
 function defineBootShutdownSequence(){
@@ -330,6 +336,15 @@ function configureMonit(){
 
 function configureFirewall(){
 	echo "configureFirewall() not implemented yet!"
+	#ufw allow http
+	#ufw allow https
+	#ufw allow ssh
+	#ufw enable
+	#ufw status
+}
+
+function configureElasticsearch(){
+	cp -f $ARCHIVE_HOME/conf/elasticsearch.yml /etc/elasticsearch
 }
 
 function initialize(){
@@ -341,6 +356,13 @@ function initialize(){
 	curl -uedoweb-admin:admin -F"data=@ARCHIVE_HOME/src/regal-api/test/resources/test.pdf;type=application/pdf" -XPUT http://api.localhost/resource/danrw:1235/data
 	curl -uedoweb-admin:admin -XPOST "http://api.localhost/utils/lobidify/danrw:1234?alephid=HT018920238"
 }
+
+
+function serverInstallation(){
+    cp $ARCHIVE_HOME/src/regal-install/templates/setenv.sh $ARCHIVE_HOME/bin/tomcat-for-openwayback/bin
+    cp $ARCHIVE_HOME/conf/setenv.sh $ARCHIVE_HOME/fedora/tomcat/bin   
+}
+
 
 function main(){
 echo "Start Regal installation!"
@@ -369,9 +391,11 @@ echo "Start Regal installation!"
 	configureApache
 	configureMonit
 	configureFirewall
-	sudo chown -R vagrant $ARCHIVE_HOME
+        configureElasticsearch
+	sudo chown -R $REGAL_USER $ARCHIVE_HOME
 	createStartStopScripts
 	defineBootShutdownSequence
+        #serverInstallation
 	sleep 20
 	initialize
 }
