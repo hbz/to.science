@@ -968,6 +968,14 @@ Diese Dokumentation ist mit asciidoc geschrieben und wurde mit asciidoctor in HT
 asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.txt
 ....
 
+License
+-------
+
+image::https://i.creativecommons.org/l/by-nc/4.0/88x31.png[link="http://creativecommons.org/licenses/by-nc/4.0/"]
+
+This work is licensed under a <http://creativecommons.org/licenses/by-nc/4.0/>[Creative Commons Attribution-NonCommercial 4.0 International License].
+
+
 Links
 -----
 
