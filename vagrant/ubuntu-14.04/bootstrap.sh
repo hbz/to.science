@@ -448,6 +448,7 @@ echo "Start Regal installation!"
 	installPackages
 	createRegalFolderLayout
 	downloadRegalSources
+        cp $INSTALL_CONF/install.properties $ARCHIVE_HOME/src/regal-install/templates
         createConfigFiles
 	installFedora
 	installPlay
