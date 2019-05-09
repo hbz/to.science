@@ -183,10 +183,10 @@ function createConfigFiles(){
 }
 
 function installFedora(){
-    export FEDORA_HOME=$ARCHIVE_HOME/fedora
+    export FEDORA_HOME=$ARCHIVE_HOME/bin/fedora
     java -jar $INSTALL_BIN/fcrepo-installer-3.7.1.jar  $ARCHIVE_HOME/conf/install.properties
-    cp $ARCHIVE_HOME/conf/fedora-users.xml $ARCHIVE_HOME/fedora/server/config/
-    cp $ARCHIVE_HOME/conf/tomcat-users.xml /opt/regal/fedora/tomcat/conf/
+    cp $ARCHIVE_HOME/conf/fedora-users.xml $ARCHIVE_HOME/bin/fedora/server/config/
+    cp $ARCHIVE_HOME/conf/tomcat-users.xml $ARCHIVE_HOME/bin/fedora/tomcat/conf/
 }
 
 function installPlay(){  
