@@ -712,14 +712,14 @@ Server
 Die Installation auf einem Server kann mit Hilfe des mitgelieferten Skriptes erfolgen.
 
 Hardware Empfehlung
-~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^
 
 - hdd >500GB
 - cpu 8 core
 - ram 32 G
 
 Unterschiede zur Vagrant Installation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Auf dem Server empfehlen ich den fedora tomcat mit erweiterten Speichereinstellungen zu betreiben.
 
