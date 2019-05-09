@@ -775,27 +775,31 @@ b.conum * { color: inherit !important; }
 <ul class="sectlevel2">
 <li><a href="#_vagrant">4.1. Vagrant</a></li>
 <li><a href="#_server">4.2. Server</a></li>
+<li><a href="#_hardware_empfehlung">4.3. Hardware Empfehlung</a></li>
+<li><a href="#_unterschiede_zur_vagrant_installation">4.4. Unterschiede zur Vagrant Installation</a></li>
 </ul>
 </li>
 <li><a href="#_administration">5. Administration</a></li>
 <li>
 <ul class="sectlevel2">
 <li><a href="#_aktualisierung">5.1. Aktualisierung</a></li>
-<li><a href="#_ports">5.2. Ports</a></li>
-<li><a href="#_logs">5.3. Logs</a></li>
-<li><a href="#_configs">5.4. Configs</a></li>
-<li><a href="#_apache2">5.5. Apache2</a></li>
-<li><a href="#_matomo">5.6. Matomo</a></li>
-<li><a href="#_monit">5.7. Monit</a></li>
-<li><a href="#_scripts_und_cronjobs">5.8. Scripts und Cronjobs</a></li>
+<li><a href="#_verzeichnisse">5.2. Verzeichnisse</a></li>
+<li><a href="#_ports">5.3. Ports</a></li>
+<li><a href="#_logs">5.4. Logs</a></li>
+<li><a href="#_configs">5.5. Configs</a></li>
+<li><a href="#_apache2">5.6. Apache2</a></li>
+<li><a href="#_matomo">5.7. Matomo</a></li>
+<li><a href="#_monit">5.8. Monit</a></li>
+<li><a href="#_scripts_und_cronjobs">5.9. Scripts und Cronjobs</a></li>
 </ul>
 </li>
-<li><a href="#_links">6. Links</a></li>
+<li><a href="#_dokumentation">6. Dokumentation</a></li>
+<li><a href="#_links">7. Links</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#_slides">6.1. Slides</a></li>
-<li><a href="#_wiki">6.2. Wiki</a></li>
-<li><a href="#_github">6.3. Github</a></li>
+<li><a href="#_slides">7.1. Slides</a></li>
+<li><a href="#_wiki">7.2. Wiki</a></li>
+<li><a href="#_github">7.3. Github</a></li>
 </ul>
 </li>
 </ul>
@@ -811,6 +815,9 @@ b.conum * { color: inherit !important; }
 <div class="content">
 <div class="paragraph">
 <p>Dieses Dokument kommt zusammen mit einem <a href="https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04">Vagrantfile</a> und beschreibt eine typische Installation von Regal. Unter <a href="#_vagrant">Vagrant</a> findet sich eine Anleitung zur Installation in einer Virtualbox.</p>
+</div>
+<div class="paragraph">
+<p>Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt <a href="#_dokumentation">Dokumentation</a></p>
 </div>
 </div>
 </div>
@@ -2251,20 +2258,159 @@ Servlet 2.5</p>
 <div class="sect2">
 <h3 id="_vagrant">4.1. Vagrant</h3>
 <div class="paragraph">
-<p>Im folgenden wird eine prototypische Installation der Regal Komponenten vorgestellt. Die Installation kann mit Hilfe eines Vagrantskriptes, das eine</p>
+<p>Zur Veranschaulichung dieser Dokumentation wird ein Vagrant-Skript angeboten, mit dem eine Regal-Installation innerhalb eines VirtualBox-Images erzeugt werden kann.</p>
 </div>
 <div class="paragraph">
-<p>Ubuntu 14.04</p>
+<p>Zur Installation kannst Du folgende Schritte ausführen. Die Kommandos beziehen sich auf die Installation auf einem Ubuntu-System. Für andere Betriebssyteme ist die Installation ähnlich.</p>
 </div>
 <div class="paragraph">
-<p>Aufbau und</p>
+<p>Die VirtualBox hat folgendes Setup</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>hdd 40GB</p>
+</li>
+<li>
+<p>cpu 2core</p>
+</li>
+<li>
+<p>ram 2048G</p>
+</li>
+</ul>
+</div>
+<div class="sect3">
+<h4 id="_virtualbox_installieren">4.1.1. VirtualBox installieren</h4>
+<div class="literalblock">
+<div class="content">
+<pre>sudo apt-get install virtualbox</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_vagrant_installieren">4.1.2. Vagrant installieren</h4>
+<div class="literalblock">
+<div class="content">
+<pre>cd /tmp
+wget https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.deb
+sudo dpkg -i vagrant_2.2.3_x86_64.deb</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_repository_herunterladen">4.1.3. Repository herunterladen</h4>
+<div class="literalblock">
+<div class="content">
+<pre>git clone https://github.com/jschnasse/Regal
+cd Regal/vagrant/ubuntu-14.04</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_eine_jdk8_bereitstellen">4.1.4. Eine JDK8 bereitstellen</h4>
+<div class="paragraph">
+<p>Hierfür bitte ein JDK8-Tarball herunterladen und unter dem Namen <code>java8.tar.gz</code> in einem Verzeichnis <code>/bin</code> unterhalb des Vagrant-Directories bereitstellen.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>mkdir bin
+mv ~/downloads/jdk.... bin/java8.tar.gz</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_geteiltes_entwicklungsverzeichnis">4.1.5. Geteiltes Entwicklungsverzeichnis</h4>
+<div class="literalblock">
+<div class="content">
+<pre>mkdir ~/regal-dev</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_vagrant_guest_additions_installieren">4.1.6. Vagrant Guest Additions installieren</h4>
+<div class="literalblock">
+<div class="content">
+<pre>vagrant plugin install vagrant-vbguest &amp;&amp; vagrant reload</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_vagrant_starten">4.1.7. Vagrant starten</h4>
+<div class="literalblock">
+<div class="content">
+<pre>vagrant up</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_auf_der_maschine_einloggen">4.1.8. Auf der Maschine einloggen</h4>
+<div class="literalblock">
+<div class="content">
+<pre>vagrant ssh</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_server">4.2. Server</h3>
 <div class="paragraph">
-<p>Die Installation erfolgt unter <code>/opt/regal</code> mit einem Benutzer <code>regal:regal</code>.</p>
+<p>Die Installation auf einem Server kann mit Hilfe des mitgelieferten Skriptes erfolgen.</p>
 </div>
+</div>
+<div class="sect2">
+<h3 id="_hardware_empfehlung">4.3. Hardware Empfehlung</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>hdd &gt;500GB</p>
+</li>
+<li>
+<p>cpu 8 core</p>
+</li>
+<li>
+<p>ram 32 G</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_unterschiede_zur_vagrant_installation">4.4. Unterschiede zur Vagrant Installation</h3>
+<div class="paragraph">
+<p>Auf dem Server empfehlen ich den fedora tomcat mit erweiterten Speichereinstellungen zu betreiben.</p>
+</div>
+<div class="paragraph">
+<p>Dazu in <code>/opt/regal/bin/fedora/tomcat/bin</code> eine <code>setenv.sh</code> anlegen und folgende Zeilen hinein kopieren.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>CATALINA_OPTS=" \
+-Xms1536m \
+-Xmx1536m \
+-XX:NewSize=256m \
+-XX:MaxNewSize=256m \
+-XX:PermSize=256m \
+-XX:MaxPermSize=256m \
+-server \
+-Djava.awt.headless=true \
+-Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true"
+
+export CATALINA_OPTS</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_administration">5. Administration</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_aktualisierung">5.1. Aktualisierung</h3>
+<div class="paragraph">
+<p>Die Aktualisierung der Regal-Komponenten erfolgt</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_verzeichnisse">5.2. Verzeichnisse</h3>
 <table class="tableblock frame-all grid-all" style="">
 <caption class="title">Table 20. Verzeichnisstruktur</caption>
 <colgroup>
@@ -2286,19 +2432,8 @@ Servlet 2.5</p>
 </table>
 
 </div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_administration">5. Administration</h2>
-<div class="sectionbody">
 <div class="sect2">
-<h3 id="_aktualisierung">5.1. Aktualisierung</h3>
-<div class="paragraph">
-<p>Die Aktualisierung der Regal-Komponenten erfolgt</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_ports">5.2. Ports</h3>
+<h3 id="_ports">5.3. Ports</h3>
 <table class="tableblock frame-all grid-all" style="">
 <caption class="title">Table 21. Ports und Komponenten (typische Belegung)</caption>
 <colgroup>
@@ -2353,7 +2488,7 @@ Servlet 2.5</p>
 
 </div>
 <div class="sect2">
-<h3 id="_logs">5.3. Logs</h3>
+<h3 id="_logs">5.4. Logs</h3>
 <table class="tableblock frame-all grid-all" style="">
 <caption class="title">Table 22. Logfiles</caption>
 <colgroup>
@@ -2408,7 +2543,7 @@ Servlet 2.5</p>
 
 </div>
 <div class="sect2">
-<h3 id="_configs">5.4. Configs</h3>
+<h3 id="_configs">5.5. Configs</h3>
 <table class="tableblock frame-all grid-all" style="">
 <caption class="title">Table 23. Configfiles</caption>
 <colgroup>
@@ -2467,7 +2602,7 @@ Servlet 2.5</p>
 
 </div>
 <div class="sect2">
-<h3 id="_apache2">5.5. Apache2</h3>
+<h3 id="_apache2">5.6. Apache2</h3>
 <table class="tableblock frame-all grid-all" style="">
 <caption class="title">Table 24. Frontend Pfade</caption>
 <colgroup>
@@ -2601,14 +2736,14 @@ Servlet 2.5</p>
 
 </div>
 <div class="sect2">
-<h3 id="_matomo">5.6. Matomo</h3>
+<h3 id="_matomo">5.7. Matomo</h3>
 <div class="paragraph">
 <p>Matomo wird einmal täglich per Cronjob mit Apache-Logfiles befüllt. Dabei erfolgt eine Anonymisierung. Die Logfiles verbleiben noch sieben
 Tage auf dem Server und werden dann annoynmisiert.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_monit">5.7. Monit</h3>
+<h3 id="_monit">5.8. Monit</h3>
 <div class="paragraph">
 <p>Das Tool Monit erlaubt es, den Status der Regal-Komponenten zu überwachen und Dienste ggfl. neu zu starten. Folgende Einträge können in /etc/monit/monitrc vorgenommen werden</p>
 </div>
@@ -2645,7 +2780,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 </div>
 <div class="sect2">
-<h3 id="_scripts_und_cronjobs">5.8. Scripts und Cronjobs</h3>
+<h3 id="_scripts_und_cronjobs">5.9. Scripts und Cronjobs</h3>
 <div class="paragraph">
 <p>Für das Funktionieren von Regal sind einige regal-scripts sinnvoll. Die Skripte sind sämtlich unter Github zu finden.</p>
 </div>
@@ -2653,7 +2788,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 <p><a href="https://github.com/edoweb/regal-scripts">https://github.com/edoweb/regal-scripts</a></p>
 </div>
 <div class="sect3">
-<h4 id="_oai_providing_2">5.8.1. OAI-Providing</h4>
+<h4 id="_oai_providing_2">5.9.1. OAI-Providing</h4>
 <div class="literalblock">
 <div class="content">
 <pre>0 2 * * * /opt/regal/src/regal-scripts/turnOnOaiPmhPolling.sh
@@ -2662,7 +2797,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 </div>
 <div class="sect3">
-<h4 id="_urn_registrierung">5.8.2. URN-Registrierung</h4>
+<h4 id="_urn_registrierung">5.9.2. URN-Registrierung</h4>
 <div class="literalblock">
 <div class="content">
 <pre>05 7 * * * /opt/regal/src/regal-scripts/ks.register_urn.sh control  &gt;&gt; /opt/regal/regal-scripts/log/ks.control_urn_vergabe.log
@@ -2672,7 +2807,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 </div>
 <div class="sect3">
-<h4 id="_katalog_aktualisierung">5.8.3. Katalog-Aktualisierung</h4>
+<h4 id="_katalog_aktualisierung">5.9.3. Katalog-Aktualisierung</h4>
 <div class="literalblock">
 <div class="content">
 <pre>0 5 * * * /opt/regal/src/regal-scripts/updateAll.sh &gt; /dev/null</pre>
@@ -2680,7 +2815,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 </div>
 <div class="sect3">
-<h4 id="_matomo_2">5.8.4. Matomo</h4>
+<h4 id="_matomo_2">5.9.4. Matomo</h4>
 <div class="literalblock">
 <div class="content">
 <pre>0 1 * * * /opt/regal/regal-scripts/import-logfiles.sh &gt;/dev/null</pre>
@@ -2688,7 +2823,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 </div>
 <div class="sect3">
-<h4 id="_webgatherer">5.8.5. Webgatherer</h4>
+<h4 id="_webgatherer">5.9.5. Webgatherer</h4>
 <div class="literalblock">
 <div class="content">
 <pre>0 20 * * * /opt/regal/src/regal-scripts/runGatherer.sh &gt;&gt; /opt/regal/regal-scripts/log/runGatherer.log
@@ -2700,7 +2835,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 </div>
 <div class="sect3">
-<h4 id="_logfileanonymisierung">5.8.6. Logfileanonymisierung</h4>
+<h4 id="_logfileanonymisierung">5.9.6. Logfileanonymisierung</h4>
 <div class="literalblock">
 <div class="content">
 <pre>0 2 * * * /opt/regal/src/regal-scripts/depersonalize-apache-logs.sh</pre>
@@ -2708,7 +2843,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 </div>
 <div class="sect3">
-<h4 id="_backup">5.8.7. Backup</h4>
+<h4 id="_backup">5.9.7. Backup</h4>
 <div class="paragraph">
 <p>MySQL und Elasticsearch</p>
 </div>
@@ -2725,10 +2860,23 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 </div>
 <div class="sect1">
-<h2 id="_links">6. Links</h2>
+<h2 id="_dokumentation">6. Dokumentation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Diese Dokumentation ist mit asciidoc geschrieben und wurde mit asciidoctor in HTML übersetzt. Dazur wurde das foundation.css Stylesheet aus dem asciidoctor-stylesheet-factory Repository verwendet.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.txt</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_links">7. Links</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_slides">6.1. Slides</h3>
+<h3 id="_slides">7.1. Slides</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2744,7 +2892,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 </div>
 <div class="sect2">
-<h3 id="_wiki">6.2. Wiki</h3>
+<h3 id="_wiki">7.2. Wiki</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2754,7 +2902,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 </div>
 <div class="sect2">
-<h3 id="_github">6.3. Github</h3>
+<h3 id="_github">7.3. Github</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -2774,7 +2922,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-09 14:58:23 CEST
+Last updated 2019-05-09 17:24:37 CEST
 </div>
 </div>
 </body>

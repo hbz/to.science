@@ -11,6 +11,8 @@ Jan Schnasse
 ***********************************
 Dieses Dokument kommt zusammen mit einem <https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04>[Vagrantfile] und beschreibt eine typische Installation von Regal. Unter <<_vagrant>> findet sich eine Anleitung zur Installation in einer Virtualbox. 
 
+Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt <<_dokumentation>>
+
 ***********************************
 
 Einleitung
@@ -637,23 +639,107 @@ Installation
 Vagrant
 ~~~~~~~
 
-Im folgenden wird eine prototypische Installation der Regal Komponenten vorgestellt. Die Installation kann mit Hilfe eines Vagrantskriptes, das eine 
+Zur Veranschaulichung dieser Dokumentation wird ein Vagrant-Skript angeboten, mit dem eine Regal-Installation innerhalb eines VirtualBox-Images erzeugt werden kann.
 
-Ubuntu 14.04
+Zur Installation kannst Du folgende Schritte ausführen. Die Kommandos beziehen sich auf die Installation auf einem Ubuntu-System. Für andere Betriebssyteme ist die Installation ähnlich.
+
+Die VirtualBox hat folgendes Setup
+
+- hdd 40GB
+- cpu 2core
+- ram 2048G 
+
+VirtualBox installieren
+^^^^^^^^^^^^^^^^^^^^^^^
+....
+sudo apt-get install virtualbox
+....
+
+Vagrant installieren
+^^^^^^^^^^^^^^^^^^^^
+....
+cd /tmp
+wget https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.deb
+sudo dpkg -i vagrant_2.2.3_x86_64.deb
+....
+
+Repository herunterladen
+^^^^^^^^^^^^^^^^^^^^^^^^
+....
+git clone https://github.com/jschnasse/Regal
+cd Regal/vagrant/ubuntu-14.04
+....
 
 
-Aufbau und
+Eine JDK8 bereitstellen
+^^^^^^^^^^^^^^^^^^^^^^^
+Hierfür bitte ein JDK8-Tarball herunterladen und unter dem Namen `java8.tar.gz` in einem Verzeichnis `/bin` unterhalb des Vagrant-Directories bereitstellen.
+
+....
+mkdir bin
+mv ~/downloads/jdk.... bin/java8.tar.gz
+....
+
+Geteiltes Entwicklungsverzeichnis
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+....
+mkdir ~/regal-dev
+....
+
+Vagrant Guest Additions installieren
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+....
+vagrant plugin install vagrant-vbguest && vagrant reload
+....
+
+Vagrant starten
+^^^^^^^^^^^^^^^
+....
+vagrant up
+....
+
+Auf der Maschine einloggen
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+....
+vagrant ssh
+....
+
 
 Server
 ~~~~~~
-Die Installation erfolgt unter `/opt/regal` mit einem Benutzer `regal:regal`. 
 
-.Verzeichnisstruktur
-[options="header,autowidth"]
-|===================================================================
-|Verzeichnis | Beschreibung
-| /opt/regal |
-|===================================================================
+Die Installation auf einem Server kann mit Hilfe des mitgelieferten Skriptes erfolgen.
+
+Hardware Empfehlung
+~~~~~~~~~~~~~~~~~~~
+
+- hdd >500GB
+- cpu 8 core
+- ram 32 G
+
+Unterschiede zur Vagrant Installation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Auf dem Server empfehlen ich den fedora tomcat mit erweiterten Speichereinstellungen zu betreiben.
+
+Dazu in `/opt/regal/bin/fedora/tomcat/bin` eine `setenv.sh` anlegen und folgende Zeilen hinein kopieren.
+
+....
+CATALINA_OPTS=" \
+-Xms1536m \
+-Xmx1536m \
+-XX:NewSize=256m \
+-XX:MaxNewSize=256m \
+-XX:PermSize=256m \
+-XX:MaxPermSize=256m \
+-server \
+-Djava.awt.headless=true \
+-Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true"
+
+export CATALINA_OPTS
+....
+
 
 Administration
 --------------
@@ -663,6 +749,14 @@ Aktualisierung
 
 Die Aktualisierung der Regal-Komponenten erfolgt
 
+Verzeichnisse
+~~~~~~~~~~~~~
+.Verzeichnisstruktur
+[options="header,autowidth"]
+|===================================================================
+|Verzeichnis | Beschreibung
+| /opt/regal |
+|===================================================================
 
 Ports
 ~~~~~
@@ -864,6 +958,14 @@ MySQL und Elasticsearch
 30 2 * * * /opt/regal/src/regal-scripts/backup-es.sh -b >> /opt/regal/logs/backup-es.log 2>&1
 0 2 * * * /opt/regal/src/regal-scripts/backup-db.sh -c >> /opt/regal/logs/backup-db.log 2>&1
 30 2 * * * /opt/regal/src/regal-scripts/backup-db.sh -b >> /opt/regal/logs/backup-db.log 2>&1
+....
+
+Dokumentation
+-------------
+Diese Dokumentation ist mit asciidoc geschrieben und wurde mit asciidoctor in HTML übersetzt. Dazur wurde das foundation.css Stylesheet aus dem asciidoctor-stylesheet-factory Repository verwendet.
+
+....
+asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.txt
 ....
 
 Links
