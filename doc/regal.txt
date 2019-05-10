@@ -9,7 +9,7 @@ Jan Schnasse
 
 Über dieses Dokument
 ***********************************
-Dieses Dokument kommt zusammen mit einem <https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04>[Vagrantfile] und beschreibt eine typische Installation von Regal. Unter <<_vagrant>> findet sich eine Anleitung zur Installation in einer Virtualbox. 
+Dieses Dokument kommt zusammen mit einem https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04[Vagrantfile] und beschreibt eine typische Installation von Regal. Unter <<_vagrant>> findet sich eine Anleitung zur Installation in einer Virtualbox. 
 
 Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt <<_dokumentation>>
 
@@ -37,7 +37,7 @@ Für die Webarchivierung kommen außerdem Openwayback, Heritrix und WPull zum Ei
 
 Regal ist ein mehrkomponentiges System. Einzelne Komponenten sind als Webservices realisiert und kommunizieren über HTTP-APIs miteinander. Derzeit sind folgende Komponenten im Einsatz
 
-- https://github.com/edoweb/regal-api[regal_api]
+- https://github.com/edoweb/regal-api[regal-api]
 - https://github.com/hbz/etikett[etikett]
 - https://github.com/hbz/zettel[zettel]
 - https://github.com/hbz/skos-lookup[skos-lookup]
@@ -45,7 +45,7 @@ Regal ist ein mehrkomponentiges System. Einzelne Komponenten sind als Webservice
 - https://github.com/hbz/DeepZoomService/[deepzoomer]
 - https://github.com/edoweb/regal-drupal[regal-drupal]
 
-Themes
+Drupal Themes
 
 - https://github.com/edoweb/zbmed-drupal-theme[zbmed-drupal-theme]
 - https://github.com/edoweb/edoweb-drupal-theme[edoweb-drupal-theme]
@@ -245,7 +245,7 @@ Die Benutzerverwaltung von Regal findet innerhalb von Drupal statt. Zwar können
 
 Drupal
 ^^^^^^
-Benutzer in Drupal können über das Modul [regal-drupal] unterschiedliche Rollen zugewiesen werden. Die Authorisierung erfolgt passwortbasiert. Alle Drupal-Benutzer greifen über einen vokonfigurierten Accessor auf die <<_regal_api_2>> zu. Alle Zugriffe erfolgen verschlüsselt unter Angabe eines Passwortes. Die Rolle mit deren Berechtigungen zugegriffen wird, wird dabei in [regal-drupal] gesetzt. Die Drupal-BenutzerId wird als Metadatum in Form eines proprietären HTTP-Headers mit an <<_regal_api_2>> geliefert.
+Benutzer in Drupal können über das Modul <<regal_drupal>> unterschiedliche Rollen zugewiesen werden. Die Authorisierung erfolgt passwortbasiert. Alle Drupal-Benutzer greifen über einen vokonfigurierten Accessor auf die <<_regal_api_2>> zu. Alle Zugriffe erfolgen verschlüsselt unter Angabe eines Passwortes. Die Rolle mit deren Berechtigungen zugegriffen wird, wird dabei in <<regal_drupal>> gesetzt. Die Drupal-BenutzerId wird als Metadatum in Form eines proprietären HTTP-Headers mit an <<_regal_api_2>> geliefert.
 
 Regal-Api
 ^^^^^^^^^
@@ -626,7 +626,7 @@ MySQL wir von Fedora, regal-api und etikett verwendet.
 Elasticsearch 1.1
 ~~~~~~~~~~~~~~~~~
 
-Elasticsearch ist eine Suchmaschine und wird von <<_regal_api_2>> verwendet. Auch [regal-drupal] greift auf den Index zu. 
+Elasticsearch ist eine Suchmaschine und wird von <<_regal_api_2>> verwendet. Auch <<regal_drupal>> greift auf den Index zu. 
 
 Drupal 7
 ~~~~~~~~
@@ -747,7 +747,30 @@ Administration
 Aktualisierung
 ~~~~~~~~~~~~~~
 
-Die Aktualisierung der Regal-Komponenten erfolgt
+Play-Applikationen
+^^^^^^^^^^^^^^^^^^
+
+Die Aktualisierung der Regal-Komponenten erfolgt über Skripte. Die Aktualisierung funktioniert dabei so, dass der Quellcode der zu aktualisierenden Komponente unter `/opt/regal/src` per `git` auf den entsprechenden Branch gestellt wird. Danach wird ein neues Kompilat der Komponente erzeugt. Die aktuelle Konfiguration wird aus `/opt/regal/conf` genommen und es wird unter `/opt/regal/apps` eine neue lauffähige Version abgelegt.
+
+Neue Versionen werden immer parallel zu alten Versionen gestartet und über einen Wechsel der Apachekonfiguration aktiviert. Erst danach wird die alte Version heruntergefahren.
+
+Der komplette Aktualisierungsprozess erfolgt automatisch. Die alte Version bleibt immer auf dem Server liegen, so dass bei Bedarf wieder zurück gewechselt werden kann.
+
+Tomcat-Applikation
+^^^^^^^^^^^^^^^^^^
+
+Es wird ein `war`-Container erzeugt und im Tomcat `hot`-deployed.
+
+Drupal-Module
+^^^^^^^^^^^^^
+
+Beinhaltet die Akutalisierung ein Datenbankupdate, so wird Drupal erst in den Wartungszustand versetzt (per drush oder über die Oberfläche). Danach wird die aktualisierte Version einfach per Git geholt. Bei Datenbankupdates wird noch ein Drupal-Updateskript ausgeführt.
+
+Speicherschicht
+^^^^^^^^^^^^^^^
+
+Aktualisierungen von MySQL, Elasticsearch und Fedora gehen mit einer Downtime einher.
+
 
 Verzeichnisse
 ~~~~~~~~~~~~~
@@ -755,7 +778,13 @@ Verzeichnisse
 [options="header,autowidth"]
 |===================================================================
 |Verzeichnis | Beschreibung
-| /opt/regal |
+| /opt/regal | Außer Apache2, Elasticsearch und MySQL befinden sich alle Regal-Komponenten unter diesem Verzeichnis.
+| /opt/regal/apps| Die auf `Play` beruhenden Komponenten:  `etikett  fedora  regal-api  skos-lookup  thumby  zettel`
+| /opt/regal/bin| Fremdpakete wie activator, fedora, heritrix, python - weitere tomcats.
+| /opt/regal/conf| Die variables.conf und die application.conf wird von verschiedenen Komponenten verwendet.
+| /opt/regal/logs| Logfiles der Skripte und Cronjobs
+| /opt/regal/src| Alle Eigenentwicklungen oder im Quellcode modifizierten Komponenten.
+| /opt/regal/var| drupal und Datenverzeichnisse.
 |===================================================================
 
 Ports
@@ -784,10 +813,10 @@ Logs
 |===================================================================
 |Komponente | Pfad
 |Apache|/var/log/apache2
-|Tomcat|/opt/regal/fedora/tomcat/logs
-|Fedora|/opt/regal/fedora/server/logs
+|Tomcat|/opt/regal/bin/fedora/tomcat/logs
+|Fedora|/opt/regal/bin/fedora/server/logs
 |Elasticsearch|/var/log/elasticsearch
-|regal-api|/opt/regal/regal-server/logs
+|regal-api|/opt/regal/apps/regal-api/logs
 |drupal|/var/log/apache2 #otherhosts ! und/var/log/apache2/error.log (hier ist auch die Debugausgabe)
 |MySql|/var/log/mysql
 |monit|/var/log/monit.log
@@ -897,10 +926,13 @@ Für das Funktionieren von Regal sind einige regal-scripts sinnvoll. Die Skripte
 
 <https://github.com/edoweb/regal-scripts>
 
-
+Die folgenden Abschnitte zeigen ein typisches Setup.
 
 OAI-Providing
 ^^^^^^^^^^^^^
+
+Der OAI-Provider läuft nicht die ganze Zeit mit, da dies Probleme gemacht hat. Er wird nur für einen bestimmten Zeitraum angestellt und dann wieder ausgestellt. Auf diese Weise liefert die OAI-Schnittstelle tagesaktuelle Daten.
+
 ....
 0 2 * * * /opt/regal/src/regal-scripts/turnOnOaiPmhPolling.sh
 0 5 * * * /opt/regal/src/regal-scripts/turnOffOaiPmhPolling.sh
@@ -908,14 +940,19 @@ OAI-Providing
 
 URN-Registrierung
 ^^^^^^^^^^^^^^^^^
+
+Die URN-Registrierung erfolgt mit einem gewissen Verzug. Das dafür zuständige Skript überprüft daher zunächst das Anlagedatum der Ressource.
+
 ....
-05 7 * * * /opt/regal/src/regal-scripts/ks.register_urn.sh control  >> /opt/regal/regal-scripts/log/ks.control_urn_vergabe.log
-1 1 * * * /opt/regal/src/regal-scripts/ks.register_urn.sh katalog >> /opt/regal/regal-scripts/log/ks.katalog_update.log
-1 0 * * * /opt/regal/src/regal-scripts/ks.register_urn.sh register >> /opt/regal/regal-scripts/log/ks.register_urn.log
+05 7 * * * /opt/regal/src/regal-scripts/register_urn.sh control  >> /opt/regal/regal-scripts/log/control_urn_vergabe.log
+1 1 * * * /opt/regal/src/regal-scripts/register_urn.sh katalog >> /opt/regal/regal-scripts/log/katalog_update.log
+1 0 * * * /opt/regal/src/regal-scripts/register_urn.sh register >> /opt/regal/regal-scripts/log/register_urn.log
 ....
 
 Katalog-Aktualisierung
 ^^^^^^^^^^^^^^^^^^^^^^
+
+Das System gleicht einmal am Tag Metadaten mit dem hbz-Verbundkatalog ab und führt ggf. Aktualisierungen durch.
 
 ....
 0 5 * * * /opt/regal/src/regal-scripts/updateAll.sh > /dev/null
@@ -924,13 +961,27 @@ Katalog-Aktualisierung
 
 Matomo
 ^^^^^^
+
+Matomo wird mit Apache-Logfiles befüllt. Innerhalb von Matomo werden die Einträge annonymisiert.
+
 ....
 0 1 * * * /opt/regal/regal-scripts/import-logfiles.sh >/dev/null
+....
+
+Logfile Annonymisierung
+^^^^^^^^^^^^^^^^^^^^^
+
+Apache-Logfiles werden sieben Tage unverändert aufbewahrt. Danach erfolgt eine Annonymisierung.
+
+....
+0 2 * * * /opt/regal/src/regal-scripts/depersonalize-apache-logs.sh
 ....
 
 
 Webgatherer
 ^^^^^^^^^^^
+
+Der Webgatherer prüft Archivierungsintervalle von Webpages und stößt bei Bedarf die Erzeugung eines neuen Snapshots/Version an.
 
 ....
 0 20 * * * /opt/regal/src/regal-scripts/runGatherer.sh >> /opt/regal/regal-scripts/log/runGatherer.log
@@ -940,19 +991,13 @@ Webgatherer
 0 22 * * * /opt/regal/src/regal-scripts/crawlReport.sh >> /opt/regal/logs/crawlReport.log
 ....
 
-Logfileanonymisierung
-^^^^^^^^^^^^^^^^^^^^^
-
-....
-0 2 * * * /opt/regal/src/regal-scripts/depersonalize-apache-logs.sh
-....
-
 
 Backup
 ^^^^^^
 
 MySQL und Elasticsearch
 
+Der Elasticsearch-Index und die MySQL-Datenbanken werden täglich gesichert. Es werden Backups der letzten 30 Tage aufbewahrt. Ältere Backups werden von der Platte gelöscht.
 ....
 0 2 * * * /opt/regal/src/regal-scripts/backup-es.sh -c >> /opt/regal/logs/backup-es.log 2>&1
 30 2 * * * /opt/regal/src/regal-scripts/backup-es.sh -b >> /opt/regal/logs/backup-es.log 2>&1
@@ -960,11 +1005,49 @@ MySQL und Elasticsearch
 30 2 * * * /opt/regal/src/regal-scripts/backup-db.sh -b >> /opt/regal/logs/backup-db.log 2>&1
 ....
 
+
+Entwicklung
+^^^^^^^^^^^
+
+Für die Entwicklung an Regal empfiehlt sich folgende Vorgehensweise...
+
 Dokumentation
 -------------
-Diese Dokumentation ist mit asciidoc geschrieben und wurde mit asciidoctor in HTML übersetzt. Dazur wurde das foundation.css Stylesheet aus dem asciidoctor-stylesheet-factory Repository verwendet.
+Diese Dokumentation ist mit asciidoc geschrieben und wurde mit asciidoctor in HTML übersetzt. Dazu wurde das foundation.css Stylesheet aus dem asciidoctor-stylesheet-factory Repository verwendet.
+
+Die Schritte, um an der Doku zu arbeiten sind folgenden
+
+Diese Repo herunterladen
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 ....
+git clone https://github.com/jschnasse/Regal
+....
+
+Asciidoctor und Asciidoctor-Stylesheets installieren
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+....
+gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+\curl -sSL https://get.rvm.io | sudo bash -s stable --ruby
+#login again
+sudo apt-get install bundler
+sudo apt-get install gem
+git clone https://github.com/asciidoctor/asciidoctor
+git clone https://github.com/asciidoctor/asciidoctor-stylesheet-factory
+cd asciidoctor
+sudo gem install asciidoctor
+cd ../asciidoctor-stylesheet-factory
+bundle install
+compass compile
+....
+
+Doku modifizieren und in HTML übersetzen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+....
+cd Regal/doc
+editor regal.txt
 asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.txt
 ....
 
@@ -973,7 +1056,7 @@ License
 
 image::https://i.creativecommons.org/l/by-nc/4.0/88x31.png[link="http://creativecommons.org/licenses/by-nc/4.0/"]
 
-This work is licensed under a <http://creativecommons.org/licenses/by-nc/4.0/>[Creative Commons Attribution-NonCommercial 4.0 International License].
+This work is licensed under a http://creativecommons.org/licenses/by-nc/4.0/>[Creative Commons Attribution-NonCommercial 4.0 International License].
 
 
 Links
@@ -985,13 +1068,12 @@ Slides
 - Skos-Lookup - <http://hbz.github.io/slides/siit-170511/#/>
 - Regal - <http://hbz.github.io/slides/danrw-20180905/#/>
 
-Wiki
-~~~~
+Internes Wiki
+~~~~~~~~~~~~~
 - <https://wiki1.hbz-nrw.de/display/edd/Dokumentation>
 
 Github
 ~~~~~~
-- <https://github.com/edoweb/regal/wiki>
 - <https://github.com/edoweb>
 - <https://github.com/hbz>
 

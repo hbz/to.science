@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="generator" content="Asciidoctor 0.1.4">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.9">
+<meta name="author" content="Jan Schnasse">
 <title>Regal</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
@@ -723,18 +725,20 @@ b.conum * { color: inherit !important; }
 .conum:not([data-value]):empty { display: none; }
 
 .literalblock pre, .listingblock pre { background: #eeeeee; }
+
 </style>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
 <h1>Regal</h1>
+<div class="details">
 <span id="author" class="author">Jan Schnasse</span><br>
+</div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_einleitung">1. Einleitung</a></li>
-<li><a href="#_konzepte">2. Konzepte</a></li>
-<li>
+<li><a href="#_konzepte">2. Konzepte</a>
 <ul class="sectlevel2">
 <li><a href="#_objektmodell">2.1. Objektmodell</a></li>
 <li><a href="#_namespaces_und_identifier">2.2. Namespaces und Identifier</a></li>
@@ -749,8 +753,7 @@ b.conum * { color: inherit !important; }
 <li><a href="#_ansichten">2.11. Ansichten</a></li>
 </ul>
 </li>
-<li><a href="#_software">3. Software</a></li>
-<li>
+<li><a href="#_software">3. Software</a>
 <ul class="sectlevel2">
 <li><a href="#_regal_api_2">3.1. regal-api</a></li>
 <li><a href="#_etikett">3.2. etikett</a></li>
@@ -770,15 +773,13 @@ b.conum * { color: inherit !important; }
 <li><a href="#_drupal_7">3.16. Drupal 7</a></li>
 </ul>
 </li>
-<li><a href="#_installation">4. Installation</a></li>
-<li>
+<li><a href="#_installation">4. Installation</a>
 <ul class="sectlevel2">
 <li><a href="#_vagrant">4.1. Vagrant</a></li>
 <li><a href="#_server">4.2. Server</a></li>
 </ul>
 </li>
-<li><a href="#_administration">5. Administration</a></li>
-<li>
+<li><a href="#_administration">5. Administration</a>
 <ul class="sectlevel2">
 <li><a href="#_aktualisierung">5.1. Aktualisierung</a></li>
 <li><a href="#_verzeichnisse">5.2. Verzeichnisse</a></li>
@@ -791,13 +792,18 @@ b.conum * { color: inherit !important; }
 <li><a href="#_scripts_und_cronjobs">5.9. Scripts und Cronjobs</a></li>
 </ul>
 </li>
-<li><a href="#_dokumentation">6. Dokumentation</a></li>
+<li><a href="#_dokumentation">6. Dokumentation</a>
+<ul class="sectlevel2">
+<li><a href="#_diese_repo_herunterladen">6.1. Diese Repo herunterladen</a></li>
+<li><a href="#_asciidoctor_und_asciidoctor_stylesheets_installieren">6.2. Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
+<li><a href="#_doku_modifizieren_und_in_html_übersetzen">6.3. Doku modifizieren und in HTML übersetzen</a></li>
+</ul>
+</li>
 <li><a href="#_license">7. License</a></li>
-<li><a href="#_links">8. Links</a></li>
-<li>
+<li><a href="#_links">8. Links</a>
 <ul class="sectlevel2">
 <li><a href="#_slides">8.1. Slides</a></li>
-<li><a href="#_wiki">8.2. Wiki</a></li>
+<li><a href="#_internes_wiki">8.2. Internes Wiki</a></li>
 <li><a href="#_github">8.3. Github</a></li>
 </ul>
 </li>
@@ -935,12 +941,12 @@ b.conum * { color: inherit !important; }
 <div class="paragraph">
 <p>Eine einzelne Publikation besteht i.d.R. aus mehreren <a href="#_fedora_commons_3">Fedora Commons 3</a>-Objekten, die in einer hierarchischen Beziehung zueinander stehen.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 1. Fedora Object</caption>
 <colgroup>
 <col>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -982,7 +988,6 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p>Die Metadaten werden als ASCII-Kodierte N-Triple abgelegt. Da alle Fedora-Daten als Dateien im Dateisystem abgelegt werden, ist diese Veriante besonders robust gegen Speicherfehler. N-Triple ist ein Format, dass sich Zeilenweise lesen lässt. ASCII ist die einfachste Form der Textkodierung.</p>
 </div>
@@ -995,12 +1000,12 @@ b.conum * { color: inherit !important; }
 <div class="paragraph">
 <p>Der so zusammengesetzte Identifier kommt in allen Systemkomponenten zum Einsatz.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 2. Beispiel Regal Identifier</caption>
 <colgroup>
 <col>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1013,26 +1018,25 @@ b.conum * { color: inherit !important; }
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal:1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">drupal</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost/resource/regal:1">http://localhost/resource/regal:1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost/resource/regal:1" class="bare">http://localhost/resource/regal:1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal:1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal-api</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://api.localhost/resource/regal:1">http://api.localhost/resource/regal:1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://api.localhost/resource/regal:1" class="bare">http://api.localhost/resource/regal:1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal:1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">fedora</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/fedora/objects/regal:1">http://localhost:8080/fedora/objects/regal:1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/fedora/objects/regal:1" class="bare">http://localhost:8080/fedora/objects/regal:1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal:1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">elasticsearch</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9200/regal/_all/regal:1">http://localhost:9200/regal/_all/regal:1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9200/regal/_all/regal:1" class="bare">http://localhost:9200/regal/_all/regal:1</a></p></td>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_deskriptive_metadaten">2.3. Deskriptive Metadaten</h3>
@@ -1061,7 +1065,7 @@ b.conum * { color: inherit !important; }
 <div class="paragraph">
 <p>Alle bekannten Metadateneinträge werden in der Komponente <a href="#_etikett">etikett</a> verwaltet. In <a href="#_etikett">etikett</a> kann konfiguriert werden, welche URIs aus den RDF-Daten in das JSON-LD-Format von <a href="#_regal_api_2">regal-api</a> überführt werden. Außerdem kann die Reihenfolge der Darstellung, und das Label zur Anzeige gesetzt werden.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 3. Etikett-Eintrag für dc:title</caption>
 <colgroup>
 <col>
@@ -1070,7 +1074,7 @@ b.conum * { color: inherit !important; }
 <col>
 <col>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1088,14 +1092,13 @@ b.conum * { color: inherit !important; }
 <td class="tableblock halign-left valign-top"><p class="tableblock">Titel</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keine Angabe</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://purl.org/dc/terms/title">http://purl.org/dc/terms/title</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://purl.org/dc/terms/title" class="bare">http://purl.org/dc/terms/title</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keine Angabe</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keine Angabe</p></td>
 </tr>
 </tbody>
 </table>
-
 <div class="literalblock">
 <div class="title">Etikett-Eintrag als Json</div>
 <div class="content">
@@ -1176,11 +1179,11 @@ b.conum * { color: inherit !important; }
 <div class="paragraph">
 <p>Öffentlich zugängliche Publikationen sind auch über die OAI-Schnittstelle verfügbar. Dabei wird jede Publikation einer Reihe von OAI-Sets zugeordnet und in unterschiedlichen Formaten angeboten.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 4. OAI Set</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1227,12 +1230,11 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 5. OAI Metadatenformat</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1267,7 +1269,6 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_suche">2.8. Suche</h3>
@@ -1291,11 +1292,11 @@ b.conum * { color: inherit !important; }
 </div>
 <div class="sect3">
 <h4 id="_sichtbarkeiten_operationen_rollen">2.9.1. Sichtbarkeiten, Operationen, Rollen</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 6. Lesender Zugriff auf Metadaten</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1314,12 +1315,11 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 7. Lesender Zugriff auf Daten</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1350,7 +1350,6 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
@@ -1416,7 +1415,7 @@ b.conum * { color: inherit !important; }
 <div class="sect2">
 <h3 id="_regal_api_2">3.1. regal-api</h3>
 <div class="paragraph">
-<p>Repo: <a href="https://github.com/edoweb/regal-api">https://github.com/edoweb/regal-api</a>
+<p>Repo: <a href="https://github.com/edoweb/regal-api" class="bare">https://github.com/edoweb/regal-api</a>
 Play 2.4.2</p>
 </div>
 <div class="paragraph">
@@ -1452,11 +1451,11 @@ Play 2.4.2</p>
 </div>
 <div class="sect3">
 <h4 id="_kofiguration">3.1.1. Kofiguration</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 8. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1575,15 +1574,14 @@ Play 2.4.2</p>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect3">
 <h4 id="_die_applikation">3.1.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 9. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1659,7 +1657,6 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect3">
 <h4 id="_gedanken_des_authors">3.1.3. Gedanken des Authors</h4>
@@ -1674,7 +1671,7 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 <div class="sect2">
 <h3 id="_etikett">3.2. etikett</h3>
 <div class="paragraph">
-<p>Repo: <a href="https://github.com/hbz/etikett">https://github.com/hbz/etikett</a>
+<p>Repo: <a href="https://github.com/hbz/etikett" class="bare">https://github.com/hbz/etikett</a>
 Play 2.2.2</p>
 </div>
 <div class="paragraph">
@@ -1764,11 +1761,11 @@ In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs 
 </div>
 <div class="sect3">
 <h4 id="_konfiguration">3.2.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 10. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1811,15 +1808,14 @@ In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs 
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_2">3.2.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 11. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1850,13 +1846,12 @@ In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs 
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_zettel">3.3. zettel</h3>
 <div class="paragraph">
-<p>Repo: <a href="https://github.com/hbz/zettel">https://github.com/hbz/zettel</a>
+<p>Repo: <a href="https://github.com/hbz/zettel" class="bare">https://github.com/hbz/zettel</a>
 Play 2.5.14</p>
 </div>
 <div class="paragraph">
@@ -1873,11 +1868,11 @@ Play 2.5.14</p>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_2">3.3.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 12. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1916,15 +1911,14 @@ Play 2.5.14</p>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_3">3.3.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 13. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1951,13 +1945,12 @@ Play 2.5.14</p>
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_skos_lookup">3.4. skos-lookup</h3>
 <div class="paragraph">
-<p>Repo: <a href="https://github.com/hbz/skos-lookup">https://github.com/hbz/skos-lookup</a>
+<p>Repo: <a href="https://github.com/hbz/skos-lookup" class="bare">https://github.com/hbz/skos-lookup</a>
 Play 2.5.8</p>
 </div>
 <div class="paragraph">
@@ -1965,11 +1958,11 @@ Play 2.5.8</p>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_3">3.4.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 14. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2000,15 +1993,14 @@ Play 2.5.8</p>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_4">3.4.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 15. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2035,13 +2027,12 @@ Play 2.5.8</p>
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_thumby">3.5. thumby</h3>
 <div class="paragraph">
-<p>Repo: <a href="https://github.com/hbz/thumby">https://github.com/hbz/thumby</a>
+<p>Repo: <a href="https://github.com/hbz/thumby" class="bare">https://github.com/hbz/thumby</a>
 Play 2.2.2</p>
 </div>
 <div class="paragraph">
@@ -2049,11 +2040,11 @@ Play 2.2.2</p>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_4">3.5.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 16. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2072,15 +2063,14 @@ Play 2.2.2</p>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_5">3.5.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 17. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2103,13 +2093,12 @@ Play 2.2.2</p>
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_deepzoomer">3.6. deepzoomer</h3>
 <div class="paragraph">
-<p>Repo:<a href="https://github.com/hbz/DeepZoomService">https://github.com/hbz/DeepZoomService</a>
+<p>Repo:<a href="https://github.com/hbz/DeepZoomService" class="bare">https://github.com/hbz/DeepZoomService</a>
 Servlet 2.3</p>
 </div>
 <div class="paragraph">
@@ -2117,11 +2106,11 @@ Servlet 2.3</p>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_5">3.6.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 18. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2136,13 +2125,12 @@ Servlet 2.3</p>
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_regal_drupal">3.7. regal-drupal</h3>
 <div class="paragraph">
-<p>Repo: <a href="https://github.com/edoweb/regal-drupal">https://github.com/edoweb/regal-drupal</a>
+<p>Repo: <a href="https://github.com/edoweb/regal-drupal" class="bare">https://github.com/edoweb/regal-drupal</a>
 PHP 5</p>
 </div>
 <div class="paragraph">
@@ -2150,11 +2138,11 @@ PHP 5</p>
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_6">3.7.1. Die Applikation</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 19. Verzeichnisstruktur</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2177,33 +2165,32 @@ PHP 5</p>
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_edoweb_drupal_theme">3.8. edoweb-drupal-theme</h3>
 <div class="paragraph">
-<p>Repo: <a href="https://github.com/edoweb/edoweb-drupal-theme">https://github.com/edoweb/edoweb-drupal-theme</a>
+<p>Repo: <a href="https://github.com/edoweb/edoweb-drupal-theme" class="bare">https://github.com/edoweb/edoweb-drupal-theme</a>
 PHP 5</p>
 </div>
 <div class="paragraph">
-<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://edoweb-rlp.de">https://edoweb-rlp.de</a></p>
+<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://edoweb-rlp.de" class="bare">https://edoweb-rlp.de</a></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_zbmed_drupal_theme">3.9. zbmed-drupal-theme</h3>
 <div class="paragraph">
-<p>Repo: <a href="https://github.com/edoweb/zbmed-drupal-theme">https://github.com/edoweb/zbmed-drupal-theme</a>
+<p>Repo: <a href="https://github.com/edoweb/zbmed-drupal-theme" class="bare">https://github.com/edoweb/zbmed-drupal-theme</a>
 PHP 5</p>
 </div>
 <div class="paragraph">
-<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://repository.publisso.de">https://repository.publisso.de</a></p>
+<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://repository.publisso.de" class="bare">https://repository.publisso.de</a></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_openwayback">3.10. openwayback</h3>
 <div class="paragraph">
-<p>Repo: <a href="https://github.com/iipc/openwayback">https://github.com/iipc/openwayback</a>
+<p>Repo: <a href="https://github.com/iipc/openwayback" class="bare">https://github.com/iipc/openwayback</a>
 Servlet 2.5</p>
 </div>
 <div class="paragraph">
@@ -2404,17 +2391,44 @@ export CATALINA_OPTS</pre>
 <div class="sectionbody">
 <div class="sect2">
 <h3 id="_aktualisierung">5.1. Aktualisierung</h3>
+<div class="sect3">
+<h4 id="_play_applikationen">5.1.1. Play-Applikationen</h4>
 <div class="paragraph">
-<p>Die Aktualisierung der Regal-Komponenten erfolgt</p>
+<p>Die Aktualisierung der Regal-Komponenten erfolgt über Skripte. Die Aktualisierung funktioniert dabei so, dass der Quellcode der zu aktualisierenden Komponente unter <code>/opt/regal/src</code> per <code>git</code> auf den entsprechenden Branch gestellt wird. Danach wird ein neues Kompilat der Komponente erzeugt. Die aktuelle Konfiguration wird aus <code>/opt/regal/conf</code> genommen und es wird unter <code>/opt/regal/apps</code> eine neue lauffähige Version abgelegt.</p>
+</div>
+<div class="paragraph">
+<p>Neue Versionen werden immer parallel zu alten Versionen gestartet und über einen Wechsel der Apachekonfiguration aktiviert. Erst danach wird die alte Version heruntergefahren.</p>
+</div>
+<div class="paragraph">
+<p>Der komplette Aktualisierungsprozess erfolgt automatisch. Die alte Version bleibt immer auf dem Server liegen, so dass bei Bedarf wieder zurück gewechselt werden kann.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_tomcat_applikation">5.1.2. Tomcat-Applikation</h4>
+<div class="paragraph">
+<p>Es wird ein <code>war</code>-Container erzeugt und im Tomcat <code>hot</code>-deployed.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_drupal_module">5.1.3. Drupal-Module</h4>
+<div class="paragraph">
+<p>Beinhaltet die Akutalisierung ein Datenbankupdate, so wird Drupal erst in den Wartungszustand versetzt (per drush oder über die Oberfläche). Danach wird die aktualisierte Version einfach per Git geholt. Bei Datenbankupdates wird noch ein Drupal-Updateskript ausgeführt.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_speicherschicht">5.1.4. Speicherschicht</h4>
+<div class="paragraph">
+<p>Aktualisierungen von MySQL, Elasticsearch und Fedora gehen mit einer Downtime einher.</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_verzeichnisse">5.2. Verzeichnisse</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 20. Verzeichnisstruktur</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2425,19 +2439,42 @@ export CATALINA_OPTS</pre>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Außer Apache2, Elasticsearch und MySQL befinden sich alle Regal-Komponenten unter diesem Verzeichnis.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/apps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Die auf <code>Play</code> beruhenden Komponenten:  <code>etikett  fedora  regal-api  skos-lookup  thumby  zettel</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/bin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Fremdpakete wie activator, fedora, heritrix, python - weitere tomcats.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/conf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Die variables.conf und die application.conf wird von verschiedenen Komponenten verwendet.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/logs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Logfiles der Skripte und Cronjobs</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/src</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Alle Eigenentwicklungen oder im Quellcode modifizierten Komponenten.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/var</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">drupal und Datenverzeichnisse.</p></td>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_ports">5.3. Ports</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 21. Ports und Komponenten (typische Belegung)</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2484,15 +2521,14 @@ export CATALINA_OPTS</pre>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_logs">5.4. Logs</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 22. Logfiles</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2507,11 +2543,11 @@ export CATALINA_OPTS</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Tomcat</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/fedora/tomcat/logs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/bin/fedora/tomcat/logs</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fedora</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/fedora/server/logs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/bin/fedora/server/logs</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch</p></td>
@@ -2519,7 +2555,7 @@ export CATALINA_OPTS</pre>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal-api</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/regal-server/logs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/apps/regal-api/logs</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">drupal</p></td>
@@ -2539,15 +2575,14 @@ export CATALINA_OPTS</pre>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_configs">5.5. Configs</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 23. Configfiles</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2598,16 +2633,15 @@ export CATALINA_OPTS</pre>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_apache2">5.6. Apache2</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 24. Frontend Pfade</caption>
 <colgroup>
 <col>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2634,13 +2668,12 @@ export CATALINA_OPTS</pre>
 </tr>
 </tbody>
 </table>
-
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 25. API Pfade</caption>
 <colgroup>
 <col>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2668,71 +2701,70 @@ export CATALINA_OPTS</pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OAI-Schnittstelle für die DNB</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/dnb-urn</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/dnb-urn$1">http://localhost:8080/dnb-urn$1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/dnb-urn$1" class="bare">http://localhost:8080/dnb-urn$1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OAI-Schnittstelle</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/oai-pmh</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/oai-pmh$1">http://localhost:8080/oai-pmh$1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/oai-pmh$1" class="bare">http://localhost:8080/oai-pmh$1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deepzoomer</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/deepzoom</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:7080/deepzoom$1">http://localhost:7080/deepzoom$1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:7080/deepzoom$1" class="bare">http://localhost:7080/deepzoom$1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Openwayback privat</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/wayback</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9080/wayback">http://localhost:9080/wayback</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9080/wayback" class="bare">http://localhost:9080/wayback</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Openwayback öffentlich</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/weltweit</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9080/weltweit">http://localhost:9080/weltweit</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9080/weltweit" class="bare">http://localhost:9080/weltweit</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Thumby</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/tools/thumby</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9001/tools/thumby">http://localhost:9001/tools/thumby</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9001/tools/thumby" class="bare">http://localhost:9001/tools/thumby</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Etikett</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/tools/etikett</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9002/tools/etikett">http://localhost:9002/tools/etikett</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9002/tools/etikett" class="bare">http://localhost:9002/tools/etikett</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zettel</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/tools/zettel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9004/tools/zettel">http://localhost:9004/tools/zettel</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9004/tools/zettel" class="bare">http://localhost:9004/tools/zettel</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/search</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9200">http://localhost:9200</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9200" class="bare">http://localhost:9200</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fedora</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/fedora</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/fedora">http://localhost:8080/fedora</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/fedora" class="bare">http://localhost:8080/fedora</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JSON-LD Context</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/public/resources.json</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9002/tools/etikett/context.json">http://localhost:9002/tools/etikett/context.json</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9002/tools/etikett/context.json" class="bare">http://localhost:9002/tools/etikett/context.json</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal-api</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9000/">http://localhost:9000/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9000/" class="bare">http://localhost:9000/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">heritrix</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/tools/heritrix</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://localhost:8443/tools/heritrix">https://localhost:8443/tools/heritrix</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://localhost:8443/tools/heritrix" class="bare">https://localhost:8443/tools/heritrix</a></p></td>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_matomo">5.7. Matomo</h3>
@@ -2784,10 +2816,16 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 <p>Für das Funktionieren von Regal sind einige regal-scripts sinnvoll. Die Skripte sind sämtlich unter Github zu finden.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://github.com/edoweb/regal-scripts">https://github.com/edoweb/regal-scripts</a></p>
+<p><a href="https://github.com/edoweb/regal-scripts" class="bare">https://github.com/edoweb/regal-scripts</a></p>
+</div>
+<div class="paragraph">
+<p>Die folgenden Abschnitte zeigen ein typisches Setup.</p>
 </div>
 <div class="sect3">
 <h4 id="_oai_providing_2">5.9.1. OAI-Providing</h4>
+<div class="paragraph">
+<p>Der OAI-Provider läuft nicht die ganze Zeit mit, da dies Probleme gemacht hat. Er wird nur für einen bestimmten Zeitraum angestellt und dann wieder ausgestellt. Auf diese Weise liefert die OAI-Schnittstelle tagesaktuelle Daten.</p>
+</div>
 <div class="literalblock">
 <div class="content">
 <pre>0 2 * * * /opt/regal/src/regal-scripts/turnOnOaiPmhPolling.sh
@@ -2797,16 +2835,22 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 <div class="sect3">
 <h4 id="_urn_registrierung">5.9.2. URN-Registrierung</h4>
+<div class="paragraph">
+<p>Die URN-Registrierung erfolgt mit einem gewissen Verzug. Das dafür zuständige Skript überprüft daher zunächst das Anlagedatum der Ressource.</p>
+</div>
 <div class="literalblock">
 <div class="content">
-<pre>05 7 * * * /opt/regal/src/regal-scripts/ks.register_urn.sh control  &gt;&gt; /opt/regal/regal-scripts/log/ks.control_urn_vergabe.log
-1 1 * * * /opt/regal/src/regal-scripts/ks.register_urn.sh katalog &gt;&gt; /opt/regal/regal-scripts/log/ks.katalog_update.log
-1 0 * * * /opt/regal/src/regal-scripts/ks.register_urn.sh register &gt;&gt; /opt/regal/regal-scripts/log/ks.register_urn.log</pre>
+<pre>05 7 * * * /opt/regal/src/regal-scripts/register_urn.sh control  &gt;&gt; /opt/regal/regal-scripts/log/control_urn_vergabe.log
+1 1 * * * /opt/regal/src/regal-scripts/register_urn.sh katalog &gt;&gt; /opt/regal/regal-scripts/log/katalog_update.log
+1 0 * * * /opt/regal/src/regal-scripts/register_urn.sh register &gt;&gt; /opt/regal/regal-scripts/log/register_urn.log</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_katalog_aktualisierung">5.9.3. Katalog-Aktualisierung</h4>
+<div class="paragraph">
+<p>Das System gleicht einmal am Tag Metadaten mit dem hbz-Verbundkatalog ab und führt ggf. Aktualisierungen durch.</p>
+</div>
 <div class="literalblock">
 <div class="content">
 <pre>0 5 * * * /opt/regal/src/regal-scripts/updateAll.sh &gt; /dev/null</pre>
@@ -2815,14 +2859,32 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 <div class="sect3">
 <h4 id="_matomo_2">5.9.4. Matomo</h4>
+<div class="paragraph">
+<p>Matomo wird mit Apache-Logfiles befüllt. Innerhalb von Matomo werden die Einträge annonymisiert.</p>
+</div>
 <div class="literalblock">
 <div class="content">
 <pre>0 1 * * * /opt/regal/regal-scripts/import-logfiles.sh &gt;/dev/null</pre>
 </div>
 </div>
+<div class="paragraph">
+<p>Logfile Annonymisierung
+<sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup></p>
+</div>
+<div class="paragraph">
+<p>Apache-Logfiles werden sieben Tage unverändert aufbewahrt. Danach erfolgt eine Annonymisierung.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>0 2 * * * /opt/regal/src/regal-scripts/depersonalize-apache-logs.sh</pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_webgatherer">5.9.5. Webgatherer</h4>
+<div class="paragraph">
+<p>Der Webgatherer prüft Archivierungsintervalle von Webpages und stößt bei Bedarf die Erzeugung eines neuen Snapshots/Version an.</p>
+</div>
 <div class="literalblock">
 <div class="content">
 <pre>0 20 * * * /opt/regal/src/regal-scripts/runGatherer.sh &gt;&gt; /opt/regal/regal-scripts/log/runGatherer.log
@@ -2834,17 +2896,12 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 </div>
 <div class="sect3">
-<h4 id="_logfileanonymisierung">5.9.6. Logfileanonymisierung</h4>
-<div class="literalblock">
-<div class="content">
-<pre>0 2 * * * /opt/regal/src/regal-scripts/depersonalize-apache-logs.sh</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_backup">5.9.7. Backup</h4>
+<h4 id="_backup">5.9.6. Backup</h4>
 <div class="paragraph">
 <p>MySQL und Elasticsearch</p>
+</div>
+<div class="paragraph">
+<p>Der Elasticsearch-Index und die MySQL-Datenbanken werden täglich gesichert. Es werden Backups der letzten 30 Tage aufbewahrt. Ältere Backups werden von der Platte gelöscht.</p>
 </div>
 <div class="literalblock">
 <div class="content">
@@ -2855,6 +2912,12 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 </div>
 </div>
+<div class="sect3">
+<h4 id="_entwicklung">5.9.7. Entwicklung</h4>
+<div class="paragraph">
+<p>Für die Entwicklung an Regal empfiehlt sich folgende Vorgehensweise&#8230;&#8203;</p>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -2862,11 +2925,46 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 <h2 id="_dokumentation">6. Dokumentation</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Diese Dokumentation ist mit asciidoc geschrieben und wurde mit asciidoctor in HTML übersetzt. Dazur wurde das foundation.css Stylesheet aus dem asciidoctor-stylesheet-factory Repository verwendet.</p>
+<p>Diese Dokumentation ist mit asciidoc geschrieben und wurde mit asciidoctor in HTML übersetzt. Dazu wurde das foundation.css Stylesheet aus dem asciidoctor-stylesheet-factory Repository verwendet.</p>
 </div>
+<div class="paragraph">
+<p>Die Schritte, um an der Doku zu arbeiten sind folgenden</p>
+</div>
+<div class="sect2">
+<h3 id="_diese_repo_herunterladen">6.1. Diese Repo herunterladen</h3>
 <div class="literalblock">
 <div class="content">
-<pre>asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.txt</pre>
+<pre>git clone https://github.com/jschnasse/Regal</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_asciidoctor_und_asciidoctor_stylesheets_installieren">6.2. Asciidoctor und Asciidoctor-Stylesheets installieren</h3>
+<div class="literalblock">
+<div class="content">
+<pre>gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+\curl -sSL https://get.rvm.io | sudo bash -s stable --ruby
+#login again
+sudo apt-get install bundler
+sudo apt-get install gem
+git clone https://github.com/asciidoctor/asciidoctor
+git clone https://github.com/asciidoctor/asciidoctor-stylesheet-factory
+cd asciidoctor
+sudo gem install asciidoctor
+cd ../asciidoctor-stylesheet-factory
+bundle install
+compass compile</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_doku_modifizieren_und_in_html_übersetzen">6.3. Doku modifizieren und in HTML übersetzen</h3>
+<div class="literalblock">
+<div class="content">
+<pre>cd Regal/doc
+editor regal.txt
+asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.txt</pre>
+</div>
 </div>
 </div>
 </div>
@@ -2880,7 +2978,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 </div>
 <div class="paragraph">
-<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
+<p>This work is licensed under a <a href="http://creativecommons.org/licenses/by-nc/4.0/&gt;">Creative Commons Attribution-NonCommercial 4.0 International License</a>.</p>
 </div>
 </div>
 </div>
@@ -2892,23 +2990,23 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 <div class="ulist">
 <ul>
 <li>
-<p>Lobid - <a href="http://hbz.github.io/slides/">http://hbz.github.io/slides/</a></p>
+<p>Lobid - <a href="http://hbz.github.io/slides/" class="bare">http://hbz.github.io/slides/</a></p>
 </li>
 <li>
-<p>Skos-Lookup - <a href="http://hbz.github.io/slides/siit-170511/#/">http://hbz.github.io/slides/siit-170511/#/</a></p>
+<p>Skos-Lookup - <a href="http://hbz.github.io/slides/siit-170511/#/" class="bare">http://hbz.github.io/slides/siit-170511/#/</a></p>
 </li>
 <li>
-<p>Regal - <a href="http://hbz.github.io/slides/danrw-20180905/#/">http://hbz.github.io/slides/danrw-20180905/#/</a></p>
+<p>Regal - <a href="http://hbz.github.io/slides/danrw-20180905/#/" class="bare">http://hbz.github.io/slides/danrw-20180905/#/</a></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_wiki">8.2. Wiki</h3>
+<h3 id="_internes_wiki">8.2. Internes Wiki</h3>
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://wiki1.hbz-nrw.de/display/edd/Dokumentation">https://wiki1.hbz-nrw.de/display/edd/Dokumentation</a></p>
+<p><a href="https://wiki1.hbz-nrw.de/display/edd/Dokumentation" class="bare">https://wiki1.hbz-nrw.de/display/edd/Dokumentation</a></p>
 </li>
 </ul>
 </div>
@@ -2918,13 +3016,10 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/edoweb/regal/wiki">https://github.com/edoweb/regal/wiki</a></p>
+<p><a href="https://github.com/edoweb" class="bare">https://github.com/edoweb</a></p>
 </li>
 <li>
-<p><a href="https://github.com/edoweb">https://github.com/edoweb</a></p>
-</li>
-<li>
-<p><a href="https://github.com/hbz">https://github.com/hbz</a></p>
+<p><a href="https://github.com/hbz" class="bare">https://github.com/hbz</a></p>
 </li>
 </ul>
 </div>
@@ -2934,7 +3029,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-09 17:46:38 CEST
+Last updated 2019-05-10 09:20:31 +0200
 </div>
 </div>
 </body>
