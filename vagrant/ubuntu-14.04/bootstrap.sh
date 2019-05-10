@@ -18,7 +18,7 @@ function download(){
 }
 
 function downloadBinaries(){
-	download typesafe-activator-1.3.5.zip https://downloads.typesafe.com/typesafe-activator/1.3.5/
+	download typesafe-activator-1.3.12.zip https://downloads.typesafe.com/typesafe-activator/1.3.12/
 	download fcrepo-installer-3.7.1.jar https://sourceforge.net/projects/fedora-commons/files/fedora/3.7.1/
 	download mysql-community-release-el7-5.noarch.rpm https://repo.mysql.com/
 	download elasticsearch-1.1.0.deb https://download.elasticsearch.org/elasticsearch/elasticsearch/
@@ -190,25 +190,25 @@ function installFedora(){
 }
 
 function installPlay(){  
-    if [ -d $ARCHIVE_HOME/activator-1.3.5 ]
+    if [ -d $ARCHIVE_HOME/activator-1.3.12 ]
     then
 	echo "Activator already installed!"
     else
-	unzip $INSTALL_BIN/typesafe-activator-1.3.5.zip -d $ARCHIVE_HOME/bin 
+	unzip $INSTALL_BIN/typesafe-activator-1.3.12.zip -d $ARCHIVE_HOME/bin 
     fi
 }
 
 function postProcess(){
-    ln -s  $ARCHIVE_HOME/bin/activator-dist-1.3.5  $ARCHIVE_HOME/bin/activator
+    ln -s  $ARCHIVE_HOME/bin/activator-dist-1.3.12  $ARCHIVE_HOME/bin/activator
     sudo chown -R $REGAL_USER $ARCHIVE_HOME
 }
 
 function installRegalModule(){
     app_version=$1
     APPNAME=$2
-    yes r|$ARCHIVE_HOME/bin/activator/activator clean
-    yes r|$ARCHIVE_HOME/bin/activator/activator dist
-    yes r|$ARCHIVE_HOME/bin/activator/activator eclipse
+    yes r|$ARCHIVE_HOME/bin/activator/bin/activator clean
+    yes r|$ARCHIVE_HOME/bin/activator/bin/activator dist
+    yes r|$ARCHIVE_HOME/bin/activator/bin/activator eclipse
     cp target/universal/$app_version.zip  /tmp
     cd /tmp
     unzip $app_version.zip
@@ -241,6 +241,9 @@ function configureRegalModules(){
     mysql -u root -Bse "CREATE DATABASE etikett  DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'etikett'@'localhost' IDENTIFIED BY 'etikett';GRANT ALL ON etikett.* TO 'etikett'@'localhost';"
 
   mysql -u root -Bse "CREATE DATABASE regal_api DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'regal_api'@'localhost' IDENTIFIED BY 'admin';GRANT ALL ON regal_api.* TO 'regal_api'@'localhost';"
+
+ mysql -u root -Bse "use regal_api;create table regal_users (username varchar(255) not null,password varchar(255),email varchar(255),role integer,created varchar(255),constraint ck_regal_users_role check (role in (0,1,2,3,4,5)),constraint pk_regal_users primary key (username));"
+
 }
 
 function configureApache(){
@@ -363,6 +366,8 @@ function installRegalDrupal(){
 	curl https://ftp.drupal.org/files/projects/entity-7.x-1.1.tar.gz | tar xz
 	curl https://ftp.drupal.org/files/projects/entity_js-7.x-1.0-alpha3.tar.gz | tar xz
 	curl https://ftp.drupal.org/files/projects/ctools-7.x-1.3.tar.gz | tar xz
+	php5enmod redland
+        service apache2 restart
 }
 
 function installDrupalThemes(){
@@ -429,7 +434,7 @@ function initialize(){
 	curl -uedoweb-admin:admin -XPOST http://api.localhost/context.json
 	curl -i -uedoweb-admin:admin -XPUT http://api.localhost/resource/danrw:1234 -d'{"contentType":"monograph","accessScheme":"public"}' -H'content-type:application/json'
 	curl -i -uedoweb-admin:admin -XPUT http://api.localhost/resource/danrw:1235 -d'{"parentPid":"danrw:1234","contentType":"file","accessScheme":"public"}' -H'content-type:application/json'
-	curl -uedoweb-admin:admin -F"data=@ARCHIVE_HOME/src/regal-api/test/resources/test.pdf;type=application/pdf" -XPUT http://api.localhost/resource/danrw:1235/data
+	curl -uedoweb-admin:admin -F"data=@$ARCHIVE_HOME/src/regal-api/test/resources/test.pdf;type=application/pdf" -XPUT http://api.localhost/resource/danrw:1235/data
 	curl -uedoweb-admin:admin -XPOST "http://api.localhost/utils/lobidify/danrw:1234?alephid=HT018920238"
 }
 
@@ -477,6 +482,4 @@ echo "Start Regal installation!"
 	sleep 20
 	initialize
 }
-
- 
 main >log 2>&1
