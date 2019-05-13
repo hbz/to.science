@@ -756,11 +756,11 @@ b.conum * { color: inherit !important; }
 <li><a href="#_software">3. Software</a>
 <ul class="sectlevel2">
 <li><a href="#_regal_api_2">3.1. regal-api</a></li>
-<li><a href="#_etikett">3.2. etikett</a></li>
-<li><a href="#_zettel">3.3. zettel</a></li>
+<li><a href="#_etikett">3.2. Etikett</a></li>
+<li><a href="#_zettel">3.3. Zettel</a></li>
 <li><a href="#_skos_lookup">3.4. skos-lookup</a></li>
-<li><a href="#_thumby">3.5. thumby</a></li>
-<li><a href="#_deepzoomer">3.6. deepzoomer</a></li>
+<li><a href="#_thumby">3.5. Thumby</a></li>
+<li><a href="#_deepzoomer">3.6. Deepzoomer</a></li>
 <li><a href="#_regal_drupal">3.7. regal-drupal</a></li>
 <li><a href="#_edoweb_drupal_theme">3.8. edoweb-drupal-theme</a></li>
 <li><a href="#_zbmed_drupal_theme">3.9. zbmed-drupal-theme</a></li>
@@ -1063,7 +1063,7 @@ b.conum * { color: inherit !important; }
 </ul>
 </div>
 <div class="paragraph">
-<p>Alle bekannten Metadateneinträge werden in der Komponente <a href="#_etikett">etikett</a> verwaltet. In <a href="#_etikett">etikett</a> kann konfiguriert werden, welche URIs aus den RDF-Daten in das JSON-LD-Format von <a href="#_regal_api_2">regal-api</a> überführt werden. Außerdem kann die Reihenfolge der Darstellung, und das Label zur Anzeige gesetzt werden.</p>
+<p>Alle bekannten Metadateneinträge werden in der Komponente <a href="#_etikett">Etikett</a> verwaltet. In <a href="#_etikett">Etikett</a> kann konfiguriert werden, welche URIs aus den RDF-Daten in das JSON-LD-Format von <a href="#_regal_api_2">regal-api</a> überführt werden. Außerdem kann die Reihenfolge der Darstellung, und das Label zur Anzeige gesetzt werden.</p>
 </div>
 <table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 3. Etikett-Eintrag für dc:title</caption>
@@ -1114,10 +1114,10 @@ b.conum * { color: inherit !important; }
 <div class="sect3">
 <h4 id="_wie_kommen_bibliografische_metadaten_ins_system">2.3.1. Wie kommen bibliografische Metadaten ins System?</h4>
 <div class="paragraph">
-<p>In Regal können bibliografische Metadaten aus dem hbz-Verbundkatalog an Ressourcen "angelinkt" werden. Dies erfolgt über Angabe der ID des entsprechenden Titelsatzes (z.b. HT017766754). Mit Hilfe dieser ID kann Regal einen Titelimport durchführen. Dabei wird auf die Schnittstellen der [Lobid-API] zugegriffen.</p>
+<p>In Regal können bibliografische Metadaten aus dem hbz-Verbundkatalog an Ressourcen "angelinkt" werden. Dies erfolgt über Angabe der ID des entsprechenden Titelsatzes (z.b. HT017766754). Mit Hilfe dieser ID kann Regal einen Titelimport durchführen. Dabei wird auf die Schnittstellen der <a href="https://lobid.org">Lobid-API</a> zugegriffen.</p>
 </div>
 <div class="paragraph">
-<p>Regal bietet außerdem die Möglichkeit Metadaten über Erfassungsmasken zu erzeugen und zu speichern. Dies erfolgt mit Hilfe des Moduls <a href="#_zettel">zettel</a>. <a href="#_zettel">zettel</a> ist ein Webservices, der verschiedene HTML-Formulare bereitstellt. Die Formulare können RDF-Metadaten einlesen und ausgeben. Zettel-Formulare werden über Javascript in ein IFrame der eigentlichen Anwendung angebunden. Über Zettel werden Konzepte aus dem Bereich Linked Data umgesetzt. So können Feldinhalte über entsprechende Eingabeelemente in Drittsystemen recherchiert und verlinkt werden. Die Darstellung von Links erfolgt in Zettel mit Hilfe von <a href="#_etikett">etikett</a>. Umfangreichere Notationssysteme wie Agrovoc oder DDC werden über einen eigenen Index aus dem Modul <a href="#_skos_lookup">skos-lookup</a> eingebunden. Zettel unterstützt zur Zeit folgende Linked-Data-Quellen:</p>
+<p>Regal bietet außerdem die Möglichkeit Metadaten über Erfassungsmasken zu erzeugen und zu speichern. Dies erfolgt mit Hilfe des Moduls <a href="#_zettel">Zettel</a>. <a href="#_zettel">Zettel</a> ist ein Webservices, der verschiedene HTML-Formulare bereitstellt. Die Formulare können RDF-Metadaten einlesen und ausgeben. Zettel-Formulare werden über Javascript in ein IFrame der eigentlichen Anwendung angebunden. Über Zettel werden Konzepte aus dem Bereich Linked Data umgesetzt. So können Feldinhalte über entsprechende Eingabeelemente in Drittsystemen recherchiert und verlinkt werden. Die Darstellung von Links erfolgt in Zettel mit Hilfe von <a href="#_etikett">Etikett</a>. Umfangreichere Notationssysteme wie Agrovoc oder DDC werden über einen eigenen Index aus dem Modul <a href="#_skos_lookup">skos-lookup</a> eingebunden. Zettel unterstützt zur Zeit folgende Linked-Data-Quellen:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1146,7 +1146,7 @@ b.conum * { color: inherit !important; }
 <div class="sect2">
 <h3 id="_anzeige_und_darstellung">2.4. Anzeige und Darstellung</h3>
 <div class="paragraph">
-<p>Über die Schnittstellen der <a href="#_regal_api_2">regal-api</a> können unterschiedliche Darstellungen einer Publikation bezogen werden. Über [Content Negotiation] können Darstellungen per HTTP-Header angefragt werden. Um unterschiedliche Darstellungen im Browser anzeigen zu lassen, kann außerden, über das Setzen von entsprechenden Endungen, auf unterschiedliche Representationen eine Resource zugegriffen werden.</p>
+<p>Über die Schnittstellen der <a href="#_regal_api_2">regal-api</a> können unterschiedliche Darstellungen einer Publikation bezogen werden. Über <a href="https://de.wikipedia.org/wiki/Content_Negotiation">Content Negotiation</a> können Darstellungen per HTTP-Header angefragt werden. Um unterschiedliche Darstellungen im Browser anzeigen zu lassen, kann außerden, über das Setzen von entsprechenden Endungen, auf unterschiedliche Representationen eine Resource zugegriffen werden.</p>
 </div>
 <div class="literalblock">
 <div class="title">Auswahl von Pfaden zu unterschiedlichen Representationen einer Ressource</div>
@@ -1159,7 +1159,7 @@ b.conum * { color: inherit !important; }
 </div>
 </div>
 <div class="paragraph">
-<p>In der HTML-Darstellung greift <a href="#_regal_api_2">regal-api</a> auf den Hilfdienst <a href="#_thumby">thumby</a> zu, um darüber Thumbnail-Darstellungen von PDFs oder Bilder zu kreieren. Bei großen Bildern wird außerdem der [DeepzoomerService] angelinkt, der eine Darstellung von Hochauflösenden Bildern über das Tool Openseedragon erlaubt. Video- und Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.</p>
+<p>In der HTML-Darstellung greift <a href="#_regal_api_2">regal-api</a> auf den Hilfdienst <a href="#_thumby">Thumby</a> zu, um darüber Thumbnail-Darstellungen von PDFs oder Bilder zu kreieren. Bei großen Bildern wird außerdem der <a href="#_deepzoomer">Deepzoomer</a> angelinkt, der eine Darstellung von Hochauflösenden Bildern über das Tool Openseedragon erlaubt. Video- und Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1171,7 +1171,7 @@ b.conum * { color: inherit !important; }
 <div class="sect2">
 <h3 id="_metadatenkonvertierung">2.6. Metadatenkonvertierung</h3>
 <div class="paragraph">
-<p>Für die Metadatenkonvertierung gibt es kein festes Vorgehensmodell oder Werkzeug. I.d.R. gibt es für jede Representation eine oder eine Reihe von Javaklassen, die für eine On-the-fly-Konvertierung sorgen. Die HTML-Darstellung basiert grundlegend auf denselben Daten, die auch im [Elasticsearch]-Index liegen und ist im wesentlichen eine JSON-LD-Darstellung, die mit Hilfe der in <a href="#_etikett">etikett</a> hinterlegten Konfiguration aus den bibliografischen Metadaten gewonnen wurde.</p>
+<p>Für die Metadatenkonvertierung gibt es kein festes Vorgehensmodell oder Werkzeug. I.d.R. gibt es für jede Representation eine oder eine Reihe von Javaklassen, die für eine On-the-fly-Konvertierung sorgen. Die HTML-Darstellung basiert grundlegend auf denselben Daten, die auch im <a href="https://www.elastic.co/guide/index.html">Elasticsearch</a>-Index liegen und ist im wesentlichen eine JSON-LD-Darstellung, die mit Hilfe der in <a href="#_etikett">Etikett</a> hinterlegten Konfiguration aus den bibliografischen Metadaten gewonnen wurde.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1273,7 +1273,7 @@ b.conum * { color: inherit !important; }
 <div class="sect2">
 <h3 id="_suche">2.8. Suche</h3>
 <div class="paragraph">
-<p>Der Elasticsearch-Index wird mit Hilfe einer JSON-LD Konvertierung befüllt. Die Konvertierung basiert im wesentlichen auf den bibliografischen Metadaten der einzelnen Ressourcen und wir mit Hilfe der in <a href="#_etikett">etikett</a> hinterlegten Konfiguration erzeugt.</p>
+<p>Der Elasticsearch-Index wird mit Hilfe einer JSON-LD Konvertierung befüllt. Die Konvertierung basiert im wesentlichen auf den bibliografischen Metadaten der einzelnen Ressourcen und wir mit Hilfe der in <a href="#_etikett">Etikett</a> hinterlegten Konfiguration erzeugt.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1378,7 +1378,7 @@ b.conum * { color: inherit !important; }
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Eintrag des zugehörigen RDF-Properties in die entsprechende <a href="#_etikett">etikett</a>-Instanz, bzw. in die <code>/conf/labels.json</code>. Der Eintrag muss einen Namen, ein Label und einen Datentyp haben. <a href="#_regal_api_2">regal-api</a> neu starten, bzw mit <code>POST /context.json</code> das neu Laden der Contexteinträge erzwingen.</p>
+<p>Eintrag des zugehörigen RDF-Properties in die entsprechende <a href="#_etikett">Etikett</a>-Instanz, bzw. in die <code>/conf/labels.json</code>. Der Eintrag muss einen Namen, ein Label und einen Datentyp haben. <a href="#_regal_api_2">regal-api</a> neu starten, bzw mit <code>POST /context.json</code> das neu Laden der Contexteinträge erzwingen.</p>
 </li>
 <li>
 <p>Dies müsste reichen, um eine Standardanzeige in der HTML-Ausgabe zu erreichen</p>
@@ -1395,7 +1395,7 @@ b.conum * { color: inherit !important; }
 </ol>
 </div>
 <div class="paragraph">
-<p>Insgesamt läuft es also so: Alles was in <a href="#_etikett">etikett</a> konfiguriert ist, wird auch ins JSON und damit ins HTML übernommen. Dinge, die im HTML nicht benötigt werden, werden über CSS wieder ausgeblendet.</p>
+<p>Insgesamt läuft es also so: Alles was in <a href="#_etikett">Etikett</a> konfiguriert ist, wird auch ins JSON und damit ins HTML übernommen. Dinge, die im HTML nicht benötigt werden, werden über CSS wieder ausgeblendet.</p>
 </div>
 </div>
 </div>
@@ -1447,7 +1447,7 @@ Play 2.4.2</p>
 </ul>
 </div>
 <div class="paragraph">
-<p>Der Webservice ist auf Basis von [Play 2.4.2] realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von elektronischen Publikationen an. Die <a href="#_regal_api_2">regal-api</a> operiert auf <a href="#_fedora_commons_3">Fedora Commons 3</a>, [MySQL] und [Elasticsearch]. Über die API werden auch Funktionalitäten von <a href="#_etikett">etikett</a>, <a href="#_thumby">thumby</a>, <a href="#_zettel">zettel</a> und <a href="#_deepzoomer">deepzoomer</a> angesprochen. Für die Webarchivierung werden [heritrix], [wpull] und [openwayback] angebunden.</p>
+<p>Der Webservice ist auf Basis von <a href="https://www.playframework.com/documentation/2.4.x/JavaHome">Play 2.4.2</a> realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von elektronischen Publikationen an. Die <a href="#_regal_api_2">regal-api</a> operiert auf <a href="#_fedora_commons_3">Fedora Commons 3</a>, <a href="#_mySQL">[_mySQL]</a> und <a href="#_Elasticsearch">[_Elasticsearch]</a>. Über die API werden auch Funktionalitäten von <a href="#_etikett">Etikett</a>, <a href="#_thumby">Thumby</a>, <a href="#_zettel">Zettel</a> und <a href="#_deepzoomer">Deepzoomer</a> angesprochen. Für die Webarchivierung werden <a href="#_heritrix">heritrix</a>, <a href="#_wpull">wpull</a> und <a href="#_openwayback">openwayback</a> angebunden.</p>
 </div>
 <div class="sect3">
 <h4 id="_kofiguration">3.1.1. Kofiguration</h4>
@@ -1514,7 +1514,7 @@ Play 2.4.2</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>labels.json</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Eine sinnvolle Startkonfiguration. Die Datei wurde mit <a href="#_etikett">etikett</a> erzeugt. Beim Start von <a href="#_regal_api_2">regal-api</a> wird zunächst versucht eine ähnliche Konfiguration direkt von einer laufenden <a href="#_etikett">etikett</a>-Instanz zu holen. Wenn dies nicht klappt, wird auf die labels.json zurückgegriffen.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Eine sinnvolle Startkonfiguration. Die Datei wurde mit <a href="#_etikett">Etikett</a> erzeugt. Beim Start von <a href="#_regal_api_2">regal-api</a> wird zunächst versucht eine ähnliche Konfiguration direkt von einer laufenden <a href="#_etikett">Etikett</a>-Instanz zu holen. Wenn dies nicht klappt, wird auf die labels.json zurückgegriffen.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">list.html</p></td>
@@ -1592,7 +1592,7 @@ Play 2.4.2</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">default package</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Hier befindet sich die Datei Global, die in [Play 2.4] noch eine große Rolle spielt. In der Datei können zum Beispiel Aktionen vor dem Start der Applikation erfolgen, auch können hier HTTP-Requests mit geloggt werden. Bestimmte Aktionen werden nur im Production-Mode ausgeführt, d.h. nur wenn die Applikation mit <code>start</code> gestartet wurde oder über <code>dist</code> ein entsprechendes Binary erzeugt wurde.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hier befindet sich die Datei Global, die in <a href="https://www.playframework.com/documentation/2.4.x/JavaHome">Play 2.4</a> noch eine große Rolle spielt. In der Datei können zum Beispiel Aktionen vor dem Start der Applikation erfolgen, auch können hier HTTP-Requests mit geloggt werden. Bestimmte Aktionen werden nur im Production-Mode ausgeführt, d.h. nur wenn die Applikation mit <code>start</code> gestartet wurde oder über <code>dist</code> ein entsprechendes Binary erzeugt wurde.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">actions</p></td>
@@ -1661,15 +1661,15 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 <div class="sect3">
 <h4 id="_gedanken_des_authors">3.1.3. Gedanken des Authors</h4>
 <div class="paragraph">
-<p>Der in <a href="#_regal_api_2">regal-api</a> versammelte Code ist ein historisch gewachsenes Sammelsurium. Zu irgendeinem Zeitpunkt habe ich angefangen neue Funktionalitäten vorzugsweise nicht mehr hier zu integrieren. Auf diese Weise sind <a href="#_etikett">etikett</a>, <a href="#_thumby">thumby</a>, <a href="#_zettel">zettel</a> und <a href="#_skos_lookup">skos-lookup</a> entstanden.</p>
+<p>Der in <a href="#_regal_api_2">regal-api</a> versammelte Code ist ein historisch gewachsenes Sammelsurium. Zu irgendeinem Zeitpunkt habe ich angefangen neue Funktionalitäten vorzugsweise nicht mehr hier zu integrieren. Auf diese Weise sind <a href="#_etikett">Etikett</a>, <a href="#_thumby">Thumby</a>, <a href="#_zettel">Zettel</a> und <a href="#_skos_lookup">skos-lookup</a> entstanden.</p>
 </div>
 <div class="paragraph">
-<p>Schaut man sich die sieben groben Aufgabenbereiche an, die von <a href="#_regal_api_2">regal-api</a> abgedeckt werden, so könnten weitere Unterteilungen in zusätzliche Webservices sinnvoll sein. Gerade der Bereich Webarchivierung mit seiner hohen Komplexität erscheint mir für eine Auskopplung prädestiniert. Tools wie [heritrix],[wpull] und [openwayback] könnten so aus der Gesamtkomplexität entfernt werden.</p>
+<p>Schaut man sich die sieben groben Aufgabenbereiche an, die von <a href="#_regal_api_2">regal-api</a> abgedeckt werden, so könnten weitere Unterteilungen in zusätzliche Webservices sinnvoll sein. Gerade der Bereich Webarchivierung mit seiner hohen Komplexität erscheint mir für eine Auskopplung prädestiniert. Tools wie <a href="#_heritrix">heritrix</a>,<a href="#_wpull">wpull</a> und <a href="#_openwayback">openwayback</a> könnten so aus der Gesamtkomplexität entfernt werden.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_etikett">3.2. etikett</h3>
+<h3 id="_etikett">3.2. Etikett</h3>
 <div class="paragraph">
 <p>Repo: <a href="https://github.com/hbz/etikett" class="bare">https://github.com/hbz/etikett</a>
 Play 2.2.2</p>
@@ -1738,7 +1738,7 @@ In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs 
 <p>Mit Hilfe dieser Angaben kann Etikett auch einen "JSON-LD Context" bereitstellen. Insgesamt wird über Etikett eine Art "Application Profile" realisiert. Das Profil gibt Auskunft, welche Metadatenfelder (definiert als URIs) in welcher Weise (Typ, Container) Verwendung finden und wie sie angezeigt werden sollen (Label, Weight, Pictogram).</p>
 </div>
 <div class="paragraph">
-<p>Im Regal-Kontext wird <a href="#_etikett">etikett</a> an vielen Stellen verwendet.</p>
+<p>Im Regal-Kontext wird <a href="#_etikett">Etikett</a> an vielen Stellen verwendet.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1849,7 +1849,7 @@ In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_zettel">3.3. zettel</h3>
+<h3 id="_zettel">3.3. Zettel</h3>
 <div class="paragraph">
 <p>Repo: <a href="https://github.com/hbz/zettel" class="bare">https://github.com/hbz/zettel</a>
 Play 2.5.14</p>
@@ -1883,7 +1883,7 @@ Play 2.5.14</p>
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>application.conf</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Die Datei enthält einen Eintrag zur Konfiguration von <a href="#_etikett">etikett</a>. Über einen weiteren Eintrag können "Hilfetexte" angelinkt werden. Die Hilfetexte müssen in einer statischen HTML abgelegt sein. Am Ende der Datei werden einige Limits deutlich über den Standard erhöht, damit die großen RDF-Posts auch funktionieren.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Die Datei enthält einen Eintrag zur Konfiguration von <a href="#_etikett">Etikett</a>. Über einen weiteren Eintrag können "Hilfetexte" angelinkt werden. Die Hilfetexte müssen in einer statischen HTML abgelegt sein. Am Ende der Datei werden einige Limits deutlich über den Standard erhöht, damit die großen RDF-Posts auch funktionieren.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>collectionOne.csv</strong></p></td>
@@ -1895,7 +1895,7 @@ Play 2.5.14</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">labels.json</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Ein paar labels, falls keine Instanz von <a href="#_etikett">etikett</a> erreichbar ist.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ein paar labels, falls keine Instanz von <a href="#_etikett">Etikett</a> erreichbar ist.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">logback.xml</p></td>
@@ -1954,7 +1954,7 @@ Play 2.5.14</p>
 Play 2.5.8</p>
 </div>
 <div class="paragraph">
-<p><a href="#_skos_lookup">skos-lookup</a> dient zur Unterstützung von <a href="#_zettel">zettel</a>. Der Webservice startet eine eingebettete Elasticsearch-Instanz und verfügt über eine Schnittstelle um SKOS-Daten in separate Indexe zu importieren und Schnittstellen zur Unterstützung von jQuery-Autocomplete- und Select2-Widgets aufzubauen. Auf diese Weise können auch umfangreichere Thesauri und Notationssysteme in den Formularen von <a href="#_zettel">zettel</a> fachgerecht angelinkt werden. <a href="#_skos_lookup">skos-lookup</a> unterstützt auch mehrsprachige Thesauri.</p>
+<p><a href="#_skos_lookup">skos-lookup</a> dient zur Unterstützung von <a href="#_zettel">Zettel</a>. Der Webservice startet eine eingebettete Elasticsearch-Instanz und verfügt über eine Schnittstelle um SKOS-Daten in separate Indexe zu importieren und Schnittstellen zur Unterstützung von jQuery-Autocomplete- und Select2-Widgets aufzubauen. Auf diese Weise können auch umfangreichere Thesauri und Notationssysteme in den Formularen von <a href="#_zettel">Zettel</a> fachgerecht angelinkt werden. <a href="#_skos_lookup">skos-lookup</a> unterstützt auch mehrsprachige Thesauri.</p>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_3">3.4.1. Konfiguration</h4>
@@ -2030,13 +2030,13 @@ Play 2.5.8</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_thumby">3.5. thumby</h3>
+<h3 id="_thumby">3.5. Thumby</h3>
 <div class="paragraph">
 <p>Repo: <a href="https://github.com/hbz/thumby" class="bare">https://github.com/hbz/thumby</a>
 Play 2.2.2</p>
 </div>
 <div class="paragraph">
-<p><a href="#_thumby">thumby</a> realisiert einen Thumbnail-Generator. Über ein HTTP-GET wird <a href="#_thumby">thumby</a> die URL eines PDFs, oder eines Bildes übergeben. Sofern die <a href="#_thumby">thumby</a> den Server kennt, wird es versuchen ein Thumbnail der zurückgelieferten Daten zu erstellen. Die Daten werden dauerhaft auf der Platte abgelegt und zukünftige Requests, die auf dasselbe Bild verweisen werden direkt aus dem Speicher von <a href="#_thumby">thumby</a> beantwortet.</p>
+<p><a href="#_thumby">Thumby</a> realisiert einen Thumbnail-Generator. Über ein HTTP-GET wird <a href="#_thumby">Thumby</a> die URL eines PDFs, oder eines Bildes übergeben. Sofern die <a href="#_thumby">Thumby</a> den Server kennt, wird es versuchen ein Thumbnail der zurückgelieferten Daten zu erstellen. Die Daten werden dauerhaft auf der Platte abgelegt und zukünftige Requests, die auf dasselbe Bild verweisen werden direkt aus dem Speicher von <a href="#_thumby">Thumby</a> beantwortet.</p>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_4">3.5.1. Konfiguration</h4>
@@ -2096,7 +2096,7 @@ Play 2.2.2</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_deepzoomer">3.6. deepzoomer</h3>
+<h3 id="_deepzoomer">3.6. Deepzoomer</h3>
 <div class="paragraph">
 <p>Repo:<a href="https://github.com/hbz/DeepZoomService" class="bare">https://github.com/hbz/DeepZoomService</a>
 Servlet 2.3</p>
@@ -2161,7 +2161,7 @@ PHP 5</p>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">edoweb_storage</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Hier sind die Zugriffe auf <a href="#_regal_api_2">regal-api</a> und [elasticsearch] zu finden.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hier sind die Zugriffe auf <a href="#_regal_api_2">regal-api</a> und <a href="#_elasticsearch">[_elasticsearch]</a> zu finden.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3029,7 +3029,7 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-10 11:44:32 +0200
+Last updated 2019-05-13 13:38:53 +0200
 </div>
 </div>
 </body>

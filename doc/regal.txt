@@ -132,7 +132,7 @@ Die etikett Datenbank wird beim Neustart jeder <<_regal_api_2>>-Instanz eingeles
 Wie kommen bibliografische Metadaten ins System?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In Regal können bibliografische Metadaten aus dem hbz-Verbundkatalog an Ressourcen "angelinkt" werden. Dies erfolgt über Angabe der ID des entsprechenden Titelsatzes (z.b. HT017766754). Mit Hilfe dieser ID kann Regal einen Titelimport durchführen. Dabei wird auf die Schnittstellen der [Lobid-API] zugegriffen. 
+In Regal können bibliografische Metadaten aus dem hbz-Verbundkatalog an Ressourcen "angelinkt" werden. Dies erfolgt über Angabe der ID des entsprechenden Titelsatzes (z.b. HT017766754). Mit Hilfe dieser ID kann Regal einen Titelimport durchführen. Dabei wird auf die Schnittstellen der https://lobid.org[Lobid-API] zugegriffen. 
 
 Regal bietet außerdem die Möglichkeit Metadaten über Erfassungsmasken zu erzeugen und zu speichern. Dies erfolgt mit Hilfe des Moduls <<_zettel>>. <<_zettel>> ist ein Webservices, der verschiedene HTML-Formulare bereitstellt. Die Formulare können RDF-Metadaten einlesen und ausgeben. Zettel-Formulare werden über Javascript in ein IFrame der eigentlichen Anwendung angebunden. Über Zettel werden Konzepte aus dem Bereich Linked Data umgesetzt. So können Feldinhalte über entsprechende Eingabeelemente in Drittsystemen recherchiert und verlinkt werden. Die Darstellung von Links erfolgt in Zettel mit Hilfe von <<_etikett>>. Umfangreichere Notationssysteme wie Agrovoc oder DDC werden über einen eigenen Index aus dem Modul <<_skos_lookup>> eingebunden. Zettel unterstützt zur Zeit folgende Linked-Data-Quellen:
 
@@ -146,7 +146,7 @@ Regal bietet außerdem die Möglichkeit Metadaten über Erfassungsmasken zu erze
 Anzeige und Darstellung
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-Über die Schnittstellen der <<_regal_api_2>> können unterschiedliche Darstellungen einer Publikation bezogen werden. Über [Content Negotiation] können Darstellungen per HTTP-Header angefragt werden. Um unterschiedliche Darstellungen im Browser anzeigen zu lassen, kann außerden, über das Setzen von entsprechenden Endungen, auf unterschiedliche Representationen eine Resource zugegriffen werden.
+Über die Schnittstellen der <<_regal_api_2>> können unterschiedliche Darstellungen einer Publikation bezogen werden. Über https://de.wikipedia.org/wiki/Content_Negotiation[Content Negotiation] können Darstellungen per HTTP-Header angefragt werden. Um unterschiedliche Darstellungen im Browser anzeigen zu lassen, kann außerden, über das Setzen von entsprechenden Endungen, auf unterschiedliche Representationen eine Resource zugegriffen werden.
 
 .Auswahl von Pfaden zu unterschiedlichen Representationen einer Ressource
 ....
@@ -157,7 +157,7 @@ Anzeige und Darstellung
 /resource/danrw:1.mets
 ....
 
-In der HTML-Darstellung greift <<_regal_api_2>> auf den Hilfdienst <<_thumby>> zu, um darüber Thumbnail-Darstellungen von PDFs oder Bilder zu kreieren. Bei großen Bildern wird außerdem der [DeepzoomerService] angelinkt, der eine Darstellung von Hochauflösenden Bildern über das Tool Openseedragon erlaubt. Video- und Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.
+In der HTML-Darstellung greift <<_regal_api_2>> auf den Hilfdienst <<_thumby>> zu, um darüber Thumbnail-Darstellungen von PDFs oder Bilder zu kreieren. Bei großen Bildern wird außerdem der <<_deepzoomer>> angelinkt, der eine Darstellung von Hochauflösenden Bildern über das Tool Openseedragon erlaubt. Video- und Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.
 
 Der hbz-Verbundkatalog
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -167,7 +167,7 @@ Metadaten, die über den Verbundkatalog importiert wurden, können über einen C
 Metadatenkonvertierung
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Für die Metadatenkonvertierung gibt es kein festes Vorgehensmodell oder Werkzeug. I.d.R. gibt es für jede Representation eine oder eine Reihe von Javaklassen, die für eine On-the-fly-Konvertierung sorgen. Die HTML-Darstellung basiert grundlegend auf denselben Daten, die auch im [Elasticsearch]-Index liegen und ist im wesentlichen eine JSON-LD-Darstellung, die mit Hilfe der in <<_etikett>> hinterlegten Konfiguration aus den bibliografischen Metadaten gewonnen wurde.
+Für die Metadatenkonvertierung gibt es kein festes Vorgehensmodell oder Werkzeug. I.d.R. gibt es für jede Representation eine oder eine Reihe von Javaklassen, die für eine On-the-fly-Konvertierung sorgen. Die HTML-Darstellung basiert grundlegend auf denselben Daten, die auch im https://www.elastic.co/guide/index.html[Elasticsearch]-Index liegen und ist im wesentlichen eine JSON-LD-Darstellung, die mit Hilfe der in <<_etikett>> hinterlegten Konfiguration aus den bibliografischen Metadaten gewonnen wurde.
 
 OAI-Providing
 ~~~~~~~~~~~~~
@@ -290,7 +290,7 @@ Mit regal-api werden alle grundlegenden Funktionen von Regal bereitgestellt. Die
 - Suche
 - Webarchivierung
 
-Der Webservice ist auf Basis von [Play 2.4.2] realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von elektronischen Publikationen an. Die <<_regal_api_2>> operiert auf <<_fedora_commons_3>>, [MySQL] und [Elasticsearch]. Über die API werden auch Funktionalitäten von <<_etikett>>, <<_thumby>>, <<_zettel>> und <<_deepzoomer>> angesprochen. Für die Webarchivierung werden [heritrix], [wpull] und [openwayback] angebunden.
+Der Webservice ist auf Basis von https://www.playframework.com/documentation/2.4.x/JavaHome[Play 2.4.2] realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von elektronischen Publikationen an. Die <<_regal_api_2>> operiert auf <<_fedora_commons_3>>, <<_mySQL>> und <<_Elasticsearch>>. Über die API werden auch Funktionalitäten von <<_etikett>>, <<_thumby>>, <<_zettel>> und <<_deepzoomer>> angesprochen. Für die Webarchivierung werden <<_heritrix>>, <<_wpull>> und <<_openwayback>> angebunden.
 
 Kofiguration
 ^^^^^^^^^^^^
@@ -335,7 +335,7 @@ Die Applikation
 [options="header,autowidth"]
 |===================================================================
 |Package | Beschreibung
-|default package | Hier befindet sich die Datei Global, die in [Play 2.4] noch eine große Rolle spielt. In der Datei können zum Beispiel Aktionen vor dem Start der Applikation erfolgen, auch können hier HTTP-Requests mit geloggt werden. Bestimmte Aktionen werden nur im Production-Mode ausgeführt, d.h. nur wenn die Applikation mit `start` gestartet wurde oder über `dist` ein entsprechendes Binary erzeugt wurde.
+|default package | Hier befindet sich die Datei Global, die in https://www.playframework.com/documentation/2.4.x/JavaHome[Play 2.4] noch eine große Rolle spielt. In der Datei können zum Beispiel Aktionen vor dem Start der Applikation erfolgen, auch können hier HTTP-Requests mit geloggt werden. Bestimmte Aktionen werden nur im Production-Mode ausgeführt, d.h. nur wenn die Applikation mit `start` gestartet wurde oder über `dist` ein entsprechendes Binary erzeugt wurde.
 |actions | Hier sind Funktionen versammelt, die meist unmittelbar aus den Controller-Klassen aufgerufen werden.
 |archive.fedora| Ein Reihe von Dateien, über die Zugriffe auf <<_fedora_commons_3>> organisiert werden. Hier finden sich auch einige Hilfsklassen (`Utils`). Das FedoraInterface zeigt an, welche Aktionen auf der Fedora ausgeführt werden. Der Code in diesem Paket gehört mit zu dem ältesten Code im gesamten Regal-Projekt. 
 |archive.search| Zugriff auf die Elasticsearch
@@ -358,11 +358,11 @@ Gedanken des Authors
 ^^^^^^^^^^^^^^^^^^^^
 Der in <<_regal_api_2>> versammelte Code ist ein historisch gewachsenes Sammelsurium. Zu irgendeinem Zeitpunkt habe ich angefangen neue Funktionalitäten vorzugsweise nicht mehr hier zu integrieren. Auf diese Weise sind <<_etikett>>, <<_thumby>>, <<_zettel>> und <<_skos_lookup>> entstanden. 
 
-Schaut man sich die sieben groben Aufgabenbereiche an, die von <<_regal_api_2>> abgedeckt werden, so könnten weitere Unterteilungen in zusätzliche Webservices sinnvoll sein. Gerade der Bereich Webarchivierung mit seiner hohen Komplexität erscheint mir für eine Auskopplung prädestiniert. Tools wie [heritrix],[wpull] und [openwayback] könnten so aus der Gesamtkomplexität entfernt werden.  
+Schaut man sich die sieben groben Aufgabenbereiche an, die von <<_regal_api_2>> abgedeckt werden, so könnten weitere Unterteilungen in zusätzliche Webservices sinnvoll sein. Gerade der Bereich Webarchivierung mit seiner hohen Komplexität erscheint mir für eine Auskopplung prädestiniert. Tools wie <<_heritrix>>,<<_wpull>> und <<_openwayback>> könnten so aus der Gesamtkomplexität entfernt werden.  
 
 
 
-etikett
+Etikett
 ~~~~~~~
 Repo: <https://github.com/hbz/etikett>
 Play 2.2.2
@@ -433,7 +433,7 @@ Die Applikation
 |===================================================================
 
  
-zettel
+Zettel
 ~~~~~~
 Repo: <https://github.com/hbz/zettel>
 Play 2.5.14
@@ -511,7 +511,7 @@ Die Applikation
 |===================================================================
 
 
-thumby
+Thumby
 ~~~~~~
 Repo: <https://github.com/hbz/thumby>
 Play 2.2.2
@@ -542,7 +542,7 @@ Die Applikation
 |===================================================================
 
 
-deepzoomer
+Deepzoomer
 ~~~~~~~~~~
 Repo:<https://github.com/hbz/DeepZoomService>
 Servlet 2.3
@@ -577,7 +577,7 @@ Die Applikation
 |Verzeichnis |Beschreibung
 |edoweb| Hier ist der Code für die Oberflächen. 
 |edoweb-field|Hier werden Felder für unterschiedliche RDF-Properties in der Drupal-Datenbank konfiguriert. Der Code ist größtenteils obsolet, da die Feldlogik nicht mehr benutzt wird.
-|edoweb_storage| Hier sind die Zugriffe auf <<_regal_api_2>> und [elasticsearch] zu finden.
+|edoweb_storage| Hier sind die Zugriffe auf <<_regal_api_2>> und <<_elasticsearch>> zu finden.
 |===================================================================
 
 edoweb-drupal-theme
