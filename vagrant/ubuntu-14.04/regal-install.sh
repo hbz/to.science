@@ -368,6 +368,7 @@ function installRegalDrupal(){
 	curl https://ftp.drupal.org/files/projects/ctools-7.x-1.3.tar.gz | tar xz
 	php5enmod redland
         service apache2 restart
+        ln -s /opt/regal/src/regal-api/public/ $ARCHIVE_HOME/var/drupal/
 }
 
 function installDrupalThemes(){
@@ -432,10 +433,10 @@ function initialize(){
 	sleep 10
 	curl -uadmin:admin -XPOST -F"data=@$ARCHIVE_HOME/src/regal-api/conf/labels.json" -F"format-cb=Json" http://api.localhost/tools/etikett -i -L
 	curl -uedoweb-admin:admin -XPOST http://api.localhost/context.json
-	curl -i -uedoweb-admin:admin -XPUT http://api.localhost/resource/danrw:1234 -d'{"contentType":"monograph","accessScheme":"public"}' -H'content-type:application/json'
-	curl -i -uedoweb-admin:admin -XPUT http://api.localhost/resource/danrw:1235 -d'{"parentPid":"danrw:1234","contentType":"file","accessScheme":"public"}' -H'content-type:application/json'
-	curl -uedoweb-admin:admin -F"data=@$ARCHIVE_HOME/src/regal-api/test/resources/test.pdf;type=application/pdf" -XPUT http://api.localhost/resource/danrw:1235/data
-	curl -uedoweb-admin:admin -XPOST "http://api.localhost/utils/lobidify/danrw:1234?alephid=HT018920238"
+	curl -i -uedoweb-admin:admin -XPUT http://api.localhost/resource/regal:1234 -d'{"contentType":"monograph","accessScheme":"public"}' -H'content-type:application/json'
+	curl -i -uedoweb-admin:admin -XPUT http://api.localhost/resource/regal:1235 -d'{"parentPid":"regal:1234","contentType":"file","accessScheme":"public"}' -H'content-type:application/json'
+	curl -uedoweb-admin:admin -F"data=@$ARCHIVE_HOME/src/regal-api/test/resources/test.pdf;type=application/pdf" -XPUT http://api.localhost/resource/regal:1235/data
+	curl -uedoweb-admin:admin -XPOST "http://api.localhost/utils/lobidify/regal:1234?alephid=HT018920238"
 }
 
 
