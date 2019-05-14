@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Asciidoctor 0.1.4">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.9">
-<meta name="author" content="Jan Schnasse">
 <title>Regal</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
@@ -725,20 +723,18 @@ b.conum * { color: inherit !important; }
 .conum:not([data-value]):empty { display: none; }
 
 .literalblock pre, .listingblock pre { background: #eeeeee; }
-
 </style>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
 <h1>Regal</h1>
-<div class="details">
 <span id="author" class="author">Jan Schnasse</span><br>
-</div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_einleitung">1. Einleitung</a></li>
-<li><a href="#_konzepte">2. Konzepte</a>
+<li><a href="#_konzepte">2. Konzepte</a></li>
+<li>
 <ul class="sectlevel2">
 <li><a href="#_objektmodell">2.1. Objektmodell</a></li>
 <li><a href="#_namespaces_und_identifier">2.2. Namespaces und Identifier</a></li>
@@ -753,7 +749,8 @@ b.conum * { color: inherit !important; }
 <li><a href="#_ansichten">2.11. Ansichten</a></li>
 </ul>
 </li>
-<li><a href="#_software">3. Software</a>
+<li><a href="#_software">3. Software</a></li>
+<li>
 <ul class="sectlevel2">
 <li><a href="#_regal_api_2">3.1. regal-api</a></li>
 <li><a href="#_etikett">3.2. Etikett</a></li>
@@ -773,13 +770,15 @@ b.conum * { color: inherit !important; }
 <li><a href="#_drupal_7">3.16. Drupal 7</a></li>
 </ul>
 </li>
-<li><a href="#_installation">4. Installation</a>
+<li><a href="#_installation">4. Installation</a></li>
+<li>
 <ul class="sectlevel2">
 <li><a href="#_vagrant">4.1. Vagrant</a></li>
 <li><a href="#_server">4.2. Server</a></li>
 </ul>
 </li>
-<li><a href="#_administration">5. Administration</a>
+<li><a href="#_administration">5. Administration</a></li>
+<li>
 <ul class="sectlevel2">
 <li><a href="#_aktualisierung">5.1. Aktualisierung</a></li>
 <li><a href="#_verzeichnisse">5.2. Verzeichnisse</a></li>
@@ -792,15 +791,17 @@ b.conum * { color: inherit !important; }
 <li><a href="#_scripts_und_cronjobs">5.9. Scripts und Cronjobs</a></li>
 </ul>
 </li>
-<li><a href="#_dokumentation">6. Dokumentation</a>
+<li><a href="#_dokumentation">6. Dokumentation</a></li>
+<li>
 <ul class="sectlevel2">
 <li><a href="#_diese_repo_herunterladen">6.1. Diese Repo herunterladen</a></li>
 <li><a href="#_asciidoctor_und_asciidoctor_stylesheets_installieren">6.2. Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
-<li><a href="#_doku_modifizieren_und_in_html_übersetzen">6.3. Doku modifizieren und in HTML übersetzen</a></li>
+<li><a href="#_doku_modifizieren_und_in_html_bersetzen">6.3. Doku modifizieren und in HTML übersetzen</a></li>
 </ul>
 </li>
 <li><a href="#_license">7. License</a></li>
-<li><a href="#_links">8. Links</a>
+<li><a href="#_links">8. Links</a></li>
+<li>
 <ul class="sectlevel2">
 <li><a href="#_slides">8.1. Slides</a></li>
 <li><a href="#_internes_wiki">8.2. Internes Wiki</a></li>
@@ -941,12 +942,12 @@ b.conum * { color: inherit !important; }
 <div class="paragraph">
 <p>Eine einzelne Publikation besteht i.d.R. aus mehreren <a href="#_fedora_commons_3">Fedora Commons 3</a>-Objekten, die in einer hierarchischen Beziehung zueinander stehen.</p>
 </div>
-<table class="tableblock frame-all grid-all fit-content">
+<table class="tableblock frame-all grid-all" style="">
 <caption class="title">Table 1. Fedora Object</caption>
 <colgroup>
 <col>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -988,6 +989,7 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
+
 <div class="paragraph">
 <p>Die Metadaten werden als ASCII-Kodierte N-Triple abgelegt. Da alle Fedora-Daten als Dateien im Dateisystem abgelegt werden, ist diese Veriante besonders robust gegen Speicherfehler. N-Triple ist ein Format, dass sich Zeilenweise lesen lässt. ASCII ist die einfachste Form der Textkodierung.</p>
 </div>
@@ -1000,12 +1002,12 @@ b.conum * { color: inherit !important; }
 <div class="paragraph">
 <p>Der so zusammengesetzte Identifier kommt in allen Systemkomponenten zum Einsatz.</p>
 </div>
-<table class="tableblock frame-all grid-all fit-content">
+<table class="tableblock frame-all grid-all" style="">
 <caption class="title">Table 2. Beispiel Regal Identifier</caption>
 <colgroup>
 <col>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -1018,25 +1020,26 @@ b.conum * { color: inherit !important; }
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal:1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">drupal</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost/resource/regal:1" class="bare">http://localhost/resource/regal:1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost/resource/regal:1">http://localhost/resource/regal:1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal:1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal-api</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://api.localhost/resource/regal:1" class="bare">http://api.localhost/resource/regal:1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://api.localhost/resource/regal:1">http://api.localhost/resource/regal:1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal:1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">fedora</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/fedora/objects/regal:1" class="bare">http://localhost:8080/fedora/objects/regal:1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/fedora/objects/regal:1">http://localhost:8080/fedora/objects/regal:1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal:1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">elasticsearch</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9200/regal/_all/regal:1" class="bare">http://localhost:9200/regal/_all/regal:1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9200/regal/_all/regal:1">http://localhost:9200/regal/_all/regal:1</a></p></td>
 </tr>
 </tbody>
 </table>
+
 </div>
 <div class="sect2">
 <h3 id="_deskriptive_metadaten">2.3. Deskriptive Metadaten</h3>
@@ -1065,7 +1068,7 @@ b.conum * { color: inherit !important; }
 <div class="paragraph">
 <p>Alle bekannten Metadateneinträge werden in der Komponente <a href="#_etikett">Etikett</a> verwaltet. In <a href="#_etikett">Etikett</a> kann konfiguriert werden, welche URIs aus den RDF-Daten in das JSON-LD-Format von <a href="#_regal_api_2">regal-api</a> überführt werden. Außerdem kann die Reihenfolge der Darstellung, und das Label zur Anzeige gesetzt werden.</p>
 </div>
-<table class="tableblock frame-all grid-all fit-content">
+<table class="tableblock frame-all grid-all" style="">
 <caption class="title">Table 3. Etikett-Eintrag für dc:title</caption>
 <colgroup>
 <col>
@@ -1074,7 +1077,7 @@ b.conum * { color: inherit !important; }
 <col>
 <col>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -1092,13 +1095,14 @@ b.conum * { color: inherit !important; }
 <td class="tableblock halign-left valign-top"><p class="tableblock">Titel</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keine Angabe</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://purl.org/dc/terms/title" class="bare">http://purl.org/dc/terms/title</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://purl.org/dc/terms/title">http://purl.org/dc/terms/title</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keine Angabe</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keine Angabe</p></td>
 </tr>
 </tbody>
 </table>
+
 <div class="literalblock">
 <div class="title">Etikett-Eintrag als Json</div>
 <div class="content">
@@ -1179,11 +1183,11 @@ b.conum * { color: inherit !important; }
 <div class="paragraph">
 <p>Öffentlich zugängliche Publikationen sind auch über die OAI-Schnittstelle verfügbar. Dabei wird jede Publikation einer Reihe von OAI-Sets zugeordnet und in unterschiedlichen Formaten angeboten.</p>
 </div>
-<table class="tableblock frame-all grid-all fit-content">
+<table class="tableblock frame-all grid-all" style="">
 <caption class="title">Table 4. OAI Set</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -1230,11 +1234,12 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all fit-content">
+
+<table class="tableblock frame-all grid-all" style="">
 <caption class="title">Table 5. OAI Metadatenformat</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -1269,6 +1274,7 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
+
 </div>
 <div class="sect2">
 <h3 id="_suche">2.8. Suche</h3>
@@ -1292,11 +1298,11 @@ b.conum * { color: inherit !important; }
 </div>
 <div class="sect3">
 <h4 id="_sichtbarkeiten_operationen_rollen">2.9.1. Sichtbarkeiten, Operationen, Rollen</h4>
-<table class="tableblock frame-all grid-all fit-content">
+<table class="tableblock frame-all grid-all" style="">
 <caption class="title">Table 6. Lesender Zugriff auf Metadaten</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -1315,11 +1321,12 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all fit-content">
+
+<table class="tableblock frame-all grid-all" style="">
 <caption class="title">Table 7. Lesender Zugriff auf Daten</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -1350,6 +1357,7 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
+
 </div>
 </div>
 <div class="sect2">
@@ -1360,7 +1368,7 @@ b.conum * { color: inherit !important; }
 <div class="sect3">
 <h4 id="_drupal">2.10.1. Drupal</h4>
 <div class="paragraph">
-<p>Benutzer in Drupal können über das Modul <a href="#regal_drupal">[regal_drupal]</a> unterschiedliche Rollen zugewiesen werden. Die Authorisierung erfolgt passwortbasiert. Alle Drupal-Benutzer greifen über einen vokonfigurierten Accessor auf die <a href="#_regal_api_2">regal-api</a> zu. Alle Zugriffe erfolgen verschlüsselt unter Angabe eines Passwortes. Die Rolle mit deren Berechtigungen zugegriffen wird, wird dabei in <a href="#regal_drupal">[regal_drupal]</a> gesetzt. Die Drupal-BenutzerId wird als Metadatum in Form eines proprietären HTTP-Headers mit an <a href="#_regal_api_2">regal-api</a> geliefert.</p>
+<p>Benutzer in Drupal können über das Modul <a href="#_regal_drupal">regal-drupal</a> unterschiedliche Rollen zugewiesen werden. Die Authorisierung erfolgt passwortbasiert. Alle Drupal-Benutzer greifen über einen vokonfigurierten Accessor auf die <a href="#_regal_api_2">regal-api</a> zu. Alle Zugriffe erfolgen verschlüsselt unter Angabe eines Passwortes. Die Rolle mit deren Berechtigungen zugegriffen wird, wird dabei in <a href="#_regal_drupal">regal-drupal</a> gesetzt. Die Drupal-BenutzerId wird als Metadatum in Form eines proprietären HTTP-Headers mit an <a href="#_regal_api_2">regal-api</a> geliefert.</p>
 </div>
 </div>
 <div class="sect3">
@@ -1414,10 +1422,32 @@ b.conum * { color: inherit !important; }
 </div>
 <div class="sect2">
 <h3 id="_regal_api_2">3.1. regal-api</h3>
-<div class="paragraph">
-<p>Repo: <a href="https://github.com/edoweb/regal-api" class="bare">https://github.com/edoweb/regal-api</a>
-Play 2.4.2</p>
-</div>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 8. Überblick</caption>
+<colgroup>
+<col>
+<col> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/edoweb/regal-api">regal-api</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Technik</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.playframework.com/documentation/2.4.x/JavaHome">Play 2.4.2</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9000 / 9100</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verzeichnis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/apps/regal , /opr/regal/src/regal</p></td>
+</tr>
+</tbody>
+</table>
+
 <div class="paragraph">
 <p>Mit regal-api werden alle grundlegenden Funktionen von Regal bereitgestellt. Dies umfasst:</p>
 </div>
@@ -1451,11 +1481,11 @@ Play 2.4.2</p>
 </div>
 <div class="sect3">
 <h4 id="_kofiguration">3.1.1. Kofiguration</h4>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 8. Dateien im /conf Verzeichnis</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 9. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -1574,14 +1604,15 @@ Play 2.4.2</p>
 </tr>
 </tbody>
 </table>
+
 </div>
 <div class="sect3">
 <h4 id="_die_applikation">3.1.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 9. Das /app Verzeichnis</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 10. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -1657,6 +1688,7 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
+
 </div>
 <div class="sect3">
 <h4 id="_gedanken_des_authors">3.1.3. Gedanken des Authors</h4>
@@ -1670,10 +1702,32 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </div>
 <div class="sect2">
 <h3 id="_etikett">3.2. Etikett</h3>
-<div class="paragraph">
-<p>Repo: <a href="https://github.com/hbz/etikett" class="bare">https://github.com/hbz/etikett</a>
-Play 2.2.2</p>
-</div>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 11. Überblick</caption>
+<colgroup>
+<col>
+<col> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/hbz/etikett">etikett</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Technik</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.playframework.com/documentation/2.2.x/JavaHome">Play Play 2.2.2</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9002 / 9102</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verzeichnis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/apps/etikett , /opr/regal/src/etikett</p></td>
+</tr>
+</tbody>
+</table>
+
 <div class="paragraph">
 <p>Etikett ist eine einfache Datenbankanwendung, die es erlaubt menschenlesbare Labels für URIs abzulegen. Über eine HTTP-Schnittstelle kann dann nach dem Label gefragt werden.
 In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs finden können. Beispiele:</p>
@@ -1761,11 +1815,11 @@ In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs 
 </div>
 <div class="sect3">
 <h4 id="_konfiguration">3.2.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 10. Dateien im /conf Verzeichnis</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 12. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -1808,14 +1862,15 @@ In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs 
 </tr>
 </tbody>
 </table>
+
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_2">3.2.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 11. Das /app Verzeichnis</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 13. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -1846,14 +1901,37 @@ In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs 
 </tr>
 </tbody>
 </table>
+
 </div>
 </div>
 <div class="sect2">
 <h3 id="_zettel">3.3. Zettel</h3>
-<div class="paragraph">
-<p>Repo: <a href="https://github.com/hbz/zettel" class="bare">https://github.com/hbz/zettel</a>
-Play 2.5.14</p>
-</div>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 14. Überblick</caption>
+<colgroup>
+<col>
+<col> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/hbz/zettel">zettel</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Technik</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.playframework.com/documentation/2.5.x/JavaHome">Play Play 2.5.4</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9003 / 9103</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verzeichnis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/apps/zettel, /opr/regal/src/zettel</p></td>
+</tr>
+</tbody>
+</table>
+
 <div class="paragraph">
 <p>Zettel ist ein Webservice zur Bereitstellung von Webformularen. Die Webformulare können über ein HTTP-GET geladen werden. Sollen existierende Daten in ein Formular geladen werden, so können diese Daten als Form-encoded, als JSON, oder als RDF-XML über ein HTTP-POST in das Formular geladen werden. Gleichzeitig kann spezifiziert werden, in welchem Format das Formular Daten zurückliefern soll.</p>
 </div>
@@ -1868,11 +1946,11 @@ Play 2.5.14</p>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_2">3.3.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 12. Dateien im /conf Verzeichnis</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 15. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -1911,14 +1989,15 @@ Play 2.5.14</p>
 </tr>
 </tbody>
 </table>
+
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_3">3.3.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 13. Das /app Verzeichnis</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 16. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -1945,24 +2024,47 @@ Play 2.5.14</p>
 </tr>
 </tbody>
 </table>
+
 </div>
 </div>
 <div class="sect2">
 <h3 id="_skos_lookup">3.4. skos-lookup</h3>
-<div class="paragraph">
-<p>Repo: <a href="https://github.com/hbz/skos-lookup" class="bare">https://github.com/hbz/skos-lookup</a>
-Play 2.5.8</p>
-</div>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 17. Überblick</caption>
+<colgroup>
+<col>
+<col> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/hbz/skos-lookup">skos-lookup</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Technik</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.playframework.com/documentation/2.5.x/JavaHome">Play Play 2.5.8</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9004 / 9104</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verzeichnis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/apps/skos-lookup, /opr/regal/src/skos-lookup</p></td>
+</tr>
+</tbody>
+</table>
+
 <div class="paragraph">
 <p><a href="#_skos_lookup">skos-lookup</a> dient zur Unterstützung von <a href="#_zettel">Zettel</a>. Der Webservice startet eine eingebettete Elasticsearch-Instanz und verfügt über eine Schnittstelle um SKOS-Daten in separate Indexe zu importieren und Schnittstellen zur Unterstützung von jQuery-Autocomplete- und Select2-Widgets aufzubauen. Auf diese Weise können auch umfangreichere Thesauri und Notationssysteme in den Formularen von <a href="#_zettel">Zettel</a> fachgerecht angelinkt werden. <a href="#_skos_lookup">skos-lookup</a> unterstützt auch mehrsprachige Thesauri.</p>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_3">3.4.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 14. Dateien im /conf Verzeichnis</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 18. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -1993,14 +2095,15 @@ Play 2.5.8</p>
 </tr>
 </tbody>
 </table>
+
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_4">3.4.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 15. Das /app Verzeichnis</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 19. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -2027,24 +2130,47 @@ Play 2.5.8</p>
 </tr>
 </tbody>
 </table>
+
 </div>
 </div>
 <div class="sect2">
 <h3 id="_thumby">3.5. Thumby</h3>
-<div class="paragraph">
-<p>Repo: <a href="https://github.com/hbz/thumby" class="bare">https://github.com/hbz/thumby</a>
-Play 2.2.2</p>
-</div>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 20. Überblick</caption>
+<colgroup>
+<col>
+<col> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/hbz/thumby">thumby</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Technik</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.playframework.com/documentation/2.2.x/JavaHome">Play Play 2.2.2</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9001 / 9101</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verzeichnis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/apps/thumby, /opr/regal/src/thumby</p></td>
+</tr>
+</tbody>
+</table>
+
 <div class="paragraph">
 <p><a href="#_thumby">Thumby</a> realisiert einen Thumbnail-Generator. Über ein HTTP-GET wird <a href="#_thumby">Thumby</a> die URL eines PDFs, oder eines Bildes übergeben. Sofern die <a href="#_thumby">Thumby</a> den Server kennt, wird es versuchen ein Thumbnail der zurückgelieferten Daten zu erstellen. Die Daten werden dauerhaft auf der Platte abgelegt und zukünftige Requests, die auf dasselbe Bild verweisen werden direkt aus dem Speicher von <a href="#_thumby">Thumby</a> beantwortet.</p>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_4">3.5.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 16. Dateien im /conf Verzeichnis</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 21. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -2063,14 +2189,15 @@ Play 2.2.2</p>
 </tr>
 </tbody>
 </table>
+
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_5">3.5.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 17. Das /app Verzeichnis</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 22. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -2093,24 +2220,47 @@ Play 2.2.2</p>
 </tr>
 </tbody>
 </table>
+
 </div>
 </div>
 <div class="sect2">
 <h3 id="_deepzoomer">3.6. Deepzoomer</h3>
-<div class="paragraph">
-<p>Repo:<a href="https://github.com/hbz/DeepZoomService" class="bare">https://github.com/hbz/DeepZoomService</a>
-Servlet 2.3</p>
-</div>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 23. Überblick</caption>
+<colgroup>
+<col>
+<col> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/hbz/DeepZoomService">DeepZoomService</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Technik</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://download.oracle.com/otn-pub/jcp/7840-servlet-2.3-spec-oth-JSpec/servlet-2_3-fcs-spec.ps">Servlet 2.3</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9091 / 9191</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verzeichnis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/tomcat-for-deepzoom/, /opr/regal/src/DeepZoomService</p></td>
+</tr>
+</tbody>
+</table>
+
 <div class="paragraph">
 <p>Der [DeepZoomService] kann als WAR in einem Application-Server deployed werden. Mit dem Deepzoomer können pyramidale Bilder erzeugt, gespeichert und über eine OpenSeadragon-konforme Schnittstelle abgerufen werden. Auf diese Weise kann in Regal eine Viewer-Komponente realisiert werden, die die Anzeige sehr großer, hochaufgelöster Bilder im Webbrowser unterstützt.</p>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_5">3.6.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 18. Dateien im /conf Verzeichnis</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 24. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -2125,24 +2275,47 @@ Servlet 2.3</p>
 </tr>
 </tbody>
 </table>
+
 </div>
 </div>
 <div class="sect2">
 <h3 id="_regal_drupal">3.7. regal-drupal</h3>
-<div class="paragraph">
-<p>Repo: <a href="https://github.com/edoweb/regal-drupal" class="bare">https://github.com/edoweb/regal-drupal</a>
-PHP 5</p>
-</div>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 25. Überblick</caption>
+<colgroup>
+<col>
+<col> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/edoweb/regal-drupal">regal-drupal</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Technik</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.php.net/manual/en/">PHP 5</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80 / 443</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verzeichnis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/var/drupal/sites/all/modules/</p></td>
+</tr>
+</tbody>
+</table>
+
 <div class="paragraph">
 <p>Ein Drupal 7 Modul über das Funktionalitäten der <a href="#_regal_api_2">regal-api</a> angesprochen werden können. Das Modul bietet Oberflächen zur Konfiguration, zur Suche und zur Verwaltung von Objekthierarchien.</p>
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_6">3.7.1. Die Applikation</h4>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 19. Verzeichnisstruktur</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 26. Verzeichnisstruktur</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -2165,34 +2338,105 @@ PHP 5</p>
 </tr>
 </tbody>
 </table>
+
 </div>
 </div>
 <div class="sect2">
 <h3 id="_edoweb_drupal_theme">3.8. edoweb-drupal-theme</h3>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 27. Überblick</caption>
+<colgroup>
+<col>
+<col> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/edoweb/edoweb-drupal-theme">edoweb-drupal-theme</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Technik</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.php.net/manual/en/">PHP 5</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80 / 443</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verzeichnis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/var/drupal/sites/all/themes/</p></td>
+</tr>
+</tbody>
+</table>
+
 <div class="paragraph">
-<p>Repo: <a href="https://github.com/edoweb/edoweb-drupal-theme" class="bare">https://github.com/edoweb/edoweb-drupal-theme</a>
-PHP 5</p>
-</div>
-<div class="paragraph">
-<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://edoweb-rlp.de" class="bare">https://edoweb-rlp.de</a></p>
+<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://edoweb-rlp.de">https://edoweb-rlp.de</a></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_zbmed_drupal_theme">3.9. zbmed-drupal-theme</h3>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 28. Überblick</caption>
+<colgroup>
+<col>
+<col> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/edoweb/zbmed-drupal-theme">zbmed-drupal-theme</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Technik</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://www.php.net/manual/en/">PHP 5</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">80 / 443</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verzeichnis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/var/drupal/sites/all/themes/</p></td>
+</tr>
+</tbody>
+</table>
+
 <div class="paragraph">
-<p>Repo: <a href="https://github.com/edoweb/zbmed-drupal-theme" class="bare">https://github.com/edoweb/zbmed-drupal-theme</a>
-PHP 5</p>
-</div>
-<div class="paragraph">
-<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://repository.publisso.de" class="bare">https://repository.publisso.de</a></p>
+<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://repository.publisso.de">https://repository.publisso.de</a></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_openwayback">3.10. openwayback</h3>
 <div class="paragraph">
-<p>Repo: <a href="https://github.com/iipc/openwayback" class="bare">https://github.com/iipc/openwayback</a>
-Servlet 2.5</p>
+<p>Repo: <a href="https://github.com/iipc/openwayback">https://github.com/iipc/openwayback</a>
+Servlet 2.5
+.Überblick</p>
 </div>
+<table class="tableblock frame-all grid-all" style="">
+<colgroup>
+<col>
+<col> 
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Source</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://github.com/iipc/openwayback">openwayback</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Technik</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://download.oracle.com/otn-pub/jcp/servlet-2.5-mr5-oth-JSpec/servlet-2.5-mr5-spec.pdf">Servlet 2.5</a></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ports</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8091 / 8191</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Verzeichnis</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/opt/regal/tomcat-for-openwayback/, /opr/regal/src/openwayback</p></td>
+</tr>
+</tbody>
+</table>
+
 <div class="paragraph">
 <p><strong>Achtung</strong>: Es gibt einen am hbz entwickelten Branch. Dieser ist nicht auf Github.</p>
 </div>
@@ -2227,7 +2471,7 @@ Servlet 2.5</p>
 <div class="sect2">
 <h3 id="_elasticsearch_1_1">3.15. Elasticsearch 1.1</h3>
 <div class="paragraph">
-<p>Elasticsearch ist eine Suchmaschine und wird von <a href="#_regal_api_2">regal-api</a> verwendet. Auch <a href="#regal_drupal">[regal_drupal]</a> greift auf den Index zu.</p>
+<p>Elasticsearch ist eine Suchmaschine und wird von <a href="#_regal_api_2">regal-api</a> verwendet. Auch <a href="#_regal_drupal">regal-drupal</a> greift auf den Index zu.</p>
 </div>
 </div>
 <div class="sect2">
@@ -2340,7 +2584,7 @@ mv ~/downloads/jdk.... bin/java8.tar.gz</pre>
 <div class="sect2">
 <h3 id="_server">4.2. Server</h3>
 <div class="paragraph">
-<p>Die Installation auf einem Server kann mit Hilfe des mitgelieferten Skriptes erfolgen.</p>
+<p>Die Installation auf einem Server kann mit Hilfe des mitgelieferten Skriptes <a href="https://github.com/jschnasse/Regal/blob/master/vagrant/ubuntu-14.04/regal-install.sh">regal-install.sh</a> erfolgen. Dazu muss analog zur Vagrant-Installation zunächst das <code>bin</code> Verzeichnis mit einem JDK aufgebaut werden. Danach erfolgt die Installation unter <code>/opt/regal</code> und mit einem Benutzer <code>regal</code> (vgl. <code>variables.conf</code>)</p>
 </div>
 <div class="sect3">
 <h4 id="_hardware_empfehlung">4.2.1. Hardware Empfehlung</h4>
@@ -2424,11 +2668,11 @@ export CATALINA_OPTS</pre>
 </div>
 <div class="sect2">
 <h3 id="_verzeichnisse">5.2. Verzeichnisse</h3>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 20. Verzeichnisstruktur</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 29. Verzeichnisstruktur</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -2467,14 +2711,15 @@ export CATALINA_OPTS</pre>
 </tr>
 </tbody>
 </table>
+
 </div>
 <div class="sect2">
 <h3 id="_ports">5.3. Ports</h3>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 21. Ports und Komponenten (typische Belegung)</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 30. Ports und Komponenten (typische Belegung)</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -2521,14 +2766,15 @@ export CATALINA_OPTS</pre>
 </tr>
 </tbody>
 </table>
+
 </div>
 <div class="sect2">
 <h3 id="_logs">5.4. Logs</h3>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 22. Logfiles</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 31. Logfiles</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -2575,14 +2821,15 @@ export CATALINA_OPTS</pre>
 </tr>
 </tbody>
 </table>
+
 </div>
 <div class="sect2">
 <h3 id="_configs">5.5. Configs</h3>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 23. Configfiles</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 32. Configfiles</caption>
 <colgroup>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -2633,15 +2880,16 @@ export CATALINA_OPTS</pre>
 </tr>
 </tbody>
 </table>
+
 </div>
 <div class="sect2">
 <h3 id="_apache2">5.6. Apache2</h3>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 24. Frontend Pfade</caption>
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 33. Frontend Pfade</caption>
 <colgroup>
 <col>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -2668,12 +2916,13 @@ export CATALINA_OPTS</pre>
 </tr>
 </tbody>
 </table>
-<table class="tableblock frame-all grid-all fit-content">
-<caption class="title">Table 25. API Pfade</caption>
+
+<table class="tableblock frame-all grid-all" style="">
+<caption class="title">Table 34. API Pfade</caption>
 <colgroup>
 <col>
 <col>
-<col>
+<col> 
 </colgroup>
 <thead>
 <tr>
@@ -2701,70 +2950,71 @@ export CATALINA_OPTS</pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OAI-Schnittstelle für die DNB</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/dnb-urn</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/dnb-urn$1" class="bare">http://localhost:8080/dnb-urn$1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/dnb-urn$1">http://localhost:8080/dnb-urn$1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OAI-Schnittstelle</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/oai-pmh</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/oai-pmh$1" class="bare">http://localhost:8080/oai-pmh$1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/oai-pmh$1">http://localhost:8080/oai-pmh$1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deepzoomer</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/deepzoom</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:7080/deepzoom$1" class="bare">http://localhost:7080/deepzoom$1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:7080/deepzoom$1">http://localhost:7080/deepzoom$1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Openwayback privat</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/wayback</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9080/wayback" class="bare">http://localhost:9080/wayback</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9080/wayback">http://localhost:9080/wayback</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Openwayback öffentlich</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/weltweit</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9080/weltweit" class="bare">http://localhost:9080/weltweit</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9080/weltweit">http://localhost:9080/weltweit</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Thumby</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/tools/thumby</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9001/tools/thumby" class="bare">http://localhost:9001/tools/thumby</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9001/tools/thumby">http://localhost:9001/tools/thumby</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Etikett</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/tools/etikett</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9002/tools/etikett" class="bare">http://localhost:9002/tools/etikett</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9002/tools/etikett">http://localhost:9002/tools/etikett</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zettel</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/tools/zettel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9004/tools/zettel" class="bare">http://localhost:9004/tools/zettel</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9004/tools/zettel">http://localhost:9004/tools/zettel</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/search</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9200" class="bare">http://localhost:9200</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9200">http://localhost:9200</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fedora</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/fedora</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/fedora" class="bare">http://localhost:8080/fedora</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/fedora">http://localhost:8080/fedora</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JSON-LD Context</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/public/resources.json</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9002/tools/etikett/context.json" class="bare">http://localhost:9002/tools/etikett/context.json</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9002/tools/etikett/context.json">http://localhost:9002/tools/etikett/context.json</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal-api</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9000/" class="bare">http://localhost:9000/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9000/">http://localhost:9000/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">heritrix</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/tools/heritrix</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://localhost:8443/tools/heritrix" class="bare">https://localhost:8443/tools/heritrix</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://localhost:8443/tools/heritrix">https://localhost:8443/tools/heritrix</a></p></td>
 </tr>
 </tbody>
 </table>
+
 </div>
 <div class="sect2">
 <h3 id="_matomo">5.7. Matomo</h3>
@@ -2816,7 +3066,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 <p>Für das Funktionieren von Regal sind einige regal-scripts sinnvoll. Die Skripte sind sämtlich unter Github zu finden.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://github.com/edoweb/regal-scripts" class="bare">https://github.com/edoweb/regal-scripts</a></p>
+<p><a href="https://github.com/edoweb/regal-scripts">https://github.com/edoweb/regal-scripts</a></p>
 </div>
 <div class="paragraph">
 <p>Die folgenden Abschnitte zeigen ein typisches Setup.</p>
@@ -2915,7 +3165,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 <div class="sect3">
 <h4 id="_entwicklung">5.9.7. Entwicklung</h4>
 <div class="paragraph">
-<p>Für die Entwicklung an Regal empfiehlt sich folgende Vorgehensweise&#8230;&#8203;</p>
+<p>Für die Entwicklung an Regal empfiehlt sich folgende Vorgehensweise&#8230;</p>
 </div>
 </div>
 </div>
@@ -2958,7 +3208,7 @@ compass compile</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_doku_modifizieren_und_in_html_übersetzen">6.3. Doku modifizieren und in HTML übersetzen</h3>
+<h3 id="_doku_modifizieren_und_in_html_bersetzen">6.3. Doku modifizieren und in HTML übersetzen</h3>
 <div class="literalblock">
 <div class="content">
 <pre>cd Regal/doc
@@ -2990,13 +3240,13 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 <div class="ulist">
 <ul>
 <li>
-<p>Lobid - <a href="http://hbz.github.io/slides/" class="bare">http://hbz.github.io/slides/</a></p>
+<p>Lobid - <a href="http://hbz.github.io/slides/">http://hbz.github.io/slides/</a></p>
 </li>
 <li>
-<p>Skos-Lookup - <a href="http://hbz.github.io/slides/siit-170511/#/" class="bare">http://hbz.github.io/slides/siit-170511/#/</a></p>
+<p>Skos-Lookup - <a href="http://hbz.github.io/slides/siit-170511/#/">http://hbz.github.io/slides/siit-170511/#/</a></p>
 </li>
 <li>
-<p>Regal - <a href="http://hbz.github.io/slides/danrw-20180905/#/" class="bare">http://hbz.github.io/slides/danrw-20180905/#/</a></p>
+<p>Regal - <a href="http://hbz.github.io/slides/danrw-20180905/#/">http://hbz.github.io/slides/danrw-20180905/#/</a></p>
 </li>
 </ul>
 </div>
@@ -3006,7 +3256,7 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://wiki1.hbz-nrw.de/display/edd/Dokumentation" class="bare">https://wiki1.hbz-nrw.de/display/edd/Dokumentation</a></p>
+<p><a href="https://wiki1.hbz-nrw.de/display/edd/Dokumentation">https://wiki1.hbz-nrw.de/display/edd/Dokumentation</a></p>
 </li>
 </ul>
 </div>
@@ -3016,10 +3266,10 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/edoweb" class="bare">https://github.com/edoweb</a></p>
+<p><a href="https://github.com/edoweb">https://github.com/edoweb</a></p>
 </li>
 <li>
-<p><a href="https://github.com/hbz" class="bare">https://github.com/hbz</a></p>
+<p><a href="https://github.com/hbz">https://github.com/hbz</a></p>
 </li>
 </ul>
 </div>
@@ -3029,7 +3279,7 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-13 13:38:53 +0200
+Last updated 2019-05-14 09:54:43 CEST
 </div>
 </div>
 </body>

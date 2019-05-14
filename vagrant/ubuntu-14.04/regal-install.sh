@@ -83,6 +83,10 @@ function installPackages(){
     sudo bin/plugin -install com.yakaz.elasticsearch.plugins/elasticsearch-analysis-combo/1.5.1
 } 
 
+function createUser(){
+sudo adduser $REGAL_USER
+sudo adduser $REGAL_USER sudo
+}
 function makeDir()
 {
 	if [ ! -d $1 ]
@@ -452,6 +456,7 @@ echo "Start Regal installation!"
 	downloadBinaries
 	installJava8
 	installPackages
+        createUser
 	createRegalFolderLayout
 	downloadRegalSources
         cp $INSTALL_CONF/install.properties $ARCHIVE_HOME/src/regal-install/templates
