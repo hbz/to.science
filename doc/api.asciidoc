@@ -1,0 +1,329 @@
+Regal-API
+=========
+
+Jan Schnasse
+:Author Initials: JS
+:toc: left
+:icons:
+:numbered:
+:website:
+
+Über dieses Dokument
+***********************************
+Dieses Dokument kommt zusammen mit einem https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04[Vagrantfile] und beschreibt eine typische Installation von Regal. Unter <<_vagrant>> findet sich eine Anleitung zur Installation in einer Virtualbox. 
+
+Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt <<_dokumentation>>
+
+***********************************
+
+
+Preface
+------
+
+The Regal webservices documented by example `curl`-calls. Examples are assumed to work in the Vagrant-Environment that comes with this document.
+
+**Have fun!**
+
+Environment
+-----------
+Got to your server or to the Vagrant-Box, that comes with this document.
+
+`vagrant ssh`
+
+Prepare your environment to make the following `curl`-Calls work!
+
+....
+source /opt/regal/conf/variables.conf
+export REGAL-API=http://$SERVER
+export API-USER=edoweb-admin
+....
+
+
+regal-api
+--------
+
+Create
+~~~~~~
+
+Create a new resource
+^^^^^^^^^^^^^^^^^^^^^
+....
+curl -i -u$API-USER:$PASSWORD -XPUT $REGAL-API/resource/regal:1234 -d'{"contentType":"monograph","accessScheme":"public"}' -H'content-type:application/json'
+....
+
+Create a new hierarchy
+^^^^^^^^^^^^^^^^^^^^^^
+....
+curl -i -u$API-USER:$PASSWORD -XPUT $REGAL-API/resource/regal:1235 -d'{"parentPid":"regal:1234","contentType":"file","accessScheme":"public"}' -H'content-type:application/json'
+....
+
+Upload binary data
+^^^^^^^^^^^^^^^^^^
+....	
+curl -u$API-USER:$PASSWORD -F"data=@$ARCHIVE_HOME/src/regal-api/test/resources/test.pdf;type=application/pdf" -XPUT $REGAL-API/resource/regal:1235/data
+....
+
+Create User
+~~~~~~~~~~~
+
+Upload metadata
+^^^^^^^^^^^^^^^
+
+Upload Webgatherer Conf
+^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Order Child Nodes
+^^^^^^^^^^^^^^^^^
+
+Create Webversion
+^^^^^^^^^^^^^^^^^
+
+Read
+~~~~
+
+Read resource
+^^^^^^^^^^^^^
+**html**
+
+**json**
+
+**rdf**
+
+**mets**
+
+**aleph**
+
+**epicur**
+
+**datacite**
+
+**csv**
+
+**wgl**
+
+
+Read resource tree
+^^^^^^^^^^^^^^^^^^
+
+Read binary data
+^^^^^^^^^^^^^^^^
+
+Read Webgatherer Conf
+^^^^^^^^^^^^^^^^^^^^^
+
+Read Ordering of Childs
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Read user
+^^^^^^^^^
+
+
+Update
+~~~~~~
+
+Update Resource
+^^^^^^^^^^^^^^^
+
+Add URN
+^^^^^^^
+
+Enrich
+^^^^^^ 
+
+
+Delete
+~~~~~~
+
+Delete resource
+^^^^^^^^^^^^^^^
+
+Purge resource
+^^^^^^^^^^^^^^
+
+Delete part of resource
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Delete user
+^^^^^^^^^^
+
+Search
+~~~~~~
+
+Simple Search
+^^^^^^^^^^^^^
+
+Facetted Search
+^^^^^^^^^^^^^^^
+
+Search for field
+^^^^^^^^^^^^^^^^
+
+Misc
+~~~~
+
+Load metadata from Lobid
+^^^^^^^^^^^^^^^^^^^^^^^^
+....	
+curl -u$API-USER:$PASSWORD -XPOST "$REGAL-API/utils/lobidify/regal:1234?alephid=HT018920238"
+....
+
+Reread Labels from etikett
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+....
+curl -u$API-USER:$PASSWORD -XPOST $REGAL-API/context.json
+....
+
+Reindex resource
+^^^^^^^^^^^^^^^^
+
+
+etikett
+-------
+
+Create
+~~~~~~
+
+Add Labels to Database
+^^^^^^^^^^^^^^^^^^^^^^^
+....
+curl -u$API-USER:$PASSWORD -XPOST -F"data=@$ARCHIVE_HOME/src/regal-api/conf/labels.json" -F"format-cb=Json" $REGAL-API/tools/etikett -i -L
+....
+
+Add Label
+^^^^^^^^^
+
+Read
+~~~~
+Read Etikett
+^^^^^^^^^^^^
+
+Update
+~~~~~~
+
+Delete
+~~~~~~
+
+Delete Cache
+^^^^^^^^^^^^
+
+Misc
+~~~~
+
+zettel
+------
+
+Create
+~~~~~~
+
+Create RDF-Metadata from Form-Data
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Read
+~~~~
+
+Read HTML-Form
+^^^^^^^^^^^^^^
+
+Search
+~~~~~~
+
+
+
+skos-lookup
+-----------
+
+Create
+~~~~~~
+
+Create new Index
+^^^^^^^^^^^^^^^^
+
+Read
+~~~~
+
+Update
+~~~~~~
+
+Delete
+~~~~~~
+
+Search
+~~~~~~
+
+Misc
+~~~~
+
+thumby
+-----
+
+Create
+~~~~~~
+
+Read
+~~~~
+
+Update
+~~~~~~
+
+Delete
+~~~~~~
+
+Search
+~~~~~~
+
+Misc
+~~~~
+
+Dokumentation
+-------------
+Diese Dokumentation ist mit asciidoc geschrieben und wurde mit asciidoctor in HTML übersetzt. Dazu wurde das foundation.css Stylesheet aus dem asciidoctor-stylesheet-factory Repository verwendet.
+
+Die Schritte, um an der Doku zu arbeiten sind folgenden
+
+Diese Repo herunterladen
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+....
+git clone https://github.com/jschnasse/Regal
+....
+
+Asciidoctor und Asciidoctor-Stylesheets installieren
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+....
+gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+\curl -sSL https://get.rvm.io | sudo bash -s stable --ruby
+#login again
+sudo apt-get install bundler
+sudo apt-get install gem
+git clone https://github.com/asciidoctor/asciidoctor
+git clone https://github.com/asciidoctor/asciidoctor-stylesheet-factory
+cd asciidoctor
+sudo gem install asciidoctor
+cd ../asciidoctor-stylesheet-factory
+bundle install
+compass compile
+....
+
+Doku modifizieren und in HTML übersetzen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+....
+cd Regal/doc
+editor api.asciidoc
+asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets api.asciidoc
+....
+
+License
+-------
+
+image::https://i.creativecommons.org/l/by-nc/4.0/88x31.png[link="http://creativecommons.org/licenses/by-nc/4.0/"]
+
+This work is licensed under a http://creativecommons.org/licenses/by-nc/4.0/>[Creative Commons Attribution-NonCommercial 4.0 International License].
+
+References
+---------
+
+regal-scripts
+vagrant
