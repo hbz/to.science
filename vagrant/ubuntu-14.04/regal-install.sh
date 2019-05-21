@@ -86,6 +86,11 @@ function installPackages(){
 function createUser(){
     sudo adduser $REGAL_USER
     sudo adduser $REGAL_USER sudo
+    printf "$REGAL_USER ALL=(ALL) NOPASSWD:ALL" > $REGAL_USER.tmp
+    sudo mv $REGAL_USER.tmp /etc/sudoeers.d/$REGAL_USER
+    sudo chown -R root:root /etc/sudoeers.d/$REGAL_USER
+    sudo chmod 664 /etc/sudoeers.d/$REGAL_USER
+    sudo su - $REGAL_USER
 }
 
 function makeDir()
