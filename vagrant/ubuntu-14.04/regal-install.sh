@@ -25,11 +25,10 @@ function downloadBinaries(){
 	download heritrix-3.1.1-dist.zip http://builds.archive.org/maven2/org/archive/heritrix/heritrix/3.1.1/
 	download apache-tomcat-8.5.40.zip http://ftp.halifax.rwth-aachen.de/apache/tomcat/tomcat-8/v8.5.40/bin/
 	download drupal-7.36.tar.gz https://ftp.drupal.org/files/projects/ 
-
 }
 
 function installJava8(){
-cd $INSTALL_BIN
+    cd $INSTALL_BIN
     if [ -f $INSTALL_BIN/java8.tar.gz ]
     then
 	tar -xzf $INSTALL_BIN/java8.tar.gz 
@@ -49,7 +48,7 @@ cd $INSTALL_BIN
         printf "Please provide a tared Version of a Java 8 jdk under $INSTALL_BIN/jdk8.tar.gz!"
 	exit 1
     fi
-cd -
+    cd -
 }
 
 function installPackages(){
@@ -74,7 +73,8 @@ function installPackages(){
     sudo apt-get -y -q install python34 
     sudo apt-get -y -q install python-pip
     sudo apt-get -y -q install drush
-    sudo apt-get -y -q install ant
+    sudo apt-get -y -q install ant    
+    sudo apt-get -y -q install parallel
     sudo dpkg -i $INSTALL_BIN/elasticsearch-1.1.0.deb 
     sudo update-rc.d elasticsearch defaults 95 10
     cd /usr/share/elasticsearch/
@@ -84,9 +84,10 @@ function installPackages(){
 } 
 
 function createUser(){
-sudo adduser $REGAL_USER
-sudo adduser $REGAL_USER sudo
+    sudo adduser $REGAL_USER
+    sudo adduser $REGAL_USER sudo
 }
+
 function makeDir()
 {
 	if [ ! -d $1 ]
@@ -236,18 +237,13 @@ function installRegalModules(){
     cd  $ARCHIVE_HOME/src/zettel
     installRegalModule zettel-1.0-SNAPSHOT zettel
 
-
     cd  $ARCHIVE_HOME/src/regal-api
     installRegalModule regal-api-0.8.0-SNAPSHOT  regal-api
 }
 
 function configureRegalModules(){
-    mysql -u root -Bse "CREATE DATABASE etikett  DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'etikett'@'localhost' IDENTIFIED BY 'etikett';GRANT ALL ON etikett.* TO 'etikett'@'localhost';"
-
-  mysql -u root -Bse "CREATE DATABASE regal_api DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'regal_api'@'localhost' IDENTIFIED BY 'admin';GRANT ALL ON regal_api.* TO 'regal_api'@'localhost';"
-
- mysql -u root -Bse "use regal_api;create table regal_users (username varchar(255) not null,password varchar(255),email varchar(255),role integer,created varchar(255),constraint ck_regal_users_role check (role in (0,1,2,3,4,5)),constraint pk_regal_users primary key (username));"
-
+   mysql -u root -Bse "CREATE DATABASE etikett  DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'etikett'@'localhost' IDENTIFIED BY 'etikett';GRANT ALL ON etikett.* TO 'etikett'@'localhost';"
+   mysql -u root -Bse "CREATE DATABASE regal_api DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;CREATE USER 'regal_api'@'localhost' IDENTIFIED BY 'admin';GRANT ALL ON regal_api.* TO 'regal_api'@'localhost';"
 }
 
 function configureApache(){
@@ -262,7 +258,7 @@ function configureApache(){
 }
 
 function installProai(){	
-mysql -u root -Bse " CREATE DATABASE proai; CREATE USER 'proai'@'localhost' IDENTIFIED BY 'proai'; SET PASSWORD FOR 'proai'@'localhost' = PASSWORD('$PASSWORD'); GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON proai.* TO 'proai'@'localhost';"
+    mysql -u root -Bse " CREATE DATABASE proai; CREATE USER 'proai'@'localhost' IDENTIFIED BY 'proai'; SET PASSWORD FOR 'proai'@'localhost' = PASSWORD('$PASSWORD'); GRANT SELECT,INSERT,UPDATE,DELETE,CREATE,DROP ON proai.* TO 'proai'@'localhost';"
 	cd $ARCHIVE_HOME/src
 	git clone https://github.com/jschnasse/proai.git
 	git clone https://github.com/jschnasse/oaiprovider.git
@@ -270,9 +266,9 @@ mysql -u root -Bse " CREATE DATABASE proai; CREATE USER 'proai'@'localhost' IDEN
 	git checkout dates;
 	cd $ARCHIVE_HOME/src/oaiprovider
 	git checkout dates;
-        #--------------Adopt new Layout------------------#
+    #--------------Adopt new Layout------------------#
 	sudo sed -i 's|/opt/regal|/opt/regal/var|' $ARCHIVE_HOME/conf/proai.properties
-        #------------------------------------------------#
+    #------------------------------------------------#
 	cp $ARCHIVE_HOME/conf/proai.properties $ARCHIVE_HOME/src/oaiprovider/src/config  
 	cp $ARCHIVE_HOME/conf/Identify.xml $ARCHIVE_HOME/bin/drupal
 	cd $ARCHIVE_HOME/src/proai
@@ -284,7 +280,7 @@ mysql -u root -Bse " CREATE DATABASE proai; CREATE USER 'proai'@'localhost' IDEN
 }
 
 function installOpenwayback(){
-        cd $ARCHIVE_HOME/src/regal-install
+    cd $ARCHIVE_HOME/src/regal-install
 	unzip $INSTALL_BIN/apache-tomcat-8.5.40.zip
 	mv apache-tomcat-8.5.40 $ARCHIVE_HOME/bin/tomcat-for-openwayback
 	#Configure tomcat
@@ -343,19 +339,16 @@ function installDrush(){
 
 function installDrupal(){
 	mysql -u root < $INSTALL_CONF/drupal-db.sql
-
 	mysql -u root -Bse "CREATE USER drupal IDENTIFIED BY 'admin';GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER, LOCK TABLES, CREATE TEMPORARY TABLES ON drupal.* TO 'drupal'@'localhost' IDENTIFIED BY 'admin';"
-	
-        
 	cd $ARCHIVE_HOME	
 	tar -xzf $INSTALL_BIN/drupal-7.36.tar.gz
 	mv drupal-7.36 $ARCHIVE_HOME/var/drupal
 	chmod a+w $ARCHIVE_HOME/var/drupal/sites/default
 	cp $INSTALL_CONF/settings.php  $ARCHIVE_HOME/var/drupal/sites/default/settings.php
 	mkdir $ARCHIVE_HOME/var/drupal/sites/default/files	
-        chmod o+w $ARCHIVE_HOME/var/drupal/sites/default/files
+    chmod o+w $ARCHIVE_HOME/var/drupal/sites/default/files
 	chcon -R -t httpd_sys_content_rw_t $ARCHIVE_HOME/var/drupal/sites/default/files/
-        chcon -R -t httpd_sys_content_rw_t $ARCHIVE_HOME/var/drupal/sites/default/settings.php
+    chcon -R -t httpd_sys_content_rw_t $ARCHIVE_HOME/var/drupal/sites/default/settings.php
 	sudo setsebool -P httpd_can_sendmail on
 	sudo chmod 755 $ARCHIVE_HOME/var/drupal/sites/default
 	sudo chmod 755 $ARCHIVE_HOME/var/drupal/sites/default/settings.php
@@ -371,8 +364,8 @@ function installRegalDrupal(){
 	curl https://ftp.drupal.org/files/projects/entity_js-7.x-1.0-alpha3.tar.gz | tar xz
 	curl https://ftp.drupal.org/files/projects/ctools-7.x-1.3.tar.gz | tar xz
 	php5enmod redland
-        service apache2 restart
-        ln -s /opt/regal/src/regal-api/public/ $ARCHIVE_HOME/var/drupal/
+    service apache2 restart
+    ln -s /opt/regal/src/regal-api/public/ $ARCHIVE_HOME/var/drupal/
 }
 
 function installDrupalThemes(){
@@ -451,16 +444,16 @@ function serverInstallation(){
 
 
 function main(){
-echo "Start Regal installation!"
-        sudo apt-get -y -q install wget
+    echo "Start Regal installation!"
+    sudo apt-get -y -q install wget
 	downloadBinaries
 	installJava8
 	installPackages
-        createUser
+    createUser
 	createRegalFolderLayout
 	downloadRegalSources
-        cp $INSTALL_CONF/install.properties $ARCHIVE_HOME/src/regal-install/templates
-        createConfigFiles
+    cp $INSTALL_CONF/install.properties $ARCHIVE_HOME/src/regal-install/templates
+    createConfigFiles
 	installFedora
 	installPlay
 	postProcess
@@ -480,11 +473,11 @@ echo "Start Regal installation!"
 	configureApache
 	configureMonit
 	configureFirewall
-        configureElasticsearch
+    configureElasticsearch
 	sudo chown -R $REGAL_USER $ARCHIVE_HOME
 	createStartStopScripts
 	defineBootShutdownSequence
-        #serverInstallation
+    #serverInstallation
 	sleep 20
 	initialize
 }
