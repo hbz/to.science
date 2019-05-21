@@ -405,6 +405,11 @@ Etikett kann auch mit Labels vorkonfiguriert werden. Dabei können zusätzliche 
 - Container - JSON-LD Container
 - Beschreibung - Kommentar als Markdown
 
+
+.Etikett Oberfläche
+image::./resources/images/etikett-screen.png[Etikett Oberfläche]
+:figure-caption: Logo
+
 Mit Hilfe dieser Angaben kann Etikett auch einen "JSON-LD Context" bereitstellen. Insgesamt wird über Etikett eine Art "Application Profile" realisiert. Das Profil gibt Auskunft, welche Metadatenfelder (definiert als URIs) in welcher Weise (Typ, Container) Verwendung finden und wie sie angezeigt werden sollen (Label, Weight, Pictogram).
 
 Im Regal-Kontext wird <<_etikett>> an vielen Stellen verwendet. 
@@ -461,6 +466,10 @@ Zettel
 
 Zettel ist ein Webservice zur Bereitstellung von Webformularen. Die Webformulare können über ein HTTP-GET geladen werden. Sollen existierende Daten in ein Formular geladen werden, so können diese Daten als Form-encoded, als JSON, oder als RDF-XML über ein HTTP-POST in das Formular geladen werden. Gleichzeitig kann spezifiziert werden, in welchem Format das Formular Daten zurückliefern soll.
 
+.Zettel Oberfläche
+image::./resources/images/zettel-screen.png[Zettel Oberfläche]
+:figure-caption: Logo
+
 Zettel verfügt über keine eigene Speicherschicht. Daten die über ein Formular erzeugt wurden, werden in der HTTP-Response zurückgeliefert. Zur Integration von Zettel in andere Applikationen wurde ein Kommunikationspattern entwickelt, das auf Javascript beruht. Das Zettel-Formular wird hierzu in einem IFrame in die Applikation eingebunden. Die Applikation muss außerdem ein Javascript einbinden, das auf bestimmte Nachrichten aus dem IFrame lauscht. Bei bestimmte Aktionen sendet das Zettel-Formular dann Nachrichten an die Applikation und erlaubt dieser darauf zu reagieren. Um Daten von Zettel in die Applikation zu bekommen, werden diese im HTML-DOM gespeichert und können von dort durch die Applikation entgegengenommen werden.
 
 .Zettel Datenfluss
@@ -510,6 +519,14 @@ skos-lookup
 
 
 <<_skos_lookup>> dient zur Unterstützung von <<_zettel>>. Der Webservice startet eine eingebettete Elasticsearch-Instanz und verfügt über eine Schnittstelle um SKOS-Daten in separate Indexe zu importieren und Schnittstellen zur Unterstützung von jQuery-Autocomplete- und Select2-Widgets aufzubauen. Auf diese Weise können auch umfangreichere Thesauri und Notationssysteme in den Formularen von <<_zettel>> fachgerecht angelinkt werden. <<_skos_lookup>> unterstützt auch mehrsprachige Thesauri.
+
+.SKOS-Lookup Beispiel 1
+image::./resources/images/skos-lookup-autocomplete.png[Skos-Lookup Beispiel 1]
+:figure-caption: Logo
+
+.SKOS-Lookup Beispiel 2
+image::./resources/images/example-select2.png[Skos-Lookup Beispiel 2]
+:figure-caption: Logo
 
 Konfiguration
 ^^^^^^^^^^^^^
@@ -1113,8 +1130,8 @@ Doku modifizieren und in HTML übersetzen
 
 ....
 cd Regal/doc
-editor regal.txt
-asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.txt
+editor regal.asciidoc
+asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.asciidoc
 ....
 
 License

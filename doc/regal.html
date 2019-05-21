@@ -820,7 +820,7 @@ b.conum * { color: inherit !important; }
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>Dieses Dokument kommt zusammen mit einem <a href="https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04">Vagrantfile</a> und beschreibt eine typische Installation von Regal. Unter <a href="#_vagrant">Vagrant</a> findet sich eine Anleitung zur Installation in einer Virtualbox.</p>
+<p>Dieses Dokument kommt zusammen mit einem <a href="https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04">Vagrantfile</a> und beschreibt eine beispielhafte Installation von Regal. Unter <a href="#_vagrant">Vagrant</a> findet sich eine Anleitung zur Installation in einer Virtualbox.</p>
 </div>
 <div class="paragraph">
 <p>Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt <a href="#_dokumentation">Dokumentation</a></p>
@@ -1788,6 +1788,12 @@ In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs 
 </li>
 </ul>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="./resources/images/etikett-screen.png" alt="Etikett Oberfläche">
+</div>
+<div class="title">Figure 4. Etikett Oberfläche</div>
+</div>
 <div class="paragraph">
 <p>Mit Hilfe dieser Angaben kann Etikett auch einen "JSON-LD Context" bereitstellen. Insgesamt wird über Etikett eine Art "Application Profile" realisiert. Das Profil gibt Auskunft, welche Metadatenfelder (definiert als URIs) in welcher Weise (Typ, Container) Verwendung finden und wie sie angezeigt werden sollen (Label, Weight, Pictogram).</p>
 </div>
@@ -1935,6 +1941,12 @@ In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs 
 <div class="paragraph">
 <p>Zettel ist ein Webservice zur Bereitstellung von Webformularen. Die Webformulare können über ein HTTP-GET geladen werden. Sollen existierende Daten in ein Formular geladen werden, so können diese Daten als Form-encoded, als JSON, oder als RDF-XML über ein HTTP-POST in das Formular geladen werden. Gleichzeitig kann spezifiziert werden, in welchem Format das Formular Daten zurückliefern soll.</p>
 </div>
+<div class="imageblock">
+<div class="content">
+<img src="./resources/images/zettel-screen.png" alt="Zettel Oberfläche">
+</div>
+<div class="title">Logo 5. Zettel Oberfläche</div>
+</div>
 <div class="paragraph">
 <p>Zettel verfügt über keine eigene Speicherschicht. Daten die über ein Formular erzeugt wurden, werden in der HTTP-Response zurückgeliefert. Zur Integration von Zettel in andere Applikationen wurde ein Kommunikationspattern entwickelt, das auf Javascript beruht. Das Zettel-Formular wird hierzu in einem IFrame in die Applikation eingebunden. Die Applikation muss außerdem ein Javascript einbinden, das auf bestimmte Nachrichten aus dem IFrame lauscht. Bei bestimmte Aktionen sendet das Zettel-Formular dann Nachrichten an die Applikation und erlaubt dieser darauf zu reagieren. Um Daten von Zettel in die Applikation zu bekommen, werden diese im HTML-DOM gespeichert und können von dort durch die Applikation entgegengenommen werden.</p>
 </div>
@@ -1942,7 +1954,7 @@ In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs 
 <div class="content">
 <img src="./resources/images/zettel-flos.png" alt="Zettel Datenfluss">
 </div>
-<div class="title">Figure 4. Zettel Datenfluss</div>
+<div class="title">Logo 6. Zettel Datenfluss</div>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_2">3.3.1. Konfiguration</h4>
@@ -2057,6 +2069,18 @@ In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs 
 
 <div class="paragraph">
 <p><a href="#_skos_lookup">skos-lookup</a> dient zur Unterstützung von <a href="#_zettel">Zettel</a>. Der Webservice startet eine eingebettete Elasticsearch-Instanz und verfügt über eine Schnittstelle um SKOS-Daten in separate Indexe zu importieren und Schnittstellen zur Unterstützung von jQuery-Autocomplete- und Select2-Widgets aufzubauen. Auf diese Weise können auch umfangreichere Thesauri und Notationssysteme in den Formularen von <a href="#_zettel">Zettel</a> fachgerecht angelinkt werden. <a href="#_skos_lookup">skos-lookup</a> unterstützt auch mehrsprachige Thesauri.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./resources/images/skos-lookup-autocomplete.png" alt="Skos-Lookup Beispiel 1">
+</div>
+<div class="title">Logo 7. SKOS-Lookup Beispiel 1</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./resources/images/example-select2.png" alt="Skos-Lookup Beispiel 2">
+</div>
+<div class="title">Logo 8. SKOS-Lookup Beispiel 2</div>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_3">3.4.1. Konfiguration</h4>
@@ -3279,7 +3303,7 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-14 09:54:43 CEST
+Last updated 2019-05-21 16:17:14 CEST
 </div>
 </div>
 </body>
