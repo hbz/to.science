@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-SCRIPT_DIR=/vagrant
-
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $SCRIPT_DIR/variables.conf
 
 function download(){
@@ -87,9 +86,9 @@ function createUser(){
     sudo adduser $REGAL_USER
     sudo adduser $REGAL_USER sudo
     printf "$REGAL_USER ALL=(ALL) NOPASSWD:ALL" > $REGAL_USER.tmp
-    sudo mv $REGAL_USER.tmp /etc/sudoeers.d/$REGAL_USER
-    sudo chown -R root:root /etc/sudoeers.d/$REGAL_USER
-    sudo chmod 664 /etc/sudoeers.d/$REGAL_USER
+    sudo mv $REGAL_USER.tmp /etc/sudoers.d/$REGAL_USER
+    sudo chown -R root:root /etc/sudoers.d/$REGAL_USER
+    sudo chmod 664 /etc/sudoers.d/$REGAL_USER
     sudo su - $REGAL_USER
 }
 
@@ -216,6 +215,7 @@ function postProcess(){
 function installRegalModule(){
     app_version=$1
     APPNAME=$2
+    cd  $ARCHIVE_HOME/src/$APPNAME
     yes r|$ARCHIVE_HOME/bin/activator/bin/activator clean
     yes r|$ARCHIVE_HOME/bin/activator/bin/activator dist
     yes r|$ARCHIVE_HOME/bin/activator/bin/activator eclipse
@@ -230,20 +230,11 @@ function installRegalModule(){
 }
 
 function installRegalModules(){
-    cd  $ARCHIVE_HOME/src/thumby;
     installRegalModule thumby-0.1.0-SNAPSHOT thumby
-
-    cd  $ARCHIVE_HOME/src/skos-lookup
     installRegalModule skos-lookup-1.0-SNAPSHOT skos-lookup
-
-    cd  $ARCHIVE_HOME/src/etikett
     installRegalModule etikett-0.1.0-SNAPSHOT etikett
-
-    cd  $ARCHIVE_HOME/src/zettel
     installRegalModule zettel-1.0-SNAPSHOT zettel
-
-    cd  $ARCHIVE_HOME/src/regal-api
-    installRegalModule regal-api-0.8.0-SNAPSHOT  regal-api
+    installRegalModule regal-api-0.8.0-SNAPSHOT regal-api
 }
 
 function configureRegalModules(){
@@ -448,7 +439,7 @@ function serverInstallation(){
 }
 
 
-function main(){
+function installRegal(){
     echo "Start Regal installation!"
     sudo apt-get -y -q install wget
 	downloadBinaries
@@ -486,4 +477,3 @@ function main(){
 	sleep 20
 	initialize
 }
-main >log 2>&1
