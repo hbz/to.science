@@ -10,7 +10,7 @@ Jan Schnasse
 
 Über dieses Dokument
 ***********************************
-Dieses Dokument kommt zusammen mit einem https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04[Vagrantfile] und beschreibt eine typische Installation von Regal. Unter <<_vagrant>> findet sich eine Anleitung zur Installation in einer Virtualbox. 
+Dieses Dokument kommt zusammen mit einem https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04[Vagrantfile] und beschreibt die wichtigsten HTTP-Calls in Regal anhand von `curl`.
 
 Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt <<_dokumentation>>
 
@@ -41,6 +41,7 @@ export API-USER=edoweb-admin
 
 regal-api
 --------
+
 
 Create
 ~~~~~~
@@ -117,6 +118,9 @@ Read Ordering of Childs
 
 Read user
 ^^^^^^^^^
+
+Read Adhoc Linked Data
+^^^^^^^^^^^^^^^^^^^^^^
 
 
 Update
@@ -227,7 +231,6 @@ Read HTML-Form
 
 Search
 ~~~~~~
-
 
 
 skos-lookup
