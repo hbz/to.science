@@ -9,7 +9,7 @@ Jan Schnasse
 
 Über dieses Dokument
 ***********************************
-Dieses Dokument kommt zusammen mit einem https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04[Vagrantfile] und beschreibt eine typische Installation von Regal. Unter <<_vagrant>> findet sich eine Anleitung zur Installation in einer Virtualbox. 
+Dieses Dokument kommt zusammen mit einem https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04[Vagrantfile] und beschreibt eine beispielhafte Installation von Regal. Unter <<_vagrant>> findet sich eine Anleitung zur Installation in einer Virtualbox. 
 
 Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt <<_dokumentation>>
 
@@ -245,7 +245,7 @@ Die Benutzerverwaltung von Regal findet innerhalb von Drupal statt. Zwar können
 
 Drupal
 ^^^^^^
-Benutzer in Drupal können über das Modul <<regal_drupal>> unterschiedliche Rollen zugewiesen werden. Die Authorisierung erfolgt passwortbasiert. Alle Drupal-Benutzer greifen über einen vokonfigurierten Accessor auf die <<_regal_api_2>> zu. Alle Zugriffe erfolgen verschlüsselt unter Angabe eines Passwortes. Die Rolle mit deren Berechtigungen zugegriffen wird, wird dabei in <<regal_drupal>> gesetzt. Die Drupal-BenutzerId wird als Metadatum in Form eines proprietären HTTP-Headers mit an <<_regal_api_2>> geliefert.
+Benutzer in Drupal können über das Modul <<_regal_drupal>> unterschiedliche Rollen zugewiesen werden. Die Authorisierung erfolgt passwortbasiert. Alle Drupal-Benutzer greifen über einen vokonfigurierten Accessor auf die <<_regal_api_2>> zu. Alle Zugriffe erfolgen verschlüsselt unter Angabe eines Passwortes. Die Rolle mit deren Berechtigungen zugegriffen wird, wird dabei in <<_regal_drupal>> gesetzt. Die Drupal-BenutzerId wird als Metadatum in Form eines proprietären HTTP-Headers mit an <<_regal_api_2>> geliefert.
 
 Regal-Api
 ^^^^^^^^^
@@ -277,8 +277,15 @@ image::./resources/images/regal-dependencies.jpeg[Regal Abhängigkeiten]
 
 regal-api 
 ~~~~~~~~~~
-Repo: <https://github.com/edoweb/regal-api>
-Play 2.4.2
+
+.Überblick
+[options="autowidth"]
+|===================================================================
+|Source|https://github.com/edoweb/regal-api[regal-api]
+|Technik|https://www.playframework.com/documentation/2.4.x/JavaHome[Play 2.4.2]
+|Ports| 9000 / 9100
+|Verzeichnis | /opt/regal/apps/regal , /opr/regal/src/regal
+|===================================================================
 
 Mit regal-api werden alle grundlegenden Funktionen von Regal bereitgestellt. Dies umfasst:
 
@@ -364,8 +371,15 @@ Schaut man sich die sieben groben Aufgabenbereiche an, die von <<_regal_api_2>> 
 
 Etikett
 ~~~~~~~
-Repo: <https://github.com/hbz/etikett>
-Play 2.2.2
+
+.Überblick
+[options="autowidth"]
+|===================================================================
+|Source|https://github.com/hbz/etikett[etikett]
+|Technik|https://www.playframework.com/documentation/2.2.x/JavaHome[Play Play 2.2.2]
+|Ports| 9002 / 9102
+|Verzeichnis | /opt/regal/apps/etikett , /opr/regal/src/etikett
+|===================================================================
 
 Etikett ist eine einfache Datenbankanwendung, die es erlaubt menschenlesbare Labels für URIs abzulegen. Über eine HTTP-Schnittstelle kann dann nach dem Label gefragt werden.
 In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs finden können. Beispiele:
@@ -390,6 +404,11 @@ Etikett kann auch mit Labels vorkonfiguriert werden. Dabei können zusätzliche 
 - ReferenceType - JSON-LD Typ
 - Container - JSON-LD Container
 - Beschreibung - Kommentar als Markdown
+
+
+.Etikett Oberfläche
+image::./resources/images/etikett-screen.png[Etikett Oberfläche]
+:figure-caption: Logo
 
 Mit Hilfe dieser Angaben kann Etikett auch einen "JSON-LD Context" bereitstellen. Insgesamt wird über Etikett eine Art "Application Profile" realisiert. Das Profil gibt Auskunft, welche Metadatenfelder (definiert als URIs) in welcher Weise (Typ, Container) Verwendung finden und wie sie angezeigt werden sollen (Label, Weight, Pictogram).
 
@@ -435,10 +454,21 @@ Die Applikation
  
 Zettel
 ~~~~~~
-Repo: <https://github.com/hbz/zettel>
-Play 2.5.14
+
+.Überblick
+[options="autowidth"]
+|===================================================================
+|Source|https://github.com/hbz/zettel[zettel]
+|Technik|https://www.playframework.com/documentation/2.5.x/JavaHome[Play Play 2.5.4]
+|Ports| 9003 / 9103
+|Verzeichnis | /opt/regal/apps/zettel, /opr/regal/src/zettel
+|===================================================================
 
 Zettel ist ein Webservice zur Bereitstellung von Webformularen. Die Webformulare können über ein HTTP-GET geladen werden. Sollen existierende Daten in ein Formular geladen werden, so können diese Daten als Form-encoded, als JSON, oder als RDF-XML über ein HTTP-POST in das Formular geladen werden. Gleichzeitig kann spezifiziert werden, in welchem Format das Formular Daten zurückliefern soll.
+
+.Zettel Oberfläche
+image::./resources/images/zettel-screen.png[Zettel Oberfläche]
+:figure-caption: Logo
 
 Zettel verfügt über keine eigene Speicherschicht. Daten die über ein Formular erzeugt wurden, werden in der HTTP-Response zurückgeliefert. Zur Integration von Zettel in andere Applikationen wurde ein Kommunikationspattern entwickelt, das auf Javascript beruht. Das Zettel-Formular wird hierzu in einem IFrame in die Applikation eingebunden. Die Applikation muss außerdem ein Javascript einbinden, das auf bestimmte Nachrichten aus dem IFrame lauscht. Bei bestimmte Aktionen sendet das Zettel-Formular dann Nachrichten an die Applikation und erlaubt dieser darauf zu reagieren. Um Daten von Zettel in die Applikation zu bekommen, werden diese im HTML-DOM gespeichert und können von dort durch die Applikation entgegengenommen werden.
 
@@ -478,10 +508,25 @@ Die Applikation
 skos-lookup
 ~~~~~~~~~~~
 
-Repo: <https://github.com/hbz/skos-lookup>
-Play 2.5.8
+.Überblick
+[options="autowidth"]
+|===================================================================
+|Source|https://github.com/hbz/skos-lookup[skos-lookup]
+|Technik|https://www.playframework.com/documentation/2.5.x/JavaHome[Play Play 2.5.8]
+|Ports| 9004 / 9104
+|Verzeichnis | /opt/regal/apps/skos-lookup, /opr/regal/src/skos-lookup
+|===================================================================
+
 
 <<_skos_lookup>> dient zur Unterstützung von <<_zettel>>. Der Webservice startet eine eingebettete Elasticsearch-Instanz und verfügt über eine Schnittstelle um SKOS-Daten in separate Indexe zu importieren und Schnittstellen zur Unterstützung von jQuery-Autocomplete- und Select2-Widgets aufzubauen. Auf diese Weise können auch umfangreichere Thesauri und Notationssysteme in den Formularen von <<_zettel>> fachgerecht angelinkt werden. <<_skos_lookup>> unterstützt auch mehrsprachige Thesauri.
+
+.SKOS-Lookup Beispiel 1
+image::./resources/images/skos-lookup-autocomplete.png[Skos-Lookup Beispiel 1]
+:figure-caption: Logo
+
+.SKOS-Lookup Beispiel 2
+image::./resources/images/example-select2.png[Skos-Lookup Beispiel 2]
+:figure-caption: Logo
 
 Konfiguration
 ^^^^^^^^^^^^^
@@ -513,8 +558,14 @@ Die Applikation
 
 Thumby
 ~~~~~~
-Repo: <https://github.com/hbz/thumby>
-Play 2.2.2
+.Überblick
+[options="autowidth"]
+|===================================================================
+|Source|https://github.com/hbz/thumby[thumby]
+|Technik|https://www.playframework.com/documentation/2.2.x/JavaHome[Play Play 2.2.2]
+|Ports| 9001 / 9101
+|Verzeichnis | /opt/regal/apps/thumby, /opr/regal/src/thumby
+|===================================================================
 
 <<_thumby>> realisiert einen Thumbnail-Generator. Über ein HTTP-GET wird <<_thumby>> die URL eines PDFs, oder eines Bildes übergeben. Sofern die <<_thumby>> den Server kennt, wird es versuchen ein Thumbnail der zurückgelieferten Daten zu erstellen. Die Daten werden dauerhaft auf der Platte abgelegt und zukünftige Requests, die auf dasselbe Bild verweisen werden direkt aus dem Speicher von <<_thumby>> beantwortet.
 
@@ -544,8 +595,14 @@ Die Applikation
 
 Deepzoomer
 ~~~~~~~~~~
-Repo:<https://github.com/hbz/DeepZoomService>
-Servlet 2.3
+.Überblick
+[options="autowidth"]
+|===================================================================
+|Source|https://github.com/hbz/DeepZoomService[DeepZoomService]
+|Technik|https://download.oracle.com/otn-pub/jcp/7840-servlet-2.3-spec-oth-JSpec/servlet-2_3-fcs-spec.ps[Servlet 2.3]
+|Ports| 9091 / 9191
+|Verzeichnis | /opt/regal/tomcat-for-deepzoom/, /opr/regal/src/DeepZoomService
+|===================================================================
 
 Der [DeepZoomService] kann als WAR in einem Application-Server deployed werden. Mit dem Deepzoomer können pyramidale Bilder erzeugt, gespeichert und über eine OpenSeadragon-konforme Schnittstelle abgerufen werden. Auf diese Weise kann in Regal eine Viewer-Komponente realisiert werden, die die Anzeige sehr großer, hochaufgelöster Bilder im Webbrowser unterstützt.
 
@@ -562,9 +619,15 @@ Konfiguration
 
 regal-drupal
 ~~~~~~~~~~~~
-Repo: <https://github.com/edoweb/regal-drupal>
-PHP 5
 
+.Überblick
+[options="autowidth"]
+|===================================================================
+|Source|https://github.com/edoweb/regal-drupal[regal-drupal]
+|Technik|https://www.php.net/manual/en/[PHP 5]
+|Ports| 80 / 443
+|Verzeichnis | /opt/regal/var/drupal/sites/all/modules/
+|===================================================================
 Ein Drupal 7 Modul über das Funktionalitäten der <<_regal_api_2>> angesprochen werden können. Das Modul bietet Oberflächen zur Konfiguration, zur Suche und zur Verwaltung von Objekthierarchien.
 
 
@@ -582,15 +645,27 @@ Die Applikation
 
 edoweb-drupal-theme
 ~~~~~~~~~~~~~~~~~~~
-Repo: <https://github.com/edoweb/edoweb-drupal-theme>
-PHP 5
+.Überblick
+[options="autowidth"]
+|===================================================================
+|Source|https://github.com/edoweb/edoweb-drupal-theme[edoweb-drupal-theme]
+|Technik|https://www.php.net/manual/en/[PHP 5]
+|Ports| 80 / 443
+|Verzeichnis | /opt/regal/var/drupal/sites/all/themes/
+|===================================================================
 
 Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server https://edoweb-rlp.de
 
 zbmed-drupal-theme
 ~~~~~~~~~~~~~~~~~~
-Repo: <https://github.com/edoweb/zbmed-drupal-theme>
-PHP 5
+.Überblick
+[options="autowidth"]
+|===================================================================
+|Source|https://github.com/edoweb/zbmed-drupal-theme[zbmed-drupal-theme]
+|Technik|https://www.php.net/manual/en/[PHP 5]
+|Ports| 80 / 443
+|Verzeichnis | /opt/regal/var/drupal/sites/all/themes/
+|===================================================================
 
 Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server https://repository.publisso.de
 
@@ -598,6 +673,14 @@ openwayback
 ~~~~~~~~~~~
 Repo: https://github.com/iipc/openwayback
 Servlet 2.5
+.Überblick
+[options="autowidth"]
+|===================================================================
+|Source|https://github.com/iipc/openwayback[openwayback]
+|Technik|https://download.oracle.com/otn-pub/jcp/servlet-2.5-mr5-oth-JSpec/servlet-2.5-mr5-spec.pdf[Servlet 2.5]
+|Ports| 8091 / 8191
+|Verzeichnis | /opt/regal/tomcat-for-openwayback/, /opr/regal/src/openwayback
+|===================================================================
 
 **Achtung**: Es gibt einen am hbz entwickelten Branch. Dieser ist nicht auf Github.
 
@@ -626,7 +709,7 @@ MySQL wir von Fedora, regal-api und etikett verwendet.
 Elasticsearch 1.1
 ~~~~~~~~~~~~~~~~~
 
-Elasticsearch ist eine Suchmaschine und wird von <<_regal_api_2>> verwendet. Auch <<regal_drupal>> greift auf den Index zu. 
+Elasticsearch ist eine Suchmaschine und wird von <<_regal_api_2>> verwendet. Auch <<_regal_drupal>> greift auf den Index zu. 
 
 Drupal 7
 ~~~~~~~~
@@ -709,7 +792,7 @@ vagrant ssh
 Server
 ~~~~~~
 
-Die Installation auf einem Server kann mit Hilfe des mitgelieferten Skriptes erfolgen.
+Die Installation auf einem Server kann mit Hilfe des mitgelieferten Skriptes https://github.com/jschnasse/Regal/blob/master/vagrant/ubuntu-14.04/regal-install.sh[regal-install.sh] erfolgen. Dazu muss analog zur Vagrant-Installation zunächst das `bin` Verzeichnis mit einem JDK aufgebaut werden. Danach erfolgt die Installation unter `/opt/regal` und mit einem Benutzer `regal` (vgl. `variables.conf`)
 
 Hardware Empfehlung
 ^^^^^^^^^^^^^^^^^^^
@@ -721,7 +804,7 @@ Hardware Empfehlung
 Unterschiede zur Vagrant Installation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Auf dem Server empfehlen ich den fedora tomcat mit erweiterten Speichereinstellungen zu betreiben.
+Auf dem Server empfehlen ich den fedora tomcat mit erweiterten Speichereinstellungen zu betreiben. 
 
 Dazu in `/opt/regal/bin/fedora/tomcat/bin` eine `setenv.sh` anlegen und folgende Zeilen hinein kopieren.
 
@@ -1047,8 +1130,8 @@ Doku modifizieren und in HTML übersetzen
 
 ....
 cd Regal/doc
-editor regal.txt
-asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.txt
+editor regal.asciidoc
+asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.asciidoc
 ....
 
 License
