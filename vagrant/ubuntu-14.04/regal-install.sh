@@ -89,7 +89,6 @@ function createUser(){
     sudo mv $REGAL_USER.tmp /etc/sudoers.d/$REGAL_USER
     sudo chown -R root:root /etc/sudoers.d/$REGAL_USER
     sudo chmod 664 /etc/sudoers.d/$REGAL_USER
-    sudo su - $REGAL_USER
 }
 
 function makeDir()
@@ -108,7 +107,13 @@ function createRegalFolderLayout(){
     makeDir $ARCHIVE_HOME/var/proai/sessions
     makeDir $ARCHIVE_HOME/var/proai/schemas
     makeDir $ARCHIVE_HOME/src
+    makeDir $ARCHIVE_HOME/tmp
+    makeDir $ARCHIVE_HOME/etc
+    
     cp $SCRIPT_DIR/variables.conf $ARCHIVE_HOME/conf
+    cp $INSTALL_CONF/application.conf $ARCHIVE_HOME/conf
+    cp $INSTALL_CONF/install.properties $ARCHIVE_HOME/conf
+    cp $INSTALL_CONF/regal.apache.conf $ARCHIVE_HOME/conf
     sudo chown -R $REGAL_USER $ARCHIVE_HOME
 }
 
@@ -212,21 +217,87 @@ function postProcess(){
     sudo chown -R $REGAL_USER $ARCHIVE_HOME
 }
 
+function updateAndDeployRegalModule(){
+    app_version=$1
+    APPNAME=$2
+    DATE=$(date  +"%Y%m%d%H%M%S")
+    CURAPP=$(readlink $ARCHIVE_HOME/apps/$APPNAME)
+    OLDPORT=`grep "http.port" $ARCHIVE_HOME/apps/$CURAPP/conf/application.conf | grep -o "[0-9]*"`
+
+    if [ $OLDPORT -lt 9100 ]
+    then
+      NEWPORT=$(($OLDPORT + 100))
+    else
+      NEWPORT=$(($OLDPORT - 100))
+    fi
+  
+    cd  $ARCHIVE_HOME/src/$APPNAME
+    yes r|$ARCHIVE_HOME/bin/activator/bin/activator clean
+    yes r|$ARCHIVE_HOME/bin/activator/bin/activator clean-files
+    yes r|$ARCHIVE_HOME/bin/activator/bin/activator dist
+   
+	rm -rf $ARCHIVE_HOME/tmp/$app_version*
+    cp target/universal/$app_version.zip  $ARCHIVE_HOME/tmp/
+    yes A|unzip $ARCHIVE_HOME/tmp/$app_version.zip -d $ARCHIVE_HOME/tmp 
+
+    if [ -h $ARCHIVE_HOME/apps/$APPNAME ]
+    then
+        mv $ARCHIVE_HOME/tmp/$app_version  $ARCHIVE_HOME/apps/$APPNAME.$DATE
+	    rm -rf $ARCHIVE_HOME/tmp/$app_version*
+        cp -r $ARCHIVE_HOME/apps/$APPNAME/conf/* $ARCHIVE_HOME/apps/$APPNAME.$DATE/conf/
+        sed -e "s/^http\.port=.*$/http\.port=$NEWPORT/" $ARCHIVE_HOME/apps/$APPNAME/conf/application.conf > $ARCHIVE_HOME/apps/$APPNAME.$DATE/conf/application.conf
+        cp $ARCHIVE_HOME/conf/regal.apache.conf $ARCHIVE_HOME/conf/regal.apache.conf.bck ; 
+        sed -i "s/$OLDPORT/$NEWPORT/g" $ARCHIVE_HOME/conf/regal.apache.conf
+        rm $ARCHIVE_HOME/apps/$APPNAME
+        ln -s $ARCHIVE_HOME/apps/$APPNAME.$DATE $ARCHIVE_HOME/apps/$APPNAME
+        
+        if [ ! -h $ARCHIVE_HOME/apps/$APPNAME.bck]
+        then
+    		BCKAPP=$(readlink $ARCHIVE_HOME/apps/$APPNAME.bck)
+    		rm -rf $ARCHIVE_HOME/apps/$BCKAPP
+    		rm $ARCHIVE_HOME/apps/$APPNAME.bck
+        fi
+        ln -s $ARCHIVE_HOME/apps/$APPNAME.bck $ARCHIVE_HOME/apps/$CURAPP
+        
+        sudo service regal-api start
+        sleep 20
+        tail -1 $ARCHIVE_HOME/apps/$APPNAME/logs/application.log
+        NEWPID=$(cat $ARCHIVE_HOME/apps/$APPNAME/RUNNING_PID)
+        if [ -z ${NEWPID+x} ]
+        then
+          echo "New instance of $APPNAME is not running!"
+          echo "Old instance under $ARCHIVE_HOME/apps/$CURRAPP is still active!"
+          echo "I will switch back links! Failed app can be found under $APPNAME.$DATE.failed"
+          rm $ARCHIVE_HOME/apps/$APPNAME
+          ln -s $ARCHIVE_HOME/apps/$CURAPP $ARCHIVE_HOME/apps/$APPNAME
+          ln -s $ARCHIVE_HOME/apps/$APPNAME.$DATE $ARCHIVE_HOME/apps/$APPNAME.$DATE.failed
+        else
+            echo "$APPNAME runs under pid: $NEWPID";
+	        echo "To perform switch, execute:"  
+			echo "sudo service apache2 reload"
+		    echo "kill `cat $ARCHIVE_HOME/apps/$CURAPP/RUNNING_PID`"
+        fi
+        
+       cd $ARCHIVE_HOME/apps
+    fi
+}
+
 function installRegalModule(){
     app_version=$1
     APPNAME=$2
+    DATE=$(date  +"%Y%m%d%H%M%S")
     cd  $ARCHIVE_HOME/src/$APPNAME
     yes r|$ARCHIVE_HOME/bin/activator/bin/activator clean
     yes r|$ARCHIVE_HOME/bin/activator/bin/activator dist
     yes r|$ARCHIVE_HOME/bin/activator/bin/activator eclipse
-    cp target/universal/$app_version.zip  /tmp
-    cd /tmp
-    unzip $app_version.zip
-    if [ -f $$ARCHIVE_HOME/apps/$APPNAME ]
-    then
-	  rm -rf $ARCHIVE_HOME/apps/$APPNAME
-    fi
-    mv $app_version  $ARCHIVE_HOME/apps/$APPNAME
+    rm -rf $ARCHIVE_HOME/tmp/$app_version*
+    cp target/universal/$app_version.zip  $ARCHIVE_HOME/tmp/
+    yes A|unzip $ARCHIVE_HOME/tmp/$app_version.zip -d $ARCHIVE_HOME/tmp 
+	rm -rf $ARCHIVE_HOME/apps/$APPNAME
+    mv $ARCHIVE_HOME/tmp/$app_version  $ARCHIVE_HOME/apps/$APPNAME.$DATE
+    ln -s $ARCHIVE_HOME/apps/$APPNAME.$DATE $ARCHIVE_HOME/apps/$APPNAME
+    rm -rf $ARCHIVE_HOME/tmp/$app_version*
+    makeDir $ARCHIVE_HOME/etc/$APPNAME
 }
 
 function installRegalModules(){
@@ -249,7 +320,7 @@ function configureApache(){
     sudo a2enmod proxy_http
     sed -i "1 s|$| api.localhost|" /etc/hosts
     rm /etc/apache2/sites-enabled/000-default.conf
-    cp $INSTALL_CONF/regal.apache.conf /etc/apache2/sites-enabled/
+    ln -s $ARCHIVE_HOME/conf/regal.apache.conf /etc/apache2/sites-enabled/
     sudo service apache2 reload
 }
 
@@ -361,13 +432,16 @@ function installRegalDrupal(){
 	curl https://ftp.drupal.org/files/projects/ctools-7.x-1.3.tar.gz | tar xz
 	php5enmod redland
     service apache2 restart
-    ln -s /opt/regal/src/regal-api/public/ $ARCHIVE_HOME/var/drupal/
+    ln -s $ARCHIVE_HOME/src/regal-api/public/ $ARCHIVE_HOME/var/drupal/
+    ln -s $ARCHIVE_HOME/var/drupal/sites/all/modules/regal_drupal $ARCHIVE_HOME/src
 }
 
 function installDrupalThemes(){
 	cd $ARCHIVE_HOME/var/drupal/sites/all/themes
 	git clone https://github.com/edoweb/edoweb-drupal-theme.git
 	git clone https://github.com/edoweb/zbmed-drupal-theme.git
+    ln -s $ARCHIVE_HOME/var/drupal/sites/all/themes/edoweb-drupal-theme $ARCHIVE_HOME/src
+    ln -s $ARCHIVE_HOME/var/drupal/sites/all/themes/zbmed-drupal-theme $ARCHIVE_HOME/src
 }
 
 function configureDrupalLanguages(){
@@ -441,12 +515,15 @@ function serverInstallation(){
 
 function installRegal(){
     echo "Start Regal installation!"
+    sudo locale-gen de_DE.UTF-8
     sudo apt-get -y -q install wget
 	downloadBinaries
 	installJava8
 	installPackages
     createUser
+    sudo -i -u $REGAL_USER bash 
 	createRegalFolderLayout
+	
 	downloadRegalSources
     cp $INSTALL_CONF/install.properties $ARCHIVE_HOME/src/regal-install/templates
     createConfigFiles
