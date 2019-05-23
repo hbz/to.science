@@ -1,6 +1,5 @@
 Regal-API
 =========
-
 Jan Schnasse
 :Author Initials: JS
 :toc: left
@@ -34,8 +33,8 @@ Prepare your environment to make the following `curl`-Calls work!
 
 ....
 source /opt/regal/conf/variables.conf
-export REGAL-API=http://$SERVER
-export API-USER=edoweb-admin
+export REGAL_API=http://$SERVER
+export API_USER=edoweb-admin
 ....
 
 
@@ -49,23 +48,23 @@ Create
 Create a new resource
 ^^^^^^^^^^^^^^^^^^^^^
 ....
-curl -i -u$API-USER:$PASSWORD -XPUT $REGAL-API/resource/regal:1234 -d'{"contentType":"monograph","accessScheme":"public"}' -H'content-type:application/json'
+curl -i -u$API_USER:$PASSWORD -XPUT $REGAL_API/resource/regal:1234 -d'{"contentType":"monograph","accessScheme":"public"}' -H'content-type:application/json'
 ....
 
 Create a new hierarchy
 ^^^^^^^^^^^^^^^^^^^^^^
 ....
-curl -i -u$API-USER:$PASSWORD -XPUT $REGAL-API/resource/regal:1235 -d'{"parentPid":"regal:1234","contentType":"file","accessScheme":"public"}' -H'content-type:application/json'
+curl -i -u$API_USER:$PASSWORD -XPUT $REGAL_API/resource/regal:1235 -d'{"parentPid":"regal:1234","contentType":"file","accessScheme":"public"}' -H'content-type:application/json'
 ....
 
 Upload binary data
 ^^^^^^^^^^^^^^^^^^
 ....	
-curl -u$API-USER:$PASSWORD -F"data=@$ARCHIVE_HOME/src/regal-api/test/resources/test.pdf;type=application/pdf" -XPUT $REGAL-API/resource/regal:1235/data
+curl -u$API_USER:$PASSWORD -F"data=@$ARCHIVE_HOME/src/REGAL_API/test/resources/test.pdf;type=application/pdf" -XPUT $REGAL_API/resource/regal:1235/data
 ....
 
 Create User
-~~~~~~~~~~~
+^^^^^^^^^^^
 
 Upload metadata
 ^^^^^^^^^^^^^^^
@@ -86,41 +85,94 @@ Read
 Read resource
 ^^^^^^^^^^^^^
 **html**
+....
+curl $REGAL_API/resource/regal:1234.html
+....
 
 **json**
+....
+curl $REGAL_API/resource/regal:1234.json
+curl $REGAL_API/resource/regal:1234.json2
+....
 
 **rdf**
+....
+curl $REGAL_API/resource/regal:1234.rdf
+....
 
 **mets**
+....
+curl $REGAL_API/resource/regal:1234.mets
+....
 
 **aleph**
+....
+curl $REGAL_API/resource/regal:1234.aleph
+....
 
 **epicur**
-
+....
+curl $REGAL_API/resource/regal:1234.epicur
+....
 **datacite**
+....
+curl $REGAL_API/resource/regal:1234.datacite
+....
 
 **csv**
+....
+curl $REGAL_API/resource/regal:1234.csv
+....
 
 **wgl**
+....
+curl $REGAL_API/resource/regal:1234.wgl
+....
 
+**oaidc**
+....
+curl $REGAL_API/resource/regal:1234.oaidc
+....
 
 Read resource tree
 ^^^^^^^^^^^^^^^^^^
+....
+curl $REGAL_API/resource/regal:1234/all
+....
+
+....
+curl $REGAL_API/resource/regal:1234/parts
+....
 
 Read binary data
 ^^^^^^^^^^^^^^^^
+....
+curl $REGAL_API/resource/regal:1234/data
+....
+
 
 Read Webgatherer Conf
 ^^^^^^^^^^^^^^^^^^^^^
+....
+curl $REGAL_API/resource/regal:1234/conf
+....
+
 
 Read Ordering of Childs
 ^^^^^^^^^^^^^^^^^^^^^^^
+....
+curl $REGAL_API/resource/regal:1234/seq
+....
 
 Read user
 ^^^^^^^^^
 
+
 Read Adhoc Linked Data
 ^^^^^^^^^^^^^^^^^^^^^^
+....
+curl $REGAL_API/adhoc/uri/$(echo test |base64)
+....
 
 
 Update
@@ -169,13 +221,13 @@ Misc
 Load metadata from Lobid
 ^^^^^^^^^^^^^^^^^^^^^^^^
 ....	
-curl -u$API-USER:$PASSWORD -XPOST "$REGAL-API/utils/lobidify/regal:1234?alephid=HT018920238"
+curl -u$API_USER:$PASSWORD -XPOST "$REGAL_API/utils/lobidify/regal:1234?alephid=HT018920238"
 ....
 
 Reread Labels from etikett
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 ....
-curl -u$API-USER:$PASSWORD -XPOST $REGAL-API/context.json
+curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/context.json
 ....
 
 Reindex resource
@@ -191,7 +243,7 @@ Create
 Add Labels to Database
 ^^^^^^^^^^^^^^^^^^^^^^^
 ....
-curl -u$API-USER:$PASSWORD -XPOST -F"data=@$ARCHIVE_HOME/src/regal-api/conf/labels.json" -F"format-cb=Json" $REGAL-API/tools/etikett -i -L
+curl -u$API_USER:$PASSWORD -XPOST -F"data=@$ARCHIVE_HOME/src/REGAL_API/conf/labels.json" -F"format-cb=Json" $REGAL_API/tools/etikett -i -L
 ....
 
 Add Label
@@ -199,8 +251,15 @@ Add Label
 
 Read
 ~~~~
+....
+curl "http://localhost:9000/tools/etikett" -H"accept: application/json"
+....
+
 Read Etikett
 ^^^^^^^^^^^^
+....
+curl "http://localhost:9000/tools/etikett?url=http%3A%2F%2Fpurl.orms%2Fissued" -H"accept: application/json"
+....
 
 Update
 ~~~~~~
@@ -241,21 +300,24 @@ Create
 
 Create new Index
 ^^^^^^^^^^^^^^^^
+....
+curl -i -X POST -H "Content-Type: multipart/form-data" $REGAL_API/tools/skos-lookup/upload -F "data=@/tmp/skos-lookup/test/resources/agrovoc_2016-07-15_lod.nt.gz" -F"index=agrovoc_test" -F"format=NTRIPLES"
+....
 
 Read
 ~~~~
-
-Update
-~~~~~~
-
-Delete
-~~~~~~
+....
+curl -XGET '$REGAL_API/tools/skos-lookup/autocomplete?lang=de&q=Erdnus&callback=mycallback&index=agrovoc_test'
+....
 
 Search
 ~~~~~~
 
-Misc
-~~~~
+....
+curl $REGAL_API/tools/skos-lookup/search?q=http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_13551&lang=de&index=agrovoc
+....
+
+
 
 thumby
 -----
@@ -265,6 +327,9 @@ Create
 
 Read
 ~~~~
+....
+curl -XGET "$REGAL_API/tools/thumby?url=https://www.gravatar.com/avatar/5fefc19b7875e951c7ea9bfdfc06676d&size=200"
+....
 
 Update
 ~~~~~~

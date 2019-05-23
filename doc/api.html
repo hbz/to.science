@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Asciidoctor 0.1.4">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.9">
 <title>Regal-API</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
@@ -724,31 +723,88 @@ b.conum * { color: inherit !important; }
 .conum:not([data-value]):empty { display: none; }
 
 .literalblock pre, .listingblock pre { background: #eeeeee; }
-
 </style>
 </head>
-<body class="article">
+<body class="article toc2 toc-left">
 <div id="header">
 <h1>Regal-API</h1>
+<span id="author" class="author">Jan Schnasse</span><br>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_preface">1. Preface</a></li>
+<li><a href="#_environment">2. Environment</a></li>
+<li><a href="#_regal_api">3. regal-api</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#_create">3.1. Create</a></li>
+<li><a href="#_read">3.2. Read</a></li>
+<li><a href="#_update">3.3. Update</a></li>
+<li><a href="#_delete">3.4. Delete</a></li>
+<li><a href="#_search">3.5. Search</a></li>
+<li><a href="#_misc">3.6. Misc</a></li>
+</ul>
+</li>
+<li><a href="#_etikett">4. etikett</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#_create_2">4.1. Create</a></li>
+<li><a href="#_read_2">4.2. Read</a></li>
+<li><a href="#_update_2">4.3. Update</a></li>
+<li><a href="#_delete_2">4.4. Delete</a></li>
+<li><a href="#_misc_2">4.5. Misc</a></li>
+</ul>
+</li>
+<li><a href="#_zettel">5. zettel</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#_create_3">5.1. Create</a></li>
+<li><a href="#_read_3">5.2. Read</a></li>
+<li><a href="#_search_2">5.3. Search</a></li>
+</ul>
+</li>
+<li><a href="#_skos_lookup">6. skos-lookup</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#_create_4">6.1. Create</a></li>
+<li><a href="#_read_4">6.2. Read</a></li>
+<li><a href="#_search_3">6.3. Search</a></li>
+</ul>
+</li>
+<li><a href="#_thumby">7. thumby</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#_create_5">7.1. Create</a></li>
+<li><a href="#_read_5">7.2. Read</a></li>
+<li><a href="#_update_3">7.3. Update</a></li>
+<li><a href="#_delete_3">7.4. Delete</a></li>
+<li><a href="#_search_4">7.5. Search</a></li>
+<li><a href="#_misc_3">7.6. Misc</a></li>
+</ul>
+</li>
+<li><a href="#_dokumentation">8. Dokumentation</a></li>
+<li>
+<ul class="sectlevel2">
+<li><a href="#_diese_repo_herunterladen">8.1. Diese Repo herunterladen</a></li>
+<li><a href="#_asciidoctor_und_asciidoctor_stylesheets_installieren">8.2. Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
+<li><a href="#_doku_modifizieren_und_in_html_bersetzen">8.3. Doku modifizieren und in HTML übersetzen</a></li>
+</ul>
+</li>
+<li><a href="#_license">9. License</a></li>
+<li><a href="#_references">10. References</a></li>
+</ul>
+</div>
 </div>
 <div id="content">
 <div id="preamble">
 <div class="sectionbody">
-<div class="paragraph">
-<p>Jan Schnasse
-:Author Initials: JS
-:toc: left
-:icons:
-:numbered:
-:website:</p>
-</div>
 <div class="paragraph">
 <p>Über dieses Dokument</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>Dieses Dokument kommt zusammen mit einem <a href="https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04">Vagrantfile</a> und beschreibt eine typische Installation von Regal. Unter <a href="#_vagrant">[_vagrant]</a> findet sich eine Anleitung zur Installation in einer Virtualbox.</p>
+<p>Dieses Dokument kommt zusammen mit einem <a href="https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04">Vagrantfile</a> und beschreibt die wichtigsten HTTP-Calls in Regal anhand von <code>curl</code>.</p>
 </div>
 <div class="paragraph">
 <p>Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt <a href="#_dokumentation">Dokumentation</a></p>
@@ -758,7 +814,7 @@ b.conum * { color: inherit !important; }
 </div>
 </div>
 <div class="sect1">
-<h2 id="_preface">Preface</h2>
+<h2 id="_preface">1. Preface</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>The Regal webservices documented by example <code>curl</code>-calls. Examples are assumed to work in the Vagrant-Environment that comes with this document.</p>
@@ -769,7 +825,7 @@ b.conum * { color: inherit !important; }
 </div>
 </div>
 <div class="sect1">
-<h2 id="_environment">Environment</h2>
+<h2 id="_environment">2. Environment</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Got to your server or to the Vagrant-Box, that comes with this document.</p>
@@ -783,316 +839,413 @@ b.conum * { color: inherit !important; }
 <div class="literalblock">
 <div class="content">
 <pre>source /opt/regal/conf/variables.conf
-export REGAL-API=http://$SERVER
-export API-USER=edoweb-admin</pre>
+export REGAL_API=http://$SERVER
+export API_USER=edoweb-admin</pre>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_regal_api">regal-api</h2>
+<h2 id="_regal_api">3. regal-api</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_create">Create</h3>
+<h3 id="_create">3.1. Create</h3>
 <div class="sect3">
-<h4 id="_create_a_new_resource">Create a new resource</h4>
+<h4 id="_create_a_new_resource">3.1.1. Create a new resource</h4>
 <div class="literalblock">
 <div class="content">
-<pre>curl -i -u$API-USER:$PASSWORD -XPUT $REGAL-API/resource/regal:1234 -d'{"contentType":"monograph","accessScheme":"public"}' -H'content-type:application/json'</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_create_a_new_hierarchy">Create a new hierarchy</h4>
-<div class="literalblock">
-<div class="content">
-<pre>curl -i -u$API-USER:$PASSWORD -XPUT $REGAL-API/resource/regal:1235 -d'{"parentPid":"regal:1234","contentType":"file","accessScheme":"public"}' -H'content-type:application/json'</pre>
+<pre>curl -i -u$API_USER:$PASSWORD -XPUT $REGAL_API/resource/regal:1234 -d'{"contentType":"monograph","accessScheme":"public"}' -H'content-type:application/json'</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_upload_binary_data">Upload binary data</h4>
+<h4 id="_create_a_new_hierarchy">3.1.2. Create a new hierarchy</h4>
 <div class="literalblock">
 <div class="content">
-<pre>curl -u$API-USER:$PASSWORD -F"data=@$ARCHIVE_HOME/src/regal-api/test/resources/test.pdf;type=application/pdf" -XPUT $REGAL-API/resource/regal:1235/data</pre>
+<pre>curl -i -u$API_USER:$PASSWORD -XPUT $REGAL_API/resource/regal:1235 -d'{"parentPid":"regal:1234","contentType":"file","accessScheme":"public"}' -H'content-type:application/json'</pre>
 </div>
 </div>
+</div>
+<div class="sect3">
+<h4 id="_upload_binary_data">3.1.3. Upload binary data</h4>
+<div class="literalblock">
+<div class="content">
+<pre>curl -u$API_USER:$PASSWORD -F"data=@$ARCHIVE_HOME/src/REGAL_API/test/resources/test.pdf;type=application/pdf" -XPUT $REGAL_API/resource/regal:1235/data</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_create_user">3.1.4. Create User</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_upload_metadata">3.1.5. Upload metadata</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_upload_webgatherer_conf">3.1.6. Upload Webgatherer Conf</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_order_child_nodes">3.1.7. Order Child Nodes</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_create_webversion">3.1.8. Create Webversion</h4>
+
 </div>
 </div>
 <div class="sect2">
-<h3 id="_create_user">Create User</h3>
+<h3 id="_read">3.2. Read</h3>
 <div class="sect3">
-<h4 id="_upload_metadata">Upload metadata</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_upload_webgatherer_conf">Upload Webgatherer Conf</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_order_child_nodes">Order Child Nodes</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_create_webversion">Create Webversion</h4>
-
-</div>
-</div>
-<div class="sect2">
-<h3 id="_read">Read</h3>
-<div class="sect3">
-<h4 id="_read_resource">Read resource</h4>
+<h4 id="_read_resource">3.2.1. Read resource</h4>
 <div class="paragraph">
 <p><strong>html</strong></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/resource/regal:1234.html</pre>
+</div>
 </div>
 <div class="paragraph">
 <p><strong>json</strong></p>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/resource/regal:1234.json
+curl $REGAL_API/resource/regal:1234.json2</pre>
+</div>
+</div>
 <div class="paragraph">
 <p><strong>rdf</strong></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/resource/regal:1234.rdf</pre>
+</div>
 </div>
 <div class="paragraph">
 <p><strong>mets</strong></p>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/resource/regal:1234.mets</pre>
+</div>
+</div>
 <div class="paragraph">
 <p><strong>aleph</strong></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/resource/regal:1234.aleph</pre>
+</div>
 </div>
 <div class="paragraph">
 <p><strong>epicur</strong></p>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/resource/regal:1234.epicur</pre>
+</div>
+</div>
 <div class="paragraph">
 <p><strong>datacite</strong></p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/resource/regal:1234.datacite</pre>
+</div>
 </div>
 <div class="paragraph">
 <p><strong>csv</strong></p>
 </div>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/resource/regal:1234.csv</pre>
+</div>
+</div>
 <div class="paragraph">
 <p><strong>wgl</strong></p>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_read_resource_tree">Read resource tree</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_read_binary_data">Read binary data</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_read_webgatherer_conf">Read Webgatherer Conf</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_read_ordering_of_childs">Read Ordering of Childs</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_read_user">Read user</h4>
-
-</div>
-</div>
-<div class="sect2">
-<h3 id="_update">Update</h3>
-<div class="sect3">
-<h4 id="_update_resource">Update Resource</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_add_urn">Add URN</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_enrich">Enrich</h4>
-
-</div>
-</div>
-<div class="sect2">
-<h3 id="_delete">Delete</h3>
-<div class="sect3">
-<h4 id="_delete_resource">Delete resource</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_purge_resource">Purge resource</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_delete_part_of_resource">Delete part of resource</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_delete_user">Delete user</h4>
-
-</div>
-</div>
-<div class="sect2">
-<h3 id="_search">Search</h3>
-<div class="sect3">
-<h4 id="_simple_search">Simple Search</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_facetted_search">Facetted Search</h4>
-
-</div>
-<div class="sect3">
-<h4 id="_search_for_field">Search for field</h4>
-
-</div>
-</div>
-<div class="sect2">
-<h3 id="_misc">Misc</h3>
-<div class="sect3">
-<h4 id="_load_metadata_from_lobid">Load metadata from Lobid</h4>
 <div class="literalblock">
 <div class="content">
-<pre>curl -u$API-USER:$PASSWORD -XPOST "$REGAL-API/utils/lobidify/regal:1234?alephid=HT018920238"</pre>
+<pre>curl $REGAL_API/resource/regal:1234.wgl</pre>
 </div>
 </div>
+<div class="paragraph">
+<p><strong>oaidc</strong></p>
 </div>
-<div class="sect3">
-<h4 id="_reread_labels_from_etikett">Reread Labels from etikett</h4>
 <div class="literalblock">
 <div class="content">
-<pre>curl -u$API-USER:$PASSWORD -XPOST $REGAL-API/context.json</pre>
+<pre>curl $REGAL_API/resource/regal:1234.oaidc</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_reindex_resource">Reindex resource</h4>
-
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_etikett">etikett</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_create_2">Create</h3>
-<div class="sect3">
-<h4 id="_add_labels_to_database">Add Labels to Database</h4>
+<h4 id="_read_resource_tree">3.2.2. Read resource tree</h4>
 <div class="literalblock">
 <div class="content">
-<pre>curl -u$API-USER:$PASSWORD -XPOST -F"data=@$ARCHIVE_HOME/src/regal-api/conf/labels.json" -F"format-cb=Json" $REGAL-API/tools/etikett -i -L</pre>
+<pre>curl $REGAL_API/resource/regal:1234/all</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/resource/regal:1234/parts</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_add_label">Add Label</h4>
-
+<h4 id="_read_binary_data">3.2.3. Read binary data</h4>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/resource/regal:1234/data</pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_read_2">Read</h3>
+</div>
 <div class="sect3">
-<h4 id="_read_etikett">Read Etikett</h4>
-
+<h4 id="_read_webgatherer_conf">3.2.4. Read Webgatherer Conf</h4>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/resource/regal:1234/conf</pre>
 </div>
 </div>
-<div class="sect2">
-<h3 id="_update_2">Update</h3>
-
 </div>
-<div class="sect2">
-<h3 id="_delete_2">Delete</h3>
 <div class="sect3">
-<h4 id="_delete_cache">Delete Cache</h4>
+<h4 id="_read_ordering_of_childs">3.2.5. Read Ordering of Childs</h4>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/resource/regal:1234/seq</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_read_user">3.2.6. Read user</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_read_adhoc_linked_data">3.2.7. Read Adhoc Linked Data</h4>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/adhoc/uri/$(echo test |base64)</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update">3.3. Update</h3>
+<div class="sect3">
+<h4 id="_update_resource">3.3.1. Update Resource</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_add_urn">3.3.2. Add URN</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_enrich">3.3.3. Enrich</h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_misc_2">Misc</h3>
+<h3 id="_delete">3.4. Delete</h3>
+<div class="sect3">
+<h4 id="_delete_resource">3.4.1. Delete resource</h4>
 
+</div>
+<div class="sect3">
+<h4 id="_purge_resource">3.4.2. Purge resource</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_delete_part_of_resource">3.4.3. Delete part of resource</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_delete_user">3.4.4. Delete user</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_search">3.5. Search</h3>
+<div class="sect3">
+<h4 id="_simple_search">3.5.1. Simple Search</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_facetted_search">3.5.2. Facetted Search</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_search_for_field">3.5.3. Search for field</h4>
+
+</div>
+</div>
+<div class="sect2">
+<h3 id="_misc">3.6. Misc</h3>
+<div class="sect3">
+<h4 id="_load_metadata_from_lobid">3.6.1. Load metadata from Lobid</h4>
+<div class="literalblock">
+<div class="content">
+<pre>curl -u$API_USER:$PASSWORD -XPOST "$REGAL_API/utils/lobidify/regal:1234?alephid=HT018920238"</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_reread_labels_from_etikett">3.6.2. Reread Labels from etikett</h4>
+<div class="literalblock">
+<div class="content">
+<pre>curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/context.json</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_reindex_resource">3.6.3. Reindex resource</h4>
+
+</div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_zettel">zettel</h2>
+<h2 id="_etikett">4. etikett</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_create_3">Create</h3>
+<h3 id="_create_2">4.1. Create</h3>
 <div class="sect3">
-<h4 id="_create_rdf_metadata_from_form_data">Create RDF-Metadata from Form-Data</h4>
+<h4 id="_add_labels_to_database">4.1.1. Add Labels to Database</h4>
+<div class="literalblock">
+<div class="content">
+<pre>curl -u$API_USER:$PASSWORD -XPOST -F"data=@$ARCHIVE_HOME/src/REGAL_API/conf/labels.json" -F"format-cb=Json" $REGAL_API/tools/etikett -i -L</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_add_label">4.1.2. Add Label</h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_read_3">Read</h3>
+<h3 id="_read_2">4.2. Read</h3>
+<div class="literalblock">
+<div class="content">
+<pre>curl "http://localhost:9000/tools/etikett" -H"accept: application/json"</pre>
+</div>
+</div>
 <div class="sect3">
-<h4 id="_read_html_form">Read HTML-Form</h4>
+<h4 id="_read_etikett">4.2.1. Read Etikett</h4>
+<div class="literalblock">
+<div class="content">
+<pre>curl "http://localhost:9000/tools/etikett?url=http%3A%2F%2Fpurl.orms%2Fissued" -H"accept: application/json"</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update_2">4.3. Update</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_delete_2">4.4. Delete</h3>
+<div class="sect3">
+<h4 id="_delete_cache">4.4.1. Delete Cache</h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_search_2">Search</h3>
+<h3 id="_misc_2">4.5. Misc</h3>
 
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_skos_lookup">skos-lookup</h2>
+<h2 id="_zettel">5. zettel</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_create_4">Create</h3>
+<h3 id="_create_3">5.1. Create</h3>
 <div class="sect3">
-<h4 id="_create_new_index">Create new Index</h4>
+<h4 id="_create_rdf_metadata_from_form_data">5.1.1. Create RDF-Metadata from Form-Data</h4>
 
 </div>
 </div>
 <div class="sect2">
-<h3 id="_read_4">Read</h3>
+<h3 id="_read_3">5.2. Read</h3>
+<div class="sect3">
+<h4 id="_read_html_form">5.2.1. Read HTML-Form</h4>
 
 </div>
-<div class="sect2">
-<h3 id="_update_3">Update</h3>
-
 </div>
 <div class="sect2">
-<h3 id="_delete_3">Delete</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_search_3">Search</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_misc_3">Misc</h3>
+<h3 id="_search_2">5.3. Search</h3>
 
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_thumby">thumby</h2>
+<h2 id="_skos_lookup">6. skos-lookup</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="_create_5">Create</h3>
+<h3 id="_create_4">6.1. Create</h3>
+<div class="sect3">
+<h4 id="_create_new_index">6.1.1. Create new Index</h4>
+<div class="literalblock">
+<div class="content">
+<pre>curl -i -X POST -H "Content-Type: multipart/form-data" $REGAL_API/tools/skos-lookup/upload -F "data=@/tmp/skos-lookup/test/resources/agrovoc_2016-07-15_lod.nt.gz" -F"index=agrovoc_test" -F"format=NTRIPLES"</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_read_4">6.2. Read</h3>
+<div class="literalblock">
+<div class="content">
+<pre>curl -XGET '$REGAL_API/tools/skos-lookup/autocomplete?lang=de&amp;q=Erdnus&amp;callback=mycallback&amp;index=agrovoc_test'</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_search_3">6.3. Search</h3>
+<div class="literalblock">
+<div class="content">
+<pre>curl $REGAL_API/tools/skos-lookup/search?q=http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_13551&amp;lang=de&amp;index=agrovoc</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_thumby">7. thumby</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_create_5">7.1. Create</h3>
 
 </div>
 <div class="sect2">
-<h3 id="_read_5">Read</h3>
+<h3 id="_read_5">7.2. Read</h3>
+<div class="literalblock">
+<div class="content">
+<pre>curl -XGET "$REGAL_API/tools/thumby?url=https://www.gravatar.com/avatar/5fefc19b7875e951c7ea9bfdfc06676d&amp;size=200"</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_update_3">7.3. Update</h3>
 
 </div>
 <div class="sect2">
-<h3 id="_update_4">Update</h3>
+<h3 id="_delete_3">7.4. Delete</h3>
 
 </div>
 <div class="sect2">
-<h3 id="_delete_4">Delete</h3>
+<h3 id="_search_4">7.5. Search</h3>
 
 </div>
 <div class="sect2">
-<h3 id="_search_4">Search</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_misc_4">Misc</h3>
+<h3 id="_misc_3">7.6. Misc</h3>
 
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_dokumentation">Dokumentation</h2>
+<h2 id="_dokumentation">8. Dokumentation</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Diese Dokumentation ist mit asciidoc geschrieben und wurde mit asciidoctor in HTML übersetzt. Dazu wurde das foundation.css Stylesheet aus dem asciidoctor-stylesheet-factory Repository verwendet.</p>
@@ -1101,7 +1254,7 @@ export API-USER=edoweb-admin</pre>
 <p>Die Schritte, um an der Doku zu arbeiten sind folgenden</p>
 </div>
 <div class="sect2">
-<h3 id="_diese_repo_herunterladen">Diese Repo herunterladen</h3>
+<h3 id="_diese_repo_herunterladen">8.1. Diese Repo herunterladen</h3>
 <div class="literalblock">
 <div class="content">
 <pre>git clone https://github.com/jschnasse/Regal</pre>
@@ -1109,7 +1262,7 @@ export API-USER=edoweb-admin</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_asciidoctor_und_asciidoctor_stylesheets_installieren">Asciidoctor und Asciidoctor-Stylesheets installieren</h3>
+<h3 id="_asciidoctor_und_asciidoctor_stylesheets_installieren">8.2. Asciidoctor und Asciidoctor-Stylesheets installieren</h3>
 <div class="literalblock">
 <div class="content">
 <pre>gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
@@ -1128,7 +1281,7 @@ compass compile</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_doku_modifizieren_und_in_html_übersetzen">Doku modifizieren und in HTML übersetzen</h3>
+<h3 id="_doku_modifizieren_und_in_html_bersetzen">8.3. Doku modifizieren und in HTML übersetzen</h3>
 <div class="literalblock">
 <div class="content">
 <pre>cd Regal/doc
@@ -1140,7 +1293,7 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 </div>
 </div>
 <div class="sect1">
-<h2 id="_license">License</h2>
+<h2 id="_license">9. License</h2>
 <div class="sectionbody">
 <div class="imageblock">
 <div class="content">
@@ -1153,7 +1306,7 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 </div>
 </div>
 <div class="sect1">
-<h2 id="_references">References</h2>
+<h2 id="_references">10. References</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>regal-scripts
@@ -1164,7 +1317,7 @@ vagrant</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-17 10:28:49 +0200
+Last updated 2019-05-23 14:52:45 CEST
 </div>
 </div>
 </body>
