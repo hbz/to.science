@@ -72,7 +72,6 @@ Upload metadata
 Upload Webgatherer Conf
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-
 Order Child Nodes
 ^^^^^^^^^^^^^^^^^
 
@@ -181,6 +180,13 @@ Update
 Update Resource
 ^^^^^^^^^^^^^^^
 
+
+Update Metadata
+^^^^^^^^^^^^^^
+....
+curl -s -u$API_USER:$REGAL_PASSWORD -XPOST $REGAL_API/utils/updateMetadata/regal:1234 -H"accept: application/json" 
+....
+
 Add URN
 ^^^^^^^
 
@@ -188,14 +194,22 @@ Enrich
 ^^^^^^ 
 
 
+
 Delete
 ~~~~~~
 
 Delete resource
-^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^
+....
+curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234";echo
+....
 
 Purge resource
 ^^^^^^^^^^^^^^
+....
+
+curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=true";echo
+....
 
 Delete part of resource
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -232,7 +246,9 @@ curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/context.json
 
 Reindex resource
 ^^^^^^^^^^^^^^^^
-
+....
+curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/utils/index/$pid -H"accept: application/json" 
+....
 
 etikett
 -------
@@ -312,7 +328,6 @@ curl -XGET '$REGAL_API/tools/skos-lookup/autocomplete?lang=de&q=Erdnus&callback=
 
 Search
 ~~~~~~
-
 ....
 curl $REGAL_API/tools/skos-lookup/search?q=http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_13551&lang=de&index=agrovoc
 ....

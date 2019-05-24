@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="generator" content="Asciidoctor 0.1.4">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.9">
+<meta name="author" content="Jan Schnasse">
 <title>Regal-API</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
@@ -723,19 +725,21 @@ b.conum * { color: inherit !important; }
 .conum:not([data-value]):empty { display: none; }
 
 .literalblock pre, .listingblock pre { background: #eeeeee; }
+
 </style>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
 <h1>Regal-API</h1>
+<div class="details">
 <span id="author" class="author">Jan Schnasse</span><br>
+</div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_preface">1. Preface</a></li>
 <li><a href="#_environment">2. Environment</a></li>
-<li><a href="#_regal_api">3. regal-api</a></li>
-<li>
+<li><a href="#_regal_api">3. regal-api</a>
 <ul class="sectlevel2">
 <li><a href="#_create">3.1. Create</a></li>
 <li><a href="#_read">3.2. Read</a></li>
@@ -745,8 +749,7 @@ b.conum * { color: inherit !important; }
 <li><a href="#_misc">3.6. Misc</a></li>
 </ul>
 </li>
-<li><a href="#_etikett">4. etikett</a></li>
-<li>
+<li><a href="#_etikett">4. etikett</a>
 <ul class="sectlevel2">
 <li><a href="#_create_2">4.1. Create</a></li>
 <li><a href="#_read_2">4.2. Read</a></li>
@@ -755,24 +758,21 @@ b.conum * { color: inherit !important; }
 <li><a href="#_misc_2">4.5. Misc</a></li>
 </ul>
 </li>
-<li><a href="#_zettel">5. zettel</a></li>
-<li>
+<li><a href="#_zettel">5. zettel</a>
 <ul class="sectlevel2">
 <li><a href="#_create_3">5.1. Create</a></li>
 <li><a href="#_read_3">5.2. Read</a></li>
 <li><a href="#_search_2">5.3. Search</a></li>
 </ul>
 </li>
-<li><a href="#_skos_lookup">6. skos-lookup</a></li>
-<li>
+<li><a href="#_skos_lookup">6. skos-lookup</a>
 <ul class="sectlevel2">
 <li><a href="#_create_4">6.1. Create</a></li>
 <li><a href="#_read_4">6.2. Read</a></li>
 <li><a href="#_search_3">6.3. Search</a></li>
 </ul>
 </li>
-<li><a href="#_thumby">7. thumby</a></li>
-<li>
+<li><a href="#_thumby">7. thumby</a>
 <ul class="sectlevel2">
 <li><a href="#_create_5">7.1. Create</a></li>
 <li><a href="#_read_5">7.2. Read</a></li>
@@ -782,12 +782,11 @@ b.conum * { color: inherit !important; }
 <li><a href="#_misc_3">7.6. Misc</a></li>
 </ul>
 </li>
-<li><a href="#_dokumentation">8. Dokumentation</a></li>
-<li>
+<li><a href="#_dokumentation">8. Dokumentation</a>
 <ul class="sectlevel2">
 <li><a href="#_diese_repo_herunterladen">8.1. Diese Repo herunterladen</a></li>
 <li><a href="#_asciidoctor_und_asciidoctor_stylesheets_installieren">8.2. Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
-<li><a href="#_doku_modifizieren_und_in_html_bersetzen">8.3. Doku modifizieren und in HTML übersetzen</a></li>
+<li><a href="#_doku_modifizieren_und_in_html_übersetzen">8.3. Doku modifizieren und in HTML übersetzen</a></li>
 </ul>
 </li>
 <li><a href="#_license">9. License</a></li>
@@ -1038,11 +1037,19 @@ curl $REGAL_API/resource/regal:1234.json2</pre>
 
 </div>
 <div class="sect3">
-<h4 id="_add_urn">3.3.2. Add URN</h4>
+<h4 id="_update_metadata">3.3.2. Update Metadata</h4>
+<div class="literalblock">
+<div class="content">
+<pre>curl -s -u$API_USER:$REGAL_PASSWORD -XPOST $REGAL_API/utils/updateMetadata/regal:1234 -H"accept: application/json"</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_add_urn">3.3.3. Add URN</h4>
 
 </div>
 <div class="sect3">
-<h4 id="_enrich">3.3.3. Enrich</h4>
+<h4 id="_enrich">3.3.4. Enrich</h4>
 
 </div>
 </div>
@@ -1050,11 +1057,19 @@ curl $REGAL_API/resource/regal:1234.json2</pre>
 <h3 id="_delete">3.4. Delete</h3>
 <div class="sect3">
 <h4 id="_delete_resource">3.4.1. Delete resource</h4>
-
+<div class="literalblock">
+<div class="content">
+<pre>curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234";echo</pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_purge_resource">3.4.2. Purge resource</h4>
-
+<div class="literalblock">
+<div class="content">
+<pre>curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=true";echo</pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_delete_part_of_resource">3.4.3. Delete part of resource</h4>
@@ -1100,7 +1115,11 @@ curl $REGAL_API/resource/regal:1234.json2</pre>
 </div>
 <div class="sect3">
 <h4 id="_reindex_resource">3.6.3. Reindex resource</h4>
-
+<div class="literalblock">
+<div class="content">
+<pre>curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/utils/index/$pid -H"accept: application/json"</pre>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -1281,7 +1300,7 @@ compass compile</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_doku_modifizieren_und_in_html_bersetzen">8.3. Doku modifizieren und in HTML übersetzen</h3>
+<h3 id="_doku_modifizieren_und_in_html_übersetzen">8.3. Doku modifizieren und in HTML übersetzen</h3>
 <div class="literalblock">
 <div class="content">
 <pre>cd Regal/doc
@@ -1317,7 +1336,7 @@ vagrant</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-23 14:52:45 CEST
+Last updated 2019-05-24 10:07:43 +0200
 </div>
 </div>
 </body>
