@@ -269,6 +269,9 @@ Insgesamt läuft es also so: Alles was in <<_etikett>> konfiguriert ist, wird au
 Software
 --------
 
+Die technische Dokumentation der HTTP-Schnittstelle findet sich <<link::./api.html>>
+
+
 Nachfolgend erfolgt eine Innenansicht der einzelnen Module. Die Integration der Module erfolgt i.d.R. über HTTP. Die Module werden über entsprechende Einträge in der Apache-Konfiguration sichtbar gemacht. Es handelt sich also um eine Webservice-Architektur, in der alle Webservices über einen Apache-Webserver und entsprechende Einträge in ihren Konfigurationsdateien miteinander verbunden werden.
 
 .Regal Abhängigkeiten

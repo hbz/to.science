@@ -41,6 +41,7 @@ export API_USER=edoweb-admin
 regal-api
 --------
 
+https://github.com/edoweb/regal-api/blob/master/conf/routes
 
 Create
 ~~~~~~
@@ -65,18 +66,23 @@ curl -u$API_USER:$PASSWORD -F"data=@$ARCHIVE_HOME/src/REGAL_API/test/resources/t
 
 Create User
 ^^^^^^^^^^^
+PUT /utils/addUser
 
 Upload metadata
 ^^^^^^^^^^^^^^^
+PUT /resource/:pid/metadata2
 
 Upload Webgatherer Conf
 ^^^^^^^^^^^^^^^^^^^^^^^
+PUT /resource/:pid/conf
 
 Order Child Nodes
 ^^^^^^^^^^^^^^^^^
+PUT /resource/:pid/parts
 
 Create Webversion
 ^^^^^^^^^^^^^^^^^
+POST /resource/:pid/createVersion
 
 Read
 ~~~~
@@ -165,7 +171,7 @@ curl $REGAL_API/resource/regal:1234/seq
 
 Read user
 ^^^^^^^^^
-
+not implemented
 
 Read Adhoc Linked Data
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -189,10 +195,15 @@ curl -s -u$API_USER:$REGAL_PASSWORD -XPOST $REGAL_API/utils/updateMetadata/regal
 
 Add URN
 ^^^^^^^
+POST /utils/lobidify       		
+POST /utils/addUrn
+POST /utils/replaceUrn 	
+
 
 Enrich
 ^^^^^^ 
 
+POST /resource/:pid/metadata/enrich
 
 
 Delete
@@ -213,15 +224,23 @@ curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=
 
 Delete part of resource
 ^^^^^^^^^^^^^^^^^^^^^^^
+DELETE /resource/:pid/seq
+DELETE /resource/:pid/metadata
+DELETE /resource/:pid/metadata2
+DELETE /resource/:pid/data
+DELETE /resource/:pid/dc
 
 Delete user
 ^^^^^^^^^^
+not implemented
 
 Search
 ~~~~~~
 
 Simple Search
 ^^^^^^^^^^^^^
+GET /find	
+GET /resource 
 
 Facetted Search
 ^^^^^^^^^^^^^^^
@@ -247,11 +266,13 @@ curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/context.json
 Reindex resource
 ^^^^^^^^^^^^^^^^
 ....
-curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/utils/index/$pid -H"accept: application/json" 
+curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/utils/index/regal:1234 -H"accept: application/json" 
 ....
 
 etikett
 -------
+
+https://github.com/hbz/etikett/blob/master/conf/routes
 
 Create
 ~~~~~~
@@ -292,6 +313,8 @@ Misc
 zettel
 ------
 
+https://github.com/hbz/zettel/blob/master/conf/routes
+
 Create
 ~~~~~~
 
@@ -310,6 +333,8 @@ Search
 
 skos-lookup
 -----------
+
+https://github.com/hbz/skos-lookup/blob/master/conf/routes
 
 Create
 ~~~~~~
@@ -336,6 +361,8 @@ curl $REGAL_API/tools/skos-lookup/search?q=http%3A%2F%2Faims.fao.org%2Faos%2Fagr
 
 thumby
 -----
+
+https://github.com/hbz/thumby/blob/master/conf/routes
 
 Create
 ~~~~~~
