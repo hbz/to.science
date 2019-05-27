@@ -223,7 +223,7 @@ function updateAndDeployRegalModule(){
     DATE=$(date  +"%Y%m%d%H%M%S")
     CURAPP=$(readlink $ARCHIVE_HOME/apps/$APPNAME)
     OLDPORT=`grep "http.port" $ARCHIVE_HOME/apps/$CURAPP/conf/application.conf | grep -o "[0-9]*"`
-
+    NEWPORT=`grep "http.port" $ARCHIVE_HOME/src/$APPNAME/conf/application.conf | grep -o "[0-9]*"`
     if [ $OLDPORT -lt 9100 ]
     then
       NEWPORT=$(($OLDPORT + 100))
@@ -237,7 +237,7 @@ function updateAndDeployRegalModule(){
     yes r|$ARCHIVE_HOME/bin/activator/bin/activator dist
    
 	rm -rf $ARCHIVE_HOME/tmp/$app_version*
-    cp target/universal/$app_version.zip  $ARCHIVE_HOME/tmp/
+    cp $ARCHIVE_HOME/src/$APPNAME/target/universal/$app_version.zip  $ARCHIVE_HOME/tmp/
     yes A|unzip $ARCHIVE_HOME/tmp/$app_version.zip -d $ARCHIVE_HOME/tmp 
 
     if [ -h $ARCHIVE_HOME/apps/$APPNAME ]
@@ -425,6 +425,7 @@ function installRegalDrupal(){
 	cd $ARCHIVE_HOME/var/drupal/sites/all/modules
 	git clone https://github.com/edoweb/regal-drupal.git
 	cd regal-drupal
+	git checkout vagrant_driven_stuff
 	git submodule update --init
 	cd $ARCHIVE_HOME/var/drupal/sites/all/modules
 	curl https://ftp.drupal.org/files/projects/entity-7.x-1.1.tar.gz | tar xz
@@ -433,7 +434,7 @@ function installRegalDrupal(){
 	php5enmod redland
     service apache2 restart
     ln -s $ARCHIVE_HOME/src/regal-api/public/ $ARCHIVE_HOME/var/drupal/
-    ln -s $ARCHIVE_HOME/var/drupal/sites/all/modules/regal_drupal $ARCHIVE_HOME/src
+    ln -s $ARCHIVE_HOME/var/drupal/sites/all/modules/regal-drupal $ARCHIVE_HOME/src
 }
 
 function installDrupalThemes(){
