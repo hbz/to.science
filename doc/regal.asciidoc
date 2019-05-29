@@ -364,14 +364,6 @@ Die Funktion `listNodes` in der Klasse `controllers.Resource` ruft ihre Prozedur
 |views.tags| Hilfstemplates.
 |===================================================================
 
-Gedanken des Authors
-^^^^^^^^^^^^^^^^^^^^
-Der in <<_regal_api_2>> versammelte Code ist ein historisch gewachsenes Sammelsurium. Zu irgendeinem Zeitpunkt habe ich angefangen neue Funktionalitäten vorzugsweise nicht mehr hier zu integrieren. Auf diese Weise sind <<_etikett>>, <<_thumby>>, <<_zettel>> und <<_skos_lookup>> entstanden. 
-
-Schaut man sich die sieben groben Aufgabenbereiche an, die von <<_regal_api_2>> abgedeckt werden, so könnten weitere Unterteilungen in zusätzliche Webservices sinnvoll sein. Gerade der Bereich Webarchivierung mit seiner hohen Komplexität erscheint mir für eine Auskopplung prädestiniert. Tools wie <<_heritrix>>,<<_wpull>> und <<_openwayback>> könnten so aus der Gesamtkomplexität entfernt werden.  
-
-
-
 Etikett
 ~~~~~~~
 
@@ -777,6 +769,13 @@ Vagrant Guest Additions installieren
 
 ....
 vagrant plugin install vagrant-vbguest && vagrant reload
+....
+
+Vagrant Host anlegen
+^^^^^^^^^^^^^^^^^^^^
+Damit alle Dienste komfortabel erreichbar sind, muss in die lokale HOSTs Datei ein Eintrag für die Vagrant-Box erfolgen. Im Vagrantfile ist die IP `192.168.50.4` für die Box konfiguriert. Über die `FRONTEND` und `BACKEND` Einträge in der `variables.conf` ist der Servername als `regal.vagrant` definiert. 
+....
+sudo printf "192.168.50.4 regal.vagrant api.regal.vagrant" >> /etc/hosts
 ....
 
 Vagrant starten

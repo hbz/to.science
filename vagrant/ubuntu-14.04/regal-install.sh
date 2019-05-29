@@ -72,7 +72,7 @@ function installPackages(){
     sudo apt-get -y -q install python34 
     sudo apt-get -y -q install python-pip
     sudo apt-get -y -q install drush
-    sudo apt-get -y -q install ant    
+    sudo apt-get -y -q install ant   
     sudo apt-get -y -q install parallel
     sudo dpkg -i $INSTALL_BIN/elasticsearch-1.1.0.deb 
     sudo update-rc.d elasticsearch defaults 95 10
@@ -318,7 +318,8 @@ function configureApache(){
     sudo a2enmod proxy
     sudo a2enmod rewrite
     sudo a2enmod proxy_http
-    sed -i "1 s|$| api.localhost|" /etc/hosts
+    sed -i "1 s|$| api.localhost|" 
+    printf "192.168.50.4 $FRONTEND $BACKEND" >> /etc/hosts
     rm /etc/apache2/sites-enabled/000-default.conf
     ln -s $ARCHIVE_HOME/conf/regal.apache.conf /etc/apache2/sites-enabled/
     sudo service apache2 reload

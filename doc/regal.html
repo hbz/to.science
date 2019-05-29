@@ -1412,6 +1412,9 @@ b.conum * { color: inherit !important; }
 <h2 id="_software">3. Software</h2>
 <div class="sectionbody">
 <div class="paragraph">
+<p>Die technische Dokumentation der HTTP-Schnittstelle findet sich <a href="#link::./api.html">[link::./api.html]</a></p>
+</div>
+<div class="paragraph">
 <p>Nachfolgend erfolgt eine Innenansicht der einzelnen Module. Die Integration der Module erfolgt i.d.R. über HTTP. Die Module werden über entsprechende Einträge in der Apache-Konfiguration sichtbar gemacht. Es handelt sich also um eine Webservice-Architektur, in der alle Webservices über einen Apache-Webserver und entsprechende Einträge in ihren Konfigurationsdateien miteinander verbunden werden.</p>
 </div>
 <div class="imageblock">
@@ -1689,15 +1692,6 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tbody>
 </table>
 
-</div>
-<div class="sect3">
-<h4 id="_gedanken_des_authors">3.1.3. Gedanken des Authors</h4>
-<div class="paragraph">
-<p>Der in <a href="#_regal_api_2">regal-api</a> versammelte Code ist ein historisch gewachsenes Sammelsurium. Zu irgendeinem Zeitpunkt habe ich angefangen neue Funktionalitäten vorzugsweise nicht mehr hier zu integrieren. Auf diese Weise sind <a href="#_etikett">Etikett</a>, <a href="#_thumby">Thumby</a>, <a href="#_zettel">Zettel</a> und <a href="#_skos_lookup">skos-lookup</a> entstanden.</p>
-</div>
-<div class="paragraph">
-<p>Schaut man sich die sieben groben Aufgabenbereiche an, die von <a href="#_regal_api_2">regal-api</a> abgedeckt werden, so könnten weitere Unterteilungen in zusätzliche Webservices sinnvoll sein. Gerade der Bereich Webarchivierung mit seiner hohen Komplexität erscheint mir für eine Auskopplung prädestiniert. Tools wie <a href="#_heritrix">heritrix</a>,<a href="#_wpull">wpull</a> und <a href="#_openwayback">openwayback</a> könnten so aus der Gesamtkomplexität entfernt werden.</p>
-</div>
 </div>
 </div>
 <div class="sect2">
@@ -2589,7 +2583,18 @@ mv ~/downloads/jdk.... bin/java8.tar.gz</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_vagrant_starten">4.1.7. Vagrant starten</h4>
+<h4 id="_vagrant_host_anlegen">4.1.7. Vagrant Host anlegen</h4>
+<div class="paragraph">
+<p>Damit alle Dienste komfortabel erreichbar sind, muss in die lokale HOSTs Datei ein Eintrag für die Vagrant-Box erfolgen. Im Vagrantfile ist die IP <code>192.168.50.4</code> für die Box konfiguriert. Über die <code>FRONTEND</code> und <code>BACKEND</code> Einträge in der <code>variables.conf</code> ist der Servername als <code>regal.vagrant</code> definiert.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo printf "192.168.50.4 regal.vagrant api.regal.vagrant" &gt;&gt; /etc/hosts</pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_vagrant_starten">4.1.8. Vagrant starten</h4>
 <div class="literalblock">
 <div class="content">
 <pre>vagrant up</pre>
@@ -2597,7 +2602,7 @@ mv ~/downloads/jdk.... bin/java8.tar.gz</pre>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_auf_der_maschine_einloggen">4.1.8. Auf der Maschine einloggen</h4>
+<h4 id="_auf_der_maschine_einloggen">4.1.9. Auf der Maschine einloggen</h4>
 <div class="literalblock">
 <div class="content">
 <pre>vagrant ssh</pre>
@@ -3236,8 +3241,8 @@ compass compile</pre>
 <div class="literalblock">
 <div class="content">
 <pre>cd Regal/doc
-editor regal.txt
-asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.txt</pre>
+editor regal.asciidoc
+asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.asciidoc</pre>
 </div>
 </div>
 </div>
@@ -3303,7 +3308,7 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-21 16:17:14 CEST
+Last updated 2019-05-29 16:39:25 CEST
 </div>
 </div>
 </body>

@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Asciidoctor 0.1.4">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.9">
-<meta name="author" content="Jan Schnasse">
 <title>Regal-API</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
@@ -725,21 +723,19 @@ b.conum * { color: inherit !important; }
 .conum:not([data-value]):empty { display: none; }
 
 .literalblock pre, .listingblock pre { background: #eeeeee; }
-
 </style>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
 <h1>Regal-API</h1>
-<div class="details">
 <span id="author" class="author">Jan Schnasse</span><br>
-</div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_preface">1. Preface</a></li>
 <li><a href="#_environment">2. Environment</a></li>
-<li><a href="#_regal_api">3. regal-api</a>
+<li><a href="#_regal_api">3. regal-api</a></li>
+<li>
 <ul class="sectlevel2">
 <li><a href="#_create">3.1. Create</a></li>
 <li><a href="#_read">3.2. Read</a></li>
@@ -749,7 +745,8 @@ b.conum * { color: inherit !important; }
 <li><a href="#_misc">3.6. Misc</a></li>
 </ul>
 </li>
-<li><a href="#_etikett">4. etikett</a>
+<li><a href="#_etikett">4. etikett</a></li>
+<li>
 <ul class="sectlevel2">
 <li><a href="#_create_2">4.1. Create</a></li>
 <li><a href="#_read_2">4.2. Read</a></li>
@@ -758,21 +755,24 @@ b.conum * { color: inherit !important; }
 <li><a href="#_misc_2">4.5. Misc</a></li>
 </ul>
 </li>
-<li><a href="#_zettel">5. zettel</a>
+<li><a href="#_zettel">5. zettel</a></li>
+<li>
 <ul class="sectlevel2">
 <li><a href="#_create_3">5.1. Create</a></li>
 <li><a href="#_read_3">5.2. Read</a></li>
 <li><a href="#_search_2">5.3. Search</a></li>
 </ul>
 </li>
-<li><a href="#_skos_lookup">6. skos-lookup</a>
+<li><a href="#_skos_lookup">6. skos-lookup</a></li>
+<li>
 <ul class="sectlevel2">
 <li><a href="#_create_4">6.1. Create</a></li>
 <li><a href="#_read_4">6.2. Read</a></li>
 <li><a href="#_search_3">6.3. Search</a></li>
 </ul>
 </li>
-<li><a href="#_thumby">7. thumby</a>
+<li><a href="#_thumby">7. thumby</a></li>
+<li>
 <ul class="sectlevel2">
 <li><a href="#_create_5">7.1. Create</a></li>
 <li><a href="#_read_5">7.2. Read</a></li>
@@ -782,11 +782,12 @@ b.conum * { color: inherit !important; }
 <li><a href="#_misc_3">7.6. Misc</a></li>
 </ul>
 </li>
-<li><a href="#_dokumentation">8. Dokumentation</a>
+<li><a href="#_dokumentation">8. Dokumentation</a></li>
+<li>
 <ul class="sectlevel2">
 <li><a href="#_diese_repo_herunterladen">8.1. Diese Repo herunterladen</a></li>
 <li><a href="#_asciidoctor_und_asciidoctor_stylesheets_installieren">8.2. Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
-<li><a href="#_doku_modifizieren_und_in_html_übersetzen">8.3. Doku modifizieren und in HTML übersetzen</a></li>
+<li><a href="#_doku_modifizieren_und_in_html_bersetzen">8.3. Doku modifizieren und in HTML übersetzen</a></li>
 </ul>
 </li>
 <li><a href="#_license">9. License</a></li>
@@ -848,7 +849,7 @@ export API_USER=edoweb-admin</pre>
 <h2 id="_regal_api">3. regal-api</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://github.com/edoweb/regal-api/blob/master/conf/routes" class="bare">https://github.com/edoweb/regal-api/blob/master/conf/routes</a></p>
+<p><a href="https://github.com/edoweb/regal-api/blob/master/conf/routes">https://github.com/edoweb/regal-api/blob/master/conf/routes</a></p>
 </div>
 <div class="sect2">
 <h3 id="_create">3.1. Create</h3>
@@ -878,23 +879,37 @@ export API_USER=edoweb-admin</pre>
 </div>
 <div class="sect3">
 <h4 id="_create_user">3.1.4. Create User</h4>
-
+<div class="literalblock">
+<div class="content">
+<pre>curl -u$API_USER:$PASSWORD -d'{"username":"test","password":"test","email":"test@example.org","role":"EDITOR"}' -XPUT $REGAL_API/utils/addUser -H'content-type:application/json'</pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_upload_metadata">3.1.5. Upload metadata</h4>
-
+<div class="literalblock">
+<div class="content">
+<pre>curl -XPUT -u$API_USER:$PASSWORD -d'&lt;regal:1234&gt; &lt;dc:title&gt; "Ein Test Titel" .' -H"content-type:text/plain" $REGAL_API/resource/:pid/metadata/resource/:pid/metadata2</pre>
+</div>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_upload_webgatherer_conf">3.1.6. Upload Webgatherer Conf</h4>
-
+<div class="paragraph">
+<p>PUT /resource/:pid/conf</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_order_child_nodes">3.1.7. Order Child Nodes</h4>
-
+<div class="paragraph">
+<p>PUT /resource/:pid/parts</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_create_webversion">3.1.8. Create Webversion</h4>
-
+<div class="paragraph">
+<p>POST /resource/:pid/createVersion</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1022,7 +1037,9 @@ curl $REGAL_API/resource/regal:1234.json2</pre>
 </div>
 <div class="sect3">
 <h4 id="_read_user">3.2.6. Read user</h4>
-
+<div class="paragraph">
+<p>not implemented</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_read_adhoc_linked_data">3.2.7. Read Adhoc Linked Data</h4>
@@ -1049,11 +1066,17 @@ curl $REGAL_API/resource/regal:1234.json2</pre>
 </div>
 <div class="sect3">
 <h4 id="_add_urn">3.3.3. Add URN</h4>
-
+<div class="paragraph">
+<p>POST /utils/lobidify
+POST /utils/addUrn
+POST /utils/replaceUrn</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_enrich">3.3.4. Enrich</h4>
-
+<div class="paragraph">
+<p>POST /resource/:pid/metadata/enrich</p>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1070,24 +1093,36 @@ curl $REGAL_API/resource/regal:1234.json2</pre>
 <h4 id="_purge_resource">3.4.2. Purge resource</h4>
 <div class="literalblock">
 <div class="content">
-<pre>curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=true";echo</pre>
+<pre>
+curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=true";echo</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_delete_part_of_resource">3.4.3. Delete part of resource</h4>
-
+<div class="paragraph">
+<p>DELETE /resource/:pid/seq
+DELETE /resource/:pid/metadata
+DELETE /resource/:pid/metadata2
+DELETE /resource/:pid/data
+DELETE /resource/:pid/dc</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_delete_user">3.4.4. Delete user</h4>
-
+<div class="paragraph">
+<p>not implemented</p>
+</div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_search">3.5. Search</h3>
 <div class="sect3">
 <h4 id="_simple_search">3.5.1. Simple Search</h4>
-
+<div class="paragraph">
+<p>GET /find
+GET /resource</p>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_facetted_search">3.5.2. Facetted Search</h4>
@@ -1131,7 +1166,7 @@ curl $REGAL_API/resource/regal:1234.json2</pre>
 <h2 id="_etikett">4. etikett</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://github.com/hbz/etikett/blob/master/conf/routes" class="bare">https://github.com/hbz/etikett/blob/master/conf/routes</a></p>
+<p><a href="https://github.com/hbz/etikett/blob/master/conf/routes">https://github.com/hbz/etikett/blob/master/conf/routes</a></p>
 </div>
 <div class="sect2">
 <h3 id="_create_2">4.1. Create</h3>
@@ -1185,7 +1220,7 @@ curl $REGAL_API/resource/regal:1234.json2</pre>
 <h2 id="_zettel">5. zettel</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://github.com/hbz/zettel/blob/master/conf/routes" class="bare">https://github.com/hbz/zettel/blob/master/conf/routes</a></p>
+<p><a href="https://github.com/hbz/zettel/blob/master/conf/routes">https://github.com/hbz/zettel/blob/master/conf/routes</a></p>
 </div>
 <div class="sect2">
 <h3 id="_create_3">5.1. Create</h3>
@@ -1211,7 +1246,7 @@ curl $REGAL_API/resource/regal:1234.json2</pre>
 <h2 id="_skos_lookup">6. skos-lookup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://github.com/hbz/skos-lookup/blob/master/conf/routes" class="bare">https://github.com/hbz/skos-lookup/blob/master/conf/routes</a></p>
+<p><a href="https://github.com/hbz/skos-lookup/blob/master/conf/routes">https://github.com/hbz/skos-lookup/blob/master/conf/routes</a></p>
 </div>
 <div class="sect2">
 <h3 id="_create_4">6.1. Create</h3>
@@ -1246,7 +1281,7 @@ curl $REGAL_API/resource/regal:1234.json2</pre>
 <h2 id="_thumby">7. thumby</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://github.com/hbz/thumby/blob/master/conf/routes" class="bare">https://github.com/hbz/thumby/blob/master/conf/routes</a></p>
+<p><a href="https://github.com/hbz/thumby/blob/master/conf/routes">https://github.com/hbz/thumby/blob/master/conf/routes</a></p>
 </div>
 <div class="sect2">
 <h3 id="_create_5">7.1. Create</h3>
@@ -1315,7 +1350,7 @@ compass compile</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_doku_modifizieren_und_in_html_übersetzen">8.3. Doku modifizieren und in HTML übersetzen</h3>
+<h3 id="_doku_modifizieren_und_in_html_bersetzen">8.3. Doku modifizieren und in HTML übersetzen</h3>
 <div class="literalblock">
 <div class="content">
 <pre>cd Regal/doc
@@ -1351,7 +1386,7 @@ vagrant</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-05-24 10:10:50 +0200
+Last updated 2019-05-28 14:55:25 CEST
 </div>
 </div>
 </body>

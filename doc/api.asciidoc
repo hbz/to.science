@@ -66,11 +66,17 @@ curl -u$API_USER:$PASSWORD -F"data=@$ARCHIVE_HOME/src/REGAL_API/test/resources/t
 
 Create User
 ^^^^^^^^^^^
-PUT /utils/addUser
+....	
+curl -u$API_USER:$PASSWORD -d'{"username":"test","password":"test","email":"test@example.org","role":"EDITOR"}' -XPUT $REGAL_API/utils/addUser -H'content-type:application/json'
+....
 
 Upload metadata
 ^^^^^^^^^^^^^^^
-PUT /resource/:pid/metadata2
+
+....
+curl -XPUT -u$API_USER:$PASSWORD -d'<regal:1234> <dc:title> "Ein Test Titel" .' -H"content-type:text/plain" $REGAL_API/resource/:pid/metadata/resource/:pid/metadata2
+....
+
 
 Upload Webgatherer Conf
 ^^^^^^^^^^^^^^^^^^^^^^^
