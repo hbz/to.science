@@ -529,6 +529,7 @@ function installRegal(){
 	downloadRegalSources
     cp $INSTALL_CONF/install.properties $ARCHIVE_HOME/src/regal-install/templates
     createConfigFiles
+	configureApache
 	installFedora
 	installPlay
 	postProcess
@@ -545,7 +546,6 @@ function installRegal(){
 	installDrupalThemes
 	configureDrupalLanguages
 	configureDrupal
-	configureApache
 	configureMonit
 	configureFirewall
     configureElasticsearch
