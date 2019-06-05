@@ -108,10 +108,9 @@ function createRegalFolderLayout(){
     makeDir $ARCHIVE_HOME/var/proai/schemas
     makeDir $ARCHIVE_HOME/src
     makeDir $ARCHIVE_HOME/tmp
-    makeDir $ARCHIVE_HOME/etc
     
+    cp -r $INSTALL_ETC $ARCHIVE_HOME/
     cp $SCRIPT_DIR/variables.conf $ARCHIVE_HOME/conf
-    cp $INSTALL_CONF/application.conf $ARCHIVE_HOME/conf
     cp $INSTALL_CONF/install.properties $ARCHIVE_HOME/conf
     cp $INSTALL_CONF/regal.apache.conf $ARCHIVE_HOME/conf
     sudo chown -R $REGAL_USER $ARCHIVE_HOME
@@ -120,13 +119,17 @@ function createRegalFolderLayout(){
 function downloadRegalSources(){
     cd $ARCHIVE_HOME/src
     git clone https://github.com/edoweb/regal-api 
-    cp $INSTALL_CONF/application.conf $ARCHIVE_HOME/src/regal-api/conf/application.conf
-    git clone https://github.com/edoweb/regal-install
+    cp $INSTALL_ETC/regal-api.conf $ARCHIVE_HOME/src/regal-api/conf/application.conf
     git clone https://github.com/hbz/thumby
+    cp $INSTALL_ETC/thumby.conf $ARCHIVE_HOME/src/thumby/conf/application.conf
     git clone https://github.com/hbz/etikett
+    cp $INSTALL_ETC/etikett.conf $ARCHIVE_HOME/src/etikett/conf/application.conf
     git clone https://github.com/hbz/zettel
+    cp $INSTALL_ETC/zettel.conf $ARCHIVE_HOME/src/zettel/conf/application.conf
     git clone https://github.com/hbz/skos-lookup
+    cp $INSTALL_ETC/skos-lookup.conf $ARCHIVE_HOME/src/skos-lookup/conf/application.conf
     git clone https://github.com/edoweb/regal-scripts
+    git clone https://github.com/edoweb/regal-install
 }
 
 function substituteVars()
