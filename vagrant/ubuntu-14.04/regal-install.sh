@@ -201,6 +201,10 @@ function installFedora(){
     java -jar $INSTALL_BIN/fcrepo-installer-3.7.1.jar  $ARCHIVE_HOME/conf/install.properties
     cp $ARCHIVE_HOME/conf/fedora-users.xml $ARCHIVE_HOME/bin/fedora/server/config/
     cp $ARCHIVE_HOME/conf/tomcat-users.xml $ARCHIVE_HOME/bin/fedora/tomcat/conf/
+    $ARCHIVE_HOME/bin/fedora/tomcat/bin/startup.sh
+    sleep 10
+    sed -i "s/localhost/$SERVER/" $ARCHIVE_HOME/bin/fedora/tomcat/webapps/fedora/WEB-INF/applicationContext.xml
+    $ARCHIVE_HOME/bin/fedora/tomcat/bin/shutdown.sh
 }
 
 function installPlay(){  
@@ -318,7 +322,7 @@ function configureApache(){
     sudo a2enmod proxy
     sudo a2enmod rewrite
     sudo a2enmod proxy_http
-    sed -i "1 s|$| api.localhost|" 
+    sed -i "1 s|$| $FRONTEND $BACKEND|" /etc/hosts
     printf "192.168.50.4 $FRONTEND $BACKEND" >> /etc/hosts
     rm /etc/apache2/sites-enabled/000-default.conf
     ln -s $ARCHIVE_HOME/conf/regal.apache.conf /etc/apache2/sites-enabled/
