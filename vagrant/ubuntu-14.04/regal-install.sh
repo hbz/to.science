@@ -503,13 +503,12 @@ function configureElasticsearch(){
 }
 
 function initialize(){
-	sleep 10
-	curl -uadmin:admin -XPOST -F"data=@$ARCHIVE_HOME/src/regal-api/conf/labels.json" -F"format-cb=Json" http://api.localhost/tools/etikett -i -L
-	curl -uedoweb-admin:admin -XPOST http://api.localhost/context.json
-	curl -i -uedoweb-admin:admin -XPUT http://api.localhost/resource/regal:1234 -d'{"contentType":"monograph","accessScheme":"public"}' -H'content-type:application/json'
-	curl -i -uedoweb-admin:admin -XPUT http://api.localhost/resource/regal:1235 -d'{"parentPid":"regal:1234","contentType":"file","accessScheme":"public"}' -H'content-type:application/json'
-	curl -uedoweb-admin:admin -F"data=@$ARCHIVE_HOME/src/regal-api/test/resources/test.pdf;type=application/pdf" -XPUT http://api.localhost/resource/regal:1235/data
-	curl -uedoweb-admin:admin -XPOST "http://api.localhost/utils/lobidify/regal:1234?alephid=HT018920238"
+	curl -iL -uadmin:admin -XPOST http://$BACKEND/tools/etikett -F"data=@$ARCHIVE_HOME/src/regal-api/conf/labels.json" -F"format-cb=Json" 
+	curl -iL -uedoweb-admin:admin -XPOST http://$BACKEND/context.json
+	curl -iL -uedoweb-admin:admin -XPUT http://$BACKEND/resource/regal:1234 -d'{"contentType":"monograph","accessScheme":"public"}' -H'content-type:application/json'
+	curl -iL -uedoweb-admin:admin -XPUT http://$BACKEND/resource/regal:1235 -d'{"parentPid":"regal:1234","contentType":"file","accessScheme":"public"}' -H'content-type:application/json'
+	curl -iL -uedoweb-admin:admin -XPUT http://$BACKEND/resource/regal:1235/data -F"data=@$ARCHIVE_HOME/src/regal-api/test/resources/test.pdf;type=application/pdf"
+	curl -iL -uedoweb-admin:admin -XPOST "http://$BACKEND/utils/lobidify/regal:1234?alephid=HT018920238"
 }
 
 
@@ -557,6 +556,6 @@ function installRegal(){
 	createStartStopScripts
 	defineBootShutdownSequence
     #serverInstallation
-	sleep 20
+	sleep 30
 	initialize
 }
