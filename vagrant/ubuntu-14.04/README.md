@@ -1,6 +1,6 @@
 # About
 
-This repository provides a working vagrant config to create a ubuntu 14.04 virtualbox with a running regal backend installed. 
+This repository provides a working vagrant config to create a ubuntu 14.04 virtualbox with a running [Regal] installed. 
 The virtualbox will automatically provide the source code of all running regal components in a shared folder together with eclipse project files. You can import those projects directly to your eclipse IDE on your host system. 
 
 **Settings**
@@ -55,19 +55,31 @@ mkdir ~/regal-dev
 
 ## Start
 
-`vagrant up`
-
-Running the first time this will download a lot of things and can last up to one hour. Please shut down all services on your host system at ports `9080`, `9000`, `8180`, `9101`, `9102`, `9103`, `9104` or modify the `Vagrantfile` as you need.
-
 Install guest additions
 
 ```
 vagrant plugin install vagrant-vbguest && vagrant reload
 ```
 
+`vagrant up`
+
+Running the first time this will download a lot of things and can last up to one hour. 
+
+
+
 ### Enter the box
 
 `vagrant ssh`
+
+## Add box to /etc/hosts
+
+This step is very important! Add the IP of your Vagrantbox to your local hosts configuration (typically under `/etc/hosts`). 
+
+....
+sudo printf "192.168.50.4 regal.vagrant api.regal.vagrant" >> /etc/hosts
+....
+
+Now access your box via webbrowser under `regal.vagrant` and `api.regal.vagrant`
 
 ## Everything up and running!
 
@@ -79,9 +91,9 @@ Congratulations. At this point you should find a first object in your regal inst
 **Password:** admin
 
 ```
-http://localhost:9000/resource/danrw:1234
-http://localhost:8180/fedora/objects/danrw:1234
-http://localhost:9000/search/danrw2/_all/danrw:1234
+http://regal.vagrant:9000/resource/danrw:1234
+http://regal.vagrant:8180/fedora/objects/danrw:1234
+http://regal.vagrant:9000/search/danrw2/_all/danrw:1234
 ```
 
 ## Stop
@@ -96,18 +108,6 @@ http://localhost:9000/search/danrw2/_all/danrw:1234
 
 ``vagrant destroy``
 
-# Accessing the box
-
-Several port forwards are enabled. 
-
-```
-8080 --> 8180 tomcat/fedora 
-9001 --> 9101 thumby
-9002 --> 9102 etikett
-9003 --> 9103 zettel
-9004 --> 9104 skos-lookup
-9100 --> 9000 regal-api
-```
 
 # Inside the box
 
@@ -118,7 +118,7 @@ You will find:
 ```
 /opt/regal/src
 /opt/regal/apps
-/opt/regal/activator
+/opt/regal/bin/activator
 /opt/regal/logs
 /opt/regal/tmp
 /opt/regal/conf
