@@ -9,6 +9,7 @@ Jan Schnasse
 
 Über dieses Dokument
 ***********************************
+
 Dieses Dokument kommt zusammen mit einem https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04[Vagrantfile] und beschreibt eine beispielhafte Installation von Regal. Unter <<_vagrant>> findet sich eine Anleitung zur Installation in einer Virtualbox. 
 
 Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt <<_dokumentation>>
@@ -17,7 +18,7 @@ Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem Werkzeug asc
 
 Einleitung
 ----------
-Regal ist eine ContentRepository zur Verwaltung und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am https://hbz-nrw.de[Hochschulbibliothekszentrum (hbz)] entwickelt. 
+Regal ist eine Content Repository zur Verwaltung und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am https://hbz-nrw.de[Hochschulbibliothekszentrum (hbz)] entwickelt. 
 
 Regal basiert auf den folgenden Kerntechnologien:
 
@@ -69,16 +70,19 @@ Eine einzelne Publikation besteht i.d.R. aus mehreren <<_fedora_commons_3>>-Obje
 .Fedora Object
 [options="header,autowidth"]
 |===================================================================
-|Name|Pflicht|Beschreibung
-|DC | Ja | Von Fedora vorgeschrieben. Wird für die Fedora-interne Suche verwendet
+|Datenstrom|Pflicht|Beschreibung
+|DC | Ja | Von Fedora vorgeschrieben. Wird für die fedorainterne Suche verwendet
 |RELS-EXT | Ja | Von Fedora vorgeschrieben. Wird für viele Sachen verwendet - (1) Hierarchien - (2) Steuerung  der Sichtbarkeiten - (2) OAI-Providing
 |data | Nein | Die eigentlichen Daten der Publikation. Oft ein PDF.
-|metadata oder metadata2 | Nein | Bibliografische Metadaten. Metadata2 enthält Daten in anlehnung an Lobid 2.
+|metadata oder metadata2 | Nein | Bibliografische Metadaten. Metadata2 wurde mit dem Umstieg auf die Lobid-API v2 eingeführt.
 |objectTimestamp | Nein | Eine Datei mit einem Zeitstempel. Der Zeitstempel wird bei bestimmten Aktionen gesetzt.
-|seq | Nein | Eine Hilfsdatei mit einem JSON-Array. Das Array zeigt an, in welcher Reihenfolge Kindobjekte anzuzeigen sind. Dieses Hilfskonstrukt existiert, da in der RELS-EXT keine RDF-Listen abgelegt werden können.
+| seq | Nein | Eine Hilfsdatei mit einem JSON-Array. Das Array zeigt an, in welcher Reihenfolge Kindobjekte anzuzeigen sind. Dieses Hilfskonstrukt existiert, da in der RELS-EXT keine RDF-Listen abgelegt werden können.
+| conf | Nein | Websites und Webschnitte speichern in einem conf-Datenstrom alle Parameter mit denen die zugehörige Webseite geharvested wurde.
 |===================================================================
 
 Die Metadaten werden als ASCII-Kodierte N-Triple abgelegt. Da alle Fedora-Daten als Dateien im Dateisystem abgelegt werden, ist diese Veriante besonders robust gegen Speicherfehler. N-Triple ist ein Format, dass sich Zeilenweise lesen lässt. ASCII ist die einfachste Form der Textkodierung.
+
+Die Daten werden als "managed"-Datastream in den Objektspeicher der Fedora abgelegt. Eine Ausnahme bilden Webseiten. Die als WARC gespeicherten Inhalte werden "unmanaged" lediglich verlinkt. Im Fedora Objektspeicher wird nur eine Datei mit der ensprechenden Referenz abgelegt.
 
 Namespaces und Identifier
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -102,7 +106,7 @@ Deskriptive Metadaten
 
 Regal unterstützt eine große Anzahl von Metadatenfeldern zur Beschreibung von bibliografischen Ressourcen. Jedes in Regal verspeicherte Objekt kann mit Hilfe von RDF-Metadaten beschrieben werden. Das System verspeichert grundsätzlich alle Metadaten, solange Sie im richtigen Format an die Schnittstelle gespielt werden.
 
-Darüberhinaus können über bestimmte Angaben bestimmte weitergehende Funktionen angesteuert werden. Dies betrifft u.A.:
+Darüberhinaus können über bestimmte Angaben, bestimmte weitergehende Funktionen angesteuert werden. Dies betrifft u.A.:
 
 - Anzeige und Darstellung
 - Metadatenkonvertierungen
@@ -127,14 +131,14 @@ Alle bekannten Metadateneinträge werden in der Komponente <<_etikett>> verwalte
 }
 ....
 
-Die etikett Datenbank wird beim Neustart jeder <<_regal_api_2>>-Instanz eingelesen. Außerdem wird die HTTP-Schnittstelle von Etikett immer wieder angesprochen, um zur Anzeige geeignete Labels für URIs in das System zu holen. Das <<_regal_api_2>>-Modul läuft dabei auch ohne den Etikett-Services, allerdings nur mit eingeschränkter Funktionalität; beispielsweise fallen Anzeigen von verlinkten Ressourcen (und das ist in Regal fast alles) weniger schön aus.
+Die etikett Datenbank wird beim Neustart jeder <<_regal_api_2>>-Instanz eingelesen. Außerdem wird die HTTP-Schnittstelle von Etikett immer wieder angesprochen um zur Anzeige geeignete Labels für URIs in das System zu holen. Das <<_regal_api_2>>-Modul läuft dabei auch ohne den Etikett-Services, allerdings nur mit eingeschränkter Funktionalität; beispielsweise fallen Anzeigen von verlinkten Ressourcen (und das ist in Regal fast alles) weniger schön aus.
 
 Wie kommen bibliografische Metadaten ins System?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In Regal können bibliografische Metadaten aus dem hbz-Verbundkatalog an Ressourcen "angelinkt" werden. Dies erfolgt über Angabe der ID des entsprechenden Titelsatzes (z.b. HT017766754). Mit Hilfe dieser ID kann Regal einen Titelimport durchführen. Dabei wird auf die Schnittstellen der https://lobid.org[Lobid-API] zugegriffen. 
 
-Regal bietet außerdem die Möglichkeit Metadaten über Erfassungsmasken zu erzeugen und zu speichern. Dies erfolgt mit Hilfe des Moduls <<_zettel>>. <<_zettel>> ist ein Webservices, der verschiedene HTML-Formulare bereitstellt. Die Formulare können RDF-Metadaten einlesen und ausgeben. Zettel-Formulare werden über Javascript in ein IFrame der eigentlichen Anwendung angebunden. Über Zettel werden Konzepte aus dem Bereich Linked Data umgesetzt. So können Feldinhalte über entsprechende Eingabeelemente in Drittsystemen recherchiert und verlinkt werden. Die Darstellung von Links erfolgt in Zettel mit Hilfe von <<_etikett>>. Umfangreichere Notationssysteme wie Agrovoc oder DDC werden über einen eigenen Index aus dem Modul <<_skos_lookup>> eingebunden. Zettel unterstützt zur Zeit folgende Linked-Data-Quellen:
+Regal bietet außerdem die Möglichkeit Metadaten über Erfassungsmasken zu erzeugen und zu speichern. Dies erfolgt mit Hilfe des Moduls <<_zettel>>. <<_zettel>> ist ein Webservices, der verschiedene HTML-Formulare bereitstellt. Die Formulare können RDF-Metadaten einlesen und ausgeben. Zettel-Formulare werden über Javascript mit Hilfe eines IFrame in die eigentliche Anwendung angebunden. Über Zettel werden Konzepte aus dem Bereich Linked Data umgesetzt. So können Feldinhalte über entsprechende Eingabeelemente in Drittsystemen recherchiert und verlinkt werden. Die Darstellung von Links erfolgt in Zettel mit Hilfe von <<_etikett>>. Umfangreichere Notationssysteme wie Agrovoc oder DDC werden über einen eigenen Index aus dem Modul <<_skos_lookup>> eingebunden. Zettel unterstützt zur Zeit folgende Linked-Data-Quellen:
 
 - Lobid (GND)
 - Lobid (Ressource)
@@ -142,6 +146,8 @@ Regal bietet außerdem die Möglichkeit Metadaten über Erfassungsmasken zu erze
 - DDC
 - CrossRef (Funder Registry)
 - Orcid
+- Geonames
+- Open Street Maps Koordinaten
 
 Anzeige und Darstellung
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -157,12 +163,12 @@ Anzeige und Darstellung
 /resource/danrw:1.mets
 ....
 
-In der HTML-Darstellung greift <<_regal_api_2>> auf den Hilfdienst <<_thumby>> zu, um darüber Thumbnail-Darstellungen von PDFs oder Bilder zu kreieren. Bei großen Bildern wird außerdem der <<_deepzoomer>> angelinkt, der eine Darstellung von Hochauflösenden Bildern über das Tool Openseedragon erlaubt. Video- und Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.
+In der HTML-Darstellung greift <<_regal_api_2>> auf den Hilfsdienst <<_thumby>> zu, um darüber Thumbnail-Darstellungen von PDFs oder Bilder zu kreieren. Bei großen Bildern wird außerdem der <<_deepzoomer>> angelinkt, der eine Darstellung von Hochauflösenden Bildern über das Tool https://openseadragon.github.io/[OpenSeadragon] erlaubt. Video- und Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.
 
 Der hbz-Verbundkatalog
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Metadaten, die über den Verbundkatalog importiert wurden, können über einen Cronjob regelmäßig aktualisiert werden. Außerdem können diese Daten über OAI-PMH an den Verbundkatalog zurückgeliefert werden, so dass dieser Links auf die Volltexte erhält.
+Metadaten, die über den Verbundkatalog importiert wurden, können über einen Cronjob regelmäßig aktualisiert werden. Außerdem können diese Daten über OAI-PMH an den Verbundkatalog zurückgeliefert werden, so dass dieser, Links auf die Volltexte erhält.
 
 Metadatenkonvertierung
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -199,7 +205,7 @@ OAI-Providing
 |aleph| Alle Objekte, die einen persistenten Identifier haben
 |mets| Wie oai_dc
 |rdf| Wie oai_dc
-|wgl| Alle Objekte die über das Feld "collectionOne" einer Institution zugeordnet wurden und über den ContentType "article" eingeliefert urden.
+|wgl| Format für LeibnizOpne. Alle Objekte die über das Feld "collectionOne" einer Institution zugeordnet wurden und über den ContentType "article" eingeliefert urden.
 |===================================================================
 
 Suche
@@ -219,8 +225,14 @@ Die Konfiguration hat Auswirkungen auf die Sichtbarkeit einer Publikation in den
 
 Sichtbarkeiten, Operationen, Rollen
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.**Schreibender** Zugriff auf Daten und Metadaten
+|===================================================================
+|Rolle | Art der Aktion
+|ADMIN | Darf alle Aktionen durchführen. Auch Bulk-Aktionen und "Purges"
+|EDITOR | Darf Objekte anlegen, löschen, Sichtbarkeiten ändern, etc.
+|===================================================================
 
-.Lesender Zugriff auf Metadaten
+.**Lesender** Zugriff auf Metadaten
 [options="header,autowidth"]
 |===================================================================
 |Sichtbarkeit|Rolle
@@ -228,7 +240,7 @@ Sichtbarkeiten, Operationen, Rollen
 |private| ADMIN,EDITOR
 |===================================================================
 
-.Lesender Zugriff auf Daten
+.**Lesender** Zugriff auf Daten
 [options="header,autowidth"]
 |===================================================================
 |Sichtbarkeit|Rolle
@@ -245,7 +257,7 @@ Die Benutzerverwaltung von Regal findet innerhalb von Drupal statt. Zwar können
 
 Drupal
 ^^^^^^
-Benutzer in Drupal können über das Modul <<_regal_drupal>> unterschiedliche Rollen zugewiesen werden. Die Authorisierung erfolgt passwortbasiert. Alle Drupal-Benutzer greifen über einen vokonfigurierten Accessor auf die <<_regal_api_2>> zu. Alle Zugriffe erfolgen verschlüsselt unter Angabe eines Passwortes. Die Rolle mit deren Berechtigungen zugegriffen wird, wird dabei in <<_regal_drupal>> gesetzt. Die Drupal-BenutzerId wird als Metadatum in Form eines proprietären HTTP-Headers mit an <<_regal_api_2>> geliefert.
+Benutzer in Drupal können über das Modul <<_regal_drupal>> unterschiedliche Rollen zugewiesen werden. Die Authorisierung erfolgt passwortbasiert. Alle Drupal-Benutzer greifen über einen vorkonfigurierten Accessor auf die <<_regal_api_2>> zu. Alle Zugriffe erfolgen verschlüsselt unter Angabe eines Passwortes. Die Rolle mit deren Berechtigungen zugegriffen wird, wird dabei in <<_regal_drupal>> gesetzt. Die Drupal-BenutzerId wird als Metadatum in Form eines proprietären HTTP-Headers mit an <<_regal_api_2>> geliefert.
 
 Regal-Api
 ^^^^^^^^^
@@ -254,7 +266,8 @@ Auch in regal-api können Api-Benutzer angelegt werden. Zur Benutzerverwaltung w
 Ansichten
 ~~~~~~~~~
 
-Um Daten, die in <<_regal_api_2>> abgelegt wurden zur Anzeige zu bringen sind i.d.R. mehrere Schritte nötig. Die genau Vorgehensweise ist davon abhängig, wo die Daten abgelegt werden. Grundsätzlich basiert die HTML-Darstellung auf den Daten, die unter dem Format `.json2` einer Ressource abrufbar sind und einen Eintrag in context.json haben. 
+Um Daten, die in <<_regal_api_2>> abgelegt wurden zur Anzeige zu bringen sind i.d.R. mehrere Schritte nötig. Die genaue Vorgehensweise ist davon abhängig, wo die Daten abgelegt werden (in welchem Fedora Datenstrom). Grundsätzlich basiert die HTML-Darstellung auf den Daten, die unter dem Format `.json2` einer Ressource abrufbar sind und einen Eintrag in context.json haben.
+ **Daten zur Ansicht bringen**
 
 1. Eintrag des zugehörigen RDF-Properties in die entsprechende <<_etikett>>-Instanz, bzw. in die `/conf/labels.json`. Der Eintrag muss einen Namen, ein Label und einen Datentyp haben. <<_regal_api_2>> neu starten, bzw mit `POST /context.json` das neu Laden der Contexteinträge erzwingen.
 2. Dies müsste reichen, um eine Standardanzeige in der HTML-Ausgabe zu erreichen
@@ -269,10 +282,10 @@ Insgesamt läuft es also so: Alles was in <<_etikett>> konfiguriert ist, wird au
 Software
 --------
 
-Die technische Dokumentation der HTTP-Schnittstelle findet sich <<link::./api.html>>
+Die technische Dokumentation der HTTP-Schnittstelle findet sich unter link:./api.html[API Doku]
 
 
-Nachfolgend erfolgt eine Innenansicht der einzelnen Module. Die Integration der Module erfolgt i.d.R. über HTTP. Die Module werden über entsprechende Einträge in der Apache-Konfiguration sichtbar gemacht. Es handelt sich also um eine Webservice-Architektur, in der alle Webservices über einen Apache-Webserver und entsprechende Einträge in ihren Konfigurationsdateien miteinander verbunden werden.
+Nachfolgend sei eine Innenansicht der einzelnen Module aufgestellt. Die Integration der Module erfolgt i.d.R. über HTTP. Die Module werden über entsprechende Einträge in der Apache-Konfiguration sichtbar gemacht. Es handelt sich also um eine Webservice-Architektur, in der alle Webservices über einen Apache-Webserver und entsprechende Einträge in ihren Konfigurationsdateien miteinander verbunden werden.
 
 .Regal Abhängigkeiten
 image::./resources/images/regal-dependencies.jpeg[Regal Abhängigkeiten]
@@ -288,6 +301,7 @@ regal-api
 |Technik|https://www.playframework.com/documentation/2.4.x/JavaHome[Play 2.4.2]
 |Ports| 9000 / 9100
 |Verzeichnis | /opt/regal/apps/regal , /opr/regal/src/regal
+|HTTP Pfad | /
 |===================================================================
 
 Mit regal-api werden alle grundlegenden Funktionen von Regal bereitgestellt. Dies umfasst:
@@ -300,9 +314,9 @@ Mit regal-api werden alle grundlegenden Funktionen von Regal bereitgestellt. Die
 - Suche
 - Webarchivierung
 
-Der Webservice ist auf Basis von https://www.playframework.com/documentation/2.4.x/JavaHome[Play 2.4.2] realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von elektronischen Publikationen an. Die <<_regal_api_2>> operiert auf <<_fedora_commons_3>>, <<_mySQL>> und <<_Elasticsearch>>. Über die API werden auch Funktionalitäten von <<_etikett>>, <<_thumby>>, <<_zettel>> und <<_deepzoomer>> angesprochen. Für die Webarchivierung werden <<_heritrix>>, <<_wpull>> und <<_openwayback>> angebunden.
+Der Webservice ist auf Basis von https://www.playframework.com/documentation/2.4.x/JavaHome[Play 2.4.2] realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von elektronischen Publikationen an. Die <<_regal_api_2>> operiert auf <<_fedora_commons_3>>, <<_mysql>> und <<_elasticsearch_1_1>>. Über die API werden auch Funktionalitäten von <<_etikett>>, <<_thumby>>, <<_zettel>> und <<_deepzoomer>> angesprochen. Für die Webarchivierung werden <<_heritrix>>, <<_wpull>> und <<_openwayback>> angebunden.
 
-Kofiguration
+Konfiguration
 ^^^^^^^^^^^^
 
 .Dateien im /conf Verzeichnis
@@ -349,10 +363,10 @@ Die Applikation
 |actions | Hier sind Funktionen versammelt, die meist unmittelbar aus den Controller-Klassen aufgerufen werden.
 |archive.fedora| Ein Reihe von Dateien, über die Zugriffe auf <<_fedora_commons_3>> organisiert werden. Hier finden sich auch einige Hilfsklassen (`Utils`). Das FedoraInterface zeigt an, welche Aktionen auf der Fedora ausgeführt werden. Der Code in diesem Paket gehört mit zu dem ältesten Code im gesamten Regal-Projekt. 
 |archive.search| Zugriff auf die Elasticsearch
-|authenticate| Regal verwendet Basic-Auth zur Authentifizierung. Um die entsprechenden Aufrufe in den Controllern zu Schützen wird eine Annotation `@BasicAuth` verwendet. Diese findet sich hier. Die Annotation selbst bewirkt, dass jeder Controller-Aufruf durch die Methode asicAuth` der Klasse `BasicAuthAction.java` läuft. Ziel dieser Prozedur ist es, dem Zugriff die Berechtigungen einer bestimmten Rolle zuzuordnen.
+|authenticate| Regal verwendet Basic-Auth zur Authentifizierung. Um die entsprechenden Aufrufe in den Controllern zu Schützen wird eine Annotation `@BasicAuth` verwendet. Diese findet sich hier. Die Annotation selbst bewirkt, dass jeder Controller-Aufruf durch die Methode `basicAuth` der Klasse `BasicAuthAction.java` läuft. Ziel dieser Prozedur ist es, dem aktuellen Zugriff die Berechtigungen einer bestimmten Rolle zuzuordnen.
 |controllers| Der Code, der in diesen Klassen organisiert ist, wird bei den entsprechenden HTTP-Aufrufen ausgeführt. In der `/conf/routes` Datei kann man sehen, welcher HTTP-Aufruf, welchen Methoden-Aufruf zur Folge hat. Die Controller-Klassen sind i.d.R. von der Klasse MyController  abgeleitet, die Hilfsfunktionen bereitstellt, aber auch Funktionen zur Überprüfung von Zugriffsrechten. Die Überprüfung von Zugriffsrechten erfolgt durch eingebettet Calls und wird über die internen Klassen von MyController realisiert. Beispiel:
-Die Funktion `listNodes` in der Klasse `controllers.Resource` ruft ihre Prozeduren eingebettet in eine Funktion der Klasse `ListAction` auf. Die Klasse `ListAction` ist in `MyController` implementiert und überprüft, ob der Aufruf mit der nötigen Berechtigung erfolgte.
-|converter.mab| Die Klasse realisiert noch das OAI-Providing von MAB-Daten. Ursprünglich war hier geplant, dass wesentlich umfangreichere MAB-Datensätze geliefert werden würden. Daher wird hier mit einer eigenen Template-Engine gearbeitet, etc. Ich erinnere mich gerne an diese Arbeiten, auch wenn sie größtenteils nie genutzt und zu Ende geführt wurden. Ein lustiges Produkt in diesem Kontext ist auch die Klasse `models.MabRecord`.
+Die Funktion `listNodes` in der Klasse `controllers.Resource` ruft ihre Prozeduren eingebettet in eine Funktion der Klasse `ListAction` auf. Die Klasse `ListAction` ist in `MyController` implementiert und überprüft, ob der Aufruf mit der nötigen Berechtigung erfolgte. Vgl. <<_zugriffsberechtigungen_und_sichtbarkeiten>>
+|converter.mab| Diese Datei realisiert das OAI-Providing von MAB-Daten. Ursprünglich war geplant, wesentlich umfangreichere MAB-Datensätze an den Verbundkatalog zu liefern. Daher wird hier mit einer eigenen Template-Engine gearbeitet, etc. Ein lustiges Produkt in diesem Kontext ist auch die Klasse `models.MabRecord`.
 |de.hbz.lobid.helper| Der hier befindliche Code kommt ursprünglich aus einem anderen Paket, wurde dann aber beim Neuaufbau des Lobid 2 Datendienstes gemeinsam mit den Kollegen weiterentwickelt und ist schließlich wieder hier gelandet. Mittlerweile ist die offizielle JSON-LD-Library soweit entwickelt, dass man die Konvertierung auch darüber machen kann. Achja, denn dafür ist der Code: Lobid N-Triples in schönes JSON umzuformen, das dann auch in den Elasticsearch-Index kann.
 |helper| Die mit Abstand wichtigste Klasse in diesem Package heißt `JsonMapper`. Hier wird das JSON für Index und Ansichten erzeugt.
 |helper.mail| Emails verschicken.
@@ -374,9 +388,15 @@ Etikett
 |Technik|https://www.playframework.com/documentation/2.2.x/JavaHome[Play Play 2.2.2]
 |Ports| 9002 / 9102
 |Verzeichnis | /opt/regal/apps/etikett , /opr/regal/src/etikett
+|HTTP Pfad | /tools/etikett
 |===================================================================
 
-Etikett ist eine einfache Datenbankanwendung, die es erlaubt menschenlesbare Labels für URIs abzulegen. Über eine HTTP-Schnittstelle kann dann nach dem Label gefragt werden.
+Etikett ist eine einfache Datenbankanwendung, die es erlaubt 
+
+1. Menschenlesbare Labels für URIs abzulegen. Über eine HTTP-Schnittstelle kann dann nach dem Label gefragt werden. 
+2. Auch Konfigurationen zur Erzeugung eines JSON-LD Kontextes können abgelegt werden.
+3. Die Etikett-Datenbank erweitert sich dynamisch. Wird in einem authentifizierten Zugriff nach einer noch nicht bekannten URI gefragt, so versucht die Applikation ein Label für die URI zu finden.
+
 In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs finden können. Beispiele:
 
 - Crossref
@@ -386,7 +406,7 @@ In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels für URIs 
 - Orcid
 - RDF, Skos, etc.
 
-Fragt man etikett nach einem Label, so antwortet Etikett mit dem Ergebnis des Lookups. Wenn Etikett nicht in der Lage ist, ein Label zu finden, wird die URI, mit angefragt wurde, zurückgegeben.
+Fragt man Etikett nach einem Label, so antwortet Etikett mit dem Ergebnis des Lookups. Wenn Etikett nicht in der Lage ist, ein Label zu finden, wird die URI, mit angefragt wurde, zurückgegeben.
 
 Etikett kann auch als Cache verwendet werden. So werden authentifizierte Anfragen in einer Datenbank persistiert. Erneute Anfragen werden dann aus der Datenbank beantwortet, ein erneuter Lookup wird eingespart. Einmal persistierte Labels werden nicht invalidiert. Die Invalidierung kann von außerhalb über authentifizierte HTTP-Zugriffe realisiert werden, stellt aber insgesamt noch ein Desiderat dar.
 
@@ -457,9 +477,10 @@ Zettel
 |Technik|https://www.playframework.com/documentation/2.5.x/JavaHome[Play Play 2.5.4]
 |Ports| 9003 / 9103
 |Verzeichnis | /opt/regal/apps/zettel, /opr/regal/src/zettel
+|HTTP Pfad | /tools/zettel
 |===================================================================
 
-Zettel ist ein Webservice zur Bereitstellung von Webformularen. Die Webformulare können über ein HTTP-GET geladen werden. Sollen existierende Daten in ein Formular geladen werden, so können diese Daten als Form-encoded, als JSON, oder als RDF-XML über ein HTTP-POST in das Formular geladen werden. Gleichzeitig kann spezifiziert werden, in welchem Format das Formular Daten zurückliefern soll.
+Zettel ist ein Webservice zur Bereitstellung von Webformularen. Die Webformulare können über ein HTTP-GET geladen werden. Sollen existierende Daten in ein Formular geladen werden, so können diese Daten (1) als Form-encoded, (2) als JSON, oder (3) als RDF-XML über ein `HTTP POST` in das Formular geladen werden. Gleichzeitig kann spezifiziert werden, in welchem Format das Formular Daten zurückliefern soll.
 
 .Zettel Oberfläche
 image::./resources/images/zettel-screen.png[Zettel Oberfläche]
@@ -510,6 +531,7 @@ skos-lookup
 |Technik|https://www.playframework.com/documentation/2.5.x/JavaHome[Play Play 2.5.8]
 |Ports| 9004 / 9104
 |Verzeichnis | /opt/regal/apps/skos-lookup, /opr/regal/src/skos-lookup
+|HTTP Pfad | /tools/skos-lookup
 |===================================================================
 
 
@@ -560,6 +582,7 @@ Thumby
 |Technik|https://www.playframework.com/documentation/2.2.x/JavaHome[Play Play 2.2.2]
 |Ports| 9001 / 9101
 |Verzeichnis | /opt/regal/apps/thumby, /opr/regal/src/thumby
+|HTTP Pfad | /tools/thumby
 |===================================================================
 
 <<_thumby>> realisiert einen Thumbnail-Generator. Über ein HTTP-GET wird <<_thumby>> die URL eines PDFs, oder eines Bildes übergeben. Sofern die <<_thumby>> den Server kennt, wird es versuchen ein Thumbnail der zurückgelieferten Daten zu erstellen. Die Daten werden dauerhaft auf der Platte abgelegt und zukünftige Requests, die auf dasselbe Bild verweisen werden direkt aus dem Speicher von <<_thumby>> beantwortet.
@@ -849,7 +872,7 @@ Es wird ein `war`-Container erzeugt und im Tomcat `hot`-deployed.
 Drupal-Module
 ^^^^^^^^^^^^^
 
-Beinhaltet die Akutalisierung ein Datenbankupdate, so wird Drupal erst in den Wartungszustand versetzt (per drush oder über die Oberfläche). Danach wird die aktualisierte Version einfach per Git geholt. Bei Datenbankupdates wird noch ein Drupal-Updateskript ausgeführt.
+Beinhaltet die Aktualisierung ein Datenbankupdate, so wird Drupal erst in den Wartungszustand versetzt (per drush oder über die Oberfläche). Danach wird die aktualisierte Version einfach per Git geholt. Bei Datenbankupdates wird noch ein Drupal-Updateskript ausgeführt.
 
 Speicherschicht
 ^^^^^^^^^^^^^^^
