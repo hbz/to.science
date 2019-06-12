@@ -304,7 +304,8 @@ function installRegalModule(){
     mv $ARCHIVE_HOME/tmp/$app_version  $ARCHIVE_HOME/apps/$APPNAME.$DATE
     ln -s $ARCHIVE_HOME/apps/$APPNAME.$DATE $ARCHIVE_HOME/apps/$APPNAME
     rm -rf $ARCHIVE_HOME/tmp/$app_version*
-    makeDir $ARCHIVE_HOME/etc/$APPNAME
+    cp $ARCHIVE_HOME/etc/$APPNAME.conf $ARCHIVE_HOME/apps/$APPNAME/conf/application.conf
+    cd -
 }
 
 function installRegalModules(){
@@ -337,8 +338,10 @@ function installProai(){
 	cd $ARCHIVE_HOME/src
 	git clone https://github.com/jschnasse/proai.git
 	git clone https://github.com/jschnasse/oaiprovider.git
+	cd -
 	cd proai;
 	git checkout dates;
+	cd -
 	cd $ARCHIVE_HOME/src/oaiprovider
 	git checkout dates;
     #--------------Adopt new Layout------------------#
@@ -346,12 +349,15 @@ function installProai(){
     #------------------------------------------------#
 	cp $ARCHIVE_HOME/conf/proai.properties $ARCHIVE_HOME/src/oaiprovider/src/config  
 	cp $ARCHIVE_HOME/conf/Identify.xml $ARCHIVE_HOME/bin/drupal
+	cd -
 	cd $ARCHIVE_HOME/src/proai
 	ant release
 	cp dist/proai-1.1.3-1.jar ../oaiprovider/lib/
+	cd -
 	cd $ARCHIVE_HOME/src/oaiprovider
 	ant release
 	cp dist/oaiprovider.war $ARCHIVE_HOME/fedora/tomcat/webapps/oai-pmh.war
+	cd -
 }
 
 function installOpenwayback(){
@@ -427,14 +433,18 @@ function installDrupal(){
 	sudo setsebool -P httpd_can_sendmail on
 	sudo chmod 755 $ARCHIVE_HOME/var/drupal/sites/default
 	sudo chmod 755 $ARCHIVE_HOME/var/drupal/sites/default/settings.php
+	cd -
 }
 
 function installRegalDrupal(){
-	cd $ARCHIVE_HOME/var/drupal/sites/all/modules
+	cd $ARCHIVE_HOME/src
 	git clone https://github.com/edoweb/regal-drupal.git
-	cd regal-drupal
+    ln -s $ARCHIVE_HOME/src/regal-drupal $ARCHIVE_HOME/var/drupal/sites/all/modules
+	cd -
+	cd $ARCHIVE_HOME/var/drupal/sites/all/modules/regal-drupal
 	git checkout vagrant_driven_stuff
 	git submodule update --init
+	cd -
 	cd $ARCHIVE_HOME/var/drupal/sites/all/modules
 	curl https://ftp.drupal.org/files/projects/entity-7.x-1.1.tar.gz | tar xz
 	curl https://ftp.drupal.org/files/projects/entity_js-7.x-1.0-alpha3.tar.gz | tar xz
@@ -442,15 +452,16 @@ function installRegalDrupal(){
 	php5enmod redland
     service apache2 restart
     ln -s $ARCHIVE_HOME/src/regal-api/public/ $ARCHIVE_HOME/var/drupal/
-    ln -s $ARCHIVE_HOME/var/drupal/sites/all/modules/regal-drupal $ARCHIVE_HOME/src
+    cd -
 }
 
 function installDrupalThemes(){
-	cd $ARCHIVE_HOME/var/drupal/sites/all/themes
+	cd $ARCHIVE_HOME/src
 	git clone https://github.com/edoweb/edoweb-drupal-theme.git
 	git clone https://github.com/edoweb/zbmed-drupal-theme.git
-    ln -s $ARCHIVE_HOME/var/drupal/sites/all/themes/edoweb-drupal-theme $ARCHIVE_HOME/src
-    ln -s $ARCHIVE_HOME/var/drupal/sites/all/themes/zbmed-drupal-theme $ARCHIVE_HOME/src
+    ln -s $ARCHIVE_HOME/src/edoweb-drupal-theme $ARCHIVE_HOME/var/drupal/sites/all/themes
+    ln -s $ARCHIVE_HOME/src/zbmed-drupal-theme  $ARCHIVE_HOME/var/drupal/sites/all/themes
+    cd -
 }
 
 function configureDrupalLanguages(){
