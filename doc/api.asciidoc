@@ -435,7 +435,7 @@ Diese Dokumentation ist mit asciidoc geschrieben und wurde mit asciidoctor in HT
 
 Die Schritte, um an der Doku zu arbeiten sind folgenden
 
-Diese Repo herunterladen
+Dieses Repo herunterladen
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ....

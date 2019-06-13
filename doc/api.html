@@ -785,7 +785,7 @@ b.conum * { color: inherit !important; }
 <li><a href="#_dokumentation">8. Dokumentation</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#_diese_repo_herunterladen">8.1. Diese Repo herunterladen</a></li>
+<li><a href="#_dieses_repo_herunterladen">8.1. Dieses Repo herunterladen</a></li>
 <li><a href="#_asciidoctor_und_asciidoctor_stylesheets_installieren">8.2. Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
 <li><a href="#_doku_modifizieren_und_in_html_bersetzen">8.3. Doku modifizieren und in HTML übersetzen</a></li>
 </ul>
@@ -1120,12 +1120,30 @@ curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=
 </div>
 <div class="sect3">
 <h4 id="_delete_part_of_resource">3.4.3. Delete part of resource</h4>
-<div class="paragraph">
-<p>DELETE /resource/:pid/seq
-DELETE /resource/:pid/metadata
-DELETE /resource/:pid/metadata2
-DELETE /resource/:pid/data
-DELETE /resource/:pid/dc</p>
+<div class="literalblock">
+<div class="content">
+<pre>DELETE /resource/:pid/seq</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>DELETE /resource/:pid/metadata</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>DELETE /resource/:pid/metadata2</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>DELETE /resource/:pid/data</pre>
+</div>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>DELETE /resource/:pid/dc</pre>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -1351,7 +1369,7 @@ DELETE /resource/:pid/dc</p>
 <p>Die Schritte, um an der Doku zu arbeiten sind folgenden</p>
 </div>
 <div class="sect2">
-<h3 id="_diese_repo_herunterladen">8.1. Diese Repo herunterladen</h3>
+<h3 id="_dieses_repo_herunterladen">8.1. Dieses Repo herunterladen</h3>
 <div class="literalblock">
 <div class="content">
 <pre>git clone https://github.com/jschnasse/Regal</pre>
@@ -1414,7 +1432,7 @@ vagrant</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-04 15:24:27 CEST
+Last updated 2019-06-13 11:43:31 CEST
 </div>
 </div>
 </body>
