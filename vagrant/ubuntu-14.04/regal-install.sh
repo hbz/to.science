@@ -252,7 +252,7 @@ function updateAndDeployRegalModule(){
         mv $ARCHIVE_HOME/tmp/$app_version  $ARCHIVE_HOME/apps/$APPNAME.$DATE
 	    rm -rf $ARCHIVE_HOME/tmp/$app_version*
         cp -r $ARCHIVE_HOME/apps/$APPNAME/conf/* $ARCHIVE_HOME/apps/$APPNAME.$DATE/conf/
-        sed -e "s/^http\.port=.*$/http\.port=$NEWPORT/" $ARCHIVE_HOME/apps/$APPNAME/conf/application.conf > $ARCHIVE_HOME/apps/$APPNAME.$DATE/conf/application.conf
+        sed -e "s/^http\.port=.*$/http\.port=$NEWPORT/" $ARCHIVE_HOME/etc/$APPNAME.conf > $ARCHIVE_HOME/apps/$APPNAME.$DATE/conf/application.conf
         cp $ARCHIVE_HOME/conf/regal.apache.conf $ARCHIVE_HOME/conf/regal.apache.conf.bck ; 
         sed -i "s/$OLDPORT/$NEWPORT/g" $ARCHIVE_HOME/conf/regal.apache.conf
         rm $ARCHIVE_HOME/apps/$APPNAME
