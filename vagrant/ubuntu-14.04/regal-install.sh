@@ -348,7 +348,6 @@ function installProai(){
 	sudo sed -i 's|/opt/regal|/opt/regal/var|' $ARCHIVE_HOME/conf/proai.properties
     #------------------------------------------------#
 	cp $ARCHIVE_HOME/conf/proai.properties $ARCHIVE_HOME/src/oaiprovider/src/config  
-	cp $ARCHIVE_HOME/conf/Identify.xml $ARCHIVE_HOME/var/drupal
 	cd -
 	cd $ARCHIVE_HOME/src/proai
 	ant release
@@ -452,6 +451,7 @@ function installRegalDrupal(){
 	php5enmod redland
     service apache2 restart
     ln -s $ARCHIVE_HOME/src/regal-api/public/ $ARCHIVE_HOME/var/drupal/
+    cp $ARCHIVE_HOME/conf/Identify.xml $ARCHIVE_HOME/var/drupal/Identify.xml
     cd -
 }
 
