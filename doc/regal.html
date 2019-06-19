@@ -2750,7 +2750,7 @@ export CATALINA_OPTS</pre>
 <p>Hat man über <a href="#_vagrant">Vagrant</a> eine neue VirtualBox erzeugt und alle Konfigurationen wie beschrieben vorgenommen, kann man die VirtualBox zur Entwicklung nutzen. Da im Installationsprozess bereits Eclipse-Projekte der unter <code>/opt/regal/src</code> befindlichen Java-Applikationen erzeugt wurden, können die Projekte direkt aus dem "synced folder" unter <code>~/regal-dev</code> in eine Eclipse-IDE auf dem Host-System importiert werden.</p>
 </div>
 <div class="paragraph">
-<p>Damit Änderungen am Code in der VirtualBox direkt sichtbar werden, sollte die Applikation zunächst im Develop-Mode neu gestartet werden. Dazu loggt man sich auf der VirtualBox mit <code>vagrant ssh</code> ein und stoppt zunächst den entsprechenden Service, z.B. <code>regal-api</code>. Anschließend navigiert man in das Source-Verzeichnis, z.B. <code>cd /opt/regal/src/regal-api</code>. Hier startet man die Applikation auf dem korrekten Port (im Zweifel unter <code>/opt/regal/apps/regal-api/conf/application.conf</code> nachschauen). Der Start im Develop-Mode erfolgt aus dem Verzeichnis der Applikation, mit z.B. <code>/opt/regal/bin/activator/bin/activator -Dhttp.port=9100</code>. Danach kann in die Kosole <code>run</code> eingegegeben werden. Die Applikation sollte nun unter dem entsprechenden Port (im Beispiel: 9100) antworten.</p>
+<p>Damit Änderungen am Code in der VirtualBox direkt sichtbar werden, sollte die Applikation zunächst im Develop-Mode neu gestartet werden. Dazu loggt man sich auf der VirtualBox mit <code>vagrant ssh</code> ein und stoppt zunächst den entsprechenden Service, z.B. <code>sudo service regal-api stop</code>. Anschließend navigiert man in das Source-Verzeichnis, z.B. <code>cd /opt/regal/src/regal-api</code>. Hier startet man die Applikation auf dem korrekten Port (im Zweifel unter <code>/opt/regal/apps/regal-api/conf/application.conf</code> nachschauen). Der Start im Develop-Mode erfolgt aus dem Verzeichnis der Applikation, mit z.B. <code>/opt/regal/bin/activator/bin/activator -Dhttp.port=9100</code>. Danach kann in die Kosole <code>run</code> eingegegeben werden. Die Applikation sollte nun unter dem entsprechenden Port (im Beispiel: 9100) antworten.</p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -3435,7 +3435,7 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-13 12:11:52 CEST
+Last updated 2019-06-18 13:45:36 CEST
 </div>
 </div>
 </body>

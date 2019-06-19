@@ -11,6 +11,8 @@ Jan Schnasse
 ***********************************
 Dieses Dokument kommt zusammen mit einem https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04[Vagrantfile] und beschreibt die wichtigsten HTTP-Calls in Regal anhand von `curl`.
 
+Eine komplette Übersicht über das zugrundeliegende System findet sich hier: link:./regal.html[Regal]
+
 Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt <<_dokumentation>>
 
 ***********************************
@@ -74,26 +76,14 @@ Upload metadata
 ^^^^^^^^^^^^^^^
 
 ....
-curl -XPUT -u$API_USER:$PASSWORD -d'<regal:1234> <dc:title> "Ein Test Titel" .' -H"content-type:text/plain" $REGAL_API/resource/:pid/metadata/resource/:pid/metadata2
+curl -XPUT -u$API_USER:$PASSWORD -d'<regal:1234> <dc:title> "Ein Test Titel" .' -H"content-type:text/plain" $REGAL_API/resource/regal:1235/metadata2
 ....
-
-
-Upload Webgatherer Conf
-^^^^^^^^^^^^^^^^^^^^^^^
-....
-PUT /resource/:pid/conf
-....
+^^^^^^^^^^^^^^^^^^^^^
 
 Order Child Nodes
 ^^^^^^^^^^^^^^^^^
 ....
-PUT /resource/:pid/parts
-....
-
-Create Webversion
-^^^^^^^^^^^^^^^^^
-....
-POST /resource/:pid/createVersion
+curl -XPUT -u$API_USER:$PASSWORD -d'{"regal:23","regal:34", .... list of parts in correct order }' $REGAL_API/regal:1235/parts
 ....
 
 Read
@@ -247,23 +237,23 @@ curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=
 Delete part of resource
 ^^^^^^^^^^^^^^^^^^^^^^^
 ....
-DELETE /resource/:pid/seq
+curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/seq
 ....
 
 ....
-DELETE /resource/:pid/metadata
+curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/metadata
 ....
 
 ....
-DELETE /resource/:pid/metadata2
+curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/metadata2
 ....
 
 ....
-DELETE /resource/:pid/data
+curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/data
 ....
 
 ....
-DELETE /resource/:pid/dc
+curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/dc
 ....
 
 
@@ -333,13 +323,13 @@ Add Label
 Read
 ~~~~
 ....
-curl "http://localhost:9000/tools/etikett" -H"accept: application/json"
+curl "$REGAL_API/tools/etikett" -H"accept: application/json"
 ....
 
 Read Etikett
 ^^^^^^^^^^^^
 ....
-curl "http://localhost:9000/tools/etikett?url=http%3A%2F%2Fpurl.orms%2Fissued" -H"accept: application/json"
+curl $REGAL_API/tools/etikett?url=http%3A%2F%2Fpurl.orms%2Fissued -H"accept: application/json"
 ....
 
 Update
@@ -350,6 +340,9 @@ Delete
 
 Delete Cache
 ^^^^^^^^^^^^
+....
+curl -XDELETE -u$API_USER:$PASSWORD $REGAL_API/tools/etikett/cache
+....
 
 Misc
 ~~~~
@@ -408,23 +401,11 @@ thumby
 
 https://github.com/hbz/thumby/blob/master/conf/routes
 
-Create
-~~~~~~
-
 Read
 ~~~~
 ....
 curl -XGET "$REGAL_API/tools/thumby?url=https://www.gravatar.com/avatar/5fefc19b7875e951c7ea9bfdfc06676d&size=200"
 ....
-
-Update
-~~~~~~
-
-Delete
-~~~~~~
-
-Search
-~~~~~~
 
 Misc
 ~~~~

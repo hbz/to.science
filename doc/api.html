@@ -774,12 +774,8 @@ b.conum * { color: inherit !important; }
 <li><a href="#_thumby">7. thumby</a></li>
 <li>
 <ul class="sectlevel2">
-<li><a href="#_create_5">7.1. Create</a></li>
-<li><a href="#_read_5">7.2. Read</a></li>
-<li><a href="#_update_3">7.3. Update</a></li>
-<li><a href="#_delete_3">7.4. Delete</a></li>
-<li><a href="#_search_4">7.5. Search</a></li>
-<li><a href="#_misc_3">7.6. Misc</a></li>
+<li><a href="#_read_5">7.1. Read</a></li>
+<li><a href="#_misc_3">7.2. Misc</a></li>
 </ul>
 </li>
 <li><a href="#_dokumentation">8. Dokumentation</a></li>
@@ -805,6 +801,9 @@ b.conum * { color: inherit !important; }
 <div class="content">
 <div class="paragraph">
 <p>Dieses Dokument kommt zusammen mit einem <a href="https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04">Vagrantfile</a> und beschreibt die wichtigsten HTTP-Calls in Regal anhand von <code>curl</code>.</p>
+</div>
+<div class="paragraph">
+<p>Eine komplette Übersicht über das zugrundeliegende System findet sich hier: <a href="./regal.html">Regal</a></p>
 </div>
 <div class="paragraph">
 <p>Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt <a href="#_dokumentation">Dokumentation</a></p>
@@ -889,31 +888,18 @@ export API_USER=edoweb-admin</pre>
 <h4 id="_upload_metadata">3.1.5. Upload metadata</h4>
 <div class="literalblock">
 <div class="content">
-<pre>curl -XPUT -u$API_USER:$PASSWORD -d'&lt;regal:1234&gt; &lt;dc:title&gt; "Ein Test Titel" .' -H"content-type:text/plain" $REGAL_API/resource/:pid/metadata/resource/:pid/metadata2</pre>
+<pre>curl -XPUT -u$API_USER:$PASSWORD -d'&lt;regal:1234&gt; &lt;dc:title&gt; "Ein Test Titel" .' -H"content-type:text/plain" $REGAL_API/resource/regal:1235/metadata2</pre>
 </div>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_upload_webgatherer_conf">3.1.6. Upload Webgatherer Conf</h4>
-<div class="literalblock">
-<div class="content">
-<pre>PUT /resource/:pid/conf</pre>
-</div>
+<div class="paragraph">
+<p><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup><sup>^</sup></p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_order_child_nodes">3.1.7. Order Child Nodes</h4>
+<h4 id="_order_child_nodes">3.1.6. Order Child Nodes</h4>
 <div class="literalblock">
 <div class="content">
-<pre>PUT /resource/:pid/parts</pre>
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="_create_webversion">3.1.8. Create Webversion</h4>
-<div class="literalblock">
-<div class="content">
-<pre>POST /resource/:pid/createVersion</pre>
+<pre>curl -XPUT -u$API_USER:$PASSWORD -d'{"regal:23","regal:34", .... list of parts in correct order }' $REGAL_API/regal:1235/parts</pre>
 </div>
 </div>
 </div>
@@ -1122,27 +1108,27 @@ curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=
 <h4 id="_delete_part_of_resource">3.4.3. Delete part of resource</h4>
 <div class="literalblock">
 <div class="content">
-<pre>DELETE /resource/:pid/seq</pre>
+<pre>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/seq</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>DELETE /resource/:pid/metadata</pre>
+<pre>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/metadata</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>DELETE /resource/:pid/metadata2</pre>
+<pre>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/metadata2</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>DELETE /resource/:pid/data</pre>
+<pre>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/data</pre>
 </div>
 </div>
 <div class="literalblock">
 <div class="content">
-<pre>DELETE /resource/:pid/dc</pre>
+<pre>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/dc</pre>
 </div>
 </div>
 </div>
@@ -1233,14 +1219,14 @@ curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=
 <h3 id="_read_2">4.2. Read</h3>
 <div class="literalblock">
 <div class="content">
-<pre>curl "http://localhost:9000/tools/etikett" -H"accept: application/json"</pre>
+<pre>curl "$REGAL_API/tools/etikett" -H"accept: application/json"</pre>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_read_etikett">4.2.1. Read Etikett</h4>
 <div class="literalblock">
 <div class="content">
-<pre>curl "http://localhost:9000/tools/etikett?url=http%3A%2F%2Fpurl.orms%2Fissued" -H"accept: application/json"</pre>
+<pre>curl $REGAL_API/tools/etikett?url=http%3A%2F%2Fpurl.orms%2Fissued -H"accept: application/json"</pre>
 </div>
 </div>
 </div>
@@ -1253,7 +1239,11 @@ curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=
 <h3 id="_delete_2">4.4. Delete</h3>
 <div class="sect3">
 <h4 id="_delete_cache">4.4.1. Delete Cache</h4>
-
+<div class="literalblock">
+<div class="content">
+<pre>curl -XDELETE -u$API_USER:$PASSWORD $REGAL_API/tools/etikett/cache</pre>
+</div>
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1330,11 +1320,7 @@ curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=
 <p><a href="https://github.com/hbz/thumby/blob/master/conf/routes">https://github.com/hbz/thumby/blob/master/conf/routes</a></p>
 </div>
 <div class="sect2">
-<h3 id="_create_5">7.1. Create</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_read_5">7.2. Read</h3>
+<h3 id="_read_5">7.1. Read</h3>
 <div class="literalblock">
 <div class="content">
 <pre>curl -XGET "$REGAL_API/tools/thumby?url=https://www.gravatar.com/avatar/5fefc19b7875e951c7ea9bfdfc06676d&amp;size=200"</pre>
@@ -1342,19 +1328,7 @@ curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=
 </div>
 </div>
 <div class="sect2">
-<h3 id="_update_3">7.3. Update</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_delete_3">7.4. Delete</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_search_4">7.5. Search</h3>
-
-</div>
-<div class="sect2">
-<h3 id="_misc_3">7.6. Misc</h3>
+<h3 id="_misc_3">7.2. Misc</h3>
 
 </div>
 </div>
@@ -1432,7 +1406,7 @@ vagrant</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-13 11:43:31 CEST
+Last updated 2019-06-19 11:52:04 CEST
 </div>
 </div>
 </body>
