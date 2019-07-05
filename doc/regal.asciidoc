@@ -751,7 +751,7 @@ Die VirtualBox hat folgendes Setup
 
 - hdd 40GB
 - cpu 2core
-- ram 4096G 
+- ram 4096M 
 
 VirtualBox installieren
 ^^^^^^^^^^^^^^^^^^^^^^^
