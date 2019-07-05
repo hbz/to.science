@@ -433,7 +433,6 @@ function installRegalDrupal(){
 	cd $ARCHIVE_HOME/var/drupal/sites/all/modules
 	git clone https://github.com/edoweb/regal-drupal.git
 	cd regal-drupal
-	git checkout vagrant_driven_stuff
 	git submodule update --init
 	cd $ARCHIVE_HOME/var/drupal/sites/all/modules
 	curl https://ftp.drupal.org/files/projects/entity-7.x-1.1.tar.gz | tar xz
