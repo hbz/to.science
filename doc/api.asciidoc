@@ -83,7 +83,7 @@ curl -XPUT -u$API_USER:$PASSWORD -d'<regal:1234> <dc:title> "Ein Test Titel" .' 
 Order Child Nodes
 ^^^^^^^^^^^^^^^^^
 ....
-curl -XPUT -u$API_USER:$PASSWORD -d'{"regal:23","regal:34", .... list of parts in correct order }' $REGAL_API/regal:1235/parts
+curl -XPUT -u$API_USER:$PASSWORD -d'["regal:2","regal:1249"]' $REGAL_API/resource/regal:1/parts -H"Content-Type:application/json"
 ....
 
 Read

@@ -441,7 +441,6 @@ function installRegalDrupal(){
     ln -s $ARCHIVE_HOME/src/regal-drupal $ARCHIVE_HOME/var/drupal/sites/all/modules
 	cd -
 	cd $ARCHIVE_HOME/var/drupal/sites/all/modules/regal-drupal
-	git checkout vagrant_driven_stuff
 	git submodule update --init
 	cd -
 	cd $ARCHIVE_HOME/var/drupal/sites/all/modules
