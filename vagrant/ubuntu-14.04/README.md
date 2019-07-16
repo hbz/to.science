@@ -9,7 +9,7 @@ hdd 40GB
 
 cpu 2core
 
-ram 2048G
+ram 2048M
 
 # Prerequisites
 

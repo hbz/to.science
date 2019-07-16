@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="generator" content="Asciidoctor 0.1.4">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.9">
+<meta name="author" content="Jan Schnasse">
 <title>Regal</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
@@ -723,18 +725,20 @@ b.conum * { color: inherit !important; }
 .conum:not([data-value]):empty { display: none; }
 
 .literalblock pre, .listingblock pre { background: #eeeeee; }
+
 </style>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
 <h1>Regal</h1>
+<div class="details">
 <span id="author" class="author">Jan Schnasse</span><br>
+</div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_einleitung">1. Einleitung</a></li>
-<li><a href="#_konzepte">2. Konzepte</a></li>
-<li>
+<li><a href="#_konzepte">2. Konzepte</a>
 <ul class="sectlevel2">
 <li><a href="#_objektmodell">2.1. Objektmodell</a></li>
 <li><a href="#_namespaces_und_identifier">2.2. Namespaces und Identifier</a></li>
@@ -749,8 +753,7 @@ b.conum * { color: inherit !important; }
 <li><a href="#_ansichten">2.11. Ansichten</a></li>
 </ul>
 </li>
-<li><a href="#_software">3. Software</a></li>
-<li>
+<li><a href="#_software">3. Software</a>
 <ul class="sectlevel2">
 <li><a href="#_regal_api_2">3.1. regal-api</a></li>
 <li><a href="#_etikett">3.2. Etikett</a></li>
@@ -770,22 +773,19 @@ b.conum * { color: inherit !important; }
 <li><a href="#_drupal_7">3.16. Drupal 7</a></li>
 </ul>
 </li>
-<li><a href="#_installation">4. Installation</a></li>
-<li>
+<li><a href="#_installation">4. Installation</a>
 <ul class="sectlevel2">
 <li><a href="#_vagrant">4.1. Vagrant</a></li>
 <li><a href="#_server">4.2. Server</a></li>
 </ul>
 </li>
-<li><a href="#_entwicklung_java">5. Entwicklung Java</a></li>
-<li>
+<li><a href="#_entwicklung_java">5. Entwicklung Java</a>
 <ul class="sectlevel2">
 <li><a href="#_in_der_virtualbox">5.1. In der VirtualBox</a></li>
 <li><a href="#_auf_dem_eigenen_system">5.2. Auf dem eigenen System</a></li>
 </ul>
 </li>
-<li><a href="#_administration">6. Administration</a></li>
-<li>
+<li><a href="#_administration">6. Administration</a>
 <ul class="sectlevel2">
 <li><a href="#_aktualisierung">6.1. Aktualisierung</a></li>
 <li><a href="#_verzeichnisse">6.2. Verzeichnisse</a></li>
@@ -798,17 +798,15 @@ b.conum * { color: inherit !important; }
 <li><a href="#_scripts_und_cronjobs">6.9. Scripts und Cronjobs</a></li>
 </ul>
 </li>
-<li><a href="#_dokumentation">7. Dokumentation</a></li>
-<li>
+<li><a href="#_dokumentation">7. Dokumentation</a>
 <ul class="sectlevel2">
 <li><a href="#_dieses_repo_herunterladen">7.1. Dieses Repo herunterladen</a></li>
 <li><a href="#_asciidoctor_und_asciidoctor_stylesheets_installieren">7.2. Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
-<li><a href="#_doku_modifizieren_und_in_html_bersetzen">7.3. Doku modifizieren und in HTML übersetzen</a></li>
+<li><a href="#_doku_modifizieren_und_in_html_übersetzen">7.3. Doku modifizieren und in HTML übersetzen</a></li>
 </ul>
 </li>
 <li><a href="#_license">8. License</a></li>
-<li><a href="#_links">9. Links</a></li>
-<li>
+<li><a href="#_links">9. Links</a>
 <ul class="sectlevel2">
 <li><a href="#_slides">9.1. Slides</a></li>
 <li><a href="#_internes_wiki">9.2. Internes Wiki</a></li>
@@ -952,12 +950,12 @@ b.conum * { color: inherit !important; }
 <div class="paragraph">
 <p>Eine einzelne Publikation besteht i.d.R. aus mehreren <a href="#_fedora_commons_3">Fedora Commons 3</a>-Objekten, die in einer hierarchischen Beziehung zueinander stehen.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 1. Fedora Object</caption>
 <colgroup>
 <col>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1004,7 +1002,6 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p>Die Metadaten werden als ASCII-Kodierte N-Triple abgelegt. Da alle Fedora-Daten als Dateien im Dateisystem abgelegt werden, ist diese Veriante besonders robust gegen Speicherfehler. N-Triple ist ein Format, dass sich Zeilenweise lesen lässt. ASCII ist die einfachste Form der Textkodierung.</p>
 </div>
@@ -1020,12 +1017,12 @@ b.conum * { color: inherit !important; }
 <div class="paragraph">
 <p>Der so zusammengesetzte Identifier kommt in allen Systemkomponenten zum Einsatz.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 2. Beispiel Regal Identifier</caption>
 <colgroup>
 <col>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1038,26 +1035,25 @@ b.conum * { color: inherit !important; }
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal:1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">drupal</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost/resource/regal:1">http://localhost/resource/regal:1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost/resource/regal:1" class="bare">http://localhost/resource/regal:1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal:1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal-api</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://api.localhost/resource/regal:1">http://api.localhost/resource/regal:1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://api.localhost/resource/regal:1" class="bare">http://api.localhost/resource/regal:1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal:1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">fedora</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/fedora/objects/regal:1">http://localhost:8080/fedora/objects/regal:1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/fedora/objects/regal:1" class="bare">http://localhost:8080/fedora/objects/regal:1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal:1</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">elasticsearch</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9200/regal/_all/regal:1">http://localhost:9200/regal/_all/regal:1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9200/regal/_all/regal:1" class="bare">http://localhost:9200/regal/_all/regal:1</a></p></td>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_deskriptive_metadaten">2.3. Deskriptive Metadaten</h3>
@@ -1065,7 +1061,7 @@ b.conum * { color: inherit !important; }
 <p>Regal unterstützt eine große Anzahl von Metadatenfeldern zur Beschreibung von bibliografischen Ressourcen. Jedes in Regal verspeicherte Objekt kann mit Hilfe von RDF-Metadaten beschrieben werden. Das System verspeichert grundsätzlich alle Metadaten, solange Sie im richtigen Format an die Schnittstelle gespielt werden.</p>
 </div>
 <div class="paragraph">
-<p>Darüberhinaus können über bestimmte Angaben, bestimmte weitergehende Funktionen angesteuert werden. Dies betrifft u.A.:</p>
+<p>Darüber hinaus können über bestimmte Angaben, bestimmte weitergehende Funktionen angesteuert werden. Dies betrifft u.A.:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -1086,7 +1082,7 @@ b.conum * { color: inherit !important; }
 <div class="paragraph">
 <p>Alle bekannten Metadateneinträge werden in der Komponente <a href="#_etikett">Etikett</a> verwaltet. In <a href="#_etikett">Etikett</a> kann konfiguriert werden, welche URIs aus den RDF-Daten in das JSON-LD-Format von <a href="#_regal_api_2">regal-api</a> überführt werden. Außerdem kann die Reihenfolge der Darstellung, und das Label zur Anzeige gesetzt werden.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 3. Etikett-Eintrag für dc:title</caption>
 <colgroup>
 <col>
@@ -1095,7 +1091,7 @@ b.conum * { color: inherit !important; }
 <col>
 <col>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1113,14 +1109,13 @@ b.conum * { color: inherit !important; }
 <td class="tableblock halign-left valign-top"><p class="tableblock">Titel</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keine Angabe</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">title</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://purl.org/dc/terms/title">http://purl.org/dc/terms/title</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://purl.org/dc/terms/title" class="bare">http://purl.org/dc/terms/title</a></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keine Angabe</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">keine Angabe</p></td>
 </tr>
 </tbody>
 </table>
-
 <div class="literalblock">
 <div class="title">Etikett-Eintrag als Json</div>
 <div class="content">
@@ -1131,7 +1126,7 @@ b.conum * { color: inherit !important; }
 </div>
 </div>
 <div class="paragraph">
-<p>Die etikett Datenbank wird beim Neustart jeder <a href="#_regal_api_2">regal-api</a>-Instanz eingelesen. Außerdem wird die HTTP-Schnittstelle von Etikett immer wieder angesprochen um zur Anzeige geeignete Labels für URIs in das System zu holen. Das <a href="#_regal_api_2">regal-api</a>-Modul läuft dabei auch ohne den Etikett-Services, allerdings nur mit eingeschränkter Funktionalität; beispielsweise fallen Anzeigen von verlinkten Ressourcen (und das ist in Regal fast alles) weniger schön aus.</p>
+<p>Die etikett Datenbank wird beim Neustart jeder <a href="#_regal_api_2">regal-api</a>-Instanz eingelesen. Außerdem wird die HTTP-Schnittstelle von Etikett immer wieder angesprochen um zur Anzeige geeignete Labels in das System zu holen und anstatt der rohen URIs einzublenden. Das <a href="#_regal_api_2">regal-api</a>-Modul läuft dabei auch ohne den Etikett-Services, allerdings nur mit eingeschränkter Funktionalität; beispielsweise fallen Anzeigen von verlinkten Ressourcen (und das ist in Regal fast alles) weniger schön aus.</p>
 </div>
 <div class="sect3">
 <h4 id="_wie_kommen_bibliografische_metadaten_ins_system">2.3.1. Wie kommen bibliografische Metadaten ins System?</h4>
@@ -1139,33 +1134,33 @@ b.conum * { color: inherit !important; }
 <p>In Regal können bibliografische Metadaten aus dem hbz-Verbundkatalog an Ressourcen "angelinkt" werden. Dies erfolgt über Angabe der ID des entsprechenden Titelsatzes (z.b. HT017766754). Mit Hilfe dieser ID kann Regal einen Titelimport durchführen. Dabei wird auf die Schnittstellen der <a href="https://lobid.org">Lobid-API</a> zugegriffen.</p>
 </div>
 <div class="paragraph">
-<p>Regal bietet außerdem die Möglichkeit Metadaten über Erfassungsmasken zu erzeugen und zu speichern. Dies erfolgt mit Hilfe des Moduls <a href="#_zettel">Zettel</a>. <a href="#_zettel">Zettel</a> ist ein Webservices, der verschiedene HTML-Formulare bereitstellt. Die Formulare können RDF-Metadaten einlesen und ausgeben. Zettel-Formulare werden über Javascript mit Hilfe eines IFrame in die eigentliche Anwendung angebunden. Über Zettel werden Konzepte aus dem Bereich Linked Data umgesetzt. So können Feldinhalte über entsprechende Eingabeelemente in Drittsystemen recherchiert und verlinkt werden. Die Darstellung von Links erfolgt in Zettel mit Hilfe von <a href="#_etikett">Etikett</a>. Umfangreichere Notationssysteme wie Agrovoc oder DDC werden über einen eigenen Index aus dem Modul <a href="#_skos_lookup">skos-lookup</a> eingebunden. Zettel unterstützt zur Zeit folgende Linked-Data-Quellen:</p>
+<p>Regal bietet außerdem die Möglichkeit, Metadaten über Erfassungsmasken zu erzeugen und zu speichern. Dies erfolgt mit Hilfe des Moduls <a href="#_zettel">Zettel</a>. <a href="#_zettel">Zettel</a> ist ein Webservice, der verschiedene HTML-Formulare bereitstellt. Die Formulare können RDF-Metadaten einlesen und ausgeben. Zettel-Formulare werden über Javascript mit Hilfe eines IFrame in die eigentliche Anwendung angebunden. Über Zettel werden Konzepte aus dem Bereich Linked Data umgesetzt. So können Feldinhalte über entsprechende Eingabeelemente in Drittsystemen recherchiert und verlinkt werden. Die Darstellung von Links erfolgt in Zettel mit Hilfe von <a href="#_etikett">Etikett</a>. Umfangreichere Notationssysteme wie Agrovoc oder DDC werden über einen eigenen Index aus dem Modul <a href="#_skos_lookup">skos-lookup</a> eingebunden. Zettel unterstützt zur Zeit folgende Linked-Data-Quellen:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Lobid (GND)</p>
+<p><a href="https://lobid.org/gnd">Lobid (GND)</a></p>
 </li>
 <li>
-<p>Lobid (Ressource)</p>
+<p><a href="https://lobid.org/resources">Lobid (Ressource)</a></p>
 </li>
 <li>
-<p>Agrovoc</p>
+<p><a href="http://aims.fao.org/vest-registry/vocabularies/agrovoc">Agrovoc</a></p>
 </li>
 <li>
-<p>DDC</p>
+<p><a href="https://www.oclc.org/en/dewey.html">DDC</a></p>
 </li>
 <li>
-<p>CrossRef (Funder Registry)</p>
+<p><a href="https://www.crossref.org/services/funder-registry/">CrossRef (Funder Registry)</a></p>
 </li>
 <li>
-<p>Orcid</p>
+<p><a href="https://orcid.org/">Orcid</a></p>
 </li>
 <li>
-<p>Geonames</p>
+<p><a href="https://www.geonames.org/">Geonames</a></p>
 </li>
 <li>
-<p>Open Street Maps Koordinaten</p>
+<p><a href="https://www.openstreetmap.org">Open Street Maps Koordinaten</a></p>
 </li>
 </ul>
 </div>
@@ -1179,15 +1174,15 @@ b.conum * { color: inherit !important; }
 <div class="literalblock">
 <div class="title">Auswahl von Pfaden zu unterschiedlichen Representationen einer Ressource</div>
 <div class="content">
-<pre>/resource/danrw:1
-/resource/danrw:1.json
-/resource/danrw:1.rdf
-/resource/danrw:1.epicur
-/resource/danrw:1.mets</pre>
+<pre>/resource/regal:1
+/resource/regal:1.json
+/resource/regal:1.rdf
+/resource/regal:1.epicur
+/resource/regal:1.mets</pre>
 </div>
 </div>
 <div class="paragraph">
-<p>In der HTML-Darstellung greift <a href="#_regal_api_2">regal-api</a> auf den Hilfsdienst <a href="#_thumby">Thumby</a> zu, um darüber Thumbnail-Darstellungen von PDFs oder Bilder zu kreieren. Bei großen Bildern wird außerdem der <a href="#_deepzoomer">Deepzoomer</a> angelinkt, der eine Darstellung von Hochauflösenden Bildern über das Tool <a href="https://openseadragon.github.io/">OpenSeadragon</a> erlaubt. Video- und Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.</p>
+<p>In der HTML-Darstellung greift <a href="#_regal_api_2">regal-api</a> auf den Hilfsdienst <a href="#_thumby">Thumby</a> zu um darüber Thumbnail-Darstellungen von PDFs oder Bilder zu kreieren. Bei großen Bildern wird außerdem der <a href="#_deepzoomer">Deepzoomer</a> angelinkt, der eine Darstellung von hochauflösenden Bildern über das Tool <a href="https://openseadragon.github.io/">OpenSeadragon</a> erlaubt. Video- und Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.</p>
 </div>
 </div>
 <div class="sect2">
@@ -1207,11 +1202,11 @@ b.conum * { color: inherit !important; }
 <div class="paragraph">
 <p>Öffentlich zugängliche Publikationen sind auch über die OAI-Schnittstelle verfügbar. Dabei wird jede Publikation einer Reihe von OAI-Sets zugeordnet und in unterschiedlichen Formaten angeboten.</p>
 </div>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 4. OAI Set</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1258,12 +1253,11 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 5. OAI Metadatenformat</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1294,11 +1288,10 @@ b.conum * { color: inherit !important; }
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">wgl</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Format für LeibnizOpne. Alle Objekte die über das Feld "collectionOne" einer Institution zugeordnet wurden und über den ContentType "article" eingeliefert urden.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Format für LeibnizOpen. Alle Objekte die über das Feld "collectionOne" einer Institution zugeordnet wurden und über den ContentType "article" eingeliefert wurden.</p></td>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_suche">2.8. Suche</h3>
@@ -1322,11 +1315,11 @@ b.conum * { color: inherit !important; }
 </div>
 <div class="sect3">
 <h4 id="_sichtbarkeiten_operationen_rollen">2.9.1. Sichtbarkeiten, Operationen, Rollen</h4>
-<table class="tableblock frame-all grid-all" style="width:100%; ">
+<table class="tableblock frame-all grid-all stretch">
 <caption class="title">Table 6. <strong>Schreibender</strong> Zugriff auf Daten und Metadaten</caption>
 <colgroup>
-<col style="width:50%;">
-<col style="width:50%;"> 
+<col style="width: 50%;">
+<col style="width: 50%;">
 </colgroup>
 <tbody>
 <tr>
@@ -1343,12 +1336,11 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 7. <strong>Lesender</strong> Zugriff auf Metadaten</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1367,12 +1359,11 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 8. <strong>Lesender</strong> Zugriff auf Daten</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1403,7 +1394,6 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
@@ -1414,21 +1404,25 @@ b.conum * { color: inherit !important; }
 <div class="sect3">
 <h4 id="_drupal">2.10.1. Drupal</h4>
 <div class="paragraph">
-<p>Benutzer in Drupal können über das Modul <a href="#_regal_drupal">regal-drupal</a> unterschiedliche Rollen zugewiesen werden. Die Authorisierung erfolgt passwortbasiert. Alle Drupal-Benutzer greifen über einen vorkonfigurierten Accessor auf die <a href="#_regal_api_2">regal-api</a> zu. Alle Zugriffe erfolgen verschlüsselt unter Angabe eines Passwortes. Die Rolle mit deren Berechtigungen zugegriffen wird, wird dabei in <a href="#_regal_drupal">regal-drupal</a> gesetzt. Die Drupal-BenutzerId wird als Metadatum in Form eines proprietären HTTP-Headers mit an <a href="#_regal_api_2">regal-api</a> geliefert.</p>
+<p>Benutzer in Drupal können über das Modul <a href="#_regal_drupal">regal-drupal</a> unterschiedlichen Rollen zugewiesen werden. Die Authorisierung erfolgt passwortbasiert. Alle Drupal-Benutzer greifen über einen vorkonfigurierten Accessor auf die <a href="#_regal_api_2">regal-api</a> zu. Alle Zugriffe erfolgen verschlüsselt unter Angabe eines Passwortes. Die Rolle mit deren Berechtigungen zugegriffen wird, wird dabei in <a href="#_regal_drupal">regal-drupal</a> gesetzt. Die Drupal-BenutzerId wird als Metadatum in Form eines proprietären HTTP-Headers mit an <a href="#_regal_api_2">regal-api</a> geliefert.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="_regal_api">2.10.2. Regal-Api</h4>
 <div class="paragraph">
-<p>Auch in regal-api können Api-Benutzer angelegt werden. Zur Benutzerverwaltung wird eine MySQL-Datenbank eingesetzt, in der die Passworte der Nutzer abgelegt sind (Hash+Salt).</p>
+<p>Auch in regal-api können Api-Benutzer angelegt werden. Zur Benutzerverwaltung wird eine MySQL-Datenbank eingesetzt, in der die Passworte der Nutzer abgelegt sind.</p>
 </div>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_ansichten">2.11. Ansichten</h3>
 <div class="paragraph">
-<p>Um Daten, die in <a href="#_regal_api_2">regal-api</a> abgelegt wurden zur Anzeige zu bringen sind i.d.R. mehrere Schritte nötig. Die genaue Vorgehensweise ist davon abhängig, wo die Daten abgelegt werden (in welchem Fedora Datenstrom). Grundsätzlich basiert die HTML-Darstellung auf den Daten, die unter dem Format <code>.json2</code> einer Ressource abrufbar sind und einen Eintrag in context.json haben.
- <strong>Daten zur Ansicht bringen</strong></p>
+<p>Um Daten, die in <a href="#_regal_api_2">regal-api</a> abgelegt wurden zur Anzeige zu bringen sind i.d.R. mehrere Schritte nötig. Die genaue Vorgehensweise ist davon abhängig, wo die Daten abgelegt werden (in welchem Fedora Datenstrom). Grundsätzlich basiert die HTML-Darstellung auf den Daten, die unter dem Format <code>.json2</code> einer Ressource abrufbar sind und einen Eintrag in context.json haben.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>**Daten zur Ansicht bringen**</pre>
+</div>
 </div>
 <div class="olist arabic">
 <ol class="arabic">
@@ -1450,7 +1444,7 @@ b.conum * { color: inherit !important; }
 </ol>
 </div>
 <div class="paragraph">
-<p>Insgesamt läuft es also so: Alles was in <a href="#_etikett">Etikett</a> konfiguriert ist, wird auch ins JSON und damit ins HTML übernommen. Dinge, die im HTML nicht benötigt werden, werden über CSS wieder ausgeblendet.</p>
+<p>Insgesamt läuft es also so: Alles was in <a href="#_etikett">Etikett</a> konfiguriert ist, wird auch ins JSON und damit ins HTML und in den Suchindex übernommen. Dinge, die im HTML nicht benötigt werden, werden über CSS wieder ausgeblendet.</p>
 </div>
 </div>
 </div>
@@ -1462,7 +1456,7 @@ b.conum * { color: inherit !important; }
 <p>Die technische Dokumentation der HTTP-Schnittstelle findet sich unter <a href="./api.html">API Doku</a></p>
 </div>
 <div class="paragraph">
-<p>Nachfolgend sei eine Innenansicht der einzelnen Module aufgestellt. Die Integration der Module erfolgt i.d.R. über HTTP. Die Module werden über entsprechende Einträge in der Apache-Konfiguration sichtbar gemacht. Es handelt sich also um eine Webservice-Architektur, in der alle Webservices über einen Apache-Webserver und entsprechende Einträge in ihren Konfigurationsdateien miteinander verbunden werden.</p>
+<p>Nachfolgend sei eine Innenansicht der einzelnen Module aufgestellt. Die Integration der Module erfolgt i.d.R. über HTTPs. Die Module werden über entsprechende Einträge in der Apache-Konfiguration sichtbar gemacht. Es handelt sich also um eine Webservice-Architektur, in der alle Webservices über einen Apache-Webserver und entsprechende Einträge in ihren Konfigurationsdateien miteinander verbunden werden.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -1472,11 +1466,11 @@ b.conum * { color: inherit !important; }
 </div>
 <div class="sect2">
 <h3 id="_regal_api_2">3.1. regal-api</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 9. Überblick</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <tbody>
 <tr>
@@ -1501,7 +1495,6 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p>Mit regal-api werden alle grundlegenden Funktionen von Regal bereitgestellt. Dies umfasst:</p>
 </div>
@@ -1535,11 +1528,11 @@ b.conum * { color: inherit !important; }
 </div>
 <div class="sect3">
 <h4 id="_konfiguration">3.1.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 10. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1606,7 +1599,7 @@ b.conum * { color: inherit !important; }
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">logback.developer.xml</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ein logging Konfiguration. Ich kopiere die immer nach logback.developer.js.xml (in .gitignore) und trage sie  dann in die application.conf ein. Auf diese Weise kann ich an Loglevels herumkonfigurieren ohne das in diese Änderungen in die Versionsverwaltung spielen zu müssen.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Eine logging Konfiguration. Ich kopiere die immer nach logback.developer.js.xml (in .gitignore) und trage sie  dann in die application.conf ein. Auf diese Weise kann ich an Loglevels herumkonfigurieren ohne das in diese Änderungen in die Versionsverwaltung spielen zu müssen.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">logback.xml</p></td>
@@ -1658,15 +1651,14 @@ b.conum * { color: inherit !important; }
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect3">
 <h4 id="_die_applikation">3.1.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 11. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1742,16 +1734,15 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_etikett">3.2. Etikett</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 12. Überblick</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <tbody>
 <tr>
@@ -1776,7 +1767,6 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p>Etikett ist eine einfache Datenbankanwendung, die es erlaubt</p>
 </div>
@@ -1885,11 +1875,11 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_2">3.2.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 13. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1932,15 +1922,14 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_2">3.2.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 14. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -1971,16 +1960,15 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_zettel">3.3. Zettel</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 15. Überblick</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <tbody>
 <tr>
@@ -2005,7 +1993,6 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p>Zettel ist ein Webservice zur Bereitstellung von Webformularen. Die Webformulare können über ein HTTP-GET geladen werden. Sollen existierende Daten in ein Formular geladen werden, so können diese Daten (1) als Form-encoded, (2) als JSON, oder (3) als RDF-XML über ein <code>HTTP POST</code> in das Formular geladen werden. Gleichzeitig kann spezifiziert werden, in welchem Format das Formular Daten zurückliefern soll.</p>
 </div>
@@ -2026,11 +2013,11 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_3">3.3.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 16. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2069,15 +2056,14 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_3">3.3.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 17. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2104,16 +2090,15 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_skos_lookup">3.4. skos-lookup</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 18. Überblick</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <tbody>
 <tr>
@@ -2138,7 +2123,6 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p><a href="#_skos_lookup">skos-lookup</a> dient zur Unterstützung von <a href="#_zettel">Zettel</a>. Der Webservice startet eine eingebettete Elasticsearch-Instanz und verfügt über eine Schnittstelle um SKOS-Daten in separate Indexe zu importieren und Schnittstellen zur Unterstützung von jQuery-Autocomplete- und Select2-Widgets aufzubauen. Auf diese Weise können auch umfangreichere Thesauri und Notationssysteme in den Formularen von <a href="#_zettel">Zettel</a> fachgerecht angelinkt werden. <a href="#_skos_lookup">skos-lookup</a> unterstützt auch mehrsprachige Thesauri.</p>
 </div>
@@ -2156,11 +2140,11 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_4">3.4.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 19. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2191,15 +2175,14 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_4">3.4.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 20. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2226,16 +2209,15 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_thumby">3.5. Thumby</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 21. Überblick</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <tbody>
 <tr>
@@ -2260,17 +2242,16 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p><a href="#_thumby">Thumby</a> realisiert einen Thumbnail-Generator. Über ein HTTP-GET wird <a href="#_thumby">Thumby</a> die URL eines PDFs, oder eines Bildes übergeben. Sofern die <a href="#_thumby">Thumby</a> den Server kennt, wird es versuchen ein Thumbnail der zurückgelieferten Daten zu erstellen. Die Daten werden dauerhaft auf der Platte abgelegt und zukünftige Requests, die auf dasselbe Bild verweisen werden direkt aus dem Speicher von <a href="#_thumby">Thumby</a> beantwortet.</p>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_5">3.5.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 22. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2289,15 +2270,14 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_5">3.5.2. Die Applikation</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 23. Das /app Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2320,16 +2300,15 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_deepzoomer">3.6. Deepzoomer</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 24. Überblick</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <tbody>
 <tr>
@@ -2350,17 +2329,16 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p>Der [DeepZoomService] kann als WAR in einem Application-Server deployed werden. Mit dem Deepzoomer können pyramidale Bilder erzeugt, gespeichert und über eine OpenSeadragon-konforme Schnittstelle abgerufen werden. Auf diese Weise kann in Regal eine Viewer-Komponente realisiert werden, die die Anzeige sehr großer, hochaufgelöster Bilder im Webbrowser unterstützt.</p>
 </div>
 <div class="sect3">
 <h4 id="_konfiguration_6">3.6.1. Konfiguration</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 25. Dateien im /conf Verzeichnis</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2375,16 +2353,15 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_regal_drupal">3.7. regal-drupal</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 26. Überblick</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <tbody>
 <tr>
@@ -2405,17 +2382,16 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p>Ein Drupal 7 Modul über das Funktionalitäten der <a href="#_regal_api_2">regal-api</a> angesprochen werden können. Das Modul bietet Oberflächen zur Konfiguration, zur Suche und zur Verwaltung von Objekthierarchien.</p>
 </div>
 <div class="sect3">
 <h4 id="_die_applikation_6">3.7.1. Die Applikation</h4>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 27. Verzeichnisstruktur</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2438,16 +2414,15 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 </div>
 </div>
 <div class="sect2">
 <h3 id="_edoweb_drupal_theme">3.8. edoweb-drupal-theme</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 28. Überblick</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <tbody>
 <tr>
@@ -2468,18 +2443,17 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
-<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://edoweb-rlp.de">https://edoweb-rlp.de</a></p>
+<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://edoweb-rlp.de" class="bare">https://edoweb-rlp.de</a></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_zbmed_drupal_theme">3.9. zbmed-drupal-theme</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 29. Überblick</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <tbody>
 <tr>
@@ -2500,22 +2474,21 @@ Die Funktion <code>listNodes</code> in der Klasse <code>controllers.Resource</co
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
-<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://repository.publisso.de">https://repository.publisso.de</a></p>
+<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche für den Server <a href="https://repository.publisso.de" class="bare">https://repository.publisso.de</a></p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_openwayback">3.10. openwayback</h3>
 <div class="paragraph">
-<p>Repo: <a href="https://github.com/iipc/openwayback">https://github.com/iipc/openwayback</a>
+<p>Repo: <a href="https://github.com/iipc/openwayback" class="bare">https://github.com/iipc/openwayback</a>
 Servlet 2.5
 .Überblick</p>
 </div>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <tbody>
 <tr>
@@ -2536,7 +2509,6 @@ Servlet 2.5
 </tr>
 </tbody>
 </table>
-
 <div class="paragraph">
 <p><strong>Achtung</strong>: Es gibt einen am hbz entwickelten Branch. Dieser ist nicht auf Github.</p>
 </div>
@@ -2605,7 +2577,7 @@ Servlet 2.5
 <p>cpu 2core</p>
 </li>
 <li>
-<p>ram 4096G</p>
+<p>ram 4096M</p>
 </li>
 </ul>
 </div>
@@ -2825,11 +2797,11 @@ editor regal-install.sh</pre>
 </div>
 <div class="sect2">
 <h3 id="_verzeichnisse">6.2. Verzeichnisse</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 30. Verzeichnisstruktur</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2868,15 +2840,14 @@ editor regal-install.sh</pre>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_ports">6.3. Ports</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 31. Ports und Komponenten (typische Belegung)</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2923,15 +2894,14 @@ editor regal-install.sh</pre>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_logs">6.4. Logs</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 32. Logfiles</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -2978,15 +2948,14 @@ editor regal-install.sh</pre>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_configs">6.5. Configs</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 33. Configfiles</caption>
 <colgroup>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -3037,16 +3006,15 @@ editor regal-install.sh</pre>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_apache2">6.6. Apache2</h3>
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 34. Frontend Pfade</caption>
 <colgroup>
 <col>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -3073,13 +3041,12 @@ editor regal-install.sh</pre>
 </tr>
 </tbody>
 </table>
-
-<table class="tableblock frame-all grid-all" style="">
+<table class="tableblock frame-all grid-all fit-content">
 <caption class="title">Table 35. API Pfade</caption>
 <colgroup>
 <col>
 <col>
-<col> 
+<col>
 </colgroup>
 <thead>
 <tr>
@@ -3107,71 +3074,70 @@ editor regal-install.sh</pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OAI-Schnittstelle für die DNB</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/dnb-urn</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/dnb-urn$1">http://localhost:8080/dnb-urn$1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/dnb-urn$1" class="bare">http://localhost:8080/dnb-urn$1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">OAI-Schnittstelle</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/oai-pmh</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/oai-pmh$1">http://localhost:8080/oai-pmh$1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/oai-pmh$1" class="bare">http://localhost:8080/oai-pmh$1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Deepzoomer</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/deepzoom</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:7080/deepzoom$1">http://localhost:7080/deepzoom$1</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:7080/deepzoom$1" class="bare">http://localhost:7080/deepzoom$1</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Openwayback privat</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/wayback</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9080/wayback">http://localhost:9080/wayback</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9080/wayback" class="bare">http://localhost:9080/wayback</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Openwayback öffentlich</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/weltweit</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9080/weltweit">http://localhost:9080/weltweit</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9080/weltweit" class="bare">http://localhost:9080/weltweit</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Thumby</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/tools/thumby</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9001/tools/thumby">http://localhost:9001/tools/thumby</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9001/tools/thumby" class="bare">http://localhost:9001/tools/thumby</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Etikett</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/tools/etikett</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9002/tools/etikett">http://localhost:9002/tools/etikett</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9002/tools/etikett" class="bare">http://localhost:9002/tools/etikett</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Zettel</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/tools/zettel</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9004/tools/zettel">http://localhost:9004/tools/zettel</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9004/tools/zettel" class="bare">http://localhost:9004/tools/zettel</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Elasticsearch GET</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/search</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9200">http://localhost:9200</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9200" class="bare">http://localhost:9200</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Fedora</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/fedora</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/fedora">http://localhost:8080/fedora</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:8080/fedora" class="bare">http://localhost:8080/fedora</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">JSON-LD Context</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/public/resources.json</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9002/tools/etikett/context.json">http://localhost:9002/tools/etikett/context.json</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9002/tools/etikett/context.json" class="bare">http://localhost:9002/tools/etikett/context.json</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">regal-api</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9000/">http://localhost:9000/</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="http://localhost:9000/" class="bare">http://localhost:9000/</a></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">heritrix</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">/tools/heritrix</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://localhost:8443/tools/heritrix">https://localhost:8443/tools/heritrix</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="https://localhost:8443/tools/heritrix" class="bare">https://localhost:8443/tools/heritrix</a></p></td>
 </tr>
 </tbody>
 </table>
-
 </div>
 <div class="sect2">
 <h3 id="_matomo">6.7. Matomo</h3>
@@ -3223,7 +3189,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 <p>Für das Funktionieren von Regal sind einige regal-scripts sinnvoll. Die Skripte sind sämtlich unter Github zu finden.</p>
 </div>
 <div class="paragraph">
-<p><a href="https://github.com/edoweb/regal-scripts">https://github.com/edoweb/regal-scripts</a></p>
+<p><a href="https://github.com/edoweb/regal-scripts" class="bare">https://github.com/edoweb/regal-scripts</a></p>
 </div>
 <div class="paragraph">
 <p>Die folgenden Abschnitte zeigen ein typisches Setup.</p>
@@ -3321,7 +3287,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 <div class="sect3">
 <h4 id="_entwicklung">6.9.8. Entwicklung</h4>
 <div class="paragraph">
-<p>Für die Entwicklung an Regal empfiehlt sich folgende Vorgehensweise&#8230;</p>
+<p>Für die Entwicklung an Regal empfiehlt sich folgende Vorgehensweise&#8230;&#8203;</p>
 </div>
 </div>
 </div>
@@ -3364,7 +3330,7 @@ compass compile</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_doku_modifizieren_und_in_html_bersetzen">7.3. Doku modifizieren und in HTML übersetzen</h3>
+<h3 id="_doku_modifizieren_und_in_html_übersetzen">7.3. Doku modifizieren und in HTML übersetzen</h3>
 <div class="literalblock">
 <div class="content">
 <pre>cd Regal/doc
@@ -3396,13 +3362,13 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 <div class="ulist">
 <ul>
 <li>
-<p>Lobid - <a href="http://hbz.github.io/slides/">http://hbz.github.io/slides/</a></p>
+<p>Lobid - <a href="http://hbz.github.io/slides/" class="bare">http://hbz.github.io/slides/</a></p>
 </li>
 <li>
-<p>Skos-Lookup - <a href="http://hbz.github.io/slides/siit-170511/#/">http://hbz.github.io/slides/siit-170511/#/</a></p>
+<p>Skos-Lookup - <a href="http://hbz.github.io/slides/siit-170511/#/" class="bare">http://hbz.github.io/slides/siit-170511/#/</a></p>
 </li>
 <li>
-<p>Regal - <a href="http://hbz.github.io/slides/danrw-20180905/#/">http://hbz.github.io/slides/danrw-20180905/#/</a></p>
+<p>Regal - <a href="http://hbz.github.io/slides/danrw-20180905/#/" class="bare">http://hbz.github.io/slides/danrw-20180905/#/</a></p>
 </li>
 </ul>
 </div>
@@ -3412,7 +3378,7 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://wiki1.hbz-nrw.de/display/edd/Dokumentation">https://wiki1.hbz-nrw.de/display/edd/Dokumentation</a></p>
+<p><a href="https://wiki1.hbz-nrw.de/display/edd/Dokumentation" class="bare">https://wiki1.hbz-nrw.de/display/edd/Dokumentation</a></p>
 </li>
 </ul>
 </div>
@@ -3422,10 +3388,10 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/edoweb">https://github.com/edoweb</a></p>
+<p><a href="https://github.com/edoweb" class="bare">https://github.com/edoweb</a></p>
 </li>
 <li>
-<p><a href="https://github.com/hbz">https://github.com/hbz</a></p>
+<p><a href="https://github.com/hbz" class="bare">https://github.com/hbz</a></p>
 </li>
 </ul>
 </div>
@@ -3435,7 +3401,7 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-18 13:45:36 CEST
+Last updated 2019-07-05 10:21:47 +0200
 </div>
 </div>
 </body>
