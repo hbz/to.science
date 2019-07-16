@@ -899,7 +899,7 @@ export API_USER=edoweb-admin</pre>
 <h4 id="_order_child_nodes">3.1.6. Order Child Nodes</h4>
 <div class="literalblock">
 <div class="content">
-<pre>curl -XPUT -u$API_USER:$PASSWORD -d'{"regal:23","regal:34", .... list of parts in correct order }' $REGAL_API/regal:1235/parts</pre>
+<pre>curl -XPUT -u$API_USER:$PASSWORD -d'["regal:2","regal:1249"]' $REGAL_API/resource/regal:1/parts -H"Content-Type:application/json"</pre>
 </div>
 </div>
 </div>
@@ -1406,7 +1406,7 @@ vagrant</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-06-19 11:52:04 CEST
+Last updated 2019-07-16 09:38:03 CEST
 </div>
 </div>
 </body>
