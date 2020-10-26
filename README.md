@@ -1,4 +1,4 @@
-![to.science Logo](/doc/resources/images/logo.png "to.science Logo")
+![to.science Logo](/doc/resources/images/to.science.svg "to.science Logo")
 
 to.science - Dokumentation und Installation.
 
