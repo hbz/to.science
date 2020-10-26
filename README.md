@@ -1,6 +1,6 @@
-![Regal Logo](/doc/resources/images/logo.png "Regal Logo")
+![to.science Logo](/doc/resources/images/logo.png "to.science Logo")
 
-Regal - Die Ganze Geschichte. Dokumentation und Installation.
+to.science - Dokumentation und Installation.
 
  
 - [Ubuntu 14.04 Vagrant](https://github.com/hbz/Regal/tree/master/vagrant/ubuntu-14.04)
