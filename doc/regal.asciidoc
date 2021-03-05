@@ -1,5 +1,5 @@
-Regal
-=====
+to.science
+==========
 Jan Schnasse
 :Author Initials: JS
 :toc: left
@@ -10,7 +10,7 @@ Jan Schnasse
 Über dieses Dokument
 ***********************************
 
-Dieses Dokument kommt zusammen mit einem https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04[Vagrantfile] und beschreibt eine beispielhafte Installation von Regal. Unter <<_vagrant>> findet sich eine Anleitung zur Installation in einer Virtualbox. 
+Dieses Dokument kommt zusammen mit einem https://github.com/hbz/to.science/tree/master/vagrant/ubuntu-14.04[Vagrantfile] und beschreibt eine beispielhafte Installation von Regal. Unter <<_vagrant>> findet sich eine Anleitung zur Installation in einer Virtualbox. 
 
 Eine Kurzaufstellung der wichtigsten API-Calls findet sich unter link:./api.html[Regal-Api]
 

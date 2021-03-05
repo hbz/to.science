@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="generator" content="Asciidoctor 0.1.4">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Regal-API</title>
+<meta name="generator" content="Asciidoctor 2.0.12">
+<meta name="author" content="Jan Schnasse">
+<title>to.science.api</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
@@ -173,12 +175,6 @@ textarea { height: auto; min-height: 50px; }
 
 select { width: 100%; }
 
-object, svg { display: inline-block; vertical-align: middle; }
-
-.center { margin-left: auto; margin-right: auto; }
-
-.stretch { width: 100%; }
-
 p.lead { font-size: 1.21875em; line-height: 1.6; }
 
 .subheader, .admonitionblock td.content > .title, .audioblock > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .stemblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, table.tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title { line-height: 1.4; color: #6f6f6f; font-weight: 300; margin-top: 0.2em; margin-bottom: 0.5em; }
@@ -277,17 +273,26 @@ table tr th, table tr td { padding: 0.5625em 0.625em; font-size: inherit; color:
 table tr.even, table tr.alt, table tr:nth-of-type(even) { background: #f9f9f9; }
 table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoot tr td { display: table-cell; line-height: 1.4; }
 
-body { -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; tab-size: 4; }
+body { tab-size: 4; word-wrap: anywhere; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; }
+
+table { word-wrap: normal; }
 
 h1, h2, h3, #toctitle, .sidebarblock > .content > .title, h4, h5, h6 { line-height: 1.4; }
+
+object, svg { display: inline-block; vertical-align: middle; }
+
+.center { margin-left: auto; margin-right: auto; }
+
+.stretch { width: 100%; }
 
 .clearfix:before, .clearfix:after, .float-group:before, .float-group:after { content: " "; display: table; }
 .clearfix:after, .float-group:after { clear: both; }
 
-:not(pre):not([class^=L]) > code { font-size: inherit; font-style: normal !important; letter-spacing: 0; padding: 0; line-height: inherit; word-wrap: break-word; }
+:not(pre).nobreak { word-wrap: normal; }
+:not(pre).nowrap { white-space: nowrap; }
+:not(pre).pre-wrap { white-space: pre-wrap; }
 
-:not(pre) > code.nobreak { word-wrap: normal; }
-:not(pre) > code.nowrap { white-space: nowrap; }
+:not(pre):not([class^=L]) > code { font-size: inherit; font-style: normal !important; letter-spacing: 0; padding: 0; line-height: inherit; }
 
 pre { color: black; font-family: monospace, serif; line-height: 1.4; }
 pre code, pre pre { color: inherit; font-size: inherit; line-height: inherit; }
@@ -374,7 +379,7 @@ b.button:after { content: "]"; padding: 0 2px 0 3px; }
 #content #toc > :first-child { margin-top: 0; }
 #content #toc > :last-child { margin-bottom: 0; }
 
-#footer { max-width: 100%; background: #222222; padding: 1.25em; }
+#footer { max-width: none; background: #222222; padding: 1.25em; }
 
 #footer-text { color: #dddddd; line-height: 1.44; }
 
@@ -410,7 +415,7 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
 .admonitionblock > table td.icon { text-align: center; width: 80px; }
 .admonitionblock > table td.icon img { max-width: none; }
 .admonitionblock > table td.icon .title { font-weight: bold; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; text-transform: uppercase; }
-.admonitionblock > table td.content { padding-left: 1.125em; padding-right: 1.25em; border-left: 1px solid #dddddd; color: #555555; }
+.admonitionblock > table td.content { padding-left: 1.125em; padding-right: 1.25em; border-left: 1px solid #dddddd; color: #555555; word-wrap: anywhere; }
 .admonitionblock > table td.content > :last-child > :last-child { margin-bottom: 0; }
 
 .exampleblock > .content { border-style: solid; border-width: 1px; border-color: #e6e6e6; margin-bottom: 1.25em; padding: 1.25em; background: white; -webkit-border-radius: 0; border-radius: 0; }
@@ -424,7 +429,7 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
 
 .exampleblock > .content > :last-child > :last-child, .exampleblock > .content .olist > ol > li:last-child > :last-child, .exampleblock > .content .ulist > ul > li:last-child > :last-child, .exampleblock > .content .qlist > ol > li:last-child > :last-child, .sidebarblock > .content > :last-child > :last-child, .sidebarblock > .content .olist > ol > li:last-child > :last-child, .sidebarblock > .content .ulist > ul > li:last-child > :last-child, .sidebarblock > .content .qlist > ol > li:last-child > :last-child { margin-bottom: 0; }
 
-.literalblock pre, .listingblock > .content > pre { border: 1px solid #cccccc; -webkit-border-radius: 0; border-radius: 0; word-wrap: break-word; overflow-x: auto; padding: 0.8em 0.8em 0.65em 0.8em; font-size: 0.8125em; }
+.literalblock pre, .listingblock > .content > pre { border: 1px solid #cccccc; -webkit-border-radius: 0; border-radius: 0; overflow-x: auto; padding: 0.8em 0.8em 0.65em 0.8em; font-size: 0.8125em; }
 @media only screen and (min-width: 768px) { .literalblock pre, .listingblock > .content > pre { font-size: 0.90625em; } }
 @media only screen and (min-width: 1280px) { .literalblock pre, .listingblock > .content > pre { font-size: 1em; } }
 
@@ -489,34 +494,32 @@ pre.pygments .lineno:before { content: ""; margin-right: -0.125em; }
 .quoteblock.excerpt blockquote, .quoteblock.excerpt p, .quoteblock .quoteblock blockquote, .quoteblock .quoteblock p { color: inherit; font-size: 1.0625rem; }
 .quoteblock.excerpt .attribution, .quoteblock .quoteblock .attribution { color: inherit; text-align: left; margin-right: 0; }
 
-table.tableblock { max-width: 100%; border-collapse: separate; }
-
 p.tableblock:last-child { margin-bottom: 0; }
 
+td.tableblock > .content { margin-bottom: 1.25em; word-wrap: anywhere; }
 td.tableblock > .content > :last-child { margin-bottom: -1.25em; }
-td.tableblock > .content > :last-child.sidebarblock { margin-bottom: 0; }
 
 table.tableblock, th.tableblock, td.tableblock { border: 0 solid #dddddd; }
 
-table.grid-all > thead > tr > .tableblock, table.grid-all > tbody > tr > .tableblock { border-width: 0 1px 1px 0; }
+table.grid-all > * > tr > * { border-width: 1px; }
 
-table.grid-all > tfoot > tr > .tableblock { border-width: 1px 1px 0 0; }
+table.grid-cols > * > tr > * { border-width: 0 1px; }
 
-table.grid-cols > * > tr > .tableblock { border-width: 0 1px 0 0; }
-
-table.grid-rows > thead > tr > .tableblock, table.grid-rows > tbody > tr > .tableblock { border-width: 0 0 1px 0; }
-
-table.grid-rows > tfoot > tr > .tableblock { border-width: 1px 0 0 0; }
-
-table.grid-all > * > tr > .tableblock:last-child, table.grid-cols > * > tr > .tableblock:last-child { border-right-width: 0; }
-
-table.grid-all > tbody > tr:last-child > .tableblock, table.grid-all > thead:last-child > tr > .tableblock, table.grid-rows > tbody > tr:last-child > .tableblock, table.grid-rows > thead:last-child > tr > .tableblock { border-bottom-width: 0; }
+table.grid-rows > * > tr > * { border-width: 1px 0; }
 
 table.frame-all { border-width: 1px; }
 
+table.frame-ends { border-width: 1px 0; }
+
 table.frame-sides { border-width: 0 1px; }
 
-table.frame-topbot, table.frame-ends { border-width: 1px 0; }
+table.frame-none > colgroup + * > :first-child > *, table.frame-sides > colgroup + * > :first-child > * { border-top-width: 0; }
+
+table.frame-none > :last-child > :last-child > *, table.frame-sides > :last-child > :last-child > * { border-bottom-width: 0; }
+
+table.frame-none > * > tr > :first-child, table.frame-ends > * > tr > :first-child { border-left-width: 0; }
+
+table.frame-none > * > tr > :last-child, table.frame-ends > * > tr > :last-child { border-right-width: 0; }
 
 table.stripes-all tr, table.stripes-odd tr:nth-of-type(odd), table.stripes-even tr:nth-of-type(even), table.stripes-hover tr:hover { background: #f9f9f9; }
 
@@ -590,6 +593,8 @@ ol.lowergreek { list-style-type: lower-greek; }
 td.hdlist1, td.hdlist2 { vertical-align: top; padding: 0 0.625em; }
 
 td.hdlist1 { font-weight: bold; padding-bottom: 1.25em; }
+
+td.hdlist2 { word-wrap: anywhere; }
 
 .literalblock + .colist, .listingblock + .colist { margin-top: -0.5em; }
 
@@ -712,7 +717,7 @@ a span.icon > .fa { cursor: inherit; }
 .admonitionblock td.icon .icon-caution:before { content: "\f06d"; color: #bf3400; }
 .admonitionblock td.icon .icon-important:before { content: "\f06a"; color: #bf0000; }
 
-.conum[data-value] { display: inline-block; color: #fff !important; background-color: #222222; -webkit-border-radius: 100px; border-radius: 100px; text-align: center; font-size: 0.75em; width: 1.67em; height: 1.67em; line-height: 1.67em; font-family: "Open Sans", "DejaVu Sans", sans-serif; font-style: normal; font-weight: bold; }
+.conum[data-value] { display: inline-block; color: #fff !important; background-color: #222222; -webkit-border-radius: 50%; border-radius: 50%; text-align: center; font-size: 0.75em; width: 1.67em; height: 1.67em; line-height: 1.67em; font-family: "Open Sans", "DejaVu Sans", sans-serif; font-style: normal; font-weight: bold; }
 .conum[data-value] * { color: #fff !important; }
 .conum[data-value] + b { display: none; }
 .conum[data-value]:after { content: attr(data-value); }
@@ -723,19 +728,21 @@ b.conum * { color: inherit !important; }
 .conum:not([data-value]):empty { display: none; }
 
 .literalblock pre, .listingblock pre { background: #eeeeee; }
+
 </style>
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Regal-API</h1>
+<h1>to.science.api</h1>
+<div class="details">
 <span id="author" class="author">Jan Schnasse</span><br>
+</div>
 <div id="toc" class="toc2">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
 <li><a href="#_preface">1. Preface</a></li>
 <li><a href="#_environment">2. Environment</a></li>
-<li><a href="#_regal_api">3. regal-api</a></li>
-<li>
+<li><a href="#_regal_api">3. regal-api</a>
 <ul class="sectlevel2">
 <li><a href="#_create">3.1. Create</a></li>
 <li><a href="#_read">3.2. Read</a></li>
@@ -745,8 +752,7 @@ b.conum * { color: inherit !important; }
 <li><a href="#_misc">3.6. Misc</a></li>
 </ul>
 </li>
-<li><a href="#_etikett">4. etikett</a></li>
-<li>
+<li><a href="#_etikett">4. etikett</a>
 <ul class="sectlevel2">
 <li><a href="#_create_2">4.1. Create</a></li>
 <li><a href="#_read_2">4.2. Read</a></li>
@@ -755,35 +761,31 @@ b.conum * { color: inherit !important; }
 <li><a href="#_misc_2">4.5. Misc</a></li>
 </ul>
 </li>
-<li><a href="#_zettel">5. zettel</a></li>
-<li>
+<li><a href="#_zettel">5. zettel</a>
 <ul class="sectlevel2">
 <li><a href="#_create_3">5.1. Create</a></li>
 <li><a href="#_read_3">5.2. Read</a></li>
 <li><a href="#_search_2">5.3. Search</a></li>
 </ul>
 </li>
-<li><a href="#_skos_lookup">6. skos-lookup</a></li>
-<li>
+<li><a href="#_skos_lookup">6. skos-lookup</a>
 <ul class="sectlevel2">
 <li><a href="#_create_4">6.1. Create</a></li>
 <li><a href="#_read_4">6.2. Read</a></li>
 <li><a href="#_search_3">6.3. Search</a></li>
 </ul>
 </li>
-<li><a href="#_thumby">7. thumby</a></li>
-<li>
+<li><a href="#_thumby">7. thumby</a>
 <ul class="sectlevel2">
 <li><a href="#_read_5">7.1. Read</a></li>
 <li><a href="#_misc_3">7.2. Misc</a></li>
 </ul>
 </li>
-<li><a href="#_dokumentation">8. Dokumentation</a></li>
-<li>
+<li><a href="#_dokumentation">8. Dokumentation</a>
 <ul class="sectlevel2">
 <li><a href="#_dieses_repo_herunterladen">8.1. Dieses Repo herunterladen</a></li>
 <li><a href="#_asciidoctor_und_asciidoctor_stylesheets_installieren">8.2. Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
-<li><a href="#_doku_modifizieren_und_in_html_bersetzen">8.3. Doku modifizieren und in HTML übersetzen</a></li>
+<li><a href="#_doku_modifizieren_und_in_html_übersetzen">8.3. Doku modifizieren und in HTML übersetzen</a></li>
 </ul>
 </li>
 <li><a href="#_license">9. License</a></li>
@@ -800,7 +802,7 @@ b.conum * { color: inherit !important; }
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>Dieses Dokument kommt zusammen mit einem <a href="https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04">Vagrantfile</a> und beschreibt die wichtigsten HTTP-Calls in Regal anhand von <code>curl</code>.</p>
+<p>Dieses Dokument kommt zusammen mit einem <a href="https://github.com/hbz/to.science/tree/master/vagrant/ubuntu-14.04">Vagrantfile</a> und beschreibt die wichtigsten HTTP-Calls in Regal anhand von <code>curl</code>.</p>
 </div>
 <div class="paragraph">
 <p>Eine komplette Übersicht über das zugrundeliegende System findet sich hier: <a href="./regal.html">Regal</a></p>
@@ -848,7 +850,7 @@ export API_USER=edoweb-admin</pre>
 <h2 id="_regal_api">3. regal-api</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://github.com/edoweb/regal-api/blob/master/conf/routes">https://github.com/edoweb/regal-api/blob/master/conf/routes</a></p>
+<p><a href="https://github.com/edoweb/regal-api/blob/master/conf/routes" class="bare">https://github.com/edoweb/regal-api/blob/master/conf/routes</a></p>
 </div>
 <div class="sect2">
 <h3 id="_create">3.1. Create</h3>
@@ -1099,8 +1101,7 @@ curl $REGAL_API/resource/regal:1234.json2</pre>
 <h4 id="_purge_resource">3.4.2. Purge resource</h4>
 <div class="literalblock">
 <div class="content">
-<pre>
-curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=true";echo</pre>
+<pre>curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=true";echo</pre>
 </div>
 </div>
 </div>
@@ -1198,7 +1199,7 @@ curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=
 <h2 id="_etikett">4. etikett</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://github.com/hbz/etikett/blob/master/conf/routes">https://github.com/hbz/etikett/blob/master/conf/routes</a></p>
+<p><a href="https://github.com/hbz/etikett/blob/master/conf/routes" class="bare">https://github.com/hbz/etikett/blob/master/conf/routes</a></p>
 </div>
 <div class="sect2">
 <h3 id="_create_2">4.1. Create</h3>
@@ -1256,7 +1257,7 @@ curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=
 <h2 id="_zettel">5. zettel</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://github.com/hbz/zettel/blob/master/conf/routes">https://github.com/hbz/zettel/blob/master/conf/routes</a></p>
+<p><a href="https://github.com/hbz/zettel/blob/master/conf/routes" class="bare">https://github.com/hbz/zettel/blob/master/conf/routes</a></p>
 </div>
 <div class="sect2">
 <h3 id="_create_3">5.1. Create</h3>
@@ -1282,7 +1283,7 @@ curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=
 <h2 id="_skos_lookup">6. skos-lookup</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://github.com/hbz/skos-lookup/blob/master/conf/routes">https://github.com/hbz/skos-lookup/blob/master/conf/routes</a></p>
+<p><a href="https://github.com/hbz/skos-lookup/blob/master/conf/routes" class="bare">https://github.com/hbz/skos-lookup/blob/master/conf/routes</a></p>
 </div>
 <div class="sect2">
 <h3 id="_create_4">6.1. Create</h3>
@@ -1317,7 +1318,7 @@ curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=
 <h2 id="_thumby">7. thumby</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="https://github.com/hbz/thumby/blob/master/conf/routes">https://github.com/hbz/thumby/blob/master/conf/routes</a></p>
+<p><a href="https://github.com/hbz/thumby/blob/master/conf/routes" class="bare">https://github.com/hbz/thumby/blob/master/conf/routes</a></p>
 </div>
 <div class="sect2">
 <h3 id="_read_5">7.1. Read</h3>
@@ -1370,7 +1371,7 @@ compass compile</pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_doku_modifizieren_und_in_html_bersetzen">8.3. Doku modifizieren und in HTML übersetzen</h3>
+<h3 id="_doku_modifizieren_und_in_html_übersetzen">8.3. Doku modifizieren und in HTML übersetzen</h3>
 <div class="literalblock">
 <div class="content">
 <pre>cd Regal/doc
@@ -1406,7 +1407,7 @@ vagrant</p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-07-16 09:38:03 CEST
+Last updated 2021-03-05 10:02:46 +0100
 </div>
 </div>
 </body>
