@@ -1,36 +1,303 @@
 
-<!DOCTYPE html>
 
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Einleitung &#8212; to.science  documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
-    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Einleitung &mdash; to.science  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Preface" href="api.html" />
-    <link rel="prev" title="Welcome to to.science’s documentation!" href="index.html" />
+    <link rel="prev" title="Welcome to to.science’s documentation!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
    
-  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
-  </head><body>
-  
-
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
           
 
-          <div class="body" role="main">
+          
+            <a href="index.html" class="icon icon-home"> to.science
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Einleitung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#konzepte">Konzepte</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#objektmodell">Objektmodell</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#namespaces-und-identifier">Namespaces und Identifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deskriptive-metadaten">Deskriptive Metadaten</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wie-kommen-bibliografische-metadaten-ins-system">Wie kommen bibliografische Metadaten ins System?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#anzeige-und-darstellung">Anzeige und Darstellung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#der-hbz-verbundkatalog">Der hbz-Verbundkatalog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metadatenkonvertierung">Metadatenkonvertierung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#oai-providing">OAI-Providing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#suche">Suche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zugriffsberechtigungen-und-sichtbarkeiten">Zugriffsberechtigungen und Sichtbarkeiten</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sichtbarkeiten-operationen-rollen">Sichtbarkeiten, Operationen, Rollen</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#benutzerverwaltung">Benutzerverwaltung</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#drupal">Drupal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#regal-api">Regal-Api</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#ansichten">Ansichten</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#software">Software</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">regal-api</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#konfiguration">Konfiguration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#die-applikation">Die Applikation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#etikett">Etikett</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Konfiguration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Die Applikation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#zettel">Zettel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Konfiguration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Die Applikation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#skos-lookup">skos-lookup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Konfiguration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Die Applikation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#thumby">Thumby</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">Konfiguration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">Die Applikation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#deepzoomer">Deepzoomer</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id10">Konfiguration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#regal-drupal">regal-drupal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id11">Die Applikation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#edoweb-drupal-theme">edoweb-drupal-theme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#zbmed-drupal-theme">zbmed-drupal-theme</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#openwayback">openwayback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#heritrix">heritrix</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#wpull">wpull</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fedora-commons-3">Fedora Commons 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#mysql">MySql</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#elasticsearch-1-1">Elasticsearch 1.1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#drupal-7">Drupal 7</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#vagrant">Vagrant</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#virtualbox-installieren">VirtualBox installieren</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vagrant-installieren">Vagrant installieren</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#repository-herunterladen">Repository herunterladen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#eine-jdk8-bereitstellen">Eine JDK8 bereitstellen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#geteiltes-entwicklungsverzeichnis">Geteiltes Entwicklungsverzeichnis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vagrant-guest-additions-installieren">Vagrant Guest Additions installieren</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vagrant-host-anlegen">Vagrant Host anlegen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vagrant-starten">Vagrant starten</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#auf-der-maschine-einloggen">Auf der Maschine einloggen</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#server">Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hardware-empfehlung">Hardware Empfehlung</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unterschiede-zur-vagrant-installation">Unterschiede zur Vagrant Installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#entwicklung-java">Entwicklung Java</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#in-der-virtualbox">In der VirtualBox</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#auf-dem-eigenen-system">Auf dem eigenen System</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#administration">Administration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#aktualisierung">Aktualisierung</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#play-applikationen">Play-Applikationen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tomcat-applikation">Tomcat-Applikation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#drupal-module">Drupal-Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#speicherschicht">Speicherschicht</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#verzeichnisse">Verzeichnisse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ports">Ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logs">Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configs">Configs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#apache2">Apache2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#matomo">Matomo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#monit">Monit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scripts-und-cronjobs">Scripts und Cronjobs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">OAI-Providing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#urn-registrierung">URN-Registrierung</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#katalog-aktualisierung">Katalog-Aktualisierung</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id13">Matomo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logfile-annonymisierung">Logfile Annonymisierung</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webgatherer">Webgatherer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#backup">Backup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#entwicklung">Entwicklung</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#dokumentation">Dokumentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dieses-repo-herunterladen">Dieses Repo herunterladen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#asciidoctor-und-asciidoctor-stylesheets-installieren">Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#doku-modifizieren-und-in-html-ubersetzen">Doku modifizieren und in HTML übersetzen</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#links">Links</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#internes-wiki">Internes Wiki</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#github">Github</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#environment">Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#regal-api">regal-api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#etikett">etikett</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#zettel">zettel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#skos-lookup">skos-lookup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#thumby">thumby</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#dokumentation">Dokumentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#references">References</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">to.science</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Einleitung</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/regal.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
             
   <p>Über dieses Dokument</p>
 <p>Dieses Dokument kommt zusammen mit einem
@@ -2675,150 +2942,51 @@ License &lt;http://creativecommons.org/licenses/by-nc/4.0/&gt;&gt;`__</span></a>
 </div>
 
 
+           </div>
+           
           </div>
-          
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="api.html" class="btn btn-neutral float-right" title="Preface" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to to.science’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Jan Schnasse, Peter Reimer.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
         </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="index.html">to.science</a></h1>
 
+    </section>
 
+  </div>
+  
 
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
 
-
-
-
-
-<h3>Navigation</h3>
-<p class="caption"><span class="caption-text">Contents:</span></p>
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Einleitung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#konzepte">Konzepte</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#objektmodell">Objektmodell</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#namespaces-und-identifier">Namespaces und Identifier</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#deskriptive-metadaten">Deskriptive Metadaten</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#anzeige-und-darstellung">Anzeige und Darstellung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#der-hbz-verbundkatalog">Der hbz-Verbundkatalog</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#metadatenkonvertierung">Metadatenkonvertierung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#oai-providing">OAI-Providing</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#suche">Suche</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#zugriffsberechtigungen-und-sichtbarkeiten">Zugriffsberechtigungen und Sichtbarkeiten</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#benutzerverwaltung">Benutzerverwaltung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ansichten">Ansichten</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#software">Software</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">regal-api</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#etikett">Etikett</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#zettel">Zettel</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#skos-lookup">skos-lookup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#thumby">Thumby</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#deepzoomer">Deepzoomer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#regal-drupal">regal-drupal</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#edoweb-drupal-theme">edoweb-drupal-theme</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#zbmed-drupal-theme">zbmed-drupal-theme</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#openwayback">openwayback</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#heritrix">heritrix</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#wpull">wpull</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#fedora-commons-3">Fedora Commons 3</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#mysql">MySql</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#elasticsearch-1-1">Elasticsearch 1.1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#drupal-7">Drupal 7</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#vagrant">Vagrant</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#server">Server</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#entwicklung-java">Entwicklung Java</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#in-der-virtualbox">In der VirtualBox</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#auf-dem-eigenen-system">Auf dem eigenen System</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#administration">Administration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#aktualisierung">Aktualisierung</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#verzeichnisse">Verzeichnisse</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#ports">Ports</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#logs">Logs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configs">Configs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#apache2">Apache2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#matomo">Matomo</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#monit">Monit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scripts-und-cronjobs">Scripts und Cronjobs</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#dokumentation">Dokumentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#dieses-repo-herunterladen">Dieses Repo herunterladen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#asciidoctor-und-asciidoctor-stylesheets-installieren">Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#doku-modifizieren-und-in-html-ubersetzen">Doku modifizieren und in HTML übersetzen</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="#license">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#links">Links</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#slides">Slides</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#internes-wiki">Internes Wiki</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#github">Github</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">Preface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#environment">Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#regal-api">regal-api</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#etikett">etikett</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#zettel">zettel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#skos-lookup">skos-lookup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#thumby">thumby</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#dokumentation">Dokumentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#license">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#references">References</a></li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">Welcome to to.science’s documentation!</a></li>
-      <li>Next: <a href="api.html" title="next chapter">Preface</a></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
-        </div>
-      </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2021, Jan Schnasse, Peter Reimer.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.1</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="_sources/regal.rst.txt"
-          rel="nofollow">Page source</a>
-    </div>
-
+  
+  
     
+   
 
-    
-  </body>
+</body>
 </html>
