@@ -420,7 +420,7 @@ Dieses Repo herunterladen
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ....
-git clone https://github.com/jschnasse/Regal
+git clone https://github.com/hbz/to.science
 ....
 
 Asciidoctor und Asciidoctor-Stylesheets installieren

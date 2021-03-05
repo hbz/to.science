@@ -20,9 +20,9 @@ Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem Werkzeug asc
 
 Einleitung
 ----------
-Regal ist eine Content Repository zur Verwaltung und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am https://hbz-nrw.de[Hochschulbibliothekszentrum (hbz)] entwickelt. 
+to.science (ehemals "Regal") ist eine Content Repository zur Verwaltung und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am https://hbz-nrw.de[Hochschulbibliothekszentrum NRW (hbz)] entwickelt. 
 
-Regal basiert auf den folgenden Kerntechnologien:
+to.science basiert auf den folgenden Kerntechnologien:
 
 - Fedora Commons 3
 - Elasticsearch 1.1
@@ -35,18 +35,19 @@ Regal basiert auf den folgenden Kerntechnologien:
 Für die Webarchivierung kommen außerdem Openwayback, Heritrix und WPull zum Einsatz. 
 
 - openwayback hbz-2.3.2
+- pywb
 - heritrix 3.2.0
 - wpull
 
 Regal ist ein mehrkomponentiges System. Einzelne Komponenten sind als Webservices realisiert und kommunizieren über HTTP-APIs miteinander. Derzeit sind folgende Komponenten im Einsatz
 
-- https://github.com/edoweb/regal-api[regal-api]
-- https://github.com/hbz/etikett[etikett]
-- https://github.com/hbz/zettel[zettel]
+- https://github.com/hbz/to.science.api[to.science.api]
+- https://github.com/hbz/to.science.labels[to.science.labels]
+- https://github.com/hbz/to.science.forms[to.science.forms]
 - https://github.com/hbz/skos-lookup[skos-lookup]
 - https://github.com/hbz/thumby[thumby]
-- https://github.com/hbz/DeepZoomService/[deepzoomer]
-- https://github.com/edoweb/regal-drupal[regal-drupal]
+- https://github.com/hbz/DeepZoomService[deepzoomer]
+- https://github.com/hbz/to.science.drupal[to.science.drupal]
 
 Drupal Themes
 
@@ -1170,7 +1171,7 @@ Dieses Repo herunterladen
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ....
-git clone https://github.com/jschnasse/Regal
+git clone https://github.com/hbz/to.science
 ....
 
 Asciidoctor und Asciidoctor-Stylesheets installieren
