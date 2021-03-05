@@ -1,5 +1,5 @@
-Regal-API
-=========
+to.science.api
+==============
 Jan Schnasse
 :Author Initials: JS
 :toc: left
@@ -9,7 +9,7 @@ Jan Schnasse
 
 Über dieses Dokument
 ***********************************
-Dieses Dokument kommt zusammen mit einem https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04[Vagrantfile] und beschreibt die wichtigsten HTTP-Calls in Regal anhand von `curl`.
+Dieses Dokument kommt zusammen mit einem https://github.com/hbz/to.science/tree/master/vagrant/ubuntu-14.04[Vagrantfile] und beschreibt die wichtigsten HTTP-Calls in Regal anhand von `curl`.
 
 Eine komplette Übersicht über das zugrundeliegende System findet sich hier: link:./regal.html[Regal]
 
@@ -420,7 +420,7 @@ Dieses Repo herunterladen
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 ....
-git clone https://github.com/jschnasse/Regal
+git clone https://github.com/hbz/to.science
 ....
 
 Asciidoctor und Asciidoctor-Stylesheets installieren

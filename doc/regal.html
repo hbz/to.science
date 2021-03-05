@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="generator" content="Asciidoctor 2.0.9">
+<meta name="generator" content="Asciidoctor 2.0.12">
 <meta name="author" content="Jan Schnasse">
-<title>Regal</title>
+<title>to.science</title>
 <style>
 /*! normalize.css v2.1.2 | MIT License | git.io/normalize */
 /* ========================================================================== HTML5 display definitions ========================================================================== */
@@ -175,12 +175,6 @@ textarea { height: auto; min-height: 50px; }
 
 select { width: 100%; }
 
-object, svg { display: inline-block; vertical-align: middle; }
-
-.center { margin-left: auto; margin-right: auto; }
-
-.stretch { width: 100%; }
-
 p.lead { font-size: 1.21875em; line-height: 1.6; }
 
 .subheader, .admonitionblock td.content > .title, .audioblock > .title, .exampleblock > .title, .imageblock > .title, .listingblock > .title, .literalblock > .title, .stemblock > .title, .openblock > .title, .paragraph > .title, .quoteblock > .title, table.tableblock > .title, .verseblock > .title, .videoblock > .title, .dlist > .title, .olist > .title, .ulist > .title, .qlist > .title, .hdlist > .title { line-height: 1.4; color: #6f6f6f; font-weight: 300; margin-top: 0.2em; margin-bottom: 0.5em; }
@@ -279,17 +273,26 @@ table tr th, table tr td { padding: 0.5625em 0.625em; font-size: inherit; color:
 table tr.even, table tr.alt, table tr:nth-of-type(even) { background: #f9f9f9; }
 table thead tr th, table tfoot tr th, table tbody tr td, table tr td, table tfoot tr td { display: table-cell; line-height: 1.4; }
 
-body { -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; tab-size: 4; }
+body { tab-size: 4; word-wrap: anywhere; -moz-osx-font-smoothing: grayscale; -webkit-font-smoothing: antialiased; }
+
+table { word-wrap: normal; }
 
 h1, h2, h3, #toctitle, .sidebarblock > .content > .title, h4, h5, h6 { line-height: 1.4; }
+
+object, svg { display: inline-block; vertical-align: middle; }
+
+.center { margin-left: auto; margin-right: auto; }
+
+.stretch { width: 100%; }
 
 .clearfix:before, .clearfix:after, .float-group:before, .float-group:after { content: " "; display: table; }
 .clearfix:after, .float-group:after { clear: both; }
 
-:not(pre):not([class^=L]) > code { font-size: inherit; font-style: normal !important; letter-spacing: 0; padding: 0; line-height: inherit; word-wrap: break-word; }
+:not(pre).nobreak { word-wrap: normal; }
+:not(pre).nowrap { white-space: nowrap; }
+:not(pre).pre-wrap { white-space: pre-wrap; }
 
-:not(pre) > code.nobreak { word-wrap: normal; }
-:not(pre) > code.nowrap { white-space: nowrap; }
+:not(pre):not([class^=L]) > code { font-size: inherit; font-style: normal !important; letter-spacing: 0; padding: 0; line-height: inherit; }
 
 pre { color: black; font-family: monospace, serif; line-height: 1.4; }
 pre code, pre pre { color: inherit; font-size: inherit; line-height: inherit; }
@@ -376,7 +379,7 @@ b.button:after { content: "]"; padding: 0 2px 0 3px; }
 #content #toc > :first-child { margin-top: 0; }
 #content #toc > :last-child { margin-bottom: 0; }
 
-#footer { max-width: 100%; background: #222222; padding: 1.25em; }
+#footer { max-width: none; background: #222222; padding: 1.25em; }
 
 #footer-text { color: #dddddd; line-height: 1.44; }
 
@@ -412,7 +415,7 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
 .admonitionblock > table td.icon { text-align: center; width: 80px; }
 .admonitionblock > table td.icon img { max-width: none; }
 .admonitionblock > table td.icon .title { font-weight: bold; font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; text-transform: uppercase; }
-.admonitionblock > table td.content { padding-left: 1.125em; padding-right: 1.25em; border-left: 1px solid #dddddd; color: #555555; }
+.admonitionblock > table td.content { padding-left: 1.125em; padding-right: 1.25em; border-left: 1px solid #dddddd; color: #555555; word-wrap: anywhere; }
 .admonitionblock > table td.content > :last-child > :last-child { margin-bottom: 0; }
 
 .exampleblock > .content { border-style: solid; border-width: 1px; border-color: #e6e6e6; margin-bottom: 1.25em; padding: 1.25em; background: white; -webkit-border-radius: 0; border-radius: 0; }
@@ -426,7 +429,7 @@ table.tableblock #preamble > .sectionbody > [class="paragraph"]:first-of-type p 
 
 .exampleblock > .content > :last-child > :last-child, .exampleblock > .content .olist > ol > li:last-child > :last-child, .exampleblock > .content .ulist > ul > li:last-child > :last-child, .exampleblock > .content .qlist > ol > li:last-child > :last-child, .sidebarblock > .content > :last-child > :last-child, .sidebarblock > .content .olist > ol > li:last-child > :last-child, .sidebarblock > .content .ulist > ul > li:last-child > :last-child, .sidebarblock > .content .qlist > ol > li:last-child > :last-child { margin-bottom: 0; }
 
-.literalblock pre, .listingblock > .content > pre { border: 1px solid #cccccc; -webkit-border-radius: 0; border-radius: 0; word-wrap: break-word; overflow-x: auto; padding: 0.8em 0.8em 0.65em 0.8em; font-size: 0.8125em; }
+.literalblock pre, .listingblock > .content > pre { border: 1px solid #cccccc; -webkit-border-radius: 0; border-radius: 0; overflow-x: auto; padding: 0.8em 0.8em 0.65em 0.8em; font-size: 0.8125em; }
 @media only screen and (min-width: 768px) { .literalblock pre, .listingblock > .content > pre { font-size: 0.90625em; } }
 @media only screen and (min-width: 1280px) { .literalblock pre, .listingblock > .content > pre { font-size: 1em; } }
 
@@ -491,34 +494,32 @@ pre.pygments .lineno:before { content: ""; margin-right: -0.125em; }
 .quoteblock.excerpt blockquote, .quoteblock.excerpt p, .quoteblock .quoteblock blockquote, .quoteblock .quoteblock p { color: inherit; font-size: 1.0625rem; }
 .quoteblock.excerpt .attribution, .quoteblock .quoteblock .attribution { color: inherit; text-align: left; margin-right: 0; }
 
-table.tableblock { max-width: 100%; border-collapse: separate; }
-
 p.tableblock:last-child { margin-bottom: 0; }
 
+td.tableblock > .content { margin-bottom: 1.25em; word-wrap: anywhere; }
 td.tableblock > .content > :last-child { margin-bottom: -1.25em; }
-td.tableblock > .content > :last-child.sidebarblock { margin-bottom: 0; }
 
 table.tableblock, th.tableblock, td.tableblock { border: 0 solid #dddddd; }
 
-table.grid-all > thead > tr > .tableblock, table.grid-all > tbody > tr > .tableblock { border-width: 0 1px 1px 0; }
+table.grid-all > * > tr > * { border-width: 1px; }
 
-table.grid-all > tfoot > tr > .tableblock { border-width: 1px 1px 0 0; }
+table.grid-cols > * > tr > * { border-width: 0 1px; }
 
-table.grid-cols > * > tr > .tableblock { border-width: 0 1px 0 0; }
-
-table.grid-rows > thead > tr > .tableblock, table.grid-rows > tbody > tr > .tableblock { border-width: 0 0 1px 0; }
-
-table.grid-rows > tfoot > tr > .tableblock { border-width: 1px 0 0 0; }
-
-table.grid-all > * > tr > .tableblock:last-child, table.grid-cols > * > tr > .tableblock:last-child { border-right-width: 0; }
-
-table.grid-all > tbody > tr:last-child > .tableblock, table.grid-all > thead:last-child > tr > .tableblock, table.grid-rows > tbody > tr:last-child > .tableblock, table.grid-rows > thead:last-child > tr > .tableblock { border-bottom-width: 0; }
+table.grid-rows > * > tr > * { border-width: 1px 0; }
 
 table.frame-all { border-width: 1px; }
 
+table.frame-ends { border-width: 1px 0; }
+
 table.frame-sides { border-width: 0 1px; }
 
-table.frame-topbot, table.frame-ends { border-width: 1px 0; }
+table.frame-none > colgroup + * > :first-child > *, table.frame-sides > colgroup + * > :first-child > * { border-top-width: 0; }
+
+table.frame-none > :last-child > :last-child > *, table.frame-sides > :last-child > :last-child > * { border-bottom-width: 0; }
+
+table.frame-none > * > tr > :first-child, table.frame-ends > * > tr > :first-child { border-left-width: 0; }
+
+table.frame-none > * > tr > :last-child, table.frame-ends > * > tr > :last-child { border-right-width: 0; }
 
 table.stripes-all tr, table.stripes-odd tr:nth-of-type(odd), table.stripes-even tr:nth-of-type(even), table.stripes-hover tr:hover { background: #f9f9f9; }
 
@@ -592,6 +593,8 @@ ol.lowergreek { list-style-type: lower-greek; }
 td.hdlist1, td.hdlist2 { vertical-align: top; padding: 0 0.625em; }
 
 td.hdlist1 { font-weight: bold; padding-bottom: 1.25em; }
+
+td.hdlist2 { word-wrap: anywhere; }
 
 .literalblock + .colist, .listingblock + .colist { margin-top: -0.5em; }
 
@@ -714,7 +717,7 @@ a span.icon > .fa { cursor: inherit; }
 .admonitionblock td.icon .icon-caution:before { content: "\f06d"; color: #bf3400; }
 .admonitionblock td.icon .icon-important:before { content: "\f06a"; color: #bf0000; }
 
-.conum[data-value] { display: inline-block; color: #fff !important; background-color: #222222; -webkit-border-radius: 100px; border-radius: 100px; text-align: center; font-size: 0.75em; width: 1.67em; height: 1.67em; line-height: 1.67em; font-family: "Open Sans", "DejaVu Sans", sans-serif; font-style: normal; font-weight: bold; }
+.conum[data-value] { display: inline-block; color: #fff !important; background-color: #222222; -webkit-border-radius: 50%; border-radius: 50%; text-align: center; font-size: 0.75em; width: 1.67em; height: 1.67em; line-height: 1.67em; font-family: "Open Sans", "DejaVu Sans", sans-serif; font-style: normal; font-weight: bold; }
 .conum[data-value] * { color: #fff !important; }
 .conum[data-value] + b { display: none; }
 .conum[data-value]:after { content: attr(data-value); }
@@ -730,7 +733,7 @@ b.conum * { color: inherit !important; }
 </head>
 <body class="article toc2 toc-left">
 <div id="header">
-<h1>Regal</h1>
+<h1>to.science</h1>
 <div class="details">
 <span id="author" class="author">Jan Schnasse</span><br>
 </div>
@@ -825,7 +828,7 @@ b.conum * { color: inherit !important; }
 <div class="sidebarblock">
 <div class="content">
 <div class="paragraph">
-<p>Dieses Dokument kommt zusammen mit einem <a href="https://github.com/jschnasse/Regal/tree/master/vagrant/ubuntu-14.04">Vagrantfile</a> und beschreibt eine beispielhafte Installation von Regal. Unter <a href="#_vagrant">Vagrant</a> findet sich eine Anleitung zur Installation in einer Virtualbox.</p>
+<p>Dieses Dokument kommt zusammen mit einem <a href="https://github.com/hbz/to.science/tree/master/vagrant/ubuntu-14.04">Vagrantfile</a> und beschreibt eine beispielhafte Installation von Regal. Unter <a href="#_vagrant">Vagrant</a> findet sich eine Anleitung zur Installation in einer Virtualbox.</p>
 </div>
 <div class="paragraph">
 <p>Eine Kurzaufstellung der wichtigsten API-Calls findet sich unter <a href="./api.html">Regal-Api</a></p>
@@ -841,10 +844,10 @@ b.conum * { color: inherit !important; }
 <h2 id="_einleitung">1. Einleitung</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Regal ist eine Content Repository zur Verwaltung und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am <a href="https://hbz-nrw.de">Hochschulbibliothekszentrum (hbz)</a> entwickelt.</p>
+<p>to.science (ehemals "Regal") ist eine Content Repository zur Verwaltung und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am <a href="https://hbz-nrw.de">Hochschulbibliothekszentrum NRW (hbz)</a> entwickelt.</p>
 </div>
 <div class="paragraph">
-<p>Regal basiert auf den folgenden Kerntechnologien:</p>
+<p>to.science basiert auf den folgenden Kerntechnologien:</p>
 </div>
 <div class="ulist">
 <ul>
@@ -880,6 +883,9 @@ b.conum * { color: inherit !important; }
 <p>openwayback hbz-2.3.2</p>
 </li>
 <li>
+<p>pywb</p>
+</li>
+<li>
 <p>heritrix 3.2.0</p>
 </li>
 <li>
@@ -893,13 +899,13 @@ b.conum * { color: inherit !important; }
 <div class="ulist">
 <ul>
 <li>
-<p><a href="https://github.com/edoweb/regal-api">regal-api</a></p>
+<p><a href="https://github.com/hbz/to.science.api">to.science.api</a></p>
 </li>
 <li>
-<p><a href="https://github.com/hbz/etikett">etikett</a></p>
+<p><a href="https://github.com/hbz/to.science.labels">to.science.labels</a></p>
 </li>
 <li>
-<p><a href="https://github.com/hbz/zettel">zettel</a></p>
+<p><a href="https://github.com/hbz/to.science.forms">to.science.forms</a></p>
 </li>
 <li>
 <p><a href="https://github.com/hbz/skos-lookup">skos-lookup</a></p>
@@ -908,10 +914,10 @@ b.conum * { color: inherit !important; }
 <p><a href="https://github.com/hbz/thumby">thumby</a></p>
 </li>
 <li>
-<p><a href="https://github.com/hbz/DeepZoomService/">deepzoomer</a></p>
+<p><a href="https://github.com/hbz/DeepZoomService">deepzoomer</a></p>
 </li>
 <li>
-<p><a href="https://github.com/edoweb/regal-drupal">regal-drupal</a></p>
+<p><a href="https://github.com/hbz/to.science.drupal">to.science.drupal</a></p>
 </li>
 </ul>
 </div>
@@ -3306,7 +3312,7 @@ check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
 <h3 id="_dieses_repo_herunterladen">7.1. Dieses Repo herunterladen</h3>
 <div class="literalblock">
 <div class="content">
-<pre>git clone https://github.com/jschnasse/Regal</pre>
+<pre>git clone https://github.com/hbz/to.science</pre>
 </div>
 </div>
 </div>
@@ -3401,7 +3407,7 @@ asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2019-07-05 10:21:47 +0200
+Last updated 2021-03-05 11:04:06 +0100
 </div>
 </div>
 </body>
