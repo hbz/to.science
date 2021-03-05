@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preface &#8212; to.science  documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Einleitung" href="regal.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <p>Über dieses Dokument</p>
+<p>Dieses Dokument kommt zusammen mit einem
+<a class="reference external" href="https://github.com/hbz/to.science/tree/master/vagrant/ubuntu-14.04">Vagrantfile</a>
+und beschreibt die wichtigsten HTTP-Calls in Regal anhand von <code class="docutils literal notranslate"><span class="pre">curl</span></code>.</p>
+<p>Eine komplette Übersicht über das zugrundeliegende System findet sich
+hier: <a class="reference external" href="./regal.html">Regal</a></p>
+<p>Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem
+Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt
+<a class="reference external" href="#_dokumentation">Dokumentation</a></p>
+<div class="section" id="preface">
+<h1>Preface<a class="headerlink" href="#preface" title="Permalink to this headline">¶</a></h1>
+<p>The Regal webservices documented by example <code class="docutils literal notranslate"><span class="pre">curl</span></code>-calls. Examples are
+assumed to work in the Vagrant-Environment that comes with this
+document.</p>
+<p><strong>Have fun!</strong></p>
+</div>
+<div class="section" id="environment">
+<h1>Environment<a class="headerlink" href="#environment" title="Permalink to this headline">¶</a></h1>
+<p>Got to your server or to the Vagrant-Box, that comes with this document.</p>
+<p><code class="docutils literal notranslate"><span class="pre">vagrant</span> <span class="pre">ssh</span></code></p>
+<p>Prepare your environment to make the following <code class="docutils literal notranslate"><span class="pre">curl</span></code>-Calls work!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>source /opt/regal/conf/variables.conf
+export REGAL_API=http://$SERVER
+export API_USER=edoweb-admin
+</pre></div>
+</div>
+</div>
+<div class="section" id="regal-api">
+<h1>regal-api<a class="headerlink" href="#regal-api" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/edoweb/regal-api/blob/master/conf/routes">https://github.com/edoweb/regal-api/blob/master/conf/routes</a></p>
+<div class="section" id="create">
+<h2>Create<a class="headerlink" href="#create" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-a-new-resource">
+<h3>Create a new resource<a class="headerlink" href="#create-a-new-resource" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -i -u$API_USER:$PASSWORD -XPUT $REGAL_API/resource/regal:1234 -d&#39;{&quot;contentType&quot;:&quot;monograph&quot;,&quot;accessScheme&quot;:&quot;public&quot;}&#39; -H&#39;content-type:application/json&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-a-new-hierarchy">
+<h3>Create a new hierarchy<a class="headerlink" href="#create-a-new-hierarchy" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -i -u$API_USER:$PASSWORD -XPUT $REGAL_API/resource/regal:1235 -d&#39;{&quot;parentPid&quot;:&quot;regal:1234&quot;,&quot;contentType&quot;:&quot;file&quot;,&quot;accessScheme&quot;:&quot;public&quot;}&#39; -H&#39;content-type:application/json&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="upload-binary-data">
+<h3>Upload binary data<a class="headerlink" href="#upload-binary-data" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -F&quot;data=@$ARCHIVE_HOME/src/REGAL_API/test/resources/test.pdf;type=application/pdf&quot; -XPUT $REGAL_API/resource/regal:1235/data
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-user">
+<h3>Create User<a class="headerlink" href="#create-user" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -d&#39;{&quot;username&quot;:&quot;test&quot;,&quot;password&quot;:&quot;test&quot;,&quot;email&quot;:&quot;test@example.org&quot;,&quot;role&quot;:&quot;EDITOR&quot;}&#39; -XPUT $REGAL_API/utils/addUser -H&#39;content-type:application/json&#39;
+</pre></div>
+</div>
+</div>
+<div class="section" id="upload-metadata">
+<h3>Upload metadata<a class="headerlink" href="#upload-metadata" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -XPUT -u$API_USER:$PASSWORD -d&#39;&lt;regal:1234&gt; &lt;dc:title&gt; &quot;Ein Test Titel&quot; .&#39; -H&quot;content-type:text/plain&quot; $REGAL_API/resource/regal:1235/metadata2
+</pre></div>
+</div>
+<p>Order Child Nodes&lt;/programlisting&gt;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -XPUT -u$API_USER:$PASSWORD -d&#39;[&quot;regal:2&quot;,&quot;regal:1249&quot;]&#39; $REGAL_API/resource/regal:1/parts -H&quot;Content-Type:application/json&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="read">
+<h2>Read<a class="headerlink" href="#read" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="read-resource">
+<h3>Read resource<a class="headerlink" href="#read-resource" title="Permalink to this headline">¶</a></h3>
+<p><strong>html</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.html
+</pre></div>
+</div>
+<p><strong>json</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.json
+curl $REGAL_API/resource/regal:1234.json2
+</pre></div>
+</div>
+<p><strong>rdf</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.rdf
+</pre></div>
+</div>
+<p><strong>mets</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.mets
+</pre></div>
+</div>
+<p><strong>aleph</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.aleph
+</pre></div>
+</div>
+<p><strong>epicur</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.epicur
+</pre></div>
+</div>
+<p><strong>datacite</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.datacite
+</pre></div>
+</div>
+<p><strong>csv</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.csv
+</pre></div>
+</div>
+<p><strong>wgl</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.wgl
+</pre></div>
+</div>
+<p><strong>oaidc</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.oaidc
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-resource-tree">
+<h3>Read resource tree<a class="headerlink" href="#read-resource-tree" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/all
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/parts
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-binary-data">
+<h3>Read binary data<a class="headerlink" href="#read-binary-data" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/data
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-webgatherer-conf">
+<h3>Read Webgatherer Conf<a class="headerlink" href="#read-webgatherer-conf" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/conf
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-ordering-of-childs">
+<h3>Read Ordering of Childs<a class="headerlink" href="#read-ordering-of-childs" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/seq
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-user">
+<h3>Read user<a class="headerlink" href="#read-user" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="n">implemented</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="read-adhoc-linked-data">
+<h3>Read Adhoc Linked Data<a class="headerlink" href="#read-adhoc-linked-data" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/adhoc/uri/$(echo test |base64)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="update">
+<h2>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="update-resource">
+<h3>Update Resource<a class="headerlink" href="#update-resource" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="update-metadata">
+<h3>Update Metadata<a class="headerlink" href="#update-metadata" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -s -u$API_USER:$REGAL_PASSWORD -XPOST $REGAL_API/utils/updateMetadata/regal:1234 -H&quot;accept: application/json&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-urn">
+<h3>Add URN<a class="headerlink" href="#add-urn" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">lobidify</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">addUrn</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">replaceUrn</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="enrich">
+<h3>Enrich<a class="headerlink" href="#enrich" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">resource</span><span class="o">/</span><span class="p">:</span><span class="n">pid</span><span class="o">/</span><span class="n">metadata</span><span class="o">/</span><span class="n">enrich</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="delete">
+<h2>Delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="delete-resource">
+<h3>Delete resource<a class="headerlink" href="#delete-resource" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE &quot;$REGAL_API/resource/regal:1234&quot;;echo
+</pre></div>
+</div>
+</div>
+<div class="section" id="purge-resource">
+<h3>Purge resource<a class="headerlink" href="#purge-resource" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE &quot;$REGAL_API/resource/regal:1234?purge=true&quot;;echo
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-part-of-resource">
+<h3>Delete part of resource<a class="headerlink" href="#delete-part-of-resource" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/seq
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/metadata
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/metadata2
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/data
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/dc
+</pre></div>
+</div>
+</div>
+<div class="section" id="delete-user">
+<h3>Delete user<a class="headerlink" href="#delete-user" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="n">implemented</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="search">
+<h2>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="simple-search">
+<h3>Simple Search<a class="headerlink" href="#simple-search" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">find</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">resource</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="facetted-search">
+<h3>Facetted Search<a class="headerlink" href="#facetted-search" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="search-for-field">
+<h3>Search for field<a class="headerlink" href="#search-for-field" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="misc">
+<h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="load-metadata-from-lobid">
+<h3>Load metadata from Lobid<a class="headerlink" href="#load-metadata-from-lobid" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -XPOST &quot;$REGAL_API/utils/lobidify/regal:1234?alephid=HT018920238&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="reread-labels-from-etikett">
+<h3>Reread Labels from etikett<a class="headerlink" href="#reread-labels-from-etikett" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/context.json
+</pre></div>
+</div>
+</div>
+<div class="section" id="reindex-resource">
+<h3>Reindex resource<a class="headerlink" href="#reindex-resource" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/utils/index/regal:1234 -H&quot;accept: application/json&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="etikett">
+<h1>etikett<a class="headerlink" href="#etikett" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/hbz/etikett/blob/master/conf/routes">https://github.com/hbz/etikett/blob/master/conf/routes</a></p>
+<div class="section" id="id1">
+<h2>Create<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="add-labels-to-database">
+<h3>Add Labels to Database<a class="headerlink" href="#add-labels-to-database" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -XPOST -F&quot;data=@$ARCHIVE_HOME/src/REGAL_API/conf/labels.json&quot; -F&quot;format-cb=Json&quot; $REGAL_API/tools/etikett -i -L
+</pre></div>
+</div>
+</div>
+<div class="section" id="add-label">
+<h3>Add Label<a class="headerlink" href="#add-label" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Read<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="s2">&quot;$REGAL_API/tools/etikett&quot;</span> <span class="o">-</span><span class="n">H</span><span class="s2">&quot;accept: application/json&quot;</span>
+</pre></div>
+</div>
+<div class="section" id="read-etikett">
+<h3>Read Etikett<a class="headerlink" href="#read-etikett" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/tools/etikett?url=http%3A%2F%2Fpurl.orms%2Fissued -H&quot;accept: application/json&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Update<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id4">
+<h2>Delete<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="delete-cache">
+<h3>Delete Cache<a class="headerlink" href="#delete-cache" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -XDELETE -u$API_USER:$PASSWORD $REGAL_API/tools/etikett/cache
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>Misc<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="zettel">
+<h1>zettel<a class="headerlink" href="#zettel" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/hbz/zettel/blob/master/conf/routes">https://github.com/hbz/zettel/blob/master/conf/routes</a></p>
+<div class="section" id="id6">
+<h2>Create<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-rdf-metadata-from-form-data">
+<h3>Create RDF-Metadata from Form-Data<a class="headerlink" href="#create-rdf-metadata-from-form-data" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>Read<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="read-html-form">
+<h3>Read HTML-Form<a class="headerlink" href="#read-html-form" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>Search<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="skos-lookup">
+<h1>skos-lookup<a class="headerlink" href="#skos-lookup" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/hbz/skos-lookup/blob/master/conf/routes">https://github.com/hbz/skos-lookup/blob/master/conf/routes</a></p>
+<div class="section" id="id9">
+<h2>Create<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="create-new-index">
+<h3>Create new Index<a class="headerlink" href="#create-new-index" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -i -X POST -H &quot;Content-Type: multipart/form-data&quot; $REGAL_API/tools/skos-lookup/upload -F &quot;data=@/tmp/skos-lookup/test/resources/agrovoc_2016-07-15_lod.nt.gz&quot; -F&quot;index=agrovoc_test&quot; -F&quot;format=NTRIPLES&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>Read<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">XGET</span> <span class="s1">&#39;$REGAL_API/tools/skos-lookup/autocomplete?lang=de&amp;q=Erdnus&amp;callback=mycallback&amp;index=agrovoc_test&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>Search<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/tools/skos-lookup/search?q=http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_13551&amp;lang=de&amp;index=agrovoc
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="thumby">
+<h1>thumby<a class="headerlink" href="#thumby" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/hbz/thumby/blob/master/conf/routes">https://github.com/hbz/thumby/blob/master/conf/routes</a></p>
+<div class="section" id="id12">
+<h2>Read<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">XGET</span> <span class="s2">&quot;$REGAL_API/tools/thumby?url=https://www.gravatar.com/avatar/5fefc19b7875e951c7ea9bfdfc06676d&amp;size=200&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id13">
+<h2>Misc<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="dokumentation">
+<h1>Dokumentation<a class="headerlink" href="#dokumentation" title="Permalink to this headline">¶</a></h1>
+<p>Diese Dokumentation ist mit asciidoc geschrieben und wurde mit
+asciidoctor in HTML übersetzt. Dazu wurde das foundation.css Stylesheet
+aus dem asciidoctor-stylesheet-factory Repository verwendet.</p>
+<p>Die Schritte, um an der Doku zu arbeiten sind folgenden</p>
+<div class="section" id="dieses-repo-herunterladen">
+<h2>Dieses Repo herunterladen<a class="headerlink" href="#dieses-repo-herunterladen" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">hbz</span><span class="o">/</span><span class="n">to</span><span class="o">.</span><span class="n">science</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="asciidoctor-und-asciidoctor-stylesheets-installieren">
+<h2>Asciidoctor und Asciidoctor-Stylesheets installieren<a class="headerlink" href="#asciidoctor-und-asciidoctor-stylesheets-installieren" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpg</span> <span class="o">--</span><span class="n">keyserver</span> <span class="n">hkp</span><span class="p">:</span><span class="o">//</span><span class="n">pool</span><span class="o">.</span><span class="n">sks</span><span class="o">-</span><span class="n">keyservers</span><span class="o">.</span><span class="n">net</span> <span class="o">--</span><span class="n">recv</span><span class="o">-</span><span class="n">keys</span> <span class="mi">409</span><span class="n">B6B1796C275462A1703113804BB82D39DC0E3</span> <span class="mi">7</span><span class="n">D2BAF1CF37B13E2069D6956105BD0E739499BDB</span>
+\<span class="n">curl</span> <span class="o">-</span><span class="n">sSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">get</span><span class="o">.</span><span class="n">rvm</span><span class="o">.</span><span class="n">io</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">bash</span> <span class="o">-</span><span class="n">s</span> <span class="n">stable</span> <span class="o">--</span><span class="n">ruby</span>
+<span class="c1">#login again</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">bundler</span>
+<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gem</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">asciidoctor</span><span class="o">/</span><span class="n">asciidoctor</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">asciidoctor</span><span class="o">/</span><span class="n">asciidoctor</span><span class="o">-</span><span class="n">stylesheet</span><span class="o">-</span><span class="n">factory</span>
+<span class="n">cd</span> <span class="n">asciidoctor</span>
+<span class="n">sudo</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">asciidoctor</span>
+<span class="n">cd</span> <span class="o">../</span><span class="n">asciidoctor</span><span class="o">-</span><span class="n">stylesheet</span><span class="o">-</span><span class="n">factory</span>
+<span class="n">bundle</span> <span class="n">install</span>
+<span class="n">compass</span> <span class="nb">compile</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="doku-modifizieren-und-in-html-ubersetzen">
+<h2>Doku modifizieren und in HTML übersetzen<a class="headerlink" href="#doku-modifizieren-und-in-html-ubersetzen" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Regal</span><span class="o">/</span><span class="n">doc</span>
+<span class="n">editor</span> <span class="n">api</span><span class="o">.</span><span class="n">asciidoc</span>
+<span class="n">asciidoctor</span> <span class="o">-</span><span class="n">astylesheet</span><span class="o">=</span><span class="n">foundation</span><span class="o">.</span><span class="n">css</span> <span class="o">-</span><span class="n">astylesdir</span><span class="o">=../../</span><span class="n">asciidoctor</span><span class="o">-</span><span class="n">stylesheet</span><span class="o">-</span><span class="n">factory</span><span class="o">/</span><span class="n">stylesheets</span> <span class="n">api</span><span class="o">.</span><span class="n">asciidoc</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="license">
+<h1>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h1>
+<p><img alt="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></p>
+<p>This work is licensed under a <a href="#id14"><span class="problematic" id="id15">`Creative Commons
+Attribution-NonCommercial 4.0 International
+License &lt;http://creativecommons.org/licenses/by-nc/4.0/&gt;&gt;`__</span></a>.</p>
+</div>
+<div class="section" id="references">
+<h1>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h1>
+<p>regal-scripts vagrant</p>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">to.science</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="regal.html">Einleitung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regal.html#konzepte">Konzepte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regal.html#software">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regal.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regal.html#entwicklung-java">Entwicklung Java</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regal.html#administration">Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regal.html#dokumentation">Dokumentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regal.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regal.html#links">Links</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Preface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#environment">Environment</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#regal-api">regal-api</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create">Create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#read">Read</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update">Update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delete">Delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#search">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#misc">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#etikett">etikett</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id1">Create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id2">Read</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id3">Update</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id4">Delete</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#zettel">zettel</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id6">Create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id7">Read</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">Search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#skos-lookup">skos-lookup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id9">Create</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id10">Read</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id11">Search</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#thumby">thumby</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id12">Read</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id13">Misc</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#dokumentation">Dokumentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#dieses-repo-herunterladen">Dieses Repo herunterladen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#asciidoctor-und-asciidoctor-stylesheets-installieren">Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#doku-modifizieren-und-in-html-ubersetzen">Doku modifizieren und in HTML übersetzen</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#references">References</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="regal.html" title="previous chapter">Einleitung</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Jan Schnasse, Peter Reimer.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.5.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/api.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
