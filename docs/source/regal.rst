@@ -1,22 +1,7 @@
-Über dieses Dokument
-
-Dieses Dokument kommt zusammen mit einem
-`Vagrantfile <https://github.com/hbz/to.science/tree/master/vagrant/ubuntu-14.04>`__
-und beschreibt eine beispielhafte Installation von Regal. Unter
-`Vagrant <#_vagrant>`__ findet sich eine Anleitung zur Installation in
-einer Virtualbox.
-
-Eine Kurzaufstellung der wichtigsten API-Calls findet sich unter
-`Regal-Api <./api.html>`__
-
-Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem
-Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt
-`Dokumentation <#_dokumentation>`__
-
-.. __einleitung:
+.. _einleitung:
 
 Einleitung
-==========
+**********
 
 to.science (ehemals "Regal") ist eine Content Repository zur Verwaltung
 und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am
@@ -79,19 +64,18 @@ angesprochen werden. Die folgende Abbildung verschafft einen groben
 Überblick über eine typische Regal-Installation und die angebundenen
 Drittsysteme.
 
-.. figure:: ./resources/images/regal-arch-4.jpeg
-   :alt: Typische Regal-Installation mit Drupal Frontend,
-   Backendkomponenten und angebundenen Drittsytemen
+.. figure:: resources/images/regal-arch-4.jpeg
+   :alt: Typische Regal-Installation mit Drupal Frontend, Backendkomponenten und angebundenen Drittsytemen
 
-   Typische Regal-Installation mit Drupal Frontend, Backendkomponenten
-   und angebundenen Drittsytemen
+   Typische Regal-Installation mit Drupal Frontend, Backendkomponenten und angebundenen Drittsytemen
 
-.. __konzepte:
+
+.. _konzepte:
 
 Konzepte
-========
+********
 
-.. __objektmodell:
+.. _objektmodell:
 
 Objektmodell
 ------------
@@ -174,7 +158,7 @@ gespeicherten Inhalte werden "unmanaged" lediglich verlinkt. Im Fedora
 Objektspeicher wird nur eine Datei mit der ensprechenden Referenz
 abgelegt.
 
-.. __namespaces_und_identifier:
+.. _namespaces_und_identifier:
 
 Namespaces und Identifier
 -------------------------
@@ -208,7 +192,7 @@ Einsatz.
    |                       |                       | 00/regal/_all/regal:1 |
    +-----------------------+-----------------------+-----------------------+
 
-.. __deskriptive_metadaten:
+.. _deskriptive_metadaten:
 
 Deskriptive Metadaten
 ---------------------
@@ -262,7 +246,7 @@ ohne den Etikett-Services, allerdings nur mit eingeschränkter
 Funktionalität; beispielsweise fallen Anzeigen von verlinkten Ressourcen
 (und das ist in Regal fast alles) weniger schön aus.
 
-.. __wie_kommen_bibliografische_metadaten_ins_system:
+.. _wie_kommen_bibliografische_metadaten_ins_system:
 
 Wie kommen bibliografische Metadaten ins System?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -304,7 +288,7 @@ Zettel unterstützt zur Zeit folgende Linked-Data-Quellen:
 
 -  `Open Street Maps Koordinaten <https://www.openstreetmap.org>`__
 
-.. __anzeige_und_darstellung:
+.. _anzeige_und_darstellung:
 
 Anzeige und Darstellung
 -----------------------
@@ -332,7 +316,7 @@ hochauflösenden Bildern über das Tool
 `OpenSeadragon <https://openseadragon.github.io/>`__ erlaubt. Video- und
 Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.
 
-.. __der_hbz_verbundkatalog:
+.. _der_hbz_verbundkatalog:
 
 Der hbz-Verbundkatalog
 ----------------------
@@ -342,7 +326,7 @@ einen Cronjob regelmäßig aktualisiert werden. Außerdem können diese
 Daten über OAI-PMH an den Verbundkatalog zurückgeliefert werden, so dass
 dieser, Links auf die Volltexte erhält.
 
-.. __metadatenkonvertierung:
+.. _metadatenkonvertierung:
 
 Metadatenkonvertierung
 ----------------------
@@ -356,7 +340,7 @@ und ist im wesentlichen eine JSON-LD-Darstellung, die mit Hilfe der in
 `Etikett <#_etikett>`__ hinterlegten Konfiguration aus den
 bibliografischen Metadaten gewonnen wurde.
 
-.. __oai_providing:
+.. _oai_providing:
 
 OAI-Providing
 -------------
@@ -438,7 +422,7 @@ OAI-Sets zugeordnet und in unterschiedlichen Formaten angeboten.
    |                                   | eingeliefert wurden.              |
    +-----------------------------------+-----------------------------------+
 
-.. __suche:
+.. _suche:
 
 Suche
 -----
@@ -448,7 +432,7 @@ befüllt. Die Konvertierung basiert im wesentlichen auf den
 bibliografischen Metadaten der einzelnen Ressourcen und wir mit Hilfe
 der in `Etikett <#_etikett>`__ hinterlegten Konfiguration erzeugt.
 
-.. __zugriffsberechtigungen_und_sichtbarkeiten:
+.. _zugriffsberechtigungen_und_sichtbarkeiten:
 
 Zugriffsberechtigungen und Sichtbarkeiten
 -----------------------------------------
@@ -469,7 +453,7 @@ Die Konfiguration hat Auswirkungen auf die Sichtbarkeit einer
 Publikation in den unterschiedlichen Systemteilen. Die folgende Tabelle
 veranschaulicht den derzeitigen Stand der Implementierung.
 
-.. __sichtbarkeiten_operationen_rollen:
+.. _sichtbarkeiten_operationen_rollen:
 
 Sichtbarkeiten, Operationen, Rollen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -516,7 +500,7 @@ Sichtbarkeiten, Operationen, Rollen
    | private                           | ADMIN,EDITOR                      |
    +-----------------------------------+-----------------------------------+
 
-.. __benutzerverwaltung:
+.. _benutzerverwaltung:
 
 Benutzerverwaltung
 ------------------
@@ -526,7 +510,7 @@ können auch in der `regal-api <#_regal_api_2>`__ Benutzer angelegt
 werden, jedoch ist die Implementierung in diesem Bereich erst
 rudimentär.
 
-.. __drupal:
+.. _drupal:
 
 Drupal
 ~~~~~~
@@ -542,7 +526,7 @@ gesetzt. Die Drupal-BenutzerId wird als Metadatum in Form eines
 proprietären HTTP-Headers mit an `regal-api <#_regal_api_2>`__
 geliefert.
 
-.. __regal_api:
+.. _regal_api:
 
 Regal-Api
 ~~~~~~~~~
@@ -551,7 +535,7 @@ Auch in regal-api können Api-Benutzer angelegt werden. Zur
 Benutzerverwaltung wird eine MySQL-Datenbank eingesetzt, in der die
 Passworte der Nutzer abgelegt sind.
 
-.. __ansichten:
+.. _ansichten:
 
 Ansichten
 ---------
@@ -596,13 +580,13 @@ konfiguriert ist, wird auch ins JSON und damit ins HTML und in den
 Suchindex übernommen. Dinge, die im HTML nicht benötigt werden, werden
 über CSS wieder ausgeblendet.
 
-.. __software:
+.. _software:
 
 Software
-========
+********
 
 Die technische Dokumentation der HTTP-Schnittstelle findet sich unter
-`API Doku <./api.html>`__
+:ref:`api_documentation`:
 
 Nachfolgend sei eine Innenansicht der einzelnen Module aufgestellt. Die
 Integration der Module erfolgt i.d.R. über HTTPs. Die Module werden über
@@ -616,7 +600,7 @@ ihren Konfigurationsdateien miteinander verbunden werden.
 
    Regal Abhängigkeiten
 
-.. __regal_api_2:
+.. _regal_api_2:
 
 regal-api
 ---------
@@ -669,7 +653,7 @@ operiert auf `Fedora Commons 3 <#_fedora_commons_3>`__,
 werden `heritrix <#_heritrix>`__, `wpull <#_wpull>`__ und
 `openwayback <#_openwayback>`__ angebunden.
 
-.. __konfiguration:
+.. _konfiguration:
 
 Konfiguration
 ~~~~~~~~~~~~~
@@ -810,7 +794,7 @@ Konfiguration
    |                                   | vorgeschlagen                     |
    +-----------------------------------+-----------------------------------+
 
-.. __die_applikation:
+.. _die_applikation:
 
 Die Applikation
 ~~~~~~~~~~~~~~~
@@ -968,7 +952,7 @@ Die Applikation
    | views.tags                        | Hilfstemplates.                   |
    +-----------------------------------+-----------------------------------+
 
-.. __etikett:
+.. _etikett:
 
 Etikett
 -------
@@ -1073,7 +1057,7 @@ verwendet.
 
 -  Als Cache
 
-.. __konfiguration_2:
+.. _konfiguration_2:
 
 Konfiguration
 ~~~~~~~~~~~~~
@@ -1123,7 +1107,7 @@ Konfiguration
    |                                   | werden kann.                      |
    +-----------------------------------+-----------------------------------+
 
-.. __die_applikation_2:
+.. _die_applikation_2:
 
 Die Applikation
 ~~~~~~~~~~~~~~~
@@ -1154,7 +1138,7 @@ Die Applikation
    |                                   | aufrufen.                         |
    +-----------------------------------+-----------------------------------+
 
-.. __zettel:
+.. _zettel:
 
 Zettel
 ------
@@ -1208,7 +1192,7 @@ von dort durch die Applikation entgegengenommen werden.
 
    Zettel Datenfluss
 
-.. __konfiguration_3:
+.. _konfiguration_3:
 
 Konfiguration
 ~~~~~~~~~~~~~
@@ -1252,7 +1236,7 @@ Konfiguration
    |                                   | einer Datei                       |
    +-----------------------------------+-----------------------------------+
 
-.. __die_applikation_3:
+.. _die_applikation_3:
 
 Die Applikation
 ~~~~~~~~~~~~~~~
@@ -1308,7 +1292,7 @@ Die Applikation
    |                                   | eigentlichen Formulare.           |
    +-----------------------------------+-----------------------------------+
 
-.. __skos_lookup:
+.. _skos_lookup:
 
 skos-lookup
 -----------
@@ -1351,7 +1335,7 @@ Formularen von `Zettel <#_zettel>`__ fachgerecht angelinkt werden.
 
    SKOS-Lookup Beispiel 2
 
-.. __konfiguration_4:
+.. _konfiguration_4:
 
 Konfiguration
 ~~~~~~~~~~~~~
@@ -1383,7 +1367,7 @@ Konfiguration
    |                                   | von: Jörg Prante)                 |
    +-----------------------------------+-----------------------------------+
 
-.. __die_applikation_4:
+.. _die_applikation_4:
 
 Die Applikation
 ~~~~~~~~~~~~~~~
@@ -1413,7 +1397,7 @@ Die Applikation
    |                                   | Demonstration der Nutzung.        |
    +-----------------------------------+-----------------------------------+
 
-.. __thumby:
+.. _thumby:
 
 Thumby
 ------
@@ -1445,7 +1429,7 @@ erstellen. Die Daten werden dauerhaft auf der Platte abgelegt und
 zukünftige Requests, die auf dasselbe Bild verweisen werden direkt aus
 dem Speicher von `Thumby <#_thumby>`__ beantwortet.
 
-.. __konfiguration_5:
+.. _konfiguration_5:
 
 Konfiguration
 ~~~~~~~~~~~~~
@@ -1466,7 +1450,7 @@ Konfiguration
    |                                   | einer Datei                       |
    +-----------------------------------+-----------------------------------+
 
-.. __die_applikation_5:
+.. _die_applikation_5:
 
 Die Applikation
 ~~~~~~~~~~~~~~~
@@ -1488,7 +1472,7 @@ Die Applikation
    |                                   | Upload-Formular.                  |
    +-----------------------------------+-----------------------------------+
 
-.. __deepzoomer:
+.. _deepzoomer:
 
 Deepzoomer
 ----------
@@ -1518,7 +1502,7 @@ diese Weise kann in Regal eine Viewer-Komponente realisiert werden, die
 die Anzeige sehr großer, hochaufgelöster Bilder im Webbrowser
 unterstützt.
 
-.. __konfiguration_6:
+.. _konfiguration_6:
 
 Konfiguration
 ~~~~~~~~~~~~~
@@ -1534,7 +1518,7 @@ Konfiguration
    |                                   | abrufbar ist, gesetzt.            |
    +-----------------------------------+-----------------------------------+
 
-.. __regal_drupal:
+.. _regal_drupal:
 
 regal-drupal
 ------------
@@ -1560,7 +1544,7 @@ Ein Drupal 7 Modul über das Funktionalitäten der
 bietet Oberflächen zur Konfiguration, zur Suche und zur Verwaltung von
 Objekthierarchien.
 
-.. __die_applikation_6:
+.. _die_applikation_6:
 
 Die Applikation
 ~~~~~~~~~~~~~~~
@@ -1587,7 +1571,7 @@ Die Applikation
    |                                   | finden.                           |
    +-----------------------------------+-----------------------------------+
 
-.. __edoweb_drupal_theme:
+.. _edoweb_drupal_theme:
 
 edoweb-drupal-theme
 -------------------
@@ -1612,7 +1596,7 @@ edoweb-drupal-theme
 Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche
 für den Server https://edoweb-rlp.de
 
-.. __zbmed_drupal_theme:
+.. _zbmed_drupal_theme:
 
 zbmed-drupal-theme
 ------------------
@@ -1637,7 +1621,7 @@ zbmed-drupal-theme
 Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche
 für den Server https://repository.publisso.de
 
-.. __openwayback:
+.. _openwayback:
 
 openwayback
 -----------
@@ -1668,7 +1652,7 @@ installiert werden will. Sie kann Verzeichnisse mit WARC-Dateien
 indexieren und darauf eine Oberfläche zur Recherche und zur Navigation
 aufbauen.
 
-.. __heritrix:
+.. _heritrix:
 
 heritrix
 --------
@@ -1678,7 +1662,7 @@ standalone als Webapplikation und bietet eine Weboberfläche zur
 Verwaltung von Sammelvorgängen an. Eingesammelte Webseiten werden als
 WARC-Dateien in einem bestimmten Bereich der Platte abgelegt.
 
-.. __wpull:
+.. _wpull:
 
 wpull
 -----
@@ -1686,7 +1670,7 @@ wpull
 Wpull ist ein Kommandozeilen-Wermzeug zur Sammlung von Webseiten. Mit
 WPull können WARC-Dateien erzeugt werden.
 
-.. __fedora_commons_3:
+.. _fedora_commons_3:
 
 Fedora Commons 3
 ----------------
@@ -1697,14 +1681,14 @@ alle Daten im Dateisystem (auch) ab. Mit den Daten aus dem Dateisystem
 lässt sich eine komplette Fedora-Commons 3 Instanz von grundauf neu
 aufbauen.
 
-.. __mysql:
+.. _mysql:
 
 MySql
 -----
 
 MySQL wir von Fedora, regal-api und etikett verwendet.
 
-.. __elasticsearch_1_1:
+.. _elasticsearch_1_1:
 
 Elasticsearch 1.1
 -----------------
@@ -1713,19 +1697,19 @@ Elasticsearch ist eine Suchmaschine und wird von
 `regal-api <#_regal_api_2>`__ verwendet. Auch
 `regal-drupal <#_regal_drupal>`__ greift auf den Index zu.
 
-.. __drupal_7:
+.. _drupal_7:
 
 Drupal 7
 --------
 
 Über Drupal 7
 
-.. __installation:
+.. _installation:
 
 Installation
 ============
 
-.. __vagrant:
+.. _vagrant:
 
 Vagrant
 -------
@@ -1746,7 +1730,7 @@ Die VirtualBox hat folgendes Setup
 
 -  ram 4096M
 
-.. __virtualbox_installieren:
+.. _virtualbox_installieren:
 
 VirtualBox installieren
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -1755,7 +1739,7 @@ VirtualBox installieren
 
    sudo apt-get install virtualbox
 
-.. __vagrant_installieren:
+.. _vagrant_installieren:
 
 Vagrant installieren
 ~~~~~~~~~~~~~~~~~~~~
@@ -1766,7 +1750,7 @@ Vagrant installieren
    wget https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.deb
    sudo dpkg -i vagrant_2.2.3_x86_64.deb
 
-.. __repository_herunterladen:
+.. _repository_herunterladen:
 
 Repository herunterladen
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1776,7 +1760,7 @@ Repository herunterladen
    git clone https://github.com/jschnasse/Regal
    cd Regal/vagrant/ubuntu-14.04
 
-.. __eine_jdk8_bereitstellen:
+.. _eine_jdk8_bereitstellen:
 
 Eine JDK8 bereitstellen
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -1790,7 +1774,7 @@ Vagrant-Directories bereitstellen.
    mkdir bin
    mv ~/downloads/jdk.... bin/java8.tar.gz
 
-.. __geteiltes_entwicklungsverzeichnis:
+.. _geteiltes_entwicklungsverzeichnis:
 
 Geteiltes Entwicklungsverzeichnis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1799,7 +1783,7 @@ Geteiltes Entwicklungsverzeichnis
 
    mkdir ~/regal-dev
 
-.. __vagrant_guest_additions_installieren:
+.. _vagrant_guest_additions_installieren:
 
 Vagrant Guest Additions installieren
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1808,7 +1792,7 @@ Vagrant Guest Additions installieren
 
    vagrant plugin install vagrant-vbguest && vagrant reload
 
-.. __vagrant_host_anlegen:
+.. _vagrant_host_anlegen:
 
 Vagrant Host anlegen
 ~~~~~~~~~~~~~~~~~~~~
@@ -1823,7 +1807,7 @@ IP ``192.168.50.4`` für die Box konfiguriert. Über die ``FRONTEND`` und
 
    sudo printf "192.168.50.4 regal.vagrant api.regal.vagrant" >> /etc/hosts
 
-.. __vagrant_starten:
+.. _vagrant_starten:
 
 Vagrant starten
 ~~~~~~~~~~~~~~~
@@ -1832,7 +1816,7 @@ Vagrant starten
 
    vagrant up
 
-.. __auf_der_maschine_einloggen:
+.. _auf_der_maschine_einloggen:
 
 Auf der Maschine einloggen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1841,7 +1825,7 @@ Auf der Maschine einloggen
 
    vagrant ssh
 
-.. __server:
+.. _server:
 
 Server
 ------
@@ -1854,7 +1838,7 @@ Verzeichnis mit einem JDK aufgebaut werden. Danach erfolgt die
 Installation unter ``/opt/regal`` und mit einem Benutzer ``regal`` (vgl.
 ``variables.conf``)
 
-.. __hardware_empfehlung:
+.. _hardware_empfehlung:
 
 Hardware Empfehlung
 ~~~~~~~~~~~~~~~~~~~
@@ -1865,7 +1849,7 @@ Hardware Empfehlung
 
 -  ram 32 G
 
-.. __unterschiede_zur_vagrant_installation:
+.. _unterschiede_zur_vagrant_installation:
 
 Unterschiede zur Vagrant Installation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1891,12 +1875,12 @@ und folgende Zeilen hinein kopieren.
 
    export CATALINA_OPTS
 
-.. __entwicklung_java:
+.. _entwicklung_java:
 
 Entwicklung Java
 ================
 
-.. __in_der_virtualbox:
+.. _in_der_virtualbox:
 
 In der VirtualBox
 -----------------
@@ -1927,7 +1911,7 @@ Guest-VirtualBox nicht richtig. D.h. nach Code-Änderungen im Host, muss
 auf der Virtualbox zunächst mit ``Ctrl+D`` und ``run`` neu gestartet
 werden, damit die Änderungen sichtbar werden.
 
-.. __auf_dem_eigenen_system:
+.. _auf_dem_eigenen_system:
 
 Auf dem eigenen System
 ----------------------
@@ -1957,17 +1941,17 @@ entsprechend editieren und ausführen.
    #
    editor regal-install.sh
 
-.. __administration:
+.. _administration:
 
 Administration
 ==============
 
-.. __aktualisierung:
+.. _aktualisierung:
 
 Aktualisierung
 --------------
 
-.. __play_applikationen:
+.. _play_applikationen:
 
 Play-Applikationen
 ~~~~~~~~~~~~~~~~~~
@@ -1988,14 +1972,14 @@ Der komplette Aktualisierungsprozess erfolgt automatisch. Die alte
 Version bleibt immer auf dem Server liegen, so dass bei Bedarf wieder
 zurück gewechselt werden kann.
 
-.. __tomcat_applikation:
+.. _tomcat_applikation:
 
 Tomcat-Applikation
 ~~~~~~~~~~~~~~~~~~
 
 Es wird ein ``war``-Container erzeugt und im Tomcat ``hot``-deployed.
 
-.. __drupal_module:
+.. _drupal_module:
 
 Drupal-Module
 ~~~~~~~~~~~~~
@@ -2005,7 +1989,7 @@ in den Wartungszustand versetzt (per drush oder über die Oberfläche).
 Danach wird die aktualisierte Version einfach per Git geholt. Bei
 Datenbankupdates wird noch ein Drupal-Updateskript ausgeführt.
 
-.. __speicherschicht:
+.. _speicherschicht:
 
 Speicherschicht
 ~~~~~~~~~~~~~~~
@@ -2013,7 +1997,7 @@ Speicherschicht
 Aktualisierungen von MySQL, Elasticsearch und Fedora gehen mit einer
 Downtime einher.
 
-.. __verzeichnisse:
+.. _verzeichnisse:
 
 Verzeichnisse
 -------------
@@ -2051,7 +2035,7 @@ Verzeichnisse
    | /opt/regal/var                    | drupal und Datenverzeichnisse.    |
    +-----------------------------------+-----------------------------------+
 
-.. __ports:
+.. _ports:
 
 Ports
 -----
@@ -2080,7 +2064,7 @@ Ports
    | 9004/9104                         | skos-lookup                       |
    +-----------------------------------+-----------------------------------+
 
-.. __logs:
+.. _logs:
 
 Logs
 ----
@@ -2111,7 +2095,7 @@ Logs
    | regal-scripts                     | /opt/regal/logs                   |
    +-----------------------------------+-----------------------------------+
 
-.. __configs:
+.. _configs:
 
 Configs
 -------
@@ -2147,7 +2131,7 @@ Configs
    | monit                             | /etc/monit                        |
    +-----------------------------------+-----------------------------------+
 
-.. __apache2:
+.. _apache2:
 
 Apache2
 -------
@@ -2220,7 +2204,7 @@ Apache2
    |                       |                       | t:8443/tools/heritrix |
    +-----------------------+-----------------------+-----------------------+
 
-.. __matomo:
+.. _matomo:
 
 Matomo
 ------
@@ -2229,7 +2213,7 @@ Matomo wird einmal täglich per Cronjob mit Apache-Logfiles befüllt.
 Dabei erfolgt eine Anonymisierung. Die Logfiles verbleiben noch sieben
 Tage auf dem Server und werden dann annoynmisiert.
 
-.. __monit:
+.. _monit:
 
 Monit
 -----
@@ -2268,7 +2252,7 @@ Das Tool Monit erlaubt es, den Status der Regal-Komponenten zu
         start program = "/etc/init.d/zettel start" with timeout 60 seconds
         stop program = "/etc/init.d/zettel stop"
 
-.. __scripts_und_cronjobs:
+.. _scripts_und_cronjobs:
 
 Scripts und Cronjobs
 --------------------
@@ -2280,7 +2264,7 @@ https://github.com/edoweb/regal-scripts
 
 Die folgenden Abschnitte zeigen ein typisches Setup.
 
-.. __oai_providing_2:
+.. _oai_providing_2:
 
 OAI-Providing
 ~~~~~~~~~~~~~
@@ -2295,7 +2279,7 @@ tagesaktuelle Daten.
    0 2 * * * /opt/regal/src/regal-scripts/turnOnOaiPmhPolling.sh
    0 5 * * * /opt/regal/src/regal-scripts/turnOffOaiPmhPolling.sh
 
-.. __urn_registrierung:
+.. _urn_registrierung:
 
 URN-Registrierung
 ~~~~~~~~~~~~~~~~~
@@ -2310,7 +2294,7 @@ Ressource.
    1 1 * * * /opt/regal/src/regal-scripts/register_urn.sh katalog >> /opt/regal/regal-scripts/log/katalog_update.log
    1 0 * * * /opt/regal/src/regal-scripts/register_urn.sh register >> /opt/regal/regal-scripts/log/register_urn.log
 
-.. __katalog_aktualisierung:
+.. _katalog_aktualisierung:
 
 Katalog-Aktualisierung
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -2322,7 +2306,7 @@ und führt ggf. Aktualisierungen durch.
 
    0 5 * * * /opt/regal/src/regal-scripts/updateAll.sh > /dev/null
 
-.. __matomo_2:
+.. _matomo_2:
 
 Matomo
 ~~~~~~
@@ -2334,7 +2318,7 @@ Einträge annonymisiert.
 
    0 1 * * * /opt/regal/regal-scripts/import-logfiles.sh >/dev/null
 
-.. __logfile_annonymisierung:
+.. _logfile_annonymisierung:
 
 Logfile Annonymisierung
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -2346,7 +2330,7 @@ erfolgt eine Annonymisierung.
 
    0 2 * * * /opt/regal/src/regal-scripts/depersonalize-apache-logs.sh
 
-.. __webgatherer:
+.. _webgatherer:
 
 Webgatherer
 ~~~~~~~~~~~
@@ -2362,7 +2346,7 @@ Bedarf die Erzeugung eines neuen Snapshots/Version an.
    # Crawl Reports
    0 22 * * * /opt/regal/src/regal-scripts/crawlReport.sh >> /opt/regal/logs/crawlReport.log
 
-.. __backup:
+.. _backup:
 
 Backup
 ~~~~~~
@@ -2380,107 +2364,11 @@ Backups werden von der Platte gelöscht.
    0 2 * * * /opt/regal/src/regal-scripts/backup-db.sh -c >> /opt/regal/logs/backup-db.log 2>&1
    30 2 * * * /opt/regal/src/regal-scripts/backup-db.sh -b >> /opt/regal/logs/backup-db.log 2>&1
 
-.. __entwicklung:
+.. _entwicklung:
 
 Entwicklung
 ~~~~~~~~~~~
 
 Für die Entwicklung an Regal empfiehlt sich folgende Vorgehensweise…
 
-.. __dokumentation:
 
-Dokumentation
-=============
-
-Diese Dokumentation ist mit asciidoc geschrieben und wurde mit
-asciidoctor in HTML übersetzt. Dazu wurde das foundation.css Stylesheet
-aus dem asciidoctor-stylesheet-factory Repository verwendet.
-
-Die Schritte, um an der Doku zu arbeiten sind folgenden
-
-.. __dieses_repo_herunterladen:
-
-Dieses Repo herunterladen
--------------------------
-
-::
-
-   git clone https://github.com/hbz/to.science
-
-.. __asciidoctor_und_asciidoctor_stylesheets_installieren:
-
-Asciidoctor und Asciidoctor-Stylesheets installieren
-----------------------------------------------------
-
-::
-
-   gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-   \curl -sSL https://get.rvm.io | sudo bash -s stable --ruby
-   #login again
-   sudo apt-get install bundler
-   sudo apt-get install gem
-   git clone https://github.com/asciidoctor/asciidoctor
-   git clone https://github.com/asciidoctor/asciidoctor-stylesheet-factory
-   cd asciidoctor
-   sudo gem install asciidoctor
-   cd ../asciidoctor-stylesheet-factory
-   bundle install
-   compass compile
-
-.. __doku_modifizieren_und_in_html_übersetzen:
-
-Doku modifizieren und in HTML übersetzen
-----------------------------------------
-
-::
-
-   cd Regal/doc
-   editor regal.asciidoc
-   asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.asciidoc
-
-.. __license:
-
-License
-=======
-
-|https://i.creativecommons.org/l/by-nc/4.0/88x31.png|
-
-This work is licensed under a `Creative Commons
-Attribution-NonCommercial 4.0 International
-License <http://creativecommons.org/licenses/by-nc/4.0/>>`__.
-
-.. __links:
-
-Links
-=====
-
-.. __slides:
-
-Slides
-------
-
--  Lobid - http://hbz.github.io/slides/
-
--  Skos-Lookup - http://hbz.github.io/slides/siit-170511/#/
-
--  Regal - http://hbz.github.io/slides/danrw-20180905/#/
-
-.. __internes_wiki:
-
-Internes Wiki
--------------
-
--  https://wiki1.hbz-nrw.de/display/edd/Dokumentation
-
-.. __github:
-
-Github
-------
-
--  https://github.com/edoweb
-
--  https://github.com/hbz
-
-:!figure-caption:
-
-.. |https://i.creativecommons.org/l/by-nc/4.0/88x31.png| image:: https://i.creativecommons.org/l/by-nc/4.0/88x31.png

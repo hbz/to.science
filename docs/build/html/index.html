@@ -96,8 +96,11 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="#">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="#">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/hbz-logo.svg" alt="Logo"/>
+  </div>
   
   <span class="sidebar-brand-text">to.science  documentation</span>
   
@@ -111,22 +114,17 @@
 <li class="toctree-l1"><a class="reference internal" href="regal.html">Einleitung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regal.html#konzepte">Konzepte</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regal.html#software">Software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#entwicklung-java">Entwicklung Java</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#administration">Administration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#dokumentation">Dokumentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#license">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#links">Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">Preface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#environment">Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#regal-api">regal-api</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#etikett">etikett</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#zettel">zettel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#skos-lookup">skos-lookup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#thumby">thumby</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#dokumentation">Dokumentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#license">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#references">References</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api.html">API-documentation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="api-toscience.html">to.science.api</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-labels.html">to.science.labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-forms.html">to.science.forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-thumbs.html">to.science.thumbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-skos.html">skos-lookup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="colophon.html">Dokumentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colophon.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colophon.html#links">Links</a></li>
 </ul>
 
 </div>
@@ -141,8 +139,19 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="welcome-to-to-science-s-documentation">
-<h1>Welcome to to.science’s documentation!<a class="headerlink" href="#welcome-to-to-science-s-documentation" title="Permalink to this headline">¶</a></h1>
+        <div class="section" id="to-science-toolbox-open-science">
+<h1>to.science - Toolbox Open Science<a class="headerlink" href="#to-science-toolbox-open-science" title="Permalink to this headline">¶</a></h1>
+<p>Über dieses Dokument</p>
+<p>Dieses Dokument kommt zusammen mit einem
+<a class="reference external" href="https://github.com/hbz/to.science/tree/master/vagrant/ubuntu-14.04">Vagrantfile</a>
+und beschreibt eine beispielhafte Installation von Regal. Unter
+<a class="reference external" href="#_vagrant">Vagrant</a> findet sich eine Anleitung zur Installation in
+einer Virtualbox.</p>
+<p>Eine Kurzaufstellung der wichtigsten API-Calls findet sich unter
+<a class="reference external" href="./api.html">Regal-Api</a></p>
+<p>Dieses Dokument ist im Format rst geschrieben und kann mit dem
+Werkzeug sphinx in HTML übersetzt werden. Mehr dazu im Abschnitt
+<a class="reference external" href="#_dokumentation">Dokumentation</a></p>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Contents:</span></p>
 <ul>
@@ -162,7 +171,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="regal.html#software">Software</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="regal.html#id1">regal-api</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regal.html#regal-api-2">regal-api</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regal.html#etikett">Etikett</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regal.html#zettel">Zettel</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regal.html#skos-lookup">skos-lookup</a></li>
@@ -178,19 +187,10 @@
 <li class="toctree-l2"><a class="reference internal" href="regal.html#mysql">MySql</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regal.html#elasticsearch-1-1">Elasticsearch 1.1</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regal.html#drupal-7">Drupal 7</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#installation">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="regal.html#vagrant">Vagrant</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regal.html#server">Server</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#entwicklung-java">Entwicklung Java</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="regal.html#in-der-virtualbox">In der VirtualBox</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regal.html#auf-dem-eigenen-system">Auf dem eigenen System</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#administration">Administration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="regal.html#aktualisierung">Aktualisierung</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regal.html#verzeichnisse">Verzeichnisse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="regal.html#ports">Ports</a></li>
@@ -202,63 +202,27 @@
 <li class="toctree-l2"><a class="reference internal" href="regal.html#scripts-und-cronjobs">Scripts und Cronjobs</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#dokumentation">Dokumentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="regal.html#dieses-repo-herunterladen">Dieses Repo herunterladen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regal.html#asciidoctor-und-asciidoctor-stylesheets-installieren">Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regal.html#doku-modifizieren-und-in-html-ubersetzen">Doku modifizieren und in HTML übersetzen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API-documentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api-toscience.html">to.science.api</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-labels.html">to.science.labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-forms.html">to.science.forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-thumbs.html">to.science.thumbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-skos.html">skos-lookup</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#license">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#links">Links</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="regal.html#slides">Slides</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regal.html#internes-wiki">Internes Wiki</a></li>
-<li class="toctree-l2"><a class="reference internal" href="regal.html#github">Github</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colophon.html">Dokumentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="colophon.html#dieses-repo-herunterladen">Dieses Repo herunterladen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colophon.html#asciidoctor-und-asciidoctor-stylesheets-installieren">Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colophon.html#doku-modifizieren-und-in-html-ubersetzen">Doku modifizieren und in HTML übersetzen</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">Preface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#environment">Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#regal-api">regal-api</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api.html#create">Create</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#read">Read</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#update">Update</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#delete">Delete</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#search">Search</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#misc">Misc</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colophon.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colophon.html#links">Links</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="colophon.html#slides">Slides</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colophon.html#internes-wiki">Internes Wiki</a></li>
+<li class="toctree-l2"><a class="reference internal" href="colophon.html#github">Github</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#etikett">etikett</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id1">Create</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id2">Read</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id3">Update</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id4">Delete</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id5">Misc</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#zettel">zettel</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id6">Create</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id7">Read</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id8">Search</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#skos-lookup">skos-lookup</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id9">Create</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id10">Read</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id11">Search</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#thumby">thumby</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id12">Read</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#id13">Misc</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#dokumentation">Dokumentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="api.html#dieses-repo-herunterladen">Dieses Repo herunterladen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#asciidoctor-und-asciidoctor-stylesheets-installieren">Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api.html#doku-modifizieren-und-in-html-ubersetzen">Doku modifizieren und in HTML übersetzen</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#license">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#references">References</a></li>
 </ul>
 </div>
 </div>
@@ -267,7 +231,7 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
 <li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+<li><p><a class="reference internal" href="api-toscience.html#search"><span class="std std-ref">Search</span></a></p></li>
 </ul>
 </div>
 
@@ -315,7 +279,7 @@
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Welcome to to.science’s documentation!</a></li>
+<li><a class="reference internal" href="#">to.science - Toolbox Open Science</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 

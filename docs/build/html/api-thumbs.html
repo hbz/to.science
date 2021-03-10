@@ -1,10 +1,10 @@
 <!doctype html>
 <html class="no-js">
   <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="to.science.api" href="api-toscience.html" /><link rel="prev" title="Einleitung" href="regal.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="skos-lookup" href="api-skos.html" /><link rel="prev" title="to.science.forms" href="api-forms.html" />
 
     <meta name="generator" content="sphinx-3.5.1, furo 2021.02.28.beta28"/>
-        <title>API-documentation - to.science documentation</title>
+        <title>to.science.thumbs - to.science documentation</title>
       <link rel="stylesheet" href="_static/styles/furo.css?digest=be5985a4059b5c2cd56ed0804790452beca62674">
     <link rel="stylesheet" href="_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
@@ -88,7 +88,7 @@
       <a href="index.html"><div class="brand">to.science  documentation</div></a>
     </div>
     <div class="header-right">
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
     </div>
@@ -114,11 +114,11 @@
 <li class="toctree-l1"><a class="reference internal" href="regal.html">Einleitung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regal.html#konzepte">Konzepte</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regal.html#software">Software</a></li>
-<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">API-documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="api.html">API-documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="api-toscience.html">to.science.api</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-labels.html">to.science.labels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-forms.html">to.science.forms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-thumbs.html">to.science.thumbs</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">to.science.thumbs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-skos.html">skos-lookup</a></li>
 </ul>
 </li>
@@ -136,32 +136,17 @@
   <main class="main">
     <div class="content">
       <article role="main">
-        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="api-documentation">
-<span id="id1"></span><h1>API-documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h1>
-<p id="preface"><strong>Preface</strong></p>
-<p>The Regal webservices documented by example <code class="docutils literal notranslate"><span class="pre">curl</span></code>-calls. Examples are
-assumed to work in the Vagrant-Environment that comes with this
-document.</p>
-<p id="environment"><strong>Environment</strong></p>
-<p>Got to your server or to the Vagrant-Box, that comes with this document.</p>
-<p><code class="docutils literal notranslate"><span class="pre">vagrant</span> <span class="pre">ssh</span></code></p>
-<p>Prepare your environment to make the following <code class="docutils literal notranslate"><span class="pre">curl</span></code>-Calls work!</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>source /opt/regal/conf/variables.conf
-export REGAL_API=http://$SERVER
-export API_USER=edoweb-admin
+        <div class="section" id="to-science-thumbs">
+<span id="id1"></span><h1>to.science.thumbs<a class="headerlink" href="#to-science-thumbs" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/hbz/thumby/blob/master/conf/routes">https://github.com/hbz/thumby/blob/master/conf/routes</a></p>
+<div class="section" id="read">
+<span id="read-5"></span><h2>Read<a class="headerlink" href="#read" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">XGET</span> <span class="s2">"$REGAL_API/tools/thumby?url=https://www.gravatar.com/avatar/5fefc19b7875e951c7ea9bfdfc06676d&amp;size=200"</span>
 </pre></div>
 </div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="api-toscience.html">to.science.api</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api-labels.html">to.science.labels</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api-forms.html">to.science.forms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api-thumbs.html">to.science.thumbs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api-skos.html">skos-lookup</a></li>
-</ul>
 </div>
 </div>
 
@@ -169,23 +154,23 @@ export API_USER=edoweb-admin
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="api-toscience.html">
+          <a class="next-page" href="api-skos.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">to.science.api</div>
+                <div class="title">skos-lookup</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="regal.html">
+          <a class="prev-page" href="api-forms.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Einleitung</div>
+                <div class="title">to.science.forms</div>
                 
               </div>
             </a>
@@ -199,7 +184,7 @@ export API_USER=edoweb-admin
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             |
-            <a class="muted-link" href="_sources/api.rst.txt"
+            <a class="muted-link" href="_sources/api-thumbs.rst.txt"
                rel="nofollow">
               Show Source
             </a>
@@ -207,8 +192,27 @@ export API_USER=edoweb-admin
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">to.science.thumbs</a><ul>
+<li><a class="reference internal" href="#read">Read</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

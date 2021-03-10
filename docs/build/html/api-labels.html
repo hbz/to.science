@@ -1,10 +1,10 @@
 <!doctype html>
 <html class="no-js">
   <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="to.science.api" href="api-toscience.html" /><link rel="prev" title="Einleitung" href="regal.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="to.science.forms" href="api-forms.html" /><link rel="prev" title="to.science.api" href="api-toscience.html" />
 
     <meta name="generator" content="sphinx-3.5.1, furo 2021.02.28.beta28"/>
-        <title>API-documentation - to.science documentation</title>
+        <title>to.science.labels - to.science documentation</title>
       <link rel="stylesheet" href="_static/styles/furo.css?digest=be5985a4059b5c2cd56ed0804790452beca62674">
     <link rel="stylesheet" href="_static/pygments.css">
     <link media="(prefers-color-scheme: dark)" rel="stylesheet" href="_static/pygments_dark.css">
@@ -88,7 +88,7 @@
       <a href="index.html"><div class="brand">to.science  documentation</div></a>
     </div>
     <div class="header-right">
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
     </div>
@@ -114,9 +114,9 @@
 <li class="toctree-l1"><a class="reference internal" href="regal.html">Einleitung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regal.html#konzepte">Konzepte</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regal.html#software">Software</a></li>
-<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">API-documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="api.html">API-documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="api-toscience.html">to.science.api</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-labels.html">to.science.labels</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">to.science.labels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-forms.html">to.science.forms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-thumbs.html">to.science.thumbs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-skos.html">skos-lookup</a></li>
@@ -136,32 +136,50 @@
   <main class="main">
     <div class="content">
       <article role="main">
-        <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+        <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <div class="section" id="api-documentation">
-<span id="id1"></span><h1>API-documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline">¶</a></h1>
-<p id="preface"><strong>Preface</strong></p>
-<p>The Regal webservices documented by example <code class="docutils literal notranslate"><span class="pre">curl</span></code>-calls. Examples are
-assumed to work in the Vagrant-Environment that comes with this
-document.</p>
-<p id="environment"><strong>Environment</strong></p>
-<p>Got to your server or to the Vagrant-Box, that comes with this document.</p>
-<p><code class="docutils literal notranslate"><span class="pre">vagrant</span> <span class="pre">ssh</span></code></p>
-<p>Prepare your environment to make the following <code class="docutils literal notranslate"><span class="pre">curl</span></code>-Calls work!</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>source /opt/regal/conf/variables.conf
-export REGAL_API=http://$SERVER
-export API_USER=edoweb-admin
+        <div class="section" id="to-science-labels">
+<span id="etikett"></span><h1>to.science.labels<a class="headerlink" href="#to-science-labels" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/hbz/to.science.labels/blob/master/conf/routes">https://github.com/hbz/to.science.labels/blob/master/conf/routes</a></p>
+<div class="section" id="create">
+<span id="create-2"></span><h2>Create<a class="headerlink" href="#create" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="add-labels-to-database">
+<span id="id1"></span><h3>Add Labels to Database<a class="headerlink" href="#add-labels-to-database" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -XPOST -F"data=@$ARCHIVE_HOME/src/REGAL_API/conf/labels.json" -F"format-cb=Json" $REGAL_API/tools/etikett -i -L
 </pre></div>
 </div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="api-toscience.html">to.science.api</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api-labels.html">to.science.labels</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api-forms.html">to.science.forms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api-thumbs.html">to.science.thumbs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api-skos.html">skos-lookup</a></li>
-</ul>
+</div>
+<div class="section" id="add-label">
+<span id="id2"></span><h3>Add Label<a class="headerlink" href="#add-label" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="read">
+<span id="read-2"></span><h2>Read<a class="headerlink" href="#read" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="s2">"$REGAL_API/tools/etikett"</span> <span class="o">-</span><span class="n">H</span><span class="s2">"accept: application/json"</span>
+</pre></div>
+</div>
+<div class="section" id="read-etikett">
+<span id="id3"></span><h3>Read Etikett<a class="headerlink" href="#read-etikett" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/tools/etikett?url=http%3A%2F%2Fpurl.orms%2Fissued -H"accept: application/json"
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="update">
+<span id="update-2"></span><h2>Update<a class="headerlink" href="#update" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="delete">
+<span id="delete-2"></span><h2>Delete<a class="headerlink" href="#delete" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="delete-cache">
+<span id="id4"></span><h3>Delete Cache<a class="headerlink" href="#delete-cache" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -XDELETE -u$API_USER:$PASSWORD $REGAL_API/tools/etikett/cache
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="misc">
+<span id="misc-2"></span><h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -169,23 +187,23 @@ export API_USER=edoweb-admin
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="api-toscience.html">
+          <a class="next-page" href="api-forms.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">to.science.api</div>
+                <div class="title">to.science.forms</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="regal.html">
+          <a class="prev-page" href="api-toscience.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Einleitung</div>
+                <div class="title">to.science.api</div>
                 
               </div>
             </a>
@@ -199,7 +217,7 @@ export API_USER=edoweb-admin
               <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
               <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
             |
-            <a class="muted-link" href="_sources/api.rst.txt"
+            <a class="muted-link" href="_sources/api-labels.rst.txt"
                rel="nofollow">
               Show Source
             </a>
@@ -207,8 +225,41 @@ export API_USER=edoweb-admin
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">to.science.labels</a><ul>
+<li><a class="reference internal" href="#create">Create</a><ul>
+<li><a class="reference internal" href="#add-labels-to-database">Add Labels to Database</a></li>
+<li><a class="reference internal" href="#add-label">Add Label</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#read">Read</a><ul>
+<li><a class="reference internal" href="#read-etikett">Read Etikett</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#update">Update</a></li>
+<li><a class="reference internal" href="#delete">Delete</a><ul>
+<li><a class="reference internal" href="#delete-cache">Delete Cache</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#misc">Misc</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

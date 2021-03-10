@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js">
   <head><meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="Preface" href="api.html" /><link rel="prev" title="Welcome to to.science’s documentation!" href="index.html" />
+    <meta name="viewport" content="width=device-width,initial-scale=1"/><link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="API-documentation" href="api.html" /><link rel="prev" title="to.science - Toolbox Open Science" href="index.html" />
 
     <meta name="generator" content="sphinx-3.5.1, furo 2021.02.28.beta28"/>
         <title>Einleitung - to.science documentation</title>
@@ -96,8 +96,11 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand" href="index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="index.html">
   
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="_static/hbz-logo.svg" alt="Logo"/>
+  </div>
   
   <span class="sidebar-brand-text">to.science  documentation</span>
   
@@ -111,22 +114,17 @@
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Einleitung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#konzepte">Konzepte</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#software">Software</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#entwicklung-java">Entwicklung Java</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#administration">Administration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#dokumentation">Dokumentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#license">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#links">Links</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html">Preface</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#environment">Environment</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#regal-api">regal-api</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#etikett">etikett</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#zettel">zettel</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#skos-lookup">skos-lookup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#thumby">thumby</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#dokumentation">Dokumentation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#license">License</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api.html#references">References</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="api.html">API-documentation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label for="toctree-checkbox-1"><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="api-toscience.html">to.science.api</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-labels.html">to.science.labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-forms.html">to.science.forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-thumbs.html">to.science.thumbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="api-skos.html">skos-lookup</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="colophon.html">Dokumentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colophon.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="colophon.html#links">Links</a></li>
 </ul>
 
 </div>
@@ -141,19 +139,8 @@
         <label class="toc-overlay-icon toc-content-icon" for="__toc">
           <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
         </label>
-        <p>Über dieses Dokument</p>
-<p>Dieses Dokument kommt zusammen mit einem
-<a class="reference external" href="https://github.com/hbz/to.science/tree/master/vagrant/ubuntu-14.04">Vagrantfile</a>
-und beschreibt eine beispielhafte Installation von Regal. Unter
-<a class="reference external" href="#_vagrant">Vagrant</a> findet sich eine Anleitung zur Installation in
-einer Virtualbox.</p>
-<p>Eine Kurzaufstellung der wichtigsten API-Calls findet sich unter
-<a class="reference external" href="./api.html">Regal-Api</a></p>
-<p>Dieses Dokument ist im Format asciidoc geschrieben und kann mit dem
-Werkzeug asciidoctor in HTML übersetzt werden. Mehr dazu im Abschnitt
-<a class="reference external" href="#_dokumentation">Dokumentation</a></p>
-<div class="section" id="einleitung">
-<h1>Einleitung<a class="headerlink" href="#einleitung" title="Permalink to this headline">¶</a></h1>
+        <div class="section" id="einleitung">
+<span id="id1"></span><h1>Einleitung<a class="headerlink" href="#einleitung" title="Permalink to this headline">¶</a></h1>
 <p>to.science (ehemals “Regal”) ist eine Content Repository zur Verwaltung
 und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am
 <a class="reference external" href="https://hbz-nrw.de">Hochschulbibliothekszentrum NRW (hbz)</a>
@@ -197,19 +184,23 @@ Derzeit sind folgende Komponenten im Einsatz</p>
 angesprochen werden. Die folgende Abbildung verschafft einen groben
 Überblick über eine typische Regal-Installation und die angebundenen
 Drittsysteme.</p>
+<div class="figure align-default" id="id84">
+<img alt="Typische Regal-Installation mit Drupal Frontend, Backendkomponenten und angebundenen Drittsytemen" src="_images/regal-arch-4.jpeg"/>
+<p class="caption"><span class="caption-text">Typische Regal-Installation mit Drupal Frontend, Backendkomponenten und angebundenen Drittsytemen</span><a class="headerlink" href="#id84" title="Permalink to this image">¶</a></p>
+</div>
 </div>
 <div class="section" id="konzepte">
-<h1>Konzepte<a class="headerlink" href="#konzepte" title="Permalink to this headline">¶</a></h1>
+<span id="id2"></span><h1>Konzepte<a class="headerlink" href="#konzepte" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="objektmodell">
-<h2>Objektmodell<a class="headerlink" href="#objektmodell" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>Objektmodell<a class="headerlink" href="#objektmodell" title="Permalink to this headline">¶</a></h2>
 <p>Regal realisiert ein einheitliches Objektmodell in dem sich eine
 Vielzahl von Publikationstypen speichern lassen. Die Speicherschicht
 wird über <a class="reference external" href="#_fedora_commons_3">Fedora Commons 3</a> realisiert.</p>
 <p>Eine einzelne Publikation besteht i.d.R. aus mehreren <a class="reference external" href="#_fedora_commons_3">Fedora Commons
 3</a>-Objekten, die in einer hierarchischen
 Beziehung zueinander stehen.</p>
-<div class="table-wrapper"><table class="docutils align-default" id="id14">
-<caption><span class="caption-text">Fedora Object</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
+<div class="table-wrapper"><table class="docutils align-default" id="id85">
+<caption><span class="caption-text">Fedora Object</span><a class="headerlink" href="#id85" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 33%"/>
 <col style="width: 33%"/>
@@ -303,7 +294,7 @@ Objektspeicher wird nur eine Datei mit der ensprechenden Referenz
 abgelegt.</p>
 </div>
 <div class="section" id="namespaces-und-identifier">
-<h2>Namespaces und Identifier<a class="headerlink" href="#namespaces-und-identifier" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>Namespaces und Identifier<a class="headerlink" href="#namespaces-und-identifier" title="Permalink to this headline">¶</a></h2>
 <p>Jede Regal-Installation arbeitet auf einem festgelegten Namespace. Wenn
 über die <a class="reference external" href="#_regal_api_2">regal-api</a> Objekte angelegt werden, finden
 sich diese immer in dem entsprechenden Namespace wieder. Hinter dem
@@ -312,8 +303,8 @@ hochlaufende Zahl, die i.d.R. über <a class="reference external" href="#_fedora
 3</a> bezogen wird.</p>
 <p>Der so zusammengesetzte Identifier kommt in allen Systemkomponenten zum
 Einsatz.</p>
-<div class="table-wrapper"><table class="docutils align-default" id="id15">
-<caption><span class="caption-text">Beispiel Regal Identifier</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
+<div class="table-wrapper"><table class="docutils align-default" id="id86">
+<caption><span class="caption-text">Beispiel Regal Identifier</span><a class="headerlink" href="#id86" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 33%"/>
 <col style="width: 33%"/>
@@ -351,7 +342,7 @@ edora/objects/regal:1</p></td>
 </table></div>
 </div>
 <div class="section" id="deskriptive-metadaten">
-<h2>Deskriptive Metadaten<a class="headerlink" href="#deskriptive-metadaten" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>Deskriptive Metadaten<a class="headerlink" href="#deskriptive-metadaten" title="Permalink to this headline">¶</a></h2>
 <p>Regal unterstützt eine große Anzahl von Metadatenfeldern zur
 Beschreibung von bibliografischen Ressourcen. Jedes in Regal
 verspeicherte Objekt kann mit Hilfe von RDF-Metadaten beschrieben
@@ -370,8 +361,8 @@ Funktionen angesteuert werden. Dies betrifft u.A.:</p>
 konfiguriert werden, welche URIs aus den RDF-Daten in das JSON-LD-Format
 von <a class="reference external" href="#_regal_api_2">regal-api</a> überführt werden. Außerdem kann die
 Reihenfolge der Darstellung, und das Label zur Anzeige gesetzt werden.</p>
-<div class="table-wrapper"><table class="docutils align-default" id="id16">
-<caption><span class="caption-text">Etikett-Eintrag für dc:title</span><a class="headerlink" href="#id16" title="Permalink to this table">¶</a></caption>
+<div class="table-wrapper"><table class="docutils align-default" id="id87">
+<caption><span class="caption-text">Etikett-Eintrag für dc:title</span><a class="headerlink" href="#id87" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 14%"/>
 <col style="width: 14%"/>
@@ -423,7 +414,7 @@ ohne den Etikett-Services, allerdings nur mit eingeschränkter
 Funktionalität; beispielsweise fallen Anzeigen von verlinkten Ressourcen
 (und das ist in Regal fast alles) weniger schön aus.</p>
 <div class="section" id="wie-kommen-bibliografische-metadaten-ins-system">
-<h3>Wie kommen bibliografische Metadaten ins System?<a class="headerlink" href="#wie-kommen-bibliografische-metadaten-ins-system" title="Permalink to this headline">¶</a></h3>
+<span id="id6"></span><h3>Wie kommen bibliografische Metadaten ins System?<a class="headerlink" href="#wie-kommen-bibliografische-metadaten-ins-system" title="Permalink to this headline">¶</a></h3>
 <p>In Regal können bibliografische Metadaten aus dem hbz-Verbundkatalog an
 Ressourcen “angelinkt” werden. Dies erfolgt über Angabe der ID des
 entsprechenden Titelsatzes (z.b. HT017766754). Mit Hilfe dieser ID kann
@@ -456,7 +447,7 @@ Registry)</a></p></li>
 </div>
 </div>
 <div class="section" id="anzeige-und-darstellung">
-<h2>Anzeige und Darstellung<a class="headerlink" href="#anzeige-und-darstellung" title="Permalink to this headline">¶</a></h2>
+<span id="id7"></span><h2>Anzeige und Darstellung<a class="headerlink" href="#anzeige-und-darstellung" title="Permalink to this headline">¶</a></h2>
 <p>Über die Schnittstellen der <a class="reference external" href="#_regal_api_2">regal-api</a> können
 unterschiedliche Darstellungen einer Publikation bezogen werden. Über
 <a class="reference external" href="https://de.wikipedia.org/wiki/Content_Negotiation">Content
@@ -478,14 +469,14 @@ hochauflösenden Bildern über das Tool
 Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.</p>
 </div>
 <div class="section" id="der-hbz-verbundkatalog">
-<h2>Der hbz-Verbundkatalog<a class="headerlink" href="#der-hbz-verbundkatalog" title="Permalink to this headline">¶</a></h2>
+<span id="id8"></span><h2>Der hbz-Verbundkatalog<a class="headerlink" href="#der-hbz-verbundkatalog" title="Permalink to this headline">¶</a></h2>
 <p>Metadaten, die über den Verbundkatalog importiert wurden, können über
 einen Cronjob regelmäßig aktualisiert werden. Außerdem können diese
 Daten über OAI-PMH an den Verbundkatalog zurückgeliefert werden, so dass
 dieser, Links auf die Volltexte erhält.</p>
 </div>
 <div class="section" id="metadatenkonvertierung">
-<h2>Metadatenkonvertierung<a class="headerlink" href="#metadatenkonvertierung" title="Permalink to this headline">¶</a></h2>
+<span id="id9"></span><h2>Metadatenkonvertierung<a class="headerlink" href="#metadatenkonvertierung" title="Permalink to this headline">¶</a></h2>
 <p>Für die Metadatenkonvertierung gibt es kein festes Vorgehensmodell oder
 Werkzeug. I.d.R. gibt es für jede Representation eine oder eine Reihe
 von Javaklassen, die für eine On-the-fly-Konvertierung sorgen. Die
@@ -496,12 +487,12 @@ und ist im wesentlichen eine JSON-LD-Darstellung, die mit Hilfe der in
 bibliografischen Metadaten gewonnen wurde.</p>
 </div>
 <div class="section" id="oai-providing">
-<h2>OAI-Providing<a class="headerlink" href="#oai-providing" title="Permalink to this headline">¶</a></h2>
+<span id="id10"></span><h2>OAI-Providing<a class="headerlink" href="#oai-providing" title="Permalink to this headline">¶</a></h2>
 <p>Öffentlich zugängliche Publikationen sind auch über die
 OAI-Schnittstelle verfügbar. Dabei wird jede Publikation einer Reihe von
 OAI-Sets zugeordnet und in unterschiedlichen Formaten angeboten.</p>
-<div class="table-wrapper"><table class="docutils align-default" id="id17">
-<caption><span class="caption-text">OAI Set</span><a class="headerlink" href="#id17" title="Permalink to this table">¶</a></caption>
+<div class="table-wrapper"><table class="docutils align-default" id="id88">
+<caption><span class="caption-text">OAI Set</span><a class="headerlink" href="#id88" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -564,8 +555,8 @@ sind</p></td>
 </tr>
 </tbody>
 </table></div>
-<div class="table-wrapper"><table class="docutils align-default" id="id18">
-<caption><span class="caption-text">OAI Metadatenformat</span><a class="headerlink" href="#id18" title="Permalink to this table">¶</a></caption>
+<div class="table-wrapper"><table class="docutils align-default" id="id89">
+<caption><span class="caption-text">OAI Metadatenformat</span><a class="headerlink" href="#id89" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -606,31 +597,31 @@ eingeliefert wurden.</p></td>
 </table></div>
 </div>
 <div class="section" id="suche">
-<h2>Suche<a class="headerlink" href="#suche" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2>Suche<a class="headerlink" href="#suche" title="Permalink to this headline">¶</a></h2>
 <p>Der Elasticsearch-Index wird mit Hilfe einer JSON-LD Konvertierung
 befüllt. Die Konvertierung basiert im wesentlichen auf den
 bibliografischen Metadaten der einzelnen Ressourcen und wir mit Hilfe
 der in <a class="reference external" href="#_etikett">Etikett</a> hinterlegten Konfiguration erzeugt.</p>
 </div>
 <div class="section" id="zugriffsberechtigungen-und-sichtbarkeiten">
-<h2>Zugriffsberechtigungen und Sichtbarkeiten<a class="headerlink" href="#zugriffsberechtigungen-und-sichtbarkeiten" title="Permalink to this headline">¶</a></h2>
+<span id="id12"></span><h2>Zugriffsberechtigungen und Sichtbarkeiten<a class="headerlink" href="#zugriffsberechtigungen-und-sichtbarkeiten" title="Permalink to this headline">¶</a></h2>
 <p>Regal setzt ein rollenbasiertes Konzept zur Steuerung von
 Zugriffsberechtigungen um. Eine besondere Bedeutung kommt dem lesenden
 Zugriff auf Ressourcen zu. Einzelne Ressourcen können in ihrer
 Sichtbarkeit so eingeschränkt werden, dass nur mit den Rechten einer
 bestimmten Rolle lesend zugegriffen werden kann. Dabei kann der Zugriff
 auf Metadaten und Daten separat gesteuert werden.</p>
-<div class="figure align-default" id="id19">
+<div class="figure align-default" id="id90">
 <img alt="Screenshot zur Verdeutlichung von Sichtbarkeiten in Regal" src="_images/accessControl.png"/>
-<p class="caption"><span class="caption-text">Screenshot zur Verdeutlichung von Sichtbarkeiten in Regal</span><a class="headerlink" href="#id19" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Screenshot zur Verdeutlichung von Sichtbarkeiten in Regal</span><a class="headerlink" href="#id90" title="Permalink to this image">¶</a></p>
 </div>
 <p>Die Konfiguration hat Auswirkungen auf die Sichtbarkeit einer
 Publikation in den unterschiedlichen Systemteilen. Die folgende Tabelle
 veranschaulicht den derzeitigen Stand der Implementierung.</p>
 <div class="section" id="sichtbarkeiten-operationen-rollen">
-<h3>Sichtbarkeiten, Operationen, Rollen<a class="headerlink" href="#sichtbarkeiten-operationen-rollen" title="Permalink to this headline">¶</a></h3>
-<div class="table-wrapper"><table class="docutils align-default" id="id20">
-<caption><span class="caption-text"><strong>Schreibender</strong> Zugriff auf Daten und Metadaten</span><a class="headerlink" href="#id20" title="Permalink to this table">¶</a></caption>
+<span id="id13"></span><h3>Sichtbarkeiten, Operationen, Rollen<a class="headerlink" href="#sichtbarkeiten-operationen-rollen" title="Permalink to this headline">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id91">
+<caption><span class="caption-text"><strong>Schreibender</strong> Zugriff auf Daten und Metadaten</span><a class="headerlink" href="#id91" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -649,8 +640,8 @@ Sichtbarkeiten ändern, etc.</p></td>
 </tr>
 </tbody>
 </table></div>
-<div class="table-wrapper"><table class="docutils align-default" id="id21">
-<caption><span class="caption-text"><strong>Lesender</strong> Zugriff auf Metadaten</span><a class="headerlink" href="#id21" title="Permalink to this table">¶</a></caption>
+<div class="table-wrapper"><table class="docutils align-default" id="id92">
+<caption><span class="caption-text"><strong>Lesender</strong> Zugriff auf Metadaten</span><a class="headerlink" href="#id92" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -670,8 +661,8 @@ ER,SUBSCRIBER,REMOTE,ADMIN,EDITOR</p></td>
 </tr>
 </tbody>
 </table></div>
-<div class="table-wrapper"><table class="docutils align-default" id="id22">
-<caption><span class="caption-text"><strong>Lesender</strong> Zugriff auf Daten</span><a class="headerlink" href="#id22" title="Permalink to this table">¶</a></caption>
+<div class="table-wrapper"><table class="docutils align-default" id="id93">
+<caption><span class="caption-text"><strong>Lesender</strong> Zugriff auf Daten</span><a class="headerlink" href="#id93" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -705,13 +696,13 @@ ER,SUBSCRIBER,REMOTE,ADMIN,EDITOR</p></td>
 </div>
 </div>
 <div class="section" id="benutzerverwaltung">
-<h2>Benutzerverwaltung<a class="headerlink" href="#benutzerverwaltung" title="Permalink to this headline">¶</a></h2>
+<span id="id14"></span><h2>Benutzerverwaltung<a class="headerlink" href="#benutzerverwaltung" title="Permalink to this headline">¶</a></h2>
 <p>Die Benutzerverwaltung von Regal findet innerhalb von Drupal statt. Zwar
 können auch in der <a class="reference external" href="#_regal_api_2">regal-api</a> Benutzer angelegt
 werden, jedoch ist die Implementierung in diesem Bereich erst
 rudimentär.</p>
 <div class="section" id="drupal">
-<h3>Drupal<a class="headerlink" href="#drupal" title="Permalink to this headline">¶</a></h3>
+<span id="id15"></span><h3>Drupal<a class="headerlink" href="#drupal" title="Permalink to this headline">¶</a></h3>
 <p>Benutzer in Drupal können über das Modul
 <a class="reference external" href="#_regal_drupal">regal-drupal</a> unterschiedlichen Rollen zugewiesen
 werden. Die Authorisierung erfolgt passwortbasiert. Alle Drupal-Benutzer
@@ -724,14 +715,14 @@ proprietären HTTP-Headers mit an <a class="reference external" href="#_regal_ap
 geliefert.</p>
 </div>
 <div class="section" id="regal-api">
-<h3>Regal-Api<a class="headerlink" href="#regal-api" title="Permalink to this headline">¶</a></h3>
+<span id="id16"></span><h3>Regal-Api<a class="headerlink" href="#regal-api" title="Permalink to this headline">¶</a></h3>
 <p>Auch in regal-api können Api-Benutzer angelegt werden. Zur
 Benutzerverwaltung wird eine MySQL-Datenbank eingesetzt, in der die
 Passworte der Nutzer abgelegt sind.</p>
 </div>
 </div>
 <div class="section" id="ansichten">
-<h2>Ansichten<a class="headerlink" href="#ansichten" title="Permalink to this headline">¶</a></h2>
+<span id="id17"></span><h2>Ansichten<a class="headerlink" href="#ansichten" title="Permalink to this headline">¶</a></h2>
 <p>Um Daten, die in <a class="reference external" href="#_regal_api_2">regal-api</a> abgelegt wurden zur
 Anzeige zu bringen sind i.d.R. mehrere Schritte nötig. Die genaue
 Vorgehensweise ist davon abhängig, wo die Daten abgelegt werden (in
@@ -769,23 +760,23 @@ Suchindex übernommen. Dinge, die im HTML nicht benötigt werden, werden
 </div>
 </div>
 <div class="section" id="software">
-<h1>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h1>
+<span id="id18"></span><h1>Software<a class="headerlink" href="#software" title="Permalink to this headline">¶</a></h1>
 <p>Die technische Dokumentation der HTTP-Schnittstelle findet sich unter
-<a class="reference external" href="./api.html">API Doku</a></p>
+<a class="reference internal" href="api.html#api-documentation"><span class="std std-ref">API-documentation</span></a>:</p>
 <p>Nachfolgend sei eine Innenansicht der einzelnen Module aufgestellt. Die
 Integration der Module erfolgt i.d.R. über HTTPs. Die Module werden über
 entsprechende Einträge in der Apache-Konfiguration sichtbar gemacht. Es
 handelt sich also um eine Webservice-Architektur, in der alle
 Webservices über einen Apache-Webserver und entsprechende Einträge in
 ihren Konfigurationsdateien miteinander verbunden werden.</p>
-<div class="figure align-default" id="id23">
+<div class="figure align-default" id="id94">
 <img alt="Regal Abhängigkeiten" src="_images/regal-dependencies.jpeg"/>
-<p class="caption"><span class="caption-text">Regal Abhängigkeiten</span><a class="headerlink" href="#id23" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Regal Abhängigkeiten</span><a class="headerlink" href="#id94" title="Permalink to this image">¶</a></p>
 </div>
-<div class="section" id="id1">
-<h2>regal-api<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id24">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id24" title="Permalink to this table">¶</a></caption>
+<div class="section" id="regal-api-2">
+<span id="id19"></span><h2>regal-api<a class="headerlink" href="#regal-api-2" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id95">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id95" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -834,9 +825,9 @@ operiert auf <a class="reference external" href="#_fedora_commons_3">Fedora Comm
 werden <a class="reference external" href="#_heritrix">heritrix</a>, <a class="reference external" href="#_wpull">wpull</a> und
 <a class="reference external" href="#_openwayback">openwayback</a> angebunden.</p>
 <div class="section" id="konfiguration">
-<h3>Konfiguration<a class="headerlink" href="#konfiguration" title="Permalink to this headline">¶</a></h3>
-<div class="table-wrapper"><table class="docutils align-default" id="id25">
-<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id25" title="Permalink to this table">¶</a></caption>
+<span id="id20"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration" title="Permalink to this headline">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id96">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id96" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1010,9 +1001,9 @@ vorgeschlagen</p></td>
 </table></div>
 </div>
 <div class="section" id="die-applikation">
-<h3>Die Applikation<a class="headerlink" href="#die-applikation" title="Permalink to this headline">¶</a></h3>
-<div class="table-wrapper"><table class="docutils align-default" id="id26">
-<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id26" title="Permalink to this table">¶</a></caption>
+<span id="id21"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation" title="Permalink to this headline">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id97">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id97" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1189,9 +1180,9 @@ war keine gute Idee.</p></td>
 </div>
 </div>
 <div class="section" id="etikett">
-<h2>Etikett<a class="headerlink" href="#etikett" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id27">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id27" title="Permalink to this table">¶</a></caption>
+<span id="id22"></span><h2>Etikett<a class="headerlink" href="#etikett" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id98">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id98" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1259,9 +1250,9 @@ angezeigt werden.</p></li>
 <li><p>Container - JSON-LD Container</p></li>
 <li><p>Beschreibung - Kommentar als Markdown</p></li>
 </ul>
-<div class="figure align-default" id="id28">
+<div class="figure align-default" id="id99">
 <img alt="Etikett Oberfläche" src="_images/etikett-screen.png"/>
-<p class="caption"><span class="caption-text">Etikett Oberfläche</span><a class="headerlink" href="#id28" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Etikett Oberfläche</span><a class="headerlink" href="#id99" title="Permalink to this image">¶</a></p>
 </div>
 <p>Mit Hilfe dieser Angaben kann Etikett auch einen “JSON-LD Context”
 bereitstellen. Insgesamt wird über Etikett eine Art “Application
@@ -1277,10 +1268,10 @@ verwendet.</p>
 <li><p>Zur Konfiguration von Labels, Anzeigereihenfolgen und Pictogrammen</p></li>
 <li><p>Als Cache</p></li>
 </ul>
-<div class="section" id="id2">
-<h3>Konfiguration<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<div class="table-wrapper"><table class="docutils align-default" id="id29">
-<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id29" title="Permalink to this table">¶</a></caption>
+<div class="section" id="konfiguration-2">
+<span id="id23"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-2" title="Permalink to this headline">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id100">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id100" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1341,10 +1332,10 @@ werden kann.</p></td>
 </tbody>
 </table></div>
 </div>
-<div class="section" id="id3">
-<h3>Die Applikation<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
-<div class="table-wrapper"><table class="docutils align-default" id="id30">
-<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id30" title="Permalink to this table">¶</a></caption>
+<div class="section" id="die-applikation-2">
+<span id="id24"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-2" title="Permalink to this headline">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id101">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id101" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1385,16 +1376,16 @@ aufrufen.</p></td>
 </div>
 </div>
 <div class="section" id="zettel">
-<h2>Zettel<a class="headerlink" href="#zettel" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id31">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id31" title="Permalink to this table">¶</a></caption>
+<span id="id25"></span><h2>Zettel<a class="headerlink" href="#zettel" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id102">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id102" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Source</p></td>
-<td><p><a href="#id56"><span class="problematic" id="id57">`zettel &lt;
+<td><p><a href="#id127"><span class="problematic" id="id128">`zettel &lt;
 https://github.com/hbz/zettel&gt;`__</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p>Technik</p></td>
@@ -1421,9 +1412,9 @@ existierende Daten in ein Formular geladen werden, so können diese Daten
 <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">POST</span></code> in das Formular geladen werden. Gleichzeitig kann
 spezifiziert werden, in welchem Format das Formular Daten zurückliefern
 soll.</p>
-<div class="figure align-default" id="id32">
+<div class="figure align-default" id="id103">
 <img alt="Zettel Oberfläche" src="_images/zettel-screen.png"/>
-<p class="caption"><span class="caption-text">Zettel Oberfläche</span><a class="headerlink" href="#id32" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Zettel Oberfläche</span><a class="headerlink" href="#id103" title="Permalink to this image">¶</a></p>
 </div>
 <p>Zettel verfügt über keine eigene Speicherschicht. Daten die über ein
 Formular erzeugt wurden, werden in der HTTP-Response zurückgeliefert.
@@ -1436,14 +1427,14 @@ sendet das Zettel-Formular dann Nachrichten an die Applikation und
 erlaubt dieser darauf zu reagieren. Um Daten von Zettel in die
 Applikation zu bekommen, werden diese im HTML-DOM gespeichert und können
 von dort durch die Applikation entgegengenommen werden.</p>
-<div class="figure align-default" id="id33">
+<div class="figure align-default" id="id104">
 <img alt="Zettel Datenfluss" src="_images/zettel-flos.png"/>
-<p class="caption"><span class="caption-text">Zettel Datenfluss</span><a class="headerlink" href="#id33" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">Zettel Datenfluss</span><a class="headerlink" href="#id104" title="Permalink to this image">¶</a></p>
 </div>
-<div class="section" id="id4">
-<h3>Konfiguration<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<div class="table-wrapper"><table class="docutils align-default" id="id34">
-<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id34" title="Permalink to this table">¶</a></caption>
+<div class="section" id="konfiguration-3">
+<span id="id26"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-3" title="Permalink to this headline">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id105">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id105" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1497,10 +1488,10 @@ einer Datei</p></td>
 </tbody>
 </table></div>
 </div>
-<div class="section" id="id5">
-<h3>Die Applikation<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<div class="table-wrapper"><table class="docutils align-default" id="id35">
-<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id35" title="Permalink to this table">¶</a></caption>
+<div class="section" id="die-applikation-3">
+<span id="id27"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-3" title="Permalink to this headline">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id106">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id106" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1565,9 +1556,9 @@ eigentlichen Formulare.</p></td>
 </div>
 </div>
 <div class="section" id="skos-lookup">
-<h2>skos-lookup<a class="headerlink" href="#skos-lookup" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id36">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id36" title="Permalink to this table">¶</a></caption>
+<span id="id28"></span><h2>skos-lookup<a class="headerlink" href="#skos-lookup" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id107">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id107" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1601,18 +1592,18 @@ von jQuery-Autocomplete- und Select2-Widgets aufzubauen. Auf diese Weise
 können auch umfangreichere Thesauri und Notationssysteme in den
 Formularen von <a class="reference external" href="#_zettel">Zettel</a> fachgerecht angelinkt werden.
 <a class="reference external" href="#_skos_lookup">skos-lookup</a> unterstützt auch mehrsprachige Thesauri.</p>
-<div class="figure align-default" id="id37">
+<div class="figure align-default" id="id108">
 <img alt="SKOS-Lookup Beispiel 1" src="_images/skos-lookup-autocomplete.png"/>
-<p class="caption"><span class="caption-text">SKOS-Lookup Beispiel 1</span><a class="headerlink" href="#id37" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">SKOS-Lookup Beispiel 1</span><a class="headerlink" href="#id108" title="Permalink to this image">¶</a></p>
 </div>
-<div class="figure align-default" id="id38">
+<div class="figure align-default" id="id109">
 <img alt="SKOS-Lookup Beispiel 2" src="_images/example-select2.png"/>
-<p class="caption"><span class="caption-text">SKOS-Lookup Beispiel 2</span><a class="headerlink" href="#id38" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-text">SKOS-Lookup Beispiel 2</span><a class="headerlink" href="#id109" title="Permalink to this image">¶</a></p>
 </div>
-<div class="section" id="id6">
-<h3>Konfiguration<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
-<div class="table-wrapper"><table class="docutils align-default" id="id39">
-<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id39" title="Permalink to this table">¶</a></caption>
+<div class="section" id="konfiguration-4">
+<span id="id29"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-4" title="Permalink to this headline">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id110">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id110" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1652,10 +1643,10 @@ von: Jörg Prante)</p></td>
 </tbody>
 </table></div>
 </div>
-<div class="section" id="id7">
-<h3>Die Applikation<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
-<div class="table-wrapper"><table class="docutils align-default" id="id40">
-<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id40" title="Permalink to this table">¶</a></caption>
+<div class="section" id="die-applikation-4">
+<span id="id30"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-4" title="Permalink to this headline">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id111">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id111" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1694,16 +1685,16 @@ Demonstration der Nutzung.</p></td>
 </div>
 </div>
 <div class="section" id="thumby">
-<h2>Thumby<a class="headerlink" href="#thumby" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id41">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id41" title="Permalink to this table">¶</a></caption>
+<span id="id31"></span><h2>Thumby<a class="headerlink" href="#thumby" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id112">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id112" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><p>Source</p></td>
-<td><p><a href="#id56"><span class="problematic" id="id58">`thumby &lt;
+<td><p><a href="#id127"><span class="problematic" id="id129">`thumby &lt;
 https://github.com/hbz/thumby&gt;`__</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p>Technik</p></td>
@@ -1730,10 +1721,10 @@ wird es versuchen ein Thumbnail der zurückgelieferten Daten zu
 erstellen. Die Daten werden dauerhaft auf der Platte abgelegt und
 zukünftige Requests, die auf dasselbe Bild verweisen werden direkt aus
 dem Speicher von <a class="reference external" href="#_thumby">Thumby</a> beantwortet.</p>
-<div class="section" id="id8">
-<h3>Konfiguration<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
-<div class="table-wrapper"><table class="docutils align-default" id="id42">
-<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id42" title="Permalink to this table">¶</a></caption>
+<div class="section" id="konfiguration-5">
+<span id="id32"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-5" title="Permalink to this headline">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id113">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id113" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1759,10 +1750,10 @@ einer Datei</p></td>
 </tbody>
 </table></div>
 </div>
-<div class="section" id="id9">
-<h3>Die Applikation<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<div class="table-wrapper"><table class="docutils align-default" id="id43">
-<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id43" title="Permalink to this table">¶</a></caption>
+<div class="section" id="die-applikation-5">
+<span id="id33"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-5" title="Permalink to this headline">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id114">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id114" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1792,9 +1783,9 @@ Upload-Formular.</p></td>
 </div>
 </div>
 <div class="section" id="deepzoomer">
-<h2>Deepzoomer<a class="headerlink" href="#deepzoomer" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id44">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id44" title="Permalink to this table">¶</a></caption>
+<span id="id34"></span><h2>Deepzoomer<a class="headerlink" href="#deepzoomer" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id115">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id115" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1804,7 +1795,7 @@ Upload-Formular.</p></td>
 <td><p><a class="reference external" href="https://github.com/hbz/DeepZoomService">DeepZoomService</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Technik</p></td>
-<td><p><a href="#id56"><span class="problematic" id="id59">`Servlet
+<td><p><a href="#id127"><span class="problematic" id="id130">`Servlet
 2.3 &lt;
 https://download.oracle.com/otn-p
 ub/jcp/7840-servlet-2.3-spec-oth-
@@ -1825,10 +1816,10 @@ und über eine OpenSeadragon-konforme Schnittstelle abgerufen werden. Auf
 diese Weise kann in Regal eine Viewer-Komponente realisiert werden, die
 die Anzeige sehr großer, hochaufgelöster Bilder im Webbrowser
 unterstützt.</p>
-<div class="section" id="id10">
-<h3>Konfiguration<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<div class="table-wrapper"><table class="docutils align-default" id="id45">
-<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id45" title="Permalink to this table">¶</a></caption>
+<div class="section" id="konfiguration-6">
+<span id="id35"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-6" title="Permalink to this headline">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id116">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id116" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1850,9 +1841,9 @@ abrufbar ist, gesetzt.</p></td>
 </div>
 </div>
 <div class="section" id="regal-drupal">
-<h2>regal-drupal<a class="headerlink" href="#regal-drupal" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id46">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id46" title="Permalink to this table">¶</a></caption>
+<span id="id36"></span><h2>regal-drupal<a class="headerlink" href="#regal-drupal" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id117">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id117" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1878,10 +1869,10 @@ gal/var/drupal/sites/all/modules/</p></td>
 <a class="reference external" href="#_regal_api_2">regal-api</a> angesprochen werden können. Das Modul
 bietet Oberflächen zur Konfiguration, zur Suche und zur Verwaltung von
 Objekthierarchien.</p>
-<div class="section" id="id11">
-<h3>Die Applikation<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
-<div class="table-wrapper"><table class="docutils align-default" id="id47">
-<caption><span class="caption-text">Verzeichnisstruktur</span><a class="headerlink" href="#id47" title="Permalink to this table">¶</a></caption>
+<div class="section" id="die-applikation-6">
+<span id="id37"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-6" title="Permalink to this headline">¶</a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id118">
+<caption><span class="caption-text">Verzeichnisstruktur</span><a class="headerlink" href="#id118" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1916,9 +1907,9 @@ finden.</p></td>
 </div>
 </div>
 <div class="section" id="edoweb-drupal-theme">
-<h2>edoweb-drupal-theme<a class="headerlink" href="#edoweb-drupal-theme" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id48">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id48" title="Permalink to this table">¶</a></caption>
+<span id="id38"></span><h2>edoweb-drupal-theme<a class="headerlink" href="#edoweb-drupal-theme" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id119">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id119" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1945,9 +1936,9 @@ egal/var/drupal/sites/all/themes/</p></td>
 für den Server <a class="reference external" href="https://edoweb-rlp.de">https://edoweb-rlp.de</a></p>
 </div>
 <div class="section" id="zbmed-drupal-theme">
-<h2>zbmed-drupal-theme<a class="headerlink" href="#zbmed-drupal-theme" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id49">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id49" title="Permalink to this table">¶</a></caption>
+<span id="id39"></span><h2>zbmed-drupal-theme<a class="headerlink" href="#zbmed-drupal-theme" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id120">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id120" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -1974,7 +1965,7 @@ egal/var/drupal/sites/all/themes/</p></td>
 für den Server <a class="reference external" href="https://repository.publisso.de">https://repository.publisso.de</a></p>
 </div>
 <div class="section" id="openwayback">
-<h2>openwayback<a class="headerlink" href="#openwayback" title="Permalink to this headline">¶</a></h2>
+<span id="id40"></span><h2>openwayback<a class="headerlink" href="#openwayback" title="Permalink to this headline">¶</a></h2>
 <p>Repo: <a class="reference external" href="https://github.com/iipc/openwayback">https://github.com/iipc/openwayback</a> Servlet 2.5 .Überblick</p>
 <div class="table-wrapper"><table class="docutils align-default">
 <colgroup>
@@ -2007,19 +1998,19 @@ indexieren und darauf eine Oberfläche zur Recherche und zur Navigation
 aufbauen.</p>
 </div>
 <div class="section" id="heritrix">
-<h2>heritrix<a class="headerlink" href="#heritrix" title="Permalink to this headline">¶</a></h2>
+<span id="id41"></span><h2>heritrix<a class="headerlink" href="#heritrix" title="Permalink to this headline">¶</a></h2>
 <p>Heritrix ist ein Werkzeug zur Sammlung von Webseiten. Heritrix startet
 standalone als Webapplikation und bietet eine Weboberfläche zur
 Verwaltung von Sammelvorgängen an. Eingesammelte Webseiten werden als
 WARC-Dateien in einem bestimmten Bereich der Platte abgelegt.</p>
 </div>
 <div class="section" id="wpull">
-<h2>wpull<a class="headerlink" href="#wpull" title="Permalink to this headline">¶</a></h2>
+<span id="id42"></span><h2>wpull<a class="headerlink" href="#wpull" title="Permalink to this headline">¶</a></h2>
 <p>Wpull ist ein Kommandozeilen-Wermzeug zur Sammlung von Webseiten. Mit
 WPull können WARC-Dateien erzeugt werden.</p>
 </div>
 <div class="section" id="fedora-commons-3">
-<h2>Fedora Commons 3<a class="headerlink" href="#fedora-commons-3" title="Permalink to this headline">¶</a></h2>
+<span id="id43"></span><h2>Fedora Commons 3<a class="headerlink" href="#fedora-commons-3" title="Permalink to this headline">¶</a></h2>
 <p>Fedora Commons 3 ist ein Repository-Framework. Für Regal wird vorallem
 die Speicherschicht von Fedora Commons 3 benutzt. Fedora-Commons legt
 alle Daten im Dateisystem (auch) ab. Mit den Daten aus dem Dateisystem
@@ -2027,24 +2018,21 @@ lässt sich eine komplette Fedora-Commons 3 Instanz von grundauf neu
 aufbauen.</p>
 </div>
 <div class="section" id="mysql">
-<h2>MySql<a class="headerlink" href="#mysql" title="Permalink to this headline">¶</a></h2>
+<span id="id44"></span><h2>MySql<a class="headerlink" href="#mysql" title="Permalink to this headline">¶</a></h2>
 <p>MySQL wir von Fedora, regal-api und etikett verwendet.</p>
 </div>
 <div class="section" id="elasticsearch-1-1">
-<h2>Elasticsearch 1.1<a class="headerlink" href="#elasticsearch-1-1" title="Permalink to this headline">¶</a></h2>
+<span id="id45"></span><h2>Elasticsearch 1.1<a class="headerlink" href="#elasticsearch-1-1" title="Permalink to this headline">¶</a></h2>
 <p>Elasticsearch ist eine Suchmaschine und wird von
 <a class="reference external" href="#_regal_api_2">regal-api</a> verwendet. Auch
 <a class="reference external" href="#_regal_drupal">regal-drupal</a> greift auf den Index zu.</p>
 </div>
 <div class="section" id="drupal-7">
-<h2>Drupal 7<a class="headerlink" href="#drupal-7" title="Permalink to this headline">¶</a></h2>
+<span id="id46"></span><h2>Drupal 7<a class="headerlink" href="#drupal-7" title="Permalink to this headline">¶</a></h2>
 <p>Über Drupal 7</p>
 </div>
-</div>
-<div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="vagrant">
-<h2>Vagrant<a class="headerlink" href="#vagrant" title="Permalink to this headline">¶</a></h2>
+<span id="id47"></span><h2>Vagrant<a class="headerlink" href="#vagrant" title="Permalink to this headline">¶</a></h2>
 <p>Zur Veranschaulichung dieser Dokumentation wird ein Vagrant-Skript
 angeboten, mit dem eine Regal-Installation innerhalb eines
 VirtualBox-Images erzeugt werden kann.</p>
@@ -2058,13 +2046,13 @@ Betriebssyteme ist die Installation ähnlich.</p>
 <li><p>ram 4096M</p></li>
 </ul>
 <div class="section" id="virtualbox-installieren">
-<h3>VirtualBox installieren<a class="headerlink" href="#virtualbox-installieren" title="Permalink to this headline">¶</a></h3>
+<span id="id48"></span><h3>VirtualBox installieren<a class="headerlink" href="#virtualbox-installieren" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">virtualbox</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="vagrant-installieren">
-<h3>Vagrant installieren<a class="headerlink" href="#vagrant-installieren" title="Permalink to this headline">¶</a></h3>
+<span id="id49"></span><h3>Vagrant installieren<a class="headerlink" href="#vagrant-installieren" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span>
 <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">releases</span><span class="o">.</span><span class="n">hashicorp</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">vagrant</span><span class="o">/</span><span class="mf">2.2</span><span class="o">.</span><span class="mi">3</span><span class="o">/</span><span class="n">vagrant_2</span><span class="o">.</span><span class="mf">2.3</span><span class="n">_x86_64</span><span class="o">.</span><span class="n">deb</span>
 <span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span> <span class="n">vagrant_2</span><span class="o">.</span><span class="mf">2.3</span><span class="n">_x86_64</span><span class="o">.</span><span class="n">deb</span>
@@ -2072,14 +2060,14 @@ Betriebssyteme ist die Installation ähnlich.</p>
 </div>
 </div>
 <div class="section" id="repository-herunterladen">
-<h3>Repository herunterladen<a class="headerlink" href="#repository-herunterladen" title="Permalink to this headline">¶</a></h3>
+<span id="id50"></span><h3>Repository herunterladen<a class="headerlink" href="#repository-herunterladen" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">jschnasse</span><span class="o">/</span><span class="n">Regal</span>
 <span class="n">cd</span> <span class="n">Regal</span><span class="o">/</span><span class="n">vagrant</span><span class="o">/</span><span class="n">ubuntu</span><span class="o">-</span><span class="mf">14.04</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="eine-jdk8-bereitstellen">
-<h3>Eine JDK8 bereitstellen<a class="headerlink" href="#eine-jdk8-bereitstellen" title="Permalink to this headline">¶</a></h3>
+<span id="id51"></span><h3>Eine JDK8 bereitstellen<a class="headerlink" href="#eine-jdk8-bereitstellen" title="Permalink to this headline">¶</a></h3>
 <p>Hierfür bitte ein JDK8-Tarball herunterladen und unter dem Namen
 <code class="docutils literal notranslate"><span class="pre">java8.tar.gz</span></code> in einem Verzeichnis <code class="docutils literal notranslate"><span class="pre">/bin</span></code> unterhalb des
 Vagrant-Directories bereitstellen.</p>
@@ -2089,19 +2077,19 @@ Vagrant-Directories bereitstellen.</p>
 </div>
 </div>
 <div class="section" id="geteiltes-entwicklungsverzeichnis">
-<h3>Geteiltes Entwicklungsverzeichnis<a class="headerlink" href="#geteiltes-entwicklungsverzeichnis" title="Permalink to this headline">¶</a></h3>
+<span id="id52"></span><h3>Geteiltes Entwicklungsverzeichnis<a class="headerlink" href="#geteiltes-entwicklungsverzeichnis" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">regal</span><span class="o">-</span><span class="n">dev</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="vagrant-guest-additions-installieren">
-<h3>Vagrant Guest Additions installieren<a class="headerlink" href="#vagrant-guest-additions-installieren" title="Permalink to this headline">¶</a></h3>
+<span id="id53"></span><h3>Vagrant Guest Additions installieren<a class="headerlink" href="#vagrant-guest-additions-installieren" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vagrant</span> <span class="n">plugin</span> <span class="n">install</span> <span class="n">vagrant</span><span class="o">-</span><span class="n">vbguest</span> <span class="o">&amp;&amp;</span> <span class="n">vagrant</span> <span class="n">reload</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="vagrant-host-anlegen">
-<h3>Vagrant Host anlegen<a class="headerlink" href="#vagrant-host-anlegen" title="Permalink to this headline">¶</a></h3>
+<span id="id54"></span><h3>Vagrant Host anlegen<a class="headerlink" href="#vagrant-host-anlegen" title="Permalink to this headline">¶</a></h3>
 <p>Damit alle Dienste komfortabel erreichbar sind, muss in die lokale HOSTs
 Datei ein Eintrag für die Vagrant-Box erfolgen. Im Vagrantfile ist die
 IP <code class="docutils literal notranslate"><span class="pre">192.168.50.4</span></code> für die Box konfiguriert. Über die <code class="docutils literal notranslate"><span class="pre">FRONTEND</span></code> und
@@ -2112,20 +2100,20 @@ IP <code class="docutils literal notranslate"><span class="pre">192.168.50.4</sp
 </div>
 </div>
 <div class="section" id="vagrant-starten">
-<h3>Vagrant starten<a class="headerlink" href="#vagrant-starten" title="Permalink to this headline">¶</a></h3>
+<span id="id55"></span><h3>Vagrant starten<a class="headerlink" href="#vagrant-starten" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vagrant</span> <span class="n">up</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="auf-der-maschine-einloggen">
-<h3>Auf der Maschine einloggen<a class="headerlink" href="#auf-der-maschine-einloggen" title="Permalink to this headline">¶</a></h3>
+<span id="id56"></span><h3>Auf der Maschine einloggen<a class="headerlink" href="#auf-der-maschine-einloggen" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">vagrant</span> <span class="n">ssh</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="server">
-<h2>Server<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h2>
+<span id="id57"></span><h2>Server<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h2>
 <p>Die Installation auf einem Server kann mit Hilfe des mitgelieferten
 Skriptes
 <a class="reference external" href="https://github.com/jschnasse/Regal/blob/master/vagrant/ubuntu-14.04/regal-install.sh">regal-install.sh</a>
@@ -2134,7 +2122,7 @@ Verzeichnis mit einem JDK aufgebaut werden. Danach erfolgt die
 Installation unter <code class="docutils literal notranslate"><span class="pre">/opt/regal</span></code> und mit einem Benutzer <code class="docutils literal notranslate"><span class="pre">regal</span></code> (vgl.
 <code class="docutils literal notranslate"><span class="pre">variables.conf</span></code>)</p>
 <div class="section" id="hardware-empfehlung">
-<h3>Hardware Empfehlung<a class="headerlink" href="#hardware-empfehlung" title="Permalink to this headline">¶</a></h3>
+<span id="id58"></span><h3>Hardware Empfehlung<a class="headerlink" href="#hardware-empfehlung" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>hdd &gt;500GB</p></li>
 <li><p>cpu 8 core</p></li>
@@ -2142,7 +2130,7 @@ Installation unter <code class="docutils literal notranslate"><span class="pre">
 </ul>
 </div>
 <div class="section" id="unterschiede-zur-vagrant-installation">
-<h3>Unterschiede zur Vagrant Installation<a class="headerlink" href="#unterschiede-zur-vagrant-installation" title="Permalink to this headline">¶</a></h3>
+<span id="id59"></span><h3>Unterschiede zur Vagrant Installation<a class="headerlink" href="#unterschiede-zur-vagrant-installation" title="Permalink to this headline">¶</a></h3>
 <p>Auf dem Server empfehlen ich den fedora tomcat mit erweiterten
 Speichereinstellungen zu betreiben.</p>
 <p>Dazu in <code class="docutils literal notranslate"><span class="pre">/opt/regal/bin/fedora/tomcat/bin</span></code> eine <code class="docutils literal notranslate"><span class="pre">setenv.sh</span></code> anlegen
@@ -2161,13 +2149,13 @@ und folgende Zeilen hinein kopieren.</p>
 <span class="n">export</span> <span class="n">CATALINA_OPTS</span>
 </pre></div>
 </div>
-</div>
-</div>
-</div>
 <div class="section" id="entwicklung-java">
-<h1>Entwicklung Java<a class="headerlink" href="#entwicklung-java" title="Permalink to this headline">¶</a></h1>
+<span id="id60"></span><h4>Entwicklung Java<a class="headerlink" href="#entwicklung-java" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
 <div class="section" id="in-der-virtualbox">
-<h2>In der VirtualBox<a class="headerlink" href="#in-der-virtualbox" title="Permalink to this headline">¶</a></h2>
+<span id="id61"></span><h2>In der VirtualBox<a class="headerlink" href="#in-der-virtualbox" title="Permalink to this headline">¶</a></h2>
 <p>Hat man über <a class="reference external" href="#_vagrant">Vagrant</a> eine neue VirtualBox erzeugt und
 alle Konfigurationen wie beschrieben vorgenommen, kann man die
 VirtualBox zur Entwicklung nutzen. Da im Installationsprozess bereits
@@ -2193,7 +2181,7 @@ auf der Virtualbox zunächst mit <code class="docutils literal notranslate"><spa
 werden, damit die Änderungen sichtbar werden.</p>
 </div>
 <div class="section" id="auf-dem-eigenen-system">
-<h2>Auf dem eigenen System<a class="headerlink" href="#auf-dem-eigenen-system" title="Permalink to this headline">¶</a></h2>
+<span id="id62"></span><h2>Auf dem eigenen System<a class="headerlink" href="#auf-dem-eigenen-system" title="Permalink to this headline">¶</a></h2>
 <p>Die Javakomponenten können problemlos auch auf einem aktuellen
 Ubuntusystem entwickelt werden. Leider läuft die
 PHP/Drupal-Implementierung nicht unter neueren Ubuntusystemen. Für die
@@ -2218,13 +2206,10 @@ entsprechend editieren und ausführen.</p>
 </pre></div>
 </div>
 </div>
-</div>
-<div class="section" id="administration">
-<h1>Administration<a class="headerlink" href="#administration" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="aktualisierung">
-<h2>Aktualisierung<a class="headerlink" href="#aktualisierung" title="Permalink to this headline">¶</a></h2>
+<span id="id63"></span><h2>Aktualisierung<a class="headerlink" href="#aktualisierung" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="play-applikationen">
-<h3>Play-Applikationen<a class="headerlink" href="#play-applikationen" title="Permalink to this headline">¶</a></h3>
+<span id="id64"></span><h3>Play-Applikationen<a class="headerlink" href="#play-applikationen" title="Permalink to this headline">¶</a></h3>
 <p>Die Aktualisierung der Regal-Komponenten erfolgt über Skripte. Die
 Aktualisierung funktioniert dabei so, dass der Quellcode der zu
 aktualisierenden Komponente unter <code class="docutils literal notranslate"><span class="pre">/opt/regal/src</span></code> per <code class="docutils literal notranslate"><span class="pre">git</span></code> auf den
@@ -2240,26 +2225,26 @@ Version bleibt immer auf dem Server liegen, so dass bei Bedarf wieder
 zurück gewechselt werden kann.</p>
 </div>
 <div class="section" id="tomcat-applikation">
-<h3>Tomcat-Applikation<a class="headerlink" href="#tomcat-applikation" title="Permalink to this headline">¶</a></h3>
+<span id="id65"></span><h3>Tomcat-Applikation<a class="headerlink" href="#tomcat-applikation" title="Permalink to this headline">¶</a></h3>
 <p>Es wird ein <code class="docutils literal notranslate"><span class="pre">war</span></code>-Container erzeugt und im Tomcat <code class="docutils literal notranslate"><span class="pre">hot</span></code>-deployed.</p>
 </div>
 <div class="section" id="drupal-module">
-<h3>Drupal-Module<a class="headerlink" href="#drupal-module" title="Permalink to this headline">¶</a></h3>
+<span id="id66"></span><h3>Drupal-Module<a class="headerlink" href="#drupal-module" title="Permalink to this headline">¶</a></h3>
 <p>Beinhaltet die Aktualisierung ein Datenbankupdate, so wird Drupal erst
 in den Wartungszustand versetzt (per drush oder über die Oberfläche).
 Danach wird die aktualisierte Version einfach per Git geholt. Bei
 Datenbankupdates wird noch ein Drupal-Updateskript ausgeführt.</p>
 </div>
 <div class="section" id="speicherschicht">
-<h3>Speicherschicht<a class="headerlink" href="#speicherschicht" title="Permalink to this headline">¶</a></h3>
+<span id="id67"></span><h3>Speicherschicht<a class="headerlink" href="#speicherschicht" title="Permalink to this headline">¶</a></h3>
 <p>Aktualisierungen von MySQL, Elasticsearch und Fedora gehen mit einer
 Downtime einher.</p>
 </div>
 </div>
 <div class="section" id="verzeichnisse">
-<h2>Verzeichnisse<a class="headerlink" href="#verzeichnisse" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id50">
-<caption><span class="caption-text">Verzeichnisstruktur</span><a class="headerlink" href="#id50" title="Permalink to this table">¶</a></caption>
+<span id="id68"></span><h2>Verzeichnisse<a class="headerlink" href="#verzeichnisse" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id121">
+<caption><span class="caption-text">Verzeichnisstruktur</span><a class="headerlink" href="#id121" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -2308,9 +2293,9 @@ Komponenten.</p></td>
 </table></div>
 </div>
 <div class="section" id="ports">
-<h2>Ports<a class="headerlink" href="#ports" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id51">
-<caption><span class="caption-text">Ports und Komponenten (typische Belegung)</span><a class="headerlink" href="#id51" title="Permalink to this table">¶</a></caption>
+<span id="id69"></span><h2>Ports<a class="headerlink" href="#ports" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id122">
+<caption><span class="caption-text">Ports und Komponenten (typische Belegung)</span><a class="headerlink" href="#id122" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -2352,9 +2337,9 @@ Komponenten.</p></td>
 </table></div>
 </div>
 <div class="section" id="logs">
-<h2>Logs<a class="headerlink" href="#logs" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id52">
-<caption><span class="caption-text">Logfiles</span><a class="headerlink" href="#id52" title="Permalink to this table">¶</a></caption>
+<span id="id70"></span><h2>Logs<a class="headerlink" href="#logs" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id123">
+<caption><span class="caption-text">Logfiles</span><a class="headerlink" href="#id123" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -2398,9 +2383,9 @@ und/var/log/apache2/error.log
 </table></div>
 </div>
 <div class="section" id="configs">
-<h2>Configs<a class="headerlink" href="#configs" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id53">
-<caption><span class="caption-text">Configfiles</span><a class="headerlink" href="#id53" title="Permalink to this table">¶</a></caption>
+<span id="id71"></span><h2>Configs<a class="headerlink" href="#configs" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id124">
+<caption><span class="caption-text">Configfiles</span><a class="headerlink" href="#id124" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 50%"/>
 <col style="width: 50%"/>
@@ -2450,9 +2435,9 @@ bin/fedora/tomcat/webapps/dnb-unr
 </table></div>
 </div>
 <div class="section" id="apache2">
-<h2>Apache2<a class="headerlink" href="#apache2" title="Permalink to this headline">¶</a></h2>
-<div class="table-wrapper"><table class="docutils align-default" id="id54">
-<caption><span class="caption-text">Frontend Pfade</span><a class="headerlink" href="#id54" title="Permalink to this table">¶</a></caption>
+<span id="id72"></span><h2>Apache2<a class="headerlink" href="#apache2" title="Permalink to this headline">¶</a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id125">
+<caption><span class="caption-text">Frontend Pfade</span><a class="headerlink" href="#id125" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 33%"/>
 <col style="width: 33%"/>
@@ -2482,8 +2467,8 @@ pt/regal/crawlreports</p></td>
 </tr>
 </tbody>
 </table></div>
-<div class="table-wrapper"><table class="docutils align-default" id="id55">
-<caption><span class="caption-text">API Pfade</span><a class="headerlink" href="#id55" title="Permalink to this table">¶</a></caption>
+<div class="table-wrapper"><table class="docutils align-default" id="id126">
+<caption><span class="caption-text">API Pfade</span><a class="headerlink" href="#id126" title="Permalink to this table">¶</a></caption>
 <colgroup>
 <col style="width: 33%"/>
 <col style="width: 33%"/>
@@ -2586,13 +2571,13 @@ t:8443/tools/heritrix</p></td>
 </table></div>
 </div>
 <div class="section" id="matomo">
-<h2>Matomo<a class="headerlink" href="#matomo" title="Permalink to this headline">¶</a></h2>
+<span id="id73"></span><h2>Matomo<a class="headerlink" href="#matomo" title="Permalink to this headline">¶</a></h2>
 <p>Matomo wird einmal täglich per Cronjob mit Apache-Logfiles befüllt.
 Dabei erfolgt eine Anonymisierung. Die Logfiles verbleiben noch sieben
 Tage auf dem Server und werden dann annoynmisiert.</p>
 </div>
 <div class="section" id="monit">
-<h2>Monit<a class="headerlink" href="#monit" title="Permalink to this headline">¶</a></h2>
+<span id="id74"></span><h2>Monit<a class="headerlink" href="#monit" title="Permalink to this headline">¶</a></h2>
 <p>Das Tool Monit erlaubt es, den Status der Regal-Komponenten zu
 überwachen und Dienste ggfl. neu zu starten. Folgende Einträge können in
 /etc/monit/monitrc vorgenommen werden</p>
@@ -2627,13 +2612,13 @@ Tage auf dem Server und werden dann annoynmisiert.</p>
 </div>
 </div>
 <div class="section" id="scripts-und-cronjobs">
-<h2>Scripts und Cronjobs<a class="headerlink" href="#scripts-und-cronjobs" title="Permalink to this headline">¶</a></h2>
+<span id="id75"></span><h2>Scripts und Cronjobs<a class="headerlink" href="#scripts-und-cronjobs" title="Permalink to this headline">¶</a></h2>
 <p>Für das Funktionieren von Regal sind einige regal-scripts sinnvoll. Die
 Skripte sind sämtlich unter Github zu finden.</p>
 <p><a class="reference external" href="https://github.com/edoweb/regal-scripts">https://github.com/edoweb/regal-scripts</a></p>
 <p>Die folgenden Abschnitte zeigen ein typisches Setup.</p>
-<div class="section" id="id12">
-<h3>OAI-Providing<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="oai-providing-2">
+<span id="id76"></span><h3>OAI-Providing<a class="headerlink" href="#oai-providing-2" title="Permalink to this headline">¶</a></h3>
 <p>Der OAI-Provider läuft nicht die ganze Zeit mit, da dies Probleme
 gemacht hat. Er wird nur für einen bestimmten Zeitraum angestellt und
 dann wieder ausgestellt. Auf diese Weise liefert die OAI-Schnittstelle
@@ -2644,7 +2629,7 @@ tagesaktuelle Daten.</p>
 </div>
 </div>
 <div class="section" id="urn-registrierung">
-<h3>URN-Registrierung<a class="headerlink" href="#urn-registrierung" title="Permalink to this headline">¶</a></h3>
+<span id="id77"></span><h3>URN-Registrierung<a class="headerlink" href="#urn-registrierung" title="Permalink to this headline">¶</a></h3>
 <p>Die URN-Registrierung erfolgt mit einem gewissen Verzug. Das dafür
 zuständige Skript überprüft daher zunächst das Anlagedatum der
 Ressource.</p>
@@ -2655,15 +2640,15 @@ Ressource.</p>
 </div>
 </div>
 <div class="section" id="katalog-aktualisierung">
-<h3>Katalog-Aktualisierung<a class="headerlink" href="#katalog-aktualisierung" title="Permalink to this headline">¶</a></h3>
+<span id="id78"></span><h3>Katalog-Aktualisierung<a class="headerlink" href="#katalog-aktualisierung" title="Permalink to this headline">¶</a></h3>
 <p>Das System gleicht einmal am Tag Metadaten mit dem hbz-Verbundkatalog ab
 und führt ggf. Aktualisierungen durch.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">5</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">regal</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">regal</span><span class="o">-</span><span class="n">scripts</span><span class="o">/</span><span class="n">updateAll</span><span class="o">.</span><span class="n">sh</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="id13">
-<h3>Matomo<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="matomo-2">
+<span id="id79"></span><h3>Matomo<a class="headerlink" href="#matomo-2" title="Permalink to this headline">¶</a></h3>
 <p>Matomo wird mit Apache-Logfiles befüllt. Innerhalb von Matomo werden die
 Einträge annonymisiert.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">1</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">regal</span><span class="o">/</span><span class="n">regal</span><span class="o">-</span><span class="n">scripts</span><span class="o">/</span><span class="n">import</span><span class="o">-</span><span class="n">logfiles</span><span class="o">.</span><span class="n">sh</span> <span class="o">&gt;/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
@@ -2671,7 +2656,7 @@ Einträge annonymisiert.</p>
 </div>
 </div>
 <div class="section" id="logfile-annonymisierung">
-<h3>Logfile Annonymisierung<a class="headerlink" href="#logfile-annonymisierung" title="Permalink to this headline">¶</a></h3>
+<span id="id80"></span><h3>Logfile Annonymisierung<a class="headerlink" href="#logfile-annonymisierung" title="Permalink to this headline">¶</a></h3>
 <p>Apache-Logfiles werden sieben Tage unverändert aufbewahrt. Danach
 erfolgt eine Annonymisierung.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">2</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">regal</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">regal</span><span class="o">-</span><span class="n">scripts</span><span class="o">/</span><span class="n">depersonalize</span><span class="o">-</span><span class="n">apache</span><span class="o">-</span><span class="n">logs</span><span class="o">.</span><span class="n">sh</span>
@@ -2679,7 +2664,7 @@ erfolgt eine Annonymisierung.</p>
 </div>
 </div>
 <div class="section" id="webgatherer">
-<h3>Webgatherer<a class="headerlink" href="#webgatherer" title="Permalink to this headline">¶</a></h3>
+<span id="id81"></span><h3>Webgatherer<a class="headerlink" href="#webgatherer" title="Permalink to this headline">¶</a></h3>
 <p>Der Webgatherer prüft Archivierungsintervalle von Webpages und stößt bei
 Bedarf die Erzeugung eines neuen Snapshots/Version an.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">20</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">regal</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">regal</span><span class="o">-</span><span class="n">scripts</span><span class="o">/</span><span class="n">runGatherer</span><span class="o">.</span><span class="n">sh</span> <span class="o">&gt;&gt;</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">regal</span><span class="o">/</span><span class="n">regal</span><span class="o">-</span><span class="n">scripts</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">runGatherer</span><span class="o">.</span><span class="n">log</span>
@@ -2691,7 +2676,7 @@ Bedarf die Erzeugung eines neuen Snapshots/Version an.</p>
 </div>
 </div>
 <div class="section" id="backup">
-<h3>Backup<a class="headerlink" href="#backup" title="Permalink to this headline">¶</a></h3>
+<span id="id82"></span><h3>Backup<a class="headerlink" href="#backup" title="Permalink to this headline">¶</a></h3>
 <p>MySQL und Elasticsearch</p>
 <p>Der Elasticsearch-Index und die MySQL-Datenbanken werden täglich
 gesichert. Es werden Backups der letzten 30 Tage aufbewahrt. Ältere
@@ -2704,82 +2689,9 @@ Backups werden von der Platte gelöscht.</p>
 </div>
 </div>
 <div class="section" id="entwicklung">
-<h3>Entwicklung<a class="headerlink" href="#entwicklung" title="Permalink to this headline">¶</a></h3>
+<span id="id83"></span><h3>Entwicklung<a class="headerlink" href="#entwicklung" title="Permalink to this headline">¶</a></h3>
 <p>Für die Entwicklung an Regal empfiehlt sich folgende Vorgehensweise…</p>
 </div>
-</div>
-</div>
-<div class="section" id="dokumentation">
-<h1>Dokumentation<a class="headerlink" href="#dokumentation" title="Permalink to this headline">¶</a></h1>
-<p>Diese Dokumentation ist mit asciidoc geschrieben und wurde mit
-asciidoctor in HTML übersetzt. Dazu wurde das foundation.css Stylesheet
-aus dem asciidoctor-stylesheet-factory Repository verwendet.</p>
-<p>Die Schritte, um an der Doku zu arbeiten sind folgenden</p>
-<div class="section" id="dieses-repo-herunterladen">
-<h2>Dieses Repo herunterladen<a class="headerlink" href="#dieses-repo-herunterladen" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">hbz</span><span class="o">/</span><span class="n">to</span><span class="o">.</span><span class="n">science</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="asciidoctor-und-asciidoctor-stylesheets-installieren">
-<h2>Asciidoctor und Asciidoctor-Stylesheets installieren<a class="headerlink" href="#asciidoctor-und-asciidoctor-stylesheets-installieren" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpg</span> <span class="o">--</span><span class="n">keyserver</span> <span class="n">hkp</span><span class="p">:</span><span class="o">//</span><span class="n">pool</span><span class="o">.</span><span class="n">sks</span><span class="o">-</span><span class="n">keyservers</span><span class="o">.</span><span class="n">net</span> <span class="o">--</span><span class="n">recv</span><span class="o">-</span><span class="n">keys</span> <span class="mi">409</span><span class="n">B6B1796C275462A1703113804BB82D39DC0E3</span> <span class="mi">7</span><span class="n">D2BAF1CF37B13E2069D6956105BD0E739499BDB</span>
-\<span class="n">curl</span> <span class="o">-</span><span class="n">sSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">get</span><span class="o">.</span><span class="n">rvm</span><span class="o">.</span><span class="n">io</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">bash</span> <span class="o">-</span><span class="n">s</span> <span class="n">stable</span> <span class="o">--</span><span class="n">ruby</span>
-<span class="c1">#login again</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">bundler</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gem</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">asciidoctor</span><span class="o">/</span><span class="n">asciidoctor</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">asciidoctor</span><span class="o">/</span><span class="n">asciidoctor</span><span class="o">-</span><span class="n">stylesheet</span><span class="o">-</span><span class="n">factory</span>
-<span class="n">cd</span> <span class="n">asciidoctor</span>
-<span class="n">sudo</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">asciidoctor</span>
-<span class="n">cd</span> <span class="o">../</span><span class="n">asciidoctor</span><span class="o">-</span><span class="n">stylesheet</span><span class="o">-</span><span class="n">factory</span>
-<span class="n">bundle</span> <span class="n">install</span>
-<span class="n">compass</span> <span class="nb">compile</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="doku-modifizieren-und-in-html-ubersetzen">
-<h2>Doku modifizieren und in HTML übersetzen<a class="headerlink" href="#doku-modifizieren-und-in-html-ubersetzen" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Regal</span><span class="o">/</span><span class="n">doc</span>
-<span class="n">editor</span> <span class="n">regal</span><span class="o">.</span><span class="n">asciidoc</span>
-<span class="n">asciidoctor</span> <span class="o">-</span><span class="n">astylesheet</span><span class="o">=</span><span class="n">foundation</span><span class="o">.</span><span class="n">css</span> <span class="o">-</span><span class="n">astylesdir</span><span class="o">=../../</span><span class="n">asciidoctor</span><span class="o">-</span><span class="n">stylesheet</span><span class="o">-</span><span class="n">factory</span><span class="o">/</span><span class="n">stylesheets</span> <span class="n">regal</span><span class="o">.</span><span class="n">asciidoc</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="section" id="license">
-<h1>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h1>
-<p><img alt="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png"/></p>
-<p>This work is licensed under a <a href="#id56"><span class="problematic" id="id60">`Creative Commons
-Attribution-NonCommercial 4.0 International
-License &lt;http://creativecommons.org/licenses/by-nc/4.0/&gt;&gt;`__</span></a>.</p>
-</div>
-<div class="section" id="links">
-<h1>Links<a class="headerlink" href="#links" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="slides">
-<h2>Slides<a class="headerlink" href="#slides" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Lobid - <a class="reference external" href="http://hbz.github.io/slides/">http://hbz.github.io/slides/</a></p></li>
-<li><p>Skos-Lookup - <a class="reference external" href="http://hbz.github.io/slides/siit-170511/#/">http://hbz.github.io/slides/siit-170511/#/</a></p></li>
-<li><p>Regal - <a class="reference external" href="http://hbz.github.io/slides/danrw-20180905/#/">http://hbz.github.io/slides/danrw-20180905/#/</a></p></li>
-</ul>
-</div>
-<div class="section" id="internes-wiki">
-<h2>Internes Wiki<a class="headerlink" href="#internes-wiki" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://wiki1.hbz-nrw.de/display/edd/Dokumentation">https://wiki1.hbz-nrw.de/display/edd/Dokumentation</a></p></li>
-</ul>
-</div>
-<div class="section" id="github">
-<h2>Github<a class="headerlink" href="#github" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p><a class="reference external" href="https://github.com/edoweb">https://github.com/edoweb</a></p></li>
-<li><p><a class="reference external" href="https://github.com/hbz">https://github.com/hbz</a></p></li>
-</ul>
-<dl class="field-list simple">
-<dt class="field-odd">!figure-caption</dt>
-<dd class="field-odd"><p></p></dd>
-</dl>
 </div>
 </div>
 
@@ -2792,7 +2704,7 @@ License &lt;http://creativecommons.org/licenses/by-nc/4.0/&gt;&gt;`__</span></a>
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Preface</div>
+                <div class="title">API-documentation</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
@@ -2863,37 +2775,37 @@ License &lt;http://creativecommons.org/licenses/by-nc/4.0/&gt;&gt;`__</span></a>
 </ul>
 </li>
 <li><a class="reference internal" href="#software">Software</a><ul>
-<li><a class="reference internal" href="#id1">regal-api</a><ul>
+<li><a class="reference internal" href="#regal-api-2">regal-api</a><ul>
 <li><a class="reference internal" href="#konfiguration">Konfiguration</a></li>
 <li><a class="reference internal" href="#die-applikation">Die Applikation</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#etikett">Etikett</a><ul>
-<li><a class="reference internal" href="#id2">Konfiguration</a></li>
-<li><a class="reference internal" href="#id3">Die Applikation</a></li>
+<li><a class="reference internal" href="#konfiguration-2">Konfiguration</a></li>
+<li><a class="reference internal" href="#die-applikation-2">Die Applikation</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#zettel">Zettel</a><ul>
-<li><a class="reference internal" href="#id4">Konfiguration</a></li>
-<li><a class="reference internal" href="#id5">Die Applikation</a></li>
+<li><a class="reference internal" href="#konfiguration-3">Konfiguration</a></li>
+<li><a class="reference internal" href="#die-applikation-3">Die Applikation</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#skos-lookup">skos-lookup</a><ul>
-<li><a class="reference internal" href="#id6">Konfiguration</a></li>
-<li><a class="reference internal" href="#id7">Die Applikation</a></li>
+<li><a class="reference internal" href="#konfiguration-4">Konfiguration</a></li>
+<li><a class="reference internal" href="#die-applikation-4">Die Applikation</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#thumby">Thumby</a><ul>
-<li><a class="reference internal" href="#id8">Konfiguration</a></li>
-<li><a class="reference internal" href="#id9">Die Applikation</a></li>
+<li><a class="reference internal" href="#konfiguration-5">Konfiguration</a></li>
+<li><a class="reference internal" href="#die-applikation-5">Die Applikation</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#deepzoomer">Deepzoomer</a><ul>
-<li><a class="reference internal" href="#id10">Konfiguration</a></li>
+<li><a class="reference internal" href="#konfiguration-6">Konfiguration</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#regal-drupal">regal-drupal</a><ul>
-<li><a class="reference internal" href="#id11">Die Applikation</a></li>
+<li><a class="reference internal" href="#die-applikation-6">Die Applikation</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#edoweb-drupal-theme">edoweb-drupal-theme</a></li>
@@ -2905,9 +2817,6 @@ License &lt;http://creativecommons.org/licenses/by-nc/4.0/&gt;&gt;`__</span></a>
 <li><a class="reference internal" href="#mysql">MySql</a></li>
 <li><a class="reference internal" href="#elasticsearch-1-1">Elasticsearch 1.1</a></li>
 <li><a class="reference internal" href="#drupal-7">Drupal 7</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#installation">Installation</a><ul>
 <li><a class="reference internal" href="#vagrant">Vagrant</a><ul>
 <li><a class="reference internal" href="#virtualbox-installieren">VirtualBox installieren</a></li>
 <li><a class="reference internal" href="#vagrant-installieren">Vagrant installieren</a></li>
@@ -2922,17 +2831,14 @@ License &lt;http://creativecommons.org/licenses/by-nc/4.0/&gt;&gt;`__</span></a>
 </li>
 <li><a class="reference internal" href="#server">Server</a><ul>
 <li><a class="reference internal" href="#hardware-empfehlung">Hardware Empfehlung</a></li>
-<li><a class="reference internal" href="#unterschiede-zur-vagrant-installation">Unterschiede zur Vagrant Installation</a></li>
+<li><a class="reference internal" href="#unterschiede-zur-vagrant-installation">Unterschiede zur Vagrant Installation</a><ul>
+<li><a class="reference internal" href="#entwicklung-java">Entwicklung Java</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#entwicklung-java">Entwicklung Java</a><ul>
 <li><a class="reference internal" href="#in-der-virtualbox">In der VirtualBox</a></li>
 <li><a class="reference internal" href="#auf-dem-eigenen-system">Auf dem eigenen System</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#administration">Administration</a><ul>
 <li><a class="reference internal" href="#aktualisierung">Aktualisierung</a><ul>
 <li><a class="reference internal" href="#play-applikationen">Play-Applikationen</a></li>
 <li><a class="reference internal" href="#tomcat-applikation">Tomcat-Applikation</a></li>
@@ -2948,29 +2854,16 @@ License &lt;http://creativecommons.org/licenses/by-nc/4.0/&gt;&gt;`__</span></a>
 <li><a class="reference internal" href="#matomo">Matomo</a></li>
 <li><a class="reference internal" href="#monit">Monit</a></li>
 <li><a class="reference internal" href="#scripts-und-cronjobs">Scripts und Cronjobs</a><ul>
-<li><a class="reference internal" href="#id12">OAI-Providing</a></li>
+<li><a class="reference internal" href="#oai-providing-2">OAI-Providing</a></li>
 <li><a class="reference internal" href="#urn-registrierung">URN-Registrierung</a></li>
 <li><a class="reference internal" href="#katalog-aktualisierung">Katalog-Aktualisierung</a></li>
-<li><a class="reference internal" href="#id13">Matomo</a></li>
+<li><a class="reference internal" href="#matomo-2">Matomo</a></li>
 <li><a class="reference internal" href="#logfile-annonymisierung">Logfile Annonymisierung</a></li>
 <li><a class="reference internal" href="#webgatherer">Webgatherer</a></li>
 <li><a class="reference internal" href="#backup">Backup</a></li>
 <li><a class="reference internal" href="#entwicklung">Entwicklung</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li><a class="reference internal" href="#dokumentation">Dokumentation</a><ul>
-<li><a class="reference internal" href="#dieses-repo-herunterladen">Dieses Repo herunterladen</a></li>
-<li><a class="reference internal" href="#asciidoctor-und-asciidoctor-stylesheets-installieren">Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
-<li><a class="reference internal" href="#doku-modifizieren-und-in-html-ubersetzen">Doku modifizieren und in HTML übersetzen</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#license">License</a></li>
-<li><a class="reference internal" href="#links">Links</a><ul>
-<li><a class="reference internal" href="#slides">Slides</a></li>
-<li><a class="reference internal" href="#internes-wiki">Internes Wiki</a></li>
-<li><a class="reference internal" href="#github">Github</a></li>
 </ul>
 </li>
 </ul>
