@@ -3,10 +3,7 @@
 Dokumentation
 =============
 
-Diese Dokumentation ist mit asciidoc geschrieben und wurde mit
-asciidoctor in HTML übersetzt. Dazu wurde das foundation.css Stylesheet
-aus dem asciidoctor-stylesheet-factory Repository verwendet.
-
+Diese Dokumentation ist mit sphinx erstellt.
 Die Schritte, um an der Doku zu arbeiten sind folgenden
 
 .. _dieses_repo_herunterladen:

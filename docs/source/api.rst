@@ -35,6 +35,7 @@ Prepare your environment to make the following ``curl``-Calls work!
 
    api-toscience
    api-labels
+   
    api-forms
    api-thumbs
    api-skos
