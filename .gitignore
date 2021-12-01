@@ -1,6 +1,7 @@
 # Editor
 *~
 .settings
+.vscode
 # sphinx python
 docs/venv
 # Vagrant stuff
