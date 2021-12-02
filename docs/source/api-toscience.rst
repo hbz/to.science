@@ -63,6 +63,8 @@ Order Child Nodes
    $ curl -XPUT -u$API_USER:$PASSWORD -d'["regal:2","regal:1249"]' $REGAL_API/resource/regal:1/parts -H"Content-Type:application/json"
 
 
+.. _ingest_unmanaged_content:
+
 Ingest unmanaged content
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -90,9 +92,12 @@ Currently only one level of subpaths is supported.
    $ curl -XPOST -u$API_USER:$PASSWORD "$REGAL_API/resource/regal:1234/postResearchData?collectionUrl=data&subPath=$dataDir&filename=$dateiname&resourcePid=$resourcePid" -H "UserId=resourceposter" -H "Content-Type: text/plain; charset=utf-8";
 
 
-Complex Example
-~~~~~~~~~~~~~~~
+.. _complex_example_of_hierarchial_content:
 
+Complex Example of hierarchial content
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+to be written
 
 
 .. _read:

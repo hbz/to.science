@@ -241,13 +241,13 @@
 </div>
 </section>
 <section id="ingest-unmanaged-content">
-<h3>Ingest unmanaged content<a class="headerlink" href="#ingest-unmanaged-content" title="Permalink to this headline"></a></h3>
+<span id="id8"></span><h3>Ingest unmanaged content<a class="headerlink" href="#ingest-unmanaged-content" title="Permalink to this headline"></a></h3>
 <p>Example address for external stored content, i.e. research data:
 <code class="docutils literal notranslate"><span class="pre">https://api.example.com/data/regal:1234/first_set/data.csv</span></code></p>
 <p>The base url and the default collection url are configured in the application.conf.</p>
 <p>Currently only one level of subpaths is supported.</p>
-<div class="table-wrapper"><table class="docutils align-default" id="id34">
-<caption><span class="caption-text">URL parameter</span><a class="headerlink" href="#id34" title="Permalink to this table"></a></caption>
+<div class="table-wrapper"><table class="docutils align-default" id="id36">
+<caption><span class="caption-text">URL parameter</span><a class="headerlink" href="#id36" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 15%"/>
 <col style="width: 14%"/>
@@ -282,14 +282,15 @@
 </pre></div>
 </div>
 </section>
-<section id="complex-example">
-<h3>Complex Example<a class="headerlink" href="#complex-example" title="Permalink to this headline"></a></h3>
+<section id="complex-example-of-hierarchial-content">
+<span id="id9"></span><h3>Complex Example of hierarchial content<a class="headerlink" href="#complex-example-of-hierarchial-content" title="Permalink to this headline"></a></h3>
+<p>to be written</p>
 </section>
 </section>
 <section id="read">
-<span id="id8"></span><h2>Read<a class="headerlink" href="#read" title="Permalink to this headline"></a></h2>
+<span id="id10"></span><h2>Read<a class="headerlink" href="#read" title="Permalink to this headline"></a></h2>
 <section id="read-resource">
-<span id="id9"></span><h3>Read resource<a class="headerlink" href="#read-resource" title="Permalink to this headline"></a></h3>
+<span id="id11"></span><h3>Read resource<a class="headerlink" href="#read-resource" title="Permalink to this headline"></a></h3>
 <p><strong>html</strong></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.html
 </pre></div>
@@ -333,7 +334,7 @@ curl $REGAL_API/resource/regal:1234.json2
 </div>
 </section>
 <section id="read-resource-tree">
-<span id="id10"></span><h3>Read resource tree<a class="headerlink" href="#read-resource-tree" title="Permalink to this headline"></a></h3>
+<span id="id12"></span><h3>Read resource tree<a class="headerlink" href="#read-resource-tree" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/all
 </pre></div>
 </div>
@@ -342,49 +343,49 @@ curl $REGAL_API/resource/regal:1234.json2
 </div>
 </section>
 <section id="read-binary-data">
-<span id="id11"></span><h3>Read binary data<a class="headerlink" href="#read-binary-data" title="Permalink to this headline"></a></h3>
+<span id="id13"></span><h3>Read binary data<a class="headerlink" href="#read-binary-data" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/data
 </pre></div>
 </div>
 </section>
 <section id="read-webgatherer-conf">
-<span id="id12"></span><h3>Read Webgatherer Conf<a class="headerlink" href="#read-webgatherer-conf" title="Permalink to this headline"></a></h3>
+<span id="id14"></span><h3>Read Webgatherer Conf<a class="headerlink" href="#read-webgatherer-conf" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/conf
 </pre></div>
 </div>
 </section>
 <section id="read-ordering-of-childs">
-<span id="id13"></span><h3>Read Ordering of Childs<a class="headerlink" href="#read-ordering-of-childs" title="Permalink to this headline"></a></h3>
+<span id="id15"></span><h3>Read Ordering of Childs<a class="headerlink" href="#read-ordering-of-childs" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/seq
 </pre></div>
 </div>
 </section>
 <section id="read-user">
-<span id="id14"></span><h3>Read user<a class="headerlink" href="#read-user" title="Permalink to this headline"></a></h3>
+<span id="id16"></span><h3>Read user<a class="headerlink" href="#read-user" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="n">implemented</span>
 </pre></div>
 </div>
 </section>
 <section id="read-adhoc-linked-data">
-<span id="id15"></span><h3>Read Adhoc Linked Data<a class="headerlink" href="#read-adhoc-linked-data" title="Permalink to this headline"></a></h3>
+<span id="id17"></span><h3>Read Adhoc Linked Data<a class="headerlink" href="#read-adhoc-linked-data" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/adhoc/uri/$(echo test |base64)
 </pre></div>
 </div>
 </section>
 </section>
 <section id="update">
-<span id="id16"></span><h2>Update<a class="headerlink" href="#update" title="Permalink to this headline"></a></h2>
+<span id="id18"></span><h2>Update<a class="headerlink" href="#update" title="Permalink to this headline"></a></h2>
 <section id="update-resource">
-<span id="id17"></span><h3>Update Resource<a class="headerlink" href="#update-resource" title="Permalink to this headline"></a></h3>
+<span id="id19"></span><h3>Update Resource<a class="headerlink" href="#update-resource" title="Permalink to this headline"></a></h3>
 </section>
 <section id="update-metadata">
-<span id="id18"></span><h3>Update Metadata<a class="headerlink" href="#update-metadata" title="Permalink to this headline"></a></h3>
+<span id="id20"></span><h3>Update Metadata<a class="headerlink" href="#update-metadata" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -s -u$API_USER:$REGAL_PASSWORD -XPOST $REGAL_API/utils/updateMetadata/regal:1234 -H"accept: application/json"
 </pre></div>
 </div>
 </section>
 <section id="add-urn">
-<span id="id19"></span><h3>Add URN<a class="headerlink" href="#add-urn" title="Permalink to this headline"></a></h3>
+<span id="id21"></span><h3>Add URN<a class="headerlink" href="#add-urn" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">lobidify</span>
 </pre></div>
 </div>
@@ -396,28 +397,28 @@ curl $REGAL_API/resource/regal:1234.json2
 </div>
 </section>
 <section id="enrich">
-<span id="id20"></span><h3>Enrich<a class="headerlink" href="#enrich" title="Permalink to this headline"></a></h3>
+<span id="id22"></span><h3>Enrich<a class="headerlink" href="#enrich" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">resource</span><span class="o">/</span><span class="p">:</span><span class="n">pid</span><span class="o">/</span><span class="n">metadata</span><span class="o">/</span><span class="n">enrich</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="delete">
-<span id="id21"></span><h2>Delete<a class="headerlink" href="#delete" title="Permalink to this headline"></a></h2>
+<span id="id23"></span><h2>Delete<a class="headerlink" href="#delete" title="Permalink to this headline"></a></h2>
 <section id="delete-resource">
-<span id="id22"></span><h3>Delete resource<a class="headerlink" href="#delete-resource" title="Permalink to this headline"></a></h3>
+<span id="id24"></span><h3>Delete resource<a class="headerlink" href="#delete-resource" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234";echo
 </pre></div>
 </div>
 </section>
 <section id="purge-resource">
-<span id="id23"></span><h3>Purge resource<a class="headerlink" href="#purge-resource" title="Permalink to this headline"></a></h3>
+<span id="id25"></span><h3>Purge resource<a class="headerlink" href="#purge-resource" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=true";echo
 </pre></div>
 </div>
 </section>
 <section id="delete-part-of-resource">
-<span id="id24"></span><h3>Delete part of resource<a class="headerlink" href="#delete-part-of-resource" title="Permalink to this headline"></a></h3>
+<span id="id26"></span><h3>Delete part of resource<a class="headerlink" href="#delete-part-of-resource" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/seq
 </pre></div>
 </div>
@@ -435,16 +436,16 @@ curl $REGAL_API/resource/regal:1234.json2
 </div>
 </section>
 <section id="delete-user">
-<span id="id25"></span><h3>Delete user<a class="headerlink" href="#delete-user" title="Permalink to this headline"></a></h3>
+<span id="id27"></span><h3>Delete user<a class="headerlink" href="#delete-user" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="n">implemented</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="search">
-<span id="id26"></span><h2>Search<a class="headerlink" href="#search" title="Permalink to this headline"></a></h2>
+<span id="id28"></span><h2>Search<a class="headerlink" href="#search" title="Permalink to this headline"></a></h2>
 <section id="simple-search">
-<span id="id27"></span><h3>Simple Search<a class="headerlink" href="#simple-search" title="Permalink to this headline"></a></h3>
+<span id="id29"></span><h3>Simple Search<a class="headerlink" href="#simple-search" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">find</span>
 </pre></div>
 </div>
@@ -453,28 +454,28 @@ curl $REGAL_API/resource/regal:1234.json2
 </div>
 </section>
 <section id="facetted-search">
-<span id="id28"></span><h3>Facetted Search<a class="headerlink" href="#facetted-search" title="Permalink to this headline"></a></h3>
+<span id="id30"></span><h3>Facetted Search<a class="headerlink" href="#facetted-search" title="Permalink to this headline"></a></h3>
 </section>
 <section id="search-for-field">
-<span id="id29"></span><h3>Search for field<a class="headerlink" href="#search-for-field" title="Permalink to this headline"></a></h3>
+<span id="id31"></span><h3>Search for field<a class="headerlink" href="#search-for-field" title="Permalink to this headline"></a></h3>
 </section>
 </section>
 <section id="misc">
-<span id="id30"></span><h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline"></a></h2>
+<span id="id32"></span><h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline"></a></h2>
 <section id="load-metadata-from-lobid">
-<span id="id31"></span><h3>Load metadata from Lobid<a class="headerlink" href="#load-metadata-from-lobid" title="Permalink to this headline"></a></h3>
+<span id="id33"></span><h3>Load metadata from Lobid<a class="headerlink" href="#load-metadata-from-lobid" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -XPOST "$REGAL_API/utils/lobidify/regal:1234?alephid=HT018920238"
 </pre></div>
 </div>
 </section>
 <section id="reread-labels-from-etikett">
-<span id="id32"></span><h3>Reread Labels from etikett<a class="headerlink" href="#reread-labels-from-etikett" title="Permalink to this headline"></a></h3>
+<span id="id34"></span><h3>Reread Labels from etikett<a class="headerlink" href="#reread-labels-from-etikett" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/context.json
 </pre></div>
 </div>
 </section>
 <section id="reindex-resource">
-<span id="id33"></span><h3>Reindex resource<a class="headerlink" href="#reindex-resource" title="Permalink to this headline"></a></h3>
+<span id="id35"></span><h3>Reindex resource<a class="headerlink" href="#reindex-resource" title="Permalink to this headline"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/utils/index/regal:1234 -H"accept: application/json"
 </pre></div>
 </div>
@@ -542,7 +543,7 @@ curl $REGAL_API/resource/regal:1234.json2
 <li><a class="reference internal" href="#upload-metadata">Upload metadata</a></li>
 <li><a class="reference internal" href="#order-child-nodes">Order Child Nodes</a></li>
 <li><a class="reference internal" href="#ingest-unmanaged-content">Ingest unmanaged content</a></li>
-<li><a class="reference internal" href="#complex-example">Complex Example</a></li>
+<li><a class="reference internal" href="#complex-example-of-hierarchial-content">Complex Example of hierarchial content</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#read">Read</a><ul>
