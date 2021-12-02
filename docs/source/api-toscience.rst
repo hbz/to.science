@@ -90,6 +90,10 @@ Currently only one level of subpaths is supported.
    $ curl -XPOST -u$API_USER:$PASSWORD "$REGAL_API/resource/regal:1234/postResearchData?collectionUrl=data&subPath=$dataDir&filename=$dateiname&resourcePid=$resourcePid" -H "UserId=resourceposter" -H "Content-Type: text/plain; charset=utf-8";
 
 
+Complex Example
+~~~~~~~~~~~~~~~
+
+
 
 .. _read:
 

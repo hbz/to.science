@@ -3,7 +3,7 @@
 Dokumentation
 =============
 
-Diese Dokumentation ist mit sphinx erstellt.
+Diese Dokumentation ist mit `sphinx`_ erstellt.
 Die Schritte, um an der Doku zu arbeiten sind folgenden
 
 .. _dieses_repo_herunterladen:
@@ -15,36 +15,44 @@ Dieses Repo herunterladen
 
    git clone https://github.com/hbz/to.science
 
-.. _asciidoctor_und_asciidoctor_stylesheets_installieren:
+.. _sphinx_installieren:
 
-Asciidoctor und Asciidoctor-Stylesheets installieren
-----------------------------------------------------
+Sphinx installieren
+-------------------
+
+Für die Verwendung von Sphinx wird eine virtuelle Pythonumgebung im Verzeichnis `venv` eingerichtet. Das Verzeichnis sollte nicht mit
+ins git repo committet werden. Das virtuelle Python wird aktiviert und mit pip sphinx und zwei weitere themes installiert.
 
 ::
 
-   gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
-   \curl -sSL https://get.rvm.io | sudo bash -s stable --ruby
-   #login again
-   sudo apt-get install bundler
-   sudo apt-get install gem
-   git clone https://github.com/asciidoctor/asciidoctor
-   git clone https://github.com/asciidoctor/asciidoctor-stylesheet-factory
-   cd asciidoctor
-   sudo gem install asciidoctor
-   cd ../asciidoctor-stylesheet-factory
-   bundle install
-   compass compile
+   $ cd to.science/doc
+   $ python3 -m venv ./venv
+   $ . venv/bin/activate
+   $ pip install -U sphinx
+   $ pip install -U sphinx_rtd_theme
+   $ pip install -U furo
+
 
 .. _doku_modifizieren_und_in_html_übersetzen:
 
 Doku modifizieren und in HTML übersetzen
 ----------------------------------------
 
+Die Doku ist in `reStructuredText`_ geschrieben wird mittel `make` in html übersetzt.
+
 ::
 
-   cd Regal/doc
-   editor regal.asciidoc
-   asciidoctor -astylesheet=foundation.css -astylesdir=../../asciidoctor-stylesheet-factory/stylesheets regal.asciidoc
+   $ cd to.science/doc
+   $ vi source/colophon.rst
+   $ make html
+
+Das fertige html findet man im Unterverzeichnis `build/html`. Man kann eine einfachen Webserver starten und das Ergebnis Unterverzeichnis
+unter http://localhost:8000 ansehen.
+
+::
+
+   $ python3 -m http.server --directory build/htm
+
 
 .. _license:
 
@@ -92,3 +100,7 @@ Github
 :!figure-caption:
 
 .. |https://i.creativecommons.org/l/by-nc/4.0/88x31.png| image:: https://i.creativecommons.org/l/by-nc/4.0/88x31.png
+
+
+.. _sphinx: https://www.sphinx-doc.org
+.. _reStructuredText: https://docutils.sourceforge.io/rst.html

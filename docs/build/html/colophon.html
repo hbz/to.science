@@ -201,7 +201,7 @@
         <article role="main">
           <section id="dokumentation">
 <span id="id1"></span><h1>Dokumentation<a class="headerlink" href="#dokumentation" title="Permalink to this headline"></a></h1>
-<p>Diese Dokumentation ist mit sphinx erstellt.
+<p>Diese Dokumentation ist mit <a class="reference external" href="https://www.sphinx-doc.org">sphinx</a> erstellt.
 Die Schritte, um an der Doku zu arbeiten sind folgenden</p>
 <section id="dieses-repo-herunterladen">
 <span id="id2"></span><h2>Dieses Repo herunterladen<a class="headerlink" href="#dieses-repo-herunterladen" title="Permalink to this headline"></a></h2>
@@ -209,28 +209,30 @@ Die Schritte, um an der Doku zu arbeiten sind folgenden</p>
 </pre></div>
 </div>
 </section>
-<section id="asciidoctor-und-asciidoctor-stylesheets-installieren">
-<span id="id3"></span><h2>Asciidoctor und Asciidoctor-Stylesheets installieren<a class="headerlink" href="#asciidoctor-und-asciidoctor-stylesheets-installieren" title="Permalink to this headline"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gpg</span> <span class="o">--</span><span class="n">keyserver</span> <span class="n">hkp</span><span class="p">:</span><span class="o">//</span><span class="n">pool</span><span class="o">.</span><span class="n">sks</span><span class="o">-</span><span class="n">keyservers</span><span class="o">.</span><span class="n">net</span> <span class="o">--</span><span class="n">recv</span><span class="o">-</span><span class="n">keys</span> <span class="mi">409</span><span class="n">B6B1796C275462A1703113804BB82D39DC0E3</span> <span class="mi">7</span><span class="n">D2BAF1CF37B13E2069D6956105BD0E739499BDB</span>
-\<span class="n">curl</span> <span class="o">-</span><span class="n">sSL</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">get</span><span class="o">.</span><span class="n">rvm</span><span class="o">.</span><span class="n">io</span> <span class="o">|</span> <span class="n">sudo</span> <span class="n">bash</span> <span class="o">-</span><span class="n">s</span> <span class="n">stable</span> <span class="o">--</span><span class="n">ruby</span>
-<span class="c1">#login again</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">bundler</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gem</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">asciidoctor</span><span class="o">/</span><span class="n">asciidoctor</span>
-<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">asciidoctor</span><span class="o">/</span><span class="n">asciidoctor</span><span class="o">-</span><span class="n">stylesheet</span><span class="o">-</span><span class="n">factory</span>
-<span class="n">cd</span> <span class="n">asciidoctor</span>
-<span class="n">sudo</span> <span class="n">gem</span> <span class="n">install</span> <span class="n">asciidoctor</span>
-<span class="n">cd</span> <span class="o">../</span><span class="n">asciidoctor</span><span class="o">-</span><span class="n">stylesheet</span><span class="o">-</span><span class="n">factory</span>
-<span class="n">bundle</span> <span class="n">install</span>
-<span class="n">compass</span> <span class="nb">compile</span>
+<section id="sphinx-installieren">
+<span id="id3"></span><h2>Sphinx installieren<a class="headerlink" href="#sphinx-installieren" title="Permalink to this headline"></a></h2>
+<p>Für die Verwendung von Sphinx wird eine virtuelle Pythonumgebung im Verzeichnis <cite>venv</cite> eingerichtet. Das Verzeichnis sollte nicht mit
+ins git repo committet werden. Das virtuelle Python wird aktiviert und mit pip sphinx und zwei weitere themes installiert.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd to.science/doc
+$ python3 -m venv ./venv
+$ . venv/bin/activate
+$ pip install -U sphinx
+$ pip install -U sphinx_rtd_theme
+$ pip install -U furo
 </pre></div>
 </div>
 </section>
 <section id="doku-modifizieren-und-in-html-ubersetzen">
 <span id="id4"></span><h2>Doku modifizieren und in HTML übersetzen<a class="headerlink" href="#doku-modifizieren-und-in-html-ubersetzen" title="Permalink to this headline"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">Regal</span><span class="o">/</span><span class="n">doc</span>
-<span class="n">editor</span> <span class="n">regal</span><span class="o">.</span><span class="n">asciidoc</span>
-<span class="n">asciidoctor</span> <span class="o">-</span><span class="n">astylesheet</span><span class="o">=</span><span class="n">foundation</span><span class="o">.</span><span class="n">css</span> <span class="o">-</span><span class="n">astylesdir</span><span class="o">=../../</span><span class="n">asciidoctor</span><span class="o">-</span><span class="n">stylesheet</span><span class="o">-</span><span class="n">factory</span><span class="o">/</span><span class="n">stylesheets</span> <span class="n">regal</span><span class="o">.</span><span class="n">asciidoc</span>
+<p>Die Doku ist in <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> geschrieben wird mittel <cite>make</cite> in html übersetzt.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd to.science/doc
+$ vi source/colophon.rst
+$ make html
+</pre></div>
+</div>
+<p>Das fertige html findet man im Unterverzeichnis <cite>build/html</cite>. Man kann eine einfachen Webserver starten und das Ergebnis Unterverzeichnis
+unter <a class="reference external" href="http://localhost:8000">http://localhost:8000</a> ansehen.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m http.server --directory build/htm
 </pre></div>
 </div>
 </section>
@@ -316,7 +318,7 @@ License &lt;http://creativecommons.org/licenses/by-nc/4.0/&gt;&gt;`__</span></a>
             <ul>
 <li><a class="reference internal" href="#">Dokumentation</a><ul>
 <li><a class="reference internal" href="#dieses-repo-herunterladen">Dieses Repo herunterladen</a></li>
-<li><a class="reference internal" href="#asciidoctor-und-asciidoctor-stylesheets-installieren">Asciidoctor und Asciidoctor-Stylesheets installieren</a></li>
+<li><a class="reference internal" href="#sphinx-installieren">Sphinx installieren</a></li>
 <li><a class="reference internal" href="#doku-modifizieren-und-in-html-ubersetzen">Doku modifizieren und in HTML übersetzen</a></li>
 </ul>
 </li>
