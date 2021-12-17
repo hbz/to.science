@@ -224,15 +224,15 @@ $ pip install -U furo
 </section>
 <section id="doku-modifizieren-und-in-html-ubersetzen">
 <span id="id4"></span><h2>Doku modifizieren und in HTML übersetzen<a class="headerlink" href="#doku-modifizieren-und-in-html-ubersetzen" title="Permalink to this headline"></a></h2>
-<p>Die Doku ist in <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> geschrieben wird mittel <cite>make</cite> in html übersetzt.</p>
+<p>Die Doku ist in <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> geschrieben wird mittels <cite>make</cite> in html übersetzt.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd to.science/doc
 $ vi source/colophon.rst
 $ make html
 </pre></div>
 </div>
-<p>Das fertige html findet man im Unterverzeichnis <cite>build/html</cite>. Man kann eine einfachen Webserver starten und das Ergebnis Unterverzeichnis
+<p>Das fertige html findet man im Unterverzeichnis <cite>build/html</cite>. Man kann eine einfachen Webserver starten und das Ergebnis
 unter <a class="reference external" href="http://localhost:8000">http://localhost:8000</a> ansehen.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m http.server --directory build/htm
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ python3 -m http.server --directory build/html
 </pre></div>
 </div>
 </section>

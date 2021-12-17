@@ -284,7 +284,38 @@
 </section>
 <section id="complex-example-of-hierarchial-content">
 <span id="id9"></span><h3>Complex Example of hierarchial content<a class="headerlink" href="#complex-example-of-hierarchial-content" title="Permalink to this headline"></a></h3>
-<p>to be written</p>
+<p>Eine Ressource anlegen, Der User für den Erfasser muss vorher in Drupal angelegt werden und erhält dort eine userid, auf paeideia ist das der User “orca” mit der id “36”:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>orca:50
+├── lrmiData
+└── orca:51
+     └── document.pdf
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">TOSCIENCE_API</span><span class="o">=</span>https://api.example.com
+<span class="nb">export</span> <span class="nv">DRUPAL_USERID</span><span class="o">=</span><span class="s2">"2"</span>
+<span class="nb">export</span> <span class="nv">API_USER</span><span class="o">=</span>toscience-admin
+<span class="nb">export</span> <span class="nv">PASSWORD</span><span class="o">=</span>ToPsEcReT
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPUT <span class="nv">$TOSCIENCE_API</span>/resource/orca:50 -d<span class="s1">'{"contentType":"oer","accessScheme":"private", "publishScheme":"private", "isDescribedBy":{"createdBy":"'</span><span class="s2">"</span><span class="nv">$DRUPAL_USERID</span><span class="s2">"</span><span class="s1">'"}}'</span> -H<span class="s1">'Content-type:application/json'</span> <span class="p">;</span> <span class="nb">echo</span>
+</pre></div>
+</div>
+<p>LRMI-Daten an die Ressource schicken und anhängen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPOST <span class="nv">$TOSCIENCE_API</span>/resource/orca:50/lrmiData  --data-binary <span class="s1">'@lrmi.json'</span> -H<span class="s1">'Content-Type:application/json;charset=utf-8'</span><span class="p">;</span> <span class="nb">echo</span>
+</pre></div>
+</div>
+<p>Ein Dateiobjekt anlegen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPUT <span class="nv">$TOSCIENCE_API</span>/resource/orca:51 -d<span class="s1">'{"contentType":"file","accessScheme":"private", "publishScheme":"private", "isDescribedBy":{"createdBy":"'</span><span class="s2">"</span><span class="nv">$DRUPAL_USERID</span><span class="s2">"</span><span class="s1">'"}}'</span> -H<span class="s1">'Content-type:application/json'</span> <span class="p">;</span> <span class="nb">echo</span>
+</pre></div>
+</div>
+<p>Eine Datei zu dem Dateiobjekt hochladen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPUT <span class="nv">$TOSCIENCE_API</span>/resource/orca:51/data -F<span class="s2">"data=@document.pdf;type=application/pdf"</span> <span class="p">;</span> <span class="nb">echo</span>
+</pre></div>
+</div>
+<p>Das Dateiobjekt an die Ressource anhängen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPUT <span class="nv">$TOSCIENCE_API</span>/resource/orca:51 -H<span class="s1">'Content-Type:application/json;charset=utf-8'</span> -d<span class="s1">'{"parentPid":"orca:50","contentType":"file"}'</span> <span class="p">;</span> <span class="nb">echo</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="read">
