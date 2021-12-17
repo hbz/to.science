@@ -38,7 +38,7 @@ ins git repo committet werden. Das virtuelle Python wird aktiviert und mit pip s
 Doku modifizieren und in HTML übersetzen
 ----------------------------------------
 
-Die Doku ist in `reStructuredText`_ geschrieben wird mittel `make` in html übersetzt.
+Die Doku ist in `reStructuredText`_ geschrieben wird mittels `make` in html übersetzt.
 
 ::
 
@@ -46,12 +46,12 @@ Die Doku ist in `reStructuredText`_ geschrieben wird mittel `make` in html über
    $ vi source/colophon.rst
    $ make html
 
-Das fertige html findet man im Unterverzeichnis `build/html`. Man kann eine einfachen Webserver starten und das Ergebnis Unterverzeichnis
+Das fertige html findet man im Unterverzeichnis `build/html`. Man kann eine einfachen Webserver starten und das Ergebnis
 unter http://localhost:8000 ansehen.
 
 ::
 
-   $ python3 -m http.server --directory build/htm
+   $ python3 -m http.server --directory build/html
 
 
 .. _license:
