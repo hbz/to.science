@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="to.science.api" href="api-toscience.html" /><link rel="prev" title="Einleitung" href="regal.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="next" title="skos-lookup" href="api-skos.html" /><link rel="prev" title="to.science.forms" href="api-forms.html" />
 
     <meta name="generator" content="sphinx-4.3.1, furo 2021.11.23"/>
-        <title>API-documentation - to.science documentation</title>
+        <title>to.science.thumbs - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo.css?digest=7f0192ddeb2adecfbaa87ffbcf67d16358b30bc1" />
     <link rel="stylesheet" type="text/css" href="_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
@@ -162,13 +162,12 @@
 <li class="toctree-l1"><a class="reference internal" href="regal.html">Einleitung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regal.html#konzepte">Konzepte</a></li>
 <li class="toctree-l1"><a class="reference internal" href="regal.html#software">Software</a></li>
-<li class="toctree-l1 current has-children current-page"><a class="current reference internal" href="#">API-documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="api.html">API-documentation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="api-toscience.html">to.science.api</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-labels.html">to.science.labels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-forms.html">to.science.forms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-thumbs.html">to.science.thumbs</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">to.science.thumbs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-skos.html">skos-lookup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="api-complex-example.html">Complex Example of hierarchial content</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="colophon.html">Dokumentation</a></li>
@@ -200,33 +199,13 @@
           </label>
         </div>
         <article role="main">
-          <section id="api-documentation">
-<span id="id1"></span><h1>API-documentation<a class="headerlink" href="#api-documentation" title="Permalink to this headline"></a></h1>
-<section id="preface">
-<span id="id2"></span><h2>Preface<a class="headerlink" href="#preface" title="Permalink to this headline"></a></h2>
-<p>The Regal webservices documented by example <code class="docutils literal notranslate"><span class="pre">curl</span></code>-calls. Examples are
-assumed to work in the Vagrant-Environment that comes with this
-document.</p>
-</section>
-<section id="environment">
-<span id="id3"></span><h2>Environment<a class="headerlink" href="#environment" title="Permalink to this headline"></a></h2>
-<p>Got to your server or to the Vagrant-Box, that comes with this document.</p>
-<p><code class="docutils literal notranslate"><span class="pre">vagrant</span> <span class="pre">ssh</span></code></p>
-<p>Prepare your environment to make the following <code class="docutils literal notranslate"><span class="pre">curl</span></code>-Calls work!</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /opt/regal/conf/variables.conf
-<span class="nb">export</span> <span class="nv">REGAL_API</span><span class="o">=</span>http://<span class="nv">$SERVER</span>
-<span class="nb">export</span> <span class="nv">API_USER</span><span class="o">=</span>edoweb-admin
+          <section id="to-science-thumbs">
+<span id="id1"></span><h1>to.science.thumbs<a class="headerlink" href="#to-science-thumbs" title="Permalink to this headline"></a></h1>
+<p><a class="reference external" href="https://github.com/hbz/thumby/blob/master/conf/routes">https://github.com/hbz/thumby/blob/master/conf/routes</a></p>
+<section id="read">
+<span id="read-5"></span><h2>Read<a class="headerlink" href="#read" title="Permalink to this headline"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">XGET</span> <span class="s2">"$REGAL_API/tools/thumby?url=https://www.gravatar.com/avatar/5fefc19b7875e951c7ea9bfdfc06676d&amp;size=200"</span>
 </pre></div>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="api-toscience.html">to.science.api</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api-labels.html">to.science.labels</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api-forms.html">to.science.forms</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api-thumbs.html">to.science.thumbs</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api-skos.html">skos-lookup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="api-complex-example.html">Complex Example of hierarchial content</a></li>
-</ul>
 </div>
 </section>
 </section>
@@ -236,23 +215,23 @@ document.</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="api-toscience.html">
+          <a class="next-page" href="api-skos.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">to.science.api</div>
+                <div class="title">skos-lookup</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="regal.html">
+          <a class="prev-page" href="api-forms.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Einleitung</div>
+                <div class="title">to.science.forms</div>
                 
               </div>
             </a>
@@ -262,7 +241,7 @@ document.</p>
               Copyright &#169; 2021, Jan Schnasse, Peter Reimer |
           Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
           <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
-            | <a class="muted-link" href="_sources/api.rst.txt"
+            | <a class="muted-link" href="_sources/api-thumbs.rst.txt"
                rel="nofollow">
               Show Source
             </a>
@@ -282,9 +261,8 @@ document.</p>
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">API-documentation</a><ul>
-<li><a class="reference internal" href="#preface">Preface</a></li>
-<li><a class="reference internal" href="#environment">Environment</a></li>
+<li><a class="reference internal" href="#">to.science.thumbs</a><ul>
+<li><a class="reference internal" href="#read">Read</a></li>
 </ul>
 </li>
 </ul>
