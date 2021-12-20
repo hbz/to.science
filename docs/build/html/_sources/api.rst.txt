@@ -1,11 +1,12 @@
 .. _api_documentation:
 
 API-documentation
-***************** 
+================= 
 
 .. _preface:
 
-**Preface**
+Preface
+-------
 
 
 The Regal webservices documented by example ``curl``-calls. Examples are
@@ -15,7 +16,8 @@ document.
 
 .. _environment:
 
-**Environment**
+Environment
+-----------
 
 Got to your server or to the Vagrant-Box, that comes with this document.
 
@@ -23,7 +25,7 @@ Got to your server or to the Vagrant-Box, that comes with this document.
 
 Prepare your environment to make the following ``curl``-Calls work!
 
-::
+.. code-block:: bash
 
    source /opt/regal/conf/variables.conf
    export REGAL_API=http://$SERVER
@@ -35,10 +37,10 @@ Prepare your environment to make the following ``curl``-Calls work!
 
    api-toscience
    api-labels
-   
    api-forms
    api-thumbs
    api-skos
+   api-complex-example
 
 
 
