@@ -92,59 +92,6 @@ Currently only one level of subpaths is supported.
    $ curl -XPOST -u$API_USER:$PASSWORD "$REGAL_API/resource/regal:1234/postResearchData?collectionUrl=data&subPath=$dataDir&filename=$dateiname&resourcePid=$resourcePid" -H "UserId=resourceposter" -H "Content-Type: text/plain; charset=utf-8";
 
 
-.. _complex_example_of_hierarchial_content:
-
-Complex Example of hierarchial content
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Eine Ressource anlegen, Der User für den Erfasser muss vorher in Drupal angelegt werden und erhält dort eine userid, auf paeideia ist das der User "orca" mit der id "36":
-
-.. code-block:: bash
-
-   orca:50
-   ├── lrmiData
-   └── orca:51
-        └── document.pdf
-
-
-
-.. code-block:: bash
-
-   export TOSCIENCE_API=https://api.example.com
-   export DRUPAL_USERID="2"
-   export API_USER=toscience-admin
-   export PASSWORD=ToPsEcReT
-
-
-.. code-block:: bash
-
-   $ curl -i -u$API_USER:$PASSWORD -XPUT $TOSCIENCE_API/resource/orca:50 -d'{"contentType":"oer","accessScheme":"private", "publishScheme":"private", "isDescribedBy":{"createdBy":"'"$DRUPAL_USERID"'"}}' -H'Content-type:application/json' ; echo
-
-LRMI-Daten an die Ressource schicken und anhängen:
-
-.. code-block:: bash
-
-   $ curl -i -u$API_USER:$PASSWORD -XPOST $TOSCIENCE_API/resource/orca:50/lrmiData  --data-binary '@lrmi.json' -H'Content-Type:application/json;charset=utf-8'; echo
-
-Ein Dateiobjekt anlegen:
-
-.. code-block:: bash
-
-   $ curl -i -u$API_USER:$PASSWORD -XPUT $TOSCIENCE_API/resource/orca:51 -d'{"contentType":"file","accessScheme":"private", "publishScheme":"private", "isDescribedBy":{"createdBy":"'"$DRUPAL_USERID"'"}}' -H'Content-type:application/json' ; echo
-
-Eine Datei zu dem Dateiobjekt hochladen:
-
-.. code-block:: bash
-
-   $ curl -i -u$API_USER:$PASSWORD -XPUT $TOSCIENCE_API/resource/orca:51/data -F"data=@document.pdf;type=application/pdf" ; echo
-
-Das Dateiobjekt an die Ressource anhängen:
-
-.. code-block:: bash
-
-   $ curl -i -u$API_USER:$PASSWORD -XPUT $TOSCIENCE_API/resource/orca:51 -H'Content-Type:application/json;charset=utf-8' -d'{"parentPid":"orca:50","contentType":"file"}' ; echo
-
 
 
 .. _read:
