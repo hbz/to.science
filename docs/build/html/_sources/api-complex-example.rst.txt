@@ -1,7 +1,7 @@
-.. _complex_example_of_hierarchial_content:
+.. _complex_example_of_hierarchical_content:
 
-Complex Example of hierarchial content
-======================================
+Complex Example of hierarchical content
+=======================================
 
 The newly created resource should meet the following requirements:
 
@@ -18,22 +18,22 @@ Structure of the Resource:
    └── orca:51
         └── document.pdf
 
-For the below curl command to work it is convenient to put some often used data inte environment
-variables. Prepare a simple textfile e.g. ``example`` with the following content. The
-``DRUPAL_USERID`` is the numeric id which is automatically assigned to the user account.
+For the below curl command to work from your local computer it is convenient to put some often used data
+into environment variables. Prepare a simple textfile e.g. ``example`` with the following content. The
+``DRUPAL_USERID`` is the numeric id which is automatically assigned to the user account by the Drupal CMS.
 
 .. code-block:: bash
 
    export TOSCIENCE_API=https://api.example.com
    export DRUPAL_USERID="2"
    export API_USER=toscience-admin
-   export PASSWORD=ToPsEcReT
+   export PASSWORD=***********
 
-Make the variables available:
+Make the variables available by sourcing the file:
 
 .. code-block:: bash
 
-    source example
+    $ source example
 
 
 Creating resource
@@ -43,7 +43,7 @@ Initially we create a yet empty resource with the desired accessScheme, publishS
 
 .. code-block:: bash
 
-   $ curl -i -u$API_USER:$PASSWORD -XPUT $TOSCIENCE_API/resource/orca:50 -d'{"contentType":"oer","accessScheme":"private", "publishScheme":"private", "isDescribedBy":{"createdBy":"'"$DRUPAL_USERID"'"}}' -H'Content-type:application/json' ; echo
+   $ curl -i -u$API_USER:$PASSWORD -XPUT $TOSCIENCE_API/resource/orca:50 -d'{"contentType":"researchData","accessScheme":"private", "publishScheme":"private", "isDescribedBy":{"createdBy":"'"$DRUPAL_USERID"'"}}' -H'Content-type:application/json' ; echo
 
 The Metadata are given in a special LRMI-Format and passed to a didicated endpoint:
 
