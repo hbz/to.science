@@ -19,7 +19,7 @@ Eine Kurzaufstellung der wichtigsten API-Calls findet sich unter
 
 Dieses Dokument ist im Format rst geschrieben und kann mit dem
 Werkzeug sphinx in HTML übersetzt werden. Mehr dazu im Abschnitt
-`Dokumentation <#_dokumentation>`__
+:ref:`dokumentation`.
 
 
 
@@ -27,7 +27,7 @@ Werkzeug sphinx in HTML übersetzt werden. Mehr dazu im Abschnitt
    :maxdepth: 2
    :caption: Contents:
    
-   regal
+   toscience
    api
    colophon
 
