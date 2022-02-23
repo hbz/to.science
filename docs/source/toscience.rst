@@ -1704,7 +1704,7 @@ Drupal 7
 
 Über Drupal 7
 
-.. _installation:
+.. _vagrant_installation:
 
 Installation
 ============
