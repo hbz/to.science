@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Complex Example of hierarchical content" href="api-complex-example.html" />
+<link rel="index" title="Index" href="genindex.html" /><link rel="search" title="Search" href="search.html" /><link rel="prev" title="Installation" href="installation.html" />
 
     <meta name="generator" content="sphinx-4.3.1, furo 2021.11.23"/>
         <title>Dokumentation - to.science documentation</title>
@@ -159,9 +159,9 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="regal.html">Einleitung</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#konzepte">Konzepte</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regal.html#software">Software</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toscience.html">Einleitung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toscience.html#konzepte">Konzepte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="toscience.html#software">Software</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="api.html">API-documentation</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="api-toscience.html">to.science.api</a></li>
 <li class="toctree-l2"><a class="reference internal" href="api-labels.html">to.science.labels</a></li>
@@ -171,6 +171,7 @@
 <li class="toctree-l2"><a class="reference internal" href="api-complex-example.html">Complex Example of hierarchical content</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1 current current-page"><a class="current reference internal" href="#">Dokumentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="#links">Links</a></li>
@@ -214,7 +215,7 @@ Die Schritte, um an der Doku zu arbeiten sind folgenden</p>
 <span id="id3"></span><h2>Sphinx installieren<a class="headerlink" href="#sphinx-installieren" title="Permalink to this headline"></a></h2>
 <p>Für die Verwendung von Sphinx wird eine virtuelle Pythonumgebung im Verzeichnis <cite>venv</cite> eingerichtet. Das Verzeichnis sollte nicht mit
 ins git repo committet werden. Das virtuelle Python wird aktiviert und mit pip sphinx und zwei weitere themes installiert.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd to.science/doc
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd to.science/docs
 $ python3 -m venv ./venv
 $ . venv/bin/activate
 $ pip install -U sphinx
@@ -226,7 +227,7 @@ $ pip install -U furo
 <section id="doku-modifizieren-und-in-html-ubersetzen">
 <span id="id4"></span><h2>Doku modifizieren und in HTML übersetzen<a class="headerlink" href="#doku-modifizieren-und-in-html-ubersetzen" title="Permalink to this headline"></a></h2>
 <p>Die Doku ist in <a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a> geschrieben wird mittels <cite>make</cite> in html übersetzt.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd to.science/doc
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ cd to.science/docs
 $ vi source/colophon.rst
 $ make html
 </pre></div>
@@ -280,14 +281,14 @@ License &lt;http://creativecommons.org/licenses/by-nc/4.0/&gt;&gt;`__</span></a>
         
         <div class="related-pages">
           
-          <a class="prev-page" href="api-complex-example.html">
+          <a class="prev-page" href="installation.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Complex Example of hierarchical content</div>
+                <div class="title">Installation</div>
                 
               </div>
             </a>
