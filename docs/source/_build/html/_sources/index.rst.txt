@@ -29,6 +29,7 @@ Werkzeug sphinx in HTML übersetzt werden. Mehr dazu im Abschnitt
    
    toscience
    api
+   installation
    colophon
 
 
