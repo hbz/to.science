@@ -25,7 +25,7 @@ ins git repo committet werden. Das virtuelle Python wird aktiviert und mit pip s
 
 ::
 
-   $ cd to.science/doc
+   $ cd to.science/docs
    $ python3 -m venv ./venv
    $ . venv/bin/activate
    $ pip install -U sphinx
@@ -42,7 +42,7 @@ Die Doku ist in `reStructuredText`_ geschrieben wird mittels `make` in html übe
 
 ::
 
-   $ cd to.science/doc
+   $ cd to.science/docs
    $ vi source/colophon.rst
    $ make html
 
