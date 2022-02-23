@@ -4,7 +4,6 @@
 .vscode
 # sphinx python
 docs/venv
-docs/build
 # Vagrant stuff
 /regal-vagrant-ubuntu14.04/acceptance_config.yml
 /regal-vagrant-ubuntu14.04/boxes/*
