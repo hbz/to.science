@@ -10,7 +10,6 @@ Backend-Installation
 Create linux user
 ^^^^^^^^^^^^^^^^^
 Create user toscience with yast2. Generate encrypted password 
-
 .. code-block:: 
 
   head -c 300 /dev/urandom | tr -cd '[a-zA-Z0-9-_]' | head -c 16
