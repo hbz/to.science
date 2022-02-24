@@ -172,6 +172,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/JsonLDMapper.html">JSON in Java-Klassen überführen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/oaiMetadataFormats.html">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colophon.html">Dokumentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colophon.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colophon.html#links">Links</a></li>
@@ -219,10 +221,10 @@
 <p>For the below curl command to work from your local computer it is convenient to put some often used data
 into environment variables. Prepare a simple textfile e.g. <code class="docutils literal notranslate"><span class="pre">example</span></code> with the following content. The
 <code class="docutils literal notranslate"><span class="pre">DRUPAL_USERID</span></code> is the numeric id which is automatically assigned to the user account by the Drupal CMS.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">TOSCIENCE_API</span><span class="o">=</span>https://api.example.com
-<span class="nb">export</span> <span class="nv">DRUPAL_USERID</span><span class="o">=</span><span class="s2">"2"</span>
-<span class="nb">export</span> <span class="nv">API_USER</span><span class="o">=</span>toscience-admin
-<span class="nb">export</span> <span class="nv">PASSWORD</span><span class="o">=</span>***********
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">export</span> <span class="nv">TOSCIENCE_API</span><span class="o">=</span>https://api.example.com
+<span class="linenos">2</span><span class="nb">export</span> <span class="nv">DRUPAL_USERID</span><span class="o">=</span><span class="s2">"2"</span>
+<span class="linenos">3</span><span class="nb">export</span> <span class="nv">API_USER</span><span class="o">=</span>toscience-admin
+<span class="linenos">4</span><span class="nb">export</span> <span class="nv">PASSWORD</span><span class="o">=</span>***********
 </pre></div>
 </div>
 <p>Make the variables available by sourcing the file:</p>

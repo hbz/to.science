@@ -10,6 +10,6 @@ https://github.com/hbz/thumby/blob/master/conf/routes
 Read
 ----
 
-::
+.. code-block:: bash
 
    curl -XGET "$REGAL_API/tools/thumby?url=https://www.gravatar.com/avatar/5fefc19b7875e951c7ea9bfdfc06676d&size=200"

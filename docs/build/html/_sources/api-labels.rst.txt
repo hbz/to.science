@@ -1,4 +1,4 @@
-.. _etikett:
+.. _to.science.labels:
 
 to.science.labels
 =================

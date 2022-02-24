@@ -23,6 +23,7 @@ into environment variables. Prepare a simple textfile e.g. ``example`` with the 
 ``DRUPAL_USERID`` is the numeric id which is automatically assigned to the user account by the Drupal CMS.
 
 .. code-block:: bash
+   :linenos:
 
    export TOSCIENCE_API=https://api.example.com
    export DRUPAL_USERID="2"

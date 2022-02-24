@@ -19,7 +19,7 @@ import sphinx_rtd_theme
 
 project = 'to.science'
 copyright = '2021, Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)'
-author = 'Ingolf Kuss, Peter Reimer, Andres Quast, Jan Schnasse'
+author = 'Dr. Ingolf Kuss, Dr. Peter Reimer, Dr. Andres Quast, Jan Schnasse'
 
 
 # -- General configuration ---------------------------------------------------

@@ -172,6 +172,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/JsonLDMapper.html">JSON in Java-Klassen überführen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/oaiMetadataFormats.html">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colophon.html">Dokumentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colophon.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colophon.html#links">Links</a></li>
@@ -206,7 +208,7 @@
 <p><a class="reference external" href="https://github.com/hbz/thumby/blob/master/conf/routes">https://github.com/hbz/thumby/blob/master/conf/routes</a></p>
 <section id="read">
 <span id="read-5"></span><h2>Read<a class="headerlink" href="#read" title="Permalink to this headline"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">XGET</span> <span class="s2">"$REGAL_API/tools/thumby?url=https://www.gravatar.com/avatar/5fefc19b7875e951c7ea9bfdfc06676d&amp;size=200"</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -XGET <span class="s2">"</span><span class="nv">$REGAL_API</span><span class="s2">/tools/thumby?url=https://www.gravatar.com/avatar/5fefc19b7875e951c7ea9bfdfc06676d&amp;size=200"</span>
 </pre></div>
 </div>
 </section>

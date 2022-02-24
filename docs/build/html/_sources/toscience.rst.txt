@@ -952,7 +952,7 @@ Die Applikation
    | views.tags                        | Hilfstemplates.                   |
    +-----------------------------------+-----------------------------------+
 
-.. _etikett:
+
 
 Etikett
 -------
@@ -960,13 +960,9 @@ Etikett
 .. table:: Überblick
 
    +-----------------------------------+-----------------------------------+
-   | Source                            | `etikett <h                       |
-   |                                   | ttps://github.com/hbz/etikett>`__ |
+   | Source                            | `Etikett`_                        |
    +-----------------------------------+-----------------------------------+
-   | Technik                           | `Play Play                        |
-   |                                   | 2.2                               |
-   |                                   | .2 <https://www.playframework.com |
-   |                                   | /documentation/2.2.x/JavaHome>`__ |
+   | Technik                           | `Play`_                           |
    +-----------------------------------+-----------------------------------+
    | Ports                             | 9002 / 9102                       |
    +-----------------------------------+-----------------------------------+
@@ -975,6 +971,10 @@ Etikett
    +-----------------------------------+-----------------------------------+
    | HTTP Pfad                         | /tools/etikett                    |
    +-----------------------------------+-----------------------------------+
+
+.. _Etikett: https://github.com/hbz/etikett
+.. _Play: https://www.playframework.com/documentation/2.2.x/JavaHome>
+
 
 Etikett ist eine einfache Datenbankanwendung, die es erlaubt
 

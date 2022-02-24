@@ -172,6 +172,8 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/JsonLDMapper.html">JSON in Java-Klassen überführen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development/oaiMetadataFormats.html">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colophon.html">Dokumentation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colophon.html#license">License</a></li>
 <li class="toctree-l1"><a class="reference internal" href="colophon.html#links">Links</a></li>
@@ -208,31 +210,31 @@
 <span id="id2"></span><h2>Create<a class="headerlink" href="#create" title="Permalink to this headline"></a></h2>
 <section id="create-a-new-resource">
 <span id="id3"></span><h3>Create a new resource<a class="headerlink" href="#create-a-new-resource" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -i -u$API_USER:$PASSWORD -XPUT $REGAL_API/resource/regal:1234 -d'{"contentType":"monograph","accessScheme":"public"}' -H'content-type:application/json'
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPUT <span class="nv">$REGAL_API</span>/resource/regal:1234 -d<span class="s1">'{"contentType":"monograph","accessScheme":"public"}'</span> -H<span class="s1">'content-type:application/json'</span>
 </pre></div>
 </div>
 </section>
 <section id="create-a-new-hierarchy">
 <span id="id4"></span><h3>Create a new hierarchy<a class="headerlink" href="#create-a-new-hierarchy" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -i -u$API_USER:$PASSWORD -XPUT $REGAL_API/resource/regal:1235 -d'{"parentPid":"regal:1234","contentType":"file","accessScheme":"public"}' -H'content-type:application/json'
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPUT <span class="nv">$REGAL_API</span>/resource/regal:1235 -d<span class="s1">'{"parentPid":"regal:1234","contentType":"file","accessScheme":"public"}'</span> -H<span class="s1">'content-type:application/json'</span>
 </pre></div>
 </div>
 </section>
 <section id="upload-binary-data">
 <span id="id5"></span><h3>Upload binary data<a class="headerlink" href="#upload-binary-data" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -F"data=@$ARCHIVE_HOME/src/REGAL_API/test/resources/test.pdf;type=application/pdf" -XPUT $REGAL_API/resource/regal:1235/data
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -F<span class="s2">"data=@</span><span class="nv">$ARCHIVE_HOME</span><span class="s2">/src/REGAL_API/test/resources/test.pdf;type=application/pdf"</span> -XPUT <span class="nv">$REGAL_API</span>/resource/regal:1235/data
 </pre></div>
 </div>
 </section>
 <section id="create-user">
 <span id="id6"></span><h3>Create User<a class="headerlink" href="#create-user" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -d'{"username":"test","password":"test","email":"test@example.org","role":"EDITOR"}' -XPUT $REGAL_API/utils/addUser -H'content-type:application/json'
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -d<span class="s1">'{"username":"test","password":"test","email":"test@example.org","role":"EDITOR"}'</span> -XPUT <span class="nv">$REGAL_API</span>/utils/addUser -H<span class="s1">'content-type:application/json'</span>
 </pre></div>
 </div>
 </section>
 <section id="upload-metadata">
 <span id="id7"></span><h3>Upload metadata<a class="headerlink" href="#upload-metadata" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -XPUT -u$API_USER:$PASSWORD -d'&lt;regal:1234&gt; &lt;dc:title&gt; "Ein Test Titel" .' -H"content-type:text/plain" $REGAL_API/resource/regal:1235/metadata2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -XPUT -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -d<span class="s1">'&lt;regal:1234&gt; &lt;dc:title&gt; "Ein Test Titel" .'</span> -H<span class="s2">"content-type:text/plain"</span> <span class="nv">$REGAL_API</span>/resource/regal:1235/metadata2
 </pre></div>
 </div>
 </section>
@@ -248,8 +250,8 @@
 <code class="docutils literal notranslate"><span class="pre">https://api.example.com/data/regal:1234/first_set/data.csv</span></code></p>
 <p>The base url and the default collection url are configured in the application.conf.</p>
 <p>Currently only one level of subpaths is supported.</p>
-<div class="table-wrapper"><table class="docutils align-default" id="id35">
-<caption><span class="caption-text">URL parameter</span><a class="headerlink" href="#id35" title="Permalink to this table"></a></caption>
+<div class="table-wrapper"><table class="docutils align-default" id="id34">
+<caption><span class="caption-text">URL parameter</span><a class="headerlink" href="#id34" title="Permalink to this table"></a></caption>
 <colgroup>
 <col style="width: 15%"/>
 <col style="width: 14%"/>
@@ -290,83 +292,83 @@
 <section id="read-resource">
 <span id="id10"></span><h3>Read resource<a class="headerlink" href="#read-resource" title="Permalink to this headline"></a></h3>
 <p><strong>html</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.html
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234.html
 </pre></div>
 </div>
 <p><strong>json</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.json
-curl $REGAL_API/resource/regal:1234.json2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234.json
+curl <span class="nv">$REGAL_API</span>/resource/regal:1234.json2
 </pre></div>
 </div>
 <p><strong>rdf</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.rdf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234.rdf
 </pre></div>
 </div>
 <p><strong>mets</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.mets
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234.mets
 </pre></div>
 </div>
 <p><strong>aleph</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.aleph
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234.aleph
 </pre></div>
 </div>
 <p><strong>epicur</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.epicur
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234.epicur
 </pre></div>
 </div>
 <p><strong>datacite</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.datacite
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234.datacite
 </pre></div>
 </div>
 <p><strong>csv</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.csv
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234.csv
 </pre></div>
 </div>
 <p><strong>wgl</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.wgl
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234.wgl
 </pre></div>
 </div>
 <p><strong>oaidc</strong></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234.oaidc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234.oaidc
 </pre></div>
 </div>
 </section>
 <section id="read-resource-tree">
 <span id="id11"></span><h3>Read resource tree<a class="headerlink" href="#read-resource-tree" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/all
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234/all
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/parts
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234/parts
 </pre></div>
 </div>
 </section>
 <section id="read-binary-data">
 <span id="id12"></span><h3>Read binary data<a class="headerlink" href="#read-binary-data" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/data
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234/data
 </pre></div>
 </div>
 </section>
 <section id="read-webgatherer-conf">
 <span id="id13"></span><h3>Read Webgatherer Conf<a class="headerlink" href="#read-webgatherer-conf" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/conf
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234/conf
 </pre></div>
 </div>
 </section>
 <section id="read-ordering-of-childs">
 <span id="id14"></span><h3>Read Ordering of Childs<a class="headerlink" href="#read-ordering-of-childs" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/resource/regal:1234/seq
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/resource/regal:1234/seq
 </pre></div>
 </div>
 </section>
 <section id="read-user">
 <span id="id15"></span><h3>Read user<a class="headerlink" href="#read-user" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="n">implemented</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>not implemented
 </pre></div>
 </div>
 </section>
 <section id="read-adhoc-linked-data">
 <span id="id16"></span><h3>Read Adhoc Linked Data<a class="headerlink" href="#read-adhoc-linked-data" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/adhoc/uri/$(echo test |base64)
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl <span class="nv">$REGAL_API</span>/adhoc/uri/<span class="k">$(</span><span class="nb">echo</span> <span class="nb">test</span> <span class="p">|</span>base64<span class="k">)</span>
 </pre></div>
 </div>
 </section>
@@ -378,25 +380,25 @@ curl $REGAL_API/resource/regal:1234.json2
 </section>
 <section id="update-metadata">
 <span id="id19"></span><h3>Update Metadata<a class="headerlink" href="#update-metadata" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -s -u$API_USER:$REGAL_PASSWORD -XPOST $REGAL_API/utils/updateMetadata/regal:1234 -H"accept: application/json"
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -s -u<span class="nv">$API_USER</span>:<span class="nv">$REGAL_PASSWORD</span> -XPOST <span class="nv">$REGAL_API</span>/utils/updateMetadata/regal:1234 -H<span class="s2">"accept: application/json"</span>
 </pre></div>
 </div>
 </section>
 <section id="add-urn">
 <span id="id20"></span><h3>Add URN<a class="headerlink" href="#add-urn" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">lobidify</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>POST /utils/lobidify
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">addUrn</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>POST /utils/addUrn
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">utils</span><span class="o">/</span><span class="n">replaceUrn</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>POST /utils/replaceUrn
 </pre></div>
 </div>
 </section>
 <section id="enrich">
 <span id="id21"></span><h3>Enrich<a class="headerlink" href="#enrich" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">resource</span><span class="o">/</span><span class="p">:</span><span class="n">pid</span><span class="o">/</span><span class="n">metadata</span><span class="o">/</span><span class="n">enrich</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>POST /resource/:pid/metadata/enrich
 </pre></div>
 </div>
 </section>
@@ -405,76 +407,76 @@ curl $REGAL_API/resource/regal:1234.json2
 <span id="id22"></span><h2>Delete<a class="headerlink" href="#delete" title="Permalink to this headline"></a></h2>
 <section id="delete-resource">
 <span id="id23"></span><h3>Delete resource<a class="headerlink" href="#delete-resource" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234";echo
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -u<span class="nv">$API_USER</span>:<span class="nv">$REGAL_PASSWORD</span> -XDELETE <span class="s2">"</span><span class="nv">$REGAL_API</span><span class="s2">/resource/regal:1234"</span><span class="p">;</span><span class="nb">echo</span>
 </pre></div>
 </div>
 </section>
 <section id="purge-resource">
 <span id="id24"></span><h3>Purge resource<a class="headerlink" href="#purge-resource" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=true";echo
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -u<span class="nv">$API_USER</span>:<span class="nv">$REGAL_PASSWORD</span> -XDELETE <span class="s2">"</span><span class="nv">$REGAL_API</span><span class="s2">/resource/regal:1234?purge=true"</span><span class="p">;</span><span class="nb">echo</span>
 </pre></div>
 </div>
 </section>
 <section id="delete-part-of-resource">
 <span id="id25"></span><h3>Delete part of resource<a class="headerlink" href="#delete-part-of-resource" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/seq
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -u<span class="nv">$API_USER</span>:<span class="nv">$REGAL_PASSWORD</span> -XDELETE <span class="nv">$REGAL_API</span>/resource/regal:1234/seq
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/metadata
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -u<span class="nv">$API_USER</span>:<span class="nv">$REGAL_PASSWORD</span> -XDELETE <span class="nv">$REGAL_API</span>/resource/regal:1234/metadata
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/metadata2
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -u<span class="nv">$API_USER</span>:<span class="nv">$REGAL_PASSWORD</span> -XDELETE <span class="nv">$REGAL_API</span>/resource/regal:1234/metadata2
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/data
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -u<span class="nv">$API_USER</span>:<span class="nv">$REGAL_PASSWORD</span> -XDELETE <span class="nv">$REGAL_API</span>/resource/regal:1234/data
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/dc
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -u<span class="nv">$API_USER</span>:<span class="nv">$REGAL_PASSWORD</span> -XDELETE <span class="nv">$REGAL_API</span>/resource/regal:1234/dc
 </pre></div>
 </div>
 </section>
 <section id="delete-user">
 <span id="id26"></span><h3>Delete user<a class="headerlink" href="#delete-user" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">not</span> <span class="n">implemented</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>not implemented
 </pre></div>
 </div>
 </section>
 </section>
 <section id="search">
-<span id="id27"></span><h2>Search<a class="headerlink" href="#search" title="Permalink to this headline"></a></h2>
+<span id="api-search"></span><h2>Search<a class="headerlink" href="#search" title="Permalink to this headline"></a></h2>
 <section id="simple-search">
-<span id="id28"></span><h3>Simple Search<a class="headerlink" href="#simple-search" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">find</span>
+<span id="id27"></span><h3>Simple Search<a class="headerlink" href="#simple-search" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>GET /find
 </pre></div>
 </div>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">resource</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>GET /resource
 </pre></div>
 </div>
 </section>
 <section id="facetted-search">
-<span id="id29"></span><h3>Facetted Search<a class="headerlink" href="#facetted-search" title="Permalink to this headline"></a></h3>
+<span id="id28"></span><h3>Facetted Search<a class="headerlink" href="#facetted-search" title="Permalink to this headline"></a></h3>
 </section>
 <section id="search-for-field">
-<span id="id30"></span><h3>Search for field<a class="headerlink" href="#search-for-field" title="Permalink to this headline"></a></h3>
+<span id="id29"></span><h3>Search for field<a class="headerlink" href="#search-for-field" title="Permalink to this headline"></a></h3>
 </section>
 </section>
 <section id="misc">
-<span id="id31"></span><h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline"></a></h2>
+<span id="id30"></span><h2>Misc<a class="headerlink" href="#misc" title="Permalink to this headline"></a></h2>
 <section id="load-metadata-from-lobid">
-<span id="id32"></span><h3>Load metadata from Lobid<a class="headerlink" href="#load-metadata-from-lobid" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -XPOST "$REGAL_API/utils/lobidify/regal:1234?alephid=HT018920238"
+<span id="id31"></span><h3>Load metadata from Lobid<a class="headerlink" href="#load-metadata-from-lobid" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPOST <span class="s2">"</span><span class="nv">$REGAL_API</span><span class="s2">/utils/lobidify/regal:1234?alephid=HT018920238"</span>
 </pre></div>
 </div>
 </section>
 <section id="reread-labels-from-etikett">
-<span id="id33"></span><h3>Reread Labels from etikett<a class="headerlink" href="#reread-labels-from-etikett" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/context.json
+<span id="id32"></span><h3>Reread Labels from etikett<a class="headerlink" href="#reread-labels-from-etikett" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPOST <span class="nv">$REGAL_API</span>/context.json
 </pre></div>
 </div>
 </section>
 <section id="reindex-resource">
-<span id="id34"></span><h3>Reindex resource<a class="headerlink" href="#reindex-resource" title="Permalink to this headline"></a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/utils/index/regal:1234 -H"accept: application/json"
+<span id="id33"></span><h3>Reindex resource<a class="headerlink" href="#reindex-resource" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPOST <span class="nv">$REGAL_API</span>/utils/index/regal:1234 -H<span class="s2">"accept: application/json"</span>
 </pre></div>
 </div>
 </section>

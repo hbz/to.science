@@ -15,7 +15,7 @@ Create
 Create a new resource
 ~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl -i -u$API_USER:$PASSWORD -XPUT $REGAL_API/resource/regal:1234 -d'{"contentType":"monograph","accessScheme":"public"}' -H'content-type:application/json'
 
@@ -24,7 +24,7 @@ Create a new resource
 Create a new hierarchy
 ~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl -i -u$API_USER:$PASSWORD -XPUT $REGAL_API/resource/regal:1235 -d'{"parentPid":"regal:1234","contentType":"file","accessScheme":"public"}' -H'content-type:application/json'
 
@@ -33,7 +33,7 @@ Create a new hierarchy
 Upload binary data
 ~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl -u$API_USER:$PASSWORD -F"data=@$ARCHIVE_HOME/src/REGAL_API/test/resources/test.pdf;type=application/pdf" -XPUT $REGAL_API/resource/regal:1235/data
 
@@ -42,7 +42,7 @@ Upload binary data
 Create User
 ~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl -u$API_USER:$PASSWORD -d'{"username":"test","password":"test","email":"test@example.org","role":"EDITOR"}' -XPUT $REGAL_API/utils/addUser -H'content-type:application/json'
 
@@ -51,7 +51,7 @@ Create User
 Upload metadata
 ~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl -XPUT -u$API_USER:$PASSWORD -d'<regal:1234> <dc:title> "Ein Test Titel" .' -H"content-type:text/plain" $REGAL_API/resource/regal:1235/metadata2
 
@@ -106,62 +106,62 @@ Read resource
 
 **html**
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234.html
 
 **json**
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234.json
    curl $REGAL_API/resource/regal:1234.json2
 
 **rdf**
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234.rdf
 
 **mets**
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234.mets
 
 **aleph**
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234.aleph
 
 **epicur**
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234.epicur
 
 **datacite**
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234.datacite
 
 **csv**
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234.csv
 
 **wgl**
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234.wgl
 
 **oaidc**
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234.oaidc
 
@@ -170,11 +170,11 @@ Read resource
 Read resource tree
 ~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234/all
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234/parts
 
@@ -183,7 +183,7 @@ Read resource tree
 Read binary data
 ~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234/data
 
@@ -192,7 +192,7 @@ Read binary data
 Read Webgatherer Conf
 ~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234/conf
 
@@ -201,7 +201,7 @@ Read Webgatherer Conf
 Read Ordering of Childs
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/resource/regal:1234/seq
 
@@ -210,7 +210,7 @@ Read Ordering of Childs
 Read user
 ~~~~~~~~~
 
-::
+.. code-block:: bash
 
    not implemented
 
@@ -219,7 +219,7 @@ Read user
 Read Adhoc Linked Data
 ~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl $REGAL_API/adhoc/uri/$(echo test |base64)
 
@@ -238,7 +238,7 @@ Update Resource
 Update Metadata
 ~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl -s -u$API_USER:$REGAL_PASSWORD -XPOST $REGAL_API/utils/updateMetadata/regal:1234 -H"accept: application/json"
 
@@ -247,15 +247,15 @@ Update Metadata
 Add URN
 ~~~~~~~
 
-::
+.. code-block:: bash
 
    POST /utils/lobidify
 
-::
+.. code-block:: bash
 
    POST /utils/addUrn
 
-::
+.. code-block:: bash
 
    POST /utils/replaceUrn
 
@@ -264,7 +264,7 @@ Add URN
 Enrich
 ~~~~~~
 
-::
+.. code-block:: bash
 
    POST /resource/:pid/metadata/enrich
 
@@ -278,7 +278,7 @@ Delete
 Delete resource
 ~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234";echo
 
@@ -287,7 +287,7 @@ Delete resource
 Purge resource
 ~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl -u$API_USER:$REGAL_PASSWORD -XDELETE "$REGAL_API/resource/regal:1234?purge=true";echo
 
@@ -296,23 +296,23 @@ Purge resource
 Delete part of resource
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/seq
 
-::
+.. code-block:: bash
 
    curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/metadata
 
-::
+.. code-block:: bash
 
    curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/metadata2
 
-::
+.. code-block:: bash
 
    curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/data
 
-::
+.. code-block:: bash
 
    curl -u$API_USER:$REGAL_PASSWORD -XDELETE $REGAL_API/resource/regal:1234/dc
 
@@ -321,11 +321,11 @@ Delete part of resource
 Delete user
 ~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    not implemented
 
-.. _search:
+.. _api_search:
 
 Search
 ------
@@ -335,11 +335,11 @@ Search
 Simple Search
 ~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    GET /find
 
-::
+.. code-block:: bash
 
    GET /resource
 
@@ -363,7 +363,7 @@ Misc
 Load metadata from Lobid
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl -u$API_USER:$PASSWORD -XPOST "$REGAL_API/utils/lobidify/regal:1234?alephid=HT018920238"
 
@@ -372,7 +372,7 @@ Load metadata from Lobid
 Reread Labels from etikett
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/context.json
 
@@ -381,6 +381,6 @@ Reread Labels from etikett
 Reindex resource
 ~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    curl -u$API_USER:$PASSWORD -XPOST $REGAL_API/utils/index/regal:1234 -H"accept: application/json"
