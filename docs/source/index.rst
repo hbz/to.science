@@ -30,6 +30,8 @@ Werkzeug sphinx in HTML übersetzt werden. Mehr dazu im Abschnitt
    toscience
    api
    installation
+   development/JsonLDMapper.rst
+   development/oaiMetadataFormats.rst
    colophon
 
 
@@ -40,3 +42,9 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
+
+Andere Formate
+--------------
+ 
+* :download:`PDF <../build/latex/toscience.pdf>`
+* :download:`EPUB <../build/epub/toscience.epub>`
