@@ -1,585 +1,3 @@
-.. _einleitung:
-
-Einleitung
-**********
-
-to.science (ehemals "Regal") ist eine Content Repository zur Verwaltung
-und Veröffentlichung elektronischer Publikationen. Es wird seit 2013 am
-`Hochschulbibliothekszentrum NRW (hbz) <https://hbz-nrw.de>`__
-entwickelt.
-
-to.science basiert auf den folgenden Kerntechnologien:
-
--  Fedora Commons 3
-
--  Elasticsearch 1.1
-
--  Drupal 7
-
--  Playframework 2.4
-
--  MySQL 5
-
--  Java 8
-
--  PHP 5
-
-Für die Webarchivierung kommen außerdem Openwayback, Heritrix und WPull
-zum Einsatz.
-
--  openwayback hbz-2.3.2
-
--  pywb
-
--  heritrix 3.2.0
-
--  wpull
-
-Regal ist ein mehrkomponentiges System. Einzelne Komponenten sind als
-Webservices realisiert und kommunizieren über HTTP-APIs miteinander.
-Derzeit sind folgende Komponenten im Einsatz
-
--  `to.science.api <https://github.com/hbz/to.science.api>`__
-
--  `to.science.labels <https://github.com/hbz/to.science.labels>`__
-
--  `to.science.forms <https://github.com/hbz/to.science.forms>`__
-
--  `skos-lookup <https://github.com/hbz/skos-lookup>`__
-
--  `thumby <https://github.com/hbz/thumby>`__
-
--  `deepzoomer <https://github.com/hbz/DeepZoomService>`__
-
--  `to.science.drupal <https://github.com/hbz/to.science.drupal>`__
-
-Drupal Themes
-
--  `zbmed-drupal-theme <https://github.com/edoweb/zbmed-drupal-theme>`__
-
--  `edoweb-drupal-theme <https://github.com/edoweb/edoweb-drupal-theme>`__
-
-Über die Systemschnittstellen können eine ganze Reihe von Drittsystemen
-angesprochen werden. Die folgende Abbildung verschafft einen groben
-Überblick über eine typische Regal-Installation und die angebundenen
-Drittsysteme.
-
-.. figure:: resources/images/regal-arch-4.jpeg
-   :alt: Typische Regal-Installation mit Drupal Frontend, Backendkomponenten und angebundenen Drittsytemen
-
-   Typische Regal-Installation mit Drupal Frontend, Backendkomponenten und angebundenen Drittsytemen
-
-
-.. _konzepte:
-
-Konzepte
-********
-
-.. _objektmodell:
-
-Objektmodell
-------------
-
-Regal realisiert ein einheitliches Objektmodell in dem sich eine
-Vielzahl von Publikationstypen speichern lassen. Die Speicherschicht
-wird über `Fedora Commons 3 <#_fedora_commons_3>`__ realisiert.
-
-Eine einzelne Publikation besteht i.d.R. aus mehreren `Fedora Commons
-3 <#_fedora_commons_3>`__-Objekten, die in einer hierarchischen
-Beziehung zueinander stehen.
-
-.. table:: Fedora Object
-
-   +-----------------------+-----------------------+-----------------------+
-   | Datenstrom            | Pflicht               | Beschreibung          |
-   +=======================+=======================+=======================+
-   | DC                    | Ja                    | Von Fedora            |
-   |                       |                       | vorgeschrieben. Wird  |
-   |                       |                       | für die fedorainterne |
-   |                       |                       | Suche verwendet       |
-   +-----------------------+-----------------------+-----------------------+
-   | RELS-EXT              | Ja                    | Von Fedora            |
-   |                       |                       | vorgeschrieben. Wird  |
-   |                       |                       | für viele Sachen      |
-   |                       |                       | verwendet - (1)       |
-   |                       |                       | Hierarchien - (2)     |
-   |                       |                       | Steuerung der         |
-   |                       |                       | Sichtbarkeiten - (2)  |
-   |                       |                       | OAI-Providing         |
-   +-----------------------+-----------------------+-----------------------+
-   | data                  | Nein                  | Die eigentlichen      |
-   |                       |                       | Daten der             |
-   |                       |                       | Publikation. Oft ein  |
-   |                       |                       | PDF.                  |
-   +-----------------------+-----------------------+-----------------------+
-   | metadata oder         | Nein                  | Bibliografische       |
-   | metadata2             |                       | Metadaten. Metadata2  |
-   |                       |                       | wurde mit dem Umstieg |
-   |                       |                       | auf die Lobid-API v2  |
-   |                       |                       | eingeführt.           |
-   +-----------------------+-----------------------+-----------------------+
-   | objectTimestamp       | Nein                  | Eine Datei mit einem  |
-   |                       |                       | Zeitstempel. Der      |
-   |                       |                       | Zeitstempel wird bei  |
-   |                       |                       | bestimmten Aktionen   |
-   |                       |                       | gesetzt.              |
-   +-----------------------+-----------------------+-----------------------+
-   | seq                   | Nein                  | Eine Hilfsdatei mit   |
-   |                       |                       | einem JSON-Array. Das |
-   |                       |                       | Array zeigt an, in    |
-   |                       |                       | welcher Reihenfolge   |
-   |                       |                       | Kindobjekte           |
-   |                       |                       | anzuzeigen sind.      |
-   |                       |                       | Dieses Hilfskonstrukt |
-   |                       |                       | existiert, da in der  |
-   |                       |                       | RELS-EXT keine        |
-   |                       |                       | RDF-Listen abgelegt   |
-   |                       |                       | werden können.        |
-   +-----------------------+-----------------------+-----------------------+
-   | conf                  | Nein                  | Websites und          |
-   |                       |                       | Webschnitte speichern |
-   |                       |                       | in einem              |
-   |                       |                       | conf-Datenstrom alle  |
-   |                       |                       | Parameter mit denen   |
-   |                       |                       | die zugehörige        |
-   |                       |                       | Webseite geharvested  |
-   |                       |                       | wurde.                |
-   +-----------------------+-----------------------+-----------------------+
-
-Die Metadaten werden als ASCII-Kodierte N-Triple abgelegt. Da alle
-Fedora-Daten als Dateien im Dateisystem abgelegt werden, ist diese
-Veriante besonders robust gegen Speicherfehler. N-Triple ist ein Format,
-dass sich Zeilenweise lesen lässt. ASCII ist die einfachste Form der
-Textkodierung.
-
-Die Daten werden als "managed"-Datastream in den Objektspeicher der
-Fedora abgelegt. Eine Ausnahme bilden Webseiten. Die als WARC
-gespeicherten Inhalte werden "unmanaged" lediglich verlinkt. Im Fedora
-Objektspeicher wird nur eine Datei mit der ensprechenden Referenz
-abgelegt.
-
-.. _namespaces_und_identifier:
-
-Namespaces und Identifier
--------------------------
-
-Jede Regal-Installation arbeitet auf einem festgelegten Namespace. Wenn
-über die `regal-api <#_regal_api_2>`__ Objekte angelegt werden, finden
-sich diese immer in dem entsprechenden Namespace wieder. Hinter dem
-Namespace findet sich, abgetrennt mit einem Dopplepunkt eine
-hochlaufende Zahl, die i.d.R. über `Fedora Commons
-3 <#_fedora_commons_3>`__ bezogen wird.
-
-Der so zusammengesetzte Identifier kommt in allen Systemkomponenten zum
-Einsatz.
-
-.. table:: Beispiel Regal Identifier
-
-   +-----------------------+-----------------------+-----------------------+
-   | ID                    | Komponente            | URL                   |
-   +=======================+=======================+=======================+
-   | regal:1               | drupal                | http://local          |
-   |                       |                       | host/resource/regal:1 |
-   +-----------------------+-----------------------+-----------------------+
-   | regal:1               | regal-api             | http://api.local      |
-   |                       |                       | host/resource/regal:1 |
-   +-----------------------+-----------------------+-----------------------+
-   | regal:1               | fedora                | ht                    |
-   |                       |                       | tp://localhost:8080/f |
-   |                       |                       | edora/objects/regal:1 |
-   +-----------------------+-----------------------+-----------------------+
-   | regal:1               | elasticsearch         | http://localhost:92   |
-   |                       |                       | 00/regal/_all/regal:1 |
-   +-----------------------+-----------------------+-----------------------+
-
-.. _deskriptive_metadaten:
-
-Deskriptive Metadaten
----------------------
-
-Regal unterstützt eine große Anzahl von Metadatenfeldern zur
-Beschreibung von bibliografischen Ressourcen. Jedes in Regal
-verspeicherte Objekt kann mit Hilfe von RDF-Metadaten beschrieben
-werden. Das System verspeichert grundsätzlich alle Metadaten, solange
-Sie im richtigen Format an die Schnittstelle gespielt werden.
-
-Darüber hinaus können über bestimmte Angaben, bestimmte weitergehende
-Funktionen angesteuert werden. Dies betrifft u.A.:
-
--  Anzeige und Darstellung
-
--  Metadatenkonvertierungen
-
--  OAI-Providing
-
--  Suche
-
-Alle bekannten Metadateneinträge werden in der Komponente
-`Etikett <#_etikett>`__ verwaltet. In `Etikett <#_etikett>`__ kann
-konfiguriert werden, welche URIs aus den RDF-Daten in das JSON-LD-Format
-von `regal-api <#_regal_api_2>`__ überführt werden. Außerdem kann die
-Reihenfolge der Darstellung, und das Label zur Anzeige gesetzt werden.
-
-.. table:: Etikett-Eintrag für dc:title
-
-   +---------+---------+---------+---------+---------+---------+---------+
-   | Label   | Pi      | Name    | URI     | Type    | Co      | Comment |
-   |         | ctogram | (json)  |         |         | ntainer |         |
-   +=========+=========+=========+=========+=========+=========+=========+
-   | Titel   | keine   | title   | ht      | String  | keine   | keine   |
-   |         | Angabe  |         | tp://pu |         | Angabe  | Angabe  |
-   |         |         |         | rl.org/ |         |         |         |
-   |         |         |         | dc/term |         |         |         |
-   |         |         |         | s/title |         |         |         |
-   +---------+---------+---------+---------+---------+---------+---------+
-
-**Etikett-Eintrag als Json.**
-
-"title":{ "@id"="http://purl.org/dc/terms/title", "label"="Titel" }
-
-Die etikett Datenbank wird beim Neustart jeder
-`regal-api <#_regal_api_2>`__-Instanz eingelesen. Außerdem wird die
-HTTP-Schnittstelle von Etikett immer wieder angesprochen um zur Anzeige
-geeignete Labels in das System zu holen und anstatt der rohen URIs
-einzublenden. Das `regal-api <#_regal_api_2>`__-Modul läuft dabei auch
-ohne den Etikett-Services, allerdings nur mit eingeschränkter
-Funktionalität; beispielsweise fallen Anzeigen von verlinkten Ressourcen
-(und das ist in Regal fast alles) weniger schön aus.
-
-.. _wie_kommen_bibliografische_metadaten_ins_system:
-
-Wie kommen bibliografische Metadaten ins System?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-In Regal können bibliografische Metadaten aus dem hbz-Verbundkatalog an
-Ressourcen "angelinkt" werden. Dies erfolgt über Angabe der ID des
-entsprechenden Titelsatzes (z.b. HT017766754). Mit Hilfe dieser ID kann
-Regal einen Titelimport durchführen. Dabei wird auf die Schnittstellen
-der `Lobid-API <https://lobid.org>`__ zugegriffen.
-
-Regal bietet außerdem die Möglichkeit, Metadaten über Erfassungsmasken
-zu erzeugen und zu speichern. Dies erfolgt mit Hilfe des Moduls
-`Zettel <#_zettel>`__. `Zettel <#_zettel>`__ ist ein Webservice, der
-verschiedene HTML-Formulare bereitstellt. Die Formulare können
-RDF-Metadaten einlesen und ausgeben. Zettel-Formulare werden über
-Javascript mit Hilfe eines IFrame in die eigentliche Anwendung
-angebunden. Über Zettel werden Konzepte aus dem Bereich Linked Data
-umgesetzt. So können Feldinhalte über entsprechende Eingabeelemente in
-Drittsystemen recherchiert und verlinkt werden. Die Darstellung von
-Links erfolgt in Zettel mit Hilfe von `Etikett <#_etikett>`__.
-Umfangreichere Notationssysteme wie Agrovoc oder DDC werden über einen
-eigenen Index aus dem Modul `skos-lookup <#_skos_lookup>`__ eingebunden.
-Zettel unterstützt zur Zeit folgende Linked-Data-Quellen:
-
--  `Lobid (GND) <https://lobid.org/gnd>`__
-
--  `Lobid (Ressource) <https://lobid.org/resources>`__
-
--  `Agrovoc <http://aims.fao.org/vest-registry/vocabularies/agrovoc>`__
-
--  `DDC <https://www.oclc.org/en/dewey.html>`__
-
--  `CrossRef (Funder
-   Registry) <https://www.crossref.org/services/funder-registry/>`__
-
--  `Orcid <https://orcid.org/>`__
-
--  `Geonames <https://www.geonames.org/>`__
-
--  `Open Street Maps Koordinaten <https://www.openstreetmap.org>`__
-
-.. _anzeige_und_darstellung:
-
-Anzeige und Darstellung
------------------------
-
-Über die Schnittstellen der `regal-api <#_regal_api_2>`__ können
-unterschiedliche Darstellungen einer Publikation bezogen werden. Über
-`Content
-Negotiation <https://de.wikipedia.org/wiki/Content_Negotiation>`__
-können Darstellungen per HTTP-Header angefragt werden. Um
-unterschiedliche Darstellungen im Browser anzeigen zu lassen, kann
-außerden, über das Setzen von entsprechenden Endungen, auf
-unterschiedliche Representationen eine Resource zugegriffen werden.
-
-**Auswahl von Pfaden zu unterschiedlichen Representationen einer
-Ressource.**
-
-/resource/regal:1 /resource/regal:1.json /resource/regal:1.rdf
-/resource/regal:1.epicur /resource/regal:1.mets
-
-In der HTML-Darstellung greift `regal-api <#_regal_api_2>`__ auf den
-Hilfsdienst `Thumby <#_thumby>`__ zu um darüber Thumbnail-Darstellungen
-von PDFs oder Bilder zu kreieren. Bei großen Bildern wird außerdem der
-`Deepzoomer <#_deepzoomer>`__ angelinkt, der eine Darstellung von
-hochauflösenden Bildern über das Tool
-`OpenSeadragon <https://openseadragon.github.io/>`__ erlaubt. Video- und
-Audio-Dateien werden über die entsprechenden HTML5 Elemente gerendert.
-
-.. _der_hbz_verbundkatalog:
-
-Der hbz-Verbundkatalog
-----------------------
-
-Metadaten, die über den Verbundkatalog importiert wurden, können über
-einen Cronjob regelmäßig aktualisiert werden. Außerdem können diese
-Daten über OAI-PMH an den Verbundkatalog zurückgeliefert werden, so dass
-dieser, Links auf die Volltexte erhält.
-
-.. _metadatenkonvertierung:
-
-Metadatenkonvertierung
-----------------------
-
-Für die Metadatenkonvertierung gibt es kein festes Vorgehensmodell oder
-Werkzeug. I.d.R. gibt es für jede Representation eine oder eine Reihe
-von Javaklassen, die für eine On-the-fly-Konvertierung sorgen. Die
-HTML-Darstellung basiert grundlegend auf denselben Daten, die auch im
-`Elasticsearch <https://www.elastic.co/guide/index.html>`__-Index liegen
-und ist im wesentlichen eine JSON-LD-Darstellung, die mit Hilfe der in
-`Etikett <#_etikett>`__ hinterlegten Konfiguration aus den
-bibliografischen Metadaten gewonnen wurde.
-
-.. _oai_providing:
-
-OAI-Providing
--------------
-
-Öffentlich zugängliche Publikationen sind auch über die
-OAI-Schnittstelle verfügbar. Dabei wird jede Publikation einer Reihe von
-OAI-Sets zugeordnet und in unterschiedlichen Formaten angeboten.
-
-.. table:: OAI Set
-
-   +-----------------------------------+-----------------------------------+
-   | Set                               | Kriterium                         |
-   +===================================+===================================+
-   | ddc:\*                            | Wenn ein dc:subject mit dem       |
-   |                                   | String "http://dewey.info/class/" |
-   |                                   | beginnt, wird ein Set mit der     |
-   |                                   | entsprechenden DDC-Nummer         |
-   |                                   | gebildet und die Publikation wird |
-   |                                   | zugeordnet                        |
-   +-----------------------------------+-----------------------------------+
-   | contentType                       | Der "contentType" weist darauf    |
-   |                                   | hin, in welcher Weise die         |
-   |                                   | Publikation in Regal. Abgelegt    |
-   |                                   | ist.                              |
-   +-----------------------------------+-----------------------------------+
-   | open_access                       | All Publikationen, die als        |
-   |                                   | Sichtbarkeit "public" haben       |
-   +-----------------------------------+-----------------------------------+
-   | urn-set-1                         | Publikationen mit einer URN, die  |
-   |                                   | mit urn:nbn:de:hbz:929:01 beginnt |
-   +-----------------------------------+-----------------------------------+
-   | urn-set-2                         | Publikationen mit einer URN, die  |
-   |                                   | mit urn:nbn:de:hbz:929:02 beginnt |
-   +-----------------------------------+-----------------------------------+
-   | epicur                            | Publikationen, die in einem       |
-   |                                   | URN-Set sind                      |
-   +-----------------------------------+-----------------------------------+
-   | aleph                             | Publikationen , die mit einer     |
-   |                                   | Aleph-Id verknüpft sind           |
-   +-----------------------------------+-----------------------------------+
-   | edoweb01                          | spezielles, pro                   |
-   |                                   | `reg                              |
-   |                                   | al-api <#_regal_api_2>`__-Instanz |
-   |                                   | konfigurierbares Set für alle     |
-   |                                   | Publikationen, die im aleph-Set   |
-   |                                   | sind                              |
-   +-----------------------------------+-----------------------------------+
-   | ellinet01                         | spezielles, pro                   |
-   |                                   | `reg                              |
-   |                                   | al-api <#_regal_api_2>`__-Instanz |
-   |                                   | konfigurierbares Set für alle     |
-   |                                   | Publikationen, die im aleph-Set   |
-   |                                   | sind                              |
-   +-----------------------------------+-----------------------------------+
-
-.. table:: OAI Metadatenformat
-
-   +-----------------------------------+-----------------------------------+
-   | Format                            | Kriterium                         |
-   +===================================+===================================+
-   | oai_dc                            | Alle öffentlich sichtbaren        |
-   |                                   | Objekte, die als bestimmte        |
-   |                                   | ContentTypes angelegt wurden.     |
-   +-----------------------------------+-----------------------------------+
-   | epicur                            | Alle Objekte, die eine URN haben  |
-   +-----------------------------------+-----------------------------------+
-   | aleph                             | Alle Objekte, die einen           |
-   |                                   | persistenten Identifier haben     |
-   +-----------------------------------+-----------------------------------+
-   | mets                              | Wie oai_dc                        |
-   +-----------------------------------+-----------------------------------+
-   | rdf                               | Wie oai_dc                        |
-   +-----------------------------------+-----------------------------------+
-   | wgl                               | Format für LeibnizOpen. Alle      |
-   |                                   | Objekte die über das Feld         |
-   |                                   | "collectionOne" einer Institution |
-   |                                   | zugeordnet wurden und über den    |
-   |                                   | ContentType "article"             |
-   |                                   | eingeliefert wurden.              |
-   +-----------------------------------+-----------------------------------+
-
-.. _suche:
-
-Suche
------
-
-Der Elasticsearch-Index wird mit Hilfe einer JSON-LD Konvertierung
-befüllt. Die Konvertierung basiert im wesentlichen auf den
-bibliografischen Metadaten der einzelnen Ressourcen und wir mit Hilfe
-der in `Etikett <#_etikett>`__ hinterlegten Konfiguration erzeugt.
-
-.. _zugriffsberechtigungen_und_sichtbarkeiten:
-
-Zugriffsberechtigungen und Sichtbarkeiten
------------------------------------------
-
-Regal setzt ein rollenbasiertes Konzept zur Steuerung von
-Zugriffsberechtigungen um. Eine besondere Bedeutung kommt dem lesenden
-Zugriff auf Ressourcen zu. Einzelne Ressourcen können in ihrer
-Sichtbarkeit so eingeschränkt werden, dass nur mit den Rechten einer
-bestimmten Rolle lesend zugegriffen werden kann. Dabei kann der Zugriff
-auf Metadaten und Daten separat gesteuert werden.
-
-.. figure:: ./resources/images/accessControl.png
-   :alt: Screenshot zur Verdeutlichung von Sichtbarkeiten in Regal
-
-   Screenshot zur Verdeutlichung von Sichtbarkeiten in Regal
-
-Die Konfiguration hat Auswirkungen auf die Sichtbarkeit einer
-Publikation in den unterschiedlichen Systemteilen. Die folgende Tabelle
-veranschaulicht den derzeitigen Stand der Implementierung.
-
-.. _sichtbarkeiten_operationen_rollen:
-
-Sichtbarkeiten, Operationen, Rollen
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. table:: **Schreibender** Zugriff auf Daten und Metadaten
-
-   +-----------------------------------+-----------------------------------+
-   | Rolle                             | Art der Aktion                    |
-   +-----------------------------------+-----------------------------------+
-   | ADMIN                             | Darf alle Aktionen durchführen.   |
-   |                                   | Auch Bulk-Aktionen und "Purges"   |
-   +-----------------------------------+-----------------------------------+
-   | EDITOR                            | Darf Objekte anlegen, löschen,    |
-   |                                   | Sichtbarkeiten ändern, etc.       |
-   +-----------------------------------+-----------------------------------+
-
-.. table:: **Lesender** Zugriff auf Metadaten
-
-   +-----------------------------------+-----------------------------------+
-   | Sichtbarkeit                      | Rolle                             |
-   +===================================+===================================+
-   | public                            | GUEST,READ                        |
-   |                                   | ER,SUBSCRIBER,REMOTE,ADMIN,EDITOR |
-   +-----------------------------------+-----------------------------------+
-   | private                           | ADMIN,EDITOR                      |
-   +-----------------------------------+-----------------------------------+
-
-.. table:: **Lesender** Zugriff auf Daten
-
-   +-----------------------------------+-----------------------------------+
-   | Sichtbarkeit                      | Rolle                             |
-   +===================================+===================================+
-   | public                            | GUEST,READ                        |
-   |                                   | ER,SUBSCRIBER,REMOTE,ADMIN,EDITOR |
-   +-----------------------------------+-----------------------------------+
-   | restricted                        | READ                              |
-   |                                   | ER,SUBSCRIBER,REMOTE,ADMIN,EDITOR |
-   +-----------------------------------+-----------------------------------+
-   | remote                            | READ                              |
-   |                                   | ER,SUBSCRIBER,REMOTE,ADMIN,EDITOR |
-   +-----------------------------------+-----------------------------------+
-   | single                            | SUBSCRIBER,ADMIN,EDITOR           |
-   +-----------------------------------+-----------------------------------+
-   | private                           | ADMIN,EDITOR                      |
-   +-----------------------------------+-----------------------------------+
-
-.. _benutzerverwaltung:
-
-Benutzerverwaltung
-------------------
-
-Die Benutzerverwaltung von Regal findet innerhalb von Drupal statt. Zwar
-können auch in der `regal-api <#_regal_api_2>`__ Benutzer angelegt
-werden, jedoch ist die Implementierung in diesem Bereich erst
-rudimentär.
-
-.. _drupal:
-
-Drupal
-~~~~~~
-
-Benutzer in Drupal können über das Modul
-`regal-drupal <#_regal_drupal>`__ unterschiedlichen Rollen zugewiesen
-werden. Die Authorisierung erfolgt passwortbasiert. Alle Drupal-Benutzer
-greifen über einen vorkonfigurierten Accessor auf die
-`regal-api <#_regal_api_2>`__ zu. Alle Zugriffe erfolgen verschlüsselt
-unter Angabe eines Passwortes. Die Rolle mit deren Berechtigungen
-zugegriffen wird, wird dabei in `regal-drupal <#_regal_drupal>`__
-gesetzt. Die Drupal-BenutzerId wird als Metadatum in Form eines
-proprietären HTTP-Headers mit an `regal-api <#_regal_api_2>`__
-geliefert.
-
-.. _regal_api:
-
-Regal-Api
-~~~~~~~~~
-
-Auch in regal-api können Api-Benutzer angelegt werden. Zur
-Benutzerverwaltung wird eine MySQL-Datenbank eingesetzt, in der die
-Passworte der Nutzer abgelegt sind.
-
-.. _ansichten:
-
-Ansichten
----------
-
-Um Daten, die in `regal-api <#_regal_api_2>`__ abgelegt wurden zur
-Anzeige zu bringen sind i.d.R. mehrere Schritte nötig. Die genaue
-Vorgehensweise ist davon abhängig, wo die Daten abgelegt werden (in
-welchem Fedora Datenstrom). Grundsätzlich basiert die HTML-Darstellung
-auf den Daten, die unter dem Format ``.json2`` einer Ressource abrufbar
-sind und einen Eintrag in context.json haben.
-
-::
-
-   **Daten zur Ansicht bringen**
-
-1. Eintrag des zugehörigen RDF-Properties in die entsprechende
-   `Etikett <#_etikett>`__-Instanz, bzw. in die ``/conf/labels.json``.
-   Der Eintrag muss einen Namen, ein Label und einen Datentyp haben.
-   `regal-api <#_regal_api_2>`__ neu starten, bzw mit
-   ``POST /context.json`` das neu Laden der Contexteinträge erzwingen.
-
-2. Dies müsste reichen, um eine Standardanzeige in der HTML-Ausgabe zu
-   erreichen
-
-3. Wenn die Daten nicht erscheinen, sollte man überprüfen, ob sie unter
-   dem Format ``.json2`` erscheinen. Wenn nicht, stellt sich die Frage,
-   wo die Daten abgelegt werden. Komplett werden nur die Daten aus dem
-   Fedora Datenstrom /metadata2 prozessiert. Befindet sich das Datum in
-   z.B. im /RELS-EXT Datenstrom so muss es zunächst manuell unter
-   ``helper.JsonMapper#getLd2()`` in das JSON-Objekt eingefügt werden.
-
-4. Einige Felder werden auch ausgeblendet. Dies geschieht in
-   `regal-api <#_regal_api_2>`__ unter ``/public/stylesheets/main.css``
-   und in Drupal innerhalb der entsprechenden themes.
-
-5. Um spezielle Anzeigen zu realisieren muss schließlich im
-   HTML-Template angefasst werden, unter
-   ``/app/views/tags/resourceView.scala.html`` .
-
-Insgesamt läuft es also so: Alles was in `Etikett <#_etikett>`__
-konfiguriert ist, wird auch ins JSON und damit ins HTML und in den
-Suchindex übernommen. Dinge, die im HTML nicht benötigt werden, werden
-über CSS wieder ausgeblendet.
-
 .. _software:
 
 Software
@@ -595,7 +13,7 @@ handelt sich also um eine Webservice-Architektur, in der alle
 Webservices über einen Apache-Webserver und entsprechende Einträge in
 ihren Konfigurationsdateien miteinander verbunden werden.
 
-.. figure:: ./resources/images/regal-dependencies.jpeg
+.. figure:: ../resources/images/regal-dependencies.jpeg
    :alt: Regal Abhängigkeiten
 
    Regal Abhängigkeiten
@@ -609,12 +27,12 @@ regal-api
 
    +-----------------------------------+-----------------------------------+
    | Source                            | `regal-api <https:                |
-   |                                   | //github.com/edoweb/regal-api>`__ |
+   |                                   | //github.com/edoweb/regal-api>`   |
    +-----------------------------------+-----------------------------------+
    | Technik                           | `Play                             |
    |                                   | 2.4                               |
    |                                   | .2 <https://www.playframework.com |
-   |                                   | /documentation/2.4.x/JavaHome>`__ |
+   |                                   | /documentation/2.4.x/JavaHome>`   |
    +-----------------------------------+-----------------------------------+
    | Ports                             | 9000 / 9100                       |
    +-----------------------------------+-----------------------------------+
@@ -642,16 +60,16 @@ bereitgestellt. Dies umfasst:
 -  Webarchivierung
 
 Der Webservice ist auf Basis von `Play
-2.4.2 <https://www.playframework.com/documentation/2.4.x/JavaHome>`__
+2.4.2 <https://www.playframework.com/documentation/2.4.x/JavaHome>`_
 realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von
-elektronischen Publikationen an. Die `regal-api <#_regal_api_2>`__
-operiert auf `Fedora Commons 3 <#_fedora_commons_3>`__,
-`MySql <#_mysql>`__ und `Elasticsearch 1.1 <#_elasticsearch_1_1>`__.
-Über die API werden auch Funktionalitäten von `Etikett <#_etikett>`__,
-`Thumby <#_thumby>`__, `Zettel <#_zettel>`__ und
-`Deepzoomer <#_deepzoomer>`__ angesprochen. Für die Webarchivierung
-werden `heritrix <#_heritrix>`__, `wpull <#_wpull>`__ und
-`openwayback <#_openwayback>`__ angebunden.
+elektronischen Publikationen an. Die `regal-api <#_regal_api_2>`_
+operiert auf `Fedora Commons 3 <#_fedora_commons_3>`_,
+`MySql <#_mysql>`__ und `Elasticsearch 1.1 <#_elasticsearch_1_1>`_.
+Über die API werden auch Funktionalitäten von `Etikett <#_etikett>`_,
+`Thumby <#_thumby>`_, `Zettel <#_zettel>`_ und
+`Deepzoomer <#_deepzoomer>`_ angesprochen. Für die Webarchivierung
+werden `heritrix <#_heritrix>`_, `wpull <#_wpull>`_ und
+`openwayback <#_openwayback>`_ angebunden.
 
 .. _konfiguration:
 
@@ -973,7 +391,7 @@ Etikett
    +-----------------------------------+-----------------------------------+
 
 .. _Etikett: https://github.com/hbz/etikett
-.. _Play: https://www.playframework.com/documentation/2.2.x/JavaHome>
+.. _Play: https://www.playframework.com/documentation/2.2.x/JavaHome
 
 
 Etikett ist eine einfache Datenbankanwendung, die es erlaubt
@@ -1033,7 +451,7 @@ Informationen können in etikett abgelegt werden:
 
 -  Beschreibung - Kommentar als Markdown
 
-.. figure:: ./resources/images/etikett-screen.png
+.. figure:: ../resources/images/etikett-screen.png
    :alt: Etikett Oberfläche
 
    Etikett Oberfläche
@@ -1170,7 +588,7 @@ existierende Daten in ein Formular geladen werden, so können diese Daten
 spezifiziert werden, in welchem Format das Formular Daten zurückliefern
 soll.
 
-.. figure:: ./resources/images/zettel-screen.png
+.. figure:: ../resources/images/zettel-screen.png
    :alt: Zettel Oberfläche
 
    Zettel Oberfläche
@@ -1187,7 +605,7 @@ erlaubt dieser darauf zu reagieren. Um Daten von Zettel in die
 Applikation zu bekommen, werden diese im HTML-DOM gespeichert und können
 von dort durch die Applikation entgegengenommen werden.
 
-.. figure:: ./resources/images/zettel-flos.png
+.. figure:: ../resources/images/zettel-flos.png
    :alt: Zettel Datenfluss
 
    Zettel Datenfluss
@@ -1325,12 +743,12 @@ können auch umfangreichere Thesauri und Notationssysteme in den
 Formularen von `Zettel <#_zettel>`__ fachgerecht angelinkt werden.
 `skos-lookup <#_skos_lookup>`__ unterstützt auch mehrsprachige Thesauri.
 
-.. figure:: ./resources/images/skos-lookup-autocomplete.png
+.. figure:: ../resources/images/skos-lookup-autocomplete.png
    :alt: SKOS-Lookup Beispiel 1
 
    SKOS-Lookup Beispiel 1
 
-.. figure:: ./resources/images/example-select2.png
+.. figure:: ../resources/images/example-select2.png
    :alt: SKOS-Lookup Beispiel 2
 
    SKOS-Lookup Beispiel 2
@@ -1694,8 +1112,8 @@ Elasticsearch 1.1
 -----------------
 
 Elasticsearch ist eine Suchmaschine und wird von
-`regal-api <#_regal_api_2>`__ verwendet. Auch
-`regal-drupal <#_regal_drupal>`__ greift auf den Index zu.
+`regal-api <#_regal_api_2>`_ verwendet. Auch
+`regal-drupal <#_regal_drupal>`_ greift auf den Index zu.
 
 .. _drupal_7:
 
@@ -1709,7 +1127,6 @@ Drupal 7
 Installation
 ============
 
-.. _vagrant:
 
 Vagrant
 -------
@@ -1735,7 +1152,7 @@ Die VirtualBox hat folgendes Setup
 VirtualBox installieren
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    sudo apt-get install virtualbox
 
@@ -1744,7 +1161,7 @@ VirtualBox installieren
 Vagrant installieren
 ~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    cd /tmp
    wget https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.deb
@@ -1755,7 +1172,7 @@ Vagrant installieren
 Repository herunterladen
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    git clone https://github.com/jschnasse/Regal
    cd Regal/vagrant/ubuntu-14.04
@@ -1769,7 +1186,7 @@ Hierfür bitte ein JDK8-Tarball herunterladen und unter dem Namen
 ``java8.tar.gz`` in einem Verzeichnis ``/bin`` unterhalb des
 Vagrant-Directories bereitstellen.
 
-::
+.. code-block:: bash
 
    mkdir bin
    mv ~/downloads/jdk.... bin/java8.tar.gz
@@ -1779,7 +1196,7 @@ Vagrant-Directories bereitstellen.
 Geteiltes Entwicklungsverzeichnis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    mkdir ~/regal-dev
 
@@ -1788,7 +1205,7 @@ Geteiltes Entwicklungsverzeichnis
 Vagrant Guest Additions installieren
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    vagrant plugin install vagrant-vbguest && vagrant reload
 
@@ -1803,7 +1220,7 @@ IP ``192.168.50.4`` für die Box konfiguriert. Über die ``FRONTEND`` und
 ``BACKEND`` Einträge in der ``variables.conf`` ist der Servername als
 ``regal.vagrant`` definiert.
 
-::
+.. code-block:: bash
 
    sudo printf "192.168.50.4 regal.vagrant api.regal.vagrant" >> /etc/hosts
 
@@ -1812,7 +1229,7 @@ IP ``192.168.50.4`` für die Box konfiguriert. Über die ``FRONTEND`` und
 Vagrant starten
 ~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    vagrant up
 
@@ -1821,7 +1238,7 @@ Vagrant starten
 Auf der Maschine einloggen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+.. code-block:: bash
 
    vagrant ssh
 
@@ -1832,7 +1249,7 @@ Server
 
 Die Installation auf einem Server kann mit Hilfe des mitgelieferten
 Skriptes
-`regal-install.sh <https://github.com/jschnasse/Regal/blob/master/vagrant/ubuntu-14.04/regal-install.sh>`__
+`regal-install.sh <https://github.com/jschnasse/Regal/blob/master/vagrant/ubuntu-14.04/regal-install.sh>`_
 erfolgen. Dazu muss analog zur Vagrant-Installation zunächst das ``bin``
 Verzeichnis mit einem JDK aufgebaut werden. Danach erfolgt die
 Installation unter ``/opt/regal`` und mit einem Benutzer ``regal`` (vgl.
@@ -1860,7 +1277,7 @@ Speichereinstellungen zu betreiben.
 Dazu in ``/opt/regal/bin/fedora/tomcat/bin`` eine ``setenv.sh`` anlegen
 und folgende Zeilen hinein kopieren.
 
-::
+.. code-block:: bash
 
    CATALINA_OPTS=" \
    -Xms1536m \
@@ -1885,7 +1302,7 @@ Entwicklung Java
 In der VirtualBox
 -----------------
 
-Hat man über `Vagrant <#_vagrant>`__ eine neue VirtualBox erzeugt und
+Hat man über `Vagrant <#_vagrant>`_ eine neue VirtualBox erzeugt und
 alle Konfigurationen wie beschrieben vorgenommen, kann man die
 VirtualBox zur Entwicklung nutzen. Da im Installationsprozess bereits
 Eclipse-Projekte der unter ``/opt/regal/src`` befindlichen
@@ -1923,7 +1340,7 @@ lokale installation können die entsprechenden Funktionen aus dem
 ``regal-install.sh`` ausgeführt werden. Dazu einfach eine Kopie anlegen,
 entsprechend editieren und ausführen.
 
-::
+.. code-block:: bash
 
    mkdir regal-install
    cp -r path/to/Regal/vagrant/ubuntu-XX/* regal-install
@@ -2222,7 +1639,7 @@ Das Tool Monit erlaubt es, den Status der Regal-Komponenten zu
 überwachen und Dienste ggfl. neu zu starten. Folgende Einträge können in
 /etc/monit/monitrc vorgenommen werden
 
-::
+.. code-block:: bash
 
    check process apache with pidfile /var/run/apache2/apache2.pid
        start program = "/etc/init.d/apache2 start" with timeout 60 seconds
@@ -2274,7 +1691,7 @@ gemacht hat. Er wird nur für einen bestimmten Zeitraum angestellt und
 dann wieder ausgestellt. Auf diese Weise liefert die OAI-Schnittstelle
 tagesaktuelle Daten.
 
-::
+.. code-block:: bash
 
    0 2 * * * /opt/regal/src/regal-scripts/turnOnOaiPmhPolling.sh
    0 5 * * * /opt/regal/src/regal-scripts/turnOffOaiPmhPolling.sh
@@ -2288,7 +1705,7 @@ Die URN-Registrierung erfolgt mit einem gewissen Verzug. Das dafür
 zuständige Skript überprüft daher zunächst das Anlagedatum der
 Ressource.
 
-::
+.. code-block:: bash
 
    05 7 * * * /opt/regal/src/regal-scripts/register_urn.sh control  >> /opt/regal/regal-scripts/log/control_urn_vergabe.log
    1 1 * * * /opt/regal/src/regal-scripts/register_urn.sh katalog >> /opt/regal/regal-scripts/log/katalog_update.log
@@ -2302,7 +1719,7 @@ Katalog-Aktualisierung
 Das System gleicht einmal am Tag Metadaten mit dem hbz-Verbundkatalog ab
 und führt ggf. Aktualisierungen durch.
 
-::
+.. code-block:: bash
 
    0 5 * * * /opt/regal/src/regal-scripts/updateAll.sh > /dev/null
 
@@ -2314,7 +1731,7 @@ Matomo
 Matomo wird mit Apache-Logfiles befüllt. Innerhalb von Matomo werden die
 Einträge annonymisiert.
 
-::
+.. code-block:: bash
 
    0 1 * * * /opt/regal/regal-scripts/import-logfiles.sh >/dev/null
 
@@ -2326,7 +1743,7 @@ Logfile Annonymisierung
 Apache-Logfiles werden sieben Tage unverändert aufbewahrt. Danach
 erfolgt eine Annonymisierung.
 
-::
+.. code-block:: bash
 
    0 2 * * * /opt/regal/src/regal-scripts/depersonalize-apache-logs.sh
 
@@ -2338,7 +1755,7 @@ Webgatherer
 Der Webgatherer prüft Archivierungsintervalle von Webpages und stößt bei
 Bedarf die Erzeugung eines neuen Snapshots/Version an.
 
-::
+.. code-block:: bash
 
    0 20 * * * /opt/regal/src/regal-scripts/runGatherer.sh >> /opt/regal/regal-scripts/log/runGatherer.log
    # Auswertung des letzten Webgatherer-Laufs
@@ -2357,7 +1774,7 @@ Der Elasticsearch-Index und die MySQL-Datenbanken werden täglich
 gesichert. Es werden Backups der letzten 30 Tage aufbewahrt. Ältere
 Backups werden von der Platte gelöscht.
 
-::
+.. code-block:: bash
 
    0 2 * * * /opt/regal/src/regal-scripts/backup-es.sh -c >> /opt/regal/logs/backup-es.log 2>&1
    30 2 * * * /opt/regal/src/regal-scripts/backup-es.sh -b >> /opt/regal/logs/backup-es.log 2>&1

@@ -1,7 +1,7 @@
-.. _dokumentation:
+.. _colophon:
 
-Dokumentation
-=============
+Colophon
+========
 
 Diese Dokumentation ist mit `sphinx`_ erstellt.
 Die Schritte, um an der Doku zu arbeiten sind folgenden

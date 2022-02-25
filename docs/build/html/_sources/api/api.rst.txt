@@ -1,7 +1,7 @@
 .. _api_documentation:
 
-API-documentation
-================= 
+API
+===
 
 .. _preface:
 
@@ -35,12 +35,12 @@ Prepare your environment to make the following ``curl``-Calls work!
 .. toctree::
    :maxdepth: 1
 
-   api-toscience
-   api-labels
-   api-forms
-   api-thumbs
-   api-skos
-   api-complex-example
+   toscience
+   labels
+   forms
+   thumbs
+   skos
+   complex-example
 
 
 

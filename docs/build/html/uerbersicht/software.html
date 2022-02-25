@@ -1,0 +1,2317 @@
+<!doctype html>
+<html class="no-js">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Installation" href="../installation.html" /><link rel="prev" title="Konzepte" href="konzepte.html" />
+
+    <meta name="generator" content="sphinx-4.3.1, furo 2021.11.23"/>
+        <title>Software - to.science documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=7f0192ddeb2adecfbaa87ffbcf67d16358b30bc1" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=0af69da206d614734f649b27d4cdc2dd6c31f41d" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  body[data-theme="dark"] {
+    --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+  }
+  @media (prefers-color-scheme: dark) {
+    body:not([data-theme="light"]) {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+  }
+</style></head>
+  <body>
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <path stroke="none" d="M0 0h24v24H0z" />
+      <line x1="4" y1="6" x2="20" y2="6" />
+      <line x1="10" y1="12" x2="20" y2="12" />
+      <line x1="6" y1="18" x2="20" y2="18" />
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">to.science  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/hbz-logo.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">to.science  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="uebersicht.html">Übersicht</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="konzepte.html">Konzepte</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Software</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/api.html">API</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/toscience.html">to.science.api</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/labels.html">to.science.labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/forms.html">to.science.forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/thumbs.html">to.science.thumbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/skos.html">skos-lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/complex-example.html">Complex Example of hierarchical content</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../development/development.html">Entwicklung</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../development/JsonLDMapper.html">JSON in Java-Klassen überführen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../development/oaiMetadataFormats.html">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../colophon.html">Colophon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../colophon.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../colophon.html#links">Links</a></li>
+</ul>
+
+</div>
+</div>
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <div class="content-icon-container">
+          <div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="software">
+<span id="id1"></span><h1>Software<a class="headerlink" href="#software" title="Permalink to this headline"></a></h1>
+<p>Die technische Dokumentation der HTTP-Schnittstelle findet sich unter
+<a class="reference internal" href="../api/api.html#api-documentation"><span class="std std-ref">API</span></a>:</p>
+<p>Nachfolgend sei eine Innenansicht der einzelnen Module aufgestellt. Die
+Integration der Module erfolgt i.d.R. über HTTPs. Die Module werden über
+entsprechende Einträge in der Apache-Konfiguration sichtbar gemacht. Es
+handelt sich also um eine Webservice-Architektur, in der alle
+Webservices über einen Apache-Webserver und entsprechende Einträge in
+ihren Konfigurationsdateien miteinander verbunden werden.</p>
+<figure class="align-default" id="id77">
+<img alt="Regal Abhängigkeiten" src="../_images/regal-dependencies.jpeg"/>
+<figcaption>
+<p><span class="caption-text">Regal Abhängigkeiten</span><a class="headerlink" href="#id77" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="regal-api">
+<span id="regal-api-2"></span><h2>regal-api<a class="headerlink" href="#regal-api" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id78">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id78" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Source</p></td>
+<td><p><cite>regal-api &lt;https:
+//github.com/edoweb/regal-api&gt;</cite></p></td>
+</tr>
+<tr class="row-even"><td><p>Technik</p></td>
+<td><p><cite>Play
+2.4
+.2 &lt;https://www.playframework.com
+/documentation/2.4.x/JavaHome&gt;</cite></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ports</p></td>
+<td><p>9000 / 9100</p></td>
+</tr>
+<tr class="row-even"><td><p>Verzeichnis</p></td>
+<td><p>/opt/regal/apps/regal ,
+/opr/regal/src/regal</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTTP Pfad</p></td>
+<td><p>/</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>Mit regal-api werden alle grundlegenden Funktionen von Regal
+bereitgestellt. Dies umfasst:</p>
+<ul class="simple">
+<li><p>HTTP Schnittstelle</p></li>
+<li><p>Sichtbarkeiten, Zugriffskontrolle, Rollen</p></li>
+<li><p>Speicherung, Datenhaltung</p></li>
+<li><p>Konvertierungen</p></li>
+<li><p>Ansichten</p></li>
+<li><p>Suche</p></li>
+<li><p>Webarchivierung</p></li>
+</ul>
+<p>Der Webservice ist auf Basis von <a class="reference external" href="https://www.playframework.com/documentation/2.4.x/JavaHome">Play
+2.4.2</a>
+realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von
+elektronischen Publikationen an. Die <a class="reference external" href="#_regal_api_2">regal-api</a>
+operiert auf <a class="reference external" href="#_fedora_commons_3">Fedora Commons 3</a>,
+<a class="reference external" href="#_mysql">MySql</a> und <a class="reference external" href="#_elasticsearch_1_1">Elasticsearch 1.1</a>.
+Über die API werden auch Funktionalitäten von <a class="reference external" href="#_etikett">Etikett</a>,
+<a class="reference external" href="#_thumby">Thumby</a>, <a class="reference external" href="#_zettel">Zettel</a> und
+<a class="reference external" href="#_deepzoomer">Deepzoomer</a> angesprochen. Für die Webarchivierung
+werden <a class="reference external" href="#_heritrix">heritrix</a>, <a class="reference external" href="#_wpull">wpull</a> und
+<a class="reference external" href="#_openwayback">openwayback</a> angebunden.</p>
+<section id="konfiguration">
+<span id="id3"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration" title="Permalink to this headline"></a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id79">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id79" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Datei</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>aggregations.conf</strong></p></td>
+<td><p>Diese Datei wird verwendet um die
+Schnittstelle <code class="docutils literal notranslate"><span class="pre">/browse</span></code> zu
+konfigurieren. Die Einträg im
+Object “aggs” können direkt über
+die <code class="docutils literal notranslate"><span class="pre">/browse</span></code> Schnittstelle
+angesprochen werden. Mit Hilfe
+des Elasticsearch-Indexes wird
+dann eine entsprechende Antwort
+generiert. Beispiel:
+<code class="docutils literal notranslate"><span class="pre">/browse/rdftype</span></code> liefert eine
+Liste mit allen
+Publikationstypen, die im Index
+vorhanden sind.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>application.conf.tmpl</strong></p></td>
+<td><p>Eine template Datei für die
+Hauptkonfiguration von
+<a class="reference external" href="#_regal_api_2">regal-api</a>.
+Diese Datei sollte zur lokalen
+Verwendung einmal nach
+application.conf kopiert werden.
+In der Datei sind alle Passwörter
+auf <em>admin</em> gesetzt.</p></td>
+</tr>
+<tr class="row-even"><td><p>crawler-beans.cxml</p></td>
+<td><p>Die Datei wird verwendet, wenn im
+Webarchivierungsmodul eine neue
+Konfiguration für eine Webseite
+angelegt wird.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ehcache.xml</p></td>
+<td><p>die Konfiguration der Ehcache
+Komponente</p></td>
+</tr>
+<tr class="row-even"><td><p>fedora-users.xml</p></td>
+<td><p>deprecated - Zur Löschung
+vorgeschlagen</p></td>
+</tr>
+<tr class="row-odd"><td><p>hbz_edoweb_url.txt</p></td>
+<td><p>deprecated - Zur Löschung
+vorgeschlagen</p></td>
+</tr>
+<tr class="row-even"><td><p>html.html</p></td>
+<td><p>deprecated - Zur Löschung
+vorgeschlagen</p></td>
+</tr>
+<tr class="row-odd"><td><p>install.properties</p></td>
+<td><p>deprecated - Zur Löschung
+vorgeschlagen</p></td>
+</tr>
+<tr class="row-even"><td><p>labels-edoweb.de</p></td>
+<td><p>Labels für eine bestimmt
+Regal-Instanz</p></td>
+</tr>
+<tr class="row-odd"><td><p>labels-for
+-proceeding-and-researchData.json</p></td>
+<td><p>deprecated - Zur Löschung
+vorgeschlagen</p></td>
+</tr>
+<tr class="row-even"><td><p>labels-lobid.json</p></td>
+<td><p>deprecated - Zur Löschung
+vorgeschlagen</p></td>
+</tr>
+<tr class="row-odd"><td><p>labels-publisso.de</p></td>
+<td><p>Labels für eine bestimmte
+Regal-Instanz</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>labels.json</strong></p></td>
+<td><p>Eine sinnvolle
+Startkonfiguration. Die Datei
+wurde mit <a class="reference external" href="#_etikett">Etikett</a>
+erzeugt. Beim Start von
+<a class="reference external" href="#_regal_api_2">regal-api</a>
+wird zunächst versucht eine
+ähnliche Konfiguration direkt von
+einer laufenden
+<a class="reference external" href="#_etikett">Etikett</a>-Instanz
+zu holen. Wenn dies nicht klappt,
+wird auf die labels.json
+zurückgegriffen.</p></td>
+</tr>
+<tr class="row-odd"><td><p>list.html</p></td>
+<td><p>deprecated - Zur Löschung
+vorgeschlagen</p></td>
+</tr>
+<tr class="row-even"><td><p>logback.developer.xml</p></td>
+<td><p>Eine logging Konfiguration. Ich
+kopiere die immer nach
+logback.developer.js.xml (in
+.gitignore) und trage sie dann in
+die application.conf ein. Auf
+diese Weise kann ich an Loglevels
+herumkonfigurieren ohne das in
+diese Änderungen in die
+Versionsverwaltung spielen zu
+müssen.</p></td>
+</tr>
+<tr class="row-odd"><td><p>logback.xml</p></td>
+<td><p>Konfiguration des Loggers. Diese
+Datei ist in application.conf
+eingetragen.</p></td>
+</tr>
+<tr class="row-even"><td><p>mab
+xml-string-template-on-record.xml</p></td>
+<td><p>Eine template-Datei zur
+Generierung von MAB-Ausgaben.</p></td>
+</tr>
+<tr class="row-odd"><td><p>mail.properties</p></td>
+<td><p>Konfiguration zur Versendung von
+Mails. Standardmäßig schickt die
+Applikation eine Mail, sobald sie
+im Production-Mode neu gestartet
+wurde. Auch der Umzugsservice im
+Webarchivierungsmodul verschickt
+Mails.</p></td>
+</tr>
+<tr class="row-even"><td><p>nwbib-spatial.ttl</p></td>
+<td><p>deprecated - Zur Löschung
+vorgeschlagen</p></td>
+</tr>
+<tr class="row-odd"><td><p>nwbib.ttl</p></td>
+<td><p>deprecated - Zur Löschung
+vorgeschlagen</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>public-index-config.json</strong></p></td>
+<td><p>Konfiguration des
+Elasticsearch-Indexes. Da in dem
+Index vorallem Metadaten liegen,
+soll fast nicht tokenisiert
+werden.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>routes</strong></p></td>
+<td><p>Hier sind alle HTTP-Pfade
+übersichtlich aufgeführt.</p></td>
+</tr>
+<tr class="row-even"><td><p>scm-info.sh</p></td>
+<td><p>Diese Datei kann man unter Linux
+in die profile-Konfiguration
+seines Benutzers einbinden. Dann
+erhält man im Terminal farbige
+Angabgen zu Git-Branches,etc.</p></td>
+</tr>
+<tr class="row-odd"><td><p>start-regal.sh</p></td>
+<td><p>deprecated - Zur Löschung
+vorgeschlagen</p></td>
+</tr>
+<tr class="row-even"><td><p>tomcat-users.xml</p></td>
+<td><p>deprecated - Zur Löschung
+vorgeschlagen</p></td>
+</tr>
+<tr class="row-odd"><td><p>unescothes.ttl</p></td>
+<td><p>deprecated - Zur Löschung
+vorgeschlagen</p></td>
+</tr>
+<tr class="row-even"><td><p>wglcontributor.csv</p></td>
+<td><p>deprecated - Zur Löschung
+vorgeschlagen</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="die-applikation">
+<span id="id4"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation" title="Permalink to this headline"></a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id80">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id80" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>default package</p></td>
+<td><p>Hier befindet sich die Datei
+Global, die in <a class="reference external" href="https://www.playframework.com/documentation/2.4.x/JavaHome">Play
+2
+.4</a>
+noch eine große Rolle spielt. In
+der Datei können zum Beispiel
+Aktionen vor dem Start der
+Applikation erfolgen, auch können
+hier HTTP-Requests mit geloggt
+werden. Bestimmte Aktionen werden
+nur im Production-Mode
+ausgeführt, d.h. nur wenn die
+Applikation mit <code class="docutils literal notranslate"><span class="pre">start</span></code>
+gestartet wurde oder über
+<code class="docutils literal notranslate"><span class="pre">dist</span></code> ein entsprechendes
+Binary erzeugt wurde.</p></td>
+</tr>
+<tr class="row-odd"><td><p>actions</p></td>
+<td><p>Hier sind Funktionen versammelt,
+die meist unmittelbar aus den
+Controller-Klassen aufgerufen
+werden.</p></td>
+</tr>
+<tr class="row-even"><td><p>archive.fedora</p></td>
+<td><p>Ein Reihe von Dateien, über die
+Zugriffe auf <a class="reference external" href="#_fedora_commons_3">Fedora Commons
+3</a>
+organisiert werden. Hier finden
+sich auch einige Hilfsklassen
+(<code class="docutils literal notranslate"><span class="pre">Utils</span></code>). Das FedoraInterface
+zeigt an, welche Aktionen auf der
+Fedora ausgeführt werden. Der
+Code in diesem Paket gehört mit
+zu dem ältesten Code im gesamten
+Regal-Projekt.</p></td>
+</tr>
+<tr class="row-odd"><td><p>archive.search</p></td>
+<td><p>Zugriff auf die Elasticsearch</p></td>
+</tr>
+<tr class="row-even"><td><p>authenticate</p></td>
+<td><p>Regal verwendet Basic-Auth zur
+Authentifizierung. Um die
+entsprechenden Aufrufe in den
+Controllern zu Schützen wird eine
+Annotation <code class="docutils literal notranslate"><span class="pre">@BasicAuth</span></code>
+verwendet. Diese findet sich
+hier. Die Annotation selbst
+bewirkt, dass jeder
+Controller-Aufruf durch die
+Methode <code class="docutils literal notranslate"><span class="pre">basicAuth</span></code> der Klasse
+<code class="docutils literal notranslate"><span class="pre">BasicAuthAction.java</span></code> läuft.
+Ziel dieser Prozedur ist es, dem
+aktuellen Zugriff die
+Berechtigungen einer bestimmten
+Rolle zuzuordnen.</p></td>
+</tr>
+<tr class="row-odd"><td><p>controllers</p></td>
+<td><p>Der Code, der in diesen Klassen
+organisiert ist, wird bei den
+entsprechenden HTTP-Aufrufen
+ausgeführt. In der
+<code class="docutils literal notranslate"><span class="pre">/conf/routes</span></code> Datei kann man
+sehen, welcher HTTP-Aufruf,
+welchen Methoden-Aufruf zur Folge
+hat. Die Controller-Klassen sind
+i.d.R. von der Klasse
+MyController abgeleitet, die
+Hilfsfunktionen bereitstellt,
+aber auch Funktionen zur
+Überprüfung von Zugriffsrechten.
+Die Überprüfung von
+Zugriffsrechten erfolgt durch
+eingebettet Calls und wird über
+die internen Klassen von
+MyController realisiert.
+Beispiel: Die Funktion
+<code class="docutils literal notranslate"><span class="pre">listNodes</span></code> in der Klasse
+<code class="docutils literal notranslate"><span class="pre">controllers.Resource</span></code> ruft
+ihre Prozeduren eingebettet in
+eine Funktion der Klasse
+<code class="docutils literal notranslate"><span class="pre">ListAction</span></code> auf. Die Klasse
+<code class="docutils literal notranslate"><span class="pre">ListAction</span></code> ist in
+<code class="docutils literal notranslate"><span class="pre">MyController</span></code> implementiert
+und überprüft, ob der Aufruf mit
+der nötigen Berechtigung
+erfolgte. Vgl.
+<a class="reference external" href="#_zugriffsberechtigungen_und_sichtbarkeiten">Zugriffsberechtigungen und
+Sichtbarkeiten</a></p></td>
+</tr>
+<tr class="row-even"><td><p>converter.mab</p></td>
+<td><p>Diese Datei realisiert das
+OAI-Providing von MAB-Daten.
+Ursprünglich war geplant,
+wesentlich umfangreichere
+MAB-Datensätze an den
+Verbundkatalog zu liefern. Daher
+wird hier mit einer eigenen
+Template-Engine gearbeitet, etc.
+Ein lustiges Produkt in diesem
+Kontext ist auch die Klasse
+<code class="docutils literal notranslate"><span class="pre">models.MabRecord</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>de.hbz.lobid.helper</p></td>
+<td><p>Der hier befindliche Code kommt
+ursprünglich aus einem anderen
+Paket, wurde dann aber beim
+Neuaufbau des Lobid 2
+Datendienstes gemeinsam mit den
+Kollegen weiterentwickelt und ist
+schließlich wieder hier gelandet.
+Mittlerweile ist die offizielle
+JSON-LD-Library soweit
+entwickelt, dass man die
+Konvertierung auch darüber machen
+kann. Achja, denn dafür ist der
+Code: Lobid N-Triples in schönes
+JSON umzuformen, das dann auch in
+den Elasticsearch-Index kann.</p></td>
+</tr>
+<tr class="row-even"><td><p>helper</p></td>
+<td><p>Die mit Abstand wichtigste Klasse
+in diesem Package heißt
+<code class="docutils literal notranslate"><span class="pre">JsonMapper</span></code>. Hier wird das
+JSON für Index und Ansichten
+erzeugt.</p></td>
+</tr>
+<tr class="row-odd"><td><p>helper.mail</p></td>
+<td><p>Emails verschicken.</p></td>
+</tr>
+<tr class="row-even"><td><p>helper.oai</p></td>
+<td><p>Einige Klassen zur Regelung des
+OAI-Providings. Der
+<code class="docutils literal notranslate"><span class="pre">OAIDispatcher</span></code> analysiert, ob
+und wie ein <code class="docutils literal notranslate"><span class="pre">Node</span></code> an die
+OAI-Schnittstelle gelangt.</p></td>
+</tr>
+<tr class="row-odd"><td><p>models</p></td>
+<td><p>Die wichtigste Klasse hier ist
+<code class="docutils literal notranslate"><span class="pre">Node</span></code> über diese Klasse läuft
+der Großteil des
+Datentransportes.</p></td>
+</tr>
+<tr class="row-even"><td><p>views</p></td>
+<td><p>Templates in der Sprache
+<code class="docutils literal notranslate"><span class="pre">Twirl</span></code> und einige
+Java-Hilfsklassen.</p></td>
+</tr>
+<tr class="row-odd"><td><p>views.mediaViewers</p></td>
+<td><p>Ein paar Viewer, die über die
+Hilfsklasse <code class="docutils literal notranslate"><span class="pre">ViewerInfo</span></code> in
+<code class="docutils literal notranslate"><span class="pre">tags.resourceView</span></code> eingebunden
+werden können.</p></td>
+</tr>
+<tr class="row-even"><td><p>views.oai</p></td>
+<td><p>Mit <code class="docutils literal notranslate"><span class="pre">Twirl</span></code> XML zu generieren
+war keine gute Idee.</p></td>
+</tr>
+<tr class="row-odd"><td><p>views.tags</p></td>
+<td><p>Hilfstemplates.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+<section id="id5">
+<h2>Etikett<a class="headerlink" href="#id5" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id81">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id81" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Source</p></td>
+<td><p><a href="#id114"><span class="problematic" id="id115">`Etikett`_</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Technik</p></td>
+<td><p><a class="reference external" href="https://www.playframework.com/documentation/2.2.x/JavaHome">Play</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ports</p></td>
+<td><p>9002 / 9102</p></td>
+</tr>
+<tr class="row-even"><td><p>Verzeichnis</p></td>
+<td><p>/opt/regal/apps/etikett ,
+/opr/regal/src/etikett</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTTP Pfad</p></td>
+<td><p>/tools/etikett</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>Etikett ist eine einfache Datenbankanwendung, die es erlaubt</p>
+<ol class="arabic simple">
+<li><p>Menschenlesbare Labels für URIs abzulegen. Über eine
+HTTP-Schnittstelle kann dann nach dem Label gefragt werden.</p></li>
+<li><p>Auch Konfigurationen zur Erzeugung eines JSON-LD Kontextes können
+abgelegt werden.</p></li>
+<li><p>Die Etikett-Datenbank erweitert sich dynamisch. Wird in einem
+authentifizierten Zugriff nach einer noch nicht bekannten URI
+gefragt, so versucht die Applikation ein Label für die URI zu finden.</p></li>
+</ol>
+<p>In Etikett sind verschiedene Lookups realisiert, die dynamisch Labels
+für URIs finden können. Beispiele:</p>
+<ul class="simple">
+<li><p>Crossref</p></li>
+<li><p>Geonames</p></li>
+<li><p>GND</p></li>
+<li><p>Openstreetmap</p></li>
+<li><p>Orcid</p></li>
+<li><p>RDF, Skos, etc.</p></li>
+</ul>
+<p>Fragt man Etikett nach einem Label, so antwortet Etikett mit dem
+Ergebnis des Lookups. Wenn Etikett nicht in der Lage ist, ein Label zu
+finden, wird die URI, mit angefragt wurde, zurückgegeben.</p>
+<p>Etikett kann auch als Cache verwendet werden. So werden authentifizierte
+Anfragen in einer Datenbank persistiert. Erneute Anfragen werden dann
+aus der Datenbank beantwortet, ein erneuter Lookup wird eingespart.
+Einmal persistierte Labels werden nicht invalidiert. Die Invalidierung
+kann von außerhalb über authentifizierte HTTP-Zugriffe realisiert
+werden, stellt aber insgesamt noch ein Desiderat dar.</p>
+<p>Etikett kann auch mit Labels vorkonfiguriert werden. Dabei können
+zusätzliche Informationen zu jeder URIs mit abgelegt werden. Folgende
+Informationen können in etikett abgelegt werden:</p>
+<ul class="simple">
+<li><p>URI</p></li>
+<li><p>Label</p></li>
+<li><p>Weight - Zur Definition von Anzeigereihenfolgen.</p></li>
+<li><p>Pictogram Iconfont-ID - Kann anstatt oder zusätzlich zum Label
+angezeigt werden.</p></li>
+<li><p>ReferenceType - JSON-LD Typ</p></li>
+<li><p>Container - JSON-LD Container</p></li>
+<li><p>Beschreibung - Kommentar als Markdown</p></li>
+</ul>
+<figure class="align-default" id="id82">
+<img alt="Etikett Oberfläche" src="../_images/etikett-screen.png"/>
+<figcaption>
+<p><span class="caption-text">Etikett Oberfläche</span><a class="headerlink" href="#id82" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Mit Hilfe dieser Angaben kann Etikett auch einen “JSON-LD Context”
+bereitstellen. Insgesamt wird über Etikett eine Art “Application
+Profile” realisiert. Das Profil gibt Auskunft, welche Metadatenfelder
+(definiert als URIs) in welcher Weise (Typ, Container) Verwendung finden
+und wie sie angezeigt werden sollen (Label, Weight, Pictogram).</p>
+<p>Im Regal-Kontext wird <a class="reference external" href="#_etikett">Etikett</a> an vielen Stellen
+verwendet.</p>
+<ul class="simple">
+<li><p>Zur Wandlung von RDF nach JSON-LD</p></li>
+<li><p>Zur Anreicherung von RDF Importen</p></li>
+<li><p>Zur menschenlesbaren Darstellung von RDF</p></li>
+<li><p>Zur Konfiguration von Labels, Anzeigereihenfolgen und Pictogrammen</p></li>
+<li><p>Als Cache</p></li>
+</ul>
+<section id="konfiguration-2">
+<span id="id7"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-2" title="Permalink to this headline"></a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id83">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id83" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Datei</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>evolutions</strong></p></td>
+<td><p>Dieses Verzeichnis enthält
+SQL-Skripte, die bei Änderungen
+des Datenbankschemas automatisch
+über EBean angelegt werden. Beim
+nächsten Deployment einer neuen
+Etikett-Version werden die
+Skripte automatische angewendet.
+Die Skripte enthalten immer einen
+mit “Up” markierten Part, und
+einen mit “Down” markierten Part
+(für rollbacks).</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>application.conf</strong></p></td>
+<td><p>Hier kann ein Benutzer
+eingestellt werden. Alle Klassen
+im Verzeichnis <code class="docutils literal notranslate"><span class="pre">models.*</span></code>
+erhalten eine SQL-Tabelle.</p></td>
+</tr>
+<tr class="row-even"><td><p>ddc.turtle</p></td>
+<td><p>Eine DDC Datei. Die Datei bietet
+Labels für DDC-URIs an.</p></td>
+</tr>
+<tr class="row-odd"><td><p>labels.json</p></td>
+<td><p>Eine Labels-Datei, die zur
+initialen Befüllung verwendet
+werden kann.</p></td>
+</tr>
+<tr class="row-even"><td><p>regal.turtle</p></td>
+<td><p>Eine Labels-Datei, die zur
+initialen Befüllung verwendet
+werden kann.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>routes</strong></p></td>
+<td><p>Alle HTTP-Schnittstellen
+übersichtlich in einer Datei</p></td>
+</tr>
+<tr class="row-even"><td><p>rpb.turtle</p></td>
+<td><p>Eine Labels-Datei, die zur
+initialen Befüllung verwendet
+werden kann.</p></td>
+</tr>
+<tr class="row-odd"><td><p>rpb2.turtle</p></td>
+<td><p>Eine Labels-Datei, die zur
+initialen Befüllung verwendet
+werden kann.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="die-applikation-2">
+<span id="id8"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-2" title="Permalink to this headline"></a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id84">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id84" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>default</p></td>
+<td><p>In <code class="docutils literal notranslate"><span class="pre">Global</span></code> werden die Requests
+mit geloggt.</p></td>
+</tr>
+<tr class="row-odd"><td><p>controllers</p></td>
+<td><p>In <code class="docutils literal notranslate"><span class="pre">Application</span></code> werden alle
+HTTP-Operationen implementiert.
+Unterstützt wird BasicAuth.</p></td>
+</tr>
+<tr class="row-even"><td><p>helper</p></td>
+<td><p>Verschiedene Klassen, die eine
+URI verfolgen und versuchen ein
+Label aus den zurückgelieferten
+Daten zu kreieren.</p></td>
+</tr>
+<tr class="row-odd"><td><p>models</p></td>
+<td><p>Das Model <code class="docutils literal notranslate"><span class="pre">Etikett</span></code> ist
+persistierbar.</p></td>
+</tr>
+<tr class="row-even"><td><p>views</p></td>
+<td><p>Die meisten HTTP-Operationen
+lassen sich auch über eine
+Weboberfläche im Browser
+aufrufen.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+<section id="id9">
+<span id="id10"></span><h2>Zettel<a class="headerlink" href="#id9" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id85">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id85" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Source</p></td>
+<td><p><a href="#id110"><span class="problematic" id="id111">`zettel &lt;
+https://github.com/hbz/zettel&gt;`__</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Technik</p></td>
+<td><p><a class="reference external" href="https://www.playframework.com/documentation/2.5.x/JavaHome">Play Play
+2.5
+.4</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ports</p></td>
+<td><p>9003 / 9103</p></td>
+</tr>
+<tr class="row-even"><td><p>Verzeichnis</p></td>
+<td><p>/opt/regal/apps/zettel,
+/opr/regal/src/zettel</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTTP Pfad</p></td>
+<td><p>/tools/zettel</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>Zettel ist ein Webservice zur Bereitstellung von Webformularen. Die
+Webformulare können über ein HTTP-GET geladen werden. Sollen
+existierende Daten in ein Formular geladen werden, so können diese Daten
+(1) als Form-encoded, (2) als JSON, oder (3) als RDF-XML über ein
+<code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">POST</span></code> in das Formular geladen werden. Gleichzeitig kann
+spezifiziert werden, in welchem Format das Formular Daten zurückliefern
+soll.</p>
+<figure class="align-default" id="id86">
+<img alt="Zettel Oberfläche" src="../_images/zettel-screen.png"/>
+<figcaption>
+<p><span class="caption-text">Zettel Oberfläche</span><a class="headerlink" href="#id86" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<p>Zettel verfügt über keine eigene Speicherschicht. Daten die über ein
+Formular erzeugt wurden, werden in der HTTP-Response zurückgeliefert.
+Zur Integration von Zettel in andere Applikationen wurde ein
+Kommunikationspattern entwickelt, das auf Javascript beruht. Das
+Zettel-Formular wird hierzu in einem IFrame in die Applikation
+eingebunden. Die Applikation muss außerdem ein Javascript einbinden, das
+auf bestimmte Nachrichten aus dem IFrame lauscht. Bei bestimmte Aktionen
+sendet das Zettel-Formular dann Nachrichten an die Applikation und
+erlaubt dieser darauf zu reagieren. Um Daten von Zettel in die
+Applikation zu bekommen, werden diese im HTML-DOM gespeichert und können
+von dort durch die Applikation entgegengenommen werden.</p>
+<figure class="align-default" id="id87">
+<img alt="Zettel Datenfluss" src="../_images/zettel-flos.png"/>
+<figcaption>
+<p><span class="caption-text">Zettel Datenfluss</span><a class="headerlink" href="#id87" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="konfiguration-3">
+<span id="id11"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-3" title="Permalink to this headline"></a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id88">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id88" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Datei</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>application.conf</strong></p></td>
+<td><p>Die Datei enthält einen Eintrag
+zur Konfiguration von
+<a class="reference external" href="#_etikett">Etikett</a>. Über
+einen weiteren Eintrag können
+“Hilfetexte” angelinkt werden.
+Die Hilfetexte müssen in einer
+statischen HTML abgelegt sein. Am
+Ende der Datei werden einige
+Limits deutlich über den Standard
+erhöht, damit die großen
+RDF-Posts auch funktionieren.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>collectionOne.csv</strong></p></td>
+<td><p>Die Datei regelt den Inhalt eines
+Combo-Box widgets mit id
+collectionOne.</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>ddc.csv</strong></p></td>
+<td><p>Die Datei regelt den Inhalt eines
+Combo-Box widgets mit id ddc.</p></td>
+</tr>
+<tr class="row-odd"><td><p>labels.json</p></td>
+<td><p>Ein paar labels, falls keine
+Instanz von
+<a class="reference external" href="#_etikett">Etikett</a>
+erreichbar ist.</p></td>
+</tr>
+<tr class="row-even"><td><p>logback.xml</p></td>
+<td><p>Logger Konfiguration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>professionalGroup.csv</strong></p></td>
+<td><p>Die Datei regelt den Inhalt eines
+Combo-Box widgets mit id
+professionalGroup.</p></td>
+</tr>
+<tr class="row-even"><td><p>routes</p></td>
+<td><p>Alle HTTP-Pfade übersichtlich in
+einer Datei</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="die-applikation-3">
+<span id="id12"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-3" title="Permalink to this headline"></a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id89">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id89" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>controllers</p></td>
+<td><p>Es gibt nur einen Controller.
+Hier ist sowohl die
+Basisfunktionalität
+implementiert, als auch die
+Autocompletion-Endpunkte für die
+unterschiedlichen Widgets. Die
+Schnittstelle zu Abhandlung von
+Formulardaten ist recht generisch
+gehalten. Über eine ID wird das
+entsprechende Formular aus dem
+services.ZettelRegister geholt
+und das zugehörige Formular wird
+gerendert. Die Formular erhalten
+dabei unterschiedliche Templates
+(z.B. <code class="docutils literal notranslate"><span class="pre">views.Article</span></code>) und
+unterschiedliche Modelklassen
+(z.B. models.Article).</p></td>
+</tr>
+<tr class="row-odd"><td><p>models</p></td>
+<td><p>Das Model “Article” heißt aus
+historischen Gründen so.
+Tatsächlich können mittlerweile
+auch Kongressschriften und
+Buchkapitel darüber abgebildet
+werden (vermutlich wird sich der
+Name nochmal ändern). Das Model
+“Catalog” dient zum Import von
+Daten aus dem Aleph-Katalog (über
+Lobid). Mit ResearchData steht
+ein prototypisches Model zur
+Verarbeitung von Daten über
+Forschungsdaten zur Verfügung.
+Alle Models basieren auf einem
+einzigen “fetten” ZettelModel.
+Das ZettelModel enthält auch
+Funktionen zur De/Serialisierung
+in RDF und Json.</p></td>
+</tr>
+<tr class="row-even"><td><p>services</p></td>
+<td><p>Hier werden verschiedene
+Hilfsklassen versammelt. Die
+Klasse ZettelFields enthält ein
+Mapping zur RDF-Deserialisierung.</p></td>
+</tr>
+<tr class="row-odd"><td><p>views</p></td>
+<td><p>Alle HTML-Sichten und die
+eigentlichen Formulare.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+<section id="skos-lookup">
+<span id="id13"></span><h2>skos-lookup<a class="headerlink" href="#skos-lookup" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id90">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id90" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Source</p></td>
+<td><p><a class="reference external" href="https://github.com/hbz/skos-lookup">skos-lookup</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Technik</p></td>
+<td><p><a class="reference external" href="https://www.playframework.com/documentation/2.5.x/JavaHome">Play Play
+2.5
+.8</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ports</p></td>
+<td><p>9004 / 9104</p></td>
+</tr>
+<tr class="row-even"><td><p>Verzeichnis</p></td>
+<td><p>/opt/regal/apps/skos-lookup,
+/opr/regal/src/skos-lookup</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTTP Pfad</p></td>
+<td><p>/tools/skos-lookup</p></td>
+</tr>
+</tbody>
+</table></div>
+<p><a class="reference external" href="#_skos_lookup">skos-lookup</a> dient zur Unterstützung von
+<a class="reference external" href="#_zettel">Zettel</a>. Der Webservice startet eine eingebettete
+Elasticsearch-Instanz und verfügt über eine Schnittstelle um SKOS-Daten
+in separate Indexe zu importieren und Schnittstellen zur Unterstützung
+von jQuery-Autocomplete- und Select2-Widgets aufzubauen. Auf diese Weise
+können auch umfangreichere Thesauri und Notationssysteme in den
+Formularen von <a class="reference external" href="#_zettel">Zettel</a> fachgerecht angelinkt werden.
+<a class="reference external" href="#_skos_lookup">skos-lookup</a> unterstützt auch mehrsprachige Thesauri.</p>
+<figure class="align-default" id="id91">
+<img alt="SKOS-Lookup Beispiel 1" src="../_images/skos-lookup-autocomplete.png"/>
+<figcaption>
+<p><span class="caption-text">SKOS-Lookup Beispiel 1</span><a class="headerlink" href="#id91" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="id92">
+<img alt="SKOS-Lookup Beispiel 2" src="../_images/example-select2.png"/>
+<figcaption>
+<p><span class="caption-text">SKOS-Lookup Beispiel 2</span><a class="headerlink" href="#id92" title="Permalink to this image"></a></p>
+</figcaption>
+</figure>
+<section id="konfiguration-4">
+<span id="id14"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-4" title="Permalink to this headline"></a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id93">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id93" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Datei</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>application.conf</strong></p></td>
+<td><p>Hier wird der interne
+Elasticsearch-Index konfiguriert.
+Auch werden einige
+Speichereinstellungen erhöht.
+Damit auch große SKOS-Dateien
+geladen werden können, sollten
+auch die Java-Opts erhöht werden.</p></td>
+</tr>
+<tr class="row-odd"><td><p>logback.xml</p></td>
+<td><p>Logger Konfiguration</p></td>
+</tr>
+<tr class="row-even"><td><p>routes</p></td>
+<td><p>Alle HTTP-Pfade übersichtlich in
+einer Datei</p></td>
+</tr>
+<tr class="row-odd"><td><p>skos-context.json</p></td>
+<td><p>Ein JSON-LD-Kontext zur
+Umwandlung von RDF nach JSON.
+(Origianl von: Jakob Voss)</p></td>
+</tr>
+<tr class="row-even"><td><p>skos-setting.json</p></td>
+<td><p>Settings zur Konfiguration des
+Elasticsearchindexse. (Original
+von: Jörg Prante)</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="die-applikation-4">
+<span id="id15"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-4" title="Permalink to this headline"></a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id94">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id94" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>controllers</p></td>
+<td><p>Alles in einem Controller. Die
+API-Methoden liefern HTML und
+JSON, so dass man sie aus dem
+Browser, aber auch über andere
+Tools ansprechen kann.</p></td>
+</tr>
+<tr class="row-odd"><td><p>elasticsearch</p></td>
+<td><p>Eine embedded Elasticsearch. Dies
+hat den Vorteil, dass man eine
+aktuellere Version nutzen kann,
+als z.B. die
+<a class="reference external" href="#_regal_api_2">regal-api</a>.</p></td>
+</tr>
+<tr class="row-even"><td><p>services</p></td>
+<td><p>Hilfsklassen zum Laden der Daten.</p></td>
+</tr>
+<tr class="row-odd"><td><p>views</p></td>
+<td><p>Ein Formular um neue Daten in die
+Applikation zu laden. Und ein
+Beispielformular zur
+Demonstration der Nutzung.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+<section id="id16">
+<span id="id17"></span><h2>Thumby<a class="headerlink" href="#id16" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id95">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id95" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Source</p></td>
+<td><p><a href="#id110"><span class="problematic" id="id112">`thumby &lt;
+https://github.com/hbz/thumby&gt;`__</span></a></p></td>
+</tr>
+<tr class="row-even"><td><p>Technik</p></td>
+<td><p><a class="reference external" href="https://www.playframework.com/documentation/2.2.x/JavaHome">Play Play
+2.2
+.2</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ports</p></td>
+<td><p>9001 / 9101</p></td>
+</tr>
+<tr class="row-even"><td><p>Verzeichnis</p></td>
+<td><p>/opt/regal/apps/thumby,
+/opr/regal/src/thumby</p></td>
+</tr>
+<tr class="row-odd"><td><p>HTTP Pfad</p></td>
+<td><p>/tools/thumby</p></td>
+</tr>
+</tbody>
+</table></div>
+<p><a class="reference external" href="#_thumby">Thumby</a> realisiert einen Thumbnail-Generator. Über ein
+HTTP-GET wird <a class="reference external" href="#_thumby">Thumby</a> die URL eines PDFs, oder eines
+Bildes übergeben. Sofern die <a class="reference external" href="#_thumby">Thumby</a> den Server kennt,
+wird es versuchen ein Thumbnail der zurückgelieferten Daten zu
+erstellen. Die Daten werden dauerhaft auf der Platte abgelegt und
+zukünftige Requests, die auf dasselbe Bild verweisen werden direkt aus
+dem Speicher von <a class="reference external" href="#_thumby">Thumby</a> beantwortet.</p>
+<section id="konfiguration-5">
+<span id="id18"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-5" title="Permalink to this headline"></a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id96">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id96" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Datei</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>application.conf</strong></p></td>
+<td><p>Hier wird eine Whitelist gesetzt.
+Thumby verarbeitet nur URLs von
+den hier angegebenen Quellen.
+Hier wird auch der Pfad auf der
+Platte gesetzt, unter dem Thumby
+thumbnail-Daten ablegt.</p></td>
+</tr>
+<tr class="row-odd"><td><p>routes</p></td>
+<td><p>Alle HTTP-Pfade übersichtlich in
+einer Datei</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="die-applikation-5">
+<span id="id19"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-5" title="Permalink to this headline"></a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id97">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id97" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Package</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>controllers</p></td>
+<td><p>Der Controller realisiert eine
+GET-Methode, über die Thumbnails
+erzeugt und zurückgegeben werden.</p></td>
+</tr>
+<tr class="row-odd"><td><p>helper</p></td>
+<td><p>Klassen zur Organisation des
+Speichers und zur
+Thumbnailgenerierung.</p></td>
+</tr>
+<tr class="row-even"><td><p>views</p></td>
+<td><p>Es gibt eine Oberfläche mit einem
+Upload-Formular.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+<section id="id20">
+<span id="id21"></span><h2>Deepzoomer<a class="headerlink" href="#id20" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id98">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id98" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Source</p></td>
+<td><p><a class="reference external" href="https://github.com/hbz/DeepZoomService">DeepZoomService</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Technik</p></td>
+<td><p><a href="#id110"><span class="problematic" id="id113">`Servlet
+2.3 &lt;
+https://download.oracle.com/otn-p
+ub/jcp/7840-servlet-2.3-spec-oth-
+JSpec/servlet-2_3-fcs-spec.ps&gt;`__</span></a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ports</p></td>
+<td><p>9091 / 9191</p></td>
+</tr>
+<tr class="row-even"><td><p>Verzeichnis</p></td>
+<td><p>/opt/regal/tomcat-for-deepzoom/,
+/opr/regal/src/DeepZoomService</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>Der [DeepZoomService] kann als WAR in einem Application-Server deployed
+werden. Mit dem Deepzoomer können pyramidale Bilder erzeugt, gespeichert
+und über eine OpenSeadragon-konforme Schnittstelle abgerufen werden. Auf
+diese Weise kann in Regal eine Viewer-Komponente realisiert werden, die
+die Anzeige sehr großer, hochaufgelöster Bilder im Webbrowser
+unterstützt.</p>
+<section id="konfiguration-6">
+<span id="id22"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-6" title="Permalink to this headline"></a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id99">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id99" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Datei</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>deepzoomer.cfgf</strong></p></td>
+<td><p>Hier werden lokale Verzeichnisse,
+aber auch die Server-URLs, unter
+denen der Service öffentlich
+abrufbar ist, gesetzt.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+<section id="regal-drupal">
+<span id="id23"></span><h2>regal-drupal<a class="headerlink" href="#regal-drupal" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id100">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id100" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Source</p></td>
+<td><p><a class="reference external" href="https://github.com/edoweb/regal-drupal">regal-drupal</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Technik</p></td>
+<td><p><a class="reference external" href="https://www.php.net/manual/en/">PHP
+5</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ports</p></td>
+<td><p>80 / 443</p></td>
+</tr>
+<tr class="row-even"><td><p>Verzeichnis</p></td>
+<td><p>/opt/re
+gal/var/drupal/sites/all/modules/</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>Ein Drupal 7 Modul über das Funktionalitäten der
+<a class="reference external" href="#_regal_api_2">regal-api</a> angesprochen werden können. Das Modul
+bietet Oberflächen zur Konfiguration, zur Suche und zur Verwaltung von
+Objekthierarchien.</p>
+<section id="die-applikation-6">
+<span id="id24"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-6" title="Permalink to this headline"></a></h3>
+<div class="table-wrapper"><table class="docutils align-default" id="id101">
+<caption><span class="caption-text">Verzeichnisstruktur</span><a class="headerlink" href="#id101" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Verzeichnis</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>edoweb</p></td>
+<td><p>Hier ist der Code für die
+Oberflächen.</p></td>
+</tr>
+<tr class="row-odd"><td><p>edoweb-field</p></td>
+<td><p>Hier werden Felder für
+unterschiedliche RDF-Properties
+in der Drupal-Datenbank
+konfiguriert. Der Code ist
+größtenteils obsolet, da die
+Feldlogik nicht mehr benutzt
+wird.</p></td>
+</tr>
+<tr class="row-even"><td><p>edoweb_storage</p></td>
+<td><p>Hier sind die Zugriffe auf
+<a class="reference external" href="#_regal_api_2">regal-api</a> und
+<a class="reference external" href="#_elasticsearch">???</a> zu
+finden.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+</section>
+<section id="edoweb-drupal-theme">
+<span id="id25"></span><h2>edoweb-drupal-theme<a class="headerlink" href="#edoweb-drupal-theme" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id102">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id102" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Source</p></td>
+<td><p><a class="reference external" href="https://github.com/edoweb/edoweb-drupal-theme">edow
+eb-drupal-theme</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Technik</p></td>
+<td><p><a class="reference external" href="https://www.php.net/manual/en/">PHP
+5</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ports</p></td>
+<td><p>80 / 443</p></td>
+</tr>
+<tr class="row-even"><td><p>Verzeichnis</p></td>
+<td><p>/opt/r
+egal/var/drupal/sites/all/themes/</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche
+für den Server <a class="reference external" href="https://edoweb-rlp.de">https://edoweb-rlp.de</a></p>
+</section>
+<section id="zbmed-drupal-theme">
+<span id="id26"></span><h2>zbmed-drupal-theme<a class="headerlink" href="#zbmed-drupal-theme" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id103">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id103" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Source</p></td>
+<td><p><a class="reference external" href="https://github.com/edoweb/zbmed-drupal-theme">zb
+med-drupal-theme</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Technik</p></td>
+<td><p><a class="reference external" href="https://www.php.net/manual/en/">PHP
+5</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ports</p></td>
+<td><p>80 / 443</p></td>
+</tr>
+<tr class="row-even"><td><p>Verzeichnis</p></td>
+<td><p>/opt/r
+egal/var/drupal/sites/all/themes/</p></td>
+</tr>
+</tbody>
+</table></div>
+<p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche
+für den Server <a class="reference external" href="https://repository.publisso.de">https://repository.publisso.de</a></p>
+</section>
+<section id="id27">
+<span id="id28"></span><h2>openwayback<a class="headerlink" href="#id27" title="Permalink to this headline"></a></h2>
+<p>Repo: <a class="reference external" href="https://github.com/iipc/openwayback">https://github.com/iipc/openwayback</a> Servlet 2.5 .Überblick</p>
+<div class="table-wrapper"><table class="docutils align-default">
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Source</p></td>
+<td><p><a class="reference external" href="https://github.com/iipc/openwayback">openwayback</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Technik</p></td>
+<td><p><a class="reference external" href="https://download.oracle.com/otn-pub/jcp/servlet-2.5-mr5-oth-JSpec/servlet-2.5-mr5-spec.pdf">Servlet
+2.5</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Ports</p></td>
+<td><p>8091 / 8191</p></td>
+</tr>
+<tr class="row-even"><td><p>Verzeichnis</p></td>
+<td><p>/o
+pt/regal/tomcat-for-openwayback/,
+/opr/regal/src/openwayback</p></td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Achtung</strong>: Es gibt einen am hbz entwickelten Branch. Dieser ist nicht
+auf Github.</p>
+<p>Openwayback ist eine Webapplikation die im ROOT Bereich eines Tomcats
+installiert werden will. Sie kann Verzeichnisse mit WARC-Dateien
+indexieren und darauf eine Oberfläche zur Recherche und zur Navigation
+aufbauen.</p>
+</section>
+<section id="id29">
+<span id="id30"></span><h2>heritrix<a class="headerlink" href="#id29" title="Permalink to this headline"></a></h2>
+<p>Heritrix ist ein Werkzeug zur Sammlung von Webseiten. Heritrix startet
+standalone als Webapplikation und bietet eine Weboberfläche zur
+Verwaltung von Sammelvorgängen an. Eingesammelte Webseiten werden als
+WARC-Dateien in einem bestimmten Bereich der Platte abgelegt.</p>
+</section>
+<section id="id31">
+<span id="id32"></span><h2>wpull<a class="headerlink" href="#id31" title="Permalink to this headline"></a></h2>
+<p>Wpull ist ein Kommandozeilen-Wermzeug zur Sammlung von Webseiten. Mit
+WPull können WARC-Dateien erzeugt werden.</p>
+</section>
+<section id="id33">
+<span id="id34"></span><h2>Fedora Commons 3<a class="headerlink" href="#id33" title="Permalink to this headline"></a></h2>
+<p>Fedora Commons 3 ist ein Repository-Framework. Für Regal wird vorallem
+die Speicherschicht von Fedora Commons 3 benutzt. Fedora-Commons legt
+alle Daten im Dateisystem (auch) ab. Mit den Daten aus dem Dateisystem
+lässt sich eine komplette Fedora-Commons 3 Instanz von grundauf neu
+aufbauen.</p>
+</section>
+<section id="mysql">
+<span id="id35"></span><h2>MySql<a class="headerlink" href="#mysql" title="Permalink to this headline"></a></h2>
+<p>MySQL wir von Fedora, regal-api und etikett verwendet.</p>
+</section>
+<section id="id36">
+<span id="id37"></span><h2>Elasticsearch 1.1<a class="headerlink" href="#id36" title="Permalink to this headline"></a></h2>
+<p>Elasticsearch ist eine Suchmaschine und wird von
+<a class="reference external" href="#_regal_api_2">regal-api</a> verwendet. Auch
+<a class="reference external" href="#_regal_drupal">regal-drupal</a> greift auf den Index zu.</p>
+</section>
+<section id="drupal-7">
+<span id="id40"></span><h2>Drupal 7<a class="headerlink" href="#drupal-7" title="Permalink to this headline"></a></h2>
+<p>Über Drupal 7</p>
+</section>
+<section id="vagrant">
+<h2>Vagrant<a class="headerlink" href="#vagrant" title="Permalink to this headline"></a></h2>
+<p>Zur Veranschaulichung dieser Dokumentation wird ein Vagrant-Skript
+angeboten, mit dem eine Regal-Installation innerhalb eines
+VirtualBox-Images erzeugt werden kann.</p>
+<p>Zur Installation kannst Du folgende Schritte ausführen. Die Kommandos
+beziehen sich auf die Installation auf einem Ubuntu-System. Für andere
+Betriebssyteme ist die Installation ähnlich.</p>
+<p>Die VirtualBox hat folgendes Setup</p>
+<ul class="simple">
+<li><p>hdd 40GB</p></li>
+<li><p>cpu 2core</p></li>
+<li><p>ram 4096M</p></li>
+</ul>
+<section id="virtualbox-installieren">
+<span id="id41"></span><h3>VirtualBox installieren<a class="headerlink" href="#virtualbox-installieren" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install virtualbox
+</pre></div>
+</div>
+</section>
+<section id="vagrant-installieren">
+<span id="id42"></span><h3>Vagrant installieren<a class="headerlink" href="#vagrant-installieren" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /tmp
+wget https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.deb
+sudo dpkg -i vagrant_2.2.3_x86_64.deb
+</pre></div>
+</div>
+</section>
+<section id="repository-herunterladen">
+<span id="id43"></span><h3>Repository herunterladen<a class="headerlink" href="#repository-herunterladen" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/jschnasse/Regal
+<span class="nb">cd</span> Regal/vagrant/ubuntu-14.04
+</pre></div>
+</div>
+</section>
+<section id="eine-jdk8-bereitstellen">
+<span id="id44"></span><h3>Eine JDK8 bereitstellen<a class="headerlink" href="#eine-jdk8-bereitstellen" title="Permalink to this headline"></a></h3>
+<p>Hierfür bitte ein JDK8-Tarball herunterladen und unter dem Namen
+<code class="docutils literal notranslate"><span class="pre">java8.tar.gz</span></code> in einem Verzeichnis <code class="docutils literal notranslate"><span class="pre">/bin</span></code> unterhalb des
+Vagrant-Directories bereitstellen.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir bin
+mv ~/downloads/jdk.... bin/java8.tar.gz
+</pre></div>
+</div>
+</section>
+<section id="geteiltes-entwicklungsverzeichnis">
+<span id="id45"></span><h3>Geteiltes Entwicklungsverzeichnis<a class="headerlink" href="#geteiltes-entwicklungsverzeichnis" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir ~/regal-dev
+</pre></div>
+</div>
+</section>
+<section id="vagrant-guest-additions-installieren">
+<span id="id46"></span><h3>Vagrant Guest Additions installieren<a class="headerlink" href="#vagrant-guest-additions-installieren" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant plugin install vagrant-vbguest <span class="o">&amp;&amp;</span> vagrant reload
+</pre></div>
+</div>
+</section>
+<section id="vagrant-host-anlegen">
+<span id="id47"></span><h3>Vagrant Host anlegen<a class="headerlink" href="#vagrant-host-anlegen" title="Permalink to this headline"></a></h3>
+<p>Damit alle Dienste komfortabel erreichbar sind, muss in die lokale HOSTs
+Datei ein Eintrag für die Vagrant-Box erfolgen. Im Vagrantfile ist die
+IP <code class="docutils literal notranslate"><span class="pre">192.168.50.4</span></code> für die Box konfiguriert. Über die <code class="docutils literal notranslate"><span class="pre">FRONTEND</span></code> und
+<code class="docutils literal notranslate"><span class="pre">BACKEND</span></code> Einträge in der <code class="docutils literal notranslate"><span class="pre">variables.conf</span></code> ist der Servername als
+<code class="docutils literal notranslate"><span class="pre">regal.vagrant</span></code> definiert.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo <span class="nb">printf</span> <span class="s2">"192.168.50.4 regal.vagrant api.regal.vagrant"</span> &gt;&gt; /etc/hosts
+</pre></div>
+</div>
+</section>
+<section id="vagrant-starten">
+<span id="id48"></span><h3>Vagrant starten<a class="headerlink" href="#vagrant-starten" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant up
+</pre></div>
+</div>
+</section>
+<section id="auf-der-maschine-einloggen">
+<span id="id49"></span><h3>Auf der Maschine einloggen<a class="headerlink" href="#auf-der-maschine-einloggen" title="Permalink to this headline"></a></h3>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant ssh
+</pre></div>
+</div>
+</section>
+</section>
+<section id="server">
+<span id="id50"></span><h2>Server<a class="headerlink" href="#server" title="Permalink to this headline"></a></h2>
+<p>Die Installation auf einem Server kann mit Hilfe des mitgelieferten
+Skriptes
+<a class="reference external" href="https://github.com/jschnasse/Regal/blob/master/vagrant/ubuntu-14.04/regal-install.sh">regal-install.sh</a>
+erfolgen. Dazu muss analog zur Vagrant-Installation zunächst das <code class="docutils literal notranslate"><span class="pre">bin</span></code>
+Verzeichnis mit einem JDK aufgebaut werden. Danach erfolgt die
+Installation unter <code class="docutils literal notranslate"><span class="pre">/opt/regal</span></code> und mit einem Benutzer <code class="docutils literal notranslate"><span class="pre">regal</span></code> (vgl.
+<code class="docutils literal notranslate"><span class="pre">variables.conf</span></code>)</p>
+<section id="hardware-empfehlung">
+<span id="id51"></span><h3>Hardware Empfehlung<a class="headerlink" href="#hardware-empfehlung" title="Permalink to this headline"></a></h3>
+<ul class="simple">
+<li><p>hdd &gt;500GB</p></li>
+<li><p>cpu 8 core</p></li>
+<li><p>ram 32 G</p></li>
+</ul>
+</section>
+<section id="unterschiede-zur-vagrant-installation">
+<span id="id52"></span><h3>Unterschiede zur Vagrant Installation<a class="headerlink" href="#unterschiede-zur-vagrant-installation" title="Permalink to this headline"></a></h3>
+<p>Auf dem Server empfehlen ich den fedora tomcat mit erweiterten
+Speichereinstellungen zu betreiben.</p>
+<p>Dazu in <code class="docutils literal notranslate"><span class="pre">/opt/regal/bin/fedora/tomcat/bin</span></code> eine <code class="docutils literal notranslate"><span class="pre">setenv.sh</span></code> anlegen
+und folgende Zeilen hinein kopieren.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">CATALINA_OPTS</span><span class="o">=</span><span class="s2">" \</span>
+<span class="s2">-Xms1536m \</span>
+<span class="s2">-Xmx1536m \</span>
+<span class="s2">-XX:NewSize=256m \</span>
+<span class="s2">-XX:MaxNewSize=256m \</span>
+<span class="s2">-XX:PermSize=256m \</span>
+<span class="s2">-XX:MaxPermSize=256m \</span>
+<span class="s2">-server \</span>
+<span class="s2">-Djava.awt.headless=true \</span>
+<span class="s2">-Dorg.apache.jasper.runtime.BodyContentImpl.LIMIT_BUFFER=true"</span>
+
+<span class="nb">export</span> CATALINA_OPTS
+</pre></div>
+</div>
+<section id="entwicklung-java">
+<span id="id53"></span><h4>Entwicklung Java<a class="headerlink" href="#entwicklung-java" title="Permalink to this headline"></a></h4>
+</section>
+</section>
+</section>
+<section id="in-der-virtualbox">
+<span id="id54"></span><h2>In der VirtualBox<a class="headerlink" href="#in-der-virtualbox" title="Permalink to this headline"></a></h2>
+<p>Hat man über <a class="reference external" href="#_vagrant">Vagrant</a> eine neue VirtualBox erzeugt und
+alle Konfigurationen wie beschrieben vorgenommen, kann man die
+VirtualBox zur Entwicklung nutzen. Da im Installationsprozess bereits
+Eclipse-Projekte der unter <code class="docutils literal notranslate"><span class="pre">/opt/regal/src</span></code> befindlichen
+Java-Applikationen erzeugt wurden, können die Projekte direkt aus dem
+“synced folder” unter <code class="docutils literal notranslate"><span class="pre">~/regal-dev</span></code> in eine Eclipse-IDE auf dem
+Host-System importiert werden.</p>
+<p>Damit Änderungen am Code in der VirtualBox direkt sichtbar werden,
+sollte die Applikation zunächst im Develop-Mode neu gestartet werden.
+Dazu loggt man sich auf der VirtualBox mit <code class="docutils literal notranslate"><span class="pre">vagrant</span> <span class="pre">ssh</span></code> ein und
+stoppt zunächst den entsprechenden Service, z.B.
+<code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">service</span> <span class="pre">regal-api</span> <span class="pre">stop</span></code>. Anschließend navigiert man in das
+Source-Verzeichnis, z.B. <code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">/opt/regal/src/regal-api</span></code>. Hier startet
+man die Applikation auf dem korrekten Port (im Zweifel unter
+<code class="docutils literal notranslate"><span class="pre">/opt/regal/apps/regal-api/conf/application.conf</span></code> nachschauen). Der
+Start im Develop-Mode erfolgt aus dem Verzeichnis der Applikation, mit
+z.B. <code class="docutils literal notranslate"><span class="pre">/opt/regal/bin/activator/bin/activator</span> <span class="pre">-Dhttp.port=9100</span></code>. Danach
+kann in die Kosole <code class="docutils literal notranslate"><span class="pre">run</span></code> eingegegeben werden. Die Applikation sollte
+nun unter dem entsprechenden Port (im Beispiel: 9100) antworten.</p>
+<p>Leider funktioniert das Reloading zwischen Host-System und
+Guest-VirtualBox nicht richtig. D.h. nach Code-Änderungen im Host, muss
+auf der Virtualbox zunächst mit <code class="docutils literal notranslate"><span class="pre">Ctrl+D</span></code> und <code class="docutils literal notranslate"><span class="pre">run</span></code> neu gestartet
+werden, damit die Änderungen sichtbar werden.</p>
+</section>
+<section id="auf-dem-eigenen-system">
+<span id="id56"></span><h2>Auf dem eigenen System<a class="headerlink" href="#auf-dem-eigenen-system" title="Permalink to this headline"></a></h2>
+<p>Die Javakomponenten können problemlos auch auf einem aktuellen
+Ubuntusystem entwickelt werden. Leider läuft die
+PHP/Drupal-Implementierung nicht unter neueren Ubuntusystemen. Für die
+lokale installation können die entsprechenden Funktionen aus dem
+<code class="docutils literal notranslate"><span class="pre">regal-install.sh</span></code> ausgeführt werden. Dazu einfach eine Kopie anlegen,
+entsprechend editieren und ausführen.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir regal-install
+cp -r path/to/Regal/vagrant/ubuntu-XX/* regal-install
+<span class="nb">cd</span> regal-install
+<span class="c1"># Edit system user "vagrant" --&gt; "your user"</span>
+editor variables.conf
+<span class="c1"># put drupal stuff in comments</span>
+<span class="c1">#</span>
+<span class="c1">#  #installDrush</span>
+<span class="c1">#  #installDrupal</span>
+<span class="c1">#  #installRegalDrupal</span>
+<span class="c1">#  #installDrupalThemes</span>
+<span class="c1">#  #configureDrupalLanguages</span>
+<span class="c1">#  #configureDrupal</span>
+<span class="c1">#</span>
+editor regal-install.sh
+</pre></div>
+</div>
+</section>
+<section id="aktualisierung">
+<span id="id57"></span><h2>Aktualisierung<a class="headerlink" href="#aktualisierung" title="Permalink to this headline"></a></h2>
+<section id="play-applikationen">
+<span id="id58"></span><h3>Play-Applikationen<a class="headerlink" href="#play-applikationen" title="Permalink to this headline"></a></h3>
+<p>Die Aktualisierung der Regal-Komponenten erfolgt über Skripte. Die
+Aktualisierung funktioniert dabei so, dass der Quellcode der zu
+aktualisierenden Komponente unter <code class="docutils literal notranslate"><span class="pre">/opt/regal/src</span></code> per <code class="docutils literal notranslate"><span class="pre">git</span></code> auf den
+entsprechenden Branch gestellt wird. Danach wird ein neues Kompilat der
+Komponente erzeugt. Die aktuelle Konfiguration wird aus
+<code class="docutils literal notranslate"><span class="pre">/opt/regal/conf</span></code> genommen und es wird unter <code class="docutils literal notranslate"><span class="pre">/opt/regal/apps</span></code> eine
+neue lauffähige Version abgelegt.</p>
+<p>Neue Versionen werden immer parallel zu alten Versionen gestartet und
+über einen Wechsel der Apachekonfiguration aktiviert. Erst danach wird
+die alte Version heruntergefahren.</p>
+<p>Der komplette Aktualisierungsprozess erfolgt automatisch. Die alte
+Version bleibt immer auf dem Server liegen, so dass bei Bedarf wieder
+zurück gewechselt werden kann.</p>
+</section>
+<section id="tomcat-applikation">
+<span id="id59"></span><h3>Tomcat-Applikation<a class="headerlink" href="#tomcat-applikation" title="Permalink to this headline"></a></h3>
+<p>Es wird ein <code class="docutils literal notranslate"><span class="pre">war</span></code>-Container erzeugt und im Tomcat <code class="docutils literal notranslate"><span class="pre">hot</span></code>-deployed.</p>
+</section>
+<section id="drupal-module">
+<span id="id60"></span><h3>Drupal-Module<a class="headerlink" href="#drupal-module" title="Permalink to this headline"></a></h3>
+<p>Beinhaltet die Aktualisierung ein Datenbankupdate, so wird Drupal erst
+in den Wartungszustand versetzt (per drush oder über die Oberfläche).
+Danach wird die aktualisierte Version einfach per Git geholt. Bei
+Datenbankupdates wird noch ein Drupal-Updateskript ausgeführt.</p>
+</section>
+<section id="speicherschicht">
+<span id="id61"></span><h3>Speicherschicht<a class="headerlink" href="#speicherschicht" title="Permalink to this headline"></a></h3>
+<p>Aktualisierungen von MySQL, Elasticsearch und Fedora gehen mit einer
+Downtime einher.</p>
+</section>
+</section>
+<section id="verzeichnisse">
+<span id="id62"></span><h2>Verzeichnisse<a class="headerlink" href="#verzeichnisse" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id104">
+<caption><span class="caption-text">Verzeichnisstruktur</span><a class="headerlink" href="#id104" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Verzeichnis</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>/opt/regal</p></td>
+<td><p>Außer Apache2, Elasticsearch und
+MySQL befinden sich alle
+Regal-Komponenten unter diesem
+Verzeichnis.</p></td>
+</tr>
+<tr class="row-odd"><td><p>/opt/regal/apps</p></td>
+<td><p>Die auf <code class="docutils literal notranslate"><span class="pre">Play</span></code> beruhenden
+Komponenten:
+<code class="docutils literal notranslate"><span class="pre">etikett</span>  <span class="pre">fedora</span>  <span class="pre">regal-a</span>
+<span class="pre">pi</span>  <span class="pre">skos-lookup</span>  <span class="pre">thumby</span>  <span class="pre">zettel</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>/opt/regal/bin</p></td>
+<td><p>Fremdpakete wie activator,
+fedora, heritrix, python -
+weitere tomcats.</p></td>
+</tr>
+<tr class="row-odd"><td><p>/opt/regal/conf</p></td>
+<td><p>Die variables.conf und die
+application.conf wird von
+verschiedenen Komponenten
+verwendet.</p></td>
+</tr>
+<tr class="row-even"><td><p>/opt/regal/logs</p></td>
+<td><p>Logfiles der Skripte und Cronjobs</p></td>
+</tr>
+<tr class="row-odd"><td><p>/opt/regal/src</p></td>
+<td><p>Alle Eigenentwicklungen oder im
+Quellcode modifizierten
+Komponenten.</p></td>
+</tr>
+<tr class="row-even"><td><p>/opt/regal/var</p></td>
+<td><p>drupal und Datenverzeichnisse.</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="ports">
+<span id="id63"></span><h2>Ports<a class="headerlink" href="#ports" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id105">
+<caption><span class="caption-text">Ports und Komponenten (typische Belegung)</span><a class="headerlink" href="#id105" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Port</p></th>
+<th class="head"><p>Komponente</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>80 /443</p></td>
+<td><p>Apache 2</p></td>
+</tr>
+<tr class="row-odd"><td><p>8080</p></td>
+<td><p>fedora tomcat</p></td>
+</tr>
+<tr class="row-even"><td><p>9090</p></td>
+<td><p>openwayback tomcat</p></td>
+</tr>
+<tr class="row-odd"><td><p>9200</p></td>
+<td><p>elasticsearch</p></td>
+</tr>
+<tr class="row-even"><td><p>9000/9100</p></td>
+<td><p>regal-api</p></td>
+</tr>
+<tr class="row-odd"><td><p>9001/9101</p></td>
+<td><p>thumby</p></td>
+</tr>
+<tr class="row-even"><td><p>9002/9102</p></td>
+<td><p>etikett</p></td>
+</tr>
+<tr class="row-odd"><td><p>9003/9103</p></td>
+<td><p>zettel</p></td>
+</tr>
+<tr class="row-even"><td><p>9004/9104</p></td>
+<td><p>skos-lookup</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="logs">
+<span id="id64"></span><h2>Logs<a class="headerlink" href="#logs" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id106">
+<caption><span class="caption-text">Logfiles</span><a class="headerlink" href="#id106" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Komponente</p></th>
+<th class="head"><p>Pfad</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Apache</p></td>
+<td><p>/var/log/apache2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tomcat</p></td>
+<td><p>/opt/regal/bin/fedora/tomcat/logs</p></td>
+</tr>
+<tr class="row-even"><td><p>Fedora</p></td>
+<td><p>/opt/regal/bin/fedora/server/logs</p></td>
+</tr>
+<tr class="row-odd"><td><p>Elasticsearch</p></td>
+<td><p>/var/log/elasticsearch</p></td>
+</tr>
+<tr class="row-even"><td><p>regal-api</p></td>
+<td><p>/opt/regal/apps/regal-api/logs</p></td>
+</tr>
+<tr class="row-odd"><td><p>drupal</p></td>
+<td><p>/var/log/apache2 #otherhosts !
+und/var/log/apache2/error.log
+(hier ist auch die Debugausgabe)</p></td>
+</tr>
+<tr class="row-even"><td><p>MySql</p></td>
+<td><p>/var/log/mysql</p></td>
+</tr>
+<tr class="row-odd"><td><p>monit</p></td>
+<td><p>/var/log/monit.log</p></td>
+</tr>
+<tr class="row-even"><td><p>regal-scripts</p></td>
+<td><p>/opt/regal/logs</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="configs">
+<span id="id65"></span><h2>Configs<a class="headerlink" href="#configs" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id107">
+<caption><span class="caption-text">Configfiles</span><a class="headerlink" href="#id107" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 50%"/>
+<col style="width: 50%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Komponente</p></th>
+<th class="head"><p>Pfad</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Apache</p></td>
+<td><p>/etc/apache2/sites-enabled</p></td>
+</tr>
+<tr class="row-odd"><td><p>Tomcat</p></td>
+<td><p>/opt/regal/bin/fedora/tomcat/conf</p></td>
+</tr>
+<tr class="row-even"><td><p>Fedora</p></td>
+<td><p>/opt/regal/bin/fedora/server/conf</p></td>
+</tr>
+<tr class="row-odd"><td><p>Elasticsearch</p></td>
+<td><p>/etc/elasticsearch</p></td>
+</tr>
+<tr class="row-even"><td><p>regal-api</p></td>
+<td><p>/opt/regal/conf enthält
+Konfigurationsvorschläge des
+Installers</p></td>
+</tr>
+<tr class="row-odd"><td><p>regal-api</p></td>
+<td><p>/opt/regal/apps/regal-api/conf</p></td>
+</tr>
+<tr class="row-even"><td><p>drupal</p></td>
+<td><p>Konfig kann gut mit dem Tool
+drush überwacht werden</p></td>
+</tr>
+<tr class="row-odd"><td><p>Elasticsearch Plugins</p></td>
+<td><p>/etc/elasticsearch</p></td>
+</tr>
+<tr class="row-even"><td><p>oai-pmh</p></td>
+<td><p>/opt/regal/
+bin/fedora/tomcat/webapps/dnb-unr
+/WEB-INF/classes/proai.properties</p></td>
+</tr>
+<tr class="row-odd"><td><p>monit</p></td>
+<td><p>/etc/monit</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="apache2">
+<span id="id66"></span><h2>Apache2<a class="headerlink" href="#apache2" title="Permalink to this headline"></a></h2>
+<div class="table-wrapper"><table class="docutils align-default" id="id108">
+<caption><span class="caption-text">Frontend Pfade</span><a class="headerlink" href="#id108" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Komponente</p></th>
+<th class="head"><p>HTTP-Pfad</p></th>
+<th class="head"><p>Lokaler Pfad/Proxy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Drupal</p></td>
+<td><p>/</p></td>
+<td><p>/opt/regal/var/drupal</p></td>
+</tr>
+<tr class="row-odd"><td><p>Alte Importe von
+Webarchiven</p></td>
+<td><p>/webharvests</p></td>
+<td><p>/data/webharvests</p></td>
+</tr>
+<tr class="row-even"><td><p>Täglich generierte
+Datei mit Kennziffern</p></td>
+<td><p>/crawlreports</p></td>
+<td><p>/o
+pt/regal/crawlreports</p></td>
+</tr>
+</tbody>
+</table></div>
+<div class="table-wrapper"><table class="docutils align-default" id="id109">
+<caption><span class="caption-text">API Pfade</span><a class="headerlink" href="#id109" title="Permalink to this table"></a></caption>
+<colgroup>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+<col style="width: 33%"/>
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Komponente</p></th>
+<th class="head"><p>HTTP-Pfad</p></th>
+<th class="head"><p>Lokaler Pfad/Proxy</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Über wget erstellte
+Webarchive</p></td>
+<td><p>/wget-data</p></td>
+<td><p>/op
+t/regal/var/wget-data</p></td>
+</tr>
+<tr class="row-odd"><td><p>Über wpull erstellte
+Webarchive</p></td>
+<td><p>/wpull-data</p></td>
+<td><p>/opt
+/regal/var/wpull-data</p></td>
+</tr>
+<tr class="row-even"><td><p>Über heritrix
+erstellte Webarchive</p></td>
+<td><p>/heritrix-data</p></td>
+<td><p>/opt/re
+gal/var/heritrix-data</p></td>
+</tr>
+<tr class="row-odd"><td><p>OAI-Schnittstelle für
+die DNB</p></td>
+<td><p>/dnb-urn</p></td>
+<td><p><a class="reference external" href="http://loc">http://loc</a>
+alhost:8080/dnb-urn$1</p></td>
+</tr>
+<tr class="row-even"><td><p>OAI-Schnittstelle</p></td>
+<td><p>/oai-pmh</p></td>
+<td><p><a class="reference external" href="http://loc">http://loc</a>
+alhost:8080/oai-pmh$1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Deepzoomer</p></td>
+<td><p>/deepzoom</p></td>
+<td><p><a class="reference external" href="http://loca">http://loca</a>
+lhost:7080/deepzoom$1</p></td>
+</tr>
+<tr class="row-even"><td><p>Openwayback privat</p></td>
+<td><p>/wayback</p></td>
+<td><p><a class="reference external" href="http://l">http://l</a>
+ocalhost:9080/wayback</p></td>
+</tr>
+<tr class="row-odd"><td><p>Openwayback
+öffentlich</p></td>
+<td><p>/weltweit</p></td>
+<td><p><a class="reference external" href="http://lo">http://lo</a>
+calhost:9080/weltweit</p></td>
+</tr>
+<tr class="row-even"><td><p>Thumby</p></td>
+<td><p>/tools/thumby</p></td>
+<td><p><a class="reference external" href="http://localh">http://localh</a>
+ost:9001/tools/thumby</p></td>
+</tr>
+<tr class="row-odd"><td><p>Etikett</p></td>
+<td><p>/tools/etikett</p></td>
+<td><p><a class="reference external" href="http://localho">http://localho</a>
+st:9002/tools/etikett</p></td>
+</tr>
+<tr class="row-even"><td><p>Zettel</p></td>
+<td><p>/tools/zettel</p></td>
+<td><p><a class="reference external" href="http://localh">http://localh</a>
+ost:9004/tools/zettel</p></td>
+</tr>
+<tr class="row-odd"><td><p>Elasticsearch GET</p></td>
+<td><p>/search</p></td>
+<td><p><a class="reference external" href="http://localhost:9200">http://localhost:9200</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Fedora</p></td>
+<td><p>/fedora</p></td>
+<td><p><a class="reference external" href="http://">http://</a>
+localhost:8080/fedora</p></td>
+</tr>
+<tr class="row-odd"><td><p>JSON-LD Context</p></td>
+<td><p>/
+public/resources.json</p></td>
+<td><p><a class="reference external" href="http:/">http:/</a>
+/localhost:9002/tools
+/etikett/context.json</p></td>
+</tr>
+<tr class="row-even"><td><p>regal-api</p></td>
+<td><p>/</p></td>
+<td><p>h
+ttp://localhost:9000/</p></td>
+</tr>
+<tr class="row-odd"><td><p>heritrix</p></td>
+<td><p>/tools/heritrix</p></td>
+<td><p><a class="reference external" href="https://localhos">https://localhos</a>
+t:8443/tools/heritrix</p></td>
+</tr>
+</tbody>
+</table></div>
+</section>
+<section id="matomo">
+<span id="id67"></span><h2>Matomo<a class="headerlink" href="#matomo" title="Permalink to this headline"></a></h2>
+<p>Matomo wird einmal täglich per Cronjob mit Apache-Logfiles befüllt.
+Dabei erfolgt eine Anonymisierung. Die Logfiles verbleiben noch sieben
+Tage auf dem Server und werden dann annoynmisiert.</p>
+</section>
+<section id="monit">
+<span id="id68"></span><h2>Monit<a class="headerlink" href="#monit" title="Permalink to this headline"></a></h2>
+<p>Das Tool Monit erlaubt es, den Status der Regal-Komponenten zu
+überwachen und Dienste ggfl. neu zu starten. Folgende Einträge können in
+/etc/monit/monitrc vorgenommen werden</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>check process apache with pidfile /var/run/apache2/apache2.pid
+    start <span class="nv">program</span> <span class="o">=</span> <span class="s2">"/etc/init.d/apache2 start"</span> with timeout <span class="m">60</span> seconds
+    stop <span class="nv">program</span>  <span class="o">=</span> <span class="s2">"/etc/init.d/apache2 stop"</span>
+
+check process regal-api with pidfile /opt/regal/apps/regal-api/RUNNING_PID
+     start <span class="nv">program</span> <span class="o">=</span> <span class="s2">"/etc/init.d/regal-api start"</span> with timeout <span class="m">60</span> seconds
+     stop <span class="nv">program</span> <span class="o">=</span> <span class="s2">"/etc/init.d/regal-api stop"</span>
+
+check process tomcat6 with pidfile /var/run/tomcat6.pid
+     start <span class="nv">program</span> <span class="o">=</span> <span class="s2">"/etc/init.d/tomcat6 start"</span> with timeout <span class="m">60</span> seconds
+     stop <span class="nv">program</span> <span class="o">=</span> <span class="s2">"/etc/init.d/regal-api stop"</span>
+
+check process elasticsearch with pidfile /var/run/elasticsearch.pid
+     start <span class="nv">program</span> <span class="o">=</span> <span class="s2">"/etc/init.d/elasticsearch start"</span> with timeout <span class="m">60</span> seconds
+     stop <span class="nv">program</span> <span class="o">=</span> <span class="s2">"/etc/init.d/elasticsearch stop"</span>
+
+check process thumby with pidfile /opt/regal/apps/thumby/RUNNING_PID
+     start <span class="nv">program</span> <span class="o">=</span> <span class="s2">"/etc/init.d/thumby start"</span> with timeout <span class="m">60</span> seconds
+     stop <span class="nv">program</span> <span class="o">=</span> <span class="s2">"/etc/init.d/thumby stop"</span>
+
+check process etikett with pidfile /opt/regal/apps/etikett/RUNNING_PID
+     start <span class="nv">program</span> <span class="o">=</span> <span class="s2">"/etc/init.d/etikett start"</span> with timeout <span class="m">60</span> seconds
+     stop <span class="nv">program</span> <span class="o">=</span> <span class="s2">"/etc/init.d/etikett stop"</span>
+
+check process zettel with pidfile /opt/regal/apps/zettel/RUNNING_PID
+     start <span class="nv">program</span> <span class="o">=</span> <span class="s2">"/etc/init.d/zettel start"</span> with timeout <span class="m">60</span> seconds
+     stop <span class="nv">program</span> <span class="o">=</span> <span class="s2">"/etc/init.d/zettel stop"</span>
+</pre></div>
+</div>
+</section>
+<section id="scripts-und-cronjobs">
+<span id="id69"></span><h2>Scripts und Cronjobs<a class="headerlink" href="#scripts-und-cronjobs" title="Permalink to this headline"></a></h2>
+<p>Für das Funktionieren von Regal sind einige regal-scripts sinnvoll. Die
+Skripte sind sämtlich unter Github zu finden.</p>
+<p><a class="reference external" href="https://github.com/edoweb/regal-scripts">https://github.com/edoweb/regal-scripts</a></p>
+<p>Die folgenden Abschnitte zeigen ein typisches Setup.</p>
+<section id="oai-providing">
+<span id="oai-providing-2"></span><h3>OAI-Providing<a class="headerlink" href="#oai-providing" title="Permalink to this headline"></a></h3>
+<p>Der OAI-Provider läuft nicht die ganze Zeit mit, da dies Probleme
+gemacht hat. Er wird nur für einen bestimmten Zeitraum angestellt und
+dann wieder ausgestellt. Auf diese Weise liefert die OAI-Schnittstelle
+tagesaktuelle Daten.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span> <span class="m">2</span> * * * /opt/regal/src/regal-scripts/turnOnOaiPmhPolling.sh
+<span class="m">0</span> <span class="m">5</span> * * * /opt/regal/src/regal-scripts/turnOffOaiPmhPolling.sh
+</pre></div>
+</div>
+</section>
+<section id="urn-registrierung">
+<span id="id70"></span><h3>URN-Registrierung<a class="headerlink" href="#urn-registrierung" title="Permalink to this headline"></a></h3>
+<p>Die URN-Registrierung erfolgt mit einem gewissen Verzug. Das dafür
+zuständige Skript überprüft daher zunächst das Anlagedatum der
+Ressource.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">05</span> <span class="m">7</span> * * * /opt/regal/src/regal-scripts/register_urn.sh control  &gt;&gt; /opt/regal/regal-scripts/log/control_urn_vergabe.log
+<span class="m">1</span> <span class="m">1</span> * * * /opt/regal/src/regal-scripts/register_urn.sh katalog &gt;&gt; /opt/regal/regal-scripts/log/katalog_update.log
+<span class="m">1</span> <span class="m">0</span> * * * /opt/regal/src/regal-scripts/register_urn.sh register &gt;&gt; /opt/regal/regal-scripts/log/register_urn.log
+</pre></div>
+</div>
+</section>
+<section id="katalog-aktualisierung">
+<span id="id71"></span><h3>Katalog-Aktualisierung<a class="headerlink" href="#katalog-aktualisierung" title="Permalink to this headline"></a></h3>
+<p>Das System gleicht einmal am Tag Metadaten mit dem hbz-Verbundkatalog ab
+und führt ggf. Aktualisierungen durch.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span> <span class="m">5</span> * * * /opt/regal/src/regal-scripts/updateAll.sh &gt; /dev/null
+</pre></div>
+</div>
+</section>
+<section id="matomo-2">
+<span id="id72"></span><h3>Matomo<a class="headerlink" href="#matomo-2" title="Permalink to this headline"></a></h3>
+<p>Matomo wird mit Apache-Logfiles befüllt. Innerhalb von Matomo werden die
+Einträge annonymisiert.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span> <span class="m">1</span> * * * /opt/regal/regal-scripts/import-logfiles.sh &gt;/dev/null
+</pre></div>
+</div>
+</section>
+<section id="logfile-annonymisierung">
+<span id="id73"></span><h3>Logfile Annonymisierung<a class="headerlink" href="#logfile-annonymisierung" title="Permalink to this headline"></a></h3>
+<p>Apache-Logfiles werden sieben Tage unverändert aufbewahrt. Danach
+erfolgt eine Annonymisierung.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span> <span class="m">2</span> * * * /opt/regal/src/regal-scripts/depersonalize-apache-logs.sh
+</pre></div>
+</div>
+</section>
+<section id="webgatherer">
+<span id="id74"></span><h3>Webgatherer<a class="headerlink" href="#webgatherer" title="Permalink to this headline"></a></h3>
+<p>Der Webgatherer prüft Archivierungsintervalle von Webpages und stößt bei
+Bedarf die Erzeugung eines neuen Snapshots/Version an.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span> <span class="m">20</span> * * * /opt/regal/src/regal-scripts/runGatherer.sh &gt;&gt; /opt/regal/regal-scripts/log/runGatherer.log
+<span class="c1"># Auswertung des letzten Webgatherer-Laufs</span>
+<span class="m">0</span> <span class="m">21</span> * * * /opt/regal/src/regal-scripts/evalWebgatherer.sh &gt;&gt; /opt/regal/regal-scripts/log/runGatherer.log
+<span class="c1"># Crawl Reports</span>
+<span class="m">0</span> <span class="m">22</span> * * * /opt/regal/src/regal-scripts/crawlReport.sh &gt;&gt; /opt/regal/logs/crawlReport.log
+</pre></div>
+</div>
+</section>
+<section id="backup">
+<span id="id75"></span><h3>Backup<a class="headerlink" href="#backup" title="Permalink to this headline"></a></h3>
+<p>MySQL und Elasticsearch</p>
+<p>Der Elasticsearch-Index und die MySQL-Datenbanken werden täglich
+gesichert. Es werden Backups der letzten 30 Tage aufbewahrt. Ältere
+Backups werden von der Platte gelöscht.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span> <span class="m">2</span> * * * /opt/regal/src/regal-scripts/backup-es.sh -c &gt;&gt; /opt/regal/logs/backup-es.log <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="m">30</span> <span class="m">2</span> * * * /opt/regal/src/regal-scripts/backup-es.sh -b &gt;&gt; /opt/regal/logs/backup-es.log <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="m">0</span> <span class="m">2</span> * * * /opt/regal/src/regal-scripts/backup-db.sh -c &gt;&gt; /opt/regal/logs/backup-db.log <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<span class="m">30</span> <span class="m">2</span> * * * /opt/regal/src/regal-scripts/backup-db.sh -b &gt;&gt; /opt/regal/logs/backup-db.log <span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+</div>
+</section>
+<section id="entwicklung">
+<span id="id76"></span><h3>Entwicklung<a class="headerlink" href="#entwicklung" title="Permalink to this headline"></a></h3>
+<p>Für die Entwicklung an Regal empfiehlt sich folgende Vorgehensweise…</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../installation.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Installation</div>
+              </div>
+              <svg><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="konzepte.html">
+              <svg><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Konzepte</div>
+                
+              </div>
+            </a>
+        </div>
+
+        <div class="related-information">
+              Copyright &#169; 2021, Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz) |
+          Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+          <a href="https://github.com/pradyunsg/furo">Furo theme</a>.
+            | <a class="muted-link" href="../_sources/uerbersicht/software.rst.txt"
+               rel="nofollow">
+              Show Source
+            </a>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Software</a><ul>
+<li><a class="reference internal" href="#regal-api">regal-api</a><ul>
+<li><a class="reference internal" href="#konfiguration">Konfiguration</a></li>
+<li><a class="reference internal" href="#die-applikation">Die Applikation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id5">Etikett</a><ul>
+<li><a class="reference internal" href="#konfiguration-2">Konfiguration</a></li>
+<li><a class="reference internal" href="#die-applikation-2">Die Applikation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id9">Zettel</a><ul>
+<li><a class="reference internal" href="#konfiguration-3">Konfiguration</a></li>
+<li><a class="reference internal" href="#die-applikation-3">Die Applikation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#skos-lookup">skos-lookup</a><ul>
+<li><a class="reference internal" href="#konfiguration-4">Konfiguration</a></li>
+<li><a class="reference internal" href="#die-applikation-4">Die Applikation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id16">Thumby</a><ul>
+<li><a class="reference internal" href="#konfiguration-5">Konfiguration</a></li>
+<li><a class="reference internal" href="#die-applikation-5">Die Applikation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#id20">Deepzoomer</a><ul>
+<li><a class="reference internal" href="#konfiguration-6">Konfiguration</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#regal-drupal">regal-drupal</a><ul>
+<li><a class="reference internal" href="#die-applikation-6">Die Applikation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#edoweb-drupal-theme">edoweb-drupal-theme</a></li>
+<li><a class="reference internal" href="#zbmed-drupal-theme">zbmed-drupal-theme</a></li>
+<li><a class="reference internal" href="#id27">openwayback</a></li>
+<li><a class="reference internal" href="#id29">heritrix</a></li>
+<li><a class="reference internal" href="#id31">wpull</a></li>
+<li><a class="reference internal" href="#id33">Fedora Commons 3</a></li>
+<li><a class="reference internal" href="#mysql">MySql</a></li>
+<li><a class="reference internal" href="#id36">Elasticsearch 1.1</a></li>
+<li><a class="reference internal" href="#drupal-7">Drupal 7</a></li>
+<li><a class="reference internal" href="#vagrant">Vagrant</a><ul>
+<li><a class="reference internal" href="#virtualbox-installieren">VirtualBox installieren</a></li>
+<li><a class="reference internal" href="#vagrant-installieren">Vagrant installieren</a></li>
+<li><a class="reference internal" href="#repository-herunterladen">Repository herunterladen</a></li>
+<li><a class="reference internal" href="#eine-jdk8-bereitstellen">Eine JDK8 bereitstellen</a></li>
+<li><a class="reference internal" href="#geteiltes-entwicklungsverzeichnis">Geteiltes Entwicklungsverzeichnis</a></li>
+<li><a class="reference internal" href="#vagrant-guest-additions-installieren">Vagrant Guest Additions installieren</a></li>
+<li><a class="reference internal" href="#vagrant-host-anlegen">Vagrant Host anlegen</a></li>
+<li><a class="reference internal" href="#vagrant-starten">Vagrant starten</a></li>
+<li><a class="reference internal" href="#auf-der-maschine-einloggen">Auf der Maschine einloggen</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#server">Server</a><ul>
+<li><a class="reference internal" href="#hardware-empfehlung">Hardware Empfehlung</a></li>
+<li><a class="reference internal" href="#unterschiede-zur-vagrant-installation">Unterschiede zur Vagrant Installation</a><ul>
+<li><a class="reference internal" href="#entwicklung-java">Entwicklung Java</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#in-der-virtualbox">In der VirtualBox</a></li>
+<li><a class="reference internal" href="#auf-dem-eigenen-system">Auf dem eigenen System</a></li>
+<li><a class="reference internal" href="#aktualisierung">Aktualisierung</a><ul>
+<li><a class="reference internal" href="#play-applikationen">Play-Applikationen</a></li>
+<li><a class="reference internal" href="#tomcat-applikation">Tomcat-Applikation</a></li>
+<li><a class="reference internal" href="#drupal-module">Drupal-Module</a></li>
+<li><a class="reference internal" href="#speicherschicht">Speicherschicht</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#verzeichnisse">Verzeichnisse</a></li>
+<li><a class="reference internal" href="#ports">Ports</a></li>
+<li><a class="reference internal" href="#logs">Logs</a></li>
+<li><a class="reference internal" href="#configs">Configs</a></li>
+<li><a class="reference internal" href="#apache2">Apache2</a></li>
+<li><a class="reference internal" href="#matomo">Matomo</a></li>
+<li><a class="reference internal" href="#monit">Monit</a></li>
+<li><a class="reference internal" href="#scripts-und-cronjobs">Scripts und Cronjobs</a><ul>
+<li><a class="reference internal" href="#oai-providing">OAI-Providing</a></li>
+<li><a class="reference internal" href="#urn-registrierung">URN-Registrierung</a></li>
+<li><a class="reference internal" href="#katalog-aktualisierung">Katalog-Aktualisierung</a></li>
+<li><a class="reference internal" href="#matomo-2">Matomo</a></li>
+<li><a class="reference internal" href="#logfile-annonymisierung">Logfile Annonymisierung</a></li>
+<li><a class="reference internal" href="#webgatherer">Webgatherer</a></li>
+<li><a class="reference internal" href="#backup">Backup</a></li>
+<li><a class="reference internal" href="#entwicklung">Entwicklung</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>

@@ -26,7 +26,7 @@ Beispiele
 
 Aus dem Array von Literalen "title" 
  
-.. code-block:: json
+.. code-block:: java
 
  	{record : {title: ["Ausdrücke in Java", "Java Expressions", "Expression de Java"]}}
  
@@ -39,7 +39,7 @@ erhält man durch mit dem JsonLDMapper
 	
 eine **ArrayListe** die aus drei Key/Value-Paaren besteht:
 
-.. code-block:: json
+.. code-block:: java
  
 	title = "Ausdrücke in Java"
 	title = "Java Expressions"
@@ -48,7 +48,7 @@ eine **ArrayListe** die aus drei Key/Value-Paaren besteht:
 
 Aus dem aus zwei Key/Value-Paaren bestehenden Objekt "creator"
 
-.. code-block:: json
+.. code-block:: java
  
  	{record : {creator: { 
  		prefLabel : "Loki Schmidt",
@@ -64,7 +64,7 @@ erhält man durch den gleichen Aufruf:
 	
 eine **ArrayListe** die aus zwei Key/Value-Paaren besteht:
 
-.. code-block:: json
+.. code-block:: java
 
 	prefLabel = "Loki Schmidt"
 	@id : "https://orcid.org/000-000-000"

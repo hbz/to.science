@@ -54,3 +54,9 @@ html_theme = 'furo'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 html_logo = "hbz-logo.svg"
+
+# -- Options for LaTeX output ------
+
+# The paper size ('letter' or 'a4').
+latex_paper_size = 'a4'
+latex_logo = "hbz-logo.pdf"

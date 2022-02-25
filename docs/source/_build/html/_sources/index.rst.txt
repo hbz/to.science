@@ -28,10 +28,9 @@ Werkzeug sphinx in HTML übersetzt werden. Mehr dazu im Abschnitt
    :caption: Contents:
    
    toscience
-   api
+   api/api
    installation
-   development/JsonLDMapper.rst
-   development/oaiMetadataFormats.rst
+   development/development
    colophon
 
 
