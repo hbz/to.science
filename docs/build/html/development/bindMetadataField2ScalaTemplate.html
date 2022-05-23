@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Entwicklung" href="../development/development.html" /><link rel="prev" title="skos-lookup" href="skos.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Colophon" href="../colophon.html" /><link rel="prev" title="Anlegen neuer Metadaten-Felder in FORMS" href="addMetadataField2Forms.html" />
 
     <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
-        <title>Complex Example of hierarchical content - to.science documentation</title>
+        <title>Metadaten-Felder im Formular zugänglich machen - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -165,20 +165,21 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="api.html">API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="toscience.html">to.science.api</a></li>
-<li class="toctree-l2"><a class="reference internal" href="labels.html">to.science.labels</a></li>
-<li class="toctree-l2"><a class="reference internal" href="forms.html">to.science.forms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="thumbs.html">to.science.thumbs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="skos.html">skos-lookup</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Complex Example of hierarchical content</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/api.html">API</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/toscience.html">to.science.api</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/labels.html">to.science.labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/forms.html">to.science.forms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/thumbs.html">to.science.thumbs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/skos.html">skos-lookup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/complex-example.html">Complex Example of hierarchical content</a></li>
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../development/development.html">Entwicklung</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../development/JsonLDMapper.html">JSON in Java-Klassen überführen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/oaiMetadataFormats.html">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/addMetadataField2Api.html">Anlegen neuer Metadaten-Felder in der API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../development/addMetadataField2Forms.html">Anlegen neuer Metadaten-Felder in FORMS</a></li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="JsonLDMapper.html">JSON in Java-Klassen überführen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oaiMetadataFormats.html">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="addMetadataField2Api.html">Anlegen neuer Metadaten-Felder in der API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="addMetadataField2Forms.html">Anlegen neuer Metadaten-Felder in FORMS</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Metadaten-Felder im Formular zugänglich machen</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../colophon.html">Colophon</a></li>
@@ -216,71 +217,69 @@
           </label>
         </div>
         <article role="main">
-          <section id="complex-example-of-hierarchical-content">
-<span id="id1"></span><h1>Complex Example of hierarchical content<a class="headerlink" href="#complex-example-of-hierarchical-content" title="Permalink to this headline"></a></h1>
-<p>The newly created resource should meet the following requirements:</p>
+          <section id="metadaten-felder-im-formular-zuganglich-machen">
+<h1>Metadaten-Felder im Formular zugänglich machen<a class="headerlink" href="#metadaten-felder-im-formular-zuganglich-machen" title="Permalink to this headline"></a></h1>
+<section id="voraussetzungen">
+<h2>Voraussetzungen<a class="headerlink" href="#voraussetzungen" title="Permalink to this headline"></a></h2>
+<p>Die vorhergehenden Erweiterungen der labels.json und Java-Klassen entsprechend der Abschnitte</p>
 <ul class="simple">
-<li><p>publishScheme and accessScheme should be private</p></li>
-<li><p>Metadata are in LRMI Schema</p></li>
-<li><p>Resource should be assigned to an existing user in the Drupal frontend</p></li>
+<li><p>“Anlegen neuer Metadaten in der API” und</p></li>
+<li><p>“Anlegen neuer Metadaten in FORMS”</p></li>
 </ul>
-<p>Structure of the Resource:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>orca:50
-├── lrmiData
-└── orca:51
-     └── document.pdf
+<p>wurden erledigt.</p>
+<section id="vorgehen">
+<h3>Vorgehen<a class="headerlink" href="#vorgehen" title="Permalink to this headline"></a></h3>
+<p>Derzeit gibt es zwei Inhaltstypen, für die to.science.forms ein umfangreiches Formular in einem iFrame ausliefert.
+Das sind “Artikel” und Forschungsdaten”.
+Die Inhaltstypen “Monografie” und “Serie” werden durch ein ganz rudimentäres Formular erfasst,
+dass nur eine HT-Nummer aus dem hbz-Katalog erfragt und diese zum abholen des Titelsatzes aus dem Katalog über die
+lobid2-API verwendet. <a class="footnote-reference brackets" href="#id4" id="id1">1</a></p>
+<p>Die Beschreibung bezieht sich hier auf den Inhaltstyp ResearchData (“Forschungsdaten”), der exemplarisch für die
+notwendigen Erweiterungen steht.</p>
+<p>1. In der dem Formular zugeordneten Model-Klasse wird für das neue Feld eine get-Methode geschrieben. Wir verwenden hier die Klasse
+<strong>to.science.forms.model.ResearchData.Java</strong> . <a class="footnote-reference brackets" href="#id5" id="id2">2</a></p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm">* @return a map that can be used in an html select</span>
+<span class="cm">*/</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">LinkedHashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAcademicDegreeMap</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">LinkedHashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">map</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">map</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="kc">null</span><span class="p">,</span><span class="w"> </span><span class="s">"Bitte wählen Sie..."</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">GenericPropertiesLoader</span><span class="w"> </span><span class="n">GenProp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">GenericPropertiesLoader</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">map</span><span class="p">.</span><span class="na">putAll</span><span class="p">(</span><span class="n">GenProp</span><span class="p">.</span><span class="na">loadVocabMap</span><span class="p">(</span><span class="s">"AcademicDegree-de.properties"</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">map</span><span class="p">;</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>For the below curl command to work from your local computer it is convenient to put some often used data
-into environment variables. Prepare a simple textfile e.g. <code class="docutils literal notranslate"><span class="pre">example</span></code> with the following content. The
-<code class="docutils literal notranslate"><span class="pre">DRUPAL_USERID</span></code> is the numeric id which is automatically assigned to the user account by the Drupal CMS.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="nb">export</span> <span class="nv">TOSCIENCE_API</span><span class="o">=</span>https://api.example.com
-<span class="linenos">2</span><span class="nb">export</span> <span class="nv">DRUPAL_USERID</span><span class="o">=</span><span class="s2">"2"</span>
-<span class="linenos">3</span><span class="nb">export</span> <span class="nv">API_USER</span><span class="o">=</span>toscience-admin
-<span class="linenos">4</span><span class="nb">export</span> <span class="nv">PASSWORD</span><span class="o">=</span>***********
+<p>2. In einem der ScalaTemplates muss anschließend die zuvor deklarierte get-Methode aufgerufen werden.
+Wir nehmen das Template <strong>creatorWidget.scala.html</strong> im Package views</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>@(myForm:Form[models.ZettelModel],jsonMap:Map[String,Object])
+@import tags._
+@import services._
+&lt;div class="multi-field-wrapper" defaultValue="-"&gt;
+    &lt;ol class="multi-fields" id="creator"&gt;
+
+            @for(index &lt;- ZettelHelper.getIndex(myForm,jsonMap,"creator") ){
+                            &lt;li class="multi-field"&gt;
+                            @ldInputField(myForm,{"creator["+index+"]"},services.ZettelFields.creatorZF.getLabel(),"search",3,ArticleHelper.getPersonLookupEndpoints()){
+                                            @helpText("creator")
+                                            }
+                            &lt;br /&gt;
+                            @singleSelect(myForm,{"academicDegree["+index+"]"},services.ZettelFields.academicDegreeZF.getLabel(),"academicDegree-select",ResearchDataHelper.getAcademicDegreeMap(),5)
 </pre></div>
 </div>
-<p>Make the variables available by sourcing the file:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">source</span> example
-</pre></div>
-</div>
-<section id="creating-resource">
-<h2>Creating resource<a class="headerlink" href="#creating-resource" title="Permalink to this headline"></a></h2>
-<p>Initially we create a yet empty resource with the desired accessScheme, publishSchem and user id:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPUT <span class="nv">$TOSCIENCE_API</span>/resource/orca:50 -d<span class="s1">'{"contentType":"researchData","accessScheme":"private", "publishScheme":"private", "isDescribedBy":{"createdBy":"'</span><span class="s2">"</span><span class="nv">$DRUPAL_USERID</span><span class="s2">"</span><span class="s1">'"}}'</span> -H<span class="s1">'Content-type:application/json'</span> <span class="p">;</span> <span class="nb">echo</span>
-</pre></div>
-</div>
-<p>The Metadata are given in a special LRMI-Format and passed to a didicated endpoint:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPOST <span class="nv">$TOSCIENCE_API</span>/resource/orca:50/lrmiData  --data-binary <span class="s1">'@lrmi.json'</span> -H<span class="s1">'Content-Type:application/json;charset=utf-8'</span><span class="p">;</span> <span class="nb">echo</span>
-</pre></div>
-</div>
-<p>The data are stored in a separate resource of contentType <code class="docutils literal notranslate"><span class="pre">file</span></code>. At this point there is no relation between the two newly created resources:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPUT <span class="nv">$TOSCIENCE_API</span>/resource/orca:51 -d<span class="s1">'{"contentType":"file","accessScheme":"private", "publishScheme":"private", "isDescribedBy":{"createdBy":"'</span><span class="s2">"</span><span class="nv">$DRUPAL_USERID</span><span class="s2">"</span><span class="s1">'"}}'</span> -H<span class="s1">'Content-type:application/json'</span> <span class="p">;</span> <span class="nb">echo</span>
-</pre></div>
-</div>
-<p>Adding the actual data, a pdf-file in this case:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPUT <span class="nv">$TOSCIENCE_API</span>/resource/orca:51/data -F<span class="s2">"data=@document.pdf;type=application/pdf"</span> <span class="p">;</span> <span class="nb">echo</span>
-</pre></div>
-</div>
-<p>In a final step we tell the data resource about it’s parent resource:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XPUT <span class="nv">$TOSCIENCE_API</span>/resource/orca:51 -H<span class="s1">'Content-Type:application/json;charset=utf-8'</span> -d<span class="s1">'{"parentPid":"orca:50","contentType":"file"}'</span> <span class="p">;</span> <span class="nb">echo</span>
-</pre></div>
-</div>
+<p>Hier wurde ein @singleSelect-Formular gewählt, das wiederum in als scala-Template im views-Package liegt. Die Syntax ist ziemlich undurchsichtig und in Grenzen dokumentiert. <a class="footnote-reference brackets" href="#id6" id="id3">3</a></p>
+<dl class="footnote brackets">
+<dt class="label" id="id4"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p><a class="reference external" href="https://lobid.org">https://lobid.org</a></p>
+</dd>
+<dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
+<dd><p>In diesem Fall soll eine Select-Box erzeugt werden. Die notwendigen Einträge holen wir über die Klasse <strong>GenericPropertiesLoader.Java</strong> aus einer AcademicDegree-de.properties-Datei. Damit können wir Einträge der Select-Box auch zur Laufzeit einfach ändern. Die vorherige Methode, in der entsprechenden Methode eine statische Map anzulegen sollte nicht mehr umgesetzt werden.</p>
+</dd>
+<dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
+<dd><p><a class="reference external" href="https://www.playframework.com/documentation/2.8.x/ScalaForms">https://www.playframework.com/documentation/2.8.x/ScalaForms</a></p>
+</dd>
+</dl>
 </section>
-<section id="retrieving-the-resource">
-<h2>Retrieving the resource<a class="headerlink" href="#retrieving-the-resource" title="Permalink to this headline"></a></h2>
-<p>Reading the metadata in standard json format:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XGET <span class="nv">$TOSCIENCE_API</span>/resource/orca:51.json2 <span class="p">;</span> <span class="nb">echo</span>
-</pre></div>
-</div>
-<p>The LRMI Metadata are again available via the dedicated endpoint:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ curl -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XGET <span class="nv">$TOSCIENCE_API</span>/resource/orca:51/lrmiData <span class="p">;</span> <span class="nb">echo</span>
-</pre></div>
-</div>
-<p>Downloading the data</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">$curl</span> -i -u<span class="nv">$API_USER</span>:<span class="nv">$PASSWORD</span> -XGET <span class="nv">$TOSCIENCE_API</span>/resource/orca:51/data  --output data.pdf<span class="p">;</span> <span class="nb">echo</span>
-</pre></div>
-</div>
 </section>
 </section>
 
@@ -289,23 +288,23 @@ into environment variables. Prepare a simple textfile e.g. <code class="docutils
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../development/development.html">
+          <a class="next-page" href="../colophon.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Entwicklung</div>
+                <div class="title">Colophon</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="skos.html">
+          <a class="prev-page" href="addMetadataField2Forms.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">skos-lookup</div>
+                <div class="title">Anlegen neuer Metadaten-Felder in FORMS</div>
                 
               </div>
             </a>
@@ -341,9 +340,11 @@ into environment variables. Prepare a simple textfile e.g. <code class="docutils
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Complex Example of hierarchical content</a><ul>
-<li><a class="reference internal" href="#creating-resource">Creating resource</a></li>
-<li><a class="reference internal" href="#retrieving-the-resource">Retrieving the resource</a></li>
+<li><a class="reference internal" href="#">Metadaten-Felder im Formular zugänglich machen</a><ul>
+<li><a class="reference internal" href="#voraussetzungen">Voraussetzungen</a><ul>
+<li><a class="reference internal" href="#vorgehen">Vorgehen</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>

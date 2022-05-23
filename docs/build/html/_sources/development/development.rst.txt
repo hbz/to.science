@@ -7,9 +7,12 @@ Entwicklung
 .. toctree::
    :maxdepth: 1
 
-   JsonLDMapper.rst
-   oaiMetadataFormats.rst
-
+   JsonLDMapper
+   oaiMetadataFormats
+   addMetadataField2Api
+   addMetadataField2Forms
+   bindMetadataField2ScalaTemplate
+   
 
 
 
