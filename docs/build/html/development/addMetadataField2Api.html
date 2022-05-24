@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Neues Metadaten-Format in die OAI-Schnittstelle integrieren" href="oaiMetadataFormats.html" /><link rel="prev" title="Entwicklung" href="development.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Anlegen neuer Metadaten-Felder in FORMS" href="addMetadataField2Forms.html" /><link rel="prev" title="Neues Metadaten-Format in die OAI-Schnittstelle integrieren" href="oaiMetadataFormats.html" />
 
     <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
-        <title>JSON in Java-Klassen überführen - to.science documentation</title>
+        <title>Anlegen neuer Metadaten-Felder in der API - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -134,7 +134,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <div class="visually-hidden">Toggle table of contents sidebar</div>
         <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
       </label>
@@ -175,9 +175,9 @@
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">JSON in Java-Klassen überführen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="JsonLDMapper.html">JSON in Java-Klassen überführen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="oaiMetadataFormats.html">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</a></li>
-<li class="toctree-l2"><a class="reference internal" href="addMetadataField2Api.html">Anlegen neuer Metadaten-Felder in der API</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Anlegen neuer Metadaten-Felder in der API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="addMetadataField2Forms.html">Anlegen neuer Metadaten-Felder in FORMS</a></li>
 </ul>
 </li>
@@ -210,69 +210,104 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <div class="visually-hidden">Toggle table of contents sidebar</div>
             <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
           </label>
         </div>
         <article role="main">
-          <section id="json-in-java-klassen-uberfuhren">
-<h1>JSON in Java-Klassen überführen<a class="headerlink" href="#json-in-java-klassen-uberfuhren" title="Permalink to this headline"></a></h1>
-<p>Mit der Klasse JsonLDMapper steht ein generischer Ansatz zum Einlesen des lobid-JSON (oder anderer JSON-Formate) zur Verfügung,
-der die im JSON liegenden Metadaten in einer einheitlichen Weise für die Verarbeitung zugänglich macht.</p>
-<p>Die Einrichtung der Klasse JsonLDMapper verfolgt das Ziel, kommende Änderungen am Datenmodell vom lobid mit möglichst wenig Aufwand in das Repository übernehmen zu können.</p>
-<p>Grundlage bilden die von JSON unterstützten Datentypen. Die in JSON verwendeten Datentypen werden zunächst konzeptuell auf drei Typen reduziert.</p>
-<ul class="simple">
-<li><p>Object</p></li>
-<li><p>Array of Values als ArrayList&lt;Hashtable&lt;String,String&gt;&gt;</p></li>
-<li><p>Key/Value-Paare als Hashtable&lt;String,String&gt;</p></li>
-</ul>
-<p>Der Datentyp Object wird als Container-Element für weitere Datentypen verwendet und rekursiv bis zu den
-elementaren Datentypen Array of Values und key/value-Paare aufgelöst. Die dabei verarbeitete Pfad-Struktur wird
-in der Java-Notation abgebildet und in einem String abgelegt..</p>
-<p>Für alle auf den beiden Datentypen Array of Values und Key/Value-Paare aufbauenden Objekte bietet die Mapper-Klasse vereinheitlichte Instanzen mit analogen Zugriffsmethoden
-an. Der JsonLDMapper bietet jeweils die Methode getElement(Pfad), die transparent ArrayList&lt;Hashtable&lt;String,String&gt; zurückliefert.</p>
-<p>Über die Iteration über die jeweilige ArrayList stehen damit entweder zusammengehörende Key/Value zur Verfügung, oder die einzelnen Values eines
-Arrays of Value in Form des Array-Bezeichners aus dem JSON und des jeweiligen Wertes.</p>
-<p>Beispiele</p>
-<p>Aus dem Array von Literalen “title”</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">record</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="s">"Ausdrücke in Java"</span><span class="p">,</span><span class="w"> </span><span class="s">"Java Expressions"</span><span class="p">,</span><span class="w"> </span><span class="s">"Expression de Java"</span><span class="o">]</span><span class="p">}}</span><span class="w"></span>
+          <section id="anlegen-neuer-metadaten-felder-in-der-api">
+<h1>Anlegen neuer Metadaten-Felder in der API<a class="headerlink" href="#anlegen-neuer-metadaten-felder-in-der-api" title="Permalink to this headline"></a></h1>
+<section id="vorgehen">
+<h2>Vorgehen<a class="headerlink" href="#vorgehen" title="Permalink to this headline"></a></h2>
+<p>Das Anlegen neuer Metadatenfelder in der to.science.api erfordert verschiedene Schritte und ist die Grundlage für die anschließende (optionale) Einbindung
+dieser Felder in to.science.forms.</p>
+<ol class="arabic simple">
+<li><p>Datei labels.json in to.science.api und to.science.labels erweitern und deployen (Ja wirklich :-(  )</p></li>
+<li><p>Notwendige Anpassungen in den für das Mapping zuständigen Java-Klassen (JsonMapper.java und LRMIMapper für ORCA)</p></li>
+<li><p>Testen der Änderungen</p></li>
+</ol>
+<section id="labels-json-erweitern">
+<h3>labels.json erweitern<a class="headerlink" href="#labels-json-erweitern" title="Permalink to this headline"></a></h3>
+<p>Damit die verschiedenen Mappings zwischen Formaten wie JSON und RDF, N-Triples etc. funktionieren, muss in der labels.json
+ein entsprechende JSON-Abschnitt für das neue Feld angelegt werden.</p>
+<p>Beispiel neues Feld academicDegree:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d-nb.info/standards/elementset/gnd#academicDegree"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Akademischer Grad"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"academicDegree"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"referenceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@list"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTEXT"</span><span class="p">,</span><span class="w"></span>
+<span class="w">        </span><span class="nt">"multilangLabel"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<span class="p">},</span><span class="w"></span>
 </pre></div>
 </div>
-<p>erhält man durch mit dem JsonLDMapper</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">JsonLDMapper</span><span class="w"> </span><span class="n">jMapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonLDMapper</span><span class="p">(</span><span class="n">JsonNode</span><span class="p">);</span><span class="w"></span>
-<span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Hashtable</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jMapper</span><span class="p">.</span><span class="na">getElement</span><span class="p">(</span><span class="s">"root.record.title"</span><span class="p">);</span><span class="w"></span>
+<section id="name-und-uri">
+<h4>“name” und “uri”:<a class="headerlink" href="#name-und-uri" title="Permalink to this headline"></a></h4>
+<ol class="arabic simple">
+<li><p>Das Literal <strong>“name”</strong> muss den Variablen-Namen enthalten. Hieran war zunächst die Exposition der Variablen zu to.science.forms gescheitert.</p></li>
+<li><p>Der Name muss <strong>vermutlich</strong> dem in der ResourceUri stehenden veränderlichen Teil entsprechen.</p></li>
+</ol>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d-nb.info/standards/elementset/gnd#academicDegree"</span><span class="p">,</span><span class="w"></span>
+<span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"academicDegree"</span><span class="p">,</span><span class="w"></span>
 </pre></div>
 </div>
-<p>eine <strong>ArrayListe</strong> die aus drei Key/Value-Paaren besteht:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ausdrücke in Java"</span><span class="w"></span>
-<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Java Expressions"</span><span class="w"></span>
-<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Expression de Java"</span><span class="w"></span>
+</section>
+<section id="referencetype-und-container">
+<h4>“referenceType” und “container”:<a class="headerlink" href="#referencetype-und-container" title="Permalink to this headline"></a></h4>
+<p>1. Die Literale <strong>“referenceType”</strong> ,  <strong>“container”</strong> enthalten vermutlich Informationen über die Typisierung der Variablen. Hierbei
+wird bei container das JSON-LD Schlüsselwort @list verwendet. Es gibt 13 Schlüsselwörter. <a class="footnote-reference brackets" href="#id3" id="id1">1</a> Da das jedoch nicht
+dokumentiert ist, muss man sich Beispiele für verschiedene Variablentypen in der labels.json heraussuchen, probieren und
+Daumen drücken… (seufz).</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"referenceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w"></span>
+<span class="nt">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@list"</span><span class="p">,</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Aus dem aus zwei Key/Value-Paaren bestehenden Objekt “creator”</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">record</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">creator</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">prefLabel</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"Loki Schmidt"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nd">@id</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"https://orcid.org/000-000-000"</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="p">}}</span><span class="w"></span>
+<ol class="arabic simple" start="2">
+<li><p>Das Literal <strong>“type”</strong> verweist vermutlich überwiegend auf das Schlüsselwort @context. Sollte vermutlich nicht geändert werden.</p></li>
+</ol>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTEXT"</span><span class="p">,</span><span class="w"></span>
 </pre></div>
 </div>
-<p>erhält man durch den gleichen Aufruf:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">JsonLDMapper</span><span class="w"> </span><span class="n">jMapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonLDMapper</span><span class="p">(</span><span class="n">JsonNode</span><span class="p">);</span><span class="w"></span>
-<span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Hashtable</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jMapper</span><span class="p">.</span><span class="na">getElement</span><span class="p">(</span><span class="s">"root.creator"</span><span class="p">);</span><span class="w"></span>
+</section>
+<section id="alle-labels-json-ersetzen">
+<h4>Alle labels.json ersetzen:<a class="headerlink" href="#alle-labels-json-ersetzen" title="Permalink to this headline"></a></h4>
+<ol class="arabic simple">
+<li><p>Sowohl die labels.json von <em>to.science.api</em> als auch die von <em>to.science.labels</em> müssen erweitert werden. Wie die beiden interferieren ist bisher ziemlich unklar.</p></li>
+<li><p>Beide Dateien müssen manuell in das jeweilige conf-Verzeichnis im installierten Modul kopiert werden. Sie werden nicht automatisch aktualisiert</p></li>
+<li><p>to.science.api und to.science.labels müssen neu gestartet werden.</p></li>
+</ol>
+</section>
+</section>
+<section id="erweitern-der-java-klasse-jsonmapper-java">
+<h3>Erweitern der Java-Klasse JsonMapper.Java<a class="headerlink" href="#erweitern-der-java-klasse-jsonmapper-java" title="Permalink to this headline"></a></h3>
+<p>Damit das neue Feld in die verschiedenen Metadaten-Formate gemappt werden kann,
+ist zumindest die Erweiterung der Klasse JsonMapper.Java notwendig</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">api</span><span class="p">.</span><span class="na">helper</span><span class="o">/</span><span class="n">JsonMapper</span><span class="p">.</span><span class="na">Java</span><span class="w"></span>
 </pre></div>
 </div>
-<p>eine <strong>ArrayListe</strong> die aus zwei Key/Value-Paaren besteht:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">prefLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Loki Schmidt"</span><span class="w"></span>
-<span class="nd">@id</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"https://orcid.org/000-000-000"</span><span class="w"></span>
+<p>Welche Methoden konkret angepasst werden müssen, kann hier nicht pauschal gesagt werden.</p>
+<p>Für ORCA ist zusätzlich die Klasse LRMIMapper zu erweitern, damit die neuen Felder aud dem Datenstrom lrmiData gelesen und auch wieder dort hin geschrieben werden können.</p>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">api</span><span class="p">.</span><span class="na">helper</span><span class="o">/</span><span class="n">LRMIMapper</span><span class="p">.</span><span class="na">Java</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Damit der in Json verwendete Datentyp weiterhin eindeutig unterscheiden werden kann, besitzt die JsonLDMapper-Klasse zusätzlich die Methoden
-isArray() und isObject().</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">JsonLDMapper</span><span class="w"> </span><span class="n">jMapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonLDMapper</span><span class="p">(</span><span class="n">JsonNode</span><span class="p">);</span><span class="w"></span>
-<span class="kt">boolean</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jMapper</span><span class="p">.</span><span class="na">getElement</span><span class="p">(</span><span class="s">"\root.creator\").isArray();</span>
-</pre></div>
-</div>
+</section>
+</section>
+<section id="hintergrund">
+<h2>Hintergrund<a class="headerlink" href="#hintergrund" title="Permalink to this headline"></a></h2>
+<p>Die Vereinbarung des neuen Metadaten-Felds in labels.json ist notwendig, weil die labels.json innerhalb der to.science-Komponenten
+die Ergänzung des neuen Feldes um den für Mappings und Konvertiereungen von JSON-Dateien notwendigen LinkedData-Teil übernimmt.
+Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. <a class="footnote-reference brackets" href="#id3" id="id2">1</a></p>
+<dl class="footnote brackets">
+<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
+<dd><p><a class="reference external" href="https://de.wikipedia.org/wiki/JSON-LD">https://de.wikipedia.org/wiki/JSON-LD</a></p>
+</dd>
+</dl>
+</section>
 </section>
 
         </article>
@@ -280,23 +315,23 @@ isArray() und isObject().</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="oaiMetadataFormats.html">
+          <a class="next-page" href="addMetadataField2Forms.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</div>
+                <div class="title">Anlegen neuer Metadaten-Felder in FORMS</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="development.html">
+          <a class="prev-page" href="oaiMetadataFormats.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Entwicklung</div>
+                <div class="title">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</div>
                 
               </div>
             </a>
@@ -320,8 +355,37 @@ isArray() und isObject().</p>
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            Contents
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Anlegen neuer Metadaten-Felder in der API</a><ul>
+<li><a class="reference internal" href="#vorgehen">Vorgehen</a><ul>
+<li><a class="reference internal" href="#labels-json-erweitern">labels.json erweitern</a><ul>
+<li><a class="reference internal" href="#name-und-uri">“name” und “uri”:</a></li>
+<li><a class="reference internal" href="#referencetype-und-container">“referenceType” und “container”:</a></li>
+<li><a class="reference internal" href="#alle-labels-json-ersetzen">Alle labels.json ersetzen:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#erweitern-der-java-klasse-jsonmapper-java">Erweitern der Java-Klasse JsonMapper.Java</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hintergrund">Hintergrund</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>
