@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Colophon" href="../colophon.html" /><link rel="prev" title="Anlegen neuer Metadaten-Felder in FORMS" href="addMetadataField2Forms.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Der mutmaßliche Weg der Daten durch to.science.forms" href="DatenWegDurchFormular.html" /><link rel="prev" title="Anlegen neuer Metadaten-Felder in FORMS" href="addMetadataField2Forms.html" />
 
     <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
         <title>Metadaten-Felder im Formular zugänglich machen - to.science documentation</title>
@@ -180,6 +180,7 @@
 <li class="toctree-l2"><a class="reference internal" href="addMetadataField2Api.html">Anlegen neuer Metadaten-Felder in der API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="addMetadataField2Forms.html">Anlegen neuer Metadaten-Felder in FORMS</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Metadaten-Felder im Formular zugänglich machen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DatenWegDurchFormular.html">Der mutmaßliche Weg der Daten durch to.science.forms</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../colophon.html">Colophon</a></li>
@@ -234,10 +235,10 @@ Das sind “Artikel” und Forschungsdaten”.
 Die Inhaltstypen “Monografie” und “Serie” werden durch ein ganz rudimentäres Formular erfasst,
 dass nur eine HT-Nummer aus dem hbz-Katalog erfragt und diese zum abholen des Titelsatzes aus dem Katalog über die
 lobid2-API verwendet. <a class="footnote-reference brackets" href="#id4" id="id1">1</a></p>
-<p>Die Beschreibung bezieht sich hier auf den Inhaltstyp ResearchData (“Forschungsdaten”), der exemplarisch für die
+<p>Die Beschreibung bezieht sich hier auf den Inhaltstyp <code class="docutils literal notranslate"><span class="pre">ResearchData</span></code> (“Forschungsdaten”), der exemplarisch für die
 notwendigen Erweiterungen steht.</p>
 <p>1. In der dem Formular zugeordneten Model-Klasse wird für das neue Feld eine get-Methode geschrieben. Wir verwenden hier die Klasse
-<strong>to.science.forms.model.ResearchData.Java</strong> . <a class="footnote-reference brackets" href="#id5" id="id2">2</a></p>
+<code class="docutils literal notranslate"><span class="pre">to.science.forms.model.ResearchData.Java</span></code> . <a class="footnote-reference brackets" href="#id5" id="id2">2</a></p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
 <span class="cm">* @return a map that can be used in an html select</span>
 <span class="cm">*/</span><span class="w"></span>
@@ -251,20 +252,20 @@ notwendigen Erweiterungen steht.</p>
 </pre></div>
 </div>
 <p>2. In einem der ScalaTemplates muss anschließend die zuvor deklarierte get-Methode aufgerufen werden.
-Wir nehmen das Template <strong>creatorWidget.scala.html</strong> im Package views</p>
-<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>@(myForm:Form[models.ZettelModel],jsonMap:Map[String,Object])
-@import tags._
-@import services._
-&lt;div class="multi-field-wrapper" defaultValue="-"&gt;
-    &lt;ol class="multi-fields" id="creator"&gt;
+Wir nehmen das Template <code class="docutils literal notranslate"><span class="pre">creatorWidget.scala.html</span></code> im Package views</p>
+<div class="highlight-scala notranslate"><div class="highlight"><pre><span></span><span class="o">@</span><span class="p">(</span><span class="n">myForm</span><span class="p">:</span><span class="nc">Form</span><span class="p">[</span><span class="n">models</span><span class="p">.</span><span class="nc">ZettelModel</span><span class="p">],</span><span class="n">jsonMap</span><span class="p">:</span><span class="nc">Map</span><span class="p">[</span><span class="nc">String</span><span class="p">,</span><span class="nc">Object</span><span class="p">])</span><span class="w"></span>
+<span class="nd">@import</span><span class="w"> </span><span class="n">tags</span><span class="p">.</span><span class="n">_</span><span class="w"></span>
+<span class="nd">@import</span><span class="w"> </span><span class="n">services</span><span class="p">.</span><span class="n">_</span><span class="w"></span>
+<span class="o">&lt;</span><span class="n">div</span><span class="w"> </span><span class="k">class</span><span class="nc">=</span><span class="s">"multi-field-wrapper"</span><span class="w"> </span><span class="n">defaultValue</span><span class="o">=</span><span class="s">"-"</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">ol</span><span class="w"> </span><span class="k">class</span><span class="nc">=</span><span class="s">"multi-fields"</span><span class="w"> </span><span class="n">id</span><span class="o">=</span><span class="s">"creator"</span><span class="o">&gt;</span><span class="w"></span>
 
-            @for(index &lt;- ZettelHelper.getIndex(myForm,jsonMap,"creator") ){
-                            &lt;li class="multi-field"&gt;
-                            @ldInputField(myForm,{"creator["+index+"]"},services.ZettelFields.creatorZF.getLabel(),"search",3,ArticleHelper.getPersonLookupEndpoints()){
-                                            @helpText("creator")
-                                            }
-                            &lt;br /&gt;
-                            @singleSelect(myForm,{"academicDegree["+index+"]"},services.ZettelFields.academicDegreeZF.getLabel(),"academicDegree-select",ResearchDataHelper.getAcademicDegreeMap(),5)
+<span class="w">            </span><span class="nd">@for</span><span class="p">(</span><span class="n">index</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="nc">ZettelHelper</span><span class="p">.</span><span class="n">getIndex</span><span class="p">(</span><span class="n">myForm</span><span class="p">,</span><span class="n">jsonMap</span><span class="p">,</span><span class="s">"creator"</span><span class="p">)</span><span class="w"> </span><span class="p">){</span><span class="w"></span>
+<span class="w">                            </span><span class="o">&lt;</span><span class="n">li</span><span class="w"> </span><span class="k">class</span><span class="nc">=</span><span class="s">"multi-field"</span><span class="o">&gt;</span><span class="w"></span>
+<span class="w">                            </span><span class="nd">@ldInputField</span><span class="p">(</span><span class="n">myForm</span><span class="p">,{</span><span class="s">"creator["</span><span class="o">+</span><span class="n">index</span><span class="o">+</span><span class="s">"]"</span><span class="p">},</span><span class="n">services</span><span class="p">.</span><span class="nc">ZettelFields</span><span class="p">.</span><span class="n">creatorZF</span><span class="p">.</span><span class="n">getLabel</span><span class="p">(),</span><span class="s">"search"</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="nc">ArticleHelper</span><span class="p">.</span><span class="n">getPersonLookupEndpoints</span><span class="p">()){</span><span class="w"></span>
+<span class="w">                                            </span><span class="nd">@helpText</span><span class="p">(</span><span class="s">"creator"</span><span class="p">)</span><span class="w"></span>
+<span class="w">                                            </span><span class="p">}</span><span class="w"></span>
+<span class="w">                            </span><span class="o">&lt;</span><span class="n">br</span><span class="w"> </span><span class="o">/&gt;</span><span class="w"></span>
+<span class="w">                            </span><span class="nd">@singleSelect</span><span class="p">(</span><span class="n">myForm</span><span class="p">,{</span><span class="s">"academicDegree["</span><span class="o">+</span><span class="n">index</span><span class="o">+</span><span class="s">"]"</span><span class="p">},</span><span class="n">services</span><span class="p">.</span><span class="nc">ZettelFields</span><span class="p">.</span><span class="n">academicDegreeZF</span><span class="p">.</span><span class="n">getLabel</span><span class="p">(),</span><span class="s">"academicDegree-select"</span><span class="p">,</span><span class="nc">ResearchDataHelper</span><span class="p">.</span><span class="n">getAcademicDegreeMap</span><span class="p">(),</span><span class="mi">5</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 <p>Hier wurde ein @singleSelect-Formular gewählt, das wiederum in als scala-Template im views-Package liegt. Die Syntax ist ziemlich undurchsichtig und in Grenzen dokumentiert. <a class="footnote-reference brackets" href="#id6" id="id3">3</a></p>
@@ -273,7 +274,7 @@ Wir nehmen das Template <strong>creatorWidget.scala.html</strong> im Package vie
 <dd><p><a class="reference external" href="https://lobid.org">https://lobid.org</a></p>
 </dd>
 <dt class="label" id="id5"><span class="brackets"><a class="fn-backref" href="#id2">2</a></span></dt>
-<dd><p>In diesem Fall soll eine Select-Box erzeugt werden. Die notwendigen Einträge holen wir über die Klasse <strong>GenericPropertiesLoader.Java</strong> aus einer AcademicDegree-de.properties-Datei. Damit können wir Einträge der Select-Box auch zur Laufzeit einfach ändern. Die vorherige Methode, in der entsprechenden Methode eine statische Map anzulegen sollte nicht mehr umgesetzt werden.</p>
+<dd><p>In diesem Fall soll eine Select-Box erzeugt werden. Die notwendigen Einträge holen wir über die Klasse <code class="docutils literal notranslate"><span class="pre">GenericPropertiesLoader.Java</span></code> aus einer <code class="docutils literal notranslate"><span class="pre">AcademicDegree-de.properties</span></code>-Datei. Damit können wir Einträge der Select-Box auch zur Laufzeit einfach ändern. Die vorherige Methode, in der entsprechenden Methode eine statische Map anzulegen sollte nicht mehr umgesetzt werden.</p>
 </dd>
 <dt class="label" id="id6"><span class="brackets"><a class="fn-backref" href="#id3">3</a></span></dt>
 <dd><p><a class="reference external" href="https://www.playframework.com/documentation/2.8.x/ScalaForms">https://www.playframework.com/documentation/2.8.x/ScalaForms</a></p>
@@ -288,12 +289,12 @@ Wir nehmen das Template <strong>creatorWidget.scala.html</strong> im Package vie
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../colophon.html">
+          <a class="next-page" href="DatenWegDurchFormular.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Colophon</div>
+                <div class="title">Der mutmaßliche Weg der Daten durch to.science.forms</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>

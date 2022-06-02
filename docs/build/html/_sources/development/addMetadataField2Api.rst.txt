@@ -1,8 +1,8 @@
 Anlegen neuer Metadaten-Felder in der API
-=====================================================
+=========================================
 
 Vorgehen
----------
+--------
 Das Anlegen neuer Metadatenfelder in der to.science.api erfordert verschiedene Schritte und ist die Grundlage für die anschließende (optionale) Einbindung 
 dieser Felder in to.science.forms.
 
@@ -11,7 +11,7 @@ dieser Felder in to.science.forms.
 3. Testen der Änderungen
 
 labels.json erweitern
-______________________
+_____________________
 
 Damit die verschiedenen Mappings zwischen Formaten wie JSON und RDF, N-Triples etc. funktionieren, muss in der labels.json 
 ein entsprechende JSON-Abschnitt für das neue Feld angelegt werden. 
@@ -49,10 +49,8 @@ Beispiel neues Feld academicDegree:
 ::::::::::::::::::::::::::::::::
 
 
-1. Die Literale **"referenceType"** ,  **"container"** enthalten vermutlich Informationen über die Typisierung der Variablen. Hierbei 
-wird bei container das JSON-LD Schlüsselwort \@list verwendet. Es gibt 13 Schlüsselwörter. [1]_ Da das jedoch nicht 
-dokumentiert ist, muss man sich Beispiele für verschiedene Variablentypen in der labels.json heraussuchen, probieren und 
-Daumen drücken... (seufz).
+1. | Die Literale **"referenceType"** ,  **"container"** enthalten vermutlich Informationen über die Typisierung der Variablen. Hierbei wird bei container das JSON-LD Schlüsselwort \@list verwendet. Es gibt 13 Schlüsselwörter. [1]_ 
+   | Da das jedoch nicht dokumentiert ist, muss man sich Beispiele für verschiedene Variablentypen in der labels.json heraussuchen, probieren und Daumen drücken... (seufz).
 
 
 .. code-block:: json
@@ -69,7 +67,7 @@ Daumen drücken... (seufz).
  
 
 Alle labels.json ersetzen:
-:::::::::::::::::::::::::::
+::::::::::::::::::::::::::
 
 1. Sowohl die labels.json von *to.science.api* als auch die von *to.science.labels* müssen erweitert werden. Wie die beiden interferieren ist bisher ziemlich unklar.
 
@@ -78,7 +76,7 @@ Alle labels.json ersetzen:
 3. to.science.api und to.science.labels müssen neu gestartet werden.
 
 Erweitern der Java-Klasse JsonMapper.Java
-___________________________________________
+_________________________________________
 
 Damit das neue Feld in die verschiedenen Metadaten-Formate gemappt werden kann, 
 ist zumindest die Erweiterung der Klasse JsonMapper.Java notwendig
@@ -96,9 +94,9 @@ Für ORCA ist zusätzlich die Klasse LRMIMapper zu erweitern, damit die neuen Fe
     to.science.api.helper/LRMIMapper.Java
     
 Hintergrund
-------------
+-----------
 
-Die Vereinbarung des neuen Metadaten-Felds in labels.json ist notwendig, weil die labels.json innerhalb der to.science-Komponenten 
+Die Vereinbarung des neuen Metadaten-Felds in ``labels.json`` ist notwendig, weil die ``labels.json`` innerhalb der to.science-Komponenten 
 die Ergänzung des neuen Feldes um den für Mappings und Konvertiereungen von JSON-Dateien notwendigen LinkedData-Teil übernimmt. 
 Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. [#]_
 

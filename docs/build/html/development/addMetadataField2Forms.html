@@ -3,7 +3,7 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Colophon" href="../colophon.html" /><link rel="prev" title="Anlegen neuer Metadaten-Felder in der API" href="addMetadataField2Api.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Metadaten-Felder im Formular zugänglich machen" href="bindMetadataField2ScalaTemplate.html" /><link rel="prev" title="Anlegen neuer Metadaten-Felder in der API" href="addMetadataField2Api.html" />
 
     <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
         <title>Anlegen neuer Metadaten-Felder in FORMS - to.science documentation</title>
@@ -179,6 +179,8 @@
 <li class="toctree-l2"><a class="reference internal" href="oaiMetadataFormats.html">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</a></li>
 <li class="toctree-l2"><a class="reference internal" href="addMetadataField2Api.html">Anlegen neuer Metadaten-Felder in der API</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Anlegen neuer Metadaten-Felder in FORMS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bindMetadataField2ScalaTemplate.html">Metadaten-Felder im Formular zugänglich machen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DatenWegDurchFormular.html">Der mutmaßliche Weg der Daten durch to.science.forms</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../colophon.html">Colophon</a></li>
@@ -236,8 +238,8 @@ damit das neue Feld auch in den Formularen funktioniert.</p>
 <span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">forms</span><span class="p">.</span><span class="na">model</span><span class="p">.</span><span class="na">ZettelModel</span><span class="p">.</span><span class="na">Java</span><span class="w"></span>
 </pre></div>
 </div>
-<p>1. In <strong>ZettelFields.Java</strong> werden zunächst Verweise auf die Inhalte der labels.conf erzeugt. Dafür werden “Etikett”-Instanzen angelegt.
-Ist das neue Feld wie im Beispiel academicDegree als wiederholbares Literal angelegt, werden folgende Deklarationen benötigt:
+<p>1. In <code class="docutils literal notranslate"><span class="pre">ZettelFields.Java</span></code> werden zunächst Verweise auf die Inhalte der <code class="docutils literal notranslate"><span class="pre">labels.conf</span></code> erzeugt. Dafür werden “Etikett”-Instanzen angelegt.
+Ist das neue Feld wie im Beispiel <code class="docutils literal notranslate"><span class="pre">academicDegree</span></code> als wiederholbares Literal angelegt, werden folgende Deklarationen benötigt:
 Das ZF am Ende der Variablen-Deklaration weißt darauf hin, dass es sich um ein “ZettelField” handeln soll.</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Etikett</span><span class="w"> </span><span class="n">academicDegreeZF</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
 <span class="w"> </span><span class="n">ZettelHelper</span><span class="p">.</span><span class="na">etikett</span><span class="p">.</span><span class="na">getEtikett</span><span class="p">(</span><span class="s">"https://d-nb.info/standards/elementset/gnd#academicDegree"</span><span class="p">);</span><span class="w"></span>
@@ -246,7 +248,7 @@ Das ZF am Ende der Variablen-Deklaration weißt darauf hin, dass es sich um ein 
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>In der <strong>ZettelModel.Java</strong> werden ebenfalls neue Variablen-Deklarationen als erzeugt</p></li>
+<li><p>In der <code class="docutils literal notranslate"><span class="pre">ZettelModel.Java</span></code> werden ebenfalls neue Variablen-Deklarationen als erzeugt</p></li>
 </ol>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ZettelModel</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
@@ -255,7 +257,7 @@ Das ZF am Ende der Variablen-Deklaration weißt darauf hin, dass es sich um ein 
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>Die neuen Variablen benötigen GETTER, SETTER und im Fall der ArrayList eine add-Methode:</p></li>
+<li><p>Die neuen Variablen benötigen <code class="docutils literal notranslate"><span class="pre">GETTER,</span> <span class="pre">SETTER</span></code> und im Fall der <code class="docutils literal notranslate"><span class="pre">ArrayList</span></code> eine add-Methode:</p></li>
 </ol>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ZettelModel</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 
@@ -276,14 +278,14 @@ Das ZF am Ende der Variablen-Deklaration weißt darauf hin, dass es sich um ein 
 <span class="p">}</span><span class="w"></span>
 </pre></div>
 </div>
-<p>4. Anschließend werden die in <strong>ZettelField.Java</strong> deklarierten Variablen importiert.
+<p>4. Anschließend werden die in <code class="docutils literal notranslate"><span class="pre">ZettelField.Java</span></code> deklarierten Variablen importiert.
 Ggf. wäre es hier ziemlich sinnvoll, sie nicht einzeln zu importieren?</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import static</span><span class="w"> </span><span class="nn">services.ZettelFields.academicTitleZF</span><span class="p">;</span><span class="w"></span>
 <span class="kn">import static</span><span class="w"> </span><span class="nn">services.ZettelFields.academicTitleIndexZF</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li><p>Sie werden in der Methode <strong>getMappingForDeserialization</strong> benötigt und verbinden die Felder mit den ZettelField-Variablen:</p></li>
+<li><p>Sie werden in der Methode <code class="docutils literal notranslate"><span class="pre">getMappingForDeserialization</span></code> benötigt und verbinden die Felder mit den ZettelField-Variablen:</p></li>
 </ol>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">protected</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">getMappingForDeserialization</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">regalApi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Play</span><span class="p">.</span><span class="na">application</span><span class="p">().</span><span class="na">configuration</span><span class="p">().</span><span class="na">getString</span><span class="p">(</span><span class="s">"regalApi"</span><span class="p">);</span><span class="w"></span>
@@ -308,12 +310,12 @@ Ggf. wäre es hier ziemlich sinnvoll, sie nicht einzeln zu importieren?</p>
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="../colophon.html">
+          <a class="next-page" href="bindMetadataField2ScalaTemplate.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Colophon</div>
+                <div class="title">Metadaten-Felder im Formular zugänglich machen</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>

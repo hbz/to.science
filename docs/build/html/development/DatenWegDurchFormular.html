@@ -3,10 +3,10 @@
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Anlegen neuer Metadaten-Felder in FORMS" href="addMetadataField2Forms.html" /><link rel="prev" title="Neues Metadaten-Format in die OAI-Schnittstelle integrieren" href="oaiMetadataFormats.html" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Colophon" href="../colophon.html" /><link rel="prev" title="Metadaten-Felder im Formular zugänglich machen" href="bindMetadataField2ScalaTemplate.html" />
 
     <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
-        <title>Anlegen neuer Metadaten-Felder in der API - to.science documentation</title>
+        <title>Der mutmaßliche Weg der Daten durch to.science.forms - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
@@ -177,10 +177,10 @@
 <li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="JsonLDMapper.html">JSON in Java-Klassen überführen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="oaiMetadataFormats.html">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</a></li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Anlegen neuer Metadaten-Felder in der API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="addMetadataField2Api.html">Anlegen neuer Metadaten-Felder in der API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="addMetadataField2Forms.html">Anlegen neuer Metadaten-Felder in FORMS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="bindMetadataField2ScalaTemplate.html">Metadaten-Felder im Formular zugänglich machen</a></li>
-<li class="toctree-l2"><a class="reference internal" href="DatenWegDurchFormular.html">Der mutmaßliche Weg der Daten durch to.science.forms</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Der mutmaßliche Weg der Daten durch to.science.forms</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../colophon.html">Colophon</a></li>
@@ -218,100 +218,49 @@
           </label>
         </div>
         <article role="main">
-          <section id="anlegen-neuer-metadaten-felder-in-der-api">
-<h1>Anlegen neuer Metadaten-Felder in der API<a class="headerlink" href="#anlegen-neuer-metadaten-felder-in-der-api" title="Permalink to this headline"></a></h1>
-<section id="vorgehen">
-<h2>Vorgehen<a class="headerlink" href="#vorgehen" title="Permalink to this headline"></a></h2>
-<p>Das Anlegen neuer Metadatenfelder in der to.science.api erfordert verschiedene Schritte und ist die Grundlage für die anschließende (optionale) Einbindung
-dieser Felder in to.science.forms.</p>
-<ol class="arabic simple">
-<li><p>Datei labels.json in to.science.api und to.science.labels erweitern und deployen (Ja wirklich :-(  )</p></li>
-<li><p>Notwendige Anpassungen in den für das Mapping zuständigen Java-Klassen (JsonMapper.java und LRMIMapper für ORCA)</p></li>
-<li><p>Testen der Änderungen</p></li>
-</ol>
-<section id="labels-json-erweitern">
-<h3>labels.json erweitern<a class="headerlink" href="#labels-json-erweitern" title="Permalink to this headline"></a></h3>
-<p>Damit die verschiedenen Mappings zwischen Formaten wie JSON und RDF, N-Triples etc. funktionieren, muss in der labels.json
-ein entsprechende JSON-Abschnitt für das neue Feld angelegt werden.</p>
-<p>Beispiel neues Feld academicDegree:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d-nb.info/standards/elementset/gnd#academicDegree"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Akademischer Grad"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"academicDegree"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"referenceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@list"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTEXT"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"multilangLabel"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-<span class="p">},</span><span class="w"></span>
-</pre></div>
-</div>
-<section id="name-und-uri">
-<h4>“name” und “uri”:<a class="headerlink" href="#name-und-uri" title="Permalink to this headline"></a></h4>
-<ol class="arabic simple">
-<li><p>Das Literal <strong>“name”</strong> muss den Variablen-Namen enthalten. Hieran war zunächst die Exposition der Variablen zu to.science.forms gescheitert.</p></li>
-<li><p>Der Name muss <strong>vermutlich</strong> dem in der ResourceUri stehenden veränderlichen Teil entsprechen.</p></li>
-</ol>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d-nb.info/standards/elementset/gnd#academicDegree"</span><span class="p">,</span><span class="w"></span>
-<span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"academicDegree"</span><span class="p">,</span><span class="w"></span>
-</pre></div>
-</div>
+          <section id="der-mutmaszliche-weg-der-daten-durch-to-science-forms">
+<h1>Der mutmaßliche Weg der Daten durch to.science.forms<a class="headerlink" href="#der-mutmaszliche-weg-der-daten-durch-to-science-forms" title="Permalink to this headline"></a></h1>
+<section id="erste-annahme">
+<h2>Erste Annahme<a class="headerlink" href="#erste-annahme" title="Permalink to this headline"></a></h2>
+<p>Beim Aufruf des Formulars werden im Normalfall die Daten aus einem RDF-XML in das Formular eingelesen.
+Alternativ kann auch die “Nutzlast” einer POST-Response genutzt werden. Letzteres Verfahren wird jedoch
+normalerweise nur verwendet, wenn das Formular aus dem Formular selber mit dem Submit-Button abgeschickt
+wurde und aufgrund von Fehlern die Formularfelder neu eingelesen werden sollen.</p>
 </section>
-<section id="referencetype-und-container">
-<h4>“referenceType” und “container”:<a class="headerlink" href="#referencetype-und-container" title="Permalink to this headline"></a></h4>
+<section id="zweite-annahme">
+<h2>Zweite Annahme<a class="headerlink" href="#zweite-annahme" title="Permalink to this headline"></a></h2>
+<p>Das Versenden der Daten aus dem Formular an die to.science.api erfolgt ausschließlich als API-Call
+bei dem ggf. verändertes RDF-XML an die to.science.api geliefert wird.</p>
+</section>
+<section id="nachverfolgung-der-schritte">
+<h2>Nachverfolgung der Schritte<a class="headerlink" href="#nachverfolgung-der-schritte" title="Permalink to this headline"></a></h2>
+<section id="von-drupal-zu-to-science-api">
+<h3>Von Drupal zu to.science.api<a class="headerlink" href="#von-drupal-zu-to-science-api" title="Permalink to this headline"></a></h3>
 <ol class="arabic">
 <li><div class="line-block">
-<div class="line">Die Literale <strong>“referenceType”</strong> ,  <strong>“container”</strong> enthalten vermutlich Informationen über die Typisierung der Variablen. Hierbei wird bei container das JSON-LD Schlüsselwort @list verwendet. Es gibt 13 Schlüsselwörter. <a class="footnote-reference brackets" href="#id3" id="id1">1</a></div>
-<div class="line">Da das jedoch nicht dokumentiert ist, muss man sich Beispiele für verschiedene Variablentypen in der labels.json heraussuchen, probieren und Daumen drücken… (seufz).</div>
+<div class="line">Der Reiter “Bearbeiten” in der Drupal-Oberfläche löst einen GET-Request an die to.science-api mit der Route <code class="docutils literal notranslate"><span class="pre">:pid/edit</span></code> aus.</div>
+<div class="line">Als Parameter werden mitgeliefert:</div>
+<div class="line">a) pid = die ID des zu berabeitenden Objekts,</div>
+<div class="line">b) format = das Format, in dem Metadaten in einem späteren Prozess abgeholt werden sollen</div>
+<div class="line">c) topicId = unklar</div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">Der Call wird innerhalb der to.science.api entgegen genommen von der Klasse und Methode:</div>
+<div class="line">a) <code class="docutils literal notranslate"><span class="pre">controllers.Resource.edit(pid:String,format</span> <span class="pre">:</span> <span class="pre">String?="json",topicId?=null)</span></code></div>
 </div>
 </li>
 </ol>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"referenceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w"></span>
-<span class="nt">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@list"</span><span class="p">,</span><span class="w"></span>
-</pre></div>
-</div>
-<ol class="arabic simple" start="2">
-<li><p>Das Literal <strong>“type”</strong> verweist vermutlich überwiegend auf das Schlüsselwort @context. Sollte vermutlich nicht geändert werden.</p></li>
-</ol>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTEXT"</span><span class="p">,</span><span class="w"></span>
-</pre></div>
-</div>
 </section>
-<section id="alle-labels-json-ersetzen">
-<h4>Alle labels.json ersetzen:<a class="headerlink" href="#alle-labels-json-ersetzen" title="Permalink to this headline"></a></h4>
-<ol class="arabic simple">
-<li><p>Sowohl die labels.json von <em>to.science.api</em> als auch die von <em>to.science.labels</em> müssen erweitert werden. Wie die beiden interferieren ist bisher ziemlich unklar.</p></li>
-<li><p>Beide Dateien müssen manuell in das jeweilige conf-Verzeichnis im installierten Modul kopiert werden. Sie werden nicht automatisch aktualisiert</p></li>
-<li><p>to.science.api und to.science.labels müssen neu gestartet werden.</p></li>
+<section id="von-to-science-api-zu-to-science-forms">
+<h3>Von to.science.api zu to.science.forms<a class="headerlink" href="#von-to-science-api-zu-to-science-forms" title="Permalink to this headline"></a></h3>
+<ol class="arabic">
+<li><div class="line-block">
+<div class="line">Die Methode edit in der Klasse Resource ruft</div>
+</div>
+</li>
 </ol>
 </section>
-</section>
-<section id="erweitern-der-java-klasse-jsonmapper-java">
-<h3>Erweitern der Java-Klasse JsonMapper.Java<a class="headerlink" href="#erweitern-der-java-klasse-jsonmapper-java" title="Permalink to this headline"></a></h3>
-<p>Damit das neue Feld in die verschiedenen Metadaten-Formate gemappt werden kann,
-ist zumindest die Erweiterung der Klasse JsonMapper.Java notwendig</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">api</span><span class="p">.</span><span class="na">helper</span><span class="o">/</span><span class="n">JsonMapper</span><span class="p">.</span><span class="na">Java</span><span class="w"></span>
-</pre></div>
-</div>
-<p>Welche Methoden konkret angepasst werden müssen, kann hier nicht pauschal gesagt werden.</p>
-<p>Für ORCA ist zusätzlich die Klasse LRMIMapper zu erweitern, damit die neuen Felder aud dem Datenstrom lrmiData gelesen und auch wieder dort hin geschrieben werden können.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">api</span><span class="p">.</span><span class="na">helper</span><span class="o">/</span><span class="n">LRMIMapper</span><span class="p">.</span><span class="na">Java</span><span class="w"></span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="hintergrund">
-<h2>Hintergrund<a class="headerlink" href="#hintergrund" title="Permalink to this headline"></a></h2>
-<p>Die Vereinbarung des neuen Metadaten-Felds in <code class="docutils literal notranslate"><span class="pre">labels.json</span></code> ist notwendig, weil die <code class="docutils literal notranslate"><span class="pre">labels.json</span></code> innerhalb der to.science-Komponenten
-die Ergänzung des neuen Feldes um den für Mappings und Konvertiereungen von JSON-Dateien notwendigen LinkedData-Teil übernimmt.
-Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. <a class="footnote-reference brackets" href="#id3" id="id2">1</a></p>
-<dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
-<dd><p><a class="reference external" href="https://de.wikipedia.org/wiki/JSON-LD">https://de.wikipedia.org/wiki/JSON-LD</a></p>
-</dd>
-</dl>
 </section>
 </section>
 
@@ -320,23 +269,23 @@ Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. <a clas
       <footer>
         
         <div class="related-pages">
-          <a class="next-page" href="addMetadataField2Forms.html">
+          <a class="next-page" href="../colophon.html">
               <div class="page-info">
                 <div class="context">
                   <span>Next</span>
                 </div>
-                <div class="title">Anlegen neuer Metadaten-Felder in FORMS</div>
+                <div class="title">Colophon</div>
               </div>
               <svg><use href="#svg-arrow-right"></use></svg>
             </a>
-          <a class="prev-page" href="oaiMetadataFormats.html">
+          <a class="prev-page" href="bindMetadataField2ScalaTemplate.html">
               <svg><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
                 </div>
                 
-                <div class="title">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</div>
+                <div class="title">Metadaten-Felder im Formular zugänglich machen</div>
                 
               </div>
             </a>
@@ -372,18 +321,14 @@ Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. <a clas
         <div class="toc-tree-container">
           <div class="toc-tree">
             <ul>
-<li><a class="reference internal" href="#">Anlegen neuer Metadaten-Felder in der API</a><ul>
-<li><a class="reference internal" href="#vorgehen">Vorgehen</a><ul>
-<li><a class="reference internal" href="#labels-json-erweitern">labels.json erweitern</a><ul>
-<li><a class="reference internal" href="#name-und-uri">“name” und “uri”:</a></li>
-<li><a class="reference internal" href="#referencetype-und-container">“referenceType” und “container”:</a></li>
-<li><a class="reference internal" href="#alle-labels-json-ersetzen">Alle labels.json ersetzen:</a></li>
+<li><a class="reference internal" href="#">Der mutmaßliche Weg der Daten durch to.science.forms</a><ul>
+<li><a class="reference internal" href="#erste-annahme">Erste Annahme</a></li>
+<li><a class="reference internal" href="#zweite-annahme">Zweite Annahme</a></li>
+<li><a class="reference internal" href="#nachverfolgung-der-schritte">Nachverfolgung der Schritte</a><ul>
+<li><a class="reference internal" href="#von-drupal-zu-to-science-api">Von Drupal zu to.science.api</a></li>
+<li><a class="reference internal" href="#von-to-science-api-zu-to-science-forms">Von to.science.api zu to.science.forms</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#erweitern-der-java-klasse-jsonmapper-java">Erweitern der Java-Klasse JsonMapper.Java</a></li>
-</ul>
-</li>
-<li><a class="reference internal" href="#hintergrund">Hintergrund</a></li>
 </ul>
 </li>
 </ul>
