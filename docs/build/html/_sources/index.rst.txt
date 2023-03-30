@@ -29,7 +29,7 @@ Werkzeug sphinx in HTML übersetzt werden. Mehr dazu im Abschnitt
    
    uerbersicht/uebersicht
    installation
-   api/api
+   components/components
    development/development
    colophon
 

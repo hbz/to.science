@@ -1,14 +1,14 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Neues Metadaten-Format in die OAI-Schnittstelle integrieren" href="oaiMetadataFormats.html" /><link rel="prev" title="Entwicklung" href="development.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.23 -->
         <title>JSON in Java-Klassen überführen - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -143,7 +143,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/hbz-logo.svg" alt="Logo"/>
@@ -152,7 +152,7 @@
   <span class="sidebar-brand-text">to.science  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -165,7 +165,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../api/api.html">API</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../core/core.html">The to.science.core Library</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../core/whyCore.html">Why to.science.core?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/whyCore.html#where-to-find-to-science-core">Where to find to.science.core?</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/api.html">API</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../api/toscience.html">to.science.api</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/labels.html">to.science.labels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/forms.html">to.science.forms</a></li>
@@ -174,11 +179,13 @@
 <li class="toctree-l2"><a class="reference internal" href="../api/complex-example.html">Complex Example of hierarchical content</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">JSON in Java-Klassen überführen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="oaiMetadataFormats.html">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</a></li>
 <li class="toctree-l2"><a class="reference internal" href="addMetadataField2Api.html">Anlegen neuer Metadaten-Felder in der API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="addMetadataField2Forms.html">Anlegen neuer Metadaten-Felder in FORMS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bindMetadataField2ScalaTemplate.html">Metadaten-Felder im Formular zugänglich machen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="DatenWegDurchFormular.html">Der mutmaßliche Weg der Daten durch to.science.forms</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../colophon.html">Colophon</a></li>
@@ -202,7 +209,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -217,7 +226,7 @@
         </div>
         <article role="main">
           <section id="json-in-java-klassen-uberfuhren">
-<h1>JSON in Java-Klassen überführen<a class="headerlink" href="#json-in-java-klassen-uberfuhren" title="Permalink to this headline"></a></h1>
+<h1>JSON in Java-Klassen überführen<a class="headerlink" href="#json-in-java-klassen-uberfuhren" title="Permalink to this heading"></a></h1>
 <p>Mit der Klasse JsonLDMapper steht ein generischer Ansatz zum Einlesen des lobid-JSON (oder anderer JSON-Formate) zur Verfügung,
 der die im JSON liegenden Metadaten in einer einheitlichen Weise für die Verarbeitung zugänglich macht.</p>
 <p>Die Einrichtung der Klasse JsonLDMapper verfolgt das Ziel, kommende Änderungen am Datenmodell vom lobid mit möglichst wenig Aufwand in das Repository übernehmen zu können.</p>
@@ -236,41 +245,41 @@ an. Der JsonLDMapper bietet jeweils die Methode getElement(Pfad), die transparen
 Arrays of Value in Form des Array-Bezeichners aus dem JSON und des jeweiligen Wertes.</p>
 <p>Beispiele</p>
 <p>Aus dem Array von Literalen “title”</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">record</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="s">"Ausdrücke in Java"</span><span class="p">,</span><span class="w"> </span><span class="s">"Java Expressions"</span><span class="p">,</span><span class="w"> </span><span class="s">"Expression de Java"</span><span class="o">]</span><span class="p">}}</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">record</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">title</span><span class="p">:</span><span class="w"> </span><span class="o">[</span><span class="s">&quot;Ausdrücke in Java&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Java Expressions&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Expression de Java&quot;</span><span class="o">]</span><span class="p">}}</span>
 </pre></div>
 </div>
 <p>erhält man durch mit dem JsonLDMapper</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">JsonLDMapper</span><span class="w"> </span><span class="n">jMapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonLDMapper</span><span class="p">(</span><span class="n">JsonNode</span><span class="p">);</span><span class="w"></span>
-<span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Hashtable</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jMapper</span><span class="p">.</span><span class="na">getElement</span><span class="p">(</span><span class="s">"root.record.title"</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">JsonLDMapper</span><span class="w"> </span><span class="n">jMapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonLDMapper</span><span class="p">(</span><span class="n">JsonNode</span><span class="p">);</span>
+<span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Hashtable</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jMapper</span><span class="p">.</span><span class="na">getElement</span><span class="p">(</span><span class="s">&quot;root.record.title&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>eine <strong>ArrayListe</strong> die aus drei Key/Value-Paaren besteht:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Ausdrücke in Java"</span><span class="w"></span>
-<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Java Expressions"</span><span class="w"></span>
-<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Expression de Java"</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Ausdrücke in Java&quot;</span>
+<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Java Expressions&quot;</span>
+<span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Expression de Java&quot;</span>
 </pre></div>
 </div>
 <p>Aus dem aus zwei Key/Value-Paaren bestehenden Objekt “creator”</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">record</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">creator</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">prefLabel</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"Loki Schmidt"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nd">@id</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"https://orcid.org/000-000-000"</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
-<span class="p">}}</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">record</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="n">creator</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">prefLabel</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Loki Schmidt&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nd">@id</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://orcid.org/000-000-000&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}}</span>
 </pre></div>
 </div>
 <p>erhält man durch den gleichen Aufruf:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">JsonLDMapper</span><span class="w"> </span><span class="n">jMapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonLDMapper</span><span class="p">(</span><span class="n">JsonNode</span><span class="p">);</span><span class="w"></span>
-<span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Hashtable</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jMapper</span><span class="p">.</span><span class="na">getElement</span><span class="p">(</span><span class="s">"root.creator"</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">JsonLDMapper</span><span class="w"> </span><span class="n">jMapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonLDMapper</span><span class="p">(</span><span class="n">JsonNode</span><span class="p">);</span>
+<span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">Hashtable</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">title</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jMapper</span><span class="p">.</span><span class="na">getElement</span><span class="p">(</span><span class="s">&quot;root.creator&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>eine <strong>ArrayListe</strong> die aus zwei Key/Value-Paaren besteht:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">prefLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">"Loki Schmidt"</span><span class="w"></span>
-<span class="nd">@id</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">"https://orcid.org/000-000-000"</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">prefLabel</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Loki Schmidt&quot;</span>
+<span class="nd">@id</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://orcid.org/000-000-000&quot;</span>
 </pre></div>
 </div>
 <p>Damit der in Json verwendete Datentyp weiterhin eindeutig unterscheiden werden kann, besitzt die JsonLDMapper-Klasse zusätzlich die Methoden
 isArray() und isObject().</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">JsonLDMapper</span><span class="w"> </span><span class="n">jMapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonLDMapper</span><span class="p">(</span><span class="n">JsonNode</span><span class="p">);</span><span class="w"></span>
-<span class="kt">boolean</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jMapper</span><span class="p">.</span><span class="na">getElement</span><span class="p">(</span><span class="s">"\root.creator\").isArray();</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">JsonLDMapper</span><span class="w"> </span><span class="n">jMapper</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">JsonLDMapper</span><span class="p">(</span><span class="n">JsonNode</span><span class="p">);</span>
+<span class="kt">boolean</span><span class="w"> </span><span class="n">test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">jMapper</span><span class="p">.</span><span class="na">getElement</span><span class="p">(</span><span class="s">&quot;\root.creator\&quot;).isArray();</span>
 </pre></div>
 </div>
 </section>
@@ -287,10 +296,10 @@ isArray() und isObject().</p>
                 </div>
                 <div class="title">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="development.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -312,9 +321,7 @@ isArray() und isObject().</p>
             
           </div>
           <div class="right-details">
-            <div class="icons">
-              
-            </div>
+            
           </div>
         </div>
         
@@ -326,10 +333,11 @@ isArray() und isObject().</p>
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+</div><script src="../_static/jquery.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     </body>
 </html>

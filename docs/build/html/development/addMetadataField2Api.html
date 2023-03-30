@@ -1,14 +1,14 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Anlegen neuer Metadaten-Felder in FORMS" href="addMetadataField2Forms.html" /><link rel="prev" title="Neues Metadaten-Format in die OAI-Schnittstelle integrieren" href="oaiMetadataFormats.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.23 -->
         <title>Anlegen neuer Metadaten-Felder in der API - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -143,7 +143,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/hbz-logo.svg" alt="Logo"/>
@@ -152,7 +152,7 @@
   <span class="sidebar-brand-text">to.science  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -165,7 +165,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../api/api.html">API</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../core/core.html">The to.science.core Library</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../core/whyCore.html">Why to.science.core?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/whyCore.html#where-to-find-to-science-core">Where to find to.science.core?</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/api.html">API</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../api/toscience.html">to.science.api</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/labels.html">to.science.labels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/forms.html">to.science.forms</a></li>
@@ -174,7 +179,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../api/complex-example.html">Complex Example of hierarchical content</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="JsonLDMapper.html">JSON in Java-Klassen überführen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="oaiMetadataFormats.html">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</a></li>
 <li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Anlegen neuer Metadaten-Felder in der API</a></li>
@@ -204,7 +209,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -219,9 +226,9 @@
         </div>
         <article role="main">
           <section id="anlegen-neuer-metadaten-felder-in-der-api">
-<h1>Anlegen neuer Metadaten-Felder in der API<a class="headerlink" href="#anlegen-neuer-metadaten-felder-in-der-api" title="Permalink to this headline"></a></h1>
+<h1>Anlegen neuer Metadaten-Felder in der API<a class="headerlink" href="#anlegen-neuer-metadaten-felder-in-der-api" title="Permalink to this heading"></a></h1>
 <section id="vorgehen">
-<h2>Vorgehen<a class="headerlink" href="#vorgehen" title="Permalink to this headline"></a></h2>
+<h2>Vorgehen<a class="headerlink" href="#vorgehen" title="Permalink to this heading"></a></h2>
 <p>Das Anlegen neuer Metadatenfelder in der to.science.api erfordert verschiedene Schritte und ist die Grundlage für die anschließende (optionale) Einbindung
 dieser Felder in to.science.forms.</p>
 <ol class="arabic simple">
@@ -230,57 +237,57 @@ dieser Felder in to.science.forms.</p>
 <li><p>Testen der Änderungen</p></li>
 </ol>
 <section id="labels-json-erweitern">
-<h3>labels.json erweitern<a class="headerlink" href="#labels-json-erweitern" title="Permalink to this headline"></a></h3>
+<h3>labels.json erweitern<a class="headerlink" href="#labels-json-erweitern" title="Permalink to this heading"></a></h3>
 <p>Damit die verschiedenen Mappings zwischen Formaten wie JSON und RDF, N-Triples etc. funktionieren, muss in der labels.json
 ein entsprechende JSON-Abschnitt für das neue Feld angelegt werden.</p>
 <p>Beispiel neues Feld academicDegree:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d-nb.info/standards/elementset/gnd#academicDegree"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"comment"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"label"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Akademischer Grad"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"icon"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"academicDegree"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"referenceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@list"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"weight"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTEXT"</span><span class="p">,</span><span class="w"></span>
-<span class="w">        </span><span class="nt">"multilangLabel"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
-<span class="p">},</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d-nb.info/standards/elementset/gnd#academicDegree&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;label&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Akademischer Grad&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;academicDegree&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;referenceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;String&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;container&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@list&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;weight&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CONTEXT&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;multilangLabel&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<span class="p">},</span>
 </pre></div>
 </div>
 <section id="name-und-uri">
-<h4>“name” und “uri”:<a class="headerlink" href="#name-und-uri" title="Permalink to this headline"></a></h4>
+<h4>“name” und “uri”:<a class="headerlink" href="#name-und-uri" title="Permalink to this heading"></a></h4>
 <ol class="arabic simple">
 <li><p>Das Literal <strong>“name”</strong> muss den Variablen-Namen enthalten. Hieran war zunächst die Exposition der Variablen zu to.science.forms gescheitert.</p></li>
 <li><p>Der Name muss <strong>vermutlich</strong> dem in der ResourceUri stehenden veränderlichen Teil entsprechen.</p></li>
 </ol>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"uri"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://d-nb.info/standards/elementset/gnd#academicDegree"</span><span class="p">,</span><span class="w"></span>
-<span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"academicDegree"</span><span class="p">,</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;uri&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://d-nb.info/standards/elementset/gnd#academicDegree&quot;</span><span class="p">,</span>
+<span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;academicDegree&quot;</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
 <section id="referencetype-und-container">
-<h4>“referenceType” und “container”:<a class="headerlink" href="#referencetype-und-container" title="Permalink to this headline"></a></h4>
+<h4>“referenceType” und “container”:<a class="headerlink" href="#referencetype-und-container" title="Permalink to this heading"></a></h4>
 <ol class="arabic">
 <li><div class="line-block">
-<div class="line">Die Literale <strong>“referenceType”</strong> ,  <strong>“container”</strong> enthalten vermutlich Informationen über die Typisierung der Variablen. Hierbei wird bei container das JSON-LD Schlüsselwort @list verwendet. Es gibt 13 Schlüsselwörter. <a class="footnote-reference brackets" href="#id3" id="id1">1</a></div>
+<div class="line">Die Literale <strong>“referenceType”</strong> ,  <strong>“container”</strong> enthalten vermutlich Informationen über die Typisierung der Variablen. Hierbei wird bei container das JSON-LD Schlüsselwort &#64;list verwendet. Es gibt 13 Schlüsselwörter. <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></div>
 <div class="line">Da das jedoch nicht dokumentiert ist, muss man sich Beispiele für verschiedene Variablentypen in der labels.json heraussuchen, probieren und Daumen drücken… (seufz).</div>
 </div>
 </li>
 </ol>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"referenceType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"String"</span><span class="p">,</span><span class="w"></span>
-<span class="nt">"container"</span><span class="p">:</span><span class="w"> </span><span class="s2">"@list"</span><span class="p">,</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;referenceType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;String&quot;</span><span class="p">,</span>
+<span class="nt">&quot;container&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@list&quot;</span><span class="p">,</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
-<li><p>Das Literal <strong>“type”</strong> verweist vermutlich überwiegend auf das Schlüsselwort @context. Sollte vermutlich nicht geändert werden.</p></li>
+<li><p>Das Literal <strong>“type”</strong> verweist vermutlich überwiegend auf das Schlüsselwort &#64;context. Sollte vermutlich nicht geändert werden.</p></li>
 </ol>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CONTEXT"</span><span class="p">,</span><span class="w"></span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CONTEXT&quot;</span><span class="p">,</span>
 </pre></div>
 </div>
 </section>
 <section id="alle-labels-json-ersetzen">
-<h4>Alle labels.json ersetzen:<a class="headerlink" href="#alle-labels-json-ersetzen" title="Permalink to this headline"></a></h4>
+<h4>Alle labels.json ersetzen:<a class="headerlink" href="#alle-labels-json-ersetzen" title="Permalink to this heading"></a></h4>
 <ol class="arabic simple">
 <li><p>Sowohl die labels.json von <em>to.science.api</em> als auch die von <em>to.science.labels</em> müssen erweitert werden. Wie die beiden interferieren ist bisher ziemlich unklar.</p></li>
 <li><p>Beide Dateien müssen manuell in das jeweilige conf-Verzeichnis im installierten Modul kopiert werden. Sie werden nicht automatisch aktualisiert</p></li>
@@ -289,29 +296,30 @@ ein entsprechende JSON-Abschnitt für das neue Feld angelegt werden.</p>
 </section>
 </section>
 <section id="erweitern-der-java-klasse-jsonmapper-java">
-<h3>Erweitern der Java-Klasse JsonMapper.Java<a class="headerlink" href="#erweitern-der-java-klasse-jsonmapper-java" title="Permalink to this headline"></a></h3>
+<h3>Erweitern der Java-Klasse JsonMapper.Java<a class="headerlink" href="#erweitern-der-java-klasse-jsonmapper-java" title="Permalink to this heading"></a></h3>
 <p>Damit das neue Feld in die verschiedenen Metadaten-Formate gemappt werden kann,
 ist zumindest die Erweiterung der Klasse JsonMapper.Java notwendig</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">api</span><span class="p">.</span><span class="na">helper</span><span class="o">/</span><span class="n">JsonMapper</span><span class="p">.</span><span class="na">Java</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">api</span><span class="p">.</span><span class="na">helper</span><span class="o">/</span><span class="n">JsonMapper</span><span class="p">.</span><span class="na">Java</span>
 </pre></div>
 </div>
 <p>Welche Methoden konkret angepasst werden müssen, kann hier nicht pauschal gesagt werden.</p>
 <p>Für ORCA ist zusätzlich die Klasse LRMIMapper zu erweitern, damit die neuen Felder aud dem Datenstrom lrmiData gelesen und auch wieder dort hin geschrieben werden können.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">api</span><span class="p">.</span><span class="na">helper</span><span class="o">/</span><span class="n">LRMIMapper</span><span class="p">.</span><span class="na">Java</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">api</span><span class="p">.</span><span class="na">helper</span><span class="o">/</span><span class="n">LRMIMapper</span><span class="p">.</span><span class="na">Java</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="hintergrund">
-<h2>Hintergrund<a class="headerlink" href="#hintergrund" title="Permalink to this headline"></a></h2>
+<h2>Hintergrund<a class="headerlink" href="#hintergrund" title="Permalink to this heading"></a></h2>
 <p>Die Vereinbarung des neuen Metadaten-Felds in <code class="docutils literal notranslate"><span class="pre">labels.json</span></code> ist notwendig, weil die <code class="docutils literal notranslate"><span class="pre">labels.json</span></code> innerhalb der to.science-Komponenten
 die Ergänzung des neuen Feldes um den für Mappings und Konvertiereungen von JSON-Dateien notwendigen LinkedData-Teil übernimmt.
-Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. <a class="footnote-reference brackets" href="#id3" id="id2">1</a></p>
-<dl class="footnote brackets">
-<dt class="label" id="id3"><span class="brackets"><a class="fn-backref" href="#id2">1</a></span></dt>
-<dd><p><a class="reference external" href="https://de.wikipedia.org/wiki/JSON-LD">https://de.wikipedia.org/wiki/JSON-LD</a></p>
-</dd>
-</dl>
+Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id3" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p><a class="reference external" href="https://de.wikipedia.org/wiki/JSON-LD">https://de.wikipedia.org/wiki/JSON-LD</a></p>
+</aside>
+</aside>
 </section>
 </section>
 
@@ -327,10 +335,10 @@ Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. <a clas
                 </div>
                 <div class="title">Anlegen neuer Metadaten-Felder in FORMS</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="oaiMetadataFormats.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -352,9 +360,7 @@ Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. <a clas
             
           </div>
           <div class="right-details">
-            <div class="icons">
-              
-            </div>
+            
           </div>
         </div>
         
@@ -366,7 +372,7 @@ Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. <a clas
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -395,10 +401,11 @@ Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. <a clas
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+</div><script src="../_static/jquery.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     </body>
 </html>

@@ -4,10 +4,10 @@ Anlegen neuer Metadaten-Felder in FORMS
 Voraussetzungen
 ---------------
 
-1. Das neue Metadaten-Feld muss zunächst in den beiden Dateien labels.json von to.science.api und to.science.labels definiert werden 
+1. Das neue Metadaten-Feld muss zunächst in den beiden Dateien ``labels.json`` von to.science.api und to.science.labels definiert werden 
 (siehe vorherige Seite).
 
-2. Übernahme der Definition des neuen Feldes aus den labels.json in die labels.json von to.science.forms
+2. Übernahme der Definition des neuen Feldes aus den ``labels.json`` in die ``labels.json`` von to.science.forms
 
 3. Kopieren der labels.conf in das installationsverzeichnis von to.science.forms  
 
@@ -27,7 +27,7 @@ damit das neue Feld auch in den Formularen funktioniert.
     to.science.forms.model.ZettelModel.Java
 
 
-1. In ``ZettelFields.Java`` werden zunächst Verweise auf die Inhalte der ``labels.conf`` erzeugt. Dafür werden "Etikett"-Instanzen angelegt. 
+1. In ``ZettelFields`` werden zunächst Verweise auf die Inhalte der ``labels.conf`` erzeugt. Dafür werden "Etikett"-Instanzen angelegt. 
 Ist das neue Feld wie im Beispiel ``academicDegree`` als wiederholbares Literal angelegt, werden folgende Deklarationen benötigt:
 Das ZF am Ende der Variablen-Deklaration weißt darauf hin, dass es sich um ein "ZettelField" handeln soll.
 
@@ -70,7 +70,7 @@ Das ZF am Ende der Variablen-Deklaration weißt darauf hin, dass es sich um ein 
      }
   
 
-4. Anschließend werden die in ``ZettelField.Java`` deklarierten Variablen importiert.
+4. Anschließend werden die in ``ZettelField`` deklarierten Variablen importiert.
 Ggf. wäre es hier ziemlich sinnvoll, sie nicht einzeln zu importieren?
 
 .. code-block:: java

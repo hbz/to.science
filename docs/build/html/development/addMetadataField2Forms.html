@@ -1,14 +1,14 @@
 <!doctype html>
-<html class="no-js">
+<html class="no-js" lang="en">
   <head><meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
-    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 <link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Metadaten-Felder im Formular zugänglich machen" href="bindMetadataField2ScalaTemplate.html" /><link rel="prev" title="Anlegen neuer Metadaten-Felder in der API" href="addMetadataField2Api.html" />
 
-    <meta name="generator" content="sphinx-4.5.0, furo 2022.04.07"/>
+    <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.23 -->
         <title>Anlegen neuer Metadaten-Felder in FORMS - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=68f4518137b9aefe99b631505a2064c3c42c9852" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
     
     
@@ -143,7 +143,7 @@
   <aside class="sidebar-drawer">
     <div class="sidebar-container">
       
-      <div class="sidebar-sticky"><a class="sidebar-brand centered" href="../index.html">
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
   
   <div class="sidebar-logo-container">
     <img class="sidebar-logo" src="../_static/hbz-logo.svg" alt="Logo"/>
@@ -152,7 +152,7 @@
   <span class="sidebar-brand-text">to.science  documentation</span>
   
 </a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
-  <input class="sidebar-search" placeholder=Search name="q" aria-label="Search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
   <input type="hidden" name="check_keywords" value="yes">
   <input type="hidden" name="area" value="default">
 </form>
@@ -165,7 +165,12 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../api/api.html">API</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../core/core.html">The to.science.core Library</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../core/whyCore.html">Why to.science.core?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/whyCore.html#where-to-find-to-science-core">Where to find to.science.core?</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/api.html">API</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../api/toscience.html">to.science.api</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/labels.html">to.science.labels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../api/forms.html">to.science.forms</a></li>
@@ -174,7 +179,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../api/complex-example.html">Complex Example of hierarchical content</a></li>
 </ul>
 </li>
-<li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="JsonLDMapper.html">JSON in Java-Klassen überführen</a></li>
 <li class="toctree-l2"><a class="reference internal" href="oaiMetadataFormats.html">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</a></li>
 <li class="toctree-l2"><a class="reference internal" href="addMetadataField2Api.html">Anlegen neuer Metadaten-Felder in der API</a></li>
@@ -204,7 +209,9 @@
           </svg>
           <span>Back to top</span>
         </a>
-        <div class="content-icon-container"><div class="theme-toggle-container theme-toggle-content">
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
             <button class="theme-toggle">
               <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
               <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
@@ -219,86 +226,86 @@
         </div>
         <article role="main">
           <section id="anlegen-neuer-metadaten-felder-in-forms">
-<h1>Anlegen neuer Metadaten-Felder in FORMS<a class="headerlink" href="#anlegen-neuer-metadaten-felder-in-forms" title="Permalink to this headline"></a></h1>
+<h1>Anlegen neuer Metadaten-Felder in FORMS<a class="headerlink" href="#anlegen-neuer-metadaten-felder-in-forms" title="Permalink to this heading"></a></h1>
 <section id="voraussetzungen">
-<h2>Voraussetzungen<a class="headerlink" href="#voraussetzungen" title="Permalink to this headline"></a></h2>
-<p>1. Das neue Metadaten-Feld muss zunächst in den beiden Dateien labels.json von to.science.api und to.science.labels definiert werden
+<h2>Voraussetzungen<a class="headerlink" href="#voraussetzungen" title="Permalink to this heading"></a></h2>
+<p>1. Das neue Metadaten-Feld muss zunächst in den beiden Dateien <code class="docutils literal notranslate"><span class="pre">labels.json</span></code> von to.science.api und to.science.labels definiert werden
 (siehe vorherige Seite).</p>
 <ol class="arabic simple" start="2">
-<li><p>Übernahme der Definition des neuen Feldes aus den labels.json in die labels.json von to.science.forms</p></li>
+<li><p>Übernahme der Definition des neuen Feldes aus den <code class="docutils literal notranslate"><span class="pre">labels.json</span></code> in die <code class="docutils literal notranslate"><span class="pre">labels.json</span></code> von to.science.forms</p></li>
 <li><p>Kopieren der labels.conf in das installationsverzeichnis von to.science.forms</p></li>
 </ol>
 <p>ja wirklich…</p>
-<img alt="../_images/autsch.gif" src="../_images/autsch.gif"/>
+<img alt="../_images/autsch.gif" src="../_images/autsch.gif" />
 <section id="vorgehen">
-<h3>Vorgehen<a class="headerlink" href="#vorgehen" title="Permalink to this headline"></a></h3>
+<h3>Vorgehen<a class="headerlink" href="#vorgehen" title="Permalink to this heading"></a></h3>
 <p>In den folgenden Java-Klassen müssen zunächst Erweiterungen in Form von Variablen-Deklarationen vorgenommen werden,
 damit das neue Feld auch in den Formularen funktioniert.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">forms</span><span class="p">.</span><span class="na">services</span><span class="p">.</span><span class="na">ZettelFields</span><span class="p">.</span><span class="na">Java</span><span class="w"></span>
-<span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">forms</span><span class="p">.</span><span class="na">model</span><span class="p">.</span><span class="na">ZettelModel</span><span class="p">.</span><span class="na">Java</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">forms</span><span class="p">.</span><span class="na">services</span><span class="p">.</span><span class="na">ZettelFields</span><span class="p">.</span><span class="na">Java</span>
+<span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">forms</span><span class="p">.</span><span class="na">model</span><span class="p">.</span><span class="na">ZettelModel</span><span class="p">.</span><span class="na">Java</span>
 </pre></div>
 </div>
-<p>1. In <code class="docutils literal notranslate"><span class="pre">ZettelFields.Java</span></code> werden zunächst Verweise auf die Inhalte der <code class="docutils literal notranslate"><span class="pre">labels.conf</span></code> erzeugt. Dafür werden “Etikett”-Instanzen angelegt.
+<p>1. In <code class="docutils literal notranslate"><span class="pre">ZettelFields</span></code> werden zunächst Verweise auf die Inhalte der <code class="docutils literal notranslate"><span class="pre">labels.conf</span></code> erzeugt. Dafür werden “Etikett”-Instanzen angelegt.
 Ist das neue Feld wie im Beispiel <code class="docutils literal notranslate"><span class="pre">academicDegree</span></code> als wiederholbares Literal angelegt, werden folgende Deklarationen benötigt:
 Das ZF am Ende der Variablen-Deklaration weißt darauf hin, dass es sich um ein “ZettelField” handeln soll.</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Etikett</span><span class="w"> </span><span class="n">academicDegreeZF</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w"> </span><span class="n">ZettelHelper</span><span class="p">.</span><span class="na">etikett</span><span class="p">.</span><span class="na">getEtikett</span><span class="p">(</span><span class="s">"https://d-nb.info/standards/elementset/gnd#academicDegree"</span><span class="p">);</span><span class="w"></span>
-<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Etikett</span><span class="w"> </span><span class="n">academicDegreeIndexZF</span><span class="w"> </span><span class="o">=</span><span class="w"></span>
-<span class="w"> </span><span class="n">ZettelHelper</span><span class="p">.</span><span class="na">etikett</span><span class="p">.</span><span class="na">getEtikett</span><span class="p">(</span><span class="s">"http://hbz-nrw.de/regal#academicDegreeIndex"</span><span class="p">);</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Etikett</span><span class="w"> </span><span class="n">academicDegreeZF</span><span class="w"> </span><span class="o">=</span>
+<span class="w"> </span><span class="n">ZettelHelper</span><span class="p">.</span><span class="na">etikett</span><span class="p">.</span><span class="na">getEtikett</span><span class="p">(</span><span class="s">&quot;https://d-nb.info/standards/elementset/gnd#academicDegree&quot;</span><span class="p">);</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="n">Etikett</span><span class="w"> </span><span class="n">academicDegreeIndexZF</span><span class="w"> </span><span class="o">=</span>
+<span class="w"> </span><span class="n">ZettelHelper</span><span class="p">.</span><span class="na">etikett</span><span class="p">.</span><span class="na">getEtikett</span><span class="p">(</span><span class="s">&quot;http://hbz-nrw.de/regal#academicDegreeIndex&quot;</span><span class="p">);</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="2">
 <li><p>In der <code class="docutils literal notranslate"><span class="pre">ZettelModel.Java</span></code> werden ebenfalls neue Variablen-Deklarationen als erzeugt</p></li>
 </ol>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ZettelModel</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ZettelModel</span><span class="w"> </span><span class="p">{</span>
 
-<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">academicDegree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w"></span>
-<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">academicDegreeIndex</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">academicDegree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">  </span><span class="kd">private</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">academicDegreeIndex</span><span class="p">;</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
 <li><p>Die neuen Variablen benötigen <code class="docutils literal notranslate"><span class="pre">GETTER,</span> <span class="pre">SETTER</span></code> und im Fall der <code class="docutils literal notranslate"><span class="pre">ArrayList</span></code> eine add-Methode:</p></li>
 </ol>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ZettelModel</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">public</span><span class="w"> </span><span class="kd">abstract</span><span class="w"> </span><span class="kd">class</span> <span class="nc">ZettelModel</span><span class="w"> </span><span class="p">{</span>
 
-<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setAcademicDegree</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AcademicDegree</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="na">academicDegree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">academicDegree</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setAcademicDegree</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">AcademicDegree</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="na">academicDegree</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">academicDegree</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAcademicDegree</span><span class="p">(){</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">academicDegree</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">getAcademicDegree</span><span class="p">(){</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">academicDegree</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getAcademicDegreeIndex</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">academicDegreeIndex</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="nf">getAcademicDegreeIndex</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="n">academicDegreeIndex</span><span class="p">;</span>
+<span class="p">}</span>
 
-<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setAcademicDegreeIndex</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">AcademicDegreeIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="na">academicDegreeIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">academicDegreeIndex</span><span class="p">;</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">setAcademicDegreeIndex</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">AcademicDegreeIndex</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">this</span><span class="p">.</span><span class="na">academicDegreeIndex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">academicDegreeIndex</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>4. Anschließend werden die in <code class="docutils literal notranslate"><span class="pre">ZettelField.Java</span></code> deklarierten Variablen importiert.
+<p>4. Anschließend werden die in <code class="docutils literal notranslate"><span class="pre">ZettelField</span></code> deklarierten Variablen importiert.
 Ggf. wäre es hier ziemlich sinnvoll, sie nicht einzeln zu importieren?</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import static</span><span class="w"> </span><span class="nn">services.ZettelFields.academicTitleZF</span><span class="p">;</span><span class="w"></span>
-<span class="kn">import static</span><span class="w"> </span><span class="nn">services.ZettelFields.academicTitleIndexZF</span><span class="p">;</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kn">import static</span><span class="w"> </span><span class="nn">services.ZettelFields.academicTitleZF</span><span class="p">;</span>
+<span class="kn">import static</span><span class="w"> </span><span class="nn">services.ZettelFields.academicTitleIndexZF</span><span class="p">;</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
 <li><p>Sie werden in der Methode <code class="docutils literal notranslate"><span class="pre">getMappingForDeserialization</span></code> benötigt und verbinden die Felder mit den ZettelField-Variablen:</p></li>
 </ol>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">protected</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">getMappingForDeserialization</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">regalApi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Play</span><span class="p">.</span><span class="na">application</span><span class="p">().</span><span class="na">configuration</span><span class="p">().</span><span class="na">getString</span><span class="p">(</span><span class="s">"regalApi"</span><span class="p">);</span><span class="w"></span>
-<span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span><span class="w"></span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">protected</span><span class="w"> </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="nf">getMappingForDeserialization</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">String</span><span class="w"> </span><span class="n">regalApi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Play</span><span class="p">.</span><span class="na">application</span><span class="p">().</span><span class="na">configuration</span><span class="p">().</span><span class="na">getString</span><span class="p">(</span><span class="s">&quot;regalApi&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span><span class="w"> </span><span class="n">Consumer</span><span class="o">&lt;</span><span class="n">Object</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">dict</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">LinkedHashMap</span><span class="o">&lt;&gt;</span><span class="p">();</span>
 
-<span class="w">        </span><span class="o">[</span><span class="p">...</span><span class="o">]</span><span class="w"></span>
+<span class="w">        </span><span class="o">[</span><span class="p">...</span><span class="o">]</span>
 
-<span class="w">        </span><span class="n">dict</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">academicDegreeZF</span><span class="p">.</span><span class="na">uri</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">addAcademicDegree</span><span class="p">((</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">in</span><span class="p">));</span><span class="w"></span>
-<span class="w">        </span><span class="n">dict</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">academicDegreeIndexZF</span><span class="p">.</span><span class="na">uri</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">setAcademicDegreeIndex</span><span class="p">((</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">in</span><span class="p">));</span><span class="w"></span>
+<span class="w">        </span><span class="n">dict</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">academicDegreeZF</span><span class="p">.</span><span class="na">uri</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">addAcademicDegree</span><span class="p">((</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">in</span><span class="p">));</span>
+<span class="w">        </span><span class="n">dict</span><span class="p">.</span><span class="na">put</span><span class="p">(</span><span class="n">academicDegreeIndexZF</span><span class="p">.</span><span class="na">uri</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">in</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">setAcademicDegreeIndex</span><span class="p">((</span><span class="n">String</span><span class="p">)</span><span class="w"> </span><span class="n">in</span><span class="p">));</span>
 
-<span class="w">        </span><span class="o">[</span><span class="p">...</span><span class="o">]</span><span class="w"></span>
+<span class="w">        </span><span class="o">[</span><span class="p">...</span><span class="o">]</span>
 
-<span class="p">}</span><span class="w"></span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -317,10 +324,10 @@ Ggf. wäre es hier ziemlich sinnvoll, sie nicht einzeln zu importieren?</p>
                 </div>
                 <div class="title">Metadaten-Felder im Formular zugänglich machen</div>
               </div>
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
             </a>
           <a class="prev-page" href="addMetadataField2Api.html">
-              <svg><use href="#svg-arrow-right"></use></svg>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
               <div class="page-info">
                 <div class="context">
                   <span>Previous</span>
@@ -342,9 +349,7 @@ Ggf. wäre es hier ziemlich sinnvoll, sie nicht einzeln zu importieren?</p>
             
           </div>
           <div class="right-details">
-            <div class="icons">
-              
-            </div>
+            
           </div>
         </div>
         
@@ -356,7 +361,7 @@ Ggf. wäre es hier ziemlich sinnvoll, sie nicht einzeln zu importieren?</p>
       <div class="toc-sticky toc-scroll">
         <div class="toc-title-container">
           <span class="toc-title">
-            Contents
+            On this page
           </span>
         </div>
         <div class="toc-tree-container">
@@ -378,10 +383,11 @@ Ggf. wäre es hier ziemlich sinnvoll, sie nicht einzeln zu importieren?</p>
       
     </aside>
   </div>
-</div><script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
+</div><script src="../_static/jquery.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
     <script src="../_static/scripts/furo.js"></script>
     </body>
 </html>

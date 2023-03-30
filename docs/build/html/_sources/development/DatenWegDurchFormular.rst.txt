@@ -34,4 +34,8 @@ ____________________________
 Von to.science.api zu to.science.forms
 ______________________________________
 
-1. | Die Methode edit in der Klasse Resource ruft   
+1. | Die Methode ``Resource.edit`` ruft zunächst die Methode ``call`` der Klasse ``ModifyAction`` auf. 
+In den Methodenaufruf wurde dabei noch ein Code-Block mit einer If-Clause` integriert, was das Lesen des Codes nochmal erwschwert.
+
+
+istdabei   
