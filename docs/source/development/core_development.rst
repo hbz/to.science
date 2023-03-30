@@ -8,3 +8,4 @@ Core Development
 
    contribute
    publish_mvnc
+   publish_mvnc_de
