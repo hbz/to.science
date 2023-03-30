@@ -36,9 +36,9 @@ Prepare your environment to make the following ``curl``-Calls work!
    :maxdepth: 1
 
    toscience
-   labels
-   forms
-   thumbs
+   api_labels
+   api_forms
+   api_thumbs
    skos
    complex-example
 

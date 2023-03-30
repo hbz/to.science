@@ -6,4 +6,5 @@ Core
 .. toctree::
    :maxdepth: 1
 
-   whyCore
+   why_core
+   core_usage

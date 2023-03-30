@@ -7,5 +7,5 @@ Entwicklung
 .. toctree::
    :maxdepth: 1
 
-   api.development
-   core.development
+   api_development
+   core_development
