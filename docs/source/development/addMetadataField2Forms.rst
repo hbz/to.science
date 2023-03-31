@@ -13,7 +13,8 @@ Voraussetzungen
 
 ja wirklich...
 
-.. image:: ../resources/images/autsch.gif
+.. image:: ../resources/images/autsch.*
+   :alt: Kopf gegen Wand
 
 Vorgehen
 ________

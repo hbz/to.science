@@ -18,7 +18,7 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'to.science'
-copyright = '2021, Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)'
+copyright = '2023, Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)'
 author = 'Dr. Ingolf Kuss, Dr. Peter Reimer, Dr. Andres Quast, Jan Schnasse'
 
 
@@ -54,6 +54,7 @@ html_theme = 'furo'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 html_logo = "resources/images/hbz-logo.svg"
+html_show_sourcelink = True
 
 # -- Options for LaTeX output ------
 
