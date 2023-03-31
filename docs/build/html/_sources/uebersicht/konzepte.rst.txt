@@ -270,7 +270,7 @@ OAI-Sets zugeordnet und in unterschiedlichen Formaten angeboten.
    +-----------------------------------+-----------------------------------+
    | contentType                       | Der "contentType" weist darauf    |
    |                                   | hin, in welcher Weise die         |
-   |                                   | Publikation in Regal. Abgelegt    |
+   |                                   | Publikation in to.science abgelegt|
    |                                   | ist.                              |
    +-----------------------------------+-----------------------------------+
    | open_access                       | All Publikationen, die als        |
@@ -289,15 +289,13 @@ OAI-Sets zugeordnet und in unterschiedlichen Formaten angeboten.
    |                                   | Aleph-Id verknüpft sind           |
    +-----------------------------------+-----------------------------------+
    | edoweb01                          | spezielles, pro                   |
-   |                                   | `reg                              |
-   |                                   | al-api <#_regal_api_2>`__-Instanz |
+   |                                   | to.science-Instanz                |
    |                                   | konfigurierbares Set für alle     |
    |                                   | Publikationen, die im aleph-Set   |
    |                                   | sind                              |
    +-----------------------------------+-----------------------------------+
    | ellinet01                         | spezielles, pro                   |
-   |                                   | `reg                              |
-   |                                   | al-api <#_regal_api_2>`__-Instanz |
+   |                                   | to.science-Instanz                |
    |                                   | konfigurierbares Set für alle     |
    |                                   | Publikationen, die im aleph-Set   |
    |                                   | sind                              |
@@ -382,10 +380,10 @@ Sichtbarkeiten, Operationen, Rollen
    +-----------------------------------+-----------------------------------+
    | Sichtbarkeit                      | Rolle                             |
    +===================================+===================================+
-   | public                            | GUEST,READ                        |
-   |                                   | ER,SUBSCRIBER,REMOTE,ADMIN,EDITOR |
+   | public                            | GUEST, READER,                    |
+   |                                   | SUBSCRIBER, REMOTE, ADMIN, EDITOR |
    +-----------------------------------+-----------------------------------+
-   | private                           | ADMIN,EDITOR                      |
+   | private                           | ADMIN, EDITOR                     |
    +-----------------------------------+-----------------------------------+
 
 .. table:: **Lesender** Zugriff auf Daten
@@ -393,18 +391,18 @@ Sichtbarkeiten, Operationen, Rollen
    +-----------------------------------+-----------------------------------+
    | Sichtbarkeit                      | Rolle                             |
    +===================================+===================================+
-   | public                            | GUEST,READ                        |
-   |                                   | ER,SUBSCRIBER,REMOTE,ADMIN,EDITOR |
+   | public                            | GUEST, READER,                    |
+   |                                   | SUBSCRIBER, REMOTE, ADMIN, EDITOR |
    +-----------------------------------+-----------------------------------+
-   | restricted                        | READ                              |
-   |                                   | ER,SUBSCRIBER,REMOTE,ADMIN,EDITOR |
+   | restricted                        | READER,                           |
+   |                                   | SUBSCRIBER, REMOTE, ADMIN, EDITOR |
    +-----------------------------------+-----------------------------------+
-   | remote                            | READ                              |
-   |                                   | ER,SUBSCRIBER,REMOTE,ADMIN,EDITOR |
+   | remote                            | READER,                           |
+   |                                   | SUBSCRIBER, REMOTE, ADMIN, EDITOR |
    +-----------------------------------+-----------------------------------+
-   | single                            | SUBSCRIBER,ADMIN,EDITOR           |
+   | single                            | SUBSCRIBER, ADMIN, EDITOR         |
    +-----------------------------------+-----------------------------------+
-   | private                           | ADMIN,EDITOR                      |
+   | private                           | ADMIN, EDITOR                     |
    +-----------------------------------+-----------------------------------+
 
 .. _benutzerverwaltung:
@@ -413,7 +411,7 @@ Benutzerverwaltung
 ------------------
 
 Die Benutzerverwaltung von Regal findet innerhalb von Drupal statt. Zwar
-können auch in der `regal-api <#_regal_api_2>`__ Benutzer angelegt
+können auch in der to.science.api Benutzer angelegt
 werden, jedoch ist die Implementierung in diesem Bereich erst
 rudimentär.
 

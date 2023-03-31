@@ -21,16 +21,15 @@ Sphinx installieren
 -------------------
 
 Für die Verwendung von Sphinx wird eine virtuelle Pythonumgebung im Verzeichnis ``venv`` eingerichtet. Das Verzeichnis sollte nicht mit
-ins git repo committet werden. Das virtuelle Python wird aktiviert und mit pip sphinx und zwei weitere themes installiert.
+ins git repo committet werden. Das virtuelle Python wird aktiviert und mit pip die sphinx und die themes `sphinx_rtd_theme`_ und `furo`_
+installiert. Diese sind in der requirments.txt angegeben.
 
 .. code-block:: bash
 
    $ cd to.science/docs
    $ python3 -m venv ./venv
    $ . venv/bin/activate
-   $ pip install -U sphinx
-   $ pip install -U sphinx_rtd_theme
-   $ pip install -U furo
+   $ pip install -r requirements.txt
 
 
 .. _doku_modifizieren_und_in_html_übersetzen:
@@ -96,5 +95,7 @@ Github
 
 
 .. _sphinx: https://www.sphinx-doc.org
+.. _sphinx_rtd_theme: https://sphinx-rtd-theme.readthedocs.io/en/stable/index.html
+.. _furo: https://github.com/pradyunsg/furo
 .. _reStructuredText: https://docutils.sourceforge.io/rst.html
 .. _CC BY-NC 4.0: http://creativecommons.org/licenses/by-nc/4.0/

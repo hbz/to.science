@@ -27,8 +27,8 @@ Werkzeug sphinx in HTML übersetzt werden. Mehr dazu im Abschnitt
    :maxdepth: 2
    :caption: Contents:
    
-   uerbersicht/uebersicht
-   installation
+   uebersicht/uebersicht
+   installation/installation
    components/components
    development/development
    colophon

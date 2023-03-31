@@ -159,12 +159,12 @@
 <div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
   <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1 has-children"><a class="reference internal" href="uerbersicht/uebersicht.html">Übersicht</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="uerbersicht/konzepte.html">Konzepte</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uerbersicht/software.html">Software</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="uebersicht/uebersicht.html">Übersicht</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="uebersicht/konzepte.html">Konzepte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uebersicht/software.html">Software</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation/installation.html">Installation</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="components/components.html">Komponenten</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l2 has-children"><a class="reference internal" href="components/api.html">API</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="components/toscience.html">to.science.api</a></li>
@@ -252,13 +252,12 @@ Die Schritte, um an der Doku zu arbeiten sind folgenden</p>
 <section id="sphinx-installieren">
 <span id="id3"></span><h2>Sphinx installieren<a class="headerlink" href="#sphinx-installieren" title="Permalink to this heading"></a></h2>
 <p>Für die Verwendung von Sphinx wird eine virtuelle Pythonumgebung im Verzeichnis <code class="docutils literal notranslate"><span class="pre">venv</span></code> eingerichtet. Das Verzeichnis sollte nicht mit
-ins git repo committet werden. Das virtuelle Python wird aktiviert und mit pip sphinx und zwei weitere themes installiert.</p>
+ins git repo committet werden. Das virtuelle Python wird aktiviert und mit pip die sphinx und die themes <a class="reference external" href="https://sphinx-rtd-theme.readthedocs.io/en/stable/index.html">sphinx_rtd_theme</a> und <a class="reference external" href="https://github.com/pradyunsg/furo">furo</a>
+installiert. Diese sind in der requirments.txt angegeben.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>to.science/docs
 $<span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>venv<span class="w"> </span>./venv
 $<span class="w"> </span>.<span class="w"> </span>venv/bin/activate
-$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>sphinx
-$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>sphinx_rtd_theme
-$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-U<span class="w"> </span>furo
+$<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </pre></div>
 </div>
 </section>
@@ -327,7 +326,7 @@ unter <a class="reference external" href="http://localhost:8000">http://localhos
         <div class="bottom-of-page">
           <div class="left-details">
             <div class="copyright">
-                Copyright &#169; 2021, Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)
+                Copyright &#169; 2023, Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)
             </div>
             Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
             

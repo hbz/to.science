@@ -1,36 +1,35 @@
 .. _installation:
 
-************
 Installation
-************
+============
 
 Backend-Installation
-====================
+--------------------
 
 Create linux user
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 Create user toscience with yast2. Generate encrypted password 
 
-.. code-block:: 
+.. code-block:: bash
 
-  head -c 300 /dev/urandom | tr -cd '[a-zA-Z0-9-_]' | head -c 16
+  $ head -c 300 /dev/urandom | tr -cd '[a-zA-Z0-9-_]' | head -c 16
 
 Mit yast2 Home-Verzeichnis /opt/toscience und Gruppen **users, root** hinzufügen
 
 Den User zu den sudoern hinzufügen. Zu /etc/sudoers eine Zeile hinzufügen:
 
-.. code-block:: 
+.. code-block:: bash
 
-  vim /etc/sudoers
-  toscience    ALL = (root) /bin/su
-  wq
-  sudo su toscience
+  $ vim /etc/sudoers
+  $ toscience    ALL = (root) /bin/su
+  $ wq
+  $ sudo su toscience
 
 Systemprogramme maven, git, java, mariadb etc. installieren
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------------------------
 maven und maven-local mit yast2 installieren.  
 
-.. code-block::
+.. code-block:: bash
 
-  zypper ref
-  zypper in git
+  $ zypper ref
+  $ zypper in git
