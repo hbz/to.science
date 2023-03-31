@@ -1,0 +1,442 @@
+<!doctype html>
+<html class="no-js" lang="en">
+  <head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <meta name="color-scheme" content="light dark"><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<link rel="index" title="Index" href="../genindex.html" /><link rel="search" title="Search" href="../search.html" /><link rel="next" title="Colophon" href="../colophon.html" /><link rel="prev" title="Publish to Maven Central" href="publish_mvnc.html" />
+
+    <!-- Generated with Sphinx 6.1.3 and Furo 2023.03.27 -->
+        <title>Code auf Maven Central publizieren - to.science documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?digest=fad236701ea90a88636c2a8c73b44ae642ed2a53" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?digest=30d1aed668e5c3a91c3e3bf6a60b675221979f0e" />
+    
+    
+
+
+<style>
+  body {
+    --color-code-background: #f8f8f8;
+  --color-code-foreground: black;
+  
+  }
+  @media not print {
+    body[data-theme="dark"] {
+      --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+    }
+    @media (prefers-color-scheme: dark) {
+      body:not([data-theme="light"]) {
+        --color-code-background: #202020;
+  --color-code-foreground: #d0d0d0;
+  
+      }
+    }
+  }
+</style></head>
+  <body>
+    
+    <script>
+      document.body.dataset.theme = localStorage.getItem("theme") || "auto";
+    </script>
+    
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="svg-toc" viewBox="0 0 24 24">
+    <title>Contents</title>
+    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024">
+      <path d="M408 442h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8zm-8 204c0 4.4 3.6 8 8 8h480c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8H408c-4.4 0-8 3.6-8 8v56zm504-486H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zm0 632H120c-4.4 0-8 3.6-8 8v56c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-56c0-4.4-3.6-8-8-8zM115.4 518.9L271.7 642c5.8 4.6 14.4.5 14.4-6.9V388.9c0-7.4-8.5-11.5-14.4-6.9L115.4 505.1a8.74 8.74 0 0 0 0 13.8z"/>
+    </svg>
+  </symbol>
+  <symbol id="svg-menu" viewBox="0 0 24 24">
+    <title>Menu</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-menu">
+      <line x1="3" y1="12" x2="21" y2="12"></line>
+      <line x1="3" y1="6" x2="21" y2="6"></line>
+      <line x1="3" y1="18" x2="21" y2="18"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-arrow-right" viewBox="0 0 24 24">
+    <title>Expand</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-chevron-right">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </symbol>
+  <symbol id="svg-sun" viewBox="0 0 24 24">
+    <title>Light mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+      <circle cx="12" cy="12" r="5"></circle>
+      <line x1="12" y1="1" x2="12" y2="3"></line>
+      <line x1="12" y1="21" x2="12" y2="23"></line>
+      <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+      <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+      <line x1="1" y1="12" x2="3" y2="12"></line>
+      <line x1="21" y1="12" x2="23" y2="12"></line>
+      <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+      <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+    </svg>
+  </symbol>
+  <symbol id="svg-moon" viewBox="0 0 24 24">
+    <title>Dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+    </svg>
+  </symbol>
+  <symbol id="svg-sun-half" viewBox="0 0 24 24">
+    <title>Auto light/dark mode</title>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-shadow">
+      <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+      <circle cx="12" cy="12" r="9" />
+      <path d="M13 12h5" />
+      <path d="M13 15h4" />
+      <path d="M13 18h1" />
+      <path d="M13 9h4" />
+      <path d="M13 6h1" />
+    </svg>
+  </symbol>
+</svg>
+
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation">
+<input type="checkbox" class="sidebar-toggle" name="__toc" id="__toc">
+<label class="overlay sidebar-overlay" for="__navigation">
+  <div class="visually-hidden">Hide navigation sidebar</div>
+</label>
+<label class="overlay toc-overlay" for="__toc">
+  <div class="visually-hidden">Hide table of contents sidebar</div>
+</label>
+
+
+
+<div class="page">
+  <header class="mobile-header">
+    <div class="header-left">
+      <label class="nav-overlay-icon" for="__navigation">
+        <div class="visually-hidden">Toggle site navigation sidebar</div>
+        <i class="icon"><svg><use href="#svg-menu"></use></svg></i>
+      </label>
+    </div>
+    <div class="header-center">
+      <a href="../index.html"><div class="brand">to.science  documentation</div></a>
+    </div>
+    <div class="header-right">
+      <div class="theme-toggle-container theme-toggle-header">
+        <button class="theme-toggle">
+          <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+          <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+          <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+          <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+        </button>
+      </div>
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
+        <div class="visually-hidden">Toggle table of contents sidebar</div>
+        <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+      </label>
+    </div>
+  </header>
+  <aside class="sidebar-drawer">
+    <div class="sidebar-container">
+      
+      <div class="sidebar-sticky"><a class="sidebar-brand" href="../index.html">
+  
+  <div class="sidebar-logo-container">
+    <img class="sidebar-logo" src="../_static/hbz-logo.svg" alt="Logo"/>
+  </div>
+  
+  <span class="sidebar-brand-text">to.science  documentation</span>
+  
+</a><form class="sidebar-search-container" method="get" action="../search.html" role="search">
+  <input class="sidebar-search" placeholder="Search" name="q" aria-label="Search">
+  <input type="hidden" name="check_keywords" value="yes">
+  <input type="hidden" name="area" value="default">
+</form>
+<div id="searchbox"></div><div class="sidebar-scroll"><div class="sidebar-tree">
+  <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../uerbersicht/uebersicht.html">Übersicht</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" role="switch" type="checkbox"/><label for="toctree-checkbox-1"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../uerbersicht/konzepte.html">Konzepte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../uerbersicht/software.html">Software</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../components/components.html">Komponenten</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" role="switch" type="checkbox"/><label for="toctree-checkbox-2"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../components/api.html">API</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" role="switch" type="checkbox"/><label for="toctree-checkbox-3"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/toscience.html">to.science.api</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/api_labels.html">labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/api_forms.html">Forms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/api_thumbs.html">to.science.thumbs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/skos.html">skos-lookup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/complex-example.html">Complex Example of hierarchical content</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../components/core.html">Core</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" role="switch" type="checkbox"/><label for="toctree-checkbox-4"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../components/why_core.html">Why to.science.core?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/why_core.html#where-to-find-to-science-core">Where to find to.science.core?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/why_core.html#i-d-like-to-use-the-jar-library-in-my-project-without-any-matured-build-tools">I’d like to use the jar-Library in my project without any matured build tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../components/core_usage.html">Use to.science.core from console</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="api_development.html">API-Entwicklung</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" role="switch" type="checkbox"/><label for="toctree-checkbox-6"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="JsonLDMapper.html">JSON in Java-Klassen überführen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="oaiMetadataFormats.html">Neues Metadaten-Format in die OAI-Schnittstelle integrieren</a></li>
+<li class="toctree-l3"><a class="reference internal" href="addMetadataField2Api.html">Anlegen neuer Metadaten-Felder in der API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="addMetadataField2Forms.html">Anlegen neuer Metadaten-Felder in FORMS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bindMetadataField2ScalaTemplate.html">Metadaten-Felder im Formular zugänglich machen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DatenWegDurchFormular.html">Der mutmaßliche Weg der Daten durch to.science.forms</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current has-children"><a class="reference internal" href="core_development.html">Core Development</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" role="switch" type="checkbox"/><label for="toctree-checkbox-7"><div class="visually-hidden">Toggle child pages in navigation</div><i class="icon"><svg><use href="#svg-arrow-right"></use></svg></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="contribute.html">How to contribute</a></li>
+<li class="toctree-l3"><a class="reference internal" href="publish_mvnc.html">Publish to Maven Central</a></li>
+<li class="toctree-l3 current current-page"><a class="current reference internal" href="#">Code auf Maven Central publizieren</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../colophon.html">Colophon</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../colophon.html#license">License</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../colophon.html#links">Links</a></li>
+</ul>
+
+</div>
+</div>
+
+      </div>
+      
+    </div>
+  </aside>
+  <div class="main">
+    <div class="content">
+      <div class="article-container">
+        <a href="#" class="back-to-top muted-link">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+          </svg>
+          <span>Back to top</span>
+        </a>
+        <div class="content-icon-container">
+          
+<div class="theme-toggle-container theme-toggle-content">
+            <button class="theme-toggle">
+              <div class="visually-hidden">Toggle Light / Dark / Auto color theme</div>
+              <svg class="theme-icon-when-auto"><use href="#svg-sun-half"></use></svg>
+              <svg class="theme-icon-when-dark"><use href="#svg-moon"></use></svg>
+              <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
+            </button>
+          </div>
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
+            <div class="visually-hidden">Toggle table of contents sidebar</div>
+            <i class="icon"><svg><use href="#svg-toc"></use></svg></i>
+          </label>
+        </div>
+        <article role="main">
+          <section id="code-auf-maven-central-publizieren">
+<h1>Code auf Maven Central publizieren<a class="headerlink" href="#code-auf-maven-central-publizieren" title="Permalink to this heading"></a></h1>
+<p>Um die aktuellste Version von <strong>to.science.core</strong> als <a class="reference external" href="https://mvnrepository.com/artifact/io.github.hbz/to.science.core">Artefakt</a> über die <a class="reference external" href="https://mvnrepository.com">Maven Central Infrastruktur</a> verfügbar zu machen und damit die Einbindung der Java-Bibliothek in andere Projekte zu fördern, wird an dieser Stelle das Sonatype OSSRH (Open Source Software Repository Hosting) verwendet.</p>
+<p>Die vollständige Beschreibung, wie Artefakte im OSSRH publiziert werden, findet sich <a class="reference external" href="https://central.sonatype.org/publish/publish-guide/">hier</a>. Die folgende Beschreibung ist für das Publishing eigener Beiträge zu <strong>to.science.core</strong> gedacht.</p>
+<p>Das direkte Publishing bei OSSRH wird für dieses Projekt vom hbz reglementiert und setzt eine gewisse Erfahrung mit Beiträgen zu Software-Projekten voraus.</p>
+<section id="voraussetzungen">
+<h2>Voraussetzungen<a class="headerlink" href="#voraussetzungen" title="Permalink to this heading"></a></h2>
+<p>Zunächst muss über diesen <a class="reference external" href="https://issues.sonatype.org/secure/Signup!default.jspa">Link</a> ein eigener Account im Sonatype-Jira angelegt werden. benötigt, der zugleich als Account für das OSSRH fungiert.</p>
+<p>Als nächstes ist es notwendig, dass wir den Account innerhalb des OSSRH für das Projekt freigeben. Bitte per E-Mail anfragen.</p>
+</section>
+<section id="weitere-vorbereitungen">
+<h2>Weitere Vorbereitungen<a class="headerlink" href="#weitere-vorbereitungen" title="Permalink to this heading"></a></h2>
+<section id="gpg-signing-einrichten">
+<h3>1. GPG-Signing einrichten<a class="headerlink" href="#gpg-signing-einrichten" title="Permalink to this heading"></a></h3>
+<p>Die hochzuladenden Artefakte müssen mit einen GPG-Schlüssel signiert werden. Die pom.xml ist soweit vorbereitet, dass ein bereits vorhandener PGP-Schlüssel eingesetzt werden kann. Sollte bisher kein eigener GPG-Schlüssel vorhanden sein, ist bei Sonatype eine <a class="reference external" href="https://central.sonatype.org/publish/publish-maven/#gpg-signed-components">detaillierte Anleitung</a> zu finden. Über die vorbereitete <code class="docutils literal notranslate"><span class="pre">pom.xml</span></code> und eine nutzerspezifische Datei <code class="docutils literal notranslate"><span class="pre">settings.xml</span></code> innerhalb des Maven-Verzeichnisses (unter Linux <code class="docutils literal notranslate"><span class="pre">/home/user/.m2/settings.xml</span></code>) kann der Schlüsselaufruf automatisiert werden. Dafür wird mit dem gpg-Kommando ermittelt, welcher eigene Schlüssel verwendet werden soll.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gpg<span class="w"> </span>--list-signatures<span class="w"> </span>--keyid-format<span class="w"> </span>0xshort
+</pre></div>
+</div>
+<p>Anschließend wird die settings.xml in der profiles-Sektion erweitert.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="w"> </span><span class="nt">&lt;profiles&gt;</span>
+<span class="w">  </span><span class="nt">&lt;profile&gt;</span>
+<span class="w">    </span><span class="nt">&lt;id&gt;</span>ossrh<span class="nt">&lt;/id&gt;</span>
+<span class="w">    </span><span class="nt">&lt;activation&gt;</span>
+<span class="w">      </span><span class="nt">&lt;activeByDefault&gt;</span>true<span class="nt">&lt;/activeByDefault&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/activation&gt;</span>
+<span class="w">    </span><span class="nt">&lt;properties&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gpg.executable&gt;</span>gpg2<span class="nt">&lt;/gpg.executable&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gpg.keyname&gt;</span>0xXXXXXXXX<span class="nt">&lt;/gpg.keyname&gt;</span>
+<span class="w">      </span><span class="nt">&lt;gpg.passphrase&gt;</span>KlartextPasswort<span class="nt">&lt;/gpg.passphrase&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/properties&gt;</span>
+<span class="w">  </span><span class="nt">&lt;/profile&gt;</span>
+<span class="nt">&lt;/profiles&gt;</span>
+</pre></div>
+</div>
+<p>In gpg.executeable wird das verwendete gpg-Kommandozeilentool eingetragen, in gpg.keyname der vorher über die Zeile <code class="docutils literal notranslate"><span class="pre">sig</span> <span class="pre">3</span></code> ermittelte Key eingetragen. In gpg.passphrase steht das Passwort für den privaten Schlüssel im Klartext, weshalb es sinnvoll ist, für diesen Anwendungsfall ein eignenes GPG-Schlüsselpaar zu generieren, das bei Bedarf einfacher zurückgezogen werden kann.</p>
+</section>
+<section id="settings-xml-fur-automatischen-upload-anpassen">
+<h3>2. settings.xml für automatischen Upload anpassen<a class="headerlink" href="#settings-xml-fur-automatischen-upload-anpassen" title="Permalink to this heading"></a></h3>
+<p>In der vorgenannten <code class="docutils literal notranslate"><span class="pre">settings.xml</span></code> Datei kann nun noch in der servers-Section der Server OSSRH vereinbart werden, damit der Upload auch ohne weitere Interaktion möglich ist.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;servers&gt;</span>
+<span class="w">   </span><span class="nt">&lt;server&gt;</span>
+<span class="w">     </span><span class="nt">&lt;id&gt;</span>ossrh<span class="nt">&lt;/id&gt;</span>
+<span class="w">     </span><span class="nt">&lt;username&gt;</span>Nutzername<span class="nt">&lt;/username&gt;</span>
+<span class="w">     </span><span class="nt">&lt;password&gt;</span>KlartextPasswort<span class="nt">&lt;/password&gt;</span>
+<span class="w">   </span><span class="nt">&lt;/server&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/servers&gt;</span>
+</pre></div>
+</div>
+<p>Auch hier sei nochmal explizit darauf hingewiesen, dass das Passwort für den Account im Klartext abgelegt wird.</p>
+</section>
+</section>
+<section id="hands-on">
+<h2>Hands On!<a class="headerlink" href="#hands-on" title="Permalink to this heading"></a></h2>
+<p>Nachdem obige Vorbereitungen erledigt wurden, sollte es nun möglich sein, mit dem folgenden Vorgehen neue Versionen (Artefakte) von <strong>to.science.core</strong> selbstständig zu publizieren.</p>
+<section id="die-versionsnummer-innerhalb-der-zu-to-science-core-gehorenden-pom-xml-erhohen">
+<h3>1. Die Versionsnummer innerhalb der zu to.science.core gehörenden pom.xml erhöhen<a class="headerlink" href="#die-versionsnummer-innerhalb-der-zu-to-science-core-gehorenden-pom-xml-erhohen" title="Permalink to this heading"></a></h3>
+<p>Dieser Schritt ist wichtig, damit eine bestehende Artefakt-Version nicht mit der Neuen überschrieben wird. Anmerk. bisher ist mir unklar, ob das überhaupt im OSSRH möglich ist.</p>
+<p>Bitte unbedingt das Publizieren von SNAPSHOT-Releases vermeiden, um die Code-Qualität zu sichern.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;project</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w">   </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span><span class="nt">&gt;</span>
+<span class="w">     </span><span class="nt">&lt;modelVersion&gt;</span>4.0.0<span class="nt">&lt;/modelVersion&gt;</span>
+
+<span class="w">     </span><span class="nt">&lt;groupId&gt;</span>io.github.hbz<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">     </span><span class="nt">&lt;artifactId&gt;</span>to.science.core<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">     </span><span class="nt">&lt;version&gt;</span>1.3.4<span class="nt">&lt;/version&gt;</span>
+<span class="w">     </span><span class="nt">&lt;packaging&gt;</span>jar<span class="nt">&lt;/packaging&gt;</span>
+
+<span class="w">     </span><span class="nt">&lt;name&gt;</span>Toolbox<span class="w"> </span>Open<span class="w"> </span>Science<span class="w"> </span>Core<span class="nt">&lt;/name&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="mittels-geeigneter-maven-goals-das-artefakt-erstellen-und-direkt-zu-ossrh-hochladen">
+<h3>2. Mittels geeigneter Maven Goals das Artefakt erstellen und direkt zu OSSRH hochladen<a class="headerlink" href="#mittels-geeigneter-maven-goals-das-artefakt-erstellen-und-direkt-zu-ossrh-hochladen" title="Permalink to this heading"></a></h3>
+<p>Innerhalb des mit git erstellten lokalen <strong>to.science.core</strong> Verzeichnis wird folgender Maven-Befehl aufgerufen</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mvn<span class="w"> </span>clean<span class="w"> </span>source:jar<span class="w"> </span>javadoc:javadoc<span class="w"> </span>javadoc:jar<span class="w"> </span>verify<span class="w"> </span>gpg:sign<span class="w"> </span>deploy
+</pre></div>
+</div>
+<p>If succesfull you should see somethimg like that:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>---<span class="w"> </span>maven-deploy-plugin:2.7:deploy<span class="w"> </span><span class="o">(</span>default-deploy<span class="o">)</span><span class="w"> </span>@<span class="w"> </span>to.science.core<span class="w"> </span>---
+
+<span class="o">[</span>...<span class="o">]</span>
+
+Uploaded<span class="w"> </span>to<span class="w"> </span>ossrh:<span class="w"> </span>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/io/github/hbz/to.science.core/1.3.4/to.science.core-1.3.4-javadoc.jar.asc<span class="w"> </span><span class="o">(</span><span class="m">488</span><span class="w"> </span>B<span class="w"> </span>at<span class="w"> </span><span class="m">1</span>.3<span class="w"> </span>kB/s<span class="o">)</span>
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>BUILD<span class="w"> </span>SUCCESS
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Total<span class="w"> </span>time:<span class="w">  </span><span class="m">25</span>.454<span class="w"> </span>s
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>Finished<span class="w"> </span>at:<span class="w"> </span><span class="m">2023</span>-03-29T12:08:23+02:00
+<span class="o">[</span>INFO<span class="o">]</span><span class="w"> </span>------------------------------------------------------------------------
+</pre></div>
+</div>
+</section>
+<section id="weitere-schritte-im-nexus-web-interface-durchfuhren">
+<h3>3. Weitere Schritte im NEXUS Web-Interface durchführen<a class="headerlink" href="#weitere-schritte-im-nexus-web-interface-durchfuhren" title="Permalink to this heading"></a></h3>
+<p>Nun kann mit einem Browser das Web-Interface unter <a class="reference external" href="https://s01.oss.sonatype.org/#stagingRepositories">https://s01.oss.sonatype.org/#stagingRepositories</a> aufgerufen werden. Dabei wird nach dem Log-In mit den Sonatype-ZUgangsdaten gefragt.</p>
+<p>Innerhalb des stagingRepositories-Bereichs sollte das gerade hochgeladene Artefakt aufgelistet sein. Leider wird das Artefakt unter einem eher kryptischen Namen angezeigt, so dass bei mehreren vorhandenen Artefakten eine genaue Prüfung nötig ist, welches das eigene ist.</p>
+<a class="reference internal image-reference" href="../_images/nexus-staging.png"><img alt="alternate text" class="align-left" src="../_images/nexus-staging.png" style="width: 887.5999999999999px; height: 193.2px;" /></a>
+</section>
+<section id="das-artefakt-auswahlen-und-schlieszen">
+<h3>4. Das Artefakt auswählen und schließen<a class="headerlink" href="#das-artefakt-auswahlen-und-schlieszen" title="Permalink to this heading"></a></h3>
+<p>Nachdem das Artefakt über das Auswahlkästchen links ausgewählt wurde, wird der Button “Close” verfügbar. Der Button ist nun zu klicken. Das Schließen ist ein notwendiger Schritt, bei dem der hochgeladene Inhalt auf Vollständigkeit etc. geprüft wird.</p>
+<p>Über den “Refresh”-Button lässt sich im unteren Reiter “Action” der Fortschritt verfolgen.</p>
+<a class="reference internal image-reference" href="../_images/nexus-marked.png"><img alt="alternate text" class="align-left" src="../_images/nexus-marked.png" style="width: 860.3px; height: 516.6px;" /></a>
+</section>
+<section id="letzter-schritt-release">
+<h3>5. Letzter Schritt: Release<a class="headerlink" href="#letzter-schritt-release" title="Permalink to this heading"></a></h3>
+<p>Nachdem das Schließen erfolgreich abgeschlossen ist, wird der Button “Release” verfügbar. Wenn er gedrückt wird, wird das Artefakt zum Maven Central Repository hochgeladen und publiziert. Zugleich wird es aus dem stagingRepositories-Bereich entfernt.</p>
+<a class="reference internal image-reference" href="../_images/nexus-closed.png"><img alt="alternate text" class="align-left" src="../_images/nexus-closed.png" style="width: 860.3px; height: 534.1px;" /></a>
+<p>Es kann jetzt eine Weile dauern, bis das neue Artefakt in der Repository-Suche sichtbar wird. Dennoch ist das neue Artefakt über die Versionsnummer bereits in die pom.xml oder build.sbt abrufbar.</p>
+</section>
+</section>
+</section>
+
+        </article>
+      </div>
+      <footer>
+        
+        <div class="related-pages">
+          <a class="next-page" href="../colophon.html">
+              <div class="page-info">
+                <div class="context">
+                  <span>Next</span>
+                </div>
+                <div class="title">Colophon</div>
+              </div>
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+            </a>
+          <a class="prev-page" href="publish_mvnc.html">
+              <svg class="furo-related-icon"><use href="#svg-arrow-right"></use></svg>
+              <div class="page-info">
+                <div class="context">
+                  <span>Previous</span>
+                </div>
+                
+                <div class="title">Publish to Maven Central</div>
+                
+              </div>
+            </a>
+        </div>
+        <div class="bottom-of-page">
+          <div class="left-details">
+            <div class="copyright">
+                Copyright &#169; 2021, Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)
+            </div>
+            Made with <a href="https://www.sphinx-doc.org/">Sphinx</a> and <a class="muted-link" href="https://pradyunsg.me">@pradyunsg</a>'s
+            
+            <a href="https://github.com/pradyunsg/furo">Furo</a>
+            
+          </div>
+          <div class="right-details">
+            
+          </div>
+        </div>
+        
+      </footer>
+    </div>
+    <aside class="toc-drawer">
+      
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Code auf Maven Central publizieren</a><ul>
+<li><a class="reference internal" href="#voraussetzungen">Voraussetzungen</a></li>
+<li><a class="reference internal" href="#weitere-vorbereitungen">Weitere Vorbereitungen</a><ul>
+<li><a class="reference internal" href="#gpg-signing-einrichten">1. GPG-Signing einrichten</a></li>
+<li><a class="reference internal" href="#settings-xml-fur-automatischen-upload-anpassen">2. settings.xml für automatischen Upload anpassen</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#hands-on">Hands On!</a><ul>
+<li><a class="reference internal" href="#die-versionsnummer-innerhalb-der-zu-to-science-core-gehorenden-pom-xml-erhohen">1. Die Versionsnummer innerhalb der zu to.science.core gehörenden pom.xml erhöhen</a></li>
+<li><a class="reference internal" href="#mittels-geeigneter-maven-goals-das-artefakt-erstellen-und-direkt-zu-ossrh-hochladen">2. Mittels geeigneter Maven Goals das Artefakt erstellen und direkt zu OSSRH hochladen</a></li>
+<li><a class="reference internal" href="#weitere-schritte-im-nexus-web-interface-durchfuhren">3. Weitere Schritte im NEXUS Web-Interface durchführen</a></li>
+<li><a class="reference internal" href="#das-artefakt-auswahlen-und-schlieszen">4. Das Artefakt auswählen und schließen</a></li>
+<li><a class="reference internal" href="#letzter-schritt-release">5. Letzter Schritt: Release</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
+      
+      
+    </aside>
+  </div>
+</div><script src="../_static/jquery.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/furo.js"></script>
+    </body>
+</html>
