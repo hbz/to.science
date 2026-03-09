@@ -42,8 +42,9 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
-Andere Formate
---------------
- 
-* :download:`PDF <../build/latex/toscience.pdf>`
-* :download:`EPUB <../build/epub/toscience.epub>`
+.. wieder auskommentieren, wenn formate verfügbar
+   Andere Formate
+   --------------
+   
+   * :download:`PDF <../build/latex/toscience.pdf>`
+   * :download:`EPUB <../build/epub/toscience.epub>`

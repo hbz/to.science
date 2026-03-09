@@ -59,4 +59,4 @@ Drittsysteme.
 
    konzepte.rst
    software.rst
-
+   vagrant.rst
