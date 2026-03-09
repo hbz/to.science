@@ -9,3 +9,4 @@ Komponenten
 
    api
    core
+   crawler

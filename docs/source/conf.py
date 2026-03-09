@@ -18,7 +18,7 @@ import sphinx_rtd_theme
 # -- Project information -----------------------------------------------------
 
 project = 'to.science'
-copyright = '2023, Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)'
+copyright = '2026, Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)'
 author = 'Dr. Ingolf Kuss, Dr. Peter Reimer, Dr. Andres Quast, Jan Schnasse'
 
 
@@ -53,7 +53,19 @@ html_theme = 'furo'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
-html_logo = "resources/images/hbz-logo.svg"
+html_extra_path = ['_extras']
+html_logo = "resources/images/hbz-Logo-rgb-ohne-Claim.svg"
+html_css_files = [
+  'css/custom.css',
+  'https://fonts.pubsys.hbz-nrw.de/wix-madefor-text/v16/css/wix-madefor-text.css'
+]
+html_theme_options = {
+    "light_css_variables": {
+        "color-brand-primary": "#0000C0",
+        "color-brand-content": "#0000C0",
+        "color-admonition-background": "orange",
+    },
+}
 html_show_sourcelink = True
 
 # -- Options for LaTeX output ------
