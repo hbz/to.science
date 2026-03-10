@@ -26,7 +26,7 @@ Werkzeug sphinx in HTML übersetzt werden. Mehr dazu im Abschnitt
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-   
+
    uebersicht/uebersicht
    installation/installation
    components/components
@@ -45,6 +45,6 @@ Indices and tables
 .. wieder auskommentieren, wenn formate verfügbar
    Andere Formate
    --------------
-   
+
    * :download:`PDF <../build/latex/toscience.pdf>`
    * :download:`EPUB <../build/epub/toscience.epub>`

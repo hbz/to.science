@@ -7,7 +7,7 @@
         <link rel="prefetch" href="../_static/hbz-Logo-rgb-ohne-Claim.svg" as="image">
 
     <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
-        <title>Crawler - to.science documentation</title>
+        <title>Informationen zum to.science Crawler - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo-extensions.css?v=8dab3a3b" />
@@ -178,7 +178,7 @@
           <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
         </button>
       </div>
-      <label class="toc-overlay-icon toc-header-icon no-toc" for="__toc">
+      <label class="toc-overlay-icon toc-header-icon" for="__toc">
         <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
       </label>
     </div>
@@ -225,7 +225,7 @@
 <li class="toctree-l3"><a class="reference internal" href="core_usage.html">Use to.science.core from console</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Crawler</a></li>
+<li class="toctree-l2 current current-page"><a class="current reference internal" href="#">Informationen zum to.science Crawler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../development/development.html">Entwicklung</a><input aria-label="Toggle navigation of Entwicklung" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -282,14 +282,31 @@
               <svg class="theme-icon-when-light"><use href="#svg-sun"></use></svg>
             </button>
           </div>
-          <label class="toc-overlay-icon toc-content-icon no-toc" for="__toc">
+          <label class="toc-overlay-icon toc-content-icon" for="__toc">
             <span class="icon"><svg><use href="#svg-toc"></use></svg></span>
           </label>
         </div>
         <article role="main" id="furo-main-content">
-          <section id="crawler">
-<span id="crawler-documentation"></span><h1>Crawler<a class="headerlink" href="#crawler" title="Link to this heading"></a></h1>
-<p>Der IP Bereich findet sich in  <a class="reference external" href="../ipranges/toscience.json">toscience.json</a></p>
+          <section id="informationen-zum-to-science-crawler">
+<span id="crawler-documentation"></span><h1>Informationen zum to.science Crawler<a class="headerlink" href="#informationen-zum-to-science-crawler" title="Link to this heading"></a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">to.science</span></code> ist der Name des Crawlers des gleichnamigen Content Repositories. <code class="docutils literal notranslate"><span class="pre">to.science</span></code> steht für Toolbox Open Science
+und ist ein Produkt des <a class="reference external" href="https://hbz-nrw.de/">hbz</a> zur Archivierung digitaler Publikationen. Neben Artikeln, Monographien, Zeitschriften etc. werden über
+das Webcrawling auch regelmäßig Webseiten eingesammelt und archiviert.</p>
+<p>Das Webcrawling geschieht im Auftrag bzw. in Zusammenarbeit mit den Landesbibliotheken des Landes NRW und dem Landesbibliothekszentrum Rheinland-Pfalz.</p>
+<section id="user-agent">
+<h2>User Agent<a class="headerlink" href="#user-agent" title="Link to this heading"></a></h2>
+<p>Um Webmastern die Möglichkeit zu geben, Datenverkehr zu identifizieren, der von unserem Crawler verursacht wird, verwenden wir folgenden User Agent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="o">.</span><span class="n">science</span> <span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">toscience</span><span class="o">.</span><span class="n">hbz</span><span class="o">-</span><span class="n">nrw</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">crawler</span><span class="p">;</span><span class="n">mailto</span><span class="p">:</span><span class="n">toscience</span><span class="nd">@hbz</span><span class="o">-</span><span class="n">nrw</span><span class="o">.</span><span class="n">de</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="ip-bereiche">
+<h2>IP Bereiche<a class="headerlink" href="#ip-bereiche" title="Link to this heading"></a></h2>
+<p>Das Crawling erfolgt aus folgendem Adressbereich <code class="docutils literal notranslate"><span class="pre">193.30.112.0/24</span></code>. Der IP Bereich ist auch als JSON abrufbar unter <a class="reference external" href="../ipranges/toscience.json">toscience.json</a>.</p>
+</section>
+<section id="kontakt">
+<h2>Kontakt<a class="headerlink" href="#kontakt" title="Link to this heading"></a></h2>
+</section>
 </section>
 
         </article>
@@ -335,8 +352,29 @@
         
       </footer>
     </div>
-    <aside class="toc-drawer no-toc">
+    <aside class="toc-drawer">
       
+      
+      <div class="toc-sticky toc-scroll">
+        <div class="toc-title-container">
+          <span class="toc-title">
+            On this page
+          </span>
+        </div>
+        <div class="toc-tree-container">
+          <div class="toc-tree">
+            <ul>
+<li><a class="reference internal" href="#">Informationen zum to.science Crawler</a><ul>
+<li><a class="reference internal" href="#user-agent">User Agent</a></li>
+<li><a class="reference internal" href="#ip-bereiche">IP Bereiche</a></li>
+<li><a class="reference internal" href="#kontakt">Kontakt</a></li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        </div>
+      </div>
       
       
     </aside>

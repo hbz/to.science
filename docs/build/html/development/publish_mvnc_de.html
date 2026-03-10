@@ -225,7 +225,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../components/core_usage.html">Use to.science.core from console</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">Crawler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">to.science Crawler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input aria-label="Toggle navigation of Entwicklung" checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
@@ -382,20 +382,20 @@ Uploaded<span class="w"> </span>to<span class="w"> </span>ossrh:<span class="w">
 <h3>3. Weitere Schritte im NEXUS Web-Interface durchführen<a class="headerlink" href="#weitere-schritte-im-nexus-web-interface-durchfuhren" title="Link to this heading"></a></h3>
 <p>Nun kann mit einem Browser das Web-Interface unter <a class="reference external" href="https://s01.oss.sonatype.org/#stagingRepositories">https://s01.oss.sonatype.org/#stagingRepositories</a> aufgerufen werden. Dabei wird nach dem Log-In mit den Sonatype-ZUgangsdaten gefragt.</p>
 <p>Innerhalb des stagingRepositories-Bereichs sollte das gerade hochgeladene Artefakt aufgelistet sein. Leider wird das Artefakt unter einem eher kryptischen Namen angezeigt, so dass bei mehreren vorhandenen Artefakten eine genaue Prüfung nötig ist, welches das eigene ist.</p>
-<a class="reference internal image-reference" href="../_images/nexus-staging.png"><img alt="alternate text" class="align-left" height="193" src="../_images/nexus-staging.png" width="888" />
+<a class="reference internal image-reference" href="../_images/nexus-staging.png"><img alt="alternate text" class="align-left" src="../_images/nexus-staging.png" style="width: 887.5999999999999px; height: 193.2px;" />
 </a>
 </section>
 <section id="das-artefakt-auswahlen-und-schlieszen">
 <h3>4. Das Artefakt auswählen und schließen<a class="headerlink" href="#das-artefakt-auswahlen-und-schlieszen" title="Link to this heading"></a></h3>
 <p>Nachdem das Artefakt über das Auswahlkästchen links ausgewählt wurde, wird der Button “Close” verfügbar. Der Button ist nun zu klicken. Das Schließen ist ein notwendiger Schritt, bei dem der hochgeladene Inhalt auf Vollständigkeit etc. geprüft wird.</p>
 <p>Über den “Refresh”-Button lässt sich im unteren Reiter “Action” der Fortschritt verfolgen.</p>
-<a class="reference internal image-reference" href="../_images/nexus-marked.png"><img alt="alternate text" class="align-left" height="517" src="../_images/nexus-marked.png" width="860" />
+<a class="reference internal image-reference" href="../_images/nexus-marked.png"><img alt="alternate text" class="align-left" src="../_images/nexus-marked.png" style="width: 860.3px; height: 516.6px;" />
 </a>
 </section>
 <section id="letzter-schritt-release">
 <h3>5. Letzter Schritt: Release<a class="headerlink" href="#letzter-schritt-release" title="Link to this heading"></a></h3>
 <p>Nachdem das Schließen erfolgreich abgeschlossen ist, wird der Button “Release” verfügbar. Wenn er gedrückt wird, wird das Artefakt zum Maven Central Repository hochgeladen und publiziert. Zugleich wird es aus dem stagingRepositories-Bereich entfernt.</p>
-<a class="reference internal image-reference" href="../_images/nexus-closed.png"><img alt="alternate text" class="align-left" height="534" src="../_images/nexus-closed.png" width="860" />
+<a class="reference internal image-reference" href="../_images/nexus-closed.png"><img alt="alternate text" class="align-left" src="../_images/nexus-closed.png" style="width: 860.3px; height: 534.1px;" />
 </a>
 <p>Es kann jetzt eine Weile dauern, bis das neue Artefakt in der Repository-Suche sichtbar wird. Dennoch ist das neue Artefakt über die Versionsnummer bereits in die pom.xml oder build.sbt abrufbar.</p>
 </section>
