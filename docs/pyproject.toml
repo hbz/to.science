@@ -1,0 +1,3 @@
+[tool.esbonio.sphinx]
+buildArguments = ["sphinx-build", "-M", "html", "source", "${defaultBuildDir}", "--nitpicky", "--verbose]
+pythonCommand = ["${venv:venv}"]
