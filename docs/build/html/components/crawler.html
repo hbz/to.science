@@ -291,7 +291,8 @@
 <span id="crawler-documentation"></span><h1>Informationen zum to.science Crawler<a class="headerlink" href="#informationen-zum-to-science-crawler" title="Link to this heading"></a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">to.science</span></code> ist der Name des Crawlers des gleichnamigen Content Repositories. <code class="docutils literal notranslate"><span class="pre">to.science</span></code> steht für Toolbox Open Science
 und ist ein Produkt des <a class="reference external" href="https://hbz-nrw.de/">hbz</a> zur Archivierung digitaler Publikationen. Neben Artikeln, Monographien, Zeitschriften etc. werden über
-das Webcrawling auch regelmäßig Webseiten eingesammelt und archiviert.</p>
+das Webcrawling auch regelmäßig Webseiten eingesammelt und archiviert. Hintergrund des Webcrawling ist die reine Archivierung der Seite.
+Die gesammelten Daten dienen nicht als Grundlage für KI oder LLMs.</p>
 <p>Das Webcrawling geschieht im Auftrag bzw. in Zusammenarbeit mit den Landesbibliotheken des Landes NRW und dem Landesbibliothekszentrum Rheinland-Pfalz.</p>
 <section id="user-agent">
 <h2>User Agent<a class="headerlink" href="#user-agent" title="Link to this heading"></a></h2>
@@ -300,12 +301,18 @@ das Webcrawling auch regelmäßig Webseiten eingesammelt und archiviert.</p>
 </pre></div>
 </div>
 </section>
+<section id="verhalten">
+<h2>Verhalten<a class="headerlink" href="#verhalten" title="Link to this heading"></a></h2>
+<p>Wir sind gestrebt, in einen Tempo zu crawlen, das den regulären Betrieb einer Webseite nicht beinträchtigt. Es sollte nicht mehr als ein Aufruf pro Sekunde
+erfolgen und eine eventuell vorhandene <code class="docutils literal notranslate"><span class="pre">robots.txt</span></code>-Datei wird berücksichtigt.</p>
+</section>
 <section id="ip-bereiche">
 <h2>IP Bereiche<a class="headerlink" href="#ip-bereiche" title="Link to this heading"></a></h2>
 <p>Das Crawling erfolgt aus folgendem Adressbereich <code class="docutils literal notranslate"><span class="pre">193.30.112.0/24</span></code>. Der IP Bereich ist auch als JSON abrufbar unter <a class="reference external" href="../ipranges/toscience.json">toscience.json</a>.</p>
 </section>
 <section id="kontakt">
 <h2>Kontakt<a class="headerlink" href="#kontakt" title="Link to this heading"></a></h2>
+<p>Bei Fragen oder Anregungen schreiben Sie bitte an <a class="reference external" href="mailto:toscience&#37;&#52;&#48;hbz-nrw&#46;de">toscience<span>&#64;</span>hbz-nrw<span>&#46;</span>de</a>.</p>
 </section>
 </section>
 
@@ -366,6 +373,7 @@ das Webcrawling auch regelmäßig Webseiten eingesammelt und archiviert.</p>
             <ul>
 <li><a class="reference internal" href="#">Informationen zum to.science Crawler</a><ul>
 <li><a class="reference internal" href="#user-agent">User Agent</a></li>
+<li><a class="reference internal" href="#verhalten">Verhalten</a></li>
 <li><a class="reference internal" href="#ip-bereiche">IP Bereiche</a></li>
 <li><a class="reference internal" href="#kontakt">Kontakt</a></li>
 </ul>
