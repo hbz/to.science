@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Entwicklung" href="../development/development.html"><link rel="prev" title="Use to.science.core from console" href="core_usage.html">
         <link rel="prefetch" href="../_static/hbz-Logo-rgb-ohne-Claim.svg" as="image">
 
-    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
         <title>Informationen zum to.science Crawler - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
@@ -288,30 +288,32 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="informationen-zum-to-science-crawler">
-<span id="crawler-documentation"></span><h1>Informationen zum to.science Crawler<a class="headerlink" href="#informationen-zum-to-science-crawler" title="Link to this heading"></a></h1>
+<span id="crawler-documentation"></span><h1>Informationen zum to.science Crawler<a class="headerlink" href="#informationen-zum-to-science-crawler" title="Link to this heading">¶</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">to.science</span></code> ist der Name des Crawlers des gleichnamigen Content Repositories. <code class="docutils literal notranslate"><span class="pre">to.science</span></code> steht für Toolbox Open Science
 und ist ein Produkt des <a class="reference external" href="https://hbz-nrw.de/">hbz</a> zur Archivierung digitaler Publikationen. Neben Artikeln, Monographien, Zeitschriften etc. werden über
 das Webcrawling auch regelmäßig Webseiten eingesammelt und archiviert. Hintergrund des Webcrawling ist die reine Archivierung der Seite.
 Die gesammelten Daten dienen nicht als Grundlage für KI oder LLMs.</p>
-<p>Das Webcrawling geschieht im Auftrag bzw. in Zusammenarbeit mit den Landesbibliotheken des Landes NRW und dem Landesbibliothekszentrum Rheinland-Pfalz.</p>
+<p>Das Webcrawling geschieht im Auftrag <abbr title="beziehungsweise">bzw.</abbr> in Zusammenarbeit mit den Landesbibliotheken des Landes NRW und dem Landesbibliothekszentrum Rheinland-Pfalz.</p>
 <section id="user-agent">
-<h2>User Agent<a class="headerlink" href="#user-agent" title="Link to this heading"></a></h2>
+<h2>User Agent<a class="headerlink" href="#user-agent" title="Link to this heading">¶</a></h2>
 <p>Um Webmastern die Möglichkeit zu geben, Datenverkehr zu identifizieren, der von unserem Crawler verursacht wird, verwenden wir folgenden User Agent:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="o">.</span><span class="n">science</span> <span class="p">(</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">toscience</span><span class="o">.</span><span class="n">hbz</span><span class="o">-</span><span class="n">nrw</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">crawler</span><span class="p">;</span><span class="n">mailto</span><span class="p">:</span><span class="n">toscience</span><span class="nd">@hbz</span><span class="o">-</span><span class="n">nrw</span><span class="o">.</span><span class="n">de</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="o">.</span><span class="n">science</span> <span class="p">(</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">toscience</span><span class="o">.</span><span class="n">hbz</span><span class="o">-</span><span class="n">nrw</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">crawler</span><span class="p">;</span><span class="n">mailto</span><span class="p">:</span><span class="n">toscience</span><span class="nd">@hbz</span><span class="o">-</span><span class="n">nrw</span><span class="o">.</span><span class="n">de</span><span class="p">)</span>
+<span class="n">oder</span>
+<span class="n">Mozilla</span><span class="o">/</span><span class="mf">5.0</span> <span class="p">(</span><span class="n">compatible</span><span class="p">;</span> <span class="n">tosciencebot</span> <span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">toscience</span><span class="o">.</span><span class="n">hbz</span><span class="o">-</span><span class="n">nrw</span><span class="o">.</span><span class="n">de</span><span class="o">/</span><span class="n">crawler</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="verhalten">
-<h2>Verhalten<a class="headerlink" href="#verhalten" title="Link to this heading"></a></h2>
+<h2>Verhalten<a class="headerlink" href="#verhalten" title="Link to this heading">¶</a></h2>
 <p>Wir sind gestrebt, in einen Tempo zu crawlen, das den regulären Betrieb einer Webseite nicht beinträchtigt. Es sollte nicht mehr als ein Aufruf pro Sekunde
 erfolgen und eine eventuell vorhandene <code class="docutils literal notranslate"><span class="pre">robots.txt</span></code>-Datei wird berücksichtigt.</p>
 </section>
 <section id="ip-bereiche">
-<h2>IP Bereiche<a class="headerlink" href="#ip-bereiche" title="Link to this heading"></a></h2>
+<h2>IP Bereiche<a class="headerlink" href="#ip-bereiche" title="Link to this heading">¶</a></h2>
 <p>Das Crawling erfolgt aus folgendem Adressbereich <code class="docutils literal notranslate"><span class="pre">193.30.112.0/24</span></code>. Der IP Bereich ist auch als JSON abrufbar unter <a class="reference external" href="../ipranges/toscience.json">toscience.json</a>.</p>
 </section>
 <section id="kontakt">
-<h2>Kontakt<a class="headerlink" href="#kontakt" title="Link to this heading"></a></h2>
+<h2>Kontakt<a class="headerlink" href="#kontakt" title="Link to this heading">¶</a></h2>
 <p>Bei Fragen oder Anregungen schreiben Sie bitte an <a class="reference external" href="mailto:toscience&#37;&#52;&#48;hbz-nrw&#46;de">toscience<span>&#64;</span>hbz-nrw<span>&#46;</span>de</a>.</p>
 </section>
 </section>
@@ -351,7 +353,14 @@ erfolgen und eine eventuell vorhandene <code class="docutils literal notranslate
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             
+            <div class="hbz-links">
+              <ul>
+                <li><a href="https://www.hbz-nrw.de/impressum">Impressum</a></li>
+                <li><a href="https://www.hbz-nrw.de/datenschutz">Datenschutz</a></li>
+              </ul>
+            </div>
           </div>
+
           <div class="right-details">
             
           </div>
@@ -387,11 +396,9 @@ erfolgen und eine eventuell vorhandene <code class="docutils literal notranslate
       
     </aside>
   </div>
-</div><script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>

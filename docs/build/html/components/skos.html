@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Complex Example of hierarchical content" href="complex-example.html"><link rel="prev" title="to.science.thumbs" href="api_thumbs.html">
         <link rel="prefetch" href="../_static/hbz-Logo-rgb-ohne-Claim.svg" as="image">
 
-    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
         <title>skos-lookup - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
@@ -225,7 +225,7 @@
 <li class="toctree-l3"><a class="reference internal" href="core_usage.html">Use to.science.core from console</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="crawler.html">to.science Crawler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crawler.html">Informationen zum to.science Crawler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../development/development.html">Entwicklung</a><input aria-label="Toggle navigation of Entwicklung" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -288,25 +288,25 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="skos-lookup">
-<span id="api-skos-lookup"></span><h1>skos-lookup<a class="headerlink" href="#skos-lookup" title="Link to this heading"></a></h1>
+<span id="api-skos-lookup"></span><h1>skos-lookup<a class="headerlink" href="#skos-lookup" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://github.com/hbz/skos-lookup/blob/master/conf/routes">https://github.com/hbz/skos-lookup/blob/master/conf/routes</a></p>
 <section id="create">
-<span id="create-4"></span><h2>Create<a class="headerlink" href="#create" title="Link to this heading"></a></h2>
+<span id="create-4"></span><h2>Create<a class="headerlink" href="#create" title="Link to this heading">¶</a></h2>
 <section id="create-new-index">
-<span id="id1"></span><h3>Create new Index<a class="headerlink" href="#create-new-index" title="Link to this heading"></a></h3>
+<span id="id1"></span><h3>Create new Index<a class="headerlink" href="#create-new-index" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -i -X POST -H &quot;Content-Type: multipart/form-data&quot; $REGAL_API/tools/skos-lookup/upload -F &quot;data=@/tmp/skos-lookup/test/resources/agrovoc_2016-07-15_lod.nt.gz&quot; -F&quot;index=agrovoc_test&quot; -F&quot;format=NTRIPLES&quot;
 </pre></div>
 </div>
 </section>
 </section>
 <section id="read">
-<span id="read-4"></span><h2>Read<a class="headerlink" href="#read" title="Link to this heading"></a></h2>
+<span id="read-4"></span><h2>Read<a class="headerlink" href="#read" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">XGET</span> <span class="s1">&#39;$REGAL_API/tools/skos-lookup/autocomplete?lang=de&amp;q=Erdnus&amp;callback=mycallback&amp;index=agrovoc_test&#39;</span>
 </pre></div>
 </div>
 </section>
 <section id="search">
-<span id="search-3"></span><h2>Search<a class="headerlink" href="#search" title="Link to this heading"></a></h2>
+<span id="search-3"></span><h2>Search<a class="headerlink" href="#search" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/tools/skos-lookup/search?q=http%3A%2F%2Faims.fao.org%2Faos%2Fagrovoc%2Fc_13551&amp;lang=de&amp;index=agrovoc
 </pre></div>
 </div>
@@ -348,7 +348,14 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             
+            <div class="hbz-links">
+              <ul>
+                <li><a href="https://www.hbz-nrw.de/impressum">Impressum</a></li>
+                <li><a href="https://www.hbz-nrw.de/datenschutz">Datenschutz</a></li>
+              </ul>
+            </div>
           </div>
+
           <div class="right-details">
             
           </div>
@@ -386,11 +393,9 @@
       
     </aside>
   </div>
-</div><script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>

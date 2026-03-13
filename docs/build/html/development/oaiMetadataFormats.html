@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Anlegen neuer Metadaten-Felder in der API" href="addMetadataField2Api.html"><link rel="prev" title="JSON in Java-Klassen überführen" href="JsonLDMapper.html">
         <link rel="prefetch" href="../_static/hbz-Logo-rgb-ohne-Claim.svg" as="image">
 
-    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
         <title>Neues Metadaten-Format in die OAI-Schnittstelle integrieren - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
@@ -225,7 +225,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../components/core_usage.html">Use to.science.core from console</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">to.science Crawler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">Informationen zum to.science Crawler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input aria-label="Toggle navigation of Entwicklung" checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
@@ -288,7 +288,7 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="neues-metadaten-format-in-die-oai-schnittstelle-integrieren">
-<h1>Neues Metadaten-Format in die OAI-Schnittstelle integrieren<a class="headerlink" href="#neues-metadaten-format-in-die-oai-schnittstelle-integrieren" title="Link to this heading"></a></h1>
+<h1>Neues Metadaten-Format in die OAI-Schnittstelle integrieren<a class="headerlink" href="#neues-metadaten-format-in-die-oai-schnittstelle-integrieren" title="Link to this heading">¶</a></h1>
 <p>Die Integration eines neuen Metadatenformats in die OAI-Schnittstelle umfasst Aktivitäten an mehreren Stellen.</p>
 <ol class="arabic simple">
 <li><p>Java-Klassen erweitern und anpassen</p></li>
@@ -296,7 +296,7 @@
 <li><p>Testen der Schnittstelle</p></li>
 </ol>
 <section id="java-klassen-erweitern-und-anpassen">
-<h2>Java-Klassen erweitern und anpassen<a class="headerlink" href="#java-klassen-erweitern-und-anpassen" title="Link to this heading"></a></h2>
+<h2>Java-Klassen erweitern und anpassen<a class="headerlink" href="#java-klassen-erweitern-und-anpassen" title="Link to this heading">¶</a></h2>
 <p>Für die Integration eines neuen Metadaten-Formats in die OAI-Schnittstelle sind die folgenden Dateien relevant.</p>
 <ul class="simple">
 <li><p>regal-api.app.helper.oai/OaiDispatcher.java</p></li>
@@ -354,7 +354,7 @@ Objektelementen, die aber gelöst werden sollen. Um strukturiert zuzugreifen, so
 wird auch das Anlegen neuer ScalaViews obsolet.</p>
 </section>
 <section id="konfiguration-der-regal-api-und-des-oai-providers-anpassen">
-<h2>Konfiguration der regal-api und des OAI-Providers anpassen<a class="headerlink" href="#konfiguration-der-regal-api-und-des-oai-providers-anpassen" title="Link to this heading"></a></h2>
+<h2>Konfiguration der regal-api und des OAI-Providers anpassen<a class="headerlink" href="#konfiguration-der-regal-api-und-des-oai-providers-anpassen" title="Link to this heading">¶</a></h2>
 <p>Damit das als Dissemination* angelegte neue Format über die regal-api abgefragt werden kann, muss in der Datei conf/routes eine entsprechende Konfigurationszeile erstellt werden.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>GET<span class="w"> </span>/resource/:pid.openaire<span class="w">     </span>controllers.Resource.asOpenAire<span class="o">(</span>pid,<span class="w"> </span>validate<span class="w"> </span>:<span class="w"> </span>Boolean<span class="w"> </span>?<span class="o">=</span><span class="w"> </span><span class="nb">false</span><span class="o">)</span>
 </pre></div>
@@ -387,7 +387,7 @@ driver.fedora.md.format.oai_openaire.dissType<span class="w"> </span><span class
 </div>
 </section>
 <section id="testen-der-schnittstelle">
-<h2>Testen der Schnittstelle<a class="headerlink" href="#testen-der-schnittstelle" title="Link to this heading"></a></h2>
+<h2>Testen der Schnittstelle<a class="headerlink" href="#testen-der-schnittstelle" title="Link to this heading">¶</a></h2>
 <p>Die OAI-Schnittstelle ist über die URL <a class="reference external" href="http://api.ellinet-dev.hbz-nrw.de/oai-pmh/">http://api.ellinet-dev.hbz-nrw.de/oai-pmh/</a> oder analog bei edoweb-test erreichbar.
 Der neue ServiceDisseminator kann über die regal-api aufgerufen werden, wenn der in der routes Datei deklarierte Pfad entsprechend aufgerufen wird.
 Obwohl GET als Methode deklariert ist, funktioniert jedoch nur der Aufruf mittels POST. Deshalb kommt cUrl zum Einsatz: curl -XGET -uedoweb-admin localhost:9000/resource/frl%3A6402576.openaire</p>
@@ -429,7 +429,14 @@ Obwohl GET als Methode deklariert ist, funktioniert jedoch nur der Aufruf mittel
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             
+            <div class="hbz-links">
+              <ul>
+                <li><a href="https://www.hbz-nrw.de/impressum">Impressum</a></li>
+                <li><a href="https://www.hbz-nrw.de/datenschutz">Datenschutz</a></li>
+              </ul>
+            </div>
           </div>
+
           <div class="right-details">
             
           </div>
@@ -464,11 +471,9 @@ Obwohl GET als Methode deklariert ist, funktioniert jedoch nur der Aufruf mittel
       
     </aside>
   </div>
-</div><script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>

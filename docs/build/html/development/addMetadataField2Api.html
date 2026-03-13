@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Anlegen neuer Metadaten-Felder in FORMS" href="addMetadataField2Forms.html"><link rel="prev" title="Neues Metadaten-Format in die OAI-Schnittstelle integrieren" href="oaiMetadataFormats.html">
         <link rel="prefetch" href="../_static/hbz-Logo-rgb-ohne-Claim.svg" as="image">
 
-    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
         <title>Anlegen neuer Metadaten-Felder in der API - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
@@ -225,7 +225,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../components/core_usage.html">Use to.science.core from console</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">to.science Crawler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">Informationen zum to.science Crawler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input aria-label="Toggle navigation of Entwicklung" checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
@@ -288,9 +288,9 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="anlegen-neuer-metadaten-felder-in-der-api">
-<h1>Anlegen neuer Metadaten-Felder in der API<a class="headerlink" href="#anlegen-neuer-metadaten-felder-in-der-api" title="Link to this heading"></a></h1>
+<h1>Anlegen neuer Metadaten-Felder in der API<a class="headerlink" href="#anlegen-neuer-metadaten-felder-in-der-api" title="Link to this heading">¶</a></h1>
 <section id="vorgehen">
-<h2>Vorgehen<a class="headerlink" href="#vorgehen" title="Link to this heading"></a></h2>
+<h2>Vorgehen<a class="headerlink" href="#vorgehen" title="Link to this heading">¶</a></h2>
 <p>Das Anlegen neuer Metadatenfelder in der to.science.api erfordert verschiedene Schritte und ist die Grundlage für die anschließende (optionale) Einbindung
 dieser Felder in to.science.forms.</p>
 <ol class="arabic simple">
@@ -299,7 +299,7 @@ dieser Felder in to.science.forms.</p>
 <li><p>Testen der Änderungen</p></li>
 </ol>
 <section id="labels-json-erweitern">
-<h3>labels.json erweitern<a class="headerlink" href="#labels-json-erweitern" title="Link to this heading"></a></h3>
+<h3>labels.json erweitern<a class="headerlink" href="#labels-json-erweitern" title="Link to this heading">¶</a></h3>
 <p>Damit die verschiedenen Mappings zwischen Formaten wie JSON und RDF, N-Triples etc. funktionieren, muss in der labels.json
 ein entsprechende JSON-Abschnitt für das neue Feld angelegt werden.</p>
 <p>Beispiel neues Feld academicDegree:</p>
@@ -318,7 +318,7 @@ ein entsprechende JSON-Abschnitt für das neue Feld angelegt werden.</p>
 </pre></div>
 </div>
 <section id="name-und-uri">
-<h4>“name” und “uri”:<a class="headerlink" href="#name-und-uri" title="Link to this heading"></a></h4>
+<h4>“name” und “uri”:<a class="headerlink" href="#name-und-uri" title="Link to this heading">¶</a></h4>
 <ol class="arabic simple">
 <li><p>Das Literal <strong>“name”</strong> muss den Variablen-Namen enthalten. Hieran war zunächst die Exposition der Variablen zu to.science.forms gescheitert.</p></li>
 <li><p>Der Name muss <strong>vermutlich</strong> dem in der ResourceUri stehenden veränderlichen Teil entsprechen.</p></li>
@@ -329,7 +329,7 @@ ein entsprechende JSON-Abschnitt für das neue Feld angelegt werden.</p>
 </div>
 </section>
 <section id="referencetype-und-container">
-<h4>“referenceType” und “container”:<a class="headerlink" href="#referencetype-und-container" title="Link to this heading"></a></h4>
+<h4>“referenceType” und “container”:<a class="headerlink" href="#referencetype-und-container" title="Link to this heading">¶</a></h4>
 <ol class="arabic">
 <li><div class="line-block">
 <div class="line">Die Literale <strong>“referenceType”</strong> ,  <strong>“container”</strong> enthalten vermutlich Informationen über die Typisierung der Variablen. Hierbei wird bei container das JSON-LD Schlüsselwort &#64;list verwendet. Es gibt 13 Schlüsselwörter. <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></div>
@@ -349,7 +349,7 @@ ein entsprechende JSON-Abschnitt für das neue Feld angelegt werden.</p>
 </div>
 </section>
 <section id="alle-labels-json-ersetzen">
-<h4>Alle labels.json ersetzen:<a class="headerlink" href="#alle-labels-json-ersetzen" title="Link to this heading"></a></h4>
+<h4>Alle labels.json ersetzen:<a class="headerlink" href="#alle-labels-json-ersetzen" title="Link to this heading">¶</a></h4>
 <ol class="arabic simple">
 <li><p>Sowohl die labels.json von <em>to.science.api</em> als auch die von <em>to.science.labels</em> müssen erweitert werden. Wie die beiden interferieren ist bisher ziemlich unklar.</p></li>
 <li><p>Beide Dateien müssen manuell in das jeweilige conf-Verzeichnis im installierten Modul kopiert werden. Sie werden nicht automatisch aktualisiert</p></li>
@@ -358,7 +358,7 @@ ein entsprechende JSON-Abschnitt für das neue Feld angelegt werden.</p>
 </section>
 </section>
 <section id="erweitern-der-java-klasse-jsonmapper-java">
-<h3>Erweitern der Java-Klasse JsonMapper.Java<a class="headerlink" href="#erweitern-der-java-klasse-jsonmapper-java" title="Link to this heading"></a></h3>
+<h3>Erweitern der Java-Klasse JsonMapper.Java<a class="headerlink" href="#erweitern-der-java-klasse-jsonmapper-java" title="Link to this heading">¶</a></h3>
 <p>Damit das neue Feld in die verschiedenen Metadaten-Formate gemappt werden kann,
 ist zumindest die Erweiterung der Klasse JsonMapper.Java notwendig</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">to</span><span class="p">.</span><span class="na">science</span><span class="p">.</span><span class="na">api</span><span class="p">.</span><span class="na">helper</span><span class="o">/</span><span class="n">JsonMapper</span><span class="p">.</span><span class="na">Java</span>
@@ -372,7 +372,7 @@ ist zumindest die Erweiterung der Klasse JsonMapper.Java notwendig</p>
 </section>
 </section>
 <section id="hintergrund">
-<h2>Hintergrund<a class="headerlink" href="#hintergrund" title="Link to this heading"></a></h2>
+<h2>Hintergrund<a class="headerlink" href="#hintergrund" title="Link to this heading">¶</a></h2>
 <p>Die Vereinbarung des neuen Metadaten-Felds in <code class="docutils literal notranslate"><span class="pre">labels.json</span></code> ist notwendig, weil die <code class="docutils literal notranslate"><span class="pre">labels.json</span></code> innerhalb der to.science-Komponenten
 die Ergänzung des neuen Feldes um den für Mappings und Konvertiereungen von JSON-Dateien notwendigen LinkedData-Teil übernimmt.
 Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. <a class="footnote-reference brackets" href="#id3" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
@@ -420,7 +420,14 @@ Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. <a clas
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             
+            <div class="hbz-links">
+              <ul>
+                <li><a href="https://www.hbz-nrw.de/impressum">Impressum</a></li>
+                <li><a href="https://www.hbz-nrw.de/datenschutz">Datenschutz</a></li>
+              </ul>
+            </div>
           </div>
+
           <div class="right-details">
             
           </div>
@@ -463,11 +470,9 @@ Damit kann die to.science.api an bestimmten API-Calls JSONLD ausliefern. <a clas
       
     </aside>
   </div>
-</div><script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>

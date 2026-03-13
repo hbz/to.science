@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Core Development" href="core_development.html"><link rel="prev" title="Metadaten-Felder im Formular zugänglich machen" href="bindMetadataField2ScalaTemplate.html">
         <link rel="prefetch" href="../_static/hbz-Logo-rgb-ohne-Claim.svg" as="image">
 
-    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
         <title>Der mutmaßliche Weg der Daten durch to.science.forms - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
@@ -225,7 +225,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../components/core_usage.html">Use to.science.core from console</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">to.science Crawler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">Informationen zum to.science Crawler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input aria-label="Toggle navigation of Entwicklung" checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
@@ -288,23 +288,23 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="der-mutmaszliche-weg-der-daten-durch-to-science-forms">
-<h1>Der mutmaßliche Weg der Daten durch to.science.forms<a class="headerlink" href="#der-mutmaszliche-weg-der-daten-durch-to-science-forms" title="Link to this heading"></a></h1>
+<h1>Der mutmaßliche Weg der Daten durch to.science.forms<a class="headerlink" href="#der-mutmaszliche-weg-der-daten-durch-to-science-forms" title="Link to this heading">¶</a></h1>
 <section id="erste-annahme">
-<h2>Erste Annahme<a class="headerlink" href="#erste-annahme" title="Link to this heading"></a></h2>
+<h2>Erste Annahme<a class="headerlink" href="#erste-annahme" title="Link to this heading">¶</a></h2>
 <p>Beim Aufruf des Formulars werden im Normalfall die Daten aus einem RDF-XML in das Formular eingelesen.
 Alternativ kann auch die “Nutzlast” einer POST-Response genutzt werden. Letzteres Verfahren wird jedoch
 normalerweise nur verwendet, wenn das Formular aus dem Formular selber mit dem Submit-Button abgeschickt
 wurde und aufgrund von Fehlern die Formularfelder neu eingelesen werden sollen.</p>
 </section>
 <section id="zweite-annahme">
-<h2>Zweite Annahme<a class="headerlink" href="#zweite-annahme" title="Link to this heading"></a></h2>
+<h2>Zweite Annahme<a class="headerlink" href="#zweite-annahme" title="Link to this heading">¶</a></h2>
 <p>Das Versenden der Daten aus dem Formular an die to.science.api erfolgt ausschließlich als API-Call
 bei dem ggf. verändertes RDF-XML an die to.science.api geliefert wird.</p>
 </section>
 <section id="nachverfolgung-der-schritte">
-<h2>Nachverfolgung der Schritte<a class="headerlink" href="#nachverfolgung-der-schritte" title="Link to this heading"></a></h2>
+<h2>Nachverfolgung der Schritte<a class="headerlink" href="#nachverfolgung-der-schritte" title="Link to this heading">¶</a></h2>
 <section id="von-drupal-zu-to-science-api">
-<h3>Von Drupal zu to.science.api<a class="headerlink" href="#von-drupal-zu-to-science-api" title="Link to this heading"></a></h3>
+<h3>Von Drupal zu to.science.api<a class="headerlink" href="#von-drupal-zu-to-science-api" title="Link to this heading">¶</a></h3>
 <ol class="arabic">
 <li><div class="line-block">
 <div class="line">Der Reiter “Bearbeiten” in der Drupal-Oberfläche löst einen GET-Request an die to.science-api mit der Route <code class="docutils literal notranslate"><span class="pre">:pid/edit</span></code> aus.</div>
@@ -322,7 +322,7 @@ bei dem ggf. verändertes RDF-XML an die to.science.api geliefert wird.</p>
 </ol>
 </section>
 <section id="von-to-science-api-zu-to-science-forms">
-<h3>Von to.science.api zu to.science.forms<a class="headerlink" href="#von-to-science-api-zu-to-science-forms" title="Link to this heading"></a></h3>
+<h3>Von to.science.api zu to.science.forms<a class="headerlink" href="#von-to-science-api-zu-to-science-forms" title="Link to this heading">¶</a></h3>
 <p>1. | Die Methode <code class="docutils literal notranslate"><span class="pre">Resource.edit</span></code> ruft zunächst die Methode <code class="docutils literal notranslate"><span class="pre">call</span></code> der Klasse <code class="docutils literal notranslate"><span class="pre">ModifyAction</span></code> auf.
 In den Methodenaufruf wurde dabei noch ein Code-Block mit einer If-Clause` integriert, was das Lesen des Codes nochmal erwschwert.</p>
 <p>istdabei</p>
@@ -365,7 +365,14 @@ In den Methodenaufruf wurde dabei noch ein Code-Block mit einer If-Clause` integ
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             
+            <div class="hbz-links">
+              <ul>
+                <li><a href="https://www.hbz-nrw.de/impressum">Impressum</a></li>
+                <li><a href="https://www.hbz-nrw.de/datenschutz">Datenschutz</a></li>
+              </ul>
+            </div>
           </div>
+
           <div class="right-details">
             
           </div>
@@ -404,11 +411,9 @@ In den Methodenaufruf wurde dabei noch ein Code-Block mit einer If-Clause` integ
       
     </aside>
   </div>
-</div><script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>

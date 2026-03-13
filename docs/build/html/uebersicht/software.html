@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Vagrant" href="vagrant.html"><link rel="prev" title="Konzepte" href="konzepte.html">
         <link rel="prefetch" href="../_static/hbz-Logo-rgb-ohne-Claim.svg" as="image">
 
-    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
         <title>Software - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
@@ -225,7 +225,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../components/core_usage.html">Use to.science.core from console</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">to.science Crawler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">Informationen zum to.science Crawler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../development/development.html">Entwicklung</a><input aria-label="Toggle navigation of Entwicklung" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -288,7 +288,7 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="software">
-<span id="id1"></span><h1>Software<a class="headerlink" href="#software" title="Link to this heading"></a></h1>
+<span id="id1"></span><h1>Software<a class="headerlink" href="#software" title="Link to this heading">¶</a></h1>
 <p>Die technische Dokumentation der HTTP-Schnittstelle findet sich unter
 <a class="reference internal" href="../components/api.html#api-documentation"><span class="std std-ref">API</span></a>:</p>
 <p>Nachfolgend sei eine Innenansicht der einzelnen Module aufgestellt. Die
@@ -297,34 +297,28 @@ entsprechende Einträge in der Apache-Konfiguration sichtbar gemacht. Es
 handelt sich also um eine Webservice-Architektur, in der alle
 Webservices über einen Apache-Webserver und entsprechende Einträge in
 ihren Konfigurationsdateien miteinander verbunden werden.</p>
-<figure class="align-default" id="id67">
+<figure class="align-default" id="id62">
 <img alt="Regal Abhängigkeiten" src="../_images/regal-dependencies.jpeg" />
 <figcaption>
-<p><span class="caption-text">Regal Abhängigkeiten</span><a class="headerlink" href="#id67" title="Link to this image"></a></p>
+<p><span class="caption-text">Regal Abhängigkeiten</span><a class="headerlink" href="#id62" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<section id="regal-api">
-<span id="regal-api-2"></span><h2>regal-api<a class="headerlink" href="#regal-api" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id68">
-<table class="docutils align-default" id="id68">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id68" title="Link to this table"></a></caption>
+<section id="to-science-api-ehemals-regal-api">
+<span id="regal-api-2"></span><h2>to.science.api (ehemals regal-api)<a class="headerlink" href="#to-science-api-ehemals-regal-api" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Source</p></td>
-<td><p><cite>regal-api &lt;https:
-//github.com/edoweb/regal-api&gt;</cite></p></td>
+<td><p><a class="reference external" href="https://github.com/hbz/to.science.api">https://github.com/hbz/to.science.api</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Technik</p></td>
-<td><p><cite>Play
-2.4
-.2 &lt;https://www.playframework.com
-/documentation/2.4.x/JavaHome&gt;</cite></p></td>
+<td><p><a class="reference external" href="https://www.playframework.com/documentation/2.2.x/JavaHome">Play</a></p></td>
 </tr>
-<tr class="row-odd"><td><p>Ports</p></td>
-<td><p>9000 / 9100</p></td>
+<tr class="row-odd"><td><p>Port</p></td>
+<td><p>9000</p></td>
 </tr>
 <tr class="row-even"><td><p>Verzeichnis</p></td>
-<td><p>/opt/regal/apps/regal ,
-/opr/regal/src/regal</p></td>
+<td><p>/opt/toscience/apps/regal, /opt/toscience/src/regal</p></td>
 </tr>
 <tr class="row-odd"><td><p>HTTP Pfad</p></td>
 <td><p>/</p></td>
@@ -332,7 +326,7 @@ ihren Konfigurationsdateien miteinander verbunden werden.</p>
 </tbody>
 </table>
 </div>
-<p>Mit regal-api werden alle grundlegenden Funktionen von Regal
+<p>Mit der <code class="docutils literal notranslate"><span class="pre">to.science.api</span></code> werden alle grundlegenden Funktionen von to.science
 bereitgestellt. Dies umfasst:</p>
 <ul class="simple">
 <li><p>HTTP Schnittstelle</p></li>
@@ -343,10 +337,9 @@ bereitgestellt. Dies umfasst:</p>
 <li><p>Suche</p></li>
 <li><p>Webarchivierung</p></li>
 </ul>
-<p>Der Webservice ist auf Basis von <a class="reference external" href="https://www.playframework.com/documentation/2.4.x/JavaHome">Play
-2.4.2</a>
+<p>Der Webservice ist auf Basis von <a class="reference external" href="https://www.playframework.com/documentation/2.2.x/JavaHome">Play</a>
 realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von
-elektronischen Publikationen an. Die <a class="reference external" href="#_regal_api_2">regal-api</a>
+elektronischen Publikationen an. Die <code class="docutils literal notranslate"><span class="pre">to.science.api</span></code>
 operiert auf <a class="reference external" href="#_fedora_commons_3">Fedora Commons 3</a>,
 <a class="reference external" href="#_mysql">MySql</a> und <a class="reference external" href="#_elasticsearch_1_1">Elasticsearch 1.1</a>.
 Über die API werden auch Funktionalitäten von <a class="reference external" href="#_etikett">Etikett</a>,
@@ -355,10 +348,10 @@ operiert auf <a class="reference external" href="#_fedora_commons_3">Fedora Comm
 werden <a class="reference external" href="#_heritrix">heritrix</a>, <a class="reference external" href="#_wpull">wpull</a> und
 <a class="reference external" href="#_openwayback">openwayback</a> angebunden.</p>
 <section id="konfiguration">
-<span id="id3"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration" title="Link to this heading"></a></h3>
-<div class="table-wrapper docutils container" id="id69">
-<table class="docutils align-default" id="id69">
-<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id69" title="Link to this table"></a></caption>
+<span id="id3"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id63">
+<table class="docutils align-default" id="id63">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id63" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Datei</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -529,10 +522,10 @@ vorgeschlagen</p></td>
 </div>
 </section>
 <section id="die-applikation">
-<span id="id4"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation" title="Link to this heading"></a></h3>
-<div class="table-wrapper docutils container" id="id70">
-<table class="docutils align-default" id="id70">
-<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id70" title="Link to this table"></a></caption>
+<span id="id4"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id64">
+<table class="docutils align-default" id="id64">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id64" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Package</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -705,24 +698,22 @@ war keine gute Idee.</p></td>
 </div>
 </section>
 </section>
-<section id="id5">
-<h2>Etikett<a class="headerlink" href="#id5" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id71">
-<table class="docutils align-default" id="id71">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id71" title="Link to this table"></a></caption>
+<section id="labels-ehemals-etikett">
+<h2>Labels (ehemals Etikett)<a class="headerlink" href="#labels-ehemals-etikett" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container">
+<table class="docutils align-default">
 <tbody>
 <tr class="row-odd"><td><p>Source</p></td>
-<td><p><a href="#id104"><span class="problematic" id="id105">`Etikett`_</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/hbz/to.science.labels">https://github.com/hbz/to.science.labels</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Technik</p></td>
 <td><p><a class="reference external" href="https://www.playframework.com/documentation/2.2.x/JavaHome">Play</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Ports</p></td>
-<td><p>9002 / 9102</p></td>
+<td><p>9002</p></td>
 </tr>
 <tr class="row-even"><td><p>Verzeichnis</p></td>
-<td><p>/opt/regal/apps/etikett ,
-/opr/regal/src/etikett</p></td>
+<td><p>/opt/toscience/apps/etikett, /opt/toscience/src/etikett</p></td>
 </tr>
 <tr class="row-odd"><td><p>HTTP Pfad</p></td>
 <td><p>/tools/etikett</p></td>
@@ -772,10 +763,10 @@ angezeigt werden.</p></li>
 <li><p>Container - JSON-LD Container</p></li>
 <li><p>Beschreibung - Kommentar als Markdown</p></li>
 </ul>
-<figure class="align-default" id="id72">
+<figure class="align-default" id="id65">
 <img alt="Etikett Oberfläche" src="../_images/etikett-screen.png" />
 <figcaption>
-<p><span class="caption-text">Etikett Oberfläche</span><a class="headerlink" href="#id72" title="Link to this image"></a></p>
+<p><span class="caption-text">Etikett Oberfläche</span><a class="headerlink" href="#id65" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Mit Hilfe dieser Angaben kann Etikett auch einen “JSON-LD Context”
@@ -793,10 +784,10 @@ verwendet.</p>
 <li><p>Als Cache</p></li>
 </ul>
 <section id="konfiguration-2">
-<span id="id7"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-2" title="Link to this heading"></a></h3>
-<div class="table-wrapper docutils container" id="id73">
-<table class="docutils align-default" id="id73">
-<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id73" title="Link to this table"></a></caption>
+<span id="id6"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-2" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id66">
+<table class="docutils align-default" id="id66">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id66" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Datei</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -855,10 +846,10 @@ werden kann.</p></td>
 </div>
 </section>
 <section id="die-applikation-2">
-<span id="id8"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-2" title="Link to this heading"></a></h3>
-<div class="table-wrapper docutils container" id="id74">
-<table class="docutils align-default" id="id74">
-<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id74" title="Link to this table"></a></caption>
+<span id="id7"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-2" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id67">
+<table class="docutils align-default" id="id67">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id67" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Package</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -895,27 +886,23 @@ aufrufen.</p></td>
 </div>
 </section>
 </section>
-<section id="id9">
-<span id="id10"></span><h2>Zettel<a class="headerlink" href="#id9" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id75">
-<table class="docutils align-default" id="id75">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id75" title="Link to this table"></a></caption>
+<section id="labels-ehemals-zettel">
+<span id="id8"></span><h2>Labels (ehemals Zettel)<a class="headerlink" href="#labels-ehemals-zettel" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container" id="id68">
+<table class="docutils align-default" id="id68">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id68" title="Link to this table">¶</a></caption>
 <tbody>
 <tr class="row-odd"><td><p>Source</p></td>
-<td><p><a href="#id100"><span class="problematic" id="id101">`zettel &lt;
-https://github.com/hbz/zettel&gt;`__</span></a></p></td>
+<td><p><a class="reference external" href="https://github.com/hbz/to.science.forms">https://github.com/hbz/to.science.forms</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Technik</p></td>
-<td><p><a class="reference external" href="https://www.playframework.com/documentation/2.5.x/JavaHome">Play Play
-2.5
-.4</a></p></td>
+<td><p><a class="reference external" href="https://www.playframework.com/documentation/2.2.x/JavaHome">Play</a></p></td>
 </tr>
 <tr class="row-odd"><td><p>Ports</p></td>
 <td><p>9003 / 9103</p></td>
 </tr>
 <tr class="row-even"><td><p>Verzeichnis</p></td>
-<td><p>/opt/regal/apps/zettel,
-/opr/regal/src/zettel</p></td>
+<td><p>/opt/regal/apps/zettel, /opt/regal/src/zettel</p></td>
 </tr>
 <tr class="row-odd"><td><p>HTTP Pfad</p></td>
 <td><p>/tools/zettel</p></td>
@@ -930,10 +917,10 @@ existierende Daten in ein Formular geladen werden, so können diese Daten
 <code class="docutils literal notranslate"><span class="pre">HTTP</span> <span class="pre">POST</span></code> in das Formular geladen werden. Gleichzeitig kann
 spezifiziert werden, in welchem Format das Formular Daten zurückliefern
 soll.</p>
-<figure class="align-default" id="id76">
+<figure class="align-default" id="id69">
 <img alt="Zettel Oberfläche" src="../_images/zettel-screen.png" />
 <figcaption>
-<p><span class="caption-text">Zettel Oberfläche</span><a class="headerlink" href="#id76" title="Link to this image"></a></p>
+<p><span class="caption-text">Zettel Oberfläche</span><a class="headerlink" href="#id69" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>Zettel verfügt über keine eigene Speicherschicht. Daten die über ein
@@ -947,17 +934,17 @@ sendet das Zettel-Formular dann Nachrichten an die Applikation und
 erlaubt dieser darauf zu reagieren. Um Daten von Zettel in die
 Applikation zu bekommen, werden diese im HTML-DOM gespeichert und können
 von dort durch die Applikation entgegengenommen werden.</p>
-<figure class="align-default" id="id77">
+<figure class="align-default" id="id70">
 <img alt="Zettel Datenfluss" src="../_images/zettel-flos.png" />
 <figcaption>
-<p><span class="caption-text">Zettel Datenfluss</span><a class="headerlink" href="#id77" title="Link to this image"></a></p>
+<p><span class="caption-text">Zettel Datenfluss</span><a class="headerlink" href="#id70" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="konfiguration-3">
-<span id="id11"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-3" title="Link to this heading"></a></h3>
-<div class="table-wrapper docutils container" id="id78">
-<table class="docutils align-default" id="id78">
-<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id78" title="Link to this table"></a></caption>
+<span id="id9"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-3" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id71">
+<table class="docutils align-default" id="id71">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id71" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Datei</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -1009,10 +996,10 @@ einer Datei</p></td>
 </div>
 </section>
 <section id="die-applikation-3">
-<span id="id12"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-3" title="Link to this heading"></a></h3>
-<div class="table-wrapper docutils container" id="id79">
-<table class="docutils align-default" id="id79">
-<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id79" title="Link to this table"></a></caption>
+<span id="id10"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-3" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id72">
+<table class="docutils align-default" id="id72">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id72" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Package</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -1074,10 +1061,10 @@ eigentlichen Formulare.</p></td>
 </section>
 </section>
 <section id="skos-lookup">
-<span id="id13"></span><h2>skos-lookup<a class="headerlink" href="#skos-lookup" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id80">
-<table class="docutils align-default" id="id80">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id80" title="Link to this table"></a></caption>
+<span id="id11"></span><h2>skos-lookup<a class="headerlink" href="#skos-lookup" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container" id="id73">
+<table class="docutils align-default" id="id73">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id73" title="Link to this table">¶</a></caption>
 <tbody>
 <tr class="row-odd"><td><p>Source</p></td>
 <td><p><a class="reference external" href="https://github.com/hbz/skos-lookup">skos-lookup</a></p></td>
@@ -1108,23 +1095,23 @@ von jQuery-Autocomplete- und Select2-Widgets aufzubauen. Auf diese Weise
 können auch umfangreichere Thesauri und Notationssysteme in den
 Formularen von <a class="reference external" href="#_zettel">Zettel</a> fachgerecht angelinkt werden.
 <a class="reference external" href="#_skos_lookup">skos-lookup</a> unterstützt auch mehrsprachige Thesauri.</p>
-<figure class="align-default" id="id81">
+<figure class="align-default" id="id74">
 <img alt="SKOS-Lookup Beispiel 1" src="../_images/skos-lookup-autocomplete.png" />
 <figcaption>
-<p><span class="caption-text">SKOS-Lookup Beispiel 1</span><a class="headerlink" href="#id81" title="Link to this image"></a></p>
+<p><span class="caption-text">SKOS-Lookup Beispiel 1</span><a class="headerlink" href="#id74" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
-<figure class="align-default" id="id82">
+<figure class="align-default" id="id75">
 <img alt="SKOS-Lookup Beispiel 2" src="../_images/example-select2.png" />
 <figcaption>
-<p><span class="caption-text">SKOS-Lookup Beispiel 2</span><a class="headerlink" href="#id82" title="Link to this image"></a></p>
+<p><span class="caption-text">SKOS-Lookup Beispiel 2</span><a class="headerlink" href="#id75" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="konfiguration-4">
-<span id="id14"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-4" title="Link to this heading"></a></h3>
-<div class="table-wrapper docutils container" id="id83">
-<table class="docutils align-default" id="id83">
-<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id83" title="Link to this table"></a></caption>
+<span id="id12"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-4" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id76">
+<table class="docutils align-default" id="id76">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id76" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Datei</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -1162,10 +1149,10 @@ von: Jörg Prante)</p></td>
 </div>
 </section>
 <section id="die-applikation-4">
-<span id="id15"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-4" title="Link to this heading"></a></h3>
-<div class="table-wrapper docutils container" id="id84">
-<table class="docutils align-default" id="id84">
-<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id84" title="Link to this table"></a></caption>
+<span id="id13"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-4" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id77">
+<table class="docutils align-default" id="id77">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id77" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Package</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -1200,14 +1187,14 @@ Demonstration der Nutzung.</p></td>
 </div>
 </section>
 </section>
-<section id="id16">
-<span id="id17"></span><h2>Thumby<a class="headerlink" href="#id16" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id85">
-<table class="docutils align-default" id="id85">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id85" title="Link to this table"></a></caption>
+<section id="id14">
+<span id="id15"></span><h2>Thumby<a class="headerlink" href="#id14" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container" id="id78">
+<table class="docutils align-default" id="id78">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id78" title="Link to this table">¶</a></caption>
 <tbody>
 <tr class="row-odd"><td><p>Source</p></td>
-<td><p><a href="#id100"><span class="problematic" id="id102">`thumby &lt;
+<td><p><a href="#id93"><span class="problematic" id="id94">`thumby &lt;
 https://github.com/hbz/thumby&gt;`__</span></a></p></td>
 </tr>
 <tr class="row-even"><td><p>Technik</p></td>
@@ -1236,10 +1223,10 @@ erstellen. Die Daten werden dauerhaft auf der Platte abgelegt und
 zukünftige Requests, die auf dasselbe Bild verweisen werden direkt aus
 dem Speicher von <a class="reference external" href="#_thumby">Thumby</a> beantwortet.</p>
 <section id="konfiguration-5">
-<span id="id18"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-5" title="Link to this heading"></a></h3>
-<div class="table-wrapper docutils container" id="id86">
-<table class="docutils align-default" id="id86">
-<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id86" title="Link to this table"></a></caption>
+<span id="id16"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-5" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id79">
+<table class="docutils align-default" id="id79">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id79" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Datei</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -1263,10 +1250,10 @@ einer Datei</p></td>
 </div>
 </section>
 <section id="die-applikation-5">
-<span id="id19"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-5" title="Link to this heading"></a></h3>
-<div class="table-wrapper docutils container" id="id87">
-<table class="docutils align-default" id="id87">
-<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id87" title="Link to this table"></a></caption>
+<span id="id17"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-5" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id80">
+<table class="docutils align-default" id="id80">
+<caption><span class="caption-text">Das /app Verzeichnis</span><a class="headerlink" href="#id80" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Package</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -1292,17 +1279,17 @@ Upload-Formular.</p></td>
 </div>
 </section>
 </section>
-<section id="id20">
-<span id="id21"></span><h2>Deepzoomer<a class="headerlink" href="#id20" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id88">
-<table class="docutils align-default" id="id88">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id88" title="Link to this table"></a></caption>
+<section id="id18">
+<span id="id19"></span><h2>Deepzoomer<a class="headerlink" href="#id18" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container" id="id81">
+<table class="docutils align-default" id="id81">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id81" title="Link to this table">¶</a></caption>
 <tbody>
 <tr class="row-odd"><td><p>Source</p></td>
 <td><p><a class="reference external" href="https://github.com/hbz/DeepZoomService">DeepZoomService</a></p></td>
 </tr>
 <tr class="row-even"><td><p>Technik</p></td>
-<td><p><a href="#id100"><span class="problematic" id="id103">`Servlet
+<td><p><a href="#id93"><span class="problematic" id="id95">`Servlet
 2.3 &lt;
 https://download.oracle.com/otn-p
 ub/jcp/7840-servlet-2.3-spec-oth-
@@ -1325,10 +1312,10 @@ diese Weise kann in Regal eine Viewer-Komponente realisiert werden, die
 die Anzeige sehr großer, hochaufgelöster Bilder im Webbrowser
 unterstützt.</p>
 <section id="konfiguration-6">
-<span id="id22"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-6" title="Link to this heading"></a></h3>
-<div class="table-wrapper docutils container" id="id89">
-<table class="docutils align-default" id="id89">
-<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id89" title="Link to this table"></a></caption>
+<span id="id20"></span><h3>Konfiguration<a class="headerlink" href="#konfiguration-6" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id82">
+<table class="docutils align-default" id="id82">
+<caption><span class="caption-text">Dateien im /conf Verzeichnis</span><a class="headerlink" href="#id82" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Datei</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -1347,10 +1334,10 @@ abrufbar ist, gesetzt.</p></td>
 </section>
 </section>
 <section id="regal-drupal">
-<span id="id23"></span><h2>regal-drupal<a class="headerlink" href="#regal-drupal" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id90">
-<table class="docutils align-default" id="id90">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id90" title="Link to this table"></a></caption>
+<span id="id21"></span><h2>regal-drupal<a class="headerlink" href="#regal-drupal" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container" id="id83">
+<table class="docutils align-default" id="id83">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id83" title="Link to this table">¶</a></caption>
 <tbody>
 <tr class="row-odd"><td><p>Source</p></td>
 <td><p><a class="reference external" href="https://github.com/edoweb/regal-drupal">regal-drupal</a></p></td>
@@ -1374,10 +1361,10 @@ gal/var/drupal/sites/all/modules/</p></td>
 bietet Oberflächen zur Konfiguration, zur Suche und zur Verwaltung von
 Objekthierarchien.</p>
 <section id="die-applikation-6">
-<span id="id24"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-6" title="Link to this heading"></a></h3>
-<div class="table-wrapper docutils container" id="id91">
-<table class="docutils align-default" id="id91">
-<caption><span class="caption-text">Verzeichnisstruktur</span><a class="headerlink" href="#id91" title="Link to this table"></a></caption>
+<span id="id22"></span><h3>Die Applikation<a class="headerlink" href="#die-applikation-6" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id84">
+<table class="docutils align-default" id="id84">
+<caption><span class="caption-text">Verzeichnisstruktur</span><a class="headerlink" href="#id84" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Verzeichnis</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -1408,11 +1395,43 @@ finden.</p></td>
 </div>
 </section>
 </section>
+<section id="id23">
+<span id="id24"></span><h2>heritrix<a class="headerlink" href="#id23" title="Link to this heading">¶</a></h2>
+<p>Heritrix ist ein Werkzeug zur Sammlung von Webseiten. Heritrix startet
+standalone als Webapplikation und bietet eine Weboberfläche zur
+Verwaltung von Sammelvorgängen an. Eingesammelte Webseiten werden als
+WARC-Dateien in einem bestimmten Bereich der Platte abgelegt.</p>
+</section>
+<section id="id25">
+<span id="id26"></span><h2>wpull<a class="headerlink" href="#id25" title="Link to this heading">¶</a></h2>
+<p>Wpull ist ein Kommandozeilen-Wermzeug zur Sammlung von Webseiten. Mit
+WPull können WARC-Dateien erzeugt werden.</p>
+</section>
+<section id="id27">
+<span id="id28"></span><h2>Fedora Commons 3<a class="headerlink" href="#id27" title="Link to this heading">¶</a></h2>
+<p>Fedora Commons 3 ist ein Repository-Framework. Für Regal wird vorallem
+die Speicherschicht von Fedora Commons 3 benutzt. Fedora-Commons legt
+alle Daten im Dateisystem (auch) ab. Mit den Daten aus dem Dateisystem
+lässt sich eine komplette Fedora-Commons 3 Instanz von grundauf neu
+aufbauen.</p>
+</section>
+<section id="mysql">
+<span id="id29"></span><h2>MySql<a class="headerlink" href="#mysql" title="Link to this heading">¶</a></h2>
+<p>MySQL wir von Fedora, regal-api und etikett verwendet.</p>
+</section>
+<section id="id30">
+<span id="id31"></span><h2>Elasticsearch 1.1<a class="headerlink" href="#id30" title="Link to this heading">¶</a></h2>
+<p>Elasticsearch ist eine Suchmaschine und wird von
+<a class="reference external" href="#_regal_api_2">regal-api</a> verwendet. Auch
+<a class="reference external" href="#_regal_drupal">regal-drupal</a> greift auf den Index zu.</p>
+</section>
+<section id="drupal-7">
+<span id="id33"></span><h2>Drupal 7<a class="headerlink" href="#drupal-7" title="Link to this heading">¶</a></h2>
 <section id="edoweb-drupal-theme">
-<span id="id25"></span><h2>edoweb-drupal-theme<a class="headerlink" href="#edoweb-drupal-theme" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id92">
-<table class="docutils align-default" id="id92">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id92" title="Link to this table"></a></caption>
+<span id="id34"></span><h3>edoweb-drupal-theme<a class="headerlink" href="#edoweb-drupal-theme" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id85">
+<table class="docutils align-default" id="id85">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id85" title="Link to this table">¶</a></caption>
 <tbody>
 <tr class="row-odd"><td><p>Source</p></td>
 <td><p><a class="reference external" href="https://github.com/edoweb/edoweb-drupal-theme">edow
@@ -1436,10 +1455,10 @@ egal/var/drupal/sites/all/themes/</p></td>
 für den Server <a class="reference external" href="https://edoweb-rlp.de">https://edoweb-rlp.de</a></p>
 </section>
 <section id="zbmed-drupal-theme">
-<span id="id26"></span><h2>zbmed-drupal-theme<a class="headerlink" href="#zbmed-drupal-theme" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id93">
-<table class="docutils align-default" id="id93">
-<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id93" title="Link to this table"></a></caption>
+<span id="id35"></span><h3>zbmed-drupal-theme<a class="headerlink" href="#zbmed-drupal-theme" title="Link to this heading">¶</a></h3>
+<div class="table-wrapper docutils container" id="id86">
+<table class="docutils align-default" id="id86">
+<caption><span class="caption-text">Überblick</span><a class="headerlink" href="#id86" title="Link to this table">¶</a></caption>
 <tbody>
 <tr class="row-odd"><td><p>Source</p></td>
 <td><p><a class="reference external" href="https://github.com/edoweb/zbmed-drupal-theme">zb
@@ -1461,74 +1480,13 @@ egal/var/drupal/sites/all/themes/</p></td>
 </div>
 <p>Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche
 für den Server <a class="reference external" href="https://repository.publisso.de">https://repository.publisso.de</a></p>
+<section id="installation">
+<h4>Installation<a class="headerlink" href="#installation" title="Link to this heading">¶</a></h4>
 </section>
-<section id="id27">
-<span id="id28"></span><h2>openwayback<a class="headerlink" href="#id27" title="Link to this heading"></a></h2>
-<p>Repo: <a class="reference external" href="https://github.com/iipc/openwayback">https://github.com/iipc/openwayback</a> Servlet 2.5 .Überblick</p>
-<div class="table-wrapper docutils container">
-<table class="docutils align-default">
-<tbody>
-<tr class="row-odd"><td><p>Source</p></td>
-<td><p><a class="reference external" href="https://github.com/iipc/openwayback">openwayback</a></p></td>
-</tr>
-<tr class="row-even"><td><p>Technik</p></td>
-<td><p><a class="reference external" href="https://download.oracle.com/otn-pub/jcp/servlet-2.5-mr5-oth-JSpec/servlet-2.5-mr5-spec.pdf">Servlet
-2.5</a></p></td>
-</tr>
-<tr class="row-odd"><td><p>Ports</p></td>
-<td><p>8091 / 8191</p></td>
-</tr>
-<tr class="row-even"><td><p>Verzeichnis</p></td>
-<td><p>/o
-pt/regal/tomcat-for-openwayback/,
-/opr/regal/src/openwayback</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<p><strong>Achtung</strong>: Es gibt einen am hbz entwickelten Branch. Dieser ist nicht
-auf Github.</p>
-<p>Openwayback ist eine Webapplikation die im ROOT Bereich eines Tomcats
-installiert werden will. Sie kann Verzeichnisse mit WARC-Dateien
-indexieren und darauf eine Oberfläche zur Recherche und zur Navigation
-aufbauen.</p>
 </section>
-<section id="id29">
-<span id="id30"></span><h2>heritrix<a class="headerlink" href="#id29" title="Link to this heading"></a></h2>
-<p>Heritrix ist ein Werkzeug zur Sammlung von Webseiten. Heritrix startet
-standalone als Webapplikation und bietet eine Weboberfläche zur
-Verwaltung von Sammelvorgängen an. Eingesammelte Webseiten werden als
-WARC-Dateien in einem bestimmten Bereich der Platte abgelegt.</p>
-</section>
-<section id="id31">
-<span id="id32"></span><h2>wpull<a class="headerlink" href="#id31" title="Link to this heading"></a></h2>
-<p>Wpull ist ein Kommandozeilen-Wermzeug zur Sammlung von Webseiten. Mit
-WPull können WARC-Dateien erzeugt werden.</p>
-</section>
-<section id="id33">
-<span id="id34"></span><h2>Fedora Commons 3<a class="headerlink" href="#id33" title="Link to this heading"></a></h2>
-<p>Fedora Commons 3 ist ein Repository-Framework. Für Regal wird vorallem
-die Speicherschicht von Fedora Commons 3 benutzt. Fedora-Commons legt
-alle Daten im Dateisystem (auch) ab. Mit den Daten aus dem Dateisystem
-lässt sich eine komplette Fedora-Commons 3 Instanz von grundauf neu
-aufbauen.</p>
-</section>
-<section id="mysql">
-<span id="id35"></span><h2>MySql<a class="headerlink" href="#mysql" title="Link to this heading"></a></h2>
-<p>MySQL wir von Fedora, regal-api und etikett verwendet.</p>
-</section>
-<section id="id36">
-<span id="id37"></span><h2>Elasticsearch 1.1<a class="headerlink" href="#id36" title="Link to this heading"></a></h2>
-<p>Elasticsearch ist eine Suchmaschine und wird von
-<a class="reference external" href="#_regal_api_2">regal-api</a> verwendet. Auch
-<a class="reference external" href="#_regal_drupal">regal-drupal</a> greift auf den Index zu.</p>
-</section>
-<section id="drupal-7">
-<span id="id40"></span><h2>Drupal 7<a class="headerlink" href="#drupal-7" title="Link to this heading"></a></h2>
-<p>Über Drupal 7</p>
 </section>
 <section id="server">
-<span id="vagrant-installation"></span><span id="id41"></span><h2>Server<a class="headerlink" href="#server" title="Link to this heading"></a></h2>
+<span id="id36"></span><h2>Server<a class="headerlink" href="#server" title="Link to this heading">¶</a></h2>
 <p>Die Installation auf einem Server kann mit Hilfe des mitgelieferten
 Skriptes
 <a class="reference external" href="https://github.com/jschnasse/Regal/blob/master/vagrant/ubuntu-14.04/regal-install.sh">regal-install.sh</a>
@@ -1537,7 +1495,7 @@ Verzeichnis mit einem JDK aufgebaut werden. Danach erfolgt die
 Installation unter <code class="docutils literal notranslate"><span class="pre">/opt/regal</span></code> und mit einem Benutzer <code class="docutils literal notranslate"><span class="pre">regal</span></code> (vgl.
 <code class="docutils literal notranslate"><span class="pre">variables.conf</span></code>)</p>
 <section id="hardware-empfehlung">
-<span id="id42"></span><h3>Hardware Empfehlung<a class="headerlink" href="#hardware-empfehlung" title="Link to this heading"></a></h3>
+<span id="id37"></span><h3>Hardware Empfehlung<a class="headerlink" href="#hardware-empfehlung" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>hdd &gt;500GB</p></li>
 <li><p>cpu 8 core</p></li>
@@ -1545,7 +1503,7 @@ Installation unter <code class="docutils literal notranslate"><span class="pre">
 </ul>
 </section>
 <section id="unterschiede-zur-vagrant-installation">
-<span id="id43"></span><h3>Unterschiede zur Vagrant Installation<a class="headerlink" href="#unterschiede-zur-vagrant-installation" title="Link to this heading"></a></h3>
+<span id="id38"></span><h3>Unterschiede zur Vagrant Installation<a class="headerlink" href="#unterschiede-zur-vagrant-installation" title="Link to this heading">¶</a></h3>
 <p>Auf dem Server empfehlen ich den fedora tomcat mit erweiterten
 Speichereinstellungen zu betreiben.</p>
 <p>Dazu in <code class="docutils literal notranslate"><span class="pre">/opt/regal/bin/fedora/tomcat/bin</span></code> eine <code class="docutils literal notranslate"><span class="pre">setenv.sh</span></code> anlegen
@@ -1565,12 +1523,12 @@ und folgende Zeilen hinein kopieren.</p>
 </pre></div>
 </div>
 <section id="entwicklung-java">
-<span id="id44"></span><h4>Entwicklung Java<a class="headerlink" href="#entwicklung-java" title="Link to this heading"></a></h4>
+<span id="id39"></span><h4>Entwicklung Java<a class="headerlink" href="#entwicklung-java" title="Link to this heading">¶</a></h4>
 </section>
 </section>
 </section>
 <section id="in-der-virtualbox">
-<span id="id45"></span><h2>In der VirtualBox<a class="headerlink" href="#in-der-virtualbox" title="Link to this heading"></a></h2>
+<span id="id40"></span><h2>In der VirtualBox<a class="headerlink" href="#in-der-virtualbox" title="Link to this heading">¶</a></h2>
 <p>Hat man über <a class="reference external" href="#_vagrant">Vagrant</a> eine neue VirtualBox erzeugt und
 alle Konfigurationen wie beschrieben vorgenommen, kann man die
 VirtualBox zur Entwicklung nutzen. Da im Installationsprozess bereits
@@ -1596,7 +1554,7 @@ auf der Virtualbox zunächst mit <code class="docutils literal notranslate"><spa
 werden, damit die Änderungen sichtbar werden.</p>
 </section>
 <section id="auf-dem-eigenen-system">
-<span id="id46"></span><h2>Auf dem eigenen System<a class="headerlink" href="#auf-dem-eigenen-system" title="Link to this heading"></a></h2>
+<span id="id41"></span><h2>Auf dem eigenen System<a class="headerlink" href="#auf-dem-eigenen-system" title="Link to this heading">¶</a></h2>
 <p>Die Javakomponenten können problemlos auch auf einem aktuellen
 Ubuntusystem entwickelt werden. Leider läuft die
 PHP/Drupal-Implementierung nicht unter neueren Ubuntusystemen. Für die
@@ -1622,9 +1580,9 @@ editor<span class="w"> </span>regal-install.sh
 </div>
 </section>
 <section id="aktualisierung">
-<span id="administration"></span><span id="id47"></span><h2>Aktualisierung<a class="headerlink" href="#aktualisierung" title="Link to this heading"></a></h2>
+<span id="administration"></span><span id="id42"></span><h2>Aktualisierung<a class="headerlink" href="#aktualisierung" title="Link to this heading">¶</a></h2>
 <section id="play-applikationen">
-<span id="id48"></span><h3>Play-Applikationen<a class="headerlink" href="#play-applikationen" title="Link to this heading"></a></h3>
+<span id="id43"></span><h3>Play-Applikationen<a class="headerlink" href="#play-applikationen" title="Link to this heading">¶</a></h3>
 <p>Die Aktualisierung der Regal-Komponenten erfolgt über Skripte. Die
 Aktualisierung funktioniert dabei so, dass der Quellcode der zu
 aktualisierenden Komponente unter <code class="docutils literal notranslate"><span class="pre">/opt/regal/src</span></code> per <code class="docutils literal notranslate"><span class="pre">git</span></code> auf den
@@ -1640,27 +1598,27 @@ Version bleibt immer auf dem Server liegen, so dass bei Bedarf wieder
 zurück gewechselt werden kann.</p>
 </section>
 <section id="tomcat-applikation">
-<span id="id49"></span><h3>Tomcat-Applikation<a class="headerlink" href="#tomcat-applikation" title="Link to this heading"></a></h3>
+<span id="id44"></span><h3>Tomcat-Applikation<a class="headerlink" href="#tomcat-applikation" title="Link to this heading">¶</a></h3>
 <p>Es wird ein <code class="docutils literal notranslate"><span class="pre">war</span></code>-Container erzeugt und im Tomcat <code class="docutils literal notranslate"><span class="pre">hot</span></code>-deployed.</p>
 </section>
 <section id="drupal-module">
-<span id="id50"></span><h3>Drupal-Module<a class="headerlink" href="#drupal-module" title="Link to this heading"></a></h3>
+<span id="id45"></span><h3>Drupal-Module<a class="headerlink" href="#drupal-module" title="Link to this heading">¶</a></h3>
 <p>Beinhaltet die Aktualisierung ein Datenbankupdate, so wird Drupal erst
 in den Wartungszustand versetzt (per drush oder über die Oberfläche).
 Danach wird die aktualisierte Version einfach per Git geholt. Bei
 Datenbankupdates wird noch ein Drupal-Updateskript ausgeführt.</p>
 </section>
 <section id="speicherschicht">
-<span id="id51"></span><h3>Speicherschicht<a class="headerlink" href="#speicherschicht" title="Link to this heading"></a></h3>
+<span id="id46"></span><h3>Speicherschicht<a class="headerlink" href="#speicherschicht" title="Link to this heading">¶</a></h3>
 <p>Aktualisierungen von MySQL, Elasticsearch und Fedora gehen mit einer
 Downtime einher.</p>
 </section>
 </section>
 <section id="verzeichnisse">
-<span id="id52"></span><h2>Verzeichnisse<a class="headerlink" href="#verzeichnisse" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id94">
-<table class="docutils align-default" id="id94">
-<caption><span class="caption-text">Verzeichnisstruktur</span><a class="headerlink" href="#id94" title="Link to this table"></a></caption>
+<span id="id47"></span><h2>Verzeichnisse<a class="headerlink" href="#verzeichnisse" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container" id="id87">
+<table class="docutils align-default" id="id87">
+<caption><span class="caption-text">Verzeichnisstruktur</span><a class="headerlink" href="#id87" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Verzeichnis</p></th>
 <th class="head"><p>Beschreibung</p></th>
@@ -1706,10 +1664,10 @@ Komponenten.</p></td>
 </div>
 </section>
 <section id="ports">
-<span id="id53"></span><h2>Ports<a class="headerlink" href="#ports" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id95">
-<table class="docutils align-default" id="id95">
-<caption><span class="caption-text">Ports und Komponenten (typische Belegung)</span><a class="headerlink" href="#id95" title="Link to this table"></a></caption>
+<span id="id48"></span><h2>Ports<a class="headerlink" href="#ports" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container" id="id88">
+<table class="docutils align-default" id="id88">
+<caption><span class="caption-text">Ports und Komponenten (typische Belegung)</span><a class="headerlink" href="#id88" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Port</p></th>
 <th class="head"><p>Komponente</p></th>
@@ -1748,10 +1706,10 @@ Komponenten.</p></td>
 </div>
 </section>
 <section id="logs">
-<span id="id54"></span><h2>Logs<a class="headerlink" href="#logs" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id96">
-<table class="docutils align-default" id="id96">
-<caption><span class="caption-text">Logfiles</span><a class="headerlink" href="#id96" title="Link to this table"></a></caption>
+<span id="id49"></span><h2>Logs<a class="headerlink" href="#logs" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container" id="id89">
+<table class="docutils align-default" id="id89">
+<caption><span class="caption-text">Logfiles</span><a class="headerlink" href="#id89" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Komponente</p></th>
 <th class="head"><p>Pfad</p></th>
@@ -1792,10 +1750,10 @@ und/var/log/apache2/error.log
 </div>
 </section>
 <section id="configs">
-<span id="id55"></span><h2>Configs<a class="headerlink" href="#configs" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id97">
-<table class="docutils align-default" id="id97">
-<caption><span class="caption-text">Configfiles</span><a class="headerlink" href="#id97" title="Link to this table"></a></caption>
+<span id="id50"></span><h2>Configs<a class="headerlink" href="#configs" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container" id="id90">
+<table class="docutils align-default" id="id90">
+<caption><span class="caption-text">Configfiles</span><a class="headerlink" href="#id90" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Komponente</p></th>
 <th class="head"><p>Pfad</p></th>
@@ -1842,10 +1800,10 @@ bin/fedora/tomcat/webapps/dnb-unr
 </div>
 </section>
 <section id="apache2">
-<span id="id56"></span><h2>Apache2<a class="headerlink" href="#apache2" title="Link to this heading"></a></h2>
-<div class="table-wrapper docutils container" id="id98">
-<table class="docutils align-default" id="id98">
-<caption><span class="caption-text">Frontend Pfade</span><a class="headerlink" href="#id98" title="Link to this table"></a></caption>
+<span id="id51"></span><h2>Apache2<a class="headerlink" href="#apache2" title="Link to this heading">¶</a></h2>
+<div class="table-wrapper docutils container" id="id91">
+<table class="docutils align-default" id="id91">
+<caption><span class="caption-text">Frontend Pfade</span><a class="headerlink" href="#id91" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Komponente</p></th>
 <th class="head"><p>HTTP-Pfad</p></th>
@@ -1871,9 +1829,9 @@ pt/regal/crawlreports</p></td>
 </tbody>
 </table>
 </div>
-<div class="table-wrapper docutils container" id="id99">
-<table class="docutils align-default" id="id99">
-<caption><span class="caption-text">API Pfade</span><a class="headerlink" href="#id99" title="Link to this table"></a></caption>
+<div class="table-wrapper docutils container" id="id92">
+<table class="docutils align-default" id="id92">
+<caption><span class="caption-text">API Pfade</span><a class="headerlink" href="#id92" title="Link to this table">¶</a></caption>
 <thead>
 <tr class="row-odd"><th class="head"><p>Komponente</p></th>
 <th class="head"><p>HTTP-Pfad</p></th>
@@ -1972,13 +1930,13 @@ t:8443/tools/heritrix</p></td>
 </div>
 </section>
 <section id="matomo">
-<span id="id57"></span><h2>Matomo<a class="headerlink" href="#matomo" title="Link to this heading"></a></h2>
+<span id="id52"></span><h2>Matomo<a class="headerlink" href="#matomo" title="Link to this heading">¶</a></h2>
 <p>Matomo wird einmal täglich per Cronjob mit Apache-Logfiles befüllt.
 Dabei erfolgt eine Anonymisierung. Die Logfiles verbleiben noch sieben
 Tage auf dem Server und werden dann annoynmisiert.</p>
 </section>
 <section id="monit">
-<span id="id58"></span><h2>Monit<a class="headerlink" href="#monit" title="Link to this heading"></a></h2>
+<span id="id53"></span><h2>Monit<a class="headerlink" href="#monit" title="Link to this heading">¶</a></h2>
 <p>Das Tool Monit erlaubt es, den Status der Regal-Komponenten zu
 überwachen und Dienste ggfl. neu zu starten. Folgende Einträge können in
 /etc/monit/monitrc vorgenommen werden</p>
@@ -2013,13 +1971,13 @@ check<span class="w"> </span>process<span class="w"> </span>zettel<span class="w
 </div>
 </section>
 <section id="scripts-und-cronjobs">
-<span id="id59"></span><h2>Scripts und Cronjobs<a class="headerlink" href="#scripts-und-cronjobs" title="Link to this heading"></a></h2>
+<span id="id54"></span><h2>Scripts und Cronjobs<a class="headerlink" href="#scripts-und-cronjobs" title="Link to this heading">¶</a></h2>
 <p>Für das Funktionieren von Regal sind einige regal-scripts sinnvoll. Die
 Skripte sind sämtlich unter Github zu finden.</p>
 <p><a class="reference external" href="https://github.com/edoweb/regal-scripts">https://github.com/edoweb/regal-scripts</a></p>
 <p>Die folgenden Abschnitte zeigen ein typisches Setup.</p>
 <section id="oai-providing">
-<span id="oai-providing-2"></span><h3>OAI-Providing<a class="headerlink" href="#oai-providing" title="Link to this heading"></a></h3>
+<span id="oai-providing-2"></span><h3>OAI-Providing<a class="headerlink" href="#oai-providing" title="Link to this heading">¶</a></h3>
 <p>Der OAI-Provider läuft nicht die ganze Zeit mit, da dies Probleme
 gemacht hat. Er wird nur für einen bestimmten Zeitraum angestellt und
 dann wieder ausgestellt. Auf diese Weise liefert die OAI-Schnittstelle
@@ -2030,7 +1988,7 @@ tagesaktuelle Daten.</p>
 </div>
 </section>
 <section id="urn-registrierung">
-<span id="id60"></span><h3>URN-Registrierung<a class="headerlink" href="#urn-registrierung" title="Link to this heading"></a></h3>
+<span id="id55"></span><h3>URN-Registrierung<a class="headerlink" href="#urn-registrierung" title="Link to this heading">¶</a></h3>
 <p>Die URN-Registrierung erfolgt mit einem gewissen Verzug. Das dafür
 zuständige Skript überprüft daher zunächst das Anlagedatum der
 Ressource.</p>
@@ -2041,7 +1999,7 @@ Ressource.</p>
 </div>
 </section>
 <section id="katalog-aktualisierung">
-<span id="id61"></span><h3>Katalog-Aktualisierung<a class="headerlink" href="#katalog-aktualisierung" title="Link to this heading"></a></h3>
+<span id="id56"></span><h3>Katalog-Aktualisierung<a class="headerlink" href="#katalog-aktualisierung" title="Link to this heading">¶</a></h3>
 <p>Das System gleicht einmal am Tag Metadaten mit dem hbz-Verbundkatalog ab
 und führt ggf. Aktualisierungen durch.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span><span class="w"> </span><span class="m">5</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/opt/regal/src/regal-scripts/updateAll.sh<span class="w"> </span>&gt;<span class="w"> </span>/dev/null
@@ -2049,7 +2007,7 @@ und führt ggf. Aktualisierungen durch.</p>
 </div>
 </section>
 <section id="matomo-2">
-<span id="id62"></span><h3>Matomo<a class="headerlink" href="#matomo-2" title="Link to this heading"></a></h3>
+<span id="id57"></span><h3>Matomo<a class="headerlink" href="#matomo-2" title="Link to this heading">¶</a></h3>
 <p>Matomo wird mit Apache-Logfiles befüllt. Innerhalb von Matomo werden die
 Einträge annonymisiert.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span><span class="w"> </span><span class="m">1</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/opt/regal/regal-scripts/import-logfiles.sh<span class="w"> </span>&gt;/dev/null
@@ -2057,7 +2015,7 @@ Einträge annonymisiert.</p>
 </div>
 </section>
 <section id="logfile-annonymisierung">
-<span id="id63"></span><h3>Logfile Annonymisierung<a class="headerlink" href="#logfile-annonymisierung" title="Link to this heading"></a></h3>
+<span id="id58"></span><h3>Logfile Annonymisierung<a class="headerlink" href="#logfile-annonymisierung" title="Link to this heading">¶</a></h3>
 <p>Apache-Logfiles werden sieben Tage unverändert aufbewahrt. Danach
 erfolgt eine Annonymisierung.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span><span class="w"> </span><span class="m">2</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/opt/regal/src/regal-scripts/depersonalize-apache-logs.sh
@@ -2065,7 +2023,7 @@ erfolgt eine Annonymisierung.</p>
 </div>
 </section>
 <section id="webgatherer">
-<span id="id64"></span><h3>Webgatherer<a class="headerlink" href="#webgatherer" title="Link to this heading"></a></h3>
+<span id="id59"></span><h3>Webgatherer<a class="headerlink" href="#webgatherer" title="Link to this heading">¶</a></h3>
 <p>Der Webgatherer prüft Archivierungsintervalle von Webpages und stößt bei
 Bedarf die Erzeugung eines neuen Snapshots/Version an.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="m">0</span><span class="w"> </span><span class="m">20</span><span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>/opt/regal/src/regal-scripts/runGatherer.sh<span class="w"> </span>&gt;&gt;<span class="w"> </span>/opt/regal/regal-scripts/log/runGatherer.log
@@ -2077,7 +2035,7 @@ Bedarf die Erzeugung eines neuen Snapshots/Version an.</p>
 </div>
 </section>
 <section id="backup">
-<span id="id65"></span><h3>Backup<a class="headerlink" href="#backup" title="Link to this heading"></a></h3>
+<span id="id60"></span><h3>Backup<a class="headerlink" href="#backup" title="Link to this heading">¶</a></h3>
 <p>MySQL und Elasticsearch</p>
 <p>Der Elasticsearch-Index und die MySQL-Datenbanken werden täglich
 gesichert. Es werden Backups der letzten 30 Tage aufbewahrt. Ältere
@@ -2090,7 +2048,7 @@ Backups werden von der Platte gelöscht.</p>
 </div>
 </section>
 <section id="entwicklung">
-<span id="id66"></span><h3>Entwicklung<a class="headerlink" href="#entwicklung" title="Link to this heading"></a></h3>
+<span id="id61"></span><h3>Entwicklung<a class="headerlink" href="#entwicklung" title="Link to this heading">¶</a></h3>
 <p>Für die Entwicklung an Regal empfiehlt sich folgende Vorgehensweise…</p>
 </section>
 </section>
@@ -2131,7 +2089,14 @@ Backups werden von der Platte gelöscht.</p>
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             
+            <div class="hbz-links">
+              <ul>
+                <li><a href="https://www.hbz-nrw.de/impressum">Impressum</a></li>
+                <li><a href="https://www.hbz-nrw.de/datenschutz">Datenschutz</a></li>
+              </ul>
+            </div>
           </div>
+
           <div class="right-details">
             
           </div>
@@ -2152,17 +2117,17 @@ Backups werden von der Platte gelöscht.</p>
           <div class="toc-tree">
             <ul>
 <li><a class="reference internal" href="#">Software</a><ul>
-<li><a class="reference internal" href="#regal-api">regal-api</a><ul>
+<li><a class="reference internal" href="#to-science-api-ehemals-regal-api">to.science.api (ehemals regal-api)</a><ul>
 <li><a class="reference internal" href="#konfiguration">Konfiguration</a></li>
 <li><a class="reference internal" href="#die-applikation">Die Applikation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id5">Etikett</a><ul>
+<li><a class="reference internal" href="#labels-ehemals-etikett">Labels (ehemals Etikett)</a><ul>
 <li><a class="reference internal" href="#konfiguration-2">Konfiguration</a></li>
 <li><a class="reference internal" href="#die-applikation-2">Die Applikation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id9">Zettel</a><ul>
+<li><a class="reference internal" href="#labels-ehemals-zettel">Labels (ehemals Zettel)</a><ul>
 <li><a class="reference internal" href="#konfiguration-3">Konfiguration</a></li>
 <li><a class="reference internal" href="#die-applikation-3">Die Applikation</a></li>
 </ul>
@@ -2172,12 +2137,12 @@ Backups werden von der Platte gelöscht.</p>
 <li><a class="reference internal" href="#die-applikation-4">Die Applikation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id16">Thumby</a><ul>
+<li><a class="reference internal" href="#id14">Thumby</a><ul>
 <li><a class="reference internal" href="#konfiguration-5">Konfiguration</a></li>
 <li><a class="reference internal" href="#die-applikation-5">Die Applikation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#id20">Deepzoomer</a><ul>
+<li><a class="reference internal" href="#id18">Deepzoomer</a><ul>
 <li><a class="reference internal" href="#konfiguration-6">Konfiguration</a></li>
 </ul>
 </li>
@@ -2185,15 +2150,19 @@ Backups werden von der Platte gelöscht.</p>
 <li><a class="reference internal" href="#die-applikation-6">Die Applikation</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#edoweb-drupal-theme">edoweb-drupal-theme</a></li>
-<li><a class="reference internal" href="#zbmed-drupal-theme">zbmed-drupal-theme</a></li>
-<li><a class="reference internal" href="#id27">openwayback</a></li>
-<li><a class="reference internal" href="#id29">heritrix</a></li>
-<li><a class="reference internal" href="#id31">wpull</a></li>
-<li><a class="reference internal" href="#id33">Fedora Commons 3</a></li>
+<li><a class="reference internal" href="#id23">heritrix</a></li>
+<li><a class="reference internal" href="#id25">wpull</a></li>
+<li><a class="reference internal" href="#id27">Fedora Commons 3</a></li>
 <li><a class="reference internal" href="#mysql">MySql</a></li>
-<li><a class="reference internal" href="#id36">Elasticsearch 1.1</a></li>
-<li><a class="reference internal" href="#drupal-7">Drupal 7</a></li>
+<li><a class="reference internal" href="#id30">Elasticsearch 1.1</a></li>
+<li><a class="reference internal" href="#drupal-7">Drupal 7</a><ul>
+<li><a class="reference internal" href="#edoweb-drupal-theme">edoweb-drupal-theme</a></li>
+<li><a class="reference internal" href="#zbmed-drupal-theme">zbmed-drupal-theme</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a class="reference internal" href="#server">Server</a><ul>
 <li><a class="reference internal" href="#hardware-empfehlung">Hardware Empfehlung</a></li>
 <li><a class="reference internal" href="#unterschiede-zur-vagrant-installation">Unterschiede zur Vagrant Installation</a><ul>
@@ -2240,11 +2209,9 @@ Backups werden von der Platte gelöscht.</p>
       
     </aside>
   </div>
-</div><script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>

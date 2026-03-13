@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Installation" href="../installation/installation.html"><link rel="prev" title="Software" href="software.html">
         <link rel="prefetch" href="../_static/hbz-Logo-rgb-ohne-Claim.svg" as="image">
 
-    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
         <title>Vagrant - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
@@ -225,7 +225,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../components/core_usage.html">Use to.science.core from console</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">to.science Crawler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">Informationen zum to.science Crawler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../development/development.html">Entwicklung</a><input aria-label="Toggle navigation of Entwicklung" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -288,7 +288,7 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="vagrant">
-<h1>Vagrant<a class="headerlink" href="#vagrant" title="Link to this heading"></a></h1>
+<span id="vagrant-installation"></span><h1>Vagrant<a class="headerlink" href="#vagrant" title="Link to this heading">¶</a></h1>
 <p>Zur Veranschaulichung dieser Dokumentation wird ein Vagrant-Skript
 angeboten, mit dem eine Regal-Installation innerhalb eines
 VirtualBox-Images erzeugt werden kann.</p>
@@ -302,13 +302,13 @@ Betriebssyteme ist die Installation ähnlich.</p>
 <li><p>ram 4096M</p></li>
 </ul>
 <section id="virtualbox-installieren">
-<span id="id1"></span><h2>VirtualBox installieren<a class="headerlink" href="#virtualbox-installieren" title="Link to this heading"></a></h2>
+<span id="id1"></span><h2>VirtualBox installieren<a class="headerlink" href="#virtualbox-installieren" title="Link to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>virtualbox
 </pre></div>
 </div>
 </section>
 <section id="vagrant-installieren">
-<span id="id2"></span><h2>Vagrant installieren<a class="headerlink" href="#vagrant-installieren" title="Link to this heading"></a></h2>
+<span id="id2"></span><h2>Vagrant installieren<a class="headerlink" href="#vagrant-installieren" title="Link to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>/tmp
 wget<span class="w"> </span>https://releases.hashicorp.com/vagrant/2.2.3/vagrant_2.2.3_x86_64.deb
 sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>vagrant_2.2.3_x86_64.deb
@@ -316,14 +316,14 @@ sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </spa
 </div>
 </section>
 <section id="repository-herunterladen">
-<span id="id3"></span><h2>Repository herunterladen<a class="headerlink" href="#repository-herunterladen" title="Link to this heading"></a></h2>
+<span id="id3"></span><h2>Repository herunterladen<a class="headerlink" href="#repository-herunterladen" title="Link to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jschnasse/Regal
 <span class="nb">cd</span><span class="w"> </span>Regal/vagrant/ubuntu-14.04
 </pre></div>
 </div>
 </section>
 <section id="eine-jdk8-bereitstellen">
-<span id="id4"></span><h2>Eine JDK8 bereitstellen<a class="headerlink" href="#eine-jdk8-bereitstellen" title="Link to this heading"></a></h2>
+<span id="id4"></span><h2>Eine JDK8 bereitstellen<a class="headerlink" href="#eine-jdk8-bereitstellen" title="Link to this heading">¶</a></h2>
 <p>Hierfür bitte ein JDK8-Tarball herunterladen und unter dem Namen
 <code class="docutils literal notranslate"><span class="pre">java8.tar.gz</span></code> in einem Verzeichnis <code class="docutils literal notranslate"><span class="pre">/bin</span></code> unterhalb des
 Vagrant-Directories bereitstellen.</p>
@@ -333,19 +333,19 @@ mv<span class="w"> </span>~/downloads/jdk....<span class="w"> </span>bin/java8.t
 </div>
 </section>
 <section id="geteiltes-entwicklungsverzeichnis">
-<span id="id5"></span><h2>Geteiltes Entwicklungsverzeichnis<a class="headerlink" href="#geteiltes-entwicklungsverzeichnis" title="Link to this heading"></a></h2>
+<span id="id5"></span><h2>Geteiltes Entwicklungsverzeichnis<a class="headerlink" href="#geteiltes-entwicklungsverzeichnis" title="Link to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>~/regal-dev
 </pre></div>
 </div>
 </section>
 <section id="vagrant-guest-additions-installieren">
-<span id="id6"></span><h2>Vagrant Guest Additions installieren<a class="headerlink" href="#vagrant-guest-additions-installieren" title="Link to this heading"></a></h2>
+<span id="id6"></span><h2>Vagrant Guest Additions installieren<a class="headerlink" href="#vagrant-guest-additions-installieren" title="Link to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant<span class="w"> </span>plugin<span class="w"> </span>install<span class="w"> </span>vagrant-vbguest<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>vagrant<span class="w"> </span>reload
 </pre></div>
 </div>
 </section>
 <section id="vagrant-host-anlegen">
-<span id="id7"></span><h2>Vagrant Host anlegen<a class="headerlink" href="#vagrant-host-anlegen" title="Link to this heading"></a></h2>
+<span id="id7"></span><h2>Vagrant Host anlegen<a class="headerlink" href="#vagrant-host-anlegen" title="Link to this heading">¶</a></h2>
 <p>Damit alle Dienste komfortabel erreichbar sind, muss in die lokale HOSTs
 Datei ein Eintrag für die Vagrant-Box erfolgen. Im Vagrantfile ist die
 IP <code class="docutils literal notranslate"><span class="pre">192.168.50.4</span></code> für die Box konfiguriert. Über die <code class="docutils literal notranslate"><span class="pre">FRONTEND</span></code> und
@@ -356,13 +356,13 @@ IP <code class="docutils literal notranslate"><span class="pre">192.168.50.4</sp
 </div>
 </section>
 <section id="vagrant-starten">
-<span id="id8"></span><h2>Vagrant starten<a class="headerlink" href="#vagrant-starten" title="Link to this heading"></a></h2>
+<span id="id8"></span><h2>Vagrant starten<a class="headerlink" href="#vagrant-starten" title="Link to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant<span class="w"> </span>up
 </pre></div>
 </div>
 </section>
 <section id="auf-der-maschine-einloggen">
-<span id="id9"></span><h2>Auf der Maschine einloggen<a class="headerlink" href="#auf-der-maschine-einloggen" title="Link to this heading"></a></h2>
+<span id="id9"></span><h2>Auf der Maschine einloggen<a class="headerlink" href="#auf-der-maschine-einloggen" title="Link to this heading">¶</a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>vagrant<span class="w"> </span>ssh
 </pre></div>
 </div>
@@ -404,7 +404,14 @@ IP <code class="docutils literal notranslate"><span class="pre">192.168.50.4</sp
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             
+            <div class="hbz-links">
+              <ul>
+                <li><a href="https://www.hbz-nrw.de/impressum">Impressum</a></li>
+                <li><a href="https://www.hbz-nrw.de/datenschutz">Datenschutz</a></li>
+              </ul>
+            </div>
           </div>
+
           <div class="right-details">
             
           </div>
@@ -445,11 +452,9 @@ IP <code class="docutils literal notranslate"><span class="pre">192.168.50.4</sp
       
     </aside>
   </div>
-</div><script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>

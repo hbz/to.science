@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Forms" href="api_forms.html"><link rel="prev" title="to.science.api" href="toscience.html">
         <link rel="prefetch" href="../_static/hbz-Logo-rgb-ohne-Claim.svg" as="image">
 
-    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
         <title>labels - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
@@ -225,7 +225,7 @@
 <li class="toctree-l3"><a class="reference internal" href="core_usage.html">Use to.science.core from console</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="crawler.html">to.science Crawler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crawler.html">Informationen zum to.science Crawler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../development/development.html">Entwicklung</a><input aria-label="Toggle navigation of Entwicklung" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul>
@@ -288,46 +288,46 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="labels">
-<span id="id1"></span><h1>labels<a class="headerlink" href="#labels" title="Link to this heading"></a></h1>
+<span id="id1"></span><h1>labels<a class="headerlink" href="#labels" title="Link to this heading">¶</a></h1>
 <p><a class="reference external" href="https://github.com/hbz/to.science.labels/blob/master/conf/routes">https://github.com/hbz/to.science.labels/blob/master/conf/routes</a></p>
 <section id="create">
-<span id="create-2"></span><h2>Create<a class="headerlink" href="#create" title="Link to this heading"></a></h2>
+<span id="create-2"></span><h2>Create<a class="headerlink" href="#create" title="Link to this heading">¶</a></h2>
 <section id="add-labels-to-database">
-<span id="id2"></span><h3>Add Labels to Database<a class="headerlink" href="#add-labels-to-database" title="Link to this heading"></a></h3>
+<span id="id2"></span><h3>Add Labels to Database<a class="headerlink" href="#add-labels-to-database" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -u$API_USER:$PASSWORD -XPOST -F&quot;data=@$ARCHIVE_HOME/src/REGAL_API/conf/labels.json&quot; -F&quot;format-cb=Json&quot; $REGAL_API/tools/etikett -i -L
 </pre></div>
 </div>
 </section>
 <section id="add-label">
-<span id="id3"></span><h3>Add Label<a class="headerlink" href="#add-label" title="Link to this heading"></a></h3>
+<span id="id3"></span><h3>Add Label<a class="headerlink" href="#add-label" title="Link to this heading">¶</a></h3>
 </section>
 </section>
 <section id="read">
-<span id="read-2"></span><h2>Read<a class="headerlink" href="#read" title="Link to this heading"></a></h2>
+<span id="read-2"></span><h2>Read<a class="headerlink" href="#read" title="Link to this heading">¶</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="s2">&quot;$REGAL_API/tools/etikett&quot;</span> <span class="o">-</span><span class="n">H</span><span class="s2">&quot;accept: application/json&quot;</span>
 </pre></div>
 </div>
 <section id="read-etikett">
-<span id="id4"></span><h3>Read Etikett<a class="headerlink" href="#read-etikett" title="Link to this heading"></a></h3>
+<span id="id4"></span><h3>Read Etikett<a class="headerlink" href="#read-etikett" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl $REGAL_API/tools/etikett?url=http%3A%2F%2Fpurl.orms%2Fissued -H&quot;accept: application/json&quot;
 </pre></div>
 </div>
 </section>
 </section>
 <section id="update">
-<span id="update-2"></span><h2>Update<a class="headerlink" href="#update" title="Link to this heading"></a></h2>
+<span id="update-2"></span><h2>Update<a class="headerlink" href="#update" title="Link to this heading">¶</a></h2>
 </section>
 <section id="delete">
-<span id="delete-2"></span><h2>Delete<a class="headerlink" href="#delete" title="Link to this heading"></a></h2>
+<span id="delete-2"></span><h2>Delete<a class="headerlink" href="#delete" title="Link to this heading">¶</a></h2>
 <section id="delete-cache">
-<span id="id5"></span><h3>Delete Cache<a class="headerlink" href="#delete-cache" title="Link to this heading"></a></h3>
+<span id="id5"></span><h3>Delete Cache<a class="headerlink" href="#delete-cache" title="Link to this heading">¶</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>curl -XDELETE -u$API_USER:$PASSWORD $REGAL_API/tools/etikett/cache
 </pre></div>
 </div>
 </section>
 </section>
 <section id="misc">
-<span id="misc-2"></span><h2>Misc<a class="headerlink" href="#misc" title="Link to this heading"></a></h2>
+<span id="misc-2"></span><h2>Misc<a class="headerlink" href="#misc" title="Link to this heading">¶</a></h2>
 </section>
 </section>
 
@@ -366,7 +366,14 @@
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             
+            <div class="hbz-links">
+              <ul>
+                <li><a href="https://www.hbz-nrw.de/impressum">Impressum</a></li>
+                <li><a href="https://www.hbz-nrw.de/datenschutz">Datenschutz</a></li>
+              </ul>
+            </div>
           </div>
+
           <div class="right-details">
             
           </div>
@@ -413,11 +420,9 @@
       
     </aside>
   </div>
-</div><script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>

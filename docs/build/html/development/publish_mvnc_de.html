@@ -6,7 +6,7 @@
 <link rel="index" title="Index" href="../genindex.html"><link rel="search" title="Search" href="../search.html"><link rel="next" title="Colophon" href="../colophon.html"><link rel="prev" title="Publish to Maven Central" href="publish_mvnc.html">
         <link rel="prefetch" href="../_static/hbz-Logo-rgb-ohne-Claim.svg" as="image">
 
-    <!-- Generated with Sphinx 9.1.0 and Furo 2025.12.19 -->
+    <!-- Generated with Sphinx 8.2.3 and Furo 2025.12.19 -->
         <title>Code auf Maven Central publizieren - to.science documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=d111a655" />
     <link rel="stylesheet" type="text/css" href="../_static/styles/furo.css?v=7bdb33bb" />
@@ -225,7 +225,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../components/core_usage.html">Use to.science.core from console</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">to.science Crawler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../components/crawler.html">Informationen zum to.science Crawler</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current has-children"><a class="reference internal" href="development.html">Entwicklung</a><input aria-label="Toggle navigation of Entwicklung" checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" role="switch" type="checkbox"/><label for="toctree-checkbox-5"><span class="icon"><svg><use href="#svg-arrow-right"></use></svg></span></label><ul class="current">
@@ -288,19 +288,19 @@
         </div>
         <article role="main" id="furo-main-content">
           <section id="code-auf-maven-central-publizieren">
-<h1>Code auf Maven Central publizieren<a class="headerlink" href="#code-auf-maven-central-publizieren" title="Link to this heading"></a></h1>
+<h1>Code auf Maven Central publizieren<a class="headerlink" href="#code-auf-maven-central-publizieren" title="Link to this heading">¶</a></h1>
 <p>Um die aktuellste Version von <strong>to.science.core</strong> als <a class="reference external" href="https://mvnrepository.com/artifact/io.github.hbz/to.science.core">Artefakt</a> über die <a class="reference external" href="https://mvnrepository.com">Maven Central Infrastruktur</a> verfügbar zu machen und damit die Einbindung der Java-Bibliothek in andere Projekte zu fördern, wird an dieser Stelle das Sonatype OSSRH (Open Source Software Repository Hosting) verwendet.</p>
 <p>Die vollständige Beschreibung, wie Artefakte im OSSRH publiziert werden, findet sich <a class="reference external" href="https://central.sonatype.org/publish/publish-guide/">hier</a>. Die folgende Beschreibung ist für das Publishing eigener Beiträge zu <strong>to.science.core</strong> gedacht.</p>
 <p>Das direkte Publishing bei OSSRH wird für dieses Projekt vom hbz reglementiert und setzt eine gewisse Erfahrung mit Beiträgen zu Software-Projekten voraus.</p>
 <section id="voraussetzungen">
-<h2>Voraussetzungen<a class="headerlink" href="#voraussetzungen" title="Link to this heading"></a></h2>
+<h2>Voraussetzungen<a class="headerlink" href="#voraussetzungen" title="Link to this heading">¶</a></h2>
 <p>Zunächst muss über diesen <a class="reference external" href="https://issues.sonatype.org/secure/Signup!default.jspa">Link</a> ein eigener Account im Sonatype-Jira angelegt werden. benötigt, der zugleich als Account für das OSSRH fungiert.</p>
 <p>Als nächstes ist es notwendig, dass wir den Account innerhalb des OSSRH für das Projekt freigeben. Bitte per E-Mail anfragen.</p>
 </section>
 <section id="weitere-vorbereitungen">
-<h2>Weitere Vorbereitungen<a class="headerlink" href="#weitere-vorbereitungen" title="Link to this heading"></a></h2>
+<h2>Weitere Vorbereitungen<a class="headerlink" href="#weitere-vorbereitungen" title="Link to this heading">¶</a></h2>
 <section id="gpg-signing-einrichten">
-<h3>1. GPG-Signing einrichten<a class="headerlink" href="#gpg-signing-einrichten" title="Link to this heading"></a></h3>
+<h3>1. GPG-Signing einrichten<a class="headerlink" href="#gpg-signing-einrichten" title="Link to this heading">¶</a></h3>
 <p>Die hochzuladenden Artefakte müssen mit einen GPG-Schlüssel signiert werden. Die pom.xml ist soweit vorbereitet, dass ein bereits vorhandener PGP-Schlüssel eingesetzt werden kann. Sollte bisher kein eigener GPG-Schlüssel vorhanden sein, ist bei Sonatype eine <a class="reference external" href="https://central.sonatype.org/publish/publish-maven/#gpg-signed-components">detaillierte Anleitung</a> zu finden. Über die vorbereitete <code class="docutils literal notranslate"><span class="pre">pom.xml</span></code> und eine nutzerspezifische Datei <code class="docutils literal notranslate"><span class="pre">settings.xml</span></code> innerhalb des Maven-Verzeichnisses (unter Linux <code class="docutils literal notranslate"><span class="pre">/home/user/.m2/settings.xml</span></code>) kann der Schlüsselaufruf automatisiert werden. Dafür wird mit dem gpg-Kommando ermittelt, welcher eigene Schlüssel verwendet werden soll.</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>gpg<span class="w"> </span>--list-signatures<span class="w"> </span>--keyid-format<span class="w"> </span>0xshort
 </pre></div>
@@ -324,7 +324,7 @@
 <p>In gpg.executeable wird das verwendete gpg-Kommandozeilentool eingetragen, in gpg.keyname der vorher über die Zeile <code class="docutils literal notranslate"><span class="pre">sig</span> <span class="pre">3</span></code> ermittelte Key eingetragen. In gpg.passphrase steht das Passwort für den privaten Schlüssel im Klartext, weshalb es sinnvoll ist, für diesen Anwendungsfall ein eignenes GPG-Schlüsselpaar zu generieren, das bei Bedarf einfacher zurückgezogen werden kann.</p>
 </section>
 <section id="settings-xml-fur-automatischen-upload-anpassen">
-<h3>2. settings.xml für automatischen Upload anpassen<a class="headerlink" href="#settings-xml-fur-automatischen-upload-anpassen" title="Link to this heading"></a></h3>
+<h3>2. settings.xml für automatischen Upload anpassen<a class="headerlink" href="#settings-xml-fur-automatischen-upload-anpassen" title="Link to this heading">¶</a></h3>
 <p>In der vorgenannten <code class="docutils literal notranslate"><span class="pre">settings.xml</span></code> Datei kann nun noch in der servers-Section der Server OSSRH vereinbart werden, damit der Upload auch ohne weitere Interaktion möglich ist.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;servers&gt;</span>
 <span class="w">   </span><span class="nt">&lt;server&gt;</span>
@@ -339,10 +339,10 @@
 </section>
 </section>
 <section id="hands-on">
-<h2>Hands On!<a class="headerlink" href="#hands-on" title="Link to this heading"></a></h2>
+<h2>Hands On!<a class="headerlink" href="#hands-on" title="Link to this heading">¶</a></h2>
 <p>Nachdem obige Vorbereitungen erledigt wurden, sollte es nun möglich sein, mit dem folgenden Vorgehen neue Versionen (Artefakte) von <strong>to.science.core</strong> selbstständig zu publizieren.</p>
 <section id="die-versionsnummer-innerhalb-der-zu-to-science-core-gehorenden-pom-xml-erhohen">
-<h3>1. Die Versionsnummer innerhalb der zu to.science.core gehörenden pom.xml erhöhen<a class="headerlink" href="#die-versionsnummer-innerhalb-der-zu-to-science-core-gehorenden-pom-xml-erhohen" title="Link to this heading"></a></h3>
+<h3>1. Die Versionsnummer innerhalb der zu to.science.core gehörenden pom.xml erhöhen<a class="headerlink" href="#die-versionsnummer-innerhalb-der-zu-to-science-core-gehorenden-pom-xml-erhohen" title="Link to this heading">¶</a></h3>
 <p>Dieser Schritt ist wichtig, damit eine bestehende Artefakt-Version nicht mit der Neuen überschrieben wird. Anmerk. bisher ist mir unklar, ob das überhaupt im OSSRH möglich ist.</p>
 <p>Bitte unbedingt das Publizieren von SNAPSHOT-Releases vermeiden, um die Code-Qualität zu sichern.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;project</span><span class="w"> </span><span class="na">xmlns=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0&quot;</span><span class="w"> </span><span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span><span class="w">   </span><span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd&quot;</span><span class="nt">&gt;</span>
@@ -358,7 +358,7 @@
 </div>
 </section>
 <section id="mittels-geeigneter-maven-goals-das-artefakt-erstellen-und-direkt-zu-ossrh-hochladen">
-<h3>2. Mittels geeigneter Maven Goals das Artefakt erstellen und direkt zu OSSRH hochladen<a class="headerlink" href="#mittels-geeigneter-maven-goals-das-artefakt-erstellen-und-direkt-zu-ossrh-hochladen" title="Link to this heading"></a></h3>
+<h3>2. Mittels geeigneter Maven Goals das Artefakt erstellen und direkt zu OSSRH hochladen<a class="headerlink" href="#mittels-geeigneter-maven-goals-das-artefakt-erstellen-und-direkt-zu-ossrh-hochladen" title="Link to this heading">¶</a></h3>
 <p>Innerhalb des mit git erstellten lokalen <strong>to.science.core</strong> Verzeichnis wird folgender Maven-Befehl aufgerufen</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>mvn<span class="w"> </span>clean<span class="w"> </span>source:jar<span class="w"> </span>javadoc:javadoc<span class="w"> </span>javadoc:jar<span class="w"> </span>verify<span class="w"> </span>gpg:sign<span class="w"> </span>deploy
 </pre></div>
@@ -379,21 +379,21 @@ Uploaded<span class="w"> </span>to<span class="w"> </span>ossrh:<span class="w">
 </div>
 </section>
 <section id="weitere-schritte-im-nexus-web-interface-durchfuhren">
-<h3>3. Weitere Schritte im NEXUS Web-Interface durchführen<a class="headerlink" href="#weitere-schritte-im-nexus-web-interface-durchfuhren" title="Link to this heading"></a></h3>
+<h3>3. Weitere Schritte im NEXUS Web-Interface durchführen<a class="headerlink" href="#weitere-schritte-im-nexus-web-interface-durchfuhren" title="Link to this heading">¶</a></h3>
 <p>Nun kann mit einem Browser das Web-Interface unter <a class="reference external" href="https://s01.oss.sonatype.org/#stagingRepositories">https://s01.oss.sonatype.org/#stagingRepositories</a> aufgerufen werden. Dabei wird nach dem Log-In mit den Sonatype-ZUgangsdaten gefragt.</p>
 <p>Innerhalb des stagingRepositories-Bereichs sollte das gerade hochgeladene Artefakt aufgelistet sein. Leider wird das Artefakt unter einem eher kryptischen Namen angezeigt, so dass bei mehreren vorhandenen Artefakten eine genaue Prüfung nötig ist, welches das eigene ist.</p>
 <a class="reference internal image-reference" href="../_images/nexus-staging.png"><img alt="alternate text" class="align-left" src="../_images/nexus-staging.png" style="width: 887.5999999999999px; height: 193.2px;" />
 </a>
 </section>
 <section id="das-artefakt-auswahlen-und-schlieszen">
-<h3>4. Das Artefakt auswählen und schließen<a class="headerlink" href="#das-artefakt-auswahlen-und-schlieszen" title="Link to this heading"></a></h3>
+<h3>4. Das Artefakt auswählen und schließen<a class="headerlink" href="#das-artefakt-auswahlen-und-schlieszen" title="Link to this heading">¶</a></h3>
 <p>Nachdem das Artefakt über das Auswahlkästchen links ausgewählt wurde, wird der Button “Close” verfügbar. Der Button ist nun zu klicken. Das Schließen ist ein notwendiger Schritt, bei dem der hochgeladene Inhalt auf Vollständigkeit etc. geprüft wird.</p>
 <p>Über den “Refresh”-Button lässt sich im unteren Reiter “Action” der Fortschritt verfolgen.</p>
 <a class="reference internal image-reference" href="../_images/nexus-marked.png"><img alt="alternate text" class="align-left" src="../_images/nexus-marked.png" style="width: 860.3px; height: 516.6px;" />
 </a>
 </section>
 <section id="letzter-schritt-release">
-<h3>5. Letzter Schritt: Release<a class="headerlink" href="#letzter-schritt-release" title="Link to this heading"></a></h3>
+<h3>5. Letzter Schritt: Release<a class="headerlink" href="#letzter-schritt-release" title="Link to this heading">¶</a></h3>
 <p>Nachdem das Schließen erfolgreich abgeschlossen ist, wird der Button “Release” verfügbar. Wenn er gedrückt wird, wird das Artefakt zum Maven Central Repository hochgeladen und publiziert. Zugleich wird es aus dem stagingRepositories-Bereich entfernt.</p>
 <a class="reference internal image-reference" href="../_images/nexus-closed.png"><img alt="alternate text" class="align-left" src="../_images/nexus-closed.png" style="width: 860.3px; height: 534.1px;" />
 </a>
@@ -437,7 +437,14 @@ Uploaded<span class="w"> </span>to<span class="w"> </span>ossrh:<span class="w">
             
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             
+            <div class="hbz-links">
+              <ul>
+                <li><a href="https://www.hbz-nrw.de/impressum">Impressum</a></li>
+                <li><a href="https://www.hbz-nrw.de/datenschutz">Datenschutz</a></li>
+              </ul>
+            </div>
           </div>
+
           <div class="right-details">
             
           </div>
@@ -483,11 +490,9 @@ Uploaded<span class="w"> </span>to<span class="w"> </span>ossrh:<span class="w">
       
     </aside>
   </div>
-</div><script src="../_static/jquery.js?v=5d32c60e"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-    <script src="../_static/documentation_options.js?v=5929fcd5"></script>
-    <script src="../_static/doctools.js?v=fd6eb6e6"></script>
-    <script src="../_static/sphinx_highlight.js?v=6ffebe34"></script>
+</div><script src="../_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="../_static/doctools.js?v=9bcbadda"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="../_static/scripts/furo.js?v=46bd48cc"></script>
     </body>
 </html>
