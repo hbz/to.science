@@ -13,13 +13,14 @@
 # import os
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
-import sphinx_rtd_theme
+from datetime import datetime
 
 # -- Project information -----------------------------------------------------
 
 project = 'to.science'
-copyright = '2026, Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)'
+#copyright = '2026, Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)'
 author = 'Dr. Ingolf Kuss, Dr. Peter Reimer, Dr. Andres Quast, Jan Schnasse'
+copyright = f"{datetime.now().year}, Hochschulbibliothekszentrum des Landes Nordrhein-Westfalen (hbz)"
 
 
 # -- General configuration ---------------------------------------------------
@@ -27,9 +28,7 @@ author = 'Dr. Ingolf Kuss, Dr. Peter Reimer, Dr. Andres Quast, Jan Schnasse'
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
-extensions = [
-  "sphinx_rtd_theme",
-]
+extensions = []
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -45,8 +44,6 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-#html_theme = 'alabaster'
-#html_theme = 'sphinx_rtd_theme'
 html_theme = 'furo'
 
 # Add any paths that contain custom static files (such as style sheets) here,
