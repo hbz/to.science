@@ -7,3 +7,10 @@ html body {
 h1, h2, h3 {
     color: #0000C0;
 }
+.hbz-links ul {
+    padding-left: 0;
+}
+.hbz-links ul li {
+    display: inline;
+    margin-right: 2em
+}

@@ -164,6 +164,13 @@
             {% trans %}
             <a href="https://github.com/pradyunsg/furo">Furo</a>
             {% endtrans %}
+            <div class="hbz-links">
+              <ul>
+                <li><a href="https://www.hbz-nrw.de/impressum">Impressum</a></li>
+                <li><a href="https://www.hbz-nrw.de/datenschutz">Datenschutz</a></li>
+              </ul>
+            </div>
+
             {%- if last_updated -%}
             <div class="last-updated">
               {% trans last_updated=last_updated|e -%}
@@ -172,6 +179,7 @@
             </div>
             {%- endif %}
           </div>
+
           <div class="right-details">
             {% if theme_footer_icons or READTHEDOCS -%}
             <div class="icons">
