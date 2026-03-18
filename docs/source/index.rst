@@ -34,14 +34,6 @@ Werkzeug sphinx in HTML übersetzt werden. Mehr dazu im Abschnitt
    colophon
 
 
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
 .. wieder auskommentieren, wenn formate verfügbar
    Andere Formate
    --------------

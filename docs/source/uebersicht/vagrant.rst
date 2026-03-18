@@ -1,3 +1,6 @@
+.. _vagrant_installation:
+
+
 Vagrant
 -------
 
@@ -11,11 +14,9 @@ Betriebssyteme ist die Installation ähnlich.
 
 Die VirtualBox hat folgendes Setup
 
--  hdd 40GB
-
--  cpu 2core
-
--  ram 4096M
+* hdd 40GB
+* cpu 2core
+* ram 4096M
 
 .. _virtualbox_installieren:
 

@@ -20,49 +20,35 @@ ihren Konfigurationsdateien miteinander verbunden werden.
 
 .. _regal_api_2:
 
-regal-api
----------
+to.science.api (ehemals regal-api)
+----------------------------------
 
 .. table:: Überblick
 
-   +-----------------------------------+-----------------------------------+
-   | Source                            | `regal-api <https:                |
-   |                                   | //github.com/edoweb/regal-api>`   |
-   +-----------------------------------+-----------------------------------+
-   | Technik                           | `Play                             |
-   |                                   | 2.4                               |
-   |                                   | .2 <https://www.playframework.com |
-   |                                   | /documentation/2.4.x/JavaHome>`   |
-   +-----------------------------------+-----------------------------------+
-   | Ports                             | 9000 / 9100                       |
-   +-----------------------------------+-----------------------------------+
-   | Verzeichnis                       | /opt/regal/apps/regal ,           |
-   |                                   | /opr/regal/src/regal              |
-   +-----------------------------------+-----------------------------------+
-   | HTTP Pfad                         | /                                 |
-   +-----------------------------------+-----------------------------------+
+   ============= ==========================================================================
+   Source        https://github.com/hbz/to.science.api
+   Technik       `Play`_   
+   Port          9000 
+   Verzeichnis   /opt/toscience/apps/regal, /opt/toscience/src/regal          
+   HTTP Pfad     /                                 
+   ============= ==========================================================================
 
-Mit regal-api werden alle grundlegenden Funktionen von Regal
+.. _Play: https://www.playframework.com/documentation/2.2.x/JavaHome
+
+Mit der ``to.science.api`` werden alle grundlegenden Funktionen von to.science
 bereitgestellt. Dies umfasst:
 
--  HTTP Schnittstelle
+*  HTTP Schnittstelle
+*  Sichtbarkeiten, Zugriffskontrolle, Rollen
+*  Speicherung, Datenhaltung
+*  Konvertierungen
+*  Ansichten
+*  Suche
+*  Webarchivierung
 
--  Sichtbarkeiten, Zugriffskontrolle, Rollen
-
--  Speicherung, Datenhaltung
-
--  Konvertierungen
-
--  Ansichten
-
--  Suche
-
--  Webarchivierung
-
-Der Webservice ist auf Basis von `Play
-2.4.2 <https://www.playframework.com/documentation/2.4.x/JavaHome>`_
+Der Webservice ist auf Basis von `Play`_
 realisiert und bietet eine reichhaltig HTTP-API zur Verwaltung von
-elektronischen Publikationen an. Die `regal-api <#_regal_api_2>`_
+elektronischen Publikationen an. Die ``to.science.api``
 operiert auf `Fedora Commons 3 <#_fedora_commons_3>`_,
 `MySql <#_mysql>`__ und `Elasticsearch 1.1 <#_elasticsearch_1_1>`_.
 Über die API werden auch Funktionalitäten von `Etikett <#_etikett>`_,
@@ -70,6 +56,8 @@ operiert auf `Fedora Commons 3 <#_fedora_commons_3>`_,
 `Deepzoomer <#_deepzoomer>`_ angesprochen. Für die Webarchivierung
 werden `heritrix <#_heritrix>`_, `wpull <#_wpull>`_ und
 `openwayback <#_openwayback>`_ angebunden.
+
+.. _Play: https://www.playframework.com/documentation/2.2.x/JavaHome
 
 .. _konfiguration:
 
@@ -372,25 +360,19 @@ Die Applikation
 
 
 
-Etikett
--------
+Labels (ehemals Etikett)
+------------------------
 
 .. table:: Überblick
 
-   +-----------------------------------+-----------------------------------+
-   | Source                            | `Etikett`_                        |
-   +-----------------------------------+-----------------------------------+
-   | Technik                           | `Play`_                           |
-   +-----------------------------------+-----------------------------------+
-   | Ports                             | 9002 / 9102                       |
-   +-----------------------------------+-----------------------------------+
-   | Verzeichnis                       | /opt/regal/apps/etikett ,         |
-   |                                   | /opr/regal/src/etikett            |
-   +-----------------------------------+-----------------------------------+
-   | HTTP Pfad                         | /tools/etikett                    |
-   +-----------------------------------+-----------------------------------+
+   ============ ========================================================  
+   Source       https://github.com/hbz/to.science.labels
+   Technik      `Play`_
+   Ports        9002
+   Verzeichnis  /opt/toscience/apps/etikett, /opt/toscience/src/etikett
+   HTTP Pfad    /tools/etikett
+   ============ ========================================================     
 
-.. _Etikett: https://github.com/hbz/etikett
 .. _Play: https://www.playframework.com/documentation/2.2.x/JavaHome
 
 
@@ -556,29 +538,26 @@ Die Applikation
    |                                   | aufrufen.                         |
    +-----------------------------------+-----------------------------------+
 
-.. _zettel:
+.. _labels:
 
-Zettel
-------
+Labels (ehemals Zettel)
+-----------------------
 
 .. table:: Überblick
 
-   +-----------------------------------+-----------------------------------+
-   | Source                            | `zettel <                         |
-   |                                   | https://github.com/hbz/zettel>`__ |
-   +-----------------------------------+-----------------------------------+
-   | Technik                           | `Play Play                        |
-   |                                   | 2.5                               |
-   |                                   | .4 <https://www.playframework.com |
-   |                                   | /documentation/2.5.x/JavaHome>`__ |
-   +-----------------------------------+-----------------------------------+
-   | Ports                             | 9003 / 9103                       |
-   +-----------------------------------+-----------------------------------+
-   | Verzeichnis                       | /opt/regal/apps/zettel,           |
-   |                                   | /opr/regal/src/zettel             |
-   +-----------------------------------+-----------------------------------+
-   | HTTP Pfad                         | /tools/zettel                     |
-   +-----------------------------------+-----------------------------------+
+   +--------------------+------------------------------------------------+
+   | Source             | https://github.com/hbz/to.science.forms        |
+   +--------------------+------------------------------------------------+
+   | Technik            | `Play`_                                        |
+   +--------------------+------------------------------------------------+
+   | Ports              | 9003 / 9103                                    |
+   +--------------------+------------------------------------------------+
+   | Verzeichnis        | /opt/regal/apps/zettel, /opt/regal/src/zettel  |
+   +--------------------+------------------------------------------------+
+   | HTTP Pfad          | /tools/zettel                                  |
+   +--------------------+------------------------------------------------+
+
+
 
 Zettel ist ein Webservice zur Bereitstellung von Webformularen. Die
 Webformulare können über ein HTTP-GET geladen werden. Sollen
@@ -989,86 +968,6 @@ Die Applikation
    |                                   | finden.                           |
    +-----------------------------------+-----------------------------------+
 
-.. _edoweb_drupal_theme:
-
-edoweb-drupal-theme
--------------------
-
-.. table:: Überblick
-
-   +-----------------------------------+-----------------------------------+
-   | Source                            | `edow                             |
-   |                                   | eb-drupal-theme <https://github.c |
-   |                                   | om/edoweb/edoweb-drupal-theme>`__ |
-   +-----------------------------------+-----------------------------------+
-   | Technik                           | `PHP                              |
-   |                                   | 5 <h                              |
-   |                                   | ttps://www.php.net/manual/en/>`__ |
-   +-----------------------------------+-----------------------------------+
-   | Ports                             | 80 / 443                          |
-   +-----------------------------------+-----------------------------------+
-   | Verzeichnis                       | /opt/r                            |
-   |                                   | egal/var/drupal/sites/all/themes/ |
-   +-----------------------------------+-----------------------------------+
-
-Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche
-für den Server https://edoweb-rlp.de
-
-.. _zbmed_drupal_theme:
-
-zbmed-drupal-theme
-------------------
-
-.. table:: Überblick
-
-   +-----------------------------------+-----------------------------------+
-   | Source                            | `zb                               |
-   |                                   | med-drupal-theme <https://github. |
-   |                                   | com/edoweb/zbmed-drupal-theme>`__ |
-   +-----------------------------------+-----------------------------------+
-   | Technik                           | `PHP                              |
-   |                                   | 5 <h                              |
-   |                                   | ttps://www.php.net/manual/en/>`__ |
-   +-----------------------------------+-----------------------------------+
-   | Ports                             | 80 / 443                          |
-   +-----------------------------------+-----------------------------------+
-   | Verzeichnis                       | /opt/r                            |
-   |                                   | egal/var/drupal/sites/all/themes/ |
-   +-----------------------------------+-----------------------------------+
-
-Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche
-für den Server https://repository.publisso.de
-
-.. _openwayback:
-
-openwayback
------------
-
-Repo: https://github.com/iipc/openwayback Servlet 2.5 .Überblick
-
-+-----------------------------------+-----------------------------------+
-| Source                            | `openwayback <https:              |
-|                                   | //github.com/iipc/openwayback>`__ |
-+-----------------------------------+-----------------------------------+
-| Technik                           | `Servlet                          |
-|                                   | 2.5 <https://download.oracle.com/ |
-|                                   | otn-pub/jcp/servlet-2.5-mr5-oth-J |
-|                                   | Spec/servlet-2.5-mr5-spec.pdf>`__ |
-+-----------------------------------+-----------------------------------+
-| Ports                             | 8091 / 8191                       |
-+-----------------------------------+-----------------------------------+
-| Verzeichnis                       | /o                                |
-|                                   | pt/regal/tomcat-for-openwayback/, |
-|                                   | /opr/regal/src/openwayback        |
-+-----------------------------------+-----------------------------------+
-
-**Achtung**: Es gibt einen am hbz entwickelten Branch. Dieser ist nicht
-auf Github.
-
-Openwayback ist eine Webapplikation die im ROOT Bereich eines Tomcats
-installiert werden will. Sie kann Verzeichnisse mit WARC-Dateien
-indexieren und darauf eine Oberfläche zur Recherche und zur Navigation
-aufbauen.
 
 .. _heritrix:
 
@@ -1120,9 +1019,58 @@ Elasticsearch ist eine Suchmaschine und wird von
 Drupal 7
 --------
 
-Über Drupal 7
+.. _edoweb_drupal_theme:
 
-.. _vagrant_installation:
+edoweb-drupal-theme
+~~~~~~~~~~~~~~~~~~~
+
+.. table:: Überblick
+
+   +-----------------------------------+-----------------------------------+
+   | Source                            | `edow                             |
+   |                                   | eb-drupal-theme <https://github.c |
+   |                                   | om/edoweb/edoweb-drupal-theme>`__ |
+   +-----------------------------------+-----------------------------------+
+   | Technik                           | `PHP                              |
+   |                                   | 5 <h                              |
+   |                                   | ttps://www.php.net/manual/en/>`__ |
+   +-----------------------------------+-----------------------------------+
+   | Ports                             | 80 / 443                          |
+   +-----------------------------------+-----------------------------------+
+   | Verzeichnis                       | /opt/r                            |
+   |                                   | egal/var/drupal/sites/all/themes/ |
+   +-----------------------------------+-----------------------------------+
+
+Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche
+für den Server https://edoweb-rlp.de
+
+.. _zbmed_drupal_theme:
+
+zbmed-drupal-theme
+~~~~~~~~~~~~~~~~~~
+
+.. table:: Überblick
+
+   +-----------------------------------+-----------------------------------+
+   | Source                            | `zb                               |
+   |                                   | med-drupal-theme <https://github. |
+   |                                   | com/edoweb/zbmed-drupal-theme>`__ |
+   +-----------------------------------+-----------------------------------+
+   | Technik                           | `PHP                              |
+   |                                   | 5 <h                              |
+   |                                   | ttps://www.php.net/manual/en/>`__ |
+   +-----------------------------------+-----------------------------------+
+   | Ports                             | 80 / 443                          |
+   +-----------------------------------+-----------------------------------+
+   | Verzeichnis                       | /opt/r                            |
+   |                                   | egal/var/drupal/sites/all/themes/ |
+   +-----------------------------------+-----------------------------------+
+
+Eine Reihe von Stylsheets, CSS, Icons zur Gestaltung einer Oberfläche
+für den Server https://repository.publisso.de
+
+
+
 
 Installation
 ============
