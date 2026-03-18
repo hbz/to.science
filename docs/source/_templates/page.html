@@ -170,7 +170,6 @@
                 <li><a href="https://www.hbz-nrw.de/datenschutz">Datenschutz</a></li>
               </ul>
             </div>
-
             {%- if last_updated -%}
             <div class="last-updated">
               {% trans last_updated=last_updated|e -%}
@@ -199,6 +198,7 @@
               </a>
               {%- endif -%}
               {#- Show GitHub repository home -#}
+              
               {%- if READTHEDOCS and display_github and github_user != "None" and github_repo != "None" -%}
               <a class="muted-link" href="https://github.com/{{ github_user }}/{{ github_repo }}" aria-label="On GitHub">
                 <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16">
@@ -234,4 +234,23 @@
     </aside>
   </div>
 </div>
+  <!-- Matomo -->
+	<script>
+	  var _paq = window._paq = window._paq || [];
+	  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+	  _paq.push(['trackPageView']);
+	  _paq.push(['enableLinkTracking']);
+	  (function() {
+	    var u="{{ analytics_url }}";
+	    _paq.push(['setTrackerUrl', u+'matomo.php']);
+	    _paq.push(['setSiteId', '{{ analytics_siteid }}']);
+	    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+	    g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
+	  })();
+	</script>
+	<noscript>
+	<!-- Matomo Image Tracker-->
+	  <img referrerpolicy="no-referrer-when-downgrade" src="<?= ($config->analytics->url)?>/matomo.php?idsite=<?= ($config->analytics->siteid)?>&amp;rec=1" style="border:0" alt="" />
+	</noscript>
+	<!-- End Matomo Code -->
 {%- endblock %}

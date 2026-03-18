@@ -56,7 +56,14 @@ html_css_files = [
   'css/custom.css',
   'https://fonts.pubsys.hbz-nrw.de/wix-madefor-text/v16/css/wix-madefor-text.css'
 ]
+html_context = {
+    "analytics_url": "https://analytics.hbz-nrw.de",
+    "analytics_siteid": "43"
+}
 html_theme_options = {
+    "source_repository": "https://github.com/hbz/to.science/",
+    "source_branch": "master",
+    "source_directory": "docs/source",
     "light_css_variables": {
         "color-brand-primary": "#0000C0",
         "color-brand-content": "#0000C0",
@@ -69,4 +76,4 @@ html_show_sourcelink = True
 
 # The paper size ('letter' or 'a4').
 latex_paper_size = 'a4'
-latex_logo = "resources/images/hbz-logo.pdf"
+latex_logo = "resources/images/hbz-Logo-rgb-ohne-Claim.pdf"
