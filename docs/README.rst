@@ -50,3 +50,8 @@ unter http://localhost:8000 ansehen.
 
    $ python3 -m http.server --directory build/html
 
+
+.. _sphinx: https://www.sphinx-doc.org
+.. _sphinx_rtd_theme: https://sphinx-rtd-theme.readthedocs.io/en/stable/index.html
+.. _furo: https://github.com/pradyunsg/furo
+.. _reStructuredText: https://docutils.sourceforge.io/rst.html

@@ -39,8 +39,5 @@ Github
 -  https://github.com/hbz
 
 
-.. _sphinx: https://www.sphinx-doc.org
-.. _sphinx_rtd_theme: https://sphinx-rtd-theme.readthedocs.io/en/stable/index.html
-.. _furo: https://github.com/pradyunsg/furo
-.. _reStructuredText: https://docutils.sourceforge.io/rst.html
+
 .. _CC BY-NC 4.0: http://creativecommons.org/licenses/by-nc/4.0/
