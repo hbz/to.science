@@ -56,10 +56,14 @@ html_css_files = [
   'css/custom.css',
   'https://fonts.pubsys.hbz-nrw.de/wix-madefor-text/v16/css/wix-madefor-text.css'
 ]
+
 html_context = {
-    "analytics_url": "https://analytics.hbz-nrw.de",
+    "analytics_url": "https://analytics.hbz-nrw.de/",
     "analytics_siteid": "43"
 }
+# Matomo Webstatistics
+# wichtig: schließendes "/" bei der url
+
 html_theme_options = {
     "source_repository": "https://github.com/hbz/to.science/",
     "source_branch": "master",
