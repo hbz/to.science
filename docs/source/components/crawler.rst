@@ -30,7 +30,8 @@ erfolgen und eine eventuell vorhandene ``robots.txt``-Datei wird berücksichtigt
 IP Bereiche
 -----------
 
-Das Crawling erfolgt aus folgendem Adressbereich ``193.30.112.0/24``. Der IP Bereich ist auch als JSON abrufbar unter `toscience.json <../ipranges/toscience.json>`_.
+Das Crawling erfolgt aus den Adressbereichen  ``193.30.112.0/24`` bzw. ``194.95.250.0/24``. 
+Der IP Bereich ist auch als JSON abrufbar unter `toscience.json <../ipranges/toscience.json>`_.
 
 
 Kontakt
